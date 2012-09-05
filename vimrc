@@ -84,3 +84,5 @@ map <C-c> "+y<CR>
 "Handling swap and backup files
 set backupdir=~/.backup/vim-backup//
 set directory=~/.backup/vim-swap//
+
+set mouse=a

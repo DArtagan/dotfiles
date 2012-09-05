@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/willy/.vim'
 let g:netrw_dirhist_2='/media/Windows7Partition/Users/Willy Weiskopf/Willy/Websites and Programming/DandRMachining/wp-content/themes/dandr-roots'
 let g:netrw_dirhist_3='/media/Windows7Partition/Users/Willy Weiskopf/Willy/Websites and Programming/IdeaInk/inc'
 let g:netrw_dirhist_4='/media/Windows7Partition/Users/Willy Weiskopf/Willy/Websites and Programming/IdeaInk'
 let g:netrw_dirhist_5='/media/Windows7Partition/Users/Willy Weiskopf/Willy/Websites and Programming'
+let g:netrw_dirhist_6='/home/willy/.dotfiles/vim'
+let g:netrw_dirhist_7='/home/willy/.dotfiles/vim/doc'
