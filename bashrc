@@ -104,7 +104,7 @@ fi
 
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
-for i in ~/autoload/*; do
+for i in ~/.autoload/*; do
   source $i
 done
 
