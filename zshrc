@@ -46,11 +46,16 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+# Bash complete
+autoload bashcompinit
+bashcompinit
+
 # Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Scripts in the autoload folder
-for i in ~/.autoload/*; do
+for i in ~/.autoload/*/*.sh; do
   source $i
 done
 
@@ -62,3 +67,4 @@ function wo() {
 
 # ack is short for ack-grep
 alias ack="ack-grep"
+
