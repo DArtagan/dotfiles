@@ -27,7 +27,7 @@ fi
 git pull --recurse-submodules
 git submodule init 
 git submodule update --recursive 
-gitsubmodule status
+git submodule status
 
 # Runs solarize.sh to change the terminal theme to light, unless "dark" is specified as a parameter at the beginning.
 if [ "$1" == "dark" ]; then
