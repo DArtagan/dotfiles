@@ -23,6 +23,12 @@ else
   echo "Could not find $gitdir, assuming the location is $dir."
 fi 
 
+# Pull in git submodules
+git pull --recurse-submodules
+git submodule init 
+git submodule update --recursive 
+gitsubmodule status
+
 # Runs solarize.sh to change the terminal theme to light, unless "dark" is specified as a parameter at the beginning.
 if [ "$1" == "dark" ]; then
   $dir/solarize.sh dark
