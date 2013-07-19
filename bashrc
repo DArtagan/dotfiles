@@ -119,3 +119,6 @@ function wo() {
 
 # ack is short for ack-grep
 alias ack="ack-grep"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
