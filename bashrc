@@ -102,17 +102,22 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
+# Scripts in the autoload folder
 for i in ~/.autoload/*; do
   source $i
 done
 
+# Work on (combination of virtual-env's workon and Rocky's b)
 function wo() {
   workon $1
   b $1
 }
 
+# ack is short for ack-grep
 alias ack="ack-grep"
 
 ### Added by the Heroku Toolbelt

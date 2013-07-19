@@ -11,7 +11,7 @@ dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 backupdir=~/.backup/vim-backup     # directory for vim backup files
 swapdir=~/.backup/vim-swap         # directory for vim swap files
-files="autoload bashrc vimrc vim zshrc"     # list of files/folders to symlink in homedir seperated by spaces
+files="autoload bashrc oh-my-zsh vimrc vim zshrc"     # list of files/folders to symlink in homedir seperated by spaces
 
 ##########
 
@@ -22,6 +22,12 @@ if [ -d $gitdir ]; then
 else 
   echo "Could not find $gitdir, assuming the location is $dir."
 fi 
+
+# Pull in git submodules
+git pull --recurse-submodules
+git submodule init 
+git submodule update --recursive 
+git submodule status
 
 # Runs solarize.sh to change the terminal theme to light, unless "dark" is specified as a parameter at the beginning.
 if [ "$1" == "dark" ]; then

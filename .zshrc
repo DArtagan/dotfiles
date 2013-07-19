@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="random"
+ZSH_THEME="robbyrussell"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -45,30 +45,4 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-
-# Bash complete
-autoload bashcompinit
-bashcompinit
-
-# Virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-#source /usr/local/bin/virtualenvwrapper_lazy.sh
-source /usr/local/bin/virtualenvwrapper.sh
-
-# Scripts in the autoload folder
-for i in ~/.autoload/*/*.sh; do
-  source $i
-done
-
-# Work on (combination of virtual-env's workon and Rocky's b)
-function wo() {
-  workon $1
-  b $1
-}
-
-# ack is short for ack-grep
-alias ack="ack-grep"
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
