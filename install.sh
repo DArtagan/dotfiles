@@ -11,7 +11,7 @@ dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 backupdir=~/.backup/vim-backup     # directory for vim backup files
 swapdir=~/.backup/vim-swap         # directory for vim swap files
-files="autoload bashrc oh-my-zsh vimrc vim zshrc"     # list of files/folders to symlink in homedir seperated by spaces
+files="autoload bashrc oh-my-zsh vimrc vim zshrc config/awesome"     # list of files/folders to symlink in homedir seperated by spaces
 
 ##########
 
@@ -22,6 +22,11 @@ if [ -d $gitdir ]; then
 else 
   echo "Could not find $gitdir, assuming the location is $dir."
 fi 
+
+# change to the dotfiles directory
+echo "Changing to the $dir directory"   
+cd $dir
+echo "...done"
 
 # Pull in git submodules
 git pull --recurse-submodules
@@ -50,11 +55,6 @@ fi
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
-echo "...done"
-
-# change to the dotfiles directory
-echo "Changing to the $dir directory"   
-cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
