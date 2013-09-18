@@ -59,6 +59,7 @@ set pastetoggle=<F12>
 " Map Ctrl-C to copy to clipboard
 map <C-c> "+y<CR> 
 cmap w!! w !sudo tee %
+iabbrev </ </<C-X><C-O>
 
 "-------------------------------------------------
 "Plugin Settings
