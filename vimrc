@@ -88,3 +88,7 @@ set backupdir=~/.backup/vim-backup//
 set directory=~/.backup/vim-swap//
 
 set mouse=a
+
+"Supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:jedi#popup_on_dot = 0
