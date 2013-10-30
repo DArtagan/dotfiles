@@ -11,6 +11,16 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- Override awesome.quit when we're using GNOME
+    _awesome_quit = awesome.quit
+    awesome.quit = function()
+        if os.getenv("DESKTOP_SESSION") == "awesome-gnome" then
+           os.execute("/usr/bin/gnome-session-quit")
+        else
+	    _awesome_quit()
+        end
+    end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -38,7 +48,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/local/share/awesome/themes/default/theme.lua")
+local configdir = awful.util.getdir ("config")
+beautiful.init (configdir .. "/themes/copland/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "gnome-terminal"
@@ -269,7 +280,13 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+    
+    -- Multimedia keys
+    awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 2+") end),
+    awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 2-") end), 
+    awful.key({ }, "XF86AudioMute",           function () awful.util.spawn("amixer -D pulse set Master 1+ toggle") end),
+    awful.key({ }, "SF86AudioPlay",           function () awful.util.spawn("xdotool key --window $(xdotool search --name Rdio | head -1) space") end)
 )
 
 clientkeys = awful.util.table.join(
