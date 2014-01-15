@@ -104,7 +104,7 @@ fi
 
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+source /usr/bin/virtualenvwrapper_lazy.sh
 
 # Scripts in the autoload folder
 for i in ~/.autoload/*; do
@@ -122,3 +122,8 @@ alias ack="ack-grep"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# bash completion
+complete -cf pacman
+complete -cf sudo
+complete -cf man

@@ -11,7 +11,7 @@ dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 backupdir=~/.backup/vim-backup     # directory for vim backup files
 swapdir=~/.backup/vim-swap         # directory for vim swap files
-files="autoload bashrc oh-my-zsh vimrc vim zshrc config/awesome"     # list of files/folders to symlink in homedir seperated by spaces
+files="autoload bashrc Xresources oh-my-zsh vimrc vim zshrc config/awesome"     # list of files/folders to symlink in homedir seperated by spaces
 
 ##########
 
