@@ -1,7 +1,7 @@
 Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
-Xft.rgba: rgb
+Xft.rgba: none
 Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
@@ -9,7 +9,7 @@ urxvt.depth: 32
 urxvt.transparent: false
 urxvt.background: 0000/0000/0200/c800
 urxvt.scrollBar: false
-urxvt.font: xft:Inconsolata:pixelsize=16
+urxvt.font: xft:Inconsolata:pixelsize=17
 
 
 ! Solarized color scheme for the X Window System
