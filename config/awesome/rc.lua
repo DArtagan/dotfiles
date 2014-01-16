@@ -52,7 +52,7 @@ local configdir = awful.util.getdir ("config")
 beautiful.init (configdir .. "/themes/copland/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal"
+terminal = "urxvt"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -451,3 +451,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+awful.util.spawn_with_shell("xrdb -merge $HOME/.Xresources")
