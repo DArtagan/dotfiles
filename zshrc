@@ -53,10 +53,10 @@ bashcompinit
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 #source /usr/local/bin/virtualenvwrapper_lazy.sh
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
 # Scripts in the autoload folder
-for i in ~/.autoload/*/*.sh; do
+for i in ~/.autoload/*.sh; do
   source $i
 done
 
@@ -68,7 +68,6 @@ function wo() {
 
 # ack is short for ack-grep
 alias ack="ack-grep"
-
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
