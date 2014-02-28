@@ -10,6 +10,8 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+-- Lain
+local lain = require("lain")
 
 -- Override awesome.quit when we're using GNOME
     _awesome_quit = awesome.quit
@@ -123,6 +125,15 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
+-- Battery
+batwidget = lain.widgets.bat({
+  timeout = 4,
+  battery = "BAT1",
+  settings = function()
+    widget:set_markup("Bat " .. bat_now.perc)
+  end
+})
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -200,6 +211,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(batwidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -450,6 +462,8 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+
 -- }}}
 
 awful.util.spawn_with_shell("xrdb -merge $HOME/.Xresources")
