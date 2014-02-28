@@ -49,6 +49,7 @@ source $ZSH/oh-my-zsh.sh
 # Bash complete
 autoload bashcompinit
 bashcompinit
+complete -cf sudo
 
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
