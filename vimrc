@@ -4,6 +4,7 @@
 " Enable filetype plugin
 filetype plugin on
 filetype indent plugin on
+runtime macros/matchit.vim
 
 "Pathogen
 call pathogen#infect()
