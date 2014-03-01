@@ -134,6 +134,32 @@ batwidget = lain.widgets.bat({
   end
 })
 
+-- Alsa Bar
+volicon = wibox.widget.imagebox(beautiful.vol)
+volume = lain.widgets.alsabar({width = 55, ticks_size = 6,
+settings = function()
+    if volume_now.status == "off" then
+        volicon:set_image(beautiful.vol_mute)
+    elseif volume_now.level == 0 then
+        volicon:set_image(beautiful.vol_no)
+    elseif volume_now.level <= 50 then
+        volicon:set_image(beautiful.vol_low)
+    else
+        volicon:set_image(beautiful.vol)
+    end
+end,
+colors =
+{
+    background = beautiful.bg_normal,
+    mute = "#EB8F8F",
+    unmute = beautiful.fg_normal
+}})
+volmargin = wibox.layout.margin(volume.bar, 2, 7)
+volmargin:set_top(6)
+volmargin:set_bottom(6)
+volumewidget = wibox.widget.background(volmargin)
+volumewidget:set_bgimage(beautiful.widget_bg)
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -211,6 +237,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(volicon)
+    right_layout:add(volumewidget)
     right_layout:add(batwidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
@@ -295,8 +323,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end),
     
     -- Multimedia keys
-    awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 2+") end),
-    awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 2-") end), 
+    awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 5%+") end),
+    awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 5%-") end), 
     awful.key({ }, "XF86AudioMute",           function () awful.util.spawn("amixer -D pulse set Master 1+ toggle") end),
     awful.key({ }, "SF86AudioPlay",           function () awful.util.spawn("xdotool key --window $(xdotool search --name Rdio | head -1) space") end)
 )
@@ -361,6 +389,7 @@ end
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
+    awful.button({ modkey , "Control" }, 1, awful.mouse.client.resize),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 -- Set keys
