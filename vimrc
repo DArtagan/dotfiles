@@ -93,3 +93,6 @@ set mouse=a
 "Supertab
 let g:SuperTabDefaultCompletionType = "context"
 let g:jedi#popup_on_dot = 0
+
+"jedi-vim
+autocmd FileType python setlocal completeopt-=preview
