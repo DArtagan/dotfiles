@@ -13,14 +13,11 @@ call pathogen#infect()
 " Usability & Appearance Options
 
 syntax enable
-if has('gui_running')
-  set background=light
-else
-  set background=dark
-endif
-set t_Co=16
+set background=light
 let g:solarized_termcolors=16
+let g:solarized_termtrans = 1 " Set to 0 for urxvt
 colorscheme solarized
+call togglebg#map("<F5>")
 
 " Turn on line numbering (turn off with "set nonu")
 set nu

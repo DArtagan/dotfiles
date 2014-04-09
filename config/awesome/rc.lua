@@ -54,7 +54,7 @@ local configdir = awful.util.getdir ("config")
 beautiful.init (configdir .. "/themes/copland/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "termite"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
