@@ -124,6 +124,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
+lain.widgets.calendar:attach(mytextclock)
+
 
 -- Battery
 batwidget = lain.widgets.bat({
