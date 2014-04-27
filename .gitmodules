@@ -19,3 +19,6 @@
 [submodule "config/awesome/lain"]
 	path = config/awesome/lain
 	url = https://github.com/copycat-killer/lain.git
+[submodule "vim/bundle/arduino-ino"]
+	path = vim/bundle/arduino-ino
+	url = https://github.com/jplaut/vim-arduino-ino.git

@@ -54,7 +54,7 @@ local configdir = awful.util.getdir ("config")
 beautiful.init (configdir .. "/themes/copland/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "termite"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -124,6 +124,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
+lain.widgets.calendar:attach(mytextclock, {
+  font = "Inconsolata"
+})
+
 
 -- Battery
 batwidget = lain.widgets.bat({
