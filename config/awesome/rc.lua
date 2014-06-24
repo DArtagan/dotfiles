@@ -420,6 +420,8 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
     { rule = { class = "exe"}, properties = { floating = true } },
+    { rule = { instance = "plugin-container" },
+      properties = { floating = true } },
 }
 -- }}}
 
