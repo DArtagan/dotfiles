@@ -330,7 +330,9 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 5%+") end),
     awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 5%-") end), 
     awful.key({ }, "XF86AudioMute",           function () awful.util.spawn("amixer -D pulse set Master 1+ toggle") end),
-    awful.key({ }, "SF86AudioPlay",           function () awful.util.spawn("xdotool key --window $(xdotool search --name Rdio | head -1) space") end)
+    awful.key({ modkey, }, ",", null,               function () awful.util.spawn("xdotool key --clearmodifiers XF86AudioPrev") end),
+    awful.key({ modkey, }, ".", null,               function () awful.util.spawn("xdotool key --clearmodifiers XF86AudioNext") end),
+    awful.key({ modkey, }, "/", null,               function () awful.util.spawn("xdotool key --clearmodifiers XF86AudioPlay") end)
 )
 
 clientkeys = awful.util.table.join(
