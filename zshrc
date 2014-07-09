@@ -56,6 +56,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 #source /usr/local/bin/virtualenvwrapper_lazy.sh
 source /usr/bin/virtualenvwrapper.sh
 
+# autoenv
+source ~/.autoenv/activate.sh
+
 # Scripts in the autoload folder
 for i in ~/.autoload/*.sh; do
   source $i

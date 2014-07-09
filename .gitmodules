@@ -22,3 +22,6 @@
 [submodule "vim/bundle/arduino-ino"]
 	path = vim/bundle/arduino-ino
 	url = https://github.com/jplaut/vim-arduino-ino.git
+[submodule "autoenv"]
+	path = autoenv
+	url = https://github.com/kennethreitz/autoenv.git
