@@ -1,13 +1,26 @@
 "-------------------------------------------------
-" Necessary Options
+" Vundle
+set nocompatible
+filetype off
 
-" Enable filetype plugin
-filetype plugin on
-filetype indent plugin on
-runtime macros/matchit.vim
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-"Pathogen
-call pathogen#infect()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" List installed plugins here
+Plugin 'scrooloose/syntastic'
+Plugin 'ervandew/supertab'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
+
+" Required closing lines
+call vundle#end()
+filetype plugin indent on
 
 "-------------------------------------------------
 " Usability & Appearance Options
@@ -90,7 +103,3 @@ set mouse=a
 
 "Supertab
 let g:SuperTabDefaultCompletionType = "context"
-let g:jedi#popup_on_dot = 0
-
-"jedi-vim
-autocmd FileType python setlocal completeopt-=preview

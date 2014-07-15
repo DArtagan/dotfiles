@@ -1,27 +1,9 @@
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/tcomment"]
-	path = vim/bundle/tcomment
-	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
 [submodule "config/awesome/lain"]
 	path = config/awesome/lain
 	url = https://github.com/copycat-killer/lain.git
-[submodule "vim/bundle/arduino-ino"]
-	path = vim/bundle/arduino-ino
-	url = https://github.com/jplaut/vim-arduino-ino.git
 [submodule "autoenv"]
 	path = autoenv
 	url = https://github.com/kennethreitz/autoenv.git
