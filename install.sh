@@ -11,7 +11,8 @@ dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 backupdir=~/.backup/vim-backup     # directory for vim backup files
 swapdir=~/.backup/vim-swap         # directory for vim swap files
-files="autoenv autoload bashrc Xresources oh-my-zsh pentadactylrc vimrc vim zshrc config/awesome config/terminator config/termite"     # list of files/folders to symlink in homedir seperated by spaces
+# list of files/folders to symlink in homedir seperated by spaces
+files="antigen autoenv autoload bashrc Xresources oh-my-zsh pentadactylrc vimrc vim zshenv zshrc zsh_aliases config/awesome config/terminator config/termite"
 
 ##########
 
