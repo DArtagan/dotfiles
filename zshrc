@@ -2,10 +2,9 @@
 source "$HOME/.antigen/antigen.zsh"
 
 antigen use oh-my-zsh
-
 antigen bundle git
-
-antigen theme jreese
+antigen bundle themes
+antigen theme awesomepanda
 antigen apply
 
 # Bash complete
