@@ -1,2 +1,5 @@
 noremap j 3j
 noremap k 3k
+noremap <C-c> <C-v><C-c>
+noremap <C-v> <C-v><C-v>
+noremap <C-Esc> <C-v>
