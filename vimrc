@@ -18,6 +18,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
 
 " Required closing lines
 call vundle#end()
@@ -104,3 +105,8 @@ set mouse=a
 
 "Supertab
 let g:SuperTabDefaultCompletionType = "context"
+
+"airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+set noshowmode
