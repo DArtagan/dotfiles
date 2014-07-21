@@ -12,6 +12,9 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 -- Lain
 local lain = require("lain")
+local customlayouts = require("layouts")
+-- Eminent
+require("eminent")
 
 -- Override awesome.quit when we're using GNOME
     _awesome_quit = awesome.quit
@@ -68,7 +71,6 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -79,7 +81,8 @@ local layouts =
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+    awful.layout.suit.floating
 }
 -- }}}
 
@@ -267,6 +270,43 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    awful.key({ modkey,           }, "t",
+        function ()
+                  awful.prompt.run({ prompt = "New tag name: " },
+                    mypromptbox[mouse.screen].widget,
+                    function(new_name)
+                        if not new_name or #new_name == 0 then
+                            return
+                        else
+                            local i_next = awful.tag.getidx() + 1
+                            local tag_next = awful.tag.gettags(mouse.screen)[i_next]
+                            if #tag_next:clients() < 1 then
+                              awful.tag.delete(tag_next)
+                            end
+                            props = {selected = true}
+                            t = awful.tag.add(new_name, props)
+                            awful.tag.move(i_next, t)
+                            awful.tag.viewonly(t)
+                        end
+                    end
+                    )
+        end),
+     awful.key({ modkey, "Shift"  }, "t",
+              function ()
+                 awful.prompt.run({ prompt = "New tag name: " },
+                                  mypromptbox[mouse.screen].widget,
+                                  function(new_name)
+                                     if not new_name or #new_name == 0 then
+                                        return
+                                     else
+                                        local screen = mouse.screen
+                                        local tag = awful.tag.selected(screen)
+                                        if tag then
+                                           tag.name = new_name
+                                        end
+                                     end
+                                  end)
+              end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
@@ -410,6 +450,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
+                     callback = awful.client.setslave,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
                      buttons = clientbuttons,
