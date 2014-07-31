@@ -1,9 +1,1 @@
 alias ack="ack-grep"
-
-# Work on (combination of virtual-env's workon and Rocky's b)
-# Consider replacing with autoenv and .env files that have workon inside
-function wo() {
-  workon $1
-  b $1
-}
-
