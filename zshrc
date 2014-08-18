@@ -12,7 +12,6 @@ antigen apply
 # Bash complete
 autoload bashcompinit
 bashcompinit
-complete -cf sudo
 
 # Virtualenv
 source /usr/bin/virtualenvwrapper.sh
