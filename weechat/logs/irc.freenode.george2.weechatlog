@@ -1,0 +1,9 @@
+2014-04-12 00:12:34	george2	yep
+2014-04-12 00:12:48	dartagan	good work
+2014-04-12 00:12:48	--	[george2] is away: sleep
+2014-04-16 13:30:15	george2	now someone needs to raise money to do the same for openssl
+2014-04-16 17:03:59	--	irc: disconnected from server
+2014-04-17 12:35:23	--	irc: disconnected from server
+2014-04-17 19:52:50	--	irc: disconnected from server
+2014-06-12 17:02:59	george2	I haven't done a lot of research, but I think it's more like a cross between a virtualenv and an ISO. we looked at it when it first came out as a possible alternative to Chakra's Bundle system, which is similar to OS X "dmg"s, but I think it's more for deploying services than running desktop apps.
+2014-06-13 09:42:50	--	irc: disconnected from server

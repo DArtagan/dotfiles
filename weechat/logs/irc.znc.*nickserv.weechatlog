@@ -1,0 +1,18 @@
+2014-07-26 13:01:37	*nickserv	+--------------+-----------------+-----------------------------------------------------------------------------------------------------------+
+2014-07-26 13:01:37	*nickserv	| Command      | Arguments       | Description                                                                                               |
+2014-07-26 13:01:37	*nickserv	+--------------+-----------------+-----------------------------------------------------------------------------------------------------------+
+2014-07-26 13:01:37	*nickserv	| Clear        |                 | Clear your nickserv password                                                                              |
+2014-07-26 13:01:37	*nickserv	| ClearNSName  |                 | Reset NickServ name to default (NickServ)                                                                 |
+2014-07-26 13:01:37	*nickserv	| Ghost        | nickname        | GHOST disconnects an old user session, or somebody attempting to use your nickname without authorization. |
+2014-07-26 13:01:37	*nickserv	| Group        | nickname        |                                                                                                           |
+2014-07-26 13:01:37	*nickserv	| Help         | search          | Generate this output                                                                                      |
+2014-07-26 13:01:37	*nickserv	| Recover      | nickname        |                                                                                                           |
+2014-07-26 13:01:37	*nickserv	| Release      | nickname        |                                                                                                           |
+2014-07-26 13:01:37	*nickserv	| Set          | password        |                                                                                                           |
+2014-07-26 13:01:37	*nickserv	| SetCommand   | cmd new-pattern | Set pattern for commands                                                                                  |
+2014-07-26 13:01:37	*nickserv	| SetNSName    | nickname        | Set NickServ name (Useful on networks like EpiKnet, where NickServ is named Themis)                       |
+2014-07-26 13:01:37	*nickserv	| ViewCommands |                 | Show patterns for lines, which are being sent to NickServ                                                 |
+2014-07-26 13:01:37	*nickserv	+--------------+-----------------+-----------------------------------------------------------------------------------------------------------+
+2014-07-26 13:02:06	dartagan_	recover dartagan
+2014-07-26 13:05:29	--	irc: disconnected from server
+2014-07-26 13:10:57	--	irc: disconnected from server
