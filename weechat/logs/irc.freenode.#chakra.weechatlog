@@ -1,0 +1,631 @@
+2014-04-01 11:44:41	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-01 11:44:41	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-01 11:44:41	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:43
+2014-04-01 11:44:41	--	Channel #chakra: 38 nicks (1 op, 1 voice, 36 normals)
+2014-04-01 11:44:43	--	Mode #chakra [+cnt]
+2014-04-01 11:44:44	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-08 19:25:56	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-08 19:25:56	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-08 19:25:56	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:42
+2014-04-08 19:25:56	--	Channel #chakra: 27 nicks (1 op, 1 voice, 25 normals)
+2014-04-08 19:25:56	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-08 19:25:56	--	Mode #chakra [+cnt]
+2014-04-08 19:25:56	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-08 19:26:14	-->	RyanKnack (RyanKnack@unaffiliated/ryanknack) has joined #chakra
+2014-04-08 19:28:23	DiscipleOfDante	Anyone home?
+2014-04-08 19:28:55	tiemay	ya, but I don't know about what you're asking
+2014-04-08 19:30:22	DiscipleOfDante	Eh that is fine I have another question. Know anything about QtCurve?
+2014-04-08 19:30:43	tiemay	it's some sort of theme, right?
+2014-04-08 19:31:20	DiscipleOfDante	It is a style for windows, a highly configurable one
+2014-04-08 19:31:30	DiscipleOfDante	Albeit a somewhat dated one
+2014-04-08 23:18:45	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-08 23:18:45	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-08 23:18:45	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:42
+2014-04-08 23:18:45	--	Channel #chakra: 27 nicks (1 op, 1 voice, 25 normals)
+2014-04-08 23:18:45	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-08 23:18:45	--	Mode #chakra [+cnt]
+2014-04-08 23:18:45	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-08 23:19:04	dartagan	exit
+2014-04-08 23:19:23	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-08 23:19:23	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-08 23:19:23	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:42
+2014-04-08 23:19:23	--	Channel #chakra: 27 nicks (1 op, 1 voice, 25 normals)
+2014-04-08 23:19:23	--	Notice(sendak.freenode.net): [freenode-info] channel flooding and no channel staff around to help? Please check with freenode support: http://freenode.net/faq.shtml#gettinghelp
+2014-04-08 23:19:23	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-08 23:19:23	--	Mode #chakra [+cnt]
+2014-04-08 23:19:23	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-08 23:19:59	dartagan	exit
+2014-04-08 23:20:00	dartagan	exit
+2014-04-12 00:06:41	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-12 00:06:41	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-12 00:06:41	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:42
+2014-04-12 00:06:41	--	Channel #chakra: 23 nicks (1 op, 1 voice, 21 normals)
+2014-04-12 00:06:41	--	Mode #chakra [+cnt]
+2014-04-12 00:06:41	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-12 00:06:41	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-16 01:19:25	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-16 01:19:25	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-16 01:19:25	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:42
+2014-04-16 01:19:25	--	Channel #chakra: 25 nicks (1 op, 1 voice, 23 normals)
+2014-04-16 01:19:25	--	Mode #chakra [+cnt]
+2014-04-16 01:19:25	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-16 01:19:25	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-16 01:20:52	-->	Dezponia (~pony@83.223.25.69) has joined #chakra
+2014-04-16 01:29:11	<--	serafean (~martin@2a00:1028:96c3:6a32:21a:92ff:fe83:2357) has quit (Ping timeout: 246 seconds)
+2014-04-16 01:40:28	<--	alphad (~kyd@196.201.85.151) has quit (Ping timeout: 265 seconds)
+2014-04-16 13:27:10	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-16 13:27:10	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-16 13:27:10	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:42
+2014-04-16 13:27:10	--	Channel #chakra: 31 nicks (1 op, 1 voice, 29 normals)
+2014-04-16 13:27:10	--	Notice(leguin.freenode.net): [freenode-info] if you're at a conference and other people are having trouble connecting, please mention it to staff: http://freenode.net/faq.shtml#gettinghelp
+2014-04-16 13:27:10	--	Mode #chakra [+cnt]
+2014-04-16 13:27:10	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-16 13:27:10	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-16 13:27:13	AlmAck	:-)
+2014-04-16 13:27:23	<--	AlmAck (~AlmAck@71-96.104-92.cust.bluewin.ch) has quit (Quit: Konversation terminated!)
+2014-04-16 13:27:28	totte	Anyway, time to sleep. Night folks. o/
+2014-04-16 13:28:31	-->	AlmAck (~AlmAck@71-96.104-92.cust.bluewin.ch) has joined #chakra
+2014-04-16 13:29:51	OctoNinjaCat	Little question about burning chakra to a usb stick... anyone?
+2014-04-16 13:30:03	Inkane	OctoNinjaCat: just ask
+2014-04-16 13:30:25	OctoNinjaCat	Burned chakra to a usb stick. UEFI BIOS doesn't recognize
+2014-04-16 13:30:47	OctoNinjaCat	first I tried with dd. Ended up with a mbr partition
+2014-04-16 13:30:54	Inkane	chakra is not UEFI compatible
+2014-04-16 13:31:02	Inkane	there is no uefi bootloader on the ISO
+2014-04-16 13:31:04	Inkane	sorry
+2014-04-16 13:31:09	OctoNinjaCat	Thanks
+2014-04-16 13:32:01	Inkane	you'd need to use BIOS/or some kind of compatibility mode if you'd like to install Chakra
+2014-04-16 13:32:23	<--	DiscipleOfDante (~discipleo@156.110.42.10) has quit (Ping timeout: 245 seconds)
+2014-04-16 13:32:33	<--	Inkane (~quassel@p508AC462.dip0.t-ipconnect.de) has quit (Quit: http://quassel-irc.org - Chat comfortably. Anywhere.)
+2014-04-16 13:32:48	OctoNinjaCat	Yea, my BIOS is a bit weird
+2014-04-16 13:32:53	OctoNinjaCat	Can't seem to set up legacy mode
+2014-04-16 13:35:49	-->	DiscipleOfDante (~discipleo@156.110.42.10) has joined #chakra
+2014-04-16 13:41:07	<--	dmnmsc (~dmnmsc@149.Red-83-40-149.dynamicIP.rima-tde.net) has quit (Quit: Konversation terminated!)
+2014-04-16 13:59:46	-->	ziomalon (~ziomalon@89-70-84-219.dynamic.chello.pl) has joined #chakra
+2014-04-16 14:11:30	<--	OctoNinjaCat (~OctoNinja@a89-152-157-134.cpe.netcabo.pt) has quit (Remote host closed the connection)
+2014-04-16 14:13:54	<--	DiscipleOfDante (~discipleo@156.110.42.10) has quit (Quit: Konversation terminated!)
+2014-04-16 14:21:21	-->	tiemay (~tiemay@d-69-161-118-189.cpe.metrocast.net) has joined #chakra
+2014-04-16 14:40:24	-->	serafean (~martin@2a00:1028:96c3:6a32:21a:92ff:fe83:2357) has joined #chakra
+2014-04-16 15:19:19	<--	phoerious (~janek@erft-4dbe9f6b.pool.mediaWays.net) has quit (Quit: Bye!)
+2014-04-16 15:45:53	<--	eyome (~quassel@vit94-11-83-156-101-88.fbx.proxad.net) has quit (Read error: Connection reset by peer)
+2014-04-16 15:55:22	-->	dmnmsc (~dmnmsc@149.Red-83-40-149.dynamicIP.rima-tde.net) has joined #chakra
+2014-04-16 16:05:07	<--	dmnmsc (~dmnmsc@149.Red-83-40-149.dynamicIP.rima-tde.net) has quit (Quit: Konversation terminated!)
+2014-04-16 16:07:09	<--	FranzMari (~FranzMari@37.77.114.22) has quit (Quit: Konversation terminated!)
+2014-04-16 17:03:59	--	irc: disconnected from server
+2014-04-16 17:04:25	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-16 17:04:26	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-16 17:04:26	--	Topic set by totte (~totte@unaffiliated/totte) on Sat, 22 Mar 2014 07:27:42
+2014-04-16 17:04:26	--	Channel #chakra: 24 nicks (1 op, 1 voice, 22 normals)
+2014-04-16 17:04:26	--	Mode #chakra [+cnt]
+2014-04-16 17:04:26	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-16 17:04:26	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-16 17:45:58	<--	tiemay (~tiemay@d-69-161-118-189.cpe.metrocast.net) has quit (Ping timeout: 258 seconds)
+2014-04-17 12:35:23	--	irc: disconnected from server
+2014-04-17 12:35:49	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-17 12:35:49	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-17 12:35:49	--	Topic set by totte (~totte@unaffiliated/totte) on Thu, 17 Apr 2014 11:13:48
+2014-04-17 12:35:49	--	Channel #chakra: 33 nicks (1 op, 1 voice, 31 normals)
+2014-04-17 12:35:49	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-17 12:35:49	--	Mode #chakra [+cnt]
+2014-04-17 12:35:49	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-17 12:37:18	-->	dmnmsc (~dmnmsc@149.Red-83-40-149.dynamicIP.rima-tde.net) has joined #chakra
+2014-04-17 12:46:12	-->	fairc (~richardlm@g229111141.adsl.alicedsl.de) has joined #chakra
+2014-04-17 12:46:32	fairc	are we down again?
+2014-04-17 12:57:04	totte	Back, was outside.
+2014-04-17 12:57:20	totte	Hm. Charmander is running.
+2014-04-17 12:57:22	totte	:3
+2014-04-17 12:57:52	totte	Maybe the firewall is acting up.
+2014-04-17 12:59:10	-->	LanDi (~LOL@186.232.216.90) has joined #chakra
+2014-04-17 13:01:32	fairc	I cant access the website
+2014-04-17 13:01:52	fairc	chakraos.org: Socket operation timed out
+2014-04-17 13:01:57	totte	fairc: I know, I'm having a look right now.
+2014-04-17 13:04:03	<--	ahjolinna (~ahjolinna@a91-156-72-50.elisa-laajakaista.fi) has quit (Remote host closed the connection)
+2014-04-17 13:04:19	fairc	ok
+2014-04-17 13:05:13	fairc	rsync.chakraos.org seems also to be affected
+2014-04-17 13:08:33	<--	FranzMari (~FranzMari@5.102.19.67) has quit (Quit: Konversation terminated!)
+2014-04-17 13:14:39	totte	I reloaded the firewall rules, seems to work now. Will have a look again before I go to sleep.
+2014-04-17 13:15:02	totte	All services should be up and running.
+2014-04-17 13:16:43	Dezponia	totte: Silly regular old iptables and stuff
+2014-04-17 13:17:05	fairc	looks good now, ty
+2014-04-17 13:21:54	-->	PasNox (~pasnox@2a01:e35:8b61:9b30:214:d1ff:fee9:bd3a) has joined #chakra
+2014-04-17 13:23:59	<--	LanDi (~LOL@186.232.216.90) has quit (Remote host closed the connection)
+2014-04-17 13:25:19	<--	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has quit (Quit: Konversation terminated!)
+2014-04-17 13:25:31	-->	serafean_ (~martin@2a00:1028:96c3:6a32:226:9eff:fe9d:e5ae) has joined #chakra
+2014-04-17 13:28:41	<--	serafean (~martin@2a00:1028:96c3:6a32:21a:92ff:fe83:2357) has quit (Ping timeout: 246 seconds)
+2014-04-17 13:28:47	yoalieh	thanks totte
+2014-04-17 14:03:12	-->	DiscipleOfDante (~discipleo@156.110.42.10) has joined #chakra
+2014-04-17 14:06:24	-->	bulletfreak (~bulletfre@cpe-75-185-191-2.neo.res.rr.com) has joined #chakra
+2014-04-17 14:21:56	<--	Dezponia (~pony@h225n16-lid-a11.ias.bredband.telia.com) has quit (Read error: Connection reset by peer)
+2014-04-17 14:22:09	-->	Dezponia (~pony@h225n16-lid-a11.ias.bredband.telia.com) has joined #chakra
+2014-04-17 14:22:51	-->	Inkane (~quassel@p508ACFC9.dip0.t-ipconnect.de) has joined #chakra
+2014-04-17 14:23:48	dmnmsc	baloo_file_extractor using 98% CPU here
+2014-04-17 14:24:01	dmnmsc	KDE 4.13 from testing
+2014-04-17 14:24:11	<--	bulletfreak (~bulletfre@cpe-75-185-191-2.neo.res.rr.com) has quit (Quit: Konversation terminated!)
+2014-04-17 14:27:18	-->	bulletfreak (~bulletfre@cpe-75-185-191-2.neo.res.rr.com) has joined #chakra
+2014-04-17 14:33:07	<--	DiscipleOfDante (~discipleo@156.110.42.10) has quit (Quit: Konversation terminated!)
+2014-04-17 14:33:20	-->	DiscipleOfDante (~discipleo@156.110.42.10) has joined #chakra
+2014-04-17 14:35:50	AlmAck	dmnmsc: hi, is not correct that the cpu goes to 98%?
+2014-04-17 14:35:53	<--	PasNox (~pasnox@2a01:e35:8b61:9b30:214:d1ff:fee9:bd3a) has quit (Quit: Leaving - Cross platform IDE http://monkeystudio.org)
+2014-04-17 14:36:28	dmnmsc	AlmAck: eh... what?!
+2014-04-17 14:36:32	totte	AlmAck: Hardware issue, the technicians at the data center rebooted it. When it was running again I had to reload the firewall rules and restart the guests.
+2014-04-17 14:37:19	AlmAck	totte: hi, ok... same HW problem as in the past? the ram issue?
+2014-04-17 14:37:27	dmnmsc	98% CPU usage by baloo = >65ºC on my laptop
+2014-04-17 14:37:49	totte	No complete report yet. If it's the RAM again I demand the memory module be launched into the sun.
+2014-04-17 14:37:51	dmnmsc	before killing it, baloo_file_cleaner is using 25%...
+2014-04-17 14:37:52	totte	:)
+2014-04-17 14:38:12	AlmAck	haah lol totte
+2014-04-17 14:39:21	totte	I dunnu though, I couldn't access Bulbasaur by either SSH or IPMI. Not sure what's up.
+2014-04-17 14:40:38	 *	AlmAck calligra 2.8.2 is almost ready
+2014-04-17 14:41:23	<--	fairc (~richardlm@g229111141.adsl.alicedsl.de) has quit (Quit: Konversation terminated!)
+2014-04-17 14:41:25	AlmAck	totte: is important that we have a support for that :-) otherwise will be a mess
+2014-04-17 14:41:32	AlmAck	or service
+2014-04-17 14:41:43	totte	They were pretty quick to respond.
+2014-04-17 14:42:50	totte	The RAID controller is a bit slow though. I've never used hardware RAID before so I don't have anything to compare with - but still...
+2014-04-17 14:43:04	totte	What kernel is in stable now?
+2014-04-17 14:44:19	AlmAck	totte: yes the kernel is in stable
+2014-04-17 14:44:33	totte	No I mean, what version?
+2014-04-17 14:44:59	AlmAck	Linux chakra-pc 3.12.15-1-CHAKRA
+2014-04-17 14:45:51	totte	Thanks, I forget how to use AIDE so I just set the topic manually nowadays.
+2014-04-17 14:46:01	--	Mode #chakra [+o totte] by ChanServ
+2014-04-17 14:46:04	--	Mode #chakra [-o totte] by ChanServ
+2014-04-17 14:47:20	totte	AIDE will be shut down temporarily sometime soon by the way, I'm going to move her to Charmander.
+2014-04-17 14:47:40	-->	fairc (~richard@g229111141.adsl.alicedsl.de) has joined #chakra
+2014-04-17 14:47:49	<--	fairc (~richard@g229111141.adsl.alicedsl.de) has quit (Client Quit)
+2014-04-17 14:49:52	-->	yoalieh2 (~daniel@177.225.32.127) has joined #chakra
+2014-04-17 14:53:16	<--	yoalieh (~daniel@177.225.32.127) has quit (Ping timeout: 258 seconds)
+2014-04-17 14:58:38	<--	serafean_ (~martin@2a00:1028:96c3:6a32:226:9eff:fe9d:e5ae) has quit (Ping timeout: 246 seconds)
+2014-04-17 15:08:03	-->	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has joined #chakra
+2014-04-17 15:17:09	<--	bulletfreak (~bulletfre@cpe-75-185-191-2.neo.res.rr.com) has quit (Quit: Konversation terminated!)
+2014-04-17 15:17:52	-->	bulletfreak (~bulletfre@cpe-75-185-191-2.neo.res.rr.com) has joined #chakra
+2014-04-17 15:31:26	-->	truko22 (~truko22@200.93.56.191) has joined #chakra
+2014-04-17 15:31:49	truko22	:D
+2014-04-17 15:32:00	DiscipleOfDante	Hi truko22
+2014-04-17 15:32:22	truko22	hi DiscipleOfDante :D
+2014-04-17 15:33:09	DiscipleOfDante	What's up?
+2014-04-17 15:43:02	-->	dinolib (~quassel@93-36-137-43.ip60.fastwebnet.it) has joined #chakra
+2014-04-17 15:43:33	<--	DiscipleOfDante (~discipleo@156.110.42.10) has quit (Quit: Konversation terminated!)
+2014-04-17 15:43:38	-->	DiscipleOfDante_ (~discipleo@156.110.42.10) has joined #chakra
+2014-04-17 15:44:03	--	DiscipleOfDante_ is now known as DiscipleOfDante
+2014-04-17 15:45:58	<--	DiscipleOfDante (~discipleo@156.110.42.10) has quit (Client Quit)
+2014-04-17 15:47:03	bulletfreak	whens kde 4.13 coming out?
+2014-04-17 15:47:32	Inkane	bulletfreak: it is in testing
+2014-04-17 15:47:39	bulletfreak	ah
+2014-04-17 15:47:47	bulletfreak	when should it be stable?
+2014-04-17 15:47:54	Inkane	so it probably will be there in one week
+2014-04-17 15:48:05	bulletfreak	k thanks
+2014-04-17 15:48:44	truko22	:D
+2014-04-17 15:51:06	<--	dinolib (~quassel@93-36-137-43.ip60.fastwebnet.it) has quit (Remote host closed the connection)
+2014-04-17 15:54:16	-->	msx (~olivetti@unaffiliated/msx) has joined #chakra
+2014-04-17 15:57:41	msx	Ram-Z: ping. I'm trying to install gnome-vfs package from the CCR an I keep getting this infamaous "/usr/sbin/gconfpkg: No such file or directory" error (from the quick search I did it seems related to gconf). My question is: how did you managed to install it yesterday in order to upgrade your AwesomeWM??
+2014-04-17 15:57:59	msx	fatalerrors: lol, nice nick
+2014-04-17 15:58:19	dmnmsc	:O are you the real msx?
+2014-04-17 15:59:02	msx	dmnmsc: the very same as always :D
+2014-04-17 15:59:23	dmnmsc	msx: are you on .fi?
+2014-04-17 15:59:46	msx	dmnmsc: not yet :(
+2014-04-17 16:00:10	dmnmsc	meh... I thought you left use because .fi....
+2014-04-17 16:00:12	msx	dmnmsc: yesterday I applied for a Jolla's position of SW tester, let's see how it goes though!
+2014-04-17 16:00:27	dmnmsc	but seems like you left us even when you are still on Argentina
+2014-04-17 16:00:40	dmnmsc	uh, sounds good!
+2014-04-17 16:00:59	msx	haha, nah, I will never leave ChakraOS, I'm in love with it... you'll... us :D ChakraOS and its community rulez!
+2014-04-17 16:01:20	msx	dmnmsc: in fact I quit using Quassel as my IRC bouncer on my NAS
+2014-04-17 16:01:38	dmnmsc	and now you are using...?
+2014-04-17 16:01:39	msx	and need to figure out why I can't make Weechat properly work with SSL
+2014-04-17 16:01:51	msx	once I have that resolved I will be back online as usual
+2014-04-17 16:01:57	msx	Weechat
+2014-04-17 16:02:02	msx	an old love
+2014-04-17 16:02:33	<--	eyome (~quassel@vit94-11-83-156-101-88.fbx.proxad.net) has quit (Remote host closed the connection)
+2014-04-17 16:02:33	msx	dmnmsc: how about you!? I see you're very active at the BBS
+2014-04-17 16:03:14	dmnmsc	msx: nah... just yesterday and today. I'm always cheking, but not writting
+2014-04-17 16:04:13	dmnmsc	I have a lot of uni stuff to do... tomorrow will be the day to start
+2014-04-17 16:04:21	dmnmsc	:s
+2014-04-17 16:06:29	msx	dmnmsc: "I'm always cheking, but not writting" You're the famous stalker of the forums everybody was talking about!? Look the things one happens to know!!
+2014-04-17 16:06:37	-->	boom1992 (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has joined #chakra
+2014-04-17 16:08:07	dmnmsc	I think I'm more like a "oh, wait.. the fucking user with weird issues.... c'mon..."
+2014-04-17 16:09:00	msx	dmnmsc: haha
+2014-04-17 16:09:16	msx	dmnmsc: that's pretty much me nearly all the time xD
+2014-04-17 16:09:22	dmnmsc	hahaha
+2014-04-17 16:09:34	dmnmsc	msx: but you are able to solve yourself
+2014-04-17 16:09:44	dmnmsc	I need to ask and disturb :D
+2014-04-17 16:10:20	msx	sometimes, some don't. But as long as I have an internet connection I will try to do my first
+2014-04-17 16:11:00	msx	dmnmsc: in fact nowdays much of the info is already there, only thing we have to do is stop being lazy and go grab it.
+2014-04-17 16:11:42	dmnmsc	hey, I do that :(
+2014-04-17 16:11:50	msx	dmnmsc: lazy like asking Ram-Z how he solved an issue that's burning my brains before I put myself to research how to fix it ;)
+2014-04-17 16:11:58	dmnmsc	I use ddg, google and forums. Don't try to make me feel bad.... :(
+2014-04-17 16:12:39	msx	dmnmsc: actually that wasn't my intention... here, take this napkin
+2014-04-17 16:12:42	msx	xD
+2014-04-17 16:13:11	msx	dmnmsc: btw, did you saw @ahjolina around here today?
+2014-04-17 16:13:25	msx	may be he is at -devel...
+2014-04-17 16:13:35	dmnmsc	I don't want your napkins... msx. And yes, he's at devel
+2014-04-17 16:13:51	-->	LanDi (~LOL@186.232.216.90) has joined #chakra
+2014-04-17 16:15:12	msx	dmnmsc: okay, i owe you a beer. After we won't be lacking an opportunity to met at Barcelona anytime, indeed a lot of Chakra users resides there
+2014-04-17 16:15:25	msx	*after all
+2014-04-17 16:15:33	dmnmsc	haha
+2014-04-17 16:15:43	 *	dmnmsc doesn't like beers.....
+2014-04-17 16:15:53	 *	dmnmsc wants water
+2014-04-17 16:15:59	msx	and i myself has close friends living there and at Antioquera on the south
+2014-04-17 16:16:06	msx	O_O
+2014-04-17 16:16:25	msx	don't... like... beer... but is that even possible!?
+2014-04-17 16:16:38	dmnmsc	hahaha yes, it is
+2014-04-17 16:16:42	msx	*Antequera
+2014-04-17 16:24:18	<--	bulletfreak (~bulletfre@cpe-75-185-191-2.neo.res.rr.com) has quit (Quit: Konversation terminated!)
+2014-04-17 16:39:35	Ram-Z	msx: I didn't install it... it was still installed on my system
+2014-04-17 16:39:42	Ram-Z	let me have a quick look
+2014-04-17 16:40:02	-->	ahjolinna (~ahjolinna@a91-156-72-50.elisa-laajakaista.fi) has joined #chakra
+2014-04-17 16:40:53	Ram-Z	msx: it's not even installed on my system
+2014-04-17 16:41:12	msx	Ram-Z: it's required as a build dep
+2014-04-17 16:41:31	msx	Ram-Z: ok, don't worry, tnx anyways. I will look into it later (y)
+2014-04-17 16:41:55	<--	msx (~olivetti@unaffiliated/msx) has quit (Quit: WeeChat 0.4.3)
+2014-04-17 16:51:27	<--	AlmAck (~AlmAck@71-96.104-92.cust.bluewin.ch) has quit (Quit: Konversation terminated!)
+2014-04-17 16:54:23	<--	Inkane (~quassel@p508ACFC9.dip0.t-ipconnect.de) has quit (Quit: http://quassel-irc.org - Chat comfortably. Anywhere.)
+2014-04-17 16:54:56	<--	dmnmsc (~dmnmsc@149.Red-83-40-149.dynamicIP.rima-tde.net) has quit (Quit: Konversation terminated!)
+2014-04-17 17:12:55	-->	javier_ (~quassel@host190.190-138-184.telecom.net.ar) has joined #chakra
+2014-04-17 17:14:34	--	yoalieh2 is now known as yoalieh
+2014-04-17 17:19:58	<--	LanDi (~LOL@186.232.216.90) has quit (Quit: Leaving)
+2014-04-17 17:24:43	 *	Dezponia pokes SELinux with a stick
+2014-04-17 17:26:50	Dezponia	Either SELinux has gotten much easier, or the learning curve was basically 1 step and BOOM, I'm now capable of using SELinux quite well
+2014-04-17 17:28:36	Dezponia	I wonder how much better Linux would be if all the old crud was flushed from searchengines/the net and people got to write up current, up to date guides and info rather than have people hit a 4 year old guide thats no longer correct...
+2014-04-17 17:30:22	-->	LanDi (~LOL@186.232.216.90) has joined #chakra
+2014-04-17 17:32:42	<--	LanDi (~LOL@186.232.216.90) has quit (Client Quit)
+2014-04-17 17:42:26	yoalieh	I wonder it too Dezponia =) Daydreaming is valid, isn't it?
+2014-04-17 17:53:38	<--	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has quit (Ping timeout: 246 seconds)
+2014-04-17 17:55:02	yoalieh	That's the reason I neves understood hal and udev
+2014-04-17 17:55:08	yoalieh	*never
+2014-04-17 17:55:11	<--	phoerious (~janek@erft-4d07d383.pool.mediaWays.net) has quit (Quit: Bye!)
+2014-04-17 17:57:03	<--	Gui||aume (~michaudg@135-23-193-109.cpe.pppoe.ca) has quit (Ping timeout: 250 seconds)
+2014-04-17 17:58:52	<--	javier_ (~quassel@host190.190-138-184.telecom.net.ar) has quit (Remote host closed the connection)
+2014-04-17 18:01:11	<--	boom1992 (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has quit (Read error: Connection reset by peer)
+2014-04-17 19:52:50	--	irc: disconnected from server
+2014-04-17 19:53:16	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-17 19:53:16	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-17 19:53:16	--	Topic set by totte (~totte@unaffiliated/totte) on Thu, 17 Apr 2014 11:13:48
+2014-04-17 19:53:16	--	Channel #chakra: 27 nicks (1 op, 1 voice, 25 normals)
+2014-04-17 19:53:16	--	Mode #chakra [+cnt]
+2014-04-17 19:53:16	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-17 19:53:16	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-21 12:25:59	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-04-21 12:25:59	--	Topic for #chakra is "New server, new domain - our website is now at http://chakraos.org! | Package repositories available at http://rsync.chakraos.org! | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-04-21 12:25:59	--	Topic set by totte (~totte@unaffiliated/totte) on Thu, 17 Apr 2014 11:13:48
+2014-04-21 12:25:59	--	Channel #chakra: 39 nicks (1 op, 1 voice, 37 normals)
+2014-04-21 12:25:59	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-04-21 12:25:59	--	Mode #chakra [+cnt]
+2014-04-21 12:25:59	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-04-21 12:26:52	<--	truko22 (~truko22@200.93.56.191) has quit (Quit: ^____^)
+2014-04-21 12:41:58	<--	LanDi (~LOL@186.232.216.90) has quit (Ping timeout: 240 seconds)
+2014-04-21 12:50:14	<--	Gallaecio (~quassel@84.120.115.132.dyn.user.ono.com) has quit (Ping timeout: 255 seconds)
+2014-04-21 12:51:24	-->	Gallaecio (~quassel@84.120.115.132.dyn.user.ono.com) has joined #chakra
+2014-04-21 12:51:48	<--	Serafean (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has quit (Remote host closed the connection)
+2014-04-21 12:52:28	-->	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has joined #chakra
+2014-04-21 12:52:51	<--	Dezponia_ (~pony@h225n16-lid-a11.ias.bredband.telia.com) has quit (Quit: Konversation terminated!)
+2014-04-21 12:53:13	-->	Dezponia (~pony@h225n16-lid-a11.ias.bredband.telia.com) has joined #chakra
+2014-04-21 12:56:03	-->	truko22 (~truko22@200.93.56.191) has joined #chakra
+2014-04-21 12:57:30	-->	live (~live@212-88-13-71.adsl.highway.telekom.at) has joined #chakra
+2014-04-21 12:57:46	--	live is now known as ShalokShalom
+2014-04-21 12:58:11	-->	LanDi (~LOL@186.232.216.90) has joined #chakra
+2014-04-21 13:00:38	<--	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has quit (Ping timeout: 246 seconds)
+2014-04-21 13:04:35	-->	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has joined #chakra
+2014-04-21 13:07:09	<--	Gallaecio (~quassel@84.120.115.132.dyn.user.ono.com) has quit (Ping timeout: 252 seconds)
+2014-04-21 13:08:35	<--	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has quit (Remote host closed the connection)
+2014-04-21 13:09:17	-->	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has joined #chakra
+2014-04-21 13:10:26	-->	Gallaecio (~quassel@84.120.115.132.dyn.user.ono.com) has joined #chakra
+2014-04-21 13:15:18	<--	Gallaecio (~quassel@84.120.115.132.dyn.user.ono.com) has quit (Ping timeout: 240 seconds)
+2014-04-21 13:17:48	-->	dmnmsc_ (~dmnmsc@50.Red-79-151-100.dynamicIP.rima-tde.net) has joined #chakra
+2014-04-21 13:18:25	<--	dmnmsc (~quassel@50.Red-79-151-100.dynamicIP.rima-tde.net) has quit (Remote host closed the connection)
+2014-04-21 13:21:41	<--	LanDi (~LOL@186.232.216.90) has quit (Remote host closed the connection)
+2014-04-21 13:25:00	-->	Gallaecio (~quassel@84.120.115.132.dyn.user.ono.com) has joined #chakra
+2014-04-21 13:28:54	-->	Gallaecio_ (~quassel@84.120.115.132.dyn.user.ono.com) has joined #chakra
+2014-04-21 13:29:32	<--	Gallaecio (~quassel@84.120.115.132.dyn.user.ono.com) has quit (Ping timeout: 252 seconds)
+2014-04-21 13:29:43	ShalokShalom	öhm, excuse me... there is no flash available in chakra ?
+2014-04-21 13:30:30	george2	ShalokShalom: It's flashplugin, in the extra repo.
+2014-04-21 13:31:10	ShalokShalom	oh, i forget that i have to enable the extra repo in chakra
+2014-04-21 13:31:25	ShalokShalom	what is the sense of a disabled extra repo, please ?
+2014-04-21 13:32:30	dmnmsc_	pure QT/KDE distro. If you want GTK, just enable the repo.
+2014-04-21 13:32:58	DiscipleOfDante	ShalokShalom: Chakra is geared towards KDE/Qt purists
+2014-04-21 13:33:06	dmnmsc_	Someone could come here thinking about pure QT/KDE distro and install software from extra by accident.
+2014-04-21 13:33:17	DiscipleOfDante	So an option to keep the system completely GTK free is enabled by default
+2014-04-21 13:33:19	dmnmsc_	If you enable extra, you know will be gtk apps
+2014-04-21 13:33:44	ShalokShalom	"Someone could come here thinking about pure QT/KDE distro and install software from extra by accident." Serious ?
+2014-04-21 13:33:57	ShalokShalom	o.O
+2014-04-21 13:33:58	dmnmsc_	who knows... xD
+2014-04-21 13:34:04	ShalokShalom	wtf ?
+2014-04-21 13:34:53	ShalokShalom	when the repos are enabled, i still be able to keep my system gtk free
+2014-04-21 13:35:09	ShalokShalom	it is just a challenge for a newbie, to enable them
+2014-04-21 13:35:21	ShalokShalom	so chakra choose, to be unfriendly to newbies ?
+2014-04-21 13:36:38	dmnmsc_	is not unfriedly for newbies if they like to read forum, wiki and Chakra stuff
+2014-04-21 13:37:15	DiscipleOfDante	IT is literally opening a text file and removing a couple pound signs
+2014-04-21 13:37:19	ShalokShalom	you know, some users want a OS to use, they are called users
+2014-04-21 13:37:27	DiscipleOfDante	Chakra is intended for users willing to learn
+2014-04-21 13:37:30	DiscipleOfDante	You know that right?
+2014-04-21 13:37:36	DiscipleOfDante	It is actually stated on the forum
+2014-04-21 13:37:52	<--	ShalokShalom (~live@212-88-13-71.adsl.highway.telekom.at) has left #chakra ("Konversation terminated!")
+2014-04-21 13:48:00	<--	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has quit (Read error: Connection reset by peer)
+2014-04-21 13:48:27	-->	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has joined #chakra
+2014-04-21 13:59:30	-->	gorica (~quassel@212-88-13-71.adsl.highway.telekom.at) has joined #chakra
+2014-04-21 13:59:37	--	gorica is now known as ShalokShalom
+2014-04-21 14:01:26	<--	dmnmsc_ (~dmnmsc@50.Red-79-151-100.dynamicIP.rima-tde.net) has quit (Quit: Konversation terminated!)
+2014-04-21 14:02:18	-->	dmnmsc (~dmnmsc@50.Red-79-151-100.dynamicIP.rima-tde.net) has joined #chakra
+2014-04-21 14:03:47	<--	ShalokShalom (~quassel@212-88-13-71.adsl.highway.telekom.at) has left #chakra
+2014-04-21 14:28:50	truko22	rm ~/.spunrc
+2014-04-21 14:28:59	FranzMari	i finally succeded updating coolreader! :D
+2014-04-21 14:29:17	truko22	:D
+2014-04-21 14:34:39	FranzMari	can't remember who asked me to do it
+2014-04-21 14:52:21	<--	javier_ (~quassel@host134.190-138-154.telecom.net.ar) has quit (Remote host closed the connection)
+2014-04-21 14:59:08	<--	FranzMari (~FranzMari@37.77.114.22) has quit (Quit: Konversation terminated!)
+2014-04-21 15:06:38	DiscipleOfDante	Hey truko22 what is your opinion on Cinnamon?
+2014-04-21 15:07:06	truko22	i love only kde n.n
+2014-04-21 15:07:15	DiscipleOfDante	Wanna see my Cinnamon?
+2014-04-21 15:07:39	DiscipleOfDante	http://i.imgur.com/io7E3H1.png http://i.imgur.com/toRsJJz.png http://i.imgur.com/jTztvs3.png http://i.imgur.com/BM74h8b.png
+2014-04-21 15:08:52	DiscipleOfDante	KDE is great but I think Cinnamon, once it is more mature, will be a truly solid contender
+2014-04-21 15:10:31	truko22	:D
+2014-04-21 15:11:40	truko22	I have never used cinnamon
+2014-04-21 15:11:54	DiscipleOfDante	It is already got some features that beat out anything KDE has (cough cough configurable menu beats homerun) like its handling of applets and extensions and themes and whatnot is slightly superior to KDEs in that it allows a
+2014-04-21 15:11:56	truko22	I have never used cinnamon
+2014-04-21 15:12:11	DiscipleOfDante	refresh of a predownloaded database and an update all button
+2014-04-21 15:12:14	DiscipleOfDante	I saw
+2014-04-21 15:12:16	DiscipleOfDante	I like it
+2014-04-21 15:12:38	truko22	but it looks great
+2014-04-21 15:12:54	DiscipleOfDante	Thanks :P
+2014-04-21 15:13:06	truko22	wallpalper → http://i.imgur.com/io7E3H1.png
+2014-04-21 15:13:08	truko22	u.u
+2014-04-21 15:13:15	DiscipleOfDante	It has the benefits of forking from GNOME without the drawback of being made by GNOME
+2014-04-21 15:14:18	DiscipleOfDante	Would you like the wallpaper?
+2014-04-21 15:14:26	DiscipleOfDante	I have a slideshow of butts for wallpapers
+2014-04-21 15:15:33	truko22	wallpaper \0/
+2014-04-21 15:16:19	DiscipleOfDante	Cinnamon is the only DE besides KDE that allows slideshows
+2014-04-21 15:16:26	DiscipleOfDante	Without writing an XML
+2014-04-21 15:17:12	DiscipleOfDante	Thank you extensions :D
+2014-04-21 15:17:49	DiscipleOfDante	https://www.dropbox.com/s/9wg29rgcax82ffj/Butts.tar.gz
+2014-04-21 15:17:52	+AIDE	Title: Dropbox - Butts.tar.gz (at www.dropbox.com)
+2014-04-21 15:18:13	DiscipleOfDante	That is the entire slideshow :P enjoy
+2014-04-21 15:18:59	truko22	:D
+2014-04-21 15:20:25	DiscipleOfDante	Anyway thenthing I like about Cinnamon is that, unlike KDE, all of those extra features that are so costly to RAM and whatnot in KDE will be extensions for Cinnamon, allowing me to only have the features I would use and want installed
+2014-04-21 15:20:30	DiscipleOfDante	The thing I hate
+2014-04-21 15:20:35	DiscipleOfDante	Is that it uses GTK 3
+2014-04-21 15:20:43	DiscipleOfDante	And that it is Mint-centric
+2014-04-21 15:20:58	DiscipleOfDante	And that it doesn't have native support for panels on the sides, I have to use Cinnadock for that
+2014-04-21 15:21:08	DiscipleOfDante	And Cinnadock doesn't have a "span whole screen" option
+2014-04-21 15:22:21	DiscipleOfDante	Also it has no menubar applet
+2014-04-21 15:27:25	DiscipleOfDante	:P
+2014-04-21 15:48:20	<--	UtG (~manu2@net-2-35-187-189.cust.vodafonedsl.it) has quit (Quit: Konversation terminated!)
+2014-04-21 15:48:36	<--	DiscipleOfDante (~discipleo@206.248.5.137) has quit (Remote host closed the connection)
+2014-04-21 15:48:46	-->	holmeslinux (~Holmes@187.36.134.78) has joined #chakra
+2014-04-21 15:48:50	<--	dmnmsc (~dmnmsc@50.Red-79-151-100.dynamicIP.rima-tde.net) has quit (Ping timeout: 240 seconds)
+2014-04-21 15:50:19	-->	DiscipleOfDante (~discipleo@206.248.5.137) has joined #chakra
+2014-04-21 15:50:56	-->	UtG (~manu2@net-2-35-187-189.cust.vodafonedsl.it) has joined #chakra
+2014-04-21 15:52:13	-->	brli (~brli@unaffiliated/brli) has joined #chakra
+2014-04-21 15:55:03	DiscipleOfDante	hi brli
+2014-04-21 15:59:29	<--	eyome (~eyome@vit94-11-83-156-101-88.fbx.proxad.net) has quit (Quit: eyome)
+2014-04-21 16:25:43	-->	s8321414 (~s8321414@140.127.38.80) has joined #chakra
+2014-04-21 16:37:17	<--	serafean_ (~martin@2a00:1028:96c3:6a32:21e:64ff:fe3c:c866) has quit (Ping timeout: 246 seconds)
+2014-04-21 16:52:43	<--	boom1992 (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has quit (Read error: Connection reset by peer)
+2014-04-21 16:56:01	<--	PasNox (~pasnox@2a01:e35:8b61:9b30:b84f:90a2:a24c:80bf) has quit (Quit: Leaving - Cross platform IDE http://monkeystudio.org)
+2014-04-21 16:57:58	<--	Gui||aume (~michaudg@135-23-193-109.cpe.pppoe.ca) has quit (Ping timeout: 240 seconds)
+2014-04-21 16:58:16	<--	AlmAck (~AlmAck@71-96.104-92.cust.bluewin.ch) has quit (Quit: Konversation terminated!)
+2014-04-21 17:06:42	<--	spider-mario (~spidermar@mtg95-10-78-219-27-149.fbx.proxad.net) has quit (Remote host closed the connection)
+2014-04-21 17:17:04	brli	DiscipleOfDante: hi
+2014-04-21 17:17:15	DiscipleOfDante	'sup?
+2014-04-21 17:17:33	brli	what?
+2014-04-21 17:18:02	brli	!? two hours ago!? lol
+2014-04-21 17:18:02	--	Notice(AIDE): brli: Error: "?" is not a valid command.
+2014-04-21 17:18:26	brli	need to go now
+2014-04-21 17:18:42	DiscipleOfDante	I said what's up
+2014-04-21 17:18:46	DiscipleOfDante	Oh okayh bye
+2014-04-21 17:20:53	<--	phoerious (~janek@erft-4d07d7ef.pool.mediaWays.net) has quit (Quit: Bye!)
+2014-04-21 17:35:09	-->	javier_ (~quassel@host134.190-138-154.telecom.net.ar) has joined #chakra
+2014-04-21 17:40:27	-->	LanDi (~LOL@186.232.216.90) has joined #chakra
+2014-04-21 17:45:27	<--	UtG (~manu2@net-2-35-187-189.cust.vodafonedsl.it) has quit (Quit: Konversation terminated!)
+2014-04-21 17:47:18	<--	truko22 (~truko22@200.93.56.191) has quit (Quit: ^____^)
+2014-04-21 17:58:41	-->	Gui||aume (~michaudg@135-23-193-109.cpe.pppoe.ca) has joined #chakra
+2014-04-21 18:34:48	<--	Gui||aume (~michaudg@135-23-193-109.cpe.pppoe.ca) has quit (Remote host closed the connection)
+2014-04-21 18:37:16	<--	javier_ (~quassel@host134.190-138-154.telecom.net.ar) has quit (Remote host closed the connection)
+2014-04-21 18:39:24	-->	javier_ (~quassel@host134.190-138-154.telecom.net.ar) has joined #chakra
+2014-04-21 18:39:44	<--	javier_ (~quassel@host134.190-138-154.telecom.net.ar) has quit (Read error: Connection reset by peer)
+2014-04-21 18:39:55	<--	LanDi (~LOL@186.232.216.90) has quit (Remote host closed the connection)
+2014-04-21 18:40:27	<--	DiscipleOfDante (~discipleo@206.248.5.137) has quit (Ping timeout: 252 seconds)
+2014-04-21 18:52:00	<--	s8321414 (~s8321414@140.127.38.80) has quit (Quit: Konversation terminated!)
+2014-04-21 19:07:41	-->	LanDi (~gustavo@186.232.216.90) has joined #chakra
+2014-04-21 19:12:55	<--	holmeslinux (~Holmes@187.36.134.78) has quit (Quit: desconectando...)
+2014-06-12 11:00:34	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-06-12 11:00:34	--	Topic for #chakra is "http://chakraos.org | Package repositories are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-06-12 11:00:34	--	Topic set by totte (~totte@unaffiliated/totte) on Tue, 20 May 2014 06:12:49
+2014-06-12 11:00:34	--	Channel #chakra: 34 nicks (1 op, 1 voice, 32 normals)
+2014-06-12 11:00:34	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-06-12 11:00:34	--	Mode #chakra [+cnt]
+2014-06-12 11:00:34	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-06-12 11:05:31	-->	eyome (~eyome@vit94-11-83-156-101-88.fbx.proxad.net) has joined #chakra
+2014-06-12 11:08:40	<--	brli (~brli@unaffiliated/brli) has quit (Read error: Connection reset by peer)
+2014-06-12 11:09:15	-->	brli (~brli@unaffiliated/brli) has joined #chakra
+2014-06-12 11:22:30	-->	igor_ (~igor@212.106.2.15) has joined #chakra
+2014-06-12 11:22:43	igor_	hey guy's
+2014-06-12 11:23:08	brli	igor_: hey
+2014-06-12 11:23:15	igor_	I have the quick question
+2014-06-12 11:24:04	brli	go
+2014-06-12 11:24:08	igor_	is oportunity to run actually iso from grub2
+2014-06-12 11:24:32	brli	push to Inkane
+2014-06-12 11:24:34	 *	brli flee
+2014-06-12 11:24:50	igor_	i have something like that
+2014-06-12 11:24:58	igor_	in grub.cfg
+2014-06-12 11:25:00	igor_	menuentry "Salix Live" {
+2014-06-12 11:25:00	igor_	      iso_path=/home/igor/salixlive-mate-13.37-32.iso
+2014-06-12 11:25:00	igor_	      export iso_path
+2014-06-12 11:25:00	igor_	      search --set --file $iso_path
+2014-06-12 11:25:00	igor_	      loopback loop $iso_path
+2014-06-12 11:25:02	igor_	      root=(loop)
+2014-06-12 11:25:06	igor_	      configfile /boot/grub/loopback.cfg
+2014-06-12 11:25:08	igor_	    }
+2014-06-12 11:25:14	igor_	but with the chakra iso
+2014-06-12 11:25:39	Inkane	igor_: in theory, that should be possible
+2014-06-12 11:25:42	igor_	i tried it with salix and mint
+2014-06-12 11:25:46	Inkane	but I've never tried it
+2014-06-12 11:25:48	igor_	and it goes
+2014-06-12 11:26:05	igor_	but with chakra icant,t do it
+2014-06-12 11:26:51	-->	aguitel (~aguitel@200.3.189.32) has joined #chakra
+2014-06-12 11:27:25	djustice|fff	igor_: it's a hybrid iso. i think it's possible, but requires some other trick i don't know.
+2014-06-12 11:27:46	djustice|fff	it's this way so it will work on installed usb, live usb, and live disc.
+2014-06-12 11:28:00	Inkane	you might need to load further modules with insmod
+2014-06-12 11:28:11	igor_	kind a ?
+2014-06-12 11:29:07	igor_	ome like this I have now with arch:
+2014-06-12 11:29:09	igor_	insmod gzio
+2014-06-12 11:29:09	igor_		insmod part_msdos
+2014-06-12 11:29:09	igor_		insmod ext2
+2014-06-12 11:58:15	<--	pebble` (pebble@unaffiliated/espiral) has quit (Remote host closed the connection)
+2014-06-12 11:59:50	<--	msx (~msx@unaffiliated/msx) has quit (Remote host closed the connection)
+2014-06-12 12:02:04	-->	Tylik (5faae751@gateway/web/cgi-irc/kiwiirc.com/ip.95.170.231.81) has joined #chakra
+2014-06-12 12:02:24	Tylik	hi, I need your help with installing Chakra
+2014-06-12 12:02:30	Tylik	I have Lenovo S500
+2014-06-12 12:03:02	Tylik	there is UEFI
+2014-06-12 12:03:20	Tylik	and I don't know how to boot my usb
+2014-06-12 12:03:46	 *	brli hates UEFI
+2014-06-12 12:04:00	Tylik	I tried to use legacy mode or sth like that and I got one black screen with several options but I couldn't do anything
+2014-06-12 12:04:59	Tylik	I know it's Windows 8 based but I can't use that system anymore please help me to get rid of it
+2014-06-12 12:06:14	Tylik	so how to install Chakra? I don't need dualboot
+2014-06-12 12:09:21	Inkane	Tylik: after setting it to legacy mode
+2014-06-12 12:09:21	-->	hid (~kid@unaffiliated/hid) has joined #chakra
+2014-06-12 12:09:35	Inkane	you'll also have to specify that it will boot from USB
+2014-06-12 12:10:04	hid	hello
+2014-06-12 12:10:13	hid	after installing pulseaudio (because i don't understand phonon and these stuff), i hava no sound anymore.
+2014-06-12 12:10:13	Inkane	hi hid
+2014-06-12 12:10:22	Inkane	Tylik: check if there is an option for this
+2014-06-12 12:10:24	hid	do you know how to repair it?
+2014-06-12 12:10:38	Inkane	hid: could you run alsamixer in a terminal?
+2014-06-12 12:10:51	<--	djustice|fff (~unknown@adsl-98-71-153-86.gsp.bellsouth.net) has quit (Ping timeout: 244 seconds)
+2014-06-12 12:11:02	hid	Inkane: yes it opens
+2014-06-12 12:11:10	hid	it opens alsamixer
+2014-06-12 12:11:10	Tylik	I guess there is no hotkey for booting?
+2014-06-12 12:11:17	Tylik	like f10 or f11
+2014-06-12 12:11:30	Inkane	Tylik: on my thinkpad, it's f12
+2014-06-12 12:11:40	Inkane	but that''s a s430 edge
+2014-06-12 12:11:48	Inkane	hid: then hit f6 please
+2014-06-12 12:11:57	Inkane	this should show a menu
+2014-06-12 12:12:09	Inkane	which entries does it list?
+2014-06-12 12:12:59	Tylik	I have on key rescue button
+2014-06-12 12:13:00	hid	Inkane: HDA Intel PCH and USB Device 0xd8c:0x0c
+2014-06-12 12:13:08	Tylik	*one
+2014-06-12 12:13:12	hid	the second must be my headphones
+2014-06-12 12:13:25	Inkane	hid: try to select the Intel option
+2014-06-12 12:13:29	Inkane	and hit enter
+2014-06-12 12:13:53	hid	yes
+2014-06-12 12:13:54	Inkane	this should show multiple bars
+2014-06-12 12:13:59	hid	indeed
+2014-06-12 12:14:10	Inkane	what are the values for master and speaker?
+2014-06-12 12:14:42	Inkane	Tylik: Maybe you could  ask in our forum? Maybe someone there is more familiar with your hardware
+2014-06-12 12:14:48	hid	\o/
+2014-06-12 12:15:03	hid	Inkane: the pc speakers work
+2014-06-12 12:15:08	Inkane	great
+2014-06-12 12:15:32	hid	So basically i just have to do the same thing for my headphones?
+2014-06-12 12:15:38	Inkane	yep
+2014-06-12 12:15:56	Inkane	if the settings are lost after a reboot
+2014-06-12 12:16:00	Inkane	you should check the forum
+2014-06-12 12:16:10	Inkane	I think there's an old thread about how to solve this
+2014-06-12 12:16:25	hid	and how to change?
+2014-06-12 12:16:28	hid	i mean
+2014-06-12 12:16:57	Inkane	hid: use the up/down arrow keys to modify the value
+2014-06-12 12:16:59	hid	after selecting the hedphones option, the sound still is from the pc speakers
+2014-06-12 12:17:10	<--	Tylik (5faae751@gateway/web/cgi-irc/kiwiirc.com/ip.95.170.231.81) has quit (Quit: http://www.kiwiirc.com/ - A hand crafted IRC client)
+2014-06-12 12:17:28	Inkane	hid: and you have your headphones plugged in?
+2014-06-12 12:18:10	hid	Inkane: yes
+2014-06-12 12:18:16	Inkane	in that case, set the speaker value to 0, and the headphone one to the desired value
+2014-06-12 12:18:34	Inkane	pulseaudio should handle the switch when you disconnect the headphones
+2014-06-12 12:18:53	<--	aguitel (~aguitel@200.3.189.32) has quit (Remote host closed the connection)
+2014-06-12 12:18:54	brli	in modern model, there should be a hardware switch that detect headphone plugin
+2014-06-12 12:20:48	-->	aguitel (~aguitel@200.3.189.32) has joined #chakra
+2014-06-12 12:21:28	-->	AlmAck (~AlmAck@155-95.107-92.cust.bluewin.ch) has joined #chakra
+2014-06-12 12:23:05	-->	djustice (~unknown@adsl-74-177-113-60.gsp.bellsouth.net) has joined #chakra
+2014-06-12 12:23:12	-->	pebble` (pebble@unaffiliated/espiral) has joined #chakra
+2014-06-12 12:23:22	hid	it does not work :/
+2014-06-12 12:23:39	hid	Inkane: do you know any good alternative to that? https://help.gnome.org/misc/release-notes/2.26/figures/rnusers.volume-control.png.en_GB
+2014-06-12 12:24:02	brli	kmix?
+2014-06-12 12:24:20	Inkane	veromix?
+2014-06-12 12:24:43	Inkane	hid: ^
+2014-06-12 12:29:10	hid	yes i already tried kmix and veromix
+2014-06-12 12:29:20	hid	but it never works
+2014-06-12 12:40:46	<--	aguitel (~aguitel@200.3.189.32) has quit (Remote host closed the connection)
+2014-06-12 12:47:08	<--	holmeslinux (~Holmes@187.36.129.183) has quit (Quit: desconectando...)
+2014-06-12 12:55:14	-->	aguitel (~aguitel@200.3.189.32) has joined #chakra
+2014-06-12 12:59:41	<--	hid (~kid@unaffiliated/hid) has quit (Ping timeout: 264 seconds)
+2014-06-12 13:02:51	<--	pebble` (pebble@unaffiliated/espiral) has quit (*.net *.split)
+2014-06-12 13:03:10	-->	pebble` (pebble@unaffiliated/espiral) has joined #chakra
+2014-06-12 13:21:54	<--	djustice (~unknown@adsl-74-177-113-60.gsp.bellsouth.net) has quit (Ping timeout: 255 seconds)
+2014-06-12 13:33:50	<--	aguitel (~aguitel@200.3.189.32) has quit (Remote host closed the connection)
+2014-06-12 13:51:13	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-06-12 13:51:13	--	Topic for #chakra is "http://chakraos.org | Package repositories are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-06-12 13:51:13	--	Topic set by totte (~totte@unaffiliated/totte) on Tue, 20 May 2014 06:12:49
+2014-06-12 13:51:13	--	Channel #chakra: 36 nicks (1 op, 1 voice, 34 normals)
+2014-06-12 13:51:13	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-06-12 13:51:14	--	Mode #chakra [+cnt]
+2014-06-12 13:51:14	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-06-12 14:07:34	<--	phoerious (~janek@2001:4dd0:ff00:98ea:e2cb:4eff:fe39:c168) has quit (Remote host closed the connection)
+2014-06-12 14:07:54	-->	phoerious (~janek@2001:4dd0:ff00:98ea:e2cb:4eff:fe39:c168) has joined #chakra
+2014-06-12 14:10:53	<--	boom1992 (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has quit (Quit: No Ping reply in 180 seconds.)
+2014-06-12 14:11:06	-->	boom1992 (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has joined #chakra
+2014-06-12 14:11:11	<--	igor_ (~igor@212.106.2.15) has quit (Quit: Leaving)
+2014-06-12 14:31:22	<--	live (~live@200.3.189.32) has quit (Quit: Konversation terminated!)
+2014-06-12 14:51:27	-->	aguitel (~aguitel@200.3.189.32) has joined #chakra
+2014-06-12 14:53:12	-->	PasNox (~pasnox@2a01:e35:8b61:9b30:388b:f8c9:44b4:2303) has joined #chakra
+2014-06-12 15:00:37	-->	MTGap (~quassel@c-68-42-79-52.hsd1.mi.comcast.net) has joined #chakra
+2014-06-12 15:00:45	-->	javier_ (~quassel@host57.190-227-32.telecom.net.ar) has joined #chakra
+2014-06-12 15:07:47	<--	spider-mario (~spidermar@mtg95-10-78-219-27-149.fbx.proxad.net) has quit (Remote host closed the connection)
+2014-06-12 15:14:43	-->	nodevel (~james@29.169.broadband10.iol.cz) has joined #chakra
+2014-06-12 15:31:26	<--	Inkane (~quassel@p508AC4AC.dip0.t-ipconnect.de) has quit (Quit: http://quassel-irc.org - Chat comfortably. Anywhere.)
+2014-06-12 15:36:07	<--	phoerious (~janek@2001:4dd0:ff00:98ea:e2cb:4eff:fe39:c168) has quit (Remote host closed the connection)
+2014-06-12 15:36:26	-->	phoerious (~janek@2001:4dd0:ff00:98ea:e2cb:4eff:fe39:c168) has joined #chakra
+2014-06-12 15:48:44	<--	eyome (~eyome@vit94-11-83-156-101-88.fbx.proxad.net) has quit (Quit: eyome)
+2014-06-12 15:55:29	<--	aguitel (~aguitel@200.3.189.32) has quit (Quit: Konversation terminated!)
+2014-06-12 15:56:49	<--	AlmAck (~AlmAck@155-95.107-92.cust.bluewin.ch) has quit (Quit: Konversation terminated!)
+2014-06-12 16:03:39	-->	dmnmsc (~dmnmsc@55.Red-83-44-2.dynamicIP.rima-tde.net) has joined #chakra
+2014-06-12 16:07:22	<--	PasNox (~pasnox@2a01:e35:8b61:9b30:388b:f8c9:44b4:2303) has quit (Remote host closed the connection)
+2014-06-12 16:21:45	-->	aguitel (~aguitel@200.3.189.32) has joined #chakra
+2014-06-12 16:32:26	<--	nodevel (~james@29.169.broadband10.iol.cz) has quit (Quit: Konversation terminated!)
+2014-06-12 16:32:34	-->	boom1992_ (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has joined #chakra
+2014-06-12 16:32:35	-->	nodevel (~james@29.169.broadband10.iol.cz) has joined #chakra
+2014-06-12 16:33:09	<--	boom1992_ (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has quit (Remote host closed the connection)
+2014-06-12 16:36:28	<--	nodevel (~james@29.169.broadband10.iol.cz) has quit (Client Quit)
+2014-06-12 16:36:38	-->	nodevel (~james@29.169.broadband10.iol.cz) has joined #chakra
+2014-06-12 16:38:33	<--	javier_ (~quassel@host57.190-227-32.telecom.net.ar) has quit (Ping timeout: 255 seconds)
+2014-06-12 16:39:28	-->	javier_ (~quassel@host48.200-82-21.telecom.net.ar) has joined #chakra
+2014-06-12 16:55:10	<--	djustice (~unknown@adsl-98-71-153-86.gsp.bellsouth.net) has quit (Ping timeout: 240 seconds)
+2014-06-12 17:14:38	<--	javier_ (~quassel@host48.200-82-21.telecom.net.ar) has quit (Remote host closed the connection)
+2014-06-12 17:15:15	<--	brli (~brli@unaffiliated/brli) has quit (Remote host closed the connection)
+2014-06-12 17:16:22	-->	brli (~brli@unaffiliated/brli) has joined #chakra
+2014-06-12 17:16:42	-->	javier_ (~quassel@host48.200-82-21.telecom.net.ar) has joined #chakra
+2014-06-12 17:22:43	-->	s8321414 (~s8321414@140.127.38.13) has joined #chakra
+2014-06-12 17:26:37	-->	Havvy (~Havvy@unaffiliated/havvy) has joined #chakra
+2014-06-12 17:27:12	Havvy	I'm trying to `sudo` in the live install, and it's not accepting 'root', '', or 'password' as passwords.
+2014-06-12 17:27:41	dmnmsc	Havvy: aren't live?
+2014-06-12 17:28:00	dmnmsc	I think passwords are root and live
+2014-06-12 17:28:06	dmnmsc	but I'm not sure. Try with live
+2014-06-12 17:28:08	Havvy	'live' worked.
+2014-06-12 17:28:10	Havvy	Thanks.
+2014-06-12 17:28:21	dmnmsc	you are welcome
+2014-06-12 17:43:22	<--	boom1992 (~quassel@BA1222.ballee.wh.tu-darmstadt.de) has quit (Remote host closed the connection)
+2014-06-12 17:44:59	-->	djustice (~unknown@adsl-74-177-66-96.gsp.bellsouth.net) has joined #chakra
+2014-06-12 17:49:35	<--	brli (~brli@unaffiliated/brli) has quit (Ping timeout: 252 seconds)
+2014-06-12 18:09:29	<--	m00nlight (~m00nlight@123.112.102.219) has quit (Quit: Konversation terminated!)
+2014-06-12 18:34:07	<--	dmnmsc (~dmnmsc@55.Red-83-44-2.dynamicIP.rima-tde.net) has quit (Quit: Konversation terminated!)
+2014-06-12 18:38:12	<--	javier_ (~quassel@host48.200-82-21.telecom.net.ar) has quit (Remote host closed the connection)
+2014-06-12 18:46:37	<--	djustice (~unknown@adsl-74-177-66-96.gsp.bellsouth.net) has quit (Ping timeout: 244 seconds)
+2014-06-12 18:53:41	-->	djustice (~unknown@adsl-98-71-153-86.gsp.bellsouth.net) has joined #chakra
+2014-06-12 19:25:41	<--	s8321414 (~s8321414@140.127.38.13) has quit (Quit: Konversation terminated!)
+2014-06-13 09:42:50	--	irc: disconnected from server
+2014-06-13 09:43:19	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-06-13 09:43:19	--	Topic for #chakra is "http://chakraos.org | Package repositories are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-06-13 09:43:19	--	Topic set by totte (~totte@unaffiliated/totte) on Tue, 20 May 2014 06:12:49
+2014-06-13 09:43:19	--	Channel #chakra: 30 nicks (1 op, 1 voice, 28 normals)
+2014-06-13 09:43:19	--	Mode #chakra [+cnt]
+2014-06-13 09:43:19	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-06-13 09:43:20	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-06-13 09:47:20	-->	javier___ (~quassel@host85.190-228-242.telecom.net.ar) has joined #chakra
+2014-06-13 09:50:52	-->	Inkane (~quassel@p4FD77585.dip0.t-ipconnect.de) has joined #chakra
+2014-06-13 21:20:36	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-06-13 21:20:36	--	Topic for #chakra is "http://chakraos.org | Package repositories are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 !"
+2014-06-13 21:20:36	--	Topic set by totte (~totte@unaffiliated/totte) on Tue, 20 May 2014 06:12:49
+2014-06-13 21:20:36	--	Channel #chakra: 30 nicks (1 op, 1 voice, 28 normals)
+2014-06-13 21:20:36	--	PvNotice(ChanServ): Welcome to the Chakra discussion and support channel!
+2014-06-13 21:20:36	--	Mode #chakra [+cnt]
+2014-06-13 21:20:37	--	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-06-13 21:30:24	<--	MTGap (~quassel@c-69-245-77-37.hsd1.mi.comcast.net) has quit (Remote host closed the connection)
+2014-06-13 22:27:22	-->	s8321414 (~s8321414@140.127.38.13) has joined #chakra
+2014-06-13 22:34:05	<--	LanDi (~gustavo@186.232.216.90) has quit (Quit: Konversation terminated!)
+2014-06-13 22:36:52	-->	brli (~brli@unaffiliated/brli) has joined #chakra
+2014-06-13 22:48:19	<--	Havvy (~Havvy@unaffiliated/havvy) has quit (Ping timeout: 240 seconds)
+2014-06-13 22:49:33	-->	Havvy (~Havvy@unaffiliated/havvy) has joined #chakra
+2014-06-14 19:58:45	--	irc: disconnected from server
+2014-06-14 19:59:02	=!=	irc: you are not connected to server

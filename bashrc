@@ -111,12 +111,6 @@ for i in ~/.autoload/*; do
   source $i
 done
 
-# Work on (combination of virtual-env's workon and Rocky's b)
-function wo() {
-  workon $1
-  b $1
-}
-
 # ack is short for ack-grep
 alias ack="ack-grep"
 

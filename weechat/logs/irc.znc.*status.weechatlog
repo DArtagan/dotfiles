@@ -1,0 +1,1272 @@
+2014-07-26 12:29:07	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-07-26 12:29:07	*status	(Except ListNicks)
+2014-07-26 12:29:07	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:29:07	*status	| Command                | Arguments                             | Description                                                                      |
+2014-07-26 12:29:07	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:29:07	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-07-26 12:29:07	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-07-26 12:29:07	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-07-26 12:29:07	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-07-26 12:29:07	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-07-26 12:29:07	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-07-26 12:29:07	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-07-26 12:29:07	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-07-26 12:29:07	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-07-26 12:29:07	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-07-26 12:29:07	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-07-26 12:29:07	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-07-26 12:29:07	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-07-26 12:29:07	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-07-26 12:29:07	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-07-26 12:29:07	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-07-26 12:29:07	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-07-26 12:29:07	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-07-26 12:29:07	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-07-26 12:29:07	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-07-26 12:29:07	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-07-26 12:29:07	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-07-26 12:29:07	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-07-26 12:29:07	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-07-26 12:29:07	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-07-26 12:29:07	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-07-26 12:29:07	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-07-26 12:29:07	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-07-26 12:29:07	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-07-26 12:29:07	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-07-26 12:29:07	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-07-26 12:29:07	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-07-26 12:29:07	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-07-26 12:29:07	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-07-26 12:29:07	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-07-26 12:29:07	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-07-26 12:29:07	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-07-26 12:29:07	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-07-26 12:29:07	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-07-26 12:29:07	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-07-26 12:29:07	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-07-26 12:29:07	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-07-26 12:29:07	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-07-26 12:29:07	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-07-26 12:29:07	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-07-26 12:29:07	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-07-26 12:29:07	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-07-26 12:29:07	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-07-26 12:29:07	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-07-26 12:29:07	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-07-26 12:29:07	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-07-26 12:29:07	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-07-26 12:29:07	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:30:51	will	listmods
+2014-07-26 12:30:51	*status	No global modules loaded.
+2014-07-26 12:30:51	*status	Your user has no modules loaded.
+2014-07-26 12:30:58	will	help
+2014-07-26 12:30:58	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-07-26 12:30:58	*status	(Except ListNicks)
+2014-07-26 12:30:58	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:30:58	*status	| Command                | Arguments                             | Description                                                                      |
+2014-07-26 12:30:58	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:30:58	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-07-26 12:30:58	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-07-26 12:30:58	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-07-26 12:30:58	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-07-26 12:30:58	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-07-26 12:30:58	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-07-26 12:30:58	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-07-26 12:30:58	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-07-26 12:30:58	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-07-26 12:30:58	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-07-26 12:30:58	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-07-26 12:30:58	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-07-26 12:30:58	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-07-26 12:30:58	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-07-26 12:30:58	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-07-26 12:30:58	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-07-26 12:30:58	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-07-26 12:30:58	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-07-26 12:30:58	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-07-26 12:30:58	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-07-26 12:30:58	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-07-26 12:30:58	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-07-26 12:30:58	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-07-26 12:30:58	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-07-26 12:30:58	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-07-26 12:30:58	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-07-26 12:30:58	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-07-26 12:30:58	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-07-26 12:30:58	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-07-26 12:30:58	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-07-26 12:30:58	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-07-26 12:30:58	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-07-26 12:30:58	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-07-26 12:30:58	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-07-26 12:30:58	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-07-26 12:30:58	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-07-26 12:30:58	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-07-26 12:30:58	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-07-26 12:30:58	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-07-26 12:30:58	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-07-26 12:30:58	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-07-26 12:30:58	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-07-26 12:30:58	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-07-26 12:30:58	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-07-26 12:30:58	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-07-26 12:30:58	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-07-26 12:30:58	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-07-26 12:30:58	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-07-26 12:30:58	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-07-26 12:30:58	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-07-26 12:30:58	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-07-26 12:30:58	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-07-26 12:30:58	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:32:59	will	rehash
+2014-07-26 12:32:59	*status	Rehashing succeeded!
+2014-07-26 12:33:34	will	rehash
+2014-07-26 12:33:34	*status	Rehashing succeeded!
+2014-07-26 12:36:43	will	LoadMod chansaver
+2014-07-26 12:36:43	*status	Loaded module [chansaver] [/usr/lib/znc/chansaver.so]
+2014-07-26 12:36:56	will	LoadMod log
+2014-07-26 12:36:56	*status	Loaded module [log] Logging to [/home/znc/znc/users/dartagan/moddata/log/$NETWORK_$WINDOW_%Y%m%d.log].[Logging to [/home/znc/znc/users/dartagan/moddata/log/$NETWORK_$WINDOW_%Y%m%d.log].] [/usr/lib/znc/log.so]
+2014-07-26 12:37:07	will	rehash
+2014-07-26 12:37:07	*status	Rehashing succeeded!
+2014-07-26 12:38:43	will	LoadMod sasl
+2014-07-26 12:38:43	*status	Unable to load network module [sasl] Not connected with a network.
+2014-07-26 12:41:16	will	AddNetwork chat.freenode.net/6667
+2014-07-26 12:41:16	*status	Network name should be alphanumeric
+2014-07-26 12:41:41	will	AddNetwork chat.freenode.net
+2014-07-26 12:41:41	*status	Network name should be alphanumeric
+2014-07-26 12:41:48	will	AddNetwork freenode chat.freenode.net
+2014-07-26 12:41:48	*status	Network added. Use /znc JumpNetwork freenode, or connect to ZNC with username dartagan/freenode (instead of just dartagan) to connect to it.
+2014-07-26 12:42:04	*status	Unknown command [Jumpetwork] try 'Help'
+2014-07-26 12:42:19	will	jumpnetwork freenode
+2014-07-26 12:42:19	*status	Switched to freenode
+2014-07-26 12:43:26	will	server
+2014-07-26 12:43:26	*status	Unknown command [server] try 'Help'
+2014-07-26 12:43:37	will	jumpnetwork 
+2014-07-26 12:43:37	*status	No network supplied.
+2014-07-26 12:43:42	will	listnetwork
+2014-07-26 12:43:42	*status	Unknown command [listnetwork] try 'Help'
+2014-07-26 12:43:44	will	listnetworks
+2014-07-26 12:43:44	*status	+----------+-------+------------+----------+----------+
+2014-07-26 12:43:44	*status	| Network  | OnIRC | IRC Server | IRC User | Channels |
+2014-07-26 12:43:44	*status	+----------+-------+------------+----------+----------+
+2014-07-26 12:43:44	*status	| freenode | No    |            |          |          |
+2014-07-26 12:43:44	*status	+----------+-------+------------+----------+----------+
+2014-07-26 12:43:51	will	help
+2014-07-26 12:43:51	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-07-26 12:43:51	*status	(Except ListNicks)
+2014-07-26 12:43:51	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:43:51	*status	| Command                | Arguments                             | Description                                                                      |
+2014-07-26 12:43:51	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:43:51	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-07-26 12:43:51	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-07-26 12:43:51	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-07-26 12:43:51	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-07-26 12:43:51	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-07-26 12:43:51	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-07-26 12:43:51	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-07-26 12:43:51	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-07-26 12:43:51	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-07-26 12:43:51	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-07-26 12:43:51	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-07-26 12:43:51	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-07-26 12:43:51	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-07-26 12:43:51	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-07-26 12:43:51	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-07-26 12:43:51	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-07-26 12:43:51	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-07-26 12:43:51	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-07-26 12:43:51	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-07-26 12:43:51	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-07-26 12:43:51	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-07-26 12:43:51	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-07-26 12:43:51	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-07-26 12:43:51	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-07-26 12:43:51	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-07-26 12:43:51	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-07-26 12:43:51	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-07-26 12:43:51	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-07-26 12:43:51	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-07-26 12:43:51	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-07-26 12:43:51	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-07-26 12:43:51	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-07-26 12:43:51	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-07-26 12:43:51	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-07-26 12:43:51	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-07-26 12:43:51	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-07-26 12:43:51	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-07-26 12:43:51	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-07-26 12:43:51	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-07-26 12:43:51	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-07-26 12:43:51	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-07-26 12:43:51	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-07-26 12:43:51	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-07-26 12:43:51	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-07-26 12:43:51	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-07-26 12:43:51	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-07-26 12:43:51	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-07-26 12:43:51	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-07-26 12:43:51	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-07-26 12:43:51	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-07-26 12:43:51	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-07-26 12:43:51	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-07-26 12:43:51	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:44:43	will	ListServer
+2014-07-26 12:44:43	*status	Unknown command [ListServer] try 'Help'
+2014-07-26 12:44:51	will	ListServers
+2014-07-26 12:44:51	*status	You don't have any servers added.
+2014-07-26 12:45:04	will	DelNetwork
+2014-07-26 12:45:04	*status	Usage: DelNetwork <name>
+2014-07-26 12:45:10	will	DelNetwork freenode
+2014-07-26 12:45:10	*status	Network deleted
+2014-07-26 12:46:28	will	addserver
+2014-07-26 12:46:28	*status	You must be connected with a network to use this command
+2014-07-26 12:46:55	will	addnetwork main
+2014-07-26 12:46:55	*status	Network added. Use /znc JumpNetwork main, or connect to ZNC with username dartagan/main (instead of just dartagan) to connect to it.
+2014-07-26 12:47:01	will	jumpnetwork main
+2014-07-26 12:47:01	*status	Switched to main
+2014-07-26 12:47:05	will	addserver 
+2014-07-26 12:47:05	*status	Usage: AddServer <host> [[+]port] [pass]
+2014-07-26 12:47:37	will	addserver chat.freenode.net 6667
+2014-07-26 12:47:37	*status	Server added
+2014-07-26 12:47:46	*status	Connected!
+2014-07-26 12:48:34	dartagan_	loadmodule sasl
+2014-07-26 12:48:34	*status	Loaded module [sasl] [/usr/lib/znc/sasl.so]
+2014-07-26 12:52:02	dartagan_	disconnect
+2014-07-26 12:52:02	*status	Disconnected from IRC. Use 'connect' to reconnect.
+2014-07-26 12:52:05	dartagan_	connect
+2014-07-26 12:52:05	*status	Connecting...
+2014-07-26 12:52:18	*status	Connected!
+2014-07-26 12:54:14	--	irc: disconnected from server
+2014-07-26 12:55:23	*status	Unknown command [setnick] try 'Help'
+2014-07-26 12:55:33	dartagan_	help
+2014-07-26 12:55:33	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-07-26 12:55:33	*status	(Except ListNicks)
+2014-07-26 12:55:33	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:55:33	*status	| Command                | Arguments                             | Description                                                                      |
+2014-07-26 12:55:33	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:55:33	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-07-26 12:55:33	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-07-26 12:55:33	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-07-26 12:55:33	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-07-26 12:55:33	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-07-26 12:55:33	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-07-26 12:55:33	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-07-26 12:55:33	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-07-26 12:55:33	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-07-26 12:55:33	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-07-26 12:55:33	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-07-26 12:55:33	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-07-26 12:55:33	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-07-26 12:55:33	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-07-26 12:55:33	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-07-26 12:55:33	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-07-26 12:55:33	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-07-26 12:55:33	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-07-26 12:55:33	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-07-26 12:55:33	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-07-26 12:55:33	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-07-26 12:55:33	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-07-26 12:55:33	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-07-26 12:55:33	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-07-26 12:55:33	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-07-26 12:55:33	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-07-26 12:55:33	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-07-26 12:55:33	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-07-26 12:55:33	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-07-26 12:55:33	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-07-26 12:55:33	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-07-26 12:55:33	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-07-26 12:55:33	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-07-26 12:55:33	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-07-26 12:55:33	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-07-26 12:55:33	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-07-26 12:55:33	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-07-26 12:55:33	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-07-26 12:55:33	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-07-26 12:55:33	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-07-26 12:55:33	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-07-26 12:55:33	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-07-26 12:55:33	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-07-26 12:55:33	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-07-26 12:55:33	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-07-26 12:55:33	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-07-26 12:55:33	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-07-26 12:55:33	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-07-26 12:55:33	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-07-26 12:55:33	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-07-26 12:55:33	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-07-26 12:55:33	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-07-26 12:55:33	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 12:56:05	dartagan_	listusers
+2014-07-26 12:56:05	*status	+----------+----------+---------+
+2014-07-26 12:56:05	*status	| Username | Networks | Clients |
+2014-07-26 12:56:05	*status	+----------+----------+---------+
+2014-07-26 12:56:05	*status	| dartagan | 1        | 1       |
+2014-07-26 12:56:05	*status	+----------+----------+---------+
+2014-07-26 12:58:07	dartagan_	listnicks
+2014-07-26 12:58:07	*status	Usage: ListNicks <#chan>
+2014-07-26 12:58:20	dartagan_	listnicks #freenode
+2014-07-26 12:58:20	*status	You are not on [#freenode]
+2014-07-26 12:59:16	dartagan_	loadmodule nickserv
+2014-07-26 12:59:16	*status	Loaded module [nickserv] [/usr/lib/znc/nickserv.so]
+2014-07-26 13:00:42	--	irc: disconnected from server
+2014-07-26 13:05:29	--	irc: disconnected from server
+2014-07-26 13:10:57	--	irc: disconnected from server
+2014-07-26 13:11:09	*status	Disconnected from IRC. Use 'connect' to reconnect.
+2014-07-26 13:11:21	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-07-26 13:11:21	*status	(Except ListNicks)
+2014-07-26 13:11:21	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 13:11:21	*status	| Command                | Arguments                             | Description                                                                      |
+2014-07-26 13:11:21	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 13:11:21	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-07-26 13:11:21	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-07-26 13:11:21	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-07-26 13:11:21	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-07-26 13:11:21	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-07-26 13:11:21	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-07-26 13:11:21	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-07-26 13:11:21	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-07-26 13:11:21	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-07-26 13:11:21	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-07-26 13:11:21	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-07-26 13:11:21	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-07-26 13:11:21	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-07-26 13:11:21	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-07-26 13:11:21	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-07-26 13:11:21	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-07-26 13:11:21	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-07-26 13:11:21	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-07-26 13:11:21	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-07-26 13:11:21	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-07-26 13:11:21	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-07-26 13:11:21	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-07-26 13:11:21	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-07-26 13:11:21	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-07-26 13:11:21	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-07-26 13:11:21	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-07-26 13:11:21	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-07-26 13:11:21	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-07-26 13:11:21	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-07-26 13:11:21	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-07-26 13:11:21	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-07-26 13:11:21	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-07-26 13:11:21	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-07-26 13:11:21	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-07-26 13:11:21	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-07-26 13:11:21	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-07-26 13:11:21	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-07-26 13:11:21	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-07-26 13:11:21	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-07-26 13:11:21	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-07-26 13:11:21	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-07-26 13:11:21	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-07-26 13:11:21	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-07-26 13:11:21	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-07-26 13:11:21	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-07-26 13:11:21	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-07-26 13:11:21	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-07-26 13:11:21	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-07-26 13:11:21	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-07-26 13:11:21	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-07-26 13:11:21	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-07-26 13:11:21	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-07-26 13:11:21	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-07-26 13:11:40	dartagan_	connect freenode
+2014-07-26 13:11:40	*status	Server [freenode] not found
+2014-07-26 13:11:47	dartagan_	connect
+2014-07-26 13:11:47	*status	Connecting...
+2014-07-26 13:11:56	*status	Connected!
+2014-08-14 12:27:50	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 12:27:50	*status	(Except ListNicks)
+2014-08-14 12:27:50	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:27:50	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 12:27:50	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:27:50	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 12:27:50	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 12:27:50	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 12:27:50	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 12:27:50	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 12:27:50	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 12:27:50	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 12:27:50	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 12:27:50	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 12:27:50	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 12:27:50	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 12:27:50	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 12:27:50	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 12:27:50	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 12:27:50	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 12:27:50	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 12:27:50	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 12:27:50	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 12:27:50	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 12:27:50	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 12:27:50	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 12:27:50	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 12:27:50	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 12:27:50	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 12:27:50	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 12:27:50	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 12:27:50	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 12:27:50	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 12:27:50	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 12:27:50	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 12:27:50	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 12:27:50	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 12:27:50	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 12:27:50	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 12:27:50	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 12:27:50	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 12:27:50	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 12:27:50	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 12:27:50	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 12:27:50	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 12:27:50	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 12:27:50	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 12:27:50	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 12:27:50	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 12:27:50	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 12:27:50	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 12:27:50	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 12:27:50	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 12:27:50	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 12:27:50	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 12:27:50	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 12:27:50	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 12:27:50	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:28:30	*status	Hello. How may I help you?
+2014-08-14 12:28:46	*status	Hello. How may I help you?
+2014-08-14 12:28:50	*status	Jumping to the next server in the list...
+2014-08-14 12:28:50	*status	Disconnected from IRC. Reconnecting...
+2014-08-14 12:29:02	*status	Connected!
+2014-08-14 12:29:52	*status	Hello. How may I help you?
+2014-08-14 12:30:04	dartagan	help
+2014-08-14 12:30:04	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 12:30:04	*status	(Except ListNicks)
+2014-08-14 12:30:04	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:30:04	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 12:30:04	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:30:04	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 12:30:04	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 12:30:04	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 12:30:04	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 12:30:04	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 12:30:04	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 12:30:04	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 12:30:04	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 12:30:04	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 12:30:04	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 12:30:04	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 12:30:04	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 12:30:04	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 12:30:04	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 12:30:04	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 12:30:04	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 12:30:04	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 12:30:04	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 12:30:04	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 12:30:04	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 12:30:04	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 12:30:04	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 12:30:04	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 12:30:04	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 12:30:04	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 12:30:04	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 12:30:04	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 12:30:04	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 12:30:04	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 12:30:04	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 12:30:04	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 12:30:04	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 12:30:04	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 12:30:04	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 12:30:04	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 12:30:04	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 12:30:04	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 12:30:04	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 12:30:04	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 12:30:04	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 12:30:04	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 12:30:04	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 12:30:04	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 12:30:04	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 12:30:04	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 12:30:04	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 12:30:04	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 12:30:04	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 12:30:04	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 12:30:04	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 12:30:04	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 12:30:04	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 12:30:04	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:30:36	dartagan	ListServers
+2014-08-14 12:30:36	*status	+--------------------+------+-----+------+
+2014-08-14 12:30:36	*status	| Host               | Port | SSL | Pass |
+2014-08-14 12:30:36	*status	+--------------------+------+-----+------+
+2014-08-14 12:30:36	*status	| chat.freenode.net* | 6667 |     |      |
+2014-08-14 12:30:36	*status	+--------------------+------+-----+------+
+2014-08-14 12:30:43	dartagan	ListNetworks
+2014-08-14 12:30:43	*status	+---------+-------+---------------------+--------------------------------------------------------+----------+
+2014-08-14 12:30:43	*status	| Network | OnIRC | IRC Server          | IRC User                                               | Channels |
+2014-08-14 12:30:43	*status	+---------+-------+---------------------+--------------------------------------------------------+----------+
+2014-08-14 12:30:43	*status	| main    | Yes   | hobana.freenode.net | dartagan!~dartagan@c-50-170-156-10.hsd1.co.comcast.net | 1        |
+2014-08-14 12:30:43	*status	+---------+-------+---------------------+--------------------------------------------------------+----------+
+2014-08-14 12:31:22	dartagan	listmods
+2014-08-14 12:31:22	*status	No global modules loaded.
+2014-08-14 12:31:22	*status	Your user has no modules loaded.
+2014-08-14 12:31:22	*status	Network modules:
+2014-08-14 12:31:22	*status	+----------+-----------+
+2014-08-14 12:31:22	*status	| Name     | Arguments |
+2014-08-14 12:31:22	*status	+----------+-----------+
+2014-08-14 12:31:22	*status	| sasl     |           |
+2014-08-14 12:31:22	*status	| nickserv |           |
+2014-08-14 12:31:22	*status	+----------+-----------+
+2014-08-14 12:40:16	dartagan	addserver
+2014-08-14 12:40:16	*status	Usage: AddServer <host> [[+]port] [pass]
+2014-08-14 12:40:36	dartagan	addserver 127.0.0.1 6667
+2014-08-14 12:40:36	*status	Server added
+2014-08-14 12:40:42	dartagan	connect
+2014-08-14 12:40:42	*status	Jumping to the next server in the list...
+2014-08-14 12:40:42	*status	Disconnected from IRC. Reconnecting...
+2014-08-14 12:40:42	*status	Connected!
+2014-08-14 12:40:42	*status	Received a too long line from the IRC server!
+2014-08-14 12:40:51	dartagan	listservers
+2014-08-14 12:40:51	*status	+-------------------+------+-----+------+
+2014-08-14 12:40:51	*status	| Host              | Port | SSL | Pass |
+2014-08-14 12:40:51	*status	+-------------------+------+-----+------+
+2014-08-14 12:40:51	*status	| chat.freenode.net | 6667 |     |      |
+2014-08-14 12:40:51	*status	| 127.0.0.1*        | 6667 |     |      |
+2014-08-14 12:40:51	*status	+-------------------+------+-----+------+
+2014-08-14 12:41:14	dartagan	listnetworks
+2014-08-14 12:41:14	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:41:14	*status	| Network | OnIRC | IRC Server | IRC User | Channels |
+2014-08-14 12:41:14	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:41:14	*status	| main    | No    |            |          |          |
+2014-08-14 12:41:14	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:41:21	dartagan	list
+2014-08-14 12:41:21	*status	Unknown command [list] try 'Help'
+2014-08-14 12:41:25	dartagan	help
+2014-08-14 12:41:25	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 12:41:25	*status	(Except ListNicks)
+2014-08-14 12:41:25	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:41:25	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 12:41:25	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:41:25	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 12:41:25	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 12:41:25	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 12:41:25	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 12:41:25	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 12:41:25	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 12:41:25	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 12:41:25	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 12:41:25	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 12:41:25	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 12:41:25	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 12:41:25	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 12:41:25	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 12:41:25	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 12:41:25	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 12:41:25	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 12:41:25	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 12:41:25	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 12:41:25	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 12:41:25	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 12:41:25	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 12:41:25	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 12:41:25	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 12:41:25	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 12:41:25	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 12:41:25	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 12:41:25	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 12:41:25	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 12:41:25	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 12:41:25	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 12:41:25	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 12:41:25	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 12:41:25	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 12:41:25	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 12:41:25	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 12:41:25	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 12:41:25	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 12:41:25	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 12:41:25	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 12:41:25	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 12:41:25	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 12:41:25	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 12:41:25	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 12:41:25	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 12:41:25	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 12:41:25	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 12:41:25	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 12:41:25	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 12:41:25	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 12:41:25	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 12:41:25	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 12:41:25	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 12:41:25	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:41:39	dartagan	listusers
+2014-08-14 12:41:39	*status	+----------+----------+---------+
+2014-08-14 12:41:39	*status	| Username | Networks | Clients |
+2014-08-14 12:41:39	*status	+----------+----------+---------+
+2014-08-14 12:41:39	*status	| dartagan | 1        | 1       |
+2014-08-14 12:41:39	*status	+----------+----------+---------+
+2014-08-14 12:41:43	dartagan	listchans
+2014-08-14 12:41:43	*status	+---------+--------+------+------+-------+-------+
+2014-08-14 12:41:43	*status	| Name    | Status | Conf | Buf  | Modes | Users |
+2014-08-14 12:41:43	*status	+---------+--------+------+------+-------+-------+
+2014-08-14 12:41:43	*status	| #chakra | Trying |      | *500 |       | 0     |
+2014-08-14 12:41:43	*status	+---------+--------+------+------+-------+-------+
+2014-08-14 12:41:43	*status	Total: 1 - Joined: 0 - Detached: 0 - Disabled: 0
+2014-08-14 12:42:08	dartagan	listservers
+2014-08-14 12:42:08	*status	+-------------------+------+-----+------+
+2014-08-14 12:42:08	*status	| Host              | Port | SSL | Pass |
+2014-08-14 12:42:08	*status	+-------------------+------+-----+------+
+2014-08-14 12:42:08	*status	| chat.freenode.net | 6667 |     |      |
+2014-08-14 12:42:08	*status	| 127.0.0.1*        | 6667 |     |      |
+2014-08-14 12:42:08	*status	+-------------------+------+-----+------+
+2014-08-14 12:42:11	dartagan	listnetworks
+2014-08-14 12:42:11	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:42:11	*status	| Network | OnIRC | IRC Server | IRC User | Channels |
+2014-08-14 12:42:11	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:42:11	*status	| main    | No    |            |          |          |
+2014-08-14 12:42:11	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:49:56	dartagan	help
+2014-08-14 12:49:56	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 12:49:56	*status	(Except ListNicks)
+2014-08-14 12:49:56	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:49:56	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 12:49:56	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:49:56	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 12:49:56	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 12:49:56	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 12:49:56	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 12:49:56	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 12:49:56	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 12:49:56	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 12:49:56	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 12:49:56	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 12:49:56	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 12:49:56	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 12:49:56	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 12:49:56	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 12:49:56	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 12:49:56	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 12:49:56	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 12:49:56	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 12:49:56	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 12:49:56	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 12:49:56	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 12:49:56	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 12:49:56	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 12:49:56	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 12:49:56	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 12:49:56	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 12:49:56	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 12:49:56	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 12:49:56	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 12:49:56	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 12:49:56	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 12:49:56	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 12:49:56	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 12:49:56	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 12:49:56	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 12:49:56	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 12:49:56	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 12:49:56	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 12:49:56	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 12:49:56	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 12:49:56	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 12:49:56	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 12:49:56	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 12:49:56	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 12:49:56	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 12:49:56	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 12:49:56	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 12:49:56	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 12:49:56	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 12:49:56	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 12:49:56	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 12:49:56	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 12:49:56	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 12:49:56	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 12:52:29	dartagan	JumpNetwork
+2014-08-14 12:52:29	*status	No network supplied.
+2014-08-14 12:55:22	dartagan	listnetworks
+2014-08-14 12:55:22	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:55:22	*status	| Network | OnIRC | IRC Server | IRC User | Channels |
+2014-08-14 12:55:22	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:55:22	*status	| main    | No    |            |          |          |
+2014-08-14 12:55:22	*status	+---------+-------+------------+----------+----------+
+2014-08-14 12:55:24	dartagan	listservers
+2014-08-14 12:55:24	*status	+-------------------+------+-----+------+
+2014-08-14 12:55:24	*status	| Host              | Port | SSL | Pass |
+2014-08-14 12:55:24	*status	+-------------------+------+-----+------+
+2014-08-14 12:55:24	*status	| chat.freenode.net | 6667 |     |      |
+2014-08-14 12:55:24	*status	| 127.0.0.1*        | 6667 |     |      |
+2014-08-14 12:55:24	*status	+-------------------+------+-----+------+
+2014-08-14 12:55:32	dartagan	delserver 127.0.0.1
+2014-08-14 12:55:32	*status	Server removed
+2014-08-14 12:55:35	dartagan	listservers
+2014-08-14 12:55:35	*status	+--------------------+------+-----+------+
+2014-08-14 12:55:35	*status	| Host               | Port | SSL | Pass |
+2014-08-14 12:55:35	*status	+--------------------+------+-----+------+
+2014-08-14 12:55:35	*status	| chat.freenode.net* | 6667 |     |      |
+2014-08-14 12:55:35	*status	+--------------------+------+-----+------+
+2014-08-14 12:56:44	dartagan	addnetwork
+2014-08-14 12:56:44	*status	Usage: AddNetwork <name>
+2014-08-14 12:56:47	dartagan	addnetwork bitlbee
+2014-08-14 12:56:47	*status	Network added. Use /znc JumpNetwork bitlbee, or connect to ZNC with username dartagan/bitlbee (instead of just dartagan) to connect to it.
+2014-08-14 12:57:00	*status	Switched to bitlbee
+2014-08-14 12:58:33	*status	You are currently disconnected from IRC. Use 'connect' to reconnect.
+2014-08-14 12:58:47	will	connect
+2014-08-14 12:58:47	*status	Connecting...
+2014-08-14 12:58:59	*status	Connected!
+2014-08-14 12:59:31	dartagan	listnetworks
+2014-08-14 12:59:31	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 12:59:31	*status	| Network | OnIRC | IRC Server             | IRC User                                               | Channels |
+2014-08-14 12:59:31	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 12:59:31	*status	| main    | Yes   | rajaniemi.freenode.net | dartagan!~dartagan@c-50-170-156-10.hsd1.co.comcast.net | 1        |
+2014-08-14 12:59:31	*status	| bitlbee | No    |                        |                                                        |          |
+2014-08-14 12:59:31	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 12:59:58	dartagan	jumpnetwork bitlbee
+2014-08-14 12:59:58	*status	Switched to bitlbee
+2014-08-14 13:00:31	*status	Your message to [bitlbee] got lost, you are not connected to IRC!
+2014-08-14 13:00:51	dartagan	LoadMod perform
+2014-08-14 13:00:52	*status	Loaded module [perform] [/usr/lib/znc/perform.so]
+2014-08-14 13:01:26	dartagan	addserver 127.0.0.1 6667
+2014-08-14 13:01:26	*status	Server added
+2014-08-14 13:01:26	*status	Connected!
+2014-08-14 13:28:14	*status	Switched to bitlbee
+2014-08-14 13:32:49	*status	Switched to bitlbee
+2014-08-14 14:58:45	*status	Switched to bitlbee
+2014-08-14 15:00:58	*status	No network supplied.
+2014-08-14 15:01:22	dartagan	listnetworks
+2014-08-14 15:01:22	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 15:01:22	*status	| Network | OnIRC | IRC Server             | IRC User                                               | Channels |
+2014-08-14 15:01:22	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 15:01:22	*status	| main    | Yes   | rajaniemi.freenode.net | dartagan!~dartagan@c-50-170-156-10.hsd1.co.comcast.net | 1        |
+2014-08-14 15:01:22	*status	| bitlbee | Yes   | localhost              | dartagan!dartagan@localhost                            | 2        |
+2014-08-14 15:01:22	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 15:01:25	dartagan	jumpnetwork main
+2014-08-14 15:01:25	*status	Switched to main
+2014-08-14 19:02:21	ℹ 	irc: disconnected from server
+2014-08-14 19:02:31	ℹ 	*status: You have several networks configured, but no network was specified for the connection.
+2014-08-14 19:02:31	ℹ 	*status: Selecting network [main]. To see list of all configured networks, use /znc ListNetworks
+2014-08-14 19:02:31	ℹ 	*status: If you want to choose another network, use /znc JumpNetwork <network>, or connect to ZNC with username dartagan/<network> (instead of just dartagan)
+2014-08-14 20:07:15	*status	Switched to bitlbee
+2014-08-14 20:15:25	*status	Unknown command [tgt] try 'Help'
+2014-08-14 20:15:34	dartagan	listnetworks
+2014-08-14 20:15:34	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 20:15:34	*status	| Network | OnIRC | IRC Server             | IRC User                                               | Channels |
+2014-08-14 20:15:34	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 20:15:34	*status	| main    | Yes   | rajaniemi.freenode.net | dartagan!~dartagan@c-50-170-156-10.hsd1.co.comcast.net | 1        |
+2014-08-14 20:15:34	*status	| bitlbee | Yes   | localhost              | dartagan!dartagan@localhost                            | 2        |
+2014-08-14 20:15:34	*status	+---------+-------+------------------------+--------------------------------------------------------+----------+
+2014-08-14 20:15:54	dartagan	help
+2014-08-14 20:15:54	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 20:15:54	*status	(Except ListNicks)
+2014-08-14 20:15:54	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 20:15:54	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 20:15:54	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 20:15:54	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 20:15:54	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 20:15:54	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 20:15:54	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 20:15:54	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 20:15:54	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 20:15:54	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 20:15:54	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 20:15:54	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 20:15:54	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 20:15:54	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 20:15:54	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 20:15:54	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 20:15:54	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 20:15:54	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 20:15:54	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 20:15:54	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 20:15:54	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 20:15:54	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 20:15:54	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 20:15:54	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 20:15:54	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 20:15:54	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 20:15:54	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 20:15:54	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 20:15:54	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 20:15:54	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 20:15:54	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 20:15:54	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 20:15:54	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 20:15:54	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 20:15:54	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 20:15:54	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 20:15:54	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 20:15:54	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 20:15:54	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 20:15:54	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 20:15:54	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 20:15:54	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 20:15:54	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 20:15:54	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 20:15:54	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 20:15:54	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 20:15:54	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 20:15:54	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 20:15:54	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 20:15:54	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 20:15:54	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 20:15:54	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 20:15:54	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 20:15:54	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 20:15:54	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 20:15:54	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 20:16:56	dartagan	MoveNetwork dartagan main dartagan freenode
+2014-08-14 20:16:56	*status	Success.
+2014-08-14 20:17:03	dartagan	jumpnetwork freenode
+2014-08-14 20:17:03	*status	Switched to freenode
+2014-08-14 20:17:11	*status	Connected!
+2014-08-14 22:16:17	*status	Network (freenode) doesn't exist.
+2014-08-14 22:43:05	*status	Network (freenode) doesn't exist.
+2014-08-14 22:47:37	*status	No networks
+2014-08-14 22:48:09	will	listnetworks
+2014-08-14 22:48:09	*status	No networks
+2014-08-14 22:49:03	*status	Network (freenode) doesn't exist.
+2014-08-14 22:49:11	will	listnetworks
+2014-08-14 22:49:11	*status	No networks
+2014-08-14 22:49:15	will	help
+2014-08-14 22:49:15	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 22:49:15	*status	(Except ListNicks)
+2014-08-14 22:49:15	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:49:15	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 22:49:15	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:49:15	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 22:49:15	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 22:49:15	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 22:49:15	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 22:49:15	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 22:49:15	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 22:49:15	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 22:49:15	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 22:49:15	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 22:49:15	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 22:49:15	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 22:49:15	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 22:49:15	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 22:49:15	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 22:49:15	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 22:49:15	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 22:49:15	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 22:49:15	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 22:49:15	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 22:49:15	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 22:49:15	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 22:49:15	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 22:49:15	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 22:49:15	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 22:49:15	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 22:49:15	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 22:49:15	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 22:49:15	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 22:49:15	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 22:49:15	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 22:49:15	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 22:49:15	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 22:49:15	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 22:49:15	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 22:49:15	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 22:49:15	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 22:49:15	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 22:49:15	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 22:49:15	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 22:49:15	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 22:49:15	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 22:49:15	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 22:49:15	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 22:49:15	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 22:49:15	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 22:49:15	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 22:49:15	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 22:49:15	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 22:49:15	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 22:49:15	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 22:49:15	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 22:49:15	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 22:49:15	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:49:17	will	listservers
+2014-08-14 22:49:17	*status	You must be connected with a network to use this command
+2014-08-14 22:49:24	will	jumpserver bitlbee
+2014-08-14 22:49:24	*status	Unknown command [jumpserver] try 'Help'
+2014-08-14 22:49:30	will	jumpnetwork bitlbee
+2014-08-14 22:49:30	*status	You don't have a network named bitlbee
+2014-08-14 22:49:36	will	listnetworks
+2014-08-14 22:49:36	*status	No networks
+2014-08-14 22:53:19	*status	Network (freenode) doesn't exist.
+2014-08-14 22:53:41	will	help
+2014-08-14 22:53:41	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 22:53:41	*status	(Except ListNicks)
+2014-08-14 22:53:41	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:53:41	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 22:53:41	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:53:41	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 22:53:41	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 22:53:41	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 22:53:41	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 22:53:41	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 22:53:41	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 22:53:41	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 22:53:41	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 22:53:41	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 22:53:41	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 22:53:41	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 22:53:41	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 22:53:41	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 22:53:41	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 22:53:41	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 22:53:41	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 22:53:41	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 22:53:41	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 22:53:41	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 22:53:41	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 22:53:41	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 22:53:41	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 22:53:41	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 22:53:41	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 22:53:41	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 22:53:41	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 22:53:41	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 22:53:41	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 22:53:41	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 22:53:41	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 22:53:41	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 22:53:41	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 22:53:41	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 22:53:41	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 22:53:41	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 22:53:41	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 22:53:41	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 22:53:41	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 22:53:41	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 22:53:41	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 22:53:41	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 22:53:41	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 22:53:41	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 22:53:41	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 22:53:41	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 22:53:41	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 22:53:41	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 22:53:41	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 22:53:41	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 22:53:41	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 22:53:41	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 22:53:41	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 22:53:41	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:54:40	will	addnetwork 
+2014-08-14 22:54:40	*status	Usage: AddNetwork <name>
+2014-08-14 22:54:44	will	addnetwork freenode
+2014-08-14 22:54:44	*status	Network added. Use /znc JumpNetwork freenode, or connect to ZNC with username dartagan/freenode (instead of just dartagan) to connect to it.
+2014-08-14 22:55:09	*status	Switched to freenode
+2014-08-14 22:55:15	will	addserver freenode
+2014-08-14 22:55:15	*status	Server added
+2014-08-14 22:55:15	*status	Disconnected from IRC (Can't resolve server hostname). Reconnecting...
+2014-08-14 22:55:26	will	addserver chat.freenode.org
+2014-08-14 22:55:26	*status	Server added
+2014-08-14 22:55:32	will	listservers
+2014-08-14 22:55:32	*status	+--------------------+------+-----+------+
+2014-08-14 22:55:32	*status	| Host               | Port | SSL | Pass |
+2014-08-14 22:55:32	*status	+--------------------+------+-----+------+
+2014-08-14 22:55:32	*status	| freenode           | 6667 |     |      |
+2014-08-14 22:55:32	*status	| chat.freenode.org* | 6667 |     |      |
+2014-08-14 22:55:32	*status	+--------------------+------+-----+------+
+2014-08-14 22:55:40	*status	Connected!
+2014-08-14 22:55:43	dartagan	delserver freenode
+2014-08-14 22:55:43	*status	Server removed
+2014-08-14 22:55:45	dartagan	listservers
+2014-08-14 22:55:45	*status	+--------------------+------+-----+------+
+2014-08-14 22:55:45	*status	| Host               | Port | SSL | Pass |
+2014-08-14 22:55:45	*status	+--------------------+------+-----+------+
+2014-08-14 22:55:45	*status	| chat.freenode.org* | 6667 |     |      |
+2014-08-14 22:55:45	*status	+--------------------+------+-----+------+
+2014-08-14 22:56:48	Guest48162	listmods
+2014-08-14 22:56:48	*status	No global modules loaded.
+2014-08-14 22:56:48	*status	Your user has no modules loaded.
+2014-08-14 22:56:48	*status	This network has no modules loaded.
+2014-08-14 22:56:55	Guest48162	addmod sasl
+2014-08-14 22:56:55	*status	Unknown command [addmod] try 'Help'
+2014-08-14 22:57:03	Guest48162	loadmod sasl
+2014-08-14 22:57:03	*status	Loaded module [sasl] [/usr/lib/znc/sasl.so]
+2014-08-14 22:58:36	ℹ 	irc: disconnected from server
+2014-08-14 22:58:51	*status	Server [freenode] not found
+2014-08-14 22:59:07	Guest48162	listnetworks
+2014-08-14 22:59:07	*status	+----------+-------+-------------------+----------------------------------------------------------+----------+
+2014-08-14 22:59:07	*status	| Network  | OnIRC | IRC Server        | IRC User                                                 | Channels |
+2014-08-14 22:59:07	*status	+----------+-------+-------------------+----------------------------------------------------------+----------+
+2014-08-14 22:59:07	*status	| freenode | Yes   | card.freenode.net | Guest48162!~dartagan@c-50-170-156-10.hsd1.co.comcast.net | 1        |
+2014-08-14 22:59:07	*status	+----------+-------+-------------------+----------------------------------------------------------+----------+
+2014-08-14 22:59:14	Guest48162	disconnect freenode
+2014-08-14 22:59:14	*status	Disconnected from IRC. Use 'connect' to reconnect.
+2014-08-14 22:59:17	Guest48162	connect freenode
+2014-08-14 22:59:17	*status	Server [freenode] not found
+2014-08-14 22:59:25	Guest48162	help
+2014-08-14 22:59:25	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 22:59:25	*status	(Except ListNicks)
+2014-08-14 22:59:25	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:59:25	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 22:59:25	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:59:25	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 22:59:25	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 22:59:25	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 22:59:25	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 22:59:25	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 22:59:25	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 22:59:25	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 22:59:25	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 22:59:25	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 22:59:25	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 22:59:25	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 22:59:25	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 22:59:25	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 22:59:25	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 22:59:25	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 22:59:25	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 22:59:25	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 22:59:25	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 22:59:25	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 22:59:25	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 22:59:25	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 22:59:25	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 22:59:25	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 22:59:25	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 22:59:25	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 22:59:25	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 22:59:25	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 22:59:25	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 22:59:25	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 22:59:25	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 22:59:25	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 22:59:25	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 22:59:25	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 22:59:25	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 22:59:25	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 22:59:25	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 22:59:25	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 22:59:25	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 22:59:25	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 22:59:25	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 22:59:25	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 22:59:25	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 22:59:25	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 22:59:25	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 22:59:25	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 22:59:25	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 22:59:25	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 22:59:25	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 22:59:25	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 22:59:25	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 22:59:25	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 22:59:25	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 22:59:25	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 22:59:32	Guest48162	jumpnetwork freenode
+2014-08-14 22:59:32	*status	You are already connected with this network.
+2014-08-14 22:59:45	Guest48162	disconnect 
+2014-08-14 22:59:45	*status	Disconnected from IRC. Use 'connect' to reconnect.
+2014-08-14 22:59:47	Guest48162	connect
+2014-08-14 22:59:47	*status	Connecting...
+2014-08-14 23:00:00	*status	Connected!
+2014-08-14 23:00:27	dartagan_	addnetwork bitlbee
+2014-08-14 23:00:27	*status	Network added. Use /znc JumpNetwork bitlbee, or connect to ZNC with username dartagan/bitlbee (instead of just dartagan) to connect to it.
+2014-08-14 23:00:32	dartagan_	jumpnetwork bitlbee
+2014-08-14 23:00:32	*status	Switched to bitlbee
+2014-08-14 23:00:43	dartagan_	addserver 192.168.1.10
+2014-08-14 23:00:43	*status	Server added
+2014-08-14 23:00:43	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:01:13	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:01:43	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:02:14	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:02:44	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:03:14	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:03:44	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:04:14	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:04:23	dartagan_	listserver
+2014-08-14 23:04:23	*status	Unknown command [listserver] try 'Help'
+2014-08-14 23:04:26	dartagan_	listservers
+2014-08-14 23:04:26	*status	+---------------+------+-----+------+
+2014-08-14 23:04:26	*status	| Host          | Port | SSL | Pass |
+2014-08-14 23:04:26	*status	+---------------+------+-----+------+
+2014-08-14 23:04:26	*status	| 192.168.1.10* | 6667 |     |      |
+2014-08-14 23:04:26	*status	+---------------+------+-----+------+
+2014-08-14 23:04:45	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:05:15	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:05:45	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:06:15	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:06:46	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:07:16	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:07:46	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:07:59	dartagan_	delserver 192.168.1.10
+2014-08-14 23:07:59	*status	Server removed
+2014-08-14 23:08:02	dartagan_	listservers
+2014-08-14 23:08:02	*status	You don't have any servers added.
+2014-08-14 23:16:11	dartagan_	addserver 192.168.1.10/6669
+2014-08-14 23:16:11	*status	Server added
+2014-08-14 23:16:11	*status	Disconnected from IRC (Can't resolve server hostname). Reconnecting...
+2014-08-14 23:16:23	dartagan_	listserver
+2014-08-14 23:16:23	*status	Unknown command [listserver] try 'Help'
+2014-08-14 23:16:24	dartagan_	listservers
+2014-08-14 23:16:25	*status	+--------------------+------+-----+------+
+2014-08-14 23:16:25	*status	| Host               | Port | SSL | Pass |
+2014-08-14 23:16:25	*status	+--------------------+------+-----+------+
+2014-08-14 23:16:25	*status	| 192.168.1.10/6669* | 6667 |     |      |
+2014-08-14 23:16:25	*status	+--------------------+------+-----+------+
+2014-08-14 23:16:32	dartagan_	removeserver 19
+2014-08-14 23:16:32	*status	Unknown command [removeserver] try 'Help'
+2014-08-14 23:16:39	dartagan_	delserver 192
+2014-08-14 23:16:39	*status	No such server
+2014-08-14 23:16:41	*status	Disconnected from IRC (Can't resolve server hostname). Reconnecting...
+2014-08-14 23:16:46	dartagan_	delserver 192.168.1.10/6669
+2014-08-14 23:16:46	*status	Server removed
+2014-08-14 23:16:50	dartagan_	addserver 192.168.1.10:6669
+2014-08-14 23:16:50	*status	Server added
+2014-08-14 23:16:50	*status	Disconnected from IRC (Can't resolve server hostname). Reconnecting...
+2014-08-14 23:16:54	dartagan_	listservers
+2014-08-14 23:16:54	*status	+--------------------+------+-----+------+
+2014-08-14 23:16:54	*status	| Host               | Port | SSL | Pass |
+2014-08-14 23:16:54	*status	+--------------------+------+-----+------+
+2014-08-14 23:16:54	*status	| 192.168.1.10:6669* | 6667 |     |      |
+2014-08-14 23:16:54	*status	+--------------------+------+-----+------+
+2014-08-14 23:17:21	*status	Disconnected from IRC (Can't resolve server hostname). Reconnecting...
+2014-08-14 23:17:39	dartagan_	delserver 192.168.1.10:6669
+2014-08-14 23:17:39	*status	Server removed
+2014-08-14 23:17:47	dartagan_	addserver 192.168.1.10 6669
+2014-08-14 23:17:47	*status	Server added
+2014-08-14 23:17:47	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:18:17	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:18:47	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:19:17	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:19:48	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:20:18	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:20:48	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:21:18	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:21:49	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:22:19	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:22:49	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:22:57	dartagan_	fg
+2014-08-14 23:22:57	*status	Unknown command [fg] try 'Help'
+2014-08-14 23:23:01	dartagan_	listservers
+2014-08-14 23:23:01	*status	+---------------+------+-----+------+
+2014-08-14 23:23:01	*status	| Host          | Port | SSL | Pass |
+2014-08-14 23:23:01	*status	+---------------+------+-----+------+
+2014-08-14 23:23:01	*status	| 192.168.1.10* | 6669 |     |      |
+2014-08-14 23:23:01	*status	+---------------+------+-----+------+
+2014-08-14 23:23:08	dartagan_	addserver 192.168.1.10 6667
+2014-08-14 23:23:08	*status	Server added
+2014-08-14 23:23:14	dartagan_	listservers
+2014-08-14 23:23:14	*status	+---------------+------+-----+------+
+2014-08-14 23:23:14	*status	| Host          | Port | SSL | Pass |
+2014-08-14 23:23:14	*status	+---------------+------+-----+------+
+2014-08-14 23:23:14	*status	| 192.168.1.10* | 6669 |     |      |
+2014-08-14 23:23:14	*status	| 192.168.1.10  | 6667 |     |      |
+2014-08-14 23:23:14	*status	+---------------+------+-----+------+
+2014-08-14 23:23:19	*status	Connected!
+2014-08-14 23:24:40	*status	Error from Server [Closing link: BitlBee server shutting down]
+2014-08-14 23:24:40	*status	Disconnected from IRC. Reconnecting...
+2014-08-14 23:24:40	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:25:10	*status	Connected!
+2014-08-14 23:27:09	*status	Error from Server [Closing link: BitlBee server shutting down]
+2014-08-14 23:27:09	*status	Disconnected from IRC. Reconnecting...
+2014-08-14 23:27:09	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:27:40	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:28:10	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:28:40	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:29:10	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:29:40	*status	Connected!
+2014-08-14 23:30:01	dartagan	listservers
+2014-08-14 23:30:01	*status	+---------------+------+-----+------+
+2014-08-14 23:30:01	*status	| Host          | Port | SSL | Pass |
+2014-08-14 23:30:01	*status	+---------------+------+-----+------+
+2014-08-14 23:30:01	*status	| 192.168.1.10  | 6669 |     |      |
+2014-08-14 23:30:01	*status	| 192.168.1.10* | 6667 |     |      |
+2014-08-14 23:30:01	*status	+---------------+------+-----+------+
+2014-08-14 23:33:40	*status	Error from Server [Closing link: BitlBee server shutting down]
+2014-08-14 23:33:40	*status	Disconnected from IRC. Reconnecting...
+2014-08-14 23:33:40	*status	Disconnected from IRC (Connection reset by peer). Reconnecting...
+2014-08-14 23:33:40	*status	Disconnected from IRC. Reconnecting...
+2014-08-14 23:34:10	*status	Connection Refused.  Reconnecting...
+2014-08-14 23:34:11	dartagan	delserver 192.168.1.10 6667
+2014-08-14 23:34:11	*status	Server removed
+2014-08-14 23:34:15	dartagan	listservers
+2014-08-14 23:34:15	*status	+---------------+------+-----+------+
+2014-08-14 23:34:15	*status	| Host          | Port | SSL | Pass |
+2014-08-14 23:34:15	*status	+---------------+------+-----+------+
+2014-08-14 23:34:15	*status	| 192.168.1.10* | 6669 |     |      |
+2014-08-14 23:34:15	*status	+---------------+------+-----+------+
+2014-08-14 23:34:39	dartagan	help
+2014-08-14 23:34:39	*status	In the following list all occurrences of <#chan> support wildcards (* and ?)
+2014-08-14 23:34:39	*status	(Except ListNicks)
+2014-08-14 23:34:39	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 23:34:39	*status	| Command                | Arguments                             | Description                                                                      |
+2014-08-14 23:34:39	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 23:34:39	*status	| Version                |                                       | Print which version of ZNC this is                                               |
+2014-08-14 23:34:39	*status	| ListMods               |                                       | List all loaded modules                                                          |
+2014-08-14 23:34:39	*status	| ListAvailMods          |                                       | List all available modules                                                       |
+2014-08-14 23:34:39	*status	| ListNicks              | <#chan>                               | List all nicks on a channel                                                      |
+2014-08-14 23:34:39	*status	| ListServers            |                                       | List all servers of current IRC network                                          |
+2014-08-14 23:34:39	*status	| AddNetwork             | <name>                                | Add a network to your user                                                       |
+2014-08-14 23:34:39	*status	| DelNetwork             | <name>                                | Delete a network from your user                                                  |
+2014-08-14 23:34:39	*status	| ListNetworks           |                                       | List all networks                                                                |
+2014-08-14 23:34:39	*status	| MoveNetwork            | old-user old-net new-user [new-net]   | Move an IRC network from one user to another                                     |
+2014-08-14 23:34:39	*status	| JumpNetwork            | <network>                             | Jump to another network                                                          |
+2014-08-14 23:34:39	*status	| AddServer              | <host> [[+]port] [pass]               | Add a server to the list of alternate/backup servers of current IRC network.     |
+2014-08-14 23:34:39	*status	| DelServer              | <host> [port] [pass]                  | Remove a server from the list of alternate/backup servers of current IRC network |
+2014-08-14 23:34:39	*status	| Enablechan             | <#chan>                               | Enable the channel                                                               |
+2014-08-14 23:34:39	*status	| Detach                 | <#chan>                               | Detach from the channel                                                          |
+2014-08-14 23:34:39	*status	| Topics                 |                                       | Show topics in all your channels                                                 |
+2014-08-14 23:34:39	*status	| PlayBuffer             | <#chan>                               | Play back the buffer for a given channel                                         |
+2014-08-14 23:34:39	*status	| ClearBuffer            | <#chan>                               | Clear the buffer for a given channel                                             |
+2014-08-14 23:34:39	*status	| ClearAllChannelBuffers |                                       | Clear the channel buffers                                                        |
+2014-08-14 23:34:39	*status	| SetBuffer              | <#chan> [linecount]                   | Set the buffer count for a channel                                               |
+2014-08-14 23:34:39	*status	| AddBindHost            | <host (IP preferred)>                 | Adds a bind host for normal users to use                                         |
+2014-08-14 23:34:39	*status	| DelBindHost            | <host>                                | Removes a bind host from the list                                                |
+2014-08-14 23:34:39	*status	| ListBindHosts          |                                       | Shows the configured list of bind hosts                                          |
+2014-08-14 23:34:39	*status	| SetBindHost            | <host (IP preferred)>                 | Set the bind host for this connection                                            |
+2014-08-14 23:34:39	*status	| SetUserBindHost        | <host (IP preferred)>                 | Set the default bind host for this user                                          |
+2014-08-14 23:34:39	*status	| ClearBindHost          |                                       | Clear the bind host for this connection                                          |
+2014-08-14 23:34:39	*status	| ClearUserBindHost      |                                       | Clear the default bind host for this user                                        |
+2014-08-14 23:34:39	*status	| ShowBindHost           |                                       | Show currently selected bind host                                                |
+2014-08-14 23:34:39	*status	| Jump [server]          |                                       | Jump to the next or the specified server                                         |
+2014-08-14 23:34:39	*status	| Disconnect             | [message]                             | Disconnect from IRC                                                              |
+2014-08-14 23:34:39	*status	| Connect                |                                       | Reconnect to IRC                                                                 |
+2014-08-14 23:34:39	*status	| Uptime                 |                                       | Show for how long ZNC has been running                                           |
+2014-08-14 23:34:39	*status	| LoadMod                | [--type=global|user|network] <module> | Load a module                                                                    |
+2014-08-14 23:34:39	*status	| UnloadMod              | [--type=global|user|network] <module> | Unload a module                                                                  |
+2014-08-14 23:34:39	*status	| ReloadMod              | [--type=global|user|network] <module> | Reload a module                                                                  |
+2014-08-14 23:34:39	*status	| UpdateMod              | <module>                              | Reload a module everywhere                                                       |
+2014-08-14 23:34:39	*status	| ShowMOTD               |                                       | Show ZNC's message of the day                                                    |
+2014-08-14 23:34:39	*status	| SetMOTD                | <Message>                             | Set ZNC's message of the day                                                     |
+2014-08-14 23:34:39	*status	| AddMOTD                | <Message>                             | Append <Message> to ZNC's MOTD                                                   |
+2014-08-14 23:34:39	*status	| ClearMOTD              |                                       | Clear ZNC's MOTD                                                                 |
+2014-08-14 23:34:39	*status	| ListPorts              |                                       | Show all active listeners                                                        |
+2014-08-14 23:34:39	*status	| AddPort                | <arguments>                           | Add another port for ZNC to listen on                                            |
+2014-08-14 23:34:39	*status	| DelPort                | <arguments>                           | Remove a port from ZNC                                                           |
+2014-08-14 23:34:39	*status	| Rehash                 |                                       | Reload znc.conf from disk                                                        |
+2014-08-14 23:34:39	*status	| SaveConfig             |                                       | Save the current settings to disk                                                |
+2014-08-14 23:34:39	*status	| ListUsers              |                                       | List all ZNC users and their connection status                                   |
+2014-08-14 23:34:39	*status	| ListAllUserNetworks    |                                       | List all ZNC users and their networks                                            |
+2014-08-14 23:34:39	*status	| ListChans              | [User <network>]                      | List all channels                                                                |
+2014-08-14 23:34:39	*status	| ListClients            | [User]                                | List all connected clients                                                       |
+2014-08-14 23:34:39	*status	| Traffic                |                                       | Show basic traffic stats for all ZNC users                                       |
+2014-08-14 23:34:39	*status	| Broadcast              | [message]                             | Broadcast a message to all ZNC users                                             |
+2014-08-14 23:34:39	*status	| Shutdown               | [message]                             | Shut down ZNC completely                                                         |
+2014-08-14 23:34:39	*status	| Restart                | [message]                             | Restart ZNC                                                                      |
+2014-08-14 23:34:39	*status	+------------------------+---------------------------------------+----------------------------------------------------------------------------------+
+2014-08-14 23:34:40	*status	Connected!
+2014-08-15 14:56:31	*status	Unknown command [hello] try 'Help'
+2014-08-15 14:56:51	dartagan_	addnetwork test
+2014-08-15 14:56:51	*status	Network added. Use /znc JumpNetwork test, or connect to ZNC with username dartagan/test (instead of just dartagan) to connect to it.
+2014-08-15 14:57:25	dartagan_	delnetwork test
+2014-08-15 14:57:25	*status	Network deleted
+2014-08-15 14:57:33	dartagan_	listservers
+2014-08-15 14:57:33	*status	+--------------------+------+-----+------+
+2014-08-15 14:57:33	*status	| Host               | Port | SSL | Pass |
+2014-08-15 14:57:33	*status	+--------------------+------+-----+------+
+2014-08-15 14:57:33	*status	| chat.freenode.org* | 6667 |     |      |
+2014-08-15 14:57:33	*status	+--------------------+------+-----+------+

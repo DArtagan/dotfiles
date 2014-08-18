@@ -1,0 +1,589 @@
+2014-08-14 13:01:26	-->	dartagan (dartagan@localhost) has joined &bitlbee
+2014-08-14 13:01:26	ℹ 	Mode &bitlbee [+Ct] by localhost
+2014-08-14 13:01:26	ℹ 	Channel &bitlbee: 2 nicks (2 ops, 0 halfops, 0 voices, 0 normals)
+2014-08-14 13:01:26	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 13:01:26	ℹ 	Topic set by root (root@localhost) on Thu, 14 Aug 2014 13:01:36
+2014-08-14 13:01:26	@root	Welcome to the BitlBee gateway!
+2014-08-14 13:01:26	@root	 
+2014-08-14 13:01:26	@root	If you've never used BitlBee before, please do read the help information using the help command. Lots of FAQs are answered there.
+2014-08-14 13:01:26	@root	If you already have an account on this server, just use the identify command to identify yourself.
+2014-08-14 13:01:32	@dartagan	register
+2014-08-14 13:01:32	@root	About to register, use /OPER to enter the password
+2014-08-14 13:01:52	@dartagan	help
+2014-08-14 13:01:52	@root	These are the available help subjects:
+2014-08-14 13:01:52	@root	 
+2014-08-14 13:01:52	@root	 quickstart - A short introduction into BitlBee
+2014-08-14 13:01:52	@root	 commands - All available commands and settings
+2014-08-14 13:01:52	@root	 channels - About creating and customizing channels
+2014-08-14 13:01:52	@root	 away - About setting away states
+2014-08-14 13:01:52	@root	 groupchats - How to work with groupchats on BitlBee
+2014-08-14 13:01:52	@root	 nick_changes - Changing your nickname without losing any settings
+2014-08-14 13:01:52	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
+2014-08-14 13:01:52	@root	 
+2014-08-14 13:01:52	@root	You can read more about them with help <subject>
+2014-08-14 13:01:52	@root	 
+2014-08-14 13:01:52	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
+2014-08-14 13:01:52	@root	 
+2014-08-14 13:01:52	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
+2014-08-14 13:01:56	@dartagan	quickstart
+2014-08-14 13:01:57	@root	Unknown command: quickstart. Please use help commands to get a list of available commands.
+2014-08-14 13:02:02	@dartagan	help quickstart
+2014-08-14 13:02:02	@root	Welcome to BitlBee, your IRC gateway to ICQ, MSN, AOL, Jabber, Yahoo! and Twitter.
+2014-08-14 13:02:02	@root	 
+2014-08-14 13:02:02	@root	The center of BitlBee is the control channel, &bitlbee. Two users will always be there, you (where "you" is the nickname you are using) and the system user, root.
+2014-08-14 13:02:02	@root	 
+2014-08-14 13:02:02	@root	You need register so that all your IM settings (passwords, contacts, etc) can be saved on the BitlBee server. It's important that you pick a good password so no one else can access your account. Register with this password using the register command: register <password> (without the brackets!).
+2014-08-14 13:02:02	@root	 
+2014-08-14 13:02:02	@root	Be sure to remember your password. The next time you connect to the BitlBee server you will need to identify <password> so that you will be recognised and logged in to all the IM services automatically.
+2014-08-14 13:02:02	@root	 
+2014-08-14 13:02:02	@root	When finished, type help quickstart2 to continue.
+2014-08-14 13:02:48	@dartagan	register Ratatoskr
+2014-08-14 13:02:48	@root	Account successfully created
+2014-08-14 13:04:16	@dartagan	account add jabber william@weiskopf.me "A^@nsi, god of stories" talk.google.com:5223:ssl
+2014-08-14 13:04:16	@root	Warning: Passing a servername/other flags to `account add' is now deprecated. Use `account set' instead.
+2014-08-14 13:04:16	@root	Account successfully added with tag jabber
+2014-08-14 13:04:37	@dartagan	help
+2014-08-14 13:04:37	@root	These are the available help subjects:
+2014-08-14 13:04:37	@root	 
+2014-08-14 13:04:37	@root	 quickstart - A short introduction into BitlBee
+2014-08-14 13:04:37	@root	 commands - All available commands and settings
+2014-08-14 13:04:37	@root	 channels - About creating and customizing channels
+2014-08-14 13:04:37	@root	 away - About setting away states
+2014-08-14 13:04:37	@root	 groupchats - How to work with groupchats on BitlBee
+2014-08-14 13:04:37	@root	 nick_changes - Changing your nickname without losing any settings
+2014-08-14 13:04:37	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
+2014-08-14 13:04:37	@root	 
+2014-08-14 13:04:37	@root	You can read more about them with help <subject>
+2014-08-14 13:04:37	@root	 
+2014-08-14 13:04:37	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
+2014-08-14 13:04:37	@root	 
+2014-08-14 13:04:37	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
+2014-08-14 13:04:41	@dartagan	help commands
+2014-08-14 13:04:41	@root	These are all root commands. See help <command name> for more details on each command.
+2014-08-14 13:04:41	@root	 
+2014-08-14 13:04:41	@root	 * account - IM-account list maintenance
+2014-08-14 13:04:41	@root	 * channel - Channel list maintenance
+2014-08-14 13:04:41	@root	 * chat - Chatroom list maintenance
+2014-08-14 13:04:41	@root	 * add - Add a buddy to your contact list
+2014-08-14 13:04:41	@root	 * info - Request user information
+2014-08-14 13:04:41	@root	 * remove - Remove a buddy from your contact list
+2014-08-14 13:04:41	@root	 * block - Block someone
+2014-08-14 13:04:41	@root	 * allow - Unblock someone
+2014-08-14 13:04:41	@root	 * otr - Off-the-Record encryption control
+2014-08-14 13:04:41	@root	 * set - Miscellaneous settings
+2014-08-14 13:04:41	@root	 * help - BitlBee help system
+2014-08-14 13:04:41	@root	 * save - Save your account data
+2014-08-14 13:04:41	@root	 * rename - Rename (renick) a buddy
+2014-08-14 13:04:41	@root	 * yes - Accept a request
+2014-08-14 13:04:41	@root	 * no - Deny a request
+2014-08-14 13:04:41	@root	 * qlist - List all the unanswered questions root asked
+2014-08-14 13:04:41	@root	 * register - Register yourself
+2014-08-14 13:04:41	@root	 * identify - Identify yourself with your password
+2014-08-14 13:04:41	@root	 * drop - Drop your account
+2014-08-14 13:04:41	@root	 * blist - List all the buddies in the current channel
+2014-08-14 13:04:41	@root	 * group - Contact group management
+2014-08-14 13:04:41	@root	 * transfer - Monitor, cancel, or reject file transfers
+2014-08-14 13:04:41	@root	 
+2014-08-14 13:04:41	@root	Most commands can be shortened. For example instead of account list, try ac l.
+2014-08-14 13:04:49	@dartagan	account
+2014-08-14 13:04:49	@root	Not enough parameters given (need 1).
+2014-08-14 13:04:52	@dartagan	channel
+2014-08-14 13:04:52	@root	Not enough parameters given (need 1).
+2014-08-14 13:04:53	@dartagan	chat
+2014-08-14 13:04:54	@root	Not enough parameters given (need 1).
+2014-08-14 13:05:03	@dartagan	identify
+2014-08-14 13:05:03	@root	You're already logged in.
+2014-08-14 13:05:08	@dartagan	save
+2014-08-14 13:05:08	@root	Configuration saved
+2014-08-14 13:05:18	@dartagan	help quickstart
+2014-08-14 13:05:18	@root	Welcome to BitlBee, your IRC gateway to ICQ, MSN, AOL, Jabber, Yahoo! and Twitter.
+2014-08-14 13:05:18	@root	 
+2014-08-14 13:05:18	@root	The center of BitlBee is the control channel, &bitlbee. Two users will always be there, you (where "you" is the nickname you are using) and the system user, root.
+2014-08-14 13:05:18	@root	 
+2014-08-14 13:05:18	@root	You need register so that all your IM settings (passwords, contacts, etc) can be saved on the BitlBee server. It's important that you pick a good password so no one else can access your account. Register with this password using the register command: register <password> (without the brackets!).
+2014-08-14 13:05:18	@root	 
+2014-08-14 13:05:18	@root	Be sure to remember your password. The next time you connect to the BitlBee server you will need to identify <password> so that you will be recognised and logged in to all the IM services automatically.
+2014-08-14 13:05:18	@root	 
+2014-08-14 13:05:18	@root	When finished, type help quickstart2 to continue.
+2014-08-14 13:05:22	@dartagan	help quickstart2
+2014-08-14 13:05:22	@root	Step Two: Add and Connect To your IM Account(s).
+2014-08-14 13:05:22	@root	 
+2014-08-14 13:05:22	@root	To add an account to the account list you will need to use the account add command: account add <protocol> <username> <password> [<server>].
+2014-08-14 13:05:22	@root	 
+2014-08-14 13:05:22	@root	For instance, suppose you have a Jabber account at jabber.org with handle bitlbee@jabber.org with password QuickStart, you would:
+2014-08-14 13:05:22	@root	 
+2014-08-14 13:05:22	@root	<you> account add jabber bitlbee@jabber.org QuickStart
+2014-08-14 13:05:22	@root	<root> Account successfully added
+2014-08-14 13:05:22	@root	 
+2014-08-14 13:05:22	@root	Other available IM protocols are msn, oscar, yahoo and twitter. OSCAR is the protocol used by ICQ and AOL. For more information about the account add command, see help account add.
+2014-08-14 13:05:22	@root	 
+2014-08-14 13:05:22	@root	When you are finished adding your account(s) use the account on command to enable all your accounts, type help quickstart3 to continue.
+2014-08-14 13:05:44	@dartagan	account on
+2014-08-14 13:05:44	@root	Trying to get all accounts connected...
+2014-08-14 13:05:44	@root	jabber - Logging in: Connecting
+2014-08-14 13:05:44	@root	jabber - Login error: Could not connect to server
+2014-08-14 13:05:44	@root	jabber - Logging in: Signing off..
+2014-08-14 13:05:44	@root	jabber - Logging in: Reconnecting in 5 seconds..
+2014-08-14 13:05:49	@root	jabber - Logging in: Connecting
+2014-08-14 13:05:49	@root	jabber - Login error: Could not connect to server
+2014-08-14 13:05:49	@root	jabber - Logging in: Signing off..
+2014-08-14 13:05:49	@root	jabber - Logging in: Reconnecting in 15 seconds..
+2014-08-14 13:05:57	@dartagan	account off
+2014-08-14 13:05:57	@root	Deactivating all active (re)connections...
+2014-08-14 13:06:04	@dartagan	account edit
+2014-08-14 13:06:04	@root	Not enough parameters given (need 2).
+2014-08-14 13:06:06	@dartagan	account edit jabber
+2014-08-14 13:06:06	@root	Could not find account `edit'.
+2014-08-14 13:06:13	@dartagan	help account
+2014-08-14 13:06:13	@root	Syntax: account [<account id>] <action> [<arguments>]
+2014-08-14 13:06:13	@root	 
+2014-08-14 13:06:13	@root	Available actions: add, del, list, on, off and set. See help account <action> for more information.
+2014-08-14 13:06:20	@dartagan	help account list
+2014-08-14 13:06:20	@root	Syntax: account list
+2014-08-14 13:06:20	@root	 
+2014-08-14 13:06:20	@root	This command gives you a list of all the accounts known by BitlBee.
+2014-08-14 13:06:25	@dartagan	\account list
+2014-08-14 13:06:25	@root	 0 (jabber): jabber, william@weiskopf.me
+2014-08-14 13:06:25	@root	End of account list
+2014-08-14 13:06:39	@dartagan	account del jabber
+2014-08-14 13:06:39	@root	Could not find account `del'.
+2014-08-14 13:07:05	@dartagan	account set william@weiskopf.me
+2014-08-14 13:07:05	@root	Could not find account `set'.
+2014-08-14 13:07:11	@dartagan	account del william@weiskopf.me
+2014-08-14 13:07:11	@root	Could not find account `del'.
+2014-08-14 13:07:16	@dartagan	account list william@weiskopf.me
+2014-08-14 13:07:16	@root	 0 (jabber): jabber, william@weiskopf.me
+2014-08-14 13:07:16	@root	End of account list
+2014-08-14 13:07:24	@dartagan	account 0
+2014-08-14 13:07:24	@root	Not enough parameters given (need 2).
+2014-08-14 13:07:29	@dartagan	help account 
+2014-08-14 13:07:29	@root	Syntax: account [<account id>] <action> [<arguments>]
+2014-08-14 13:07:29	@root	 
+2014-08-14 13:07:29	@root	Available actions: add, del, list, on, off and set. See help account <action> for more information.
+2014-08-14 13:07:34	@dartagan	help account del 
+2014-08-14 13:07:34	@root	Syntax: account <account id> del
+2014-08-14 13:07:34	@root	 
+2014-08-14 13:07:34	@root	This commands deletes an account from your account list. You should signoff the account before deleting it.
+2014-08-14 13:07:34	@root	 
+2014-08-14 13:07:34	@root	The account ID can be a number/tag (see account list), the protocol name or (part of) the screenname, as long as it matches only one connection.
+2014-08-14 13:07:49	@dartagan	account del 0
+2014-08-14 13:07:49	@root	Could not find account `del'.
+2014-08-14 13:07:54	@dartagan	account 0 del
+2014-08-14 13:07:54	@root	Account deleted
+2014-08-14 13:08:45	@dartagan	account add jabber william@weiskopf.me
+2014-08-14 13:08:45	@root	Account successfully added with tag jabber
+2014-08-14 13:08:45	@root	You can now use the /OPER command to enter the password
+2014-08-14 13:08:45	@root	Alternatively, enable OAuth if the account supports it: account jabber set oauth on
+2014-08-14 13:09:13	@dartagan	acc gtalk set oauth on
+2014-08-14 13:09:13	@root	Could not find account `gtalk'.
+2014-08-14 13:09:19	@dartagan	acc 0 set oauth on
+2014-08-14 13:09:19	@root	oauth = `on'
+2014-08-14 13:09:33	@dartagan	acc 0 on
+2014-08-14 13:09:33	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:11:12	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:11:12	@root	jabber - Login error: OAuth failure (invalid_grant)
+2014-08-14 13:11:12	@root	jabber - Logging in: Signing off..
+2014-08-14 13:11:12	@root	jabber - Logging in: Reconnecting in 5 seconds..
+2014-08-14 13:11:17	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:11:39	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:11:39	@root	jabber - Login error: OAuth failure (invalid_grant)
+2014-08-14 13:11:39	@root	jabber - Logging in: Signing off..
+2014-08-14 13:11:39	@root	jabber - Logging in: Reconnecting in 15 seconds..
+2014-08-14 13:11:54	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:13:29	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:13:30	@root	jabber - Logging in: Connecting
+2014-08-14 13:14:56	@dartagan	accounts on
+2014-08-14 13:14:56	@root	Unknown command: accounts. Please use help commands to get a list of available commands.
+2014-08-14 13:15:01	@dartagan	account 0 on
+2014-08-14 13:15:01	@root	Account already online
+2014-08-14 13:15:12	@dartagan	help commands
+2014-08-14 13:15:12	@root	These are all root commands. See help <command name> for more details on each command.
+2014-08-14 13:15:12	@root	 
+2014-08-14 13:15:12	@root	 * account - IM-account list maintenance
+2014-08-14 13:15:12	@root	 * channel - Channel list maintenance
+2014-08-14 13:15:12	@root	 * chat - Chatroom list maintenance
+2014-08-14 13:15:12	@root	 * add - Add a buddy to your contact list
+2014-08-14 13:15:12	@root	 * info - Request user information
+2014-08-14 13:15:12	@root	 * remove - Remove a buddy from your contact list
+2014-08-14 13:15:12	@root	 * block - Block someone
+2014-08-14 13:15:12	@root	 * allow - Unblock someone
+2014-08-14 13:15:12	@root	 * otr - Off-the-Record encryption control
+2014-08-14 13:15:12	@root	 * set - Miscellaneous settings
+2014-08-14 13:15:12	@root	 * help - BitlBee help system
+2014-08-14 13:15:12	@root	 * save - Save your account data
+2014-08-14 13:15:12	@root	 * rename - Rename (renick) a buddy
+2014-08-14 13:15:12	@root	 * yes - Accept a request
+2014-08-14 13:15:12	@root	 * no - Deny a request
+2014-08-14 13:15:12	@root	 * qlist - List all the unanswered questions root asked
+2014-08-14 13:15:12	@root	 * register - Register yourself
+2014-08-14 13:15:12	@root	 * identify - Identify yourself with your password
+2014-08-14 13:15:12	@root	 * drop - Drop your account
+2014-08-14 13:15:12	@root	 * blist - List all the buddies in the current channel
+2014-08-14 13:15:12	@root	 * group - Contact group management
+2014-08-14 13:15:12	@root	 * transfer - Monitor, cancel, or reject file transfers
+2014-08-14 13:15:12	@root	 
+2014-08-14 13:15:12	@root	Most commands can be shortened. For example instead of account list, try ac l.
+2014-08-14 13:15:27	@dartagan	account 0 off
+2014-08-14 13:15:27	@root	jabber - Logging in: Signing off..
+2014-08-14 13:15:27	@root	jabber - Logging in: If you're having problems logging in, try re-requesting an OAuth token: account jabber set password ""
+2014-08-14 13:15:27	@root	jabber - Login error: Short write() to server
+2014-08-14 13:15:40	@dartagan	account 0 on
+2014-08-14 13:15:40	@root	jabber - Logging in: Connecting
+2014-08-14 13:16:10	@dartagan	account 0 del
+2014-08-14 13:16:10	@root	Account is still logged in, can't delete
+2014-08-14 13:16:14	@dartagan	account 0 off
+2014-08-14 13:16:14	@root	jabber - Logging in: Signing off..
+2014-08-14 13:16:14	@root	jabber - Logging in: If you're having problems logging in, try re-requesting an OAuth token: account jabber set password ""
+2014-08-14 13:16:14	@root	jabber - Login error: Short write() to server
+2014-08-14 13:16:15	@dartagan	account 0 del
+2014-08-14 13:16:16	@root	Account deleted
+2014-08-14 13:16:39	@dartagan	help account add 
+2014-08-14 13:16:39	@root	Syntax: account add <protocol> <username> [<password>]
+2014-08-14 13:16:39	@root	 
+2014-08-14 13:16:39	@root	Adds an account on the given server with the specified protocol, username and password to the account list. Supported protocols right now are: Jabber, MSN, OSCAR (AIM/ICQ), Yahoo and Twitter. For more information about adding an account, see help account add <protocol>.
+2014-08-14 13:16:39	@root	 
+2014-08-14 13:16:39	@root	You can omit the password and enter it separately using the IRC /OPER command. This lets you enter your password without your IRC client echoing it on screen or recording it in logs.
+2014-08-14 13:17:00	@dartagan	account add jabber william@weiskopf.me "A^@nsi, god of stories"
+2014-08-14 13:17:00	@root	Account successfully added with tag jabber
+2014-08-14 13:17:06	@dartagan	account 0 on
+2014-08-14 13:17:07	@root	jabber - Logging in: Connecting
+2014-08-14 13:17:41	@dartagan	help account 
+2014-08-14 13:17:41	@root	Syntax: account [<account id>] <action> [<arguments>]
+2014-08-14 13:17:41	@root	 
+2014-08-14 13:17:41	@root	Available actions: add, del, list, on, off and set. See help account <action> for more information.
+2014-08-14 13:17:47	@dartagan	help account set
+2014-08-14 13:17:47	@root	Syntax: account <account id> set
+2014-08-14 13:17:47	@root	Syntax: account <account id> set <setting>
+2014-08-14 13:17:47	@root	Syntax: account <account id> set <setting> <value>
+2014-08-14 13:17:47	@root	Syntax: account <account id> set -del <setting>
+2014-08-14 13:17:47	@root	 
+2014-08-14 13:17:47	@root	This command can be used to change various settings for IM accounts. For all protocols, this command can be used to change the handle or the password BitlBee uses to log in and if it should be logged in automatically. Some protocols have additional settings. You can see the settings available for a connection by typing account <account id> set.
+2014-08-14 13:17:47	@root	 
+2014-08-14 13:17:47	@root	For more infomation about a setting, see help set <setting>.
+2014-08-14 13:17:47	@root	 
+2014-08-14 13:17:47	@root	The account ID can be a number/tag (see account list), the protocol name or (part of) the screenname, as long as it matches only one connection.
+2014-08-14 13:17:59	@dartagan	help account set server 'talk.google.com'
+2014-08-14 13:17:59	@root	These are the available help subjects:
+2014-08-14 13:17:59	@root	 
+2014-08-14 13:17:59	@root	 quickstart - A short introduction into BitlBee
+2014-08-14 13:17:59	@root	 commands - All available commands and settings
+2014-08-14 13:17:59	@root	 channels - About creating and customizing channels
+2014-08-14 13:17:59	@root	 away - About setting away states
+2014-08-14 13:17:59	@root	 groupchats - How to work with groupchats on BitlBee
+2014-08-14 13:17:59	@root	 nick_changes - Changing your nickname without losing any settings
+2014-08-14 13:17:59	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
+2014-08-14 13:17:59	@root	 
+2014-08-14 13:17:59	@root	You can read more about them with help <subject>
+2014-08-14 13:17:59	@root	 
+2014-08-14 13:17:59	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
+2014-08-14 13:17:59	@root	 
+2014-08-14 13:17:59	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
+2014-08-14 13:18:05	@dartagan	account set server 'talk.google.com'
+2014-08-14 13:18:05	@root	Could not find account `set'.
+2014-08-14 13:18:13	@dartagan	account 0 set server 'talk.google.com'
+2014-08-14 13:18:13	@root	This setting can only be changed when the account is off-line
+2014-08-14 13:18:18	@dartagan	account 0 off
+2014-08-14 13:18:18	@root	jabber - Logging in: Signing off..
+2014-08-14 13:18:18	@root	jabber - Login error: Short write() to server
+2014-08-14 13:18:19	@dartagan	account 0 set server 'talk.google.com'
+2014-08-14 13:18:20	@root	server = `talk.google.com'
+2014-08-14 13:18:33	@dartagan	account 0 set port 5223
+2014-08-14 13:18:33	@root	port = `5223'
+2014-08-14 13:18:36	@dartagan	account 0 on
+2014-08-14 13:18:36	@root	jabber - Logging in: Connecting
+2014-08-14 13:18:36	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:18:36	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:18:36	@root	jabber - Logging in: Signing off..
+2014-08-14 13:18:36	@root	jabber - Logging in: Reconnecting in 5 seconds..
+2014-08-14 13:18:41	@root	jabber - Logging in: Connecting
+2014-08-14 13:18:41	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:18:41	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:18:41	@root	jabber - Logging in: Signing off..
+2014-08-14 13:18:41	@root	jabber - Logging in: Reconnecting in 15 seconds..
+2014-08-14 13:18:45	@dartagan	account 0 off
+2014-08-14 13:18:45	@root	Reconnect cancelled
+2014-08-14 13:19:33	@dartagan	account 0 
+2014-08-14 13:19:33	@root	Not enough parameters given (need 2).
+2014-08-14 13:19:39	@dartagan	help account
+2014-08-14 13:19:39	@root	Syntax: account [<account id>] <action> [<arguments>]
+2014-08-14 13:19:39	@root	 
+2014-08-14 13:19:39	@root	Available actions: add, del, list, on, off and set. See help account <action> for more information.
+2014-08-14 13:19:44	@dartagan	account 0 list
+2014-08-14 13:19:44	@root	Unknown command: account [...] list. Please use help commands to get a list of available commands.
+2014-08-14 13:19:51	@dartagan	account 0
+2014-08-14 13:19:51	@root	Not enough parameters given (need 2).
+2014-08-14 13:20:03	@dartagan	account 0 set oauth on
+2014-08-14 13:20:03	@root	oauth = `on'
+2014-08-14 13:20:12	@dartagan	acc 0 on
+2014-08-14 13:20:12	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:28:14	-->	dartagan (dartagan@localhost) has joined &bitlbee
+2014-08-14 13:28:14	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 13:28:14	ℹ 	Topic set by root (root@localhost) on Thu, 14 Aug 2014 13:01:36
+2014-08-14 13:28:14	ℹ 	Channel &bitlbee: 2 nicks (2 ops, 0 halfops, 0 voices, 0 normals)
+2014-08-14 13:28:45	@dartagan	account 0 on
+2014-08-14 13:28:45	@root	Account already online
+2014-08-14 13:29:04	@dartagan	account 0 off
+2014-08-14 13:29:04	@root	jabber - Logging in: Signing off..
+2014-08-14 13:29:04	@root	jabber - Logging in: If you're having problems logging in, try re-requesting an OAuth token: account jabber set password ""
+2014-08-14 13:29:08	@dartagan	account 0 on
+2014-08-14 13:29:08	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:32:49	-->	dartagan (dartagan@localhost) has joined &bitlbee
+2014-08-14 13:32:49	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 13:32:49	ℹ 	Topic set by root (root@localhost) on Thu, 14 Aug 2014 13:01:36
+2014-08-14 13:32:49	ℹ 	Channel &bitlbee: 2 nicks (2 ops, 0 halfops, 0 voices, 0 normals)
+2014-08-14 13:33:19	@dartagan	account 0 
+2014-08-14 13:33:19	@root	Not enough parameters given (need 2).
+2014-08-14 13:33:23	@dartagan	account 0 on
+2014-08-14 13:33:23	@root	Account already online
+2014-08-14 13:33:26	@dartagan	account 0 off
+2014-08-14 13:33:26	@root	jabber - Logging in: Signing off..
+2014-08-14 13:33:26	@root	jabber - Logging in: If you're having problems logging in, try re-requesting an OAuth token: account jabber set password ""
+2014-08-14 13:33:29	@dartagan	account 0 on
+2014-08-14 13:33:29	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:36:03	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:36:03	@root	jabber - Logging in: Connecting
+2014-08-14 13:36:03	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:36:03	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:36:03	@root	jabber - Logging in: Signing off..
+2014-08-14 13:36:03	@root	jabber - Logging in: Reconnecting in 45 seconds..
+2014-08-14 13:36:48	@root	jabber - Logging in: Connecting
+2014-08-14 13:36:49	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:36:49	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:36:49	@root	jabber - Logging in: Signing off..
+2014-08-14 13:36:49	@root	jabber - Logging in: Reconnecting in 135 seconds..
+2014-08-14 13:36:50	@dartagan	account 0 off
+2014-08-14 13:36:50	@root	Reconnect cancelled
+2014-08-14 13:36:52	@dartagan	account 0 on
+2014-08-14 13:36:52	@root	jabber - Logging in: Connecting
+2014-08-14 13:36:52	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:36:52	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:36:52	@root	jabber - Logging in: Signing off..
+2014-08-14 13:36:52	@root	jabber - Logging in: Reconnecting in 405 seconds..
+2014-08-14 13:36:58	@dartagan	account 0 off
+2014-08-14 13:36:58	@root	Reconnect cancelled
+2014-08-14 13:37:01	@dartagan	account 0 on
+2014-08-14 13:37:02	@root	jabber - Logging in: Connecting
+2014-08-14 13:37:02	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:37:02	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:37:02	@root	jabber - Logging in: Signing off..
+2014-08-14 13:37:02	@root	jabber - Logging in: Reconnecting in 900 seconds..
+2014-08-14 13:37:13	@dartagan	account 0 set oauth on
+2014-08-14 13:37:13	@root	oauth = `on'
+2014-08-14 13:37:16	@dartagan	account 0 off
+2014-08-14 13:37:16	@root	Reconnect cancelled
+2014-08-14 13:37:18	@dartagan	account 0 on
+2014-08-14 13:37:20	@root	jabber - Logging in: Connecting
+2014-08-14 13:37:20	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:37:20	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:37:20	@root	jabber - Logging in: Signing off..
+2014-08-14 13:37:20	@root	jabber - Logging in: Reconnecting in 900 seconds..
+2014-08-14 13:38:08	@dartagan	account 0 off
+2014-08-14 13:38:08	@root	Reconnect cancelled
+2014-08-14 13:38:10	@dartagan	account 0 del
+2014-08-14 13:38:10	@root	Account deleted
+2014-08-14 13:38:19	@dartagan	account add jabber william@weiskopf.me
+2014-08-14 13:38:19	@root	Account successfully added with tag jabber
+2014-08-14 13:38:19	@root	You can now use the /OPER command to enter the password
+2014-08-14 13:38:19	@root	Alternatively, enable OAuth if the account supports it: account jabber set oauth on
+2014-08-14 13:38:27	@dartagan	account jabber set oauth on
+2014-08-14 13:38:27	@root	oauth = `on'
+2014-08-14 13:38:31	@dartagan	account 0 on
+2014-08-14 13:38:31	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:39:31	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:39:31	@root	jabber - Login error: OAuth failure (invalid_grant)
+2014-08-14 13:39:31	@root	jabber - Logging in: Signing off..
+2014-08-14 13:39:31	@root	jabber - Logging in: Reconnecting in 5 seconds..
+2014-08-14 13:39:36	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:39:57	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:39:57	@root	jabber - Login error: OAuth failure (invalid_grant)
+2014-08-14 13:39:57	@root	jabber - Logging in: Signing off..
+2014-08-14 13:39:57	@root	jabber - Logging in: Reconnecting in 15 seconds..
+2014-08-14 13:40:12	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:40:37	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:40:37	@root	jabber - Login error: OAuth failure (invalid_grant)
+2014-08-14 13:40:37	@root	jabber - Logging in: Signing off..
+2014-08-14 13:40:37	@root	jabber - Logging in: Reconnecting in 45 seconds..
+2014-08-14 13:41:22	@root	jabber - Logging in: Starting OAuth authentication
+2014-08-14 13:41:23	@root	jabber - Logging in: Requesting OAuth access token
+2014-08-14 13:41:23	@root	jabber - Login error: OAuth failure (invalid_grant)
+2014-08-14 13:41:23	@root	jabber - Logging in: Signing off..
+2014-08-14 13:41:23	@root	jabber - Logging in: Reconnecting in 135 seconds..
+2014-08-14 13:41:54	@dartagan	account 0 off
+2014-08-14 13:41:54	@root	Reconnect cancelled
+2014-08-14 13:42:00	@dartagan	account 0 oauth set off
+2014-08-14 13:42:00	@root	Unknown command: account [...] oauth. Please use help commands to get a list of available commands.
+2014-08-14 13:42:17	@dartagan	account o set oauth off
+2014-08-14 13:42:17	@root	oauth = `off'
+2014-08-14 13:42:29	@dartagan	account 0 on
+2014-08-14 13:42:30	@root	jabber - Logging in: Connecting
+2014-08-14 13:43:06	@dartagan	account 0 off
+2014-08-14 13:43:06	@root	jabber - Logging in: Signing off..
+2014-08-14 13:43:06	@root	jabber - Login error: Short write() to server
+2014-08-14 13:43:12	@dartagan	account 0 del
+2014-08-14 13:43:12	@root	Account deleted
+2014-08-14 13:44:29	@dartagan	account add jabber william@weiskopf.me "A^@nsi, god of stories"
+2014-08-14 13:44:29	@root	Account successfully added with tag jabber
+2014-08-14 13:44:42	@dartagan	account 0 set server talk.google.com
+2014-08-14 13:44:42	@root	server = `talk.google.com'
+2014-08-14 13:44:54	@dartagan	account 0 set port 5223
+2014-08-14 13:44:54	@root	port = `5223'
+2014-08-14 13:44:57	@dartagan	account 0 on
+2014-08-14 13:44:57	@root	jabber - Logging in: Connecting
+2014-08-14 13:44:57	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:44:57	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:44:57	@root	jabber - Logging in: Signing off..
+2014-08-14 13:44:57	@root	jabber - Logging in: Reconnecting in 5 seconds..
+2014-08-14 13:45:03	@root	jabber - Logging in: Connecting
+2014-08-14 13:45:03	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:45:03	@root	jabber - Login error: Error while reading from server
+2014-08-14 13:45:03	@root	jabber - Logging in: Signing off..
+2014-08-14 13:45:03	@root	jabber - Logging in: Reconnecting in 15 seconds..
+2014-08-14 13:45:07	@dartagan	account 0 off
+2014-08-14 13:45:07	@root	Reconnect cancelled
+2014-08-14 13:45:39	@dartagan	account 0 del
+2014-08-14 13:45:39	@root	Account deleted
+2014-08-14 13:45:42	@dartagan	account add jabber william@weiskopf.me "A^@nsi, god of stories"
+2014-08-14 13:45:42	@root	Account successfully added with tag jabber
+2014-08-14 13:45:46	@dartagan	account 0 set server talk.google.com
+2014-08-14 13:45:46	@root	server = `talk.google.com'
+2014-08-14 13:45:49	@dartagan	account 0 on
+2014-08-14 13:45:49	@root	jabber - Logging in: Connecting
+2014-08-14 13:45:49	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:45:49	@root	jabber - Logging in: Converting stream to TLS
+2014-08-14 13:45:49	@root	jabber - Logging in: Connected to server, logging in
+2014-08-14 13:45:49	@root	jabber - Logging in: Authentication finished
+2014-08-14 13:45:50	@root	jabber - Logging in: Server changed session resource string to `BitlBee085E8D7E'
+2014-08-14 13:45:50	@root	jabber - Logging in: Authenticated, requesting buddy list
+2014-08-14 13:45:50	@root	jabber - Logging in: Logged in
+2014-08-14 13:45:50	-->	philahoffmann (phil.a.hoffmann@gmail.com) has joined &bitlbee
+2014-08-14 13:45:50	-->	_3up1dbbevqhik3sat7t9b4 (3up1dbbevqhik3sat7t9b430wr@public.talk.google.com) has joined &bitlbee
+2014-08-14 13:50:39	@dartagan	blist
+2014-08-14 13:50:39	@root	Nick              Handle/Account                            Status
+2014-08-14 13:50:39	@root	_3up1dbbevqhik3s  3up1dbbevqhik3sat7t9b430wr@public.talk.g  Away
+2014-08-14 13:50:39	@root	philahoffmann     phil.a.hoffmann@gmail.com jabber          Away
+2014-08-14 13:50:39	@root	2 buddies (0 available, 2 away, 0 offline)
+2014-08-14 14:05:19	@dartagan	help commands
+2014-08-14 14:05:19	@root	These are all root commands. See help <command name> for more details on each command.
+2014-08-14 14:05:19	@root	 
+2014-08-14 14:05:19	@root	 * account - IM-account list maintenance
+2014-08-14 14:05:19	@root	 * channel - Channel list maintenance
+2014-08-14 14:05:19	@root	 * chat - Chatroom list maintenance
+2014-08-14 14:05:19	@root	 * add - Add a buddy to your contact list
+2014-08-14 14:05:19	@root	 * info - Request user information
+2014-08-14 14:05:19	@root	 * remove - Remove a buddy from your contact list
+2014-08-14 14:05:19	@root	 * block - Block someone
+2014-08-14 14:05:19	@root	 * allow - Unblock someone
+2014-08-14 14:05:19	@root	 * otr - Off-the-Record encryption control
+2014-08-14 14:05:19	@root	 * set - Miscellaneous settings
+2014-08-14 14:05:19	@root	 * help - BitlBee help system
+2014-08-14 14:05:19	@root	 * save - Save your account data
+2014-08-14 14:05:19	@root	 * rename - Rename (renick) a buddy
+2014-08-14 14:05:19	@root	 * yes - Accept a request
+2014-08-14 14:05:19	@root	 * no - Deny a request
+2014-08-14 14:05:19	@root	 * qlist - List all the unanswered questions root asked
+2014-08-14 14:05:19	@root	 * register - Register yourself
+2014-08-14 14:05:19	@root	 * identify - Identify yourself with your password
+2014-08-14 14:05:19	@root	 * drop - Drop your account
+2014-08-14 14:05:19	@root	 * blist - List all the buddies in the current channel
+2014-08-14 14:05:19	@root	 * group - Contact group management
+2014-08-14 14:05:19	@root	 * transfer - Monitor, cancel, or reject file transfers
+2014-08-14 14:05:19	@root	 
+2014-08-14 14:05:19	@root	Most commands can be shortened. For example instead of account list, try ac l.
+2014-08-14 14:05:27	@dartagan	help add 
+2014-08-14 14:05:27	@root	Syntax: add <account id> <handle> [<nick>]
+2014-08-14 14:05:27	@root	Syntax: add -tmp <account id> <handle> [<nick>]
+2014-08-14 14:05:27	@root	 
+2014-08-14 14:05:27	@root	Adds the given buddy at the specified connection to your buddy list. The account ID can be a number (see account list), the protocol name or (part of) the screenname, as long as it matches only one connection.
+2014-08-14 14:05:27	@root	 
+2014-08-14 14:05:27	@root	If you want, you can also tell BitlBee what nick to give the new contact. The -tmp option adds the buddy to the internal BitlBee structures only, not to the real contact list (like done by set handle_unknown add). This allows you to talk to people who are not in your contact list. This normally won't show you any presence notifications.
+2014-08-14 14:05:27	@root	 
+2014-08-14 14:05:27	@root	If you use this command in a control channel containing people from only one group, the new contact will be added to that group automatically.
+2014-08-14 14:05:27	@root	 
+2014-08-14 14:05:27	@root	Example:
+2014-08-14 14:05:27	@root	<ctrlsoft> add 3 gryp@jabber.org grijp
+2014-08-14 14:05:27	@root	* grijp has joined &bitlbee
+2014-08-14 14:05:55	@dartagan	help account add
+2014-08-14 14:05:55	@root	Syntax: account add <protocol> <username> [<password>]
+2014-08-14 14:05:55	@root	 
+2014-08-14 14:05:55	@root	Adds an account on the given server with the specified protocol, username and password to the account list. Supported protocols right now are: Jabber, MSN, OSCAR (AIM/ICQ), Yahoo and Twitter. For more information about adding an account, see help account add <protocol>.
+2014-08-14 14:05:55	@root	 
+2014-08-14 14:05:55	@root	You can omit the password and enter it separately using the IRC /OPER command. This lets you enter your password without your IRC client echoing it on screen or recording it in logs.
+2014-08-14 14:06:03	@dartagan	help account add protocol
+2014-08-14 14:06:03	@root	These are the available help subjects:
+2014-08-14 14:06:03	@root	 
+2014-08-14 14:06:03	@root	 quickstart - A short introduction into BitlBee
+2014-08-14 14:06:03	@root	 commands - All available commands and settings
+2014-08-14 14:06:03	@root	 channels - About creating and customizing channels
+2014-08-14 14:06:03	@root	 away - About setting away states
+2014-08-14 14:06:03	@root	 groupchats - How to work with groupchats on BitlBee
+2014-08-14 14:06:03	@root	 nick_changes - Changing your nickname without losing any settings
+2014-08-14 14:06:03	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
+2014-08-14 14:06:03	@root	 
+2014-08-14 14:06:03	@root	You can read more about them with help <subject>
+2014-08-14 14:06:03	@root	 
+2014-08-14 14:06:03	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
+2014-08-14 14:06:03	@root	 
+2014-08-14 14:06:03	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
+2014-08-14 14:07:01	@dartagan	acc add skype william@weiskopf.me
+2014-08-14 14:07:01	@root	Unknown protocol
+2014-08-14 14:19:28	@dartagan	acc add skype william@weiskopf.me
+2014-08-14 14:19:28	@root	Unknown protocol
+2014-08-14 14:19:47	@dartagan	acc add skype william@weiskopf.me
+2014-08-14 14:19:47	@root	Unknown protocol
+2014-08-14 14:58:45	-->	dartagan (dartagan@localhost) has joined &bitlbee
+2014-08-14 14:58:45	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 14:58:45	ℹ 	Topic set by root (root@localhost) on Thu, 14 Aug 2014 13:01:36
+2014-08-14 14:58:45	ℹ 	Channel &bitlbee: 4 nicks (2 ops, 0 halfops, 0 voices, 2 normals)
+2014-08-14 14:59:54	@dartagan	account add skype william@weiskopf.me
+2014-08-14 14:59:54	@root	Unknown protocol
+2014-08-14 15:00:18	@dartagan	account add skype
+2014-08-14 15:00:18	@root	Not enough parameters given (need 3).
+2014-08-14 15:00:20	@dartagan	account add skype a
+2014-08-14 15:00:20	@root	Unknown protocol
+2014-08-14 15:00:23	@dartagan	account add skyped
+2014-08-14 15:00:23	@root	Not enough parameters given (need 3).
+2014-08-14 15:00:26	@dartagan	account add skyped a
+2014-08-14 15:00:26	@root	Unknown protocol
+2014-08-14 15:01:25	<--	dartagan (dartagan@localhost) has left &bitlbee
+2014-08-14 19:02:21	ℹ 	irc: disconnected from server
+2014-08-14 20:07:15	-->	dartagan (dartagan@localhost) has joined &bitlbee
+2014-08-14 20:07:15	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 20:07:15	ℹ 	Topic set by root (root@localhost) on Thu, 14 Aug 2014 13:01:36
+2014-08-14 20:07:15	ℹ 	Channel &bitlbee: 4 nicks (2 ops, 0 halfops, 0 voices, 2 normals)
+2014-08-14 20:17:03	<--	dartagan (dartagan@localhost) has left &bitlbee
+2014-08-14 23:23:19	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-14 23:23:19	ℹ 	Mode &bitlbee [+Ct] by 192.168.1.10
+2014-08-14 23:23:19	ℹ 	Channel &bitlbee: 2 nicks (2 ops, 0 halfops, 0 voices, 0 normals)
+2014-08-14 23:23:19	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 23:23:19	ℹ 	Topic set by root (root@192.168.1.10) on Thu, 14 Aug 2014 23:23:19
+2014-08-14 23:23:19	@root	Welcome to the BitlBee gateway!
+2014-08-14 23:23:19	@root	 
+2014-08-14 23:23:19	@root	If you've never used BitlBee before, please do read the help information using the help command. Lots of FAQs are answered there.
+2014-08-14 23:23:19	@root	If you already have an account on this server, just use the identify command to identify yourself.
+2014-08-14 23:25:10	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-14 23:25:10	ℹ 	Mode &bitlbee [+Ct] by 192.168.1.10
+2014-08-14 23:25:10	ℹ 	Channel &bitlbee: 2 nicks (2 ops, 0 halfops, 0 voices, 0 normals)
+2014-08-14 23:25:10	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 23:25:10	ℹ 	Topic set by root (root@192.168.1.10) on Thu, 14 Aug 2014 23:25:10
+2014-08-14 23:25:10	@root	Welcome to the BitlBee gateway!
+2014-08-14 23:25:10	@root	 
+2014-08-14 23:25:10	@root	If you've never used BitlBee before, please do read the help information using the help command. Lots of FAQs are answered there.
+2014-08-14 23:25:10	@root	If you already have an account on this server, just use the identify command to identify yourself.
+2014-08-14 23:29:40	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-14 23:29:40	ℹ 	Mode &bitlbee [+Ct] by 192.168.1.10
+2014-08-14 23:29:40	ℹ 	Channel &bitlbee: 2 nicks (2 ops, 0 halfops, 0 voices, 0 normals)
+2014-08-14 23:29:40	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 23:29:40	ℹ 	Topic set by root (root@192.168.1.10) on Thu, 14 Aug 2014 23:29:40
+2014-08-14 23:29:40	@root	Welcome to the BitlBee gateway!
+2014-08-14 23:29:40	@root	 
+2014-08-14 23:29:40	@root	If you've never used BitlBee before, please do read the help information using the help command. Lots of FAQs are answered there.
+2014-08-14 23:29:40	@root	If you already have an account on this server, just use the identify command to identify yourself.
+2014-08-14 23:34:40	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-14 23:34:40	ℹ 	Mode &bitlbee [+Ct] by 192.168.1.10
+2014-08-14 23:34:40	ℹ 	Channel &bitlbee: 2 nicks (2 ops, 0 halfops, 0 voices, 0 normals)
+2014-08-14 23:34:40	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-14 23:34:40	ℹ 	Topic set by root (root@192.168.1.10) on Thu, 14 Aug 2014 23:34:40
+2014-08-14 23:34:40	@root	Welcome to the BitlBee gateway!
+2014-08-14 23:34:40	@root	 
+2014-08-14 23:34:40	@root	If you've never used BitlBee before, please do read the help information using the help command. Lots of FAQs are answered there.
+2014-08-14 23:34:40	@root	If you already have an account on this server, just use the identify command to identify yourself.

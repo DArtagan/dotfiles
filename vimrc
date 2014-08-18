@@ -19,6 +19,7 @@ Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'sudar/vim-arduino-syntax'
 
 " Required closing lines
 call vundle#end()
