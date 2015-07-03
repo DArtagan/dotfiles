@@ -4,6 +4,7 @@
 clickable_url = true
 font = Inconsolata 11
 transparency = 0.1
+scrollback_lines=1000
 
 # Solarized light color scheme
 
