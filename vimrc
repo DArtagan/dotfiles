@@ -16,10 +16,13 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'gregsexton/MatchTag'
+Plugin 'godlygeek/tabular' " vim-markdown dependency
+Plugin 'plasticboy/vim-markdown'
 Plugin 'Shougo/unite.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-surround'
@@ -167,3 +170,9 @@ set noshowmode
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+autocmd BufNewFile,BufRead *.txt setlocal filetype=markdown
+

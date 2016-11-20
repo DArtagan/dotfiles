@@ -470,6 +470,8 @@ awful.rules.rules = {
     { rule = { class = "exe"}, properties = { floating = true } },
     { rule = { instance = "plugin-container" },
       properties = { floating = true } },
+    { rule = { instance = "Plugin-container" },
+      properties = { floating = true } },
 }
 -- }}}
 
