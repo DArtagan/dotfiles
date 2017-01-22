@@ -1,0 +1,16 @@
+2014-08-18 21:02:33	ℹ 	irc: connecting to server &bitlbee/6667...
+2014-08-18 21:02:33	⚠	irc: address "&bitlbee" not found
+2014-08-18 21:02:33	⚠	irc: error: Name or service not known
+2014-08-18 21:02:33	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-18 21:02:43	ℹ 	irc: reconnecting to server...
+2014-08-18 21:02:43	ℹ 	irc: connecting to server &bitlbee/6667...
+2014-08-18 21:02:43	⚠	irc: address "&bitlbee" not found
+2014-08-18 21:02:43	⚠	irc: error: Name or service not known
+2014-08-18 21:02:43	ℹ 	irc: reconnecting to server in 20 seconds
+2014-08-18 21:03:03	ℹ 	irc: reconnecting to server...
+2014-08-18 21:03:03	ℹ 	irc: connecting to server &bitlbee/6667...
+2014-08-18 21:03:03	⚠	irc: address "&bitlbee" not found
+2014-08-18 21:03:03	⚠	irc: error: Name or service not known
+2014-08-18 21:03:03	ℹ 	irc: reconnecting to server in 40 seconds
+2014-08-18 21:03:41		irc: auto-reconnection is cancelled
+2014-08-18 21:03:41	ℹ 	irc: disconnected from server

@@ -4108,3 +4108,573 @@
 2014-08-18 17:33:50	***	Playback Complete.
 2014-08-18 17:33:51	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08
 2014-08-18 17:37:03	<--	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has left #chakra
+2014-08-18 20:53:05	-->	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-08-18 20:53:05	ℹ 	Topic for #chakra is "http://chakraos.org | Package repositories and installation media are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 | Check your /etc/pacman.d/mirrorlist: http://chakraos.org/forum/viewtopic.php?id=13100"
+2014-08-18 20:53:05	ℹ 	Topic set by totte on Mon, 18 Aug 2014 07:38:51
+2014-08-18 20:53:05	ℹ 	Channel #chakra: 32 nicks (1 op, 1 voice, 30 normals)
+2014-08-18 20:53:07	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-08-18 20:55:44	<--	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has left #chakra
+2014-08-18 20:55:44	ℹ 	irc: disconnected from server
+2014-08-18 20:57:10	-->	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-08-18 20:57:10	ℹ 	Topic for #chakra is "http://chakraos.org | Package repositories and installation media are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 | Check your /etc/pacman.d/mirrorlist: http://chakraos.org/forum/viewtopic.php?id=13100"
+2014-08-18 20:57:10	ℹ 	Topic set by totte on Mon, 18 Aug 2014 07:38:51
+2014-08-18 20:57:10	ℹ 	Channel #chakra: 32 nicks (1 op, 1 voice, 30 normals)
+2014-08-18 20:57:10	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-08-18 20:57:49	<--	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has left #chakra
+2014-08-18 20:57:49	ℹ 	irc: disconnected from server
+2014-08-18 20:58:05	-->	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-08-18 20:58:05	ℹ 	Topic for #chakra is "http://chakraos.org | Package repositories and installation media are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 | Check your /etc/pacman.d/mirrorlist: http://chakraos.org/forum/viewtopic.php?id=13100"
+2014-08-18 20:58:05	ℹ 	Topic set by totte on Mon, 18 Aug 2014 07:38:51
+2014-08-18 20:58:05	ℹ 	Channel #chakra: 32 nicks (1 op, 1 voice, 30 normals)
+2014-08-18 20:58:05	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-08-18 21:00:23	<--	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has left #chakra
+2014-08-18 21:00:23	ℹ 	irc: disconnected from server
+2014-08-18 21:02:24	-->	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-08-18 21:02:24	ℹ 	Topic for #chakra is "http://chakraos.org | Package repositories and installation media are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 | Check your /etc/pacman.d/mirrorlist: http://chakraos.org/forum/viewtopic.php?id=13100"
+2014-08-18 21:02:24	ℹ 	Topic set by totte on Mon, 18 Aug 2014 07:38:51
+2014-08-18 21:02:24	ℹ 	Channel #chakra: 32 nicks (1 op, 1 voice, 30 normals)
+2014-08-18 21:02:24	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-08-18 21:03:35	<--	LanDi (~LanDi@186.232.216.90) has quit (Ping timeout: 264 seconds)
+2014-08-18 21:04:37	ℹ 	irc: disconnected from server
+2014-08-18 21:05:28	-->	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-08-18 21:05:28	ℹ 	Topic for #chakra is "http://chakraos.org | Package repositories and installation media are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 | Check your /etc/pacman.d/mirrorlist: http://chakraos.org/forum/viewtopic.php?id=13100"
+2014-08-18 21:05:28	ℹ 	Topic set by totte on Mon, 18 Aug 2014 07:38:51
+2014-08-18 21:05:28	ℹ 	Channel #chakra: 31 nicks (1 op, 1 voice, 29 normals)
+2014-08-18 21:05:28	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-08-18 21:16:31	-->	LanDi (~LanDi@186.232.216.90) has joined #chakra
+2014-08-18 21:16:43	<--	LanDi (~LanDi@186.232.216.90) has quit (Client Quit)
+2014-08-18 22:16:28	<--	s8321414 (~s8321414@host-56.13-234-182.cable.dynamic.kbtelecom.net) has quit (Quit: Konversation terminated!)
+2014-08-18 23:13:14	-->	xanatos (~xanatos@2.230.98.190) has joined #chakra
+2014-08-18 23:27:30	-->	theenduser (~stijn@s55962bc1.adsl.online.nl) has joined #chakra
+2014-08-19 08:15:55	ℹ 	irc: disconnected from server
+2014-08-19 08:16:05	-->	dartagan_ (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-08-19 08:16:05	ℹ 	Topic for #chakra is "http://chakraos.org | Package repositories and installation media are available at http://rsync.chakraos.org | Problem with `ccr` or `pacman`? See http://chakraos.org/forum/viewtopic.php?pid=80478#p80478 | Check your /etc/pacman.d/mirrorlist: http://chakraos.org/forum/viewtopic.php?id=13100"
+2014-08-19 08:16:05	ℹ 	Topic set by totte on Mon, 18 Aug 2014 07:38:51
+2014-08-19 08:16:05	ℹ 	Channel #chakra: 35 nicks (1 op, 1 voice, 33 normals)
+2014-08-19 08:16:05	***	Buffer Playback...
+2014-08-19 08:16:05	serafean_	[03:41:28] Hi all, is there any online archive of Chakra packages? I'd need to roll back to linux-3.12, but don't have the package in my cache...
+2014-08-19 08:16:05	Israphel2	[07:39:03] someone could use btsync on chakra?
+2014-08-19 08:16:05	tiemay	[07:51:51] Israphel2: I've never tried, but it looks like there are a couple packages in the ccr, though they're somewhat outdated http://chakraos.org/ccr/packages.php?O=0&K=btsync&do_Search=+Go+
+2014-08-19 08:16:05	+AIDE	[07:51:52] Title: Chakra | CCR (en) - Search Criteria: btsync (at chakraos.org)
+2014-08-19 08:16:05	Israphel2	[07:58:09] I used those
+2014-08-19 08:16:05	Israphel2	[07:58:22] my mistake was that the package do not create the default storage folder
+2014-08-19 08:16:05	tiemay	[07:58:50] so you have it working now?
+2014-08-19 08:16:05	***	Playback Complete.
+2014-08-19 08:16:07	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08
+2014-08-19 08:19:52	<--	Israphel2 (~Israphel2@186.136.227.45) has quit (Ping timeout: 240 seconds)
+2014-08-19 08:25:08	-->	syberdog (~quassel@79.143.165.73) has joined #chakra
+2014-08-19 08:25:25	<--	tiemay (~tiemay@unaffiliated/tiemay) has quit (Quit: Konversation terminated!)
+2014-08-19 08:29:44	-->	zanny (~zanny@64.9.41.243) has joined #chakra
+2014-08-19 08:44:15	-->	Israphel2 (~Israphel2@186-129-253-97.static.speedy.com.ar) has joined #chakra
+2014-08-19 08:59:04	-->	LanDi (~LanDi@186.232.216.90) has joined #chakra
+2014-08-19 09:02:46	-->	mcmaur (~mcmaur@93-33-7-254.ip42.fastwebnet.it) has joined #chakra
+2014-08-19 09:02:56	-->	drvoodoo (~jojo@ip-109-91-1-235.hsi12.unitymediagroup.de) has joined #chakra
+2014-08-19 09:04:30	<--	nodevel (~james@29.169.broadband10.iol.cz) has quit (Ping timeout: 260 seconds)
+2014-08-19 09:08:12	<--	drvoodoo (~jojo@ip-109-91-1-235.hsi12.unitymediagroup.de) has quit (Remote host closed the connection)
+2014-11-24 22:12:37	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #chakra
+2014-11-24 22:12:37	ℹ 	Topic for #chakra is "http://chakraos.org | Package repositories and installation media are available at http://rsync.chakraos.org | Manual intervention needed on next, major update: http://chakraos.org/news/index.php?/archives/134-Warning-Manual-intervention-needed-on-your-next-major-update.html | Please keep Chakra alive by making a donation! http://chakraos.org/home/?donate"
+2014-11-24 22:12:37	ℹ 	Topic set by totte on Mon, 24 Nov 2014 14:41:51
+2014-11-24 22:12:37	ℹ 	Channel #chakra: 25 nicks (1 op, 1 voice, 23 normals)
+2014-11-24 22:12:37	***	Buffer Playback...
+2014-11-24 22:12:37	ahjolinna	[09:56:15] FranzMari: it fun when it looks like this  https://i.imgur.com/c9gK6va.png
+2014-11-24 22:12:37	FranzMari	[09:58:00] select a lighter theme
+2014-11-24 22:12:37	ahjolinna	[10:01:05] FranzMari: it should make it black, but the lighter theme looks like this https://i.imgur.com/fqdSfRp.png
+2014-11-24 22:12:37	FranzMari	[10:06:04] ahjolinna: don't know why it doesn't work
+2014-11-24 22:12:37	FranzMari	[10:06:13] maybe it's gtk2 fault
+2014-11-24 22:12:37	ahjolinna	[10:11:21] or KDE
+2014-11-24 22:12:37	ahjolinna	[10:11:54] that overrides it
+2014-11-24 22:12:37	FranzMari	[10:13:44] it's possible
+2014-11-24 22:12:37	ahjolinna	[10:15:35] this is how it should look http://th00.deviantart.net/fs70/PRE/f/2014/322/c/b/flat_gimp_icon_theme_v_2_1_by_android272-d679s6z.png
+2014-11-24 22:12:37	ahjolinna	[10:16:07] haha nice http://www.phoronix.com/scan.php?page=news_item&px=MTg0NDY
+2014-11-24 22:12:37	+AIDE	[10:16:09] Title: [Phoronix] FFmpeg Is Returning To Ubuntu With 15.04 Release (at www.phoronix.com)
+2014-11-24 22:12:37	ugjka	[10:18:34] So you can't have both libav and ffmpeg installed?
+2014-11-24 22:12:37	ahjolinna	[10:19:30] libav is a ffmpeg fork
+2014-11-24 22:12:37	ugjka	[10:19:52] yeah I know
+2014-11-24 22:12:37	ahjolinna	[10:19:54] ffmpeg is way better
+2014-11-24 22:12:37	ugjka	[10:20:23] will they drop apps that need libav?
+2014-11-24 22:12:37	ahjolinna	[10:21:36] most that support libav also works with ffmpeg
+2014-11-24 22:12:37	ahjolinna	[10:21:59] btw. nice  699$ (27") 4K dell monitor with 10bit colors http://www1.la.dell.com/bz/en/corp/peripherals/dell-p2715q-monitor/pd.aspx?refid=dell-p2715q-monitor&cs=bzcorp1&s=corp
+2014-11-24 22:12:37	ugjka	[10:22:12] this needs libav http://screenstudio.crombz.com/
+2014-11-24 22:12:37	+AIDE	[10:22:13] Title: Welcome to ScreenStudio (at screenstudio.crombz.com)
+2014-11-24 22:12:37	ahjolinna	[10:22:25] 599$ for 24" http://www1.la.dell.com/vc/en/corp/peripherals/dell-p2415q-monitor/pd.aspx?refid=dell-p2415q-monitor&s=corp
+2014-11-24 22:12:37	+AIDE	[10:22:29] Title: Dell 24 Ultra HD 4K Monitor – P2415Q | Dell St. Vincent & Grenadines (at www1.la.dell.com)
+2014-11-24 22:12:37	ahjolinna	[11:15:36] http://developer.sonymobile.com/2014/11/13/android-5-0-xperia-z3-aosp-source-code-and-binaries-now-available/
+2014-11-24 22:12:37	+AIDE	[11:15:38] Title: Android 5.0: Xperia Z3 AOSP source code and binaries now available Developer World (at developer.sonymobile.com)
+2014-11-24 22:12:37	Israphel	[11:23:35] sony masterrace
+2014-11-24 22:12:37	ahjolinna	[11:29:55] yeah
+2014-11-24 22:12:37	ahjolinna	[11:33:02] Israphel>: sony said that they will make a firefoxOS phone, at least they are intrested to make one
+2014-11-24 22:12:37	ahjolinna	[11:33:24] Israphel: ^
+2014-11-24 22:12:37	Israphel	[11:33:53] sony is interested in everything, everytime
+2014-11-24 22:12:37	ahjolinna	[11:34:25] Israphel: Offical Sony SailfishOS phone would be awsome
+2014-11-24 22:12:37	Israphel	[11:34:39] sony phones are strong
+2014-11-24 22:12:37	Israphel	[11:34:46] that's the #1 pro
+2014-11-24 22:12:37	ahjolinna	[11:35:12] to bad they have only 3% marketshare... i think
+2014-11-24 22:12:37	Israphel	[11:36:15] that's what happens when you're slow
+2014-11-24 22:12:37	ahjolinna	[11:37:48] maybe, I think it's more that there are so many cheap chinese
+2014-11-24 22:12:37	ahjolinna	[11:38:13] btw. http://www.theregister.co.uk/2014/11/04/sgt_l_torvalds_linux_founder_turns_cop_sortof/
+2014-11-24 22:12:37	+AIDE	[11:38:14] Title: I am POLICE SERGEANT L. TORVALDS! Stop or I'll SHOOT • The Register (at www.theregister.co.uk)
+2014-11-24 22:12:37	ahjolinna	[11:43:34] wow my PC cant play Metal Gear Solid V: Ground Zero
+2014-11-24 22:12:37	ahjolinna	[11:43:58] http://steamcommunity.com/games/311340/announcements/detail/252528513507459981%3C--
+2014-11-24 22:12:37	+AIDE	[11:44:00] Title: Steam Community :: Group Announcements :: METAL GEAR SOLID V: GROUND ZEROES (at steamcommunity.com)
+2014-11-24 22:12:37	ugjka	[11:44:50] why?
+2014-11-24 22:12:37	ahjolinna	[11:44:58]  Graphics: GeForce GTX 650 or above
+2014-11-24 22:12:37	ahjolinna	[11:45:15] I have GTX 560ti
+2014-11-24 22:12:37	ugjka	[11:45:28] how much would it cost to upgrade
+2014-11-24 22:12:37	ugjka	[11:45:30] ?
+2014-11-24 22:12:37	ahjolinna	[11:46:33] I would need to upgrade my motherboard and cpu also..if I bought a new gpu
+2014-11-24 22:12:37	ahjolinna	[11:46:50] so alot
+2014-11-24 22:12:37	ahjolinna	[11:47:34] I also need a new/bigger SSD
+2014-11-24 22:12:37	Israphel	[11:48:06] last time I played a mgs... world trade center was there.
+2014-11-24 22:12:37	ahjolinna	[11:48:18] so I need 1.5k €
+2014-11-24 22:12:37	Israphel	[11:49:14] I build a gaming rid for my cousing
+2014-11-24 22:12:37	Israphel	[11:49:15] cousin
+2014-11-24 22:12:37	Israphel	[11:49:36] she is having fun: http://i.imgur.com/VyZf0Qd.jpg
+2014-11-24 22:12:37	ahjolinna	[11:50:24] Israphel: what kind?
+2014-11-24 22:12:37	Israphel	[11:50:39] specially for the sims 4
+2014-11-24 22:12:37	ahjolinna	[11:51:01] I mean what components?
+2014-11-24 22:12:37	Israphel	[11:51:06] ohh
+2014-11-24 22:12:37	Israphel	[11:51:08] it's full amd
+2014-11-24 22:12:37	ahjolinna	[11:51:20] thats not a gaming rig
+2014-11-24 22:12:37	ugjka	[11:51:29] Israphel: cool keyboard
+2014-11-24 22:12:37	Israphel	[11:51:33] full intel was about 2117 usd
+2014-11-24 22:12:37	ahjolinna	[11:51:39] that's just heater
+2014-11-24 22:12:37	Israphel	[11:52:04] full amd with ssd was about 992
+2014-11-24 22:12:37	Israphel	[11:52:12] hardware fanboys are BAD
+2014-11-24 22:12:37	ahjolinna	[11:52:19] and a bigger electricity bill
+2014-11-24 22:12:37	Israphel	[11:52:33] I would buy intel always but I can FORCE people to buy what I want
+2014-11-24 22:12:37	Israphel	[11:52:39] I cant*
+2014-11-24 22:12:37	Israphel	[11:53:07] so amd A10 7850k will do the trick
+2014-11-24 22:12:37	Israphel	[11:53:29] ugjka: thanks, it's an excellent keyboard
+2014-11-24 22:12:37	ahjolinna	[11:53:33] intel and nvidia is better thats a fact...sometime radeon is good but god their drivers are horrible even on windows they are bad
+2014-11-24 22:12:37	Israphel	[11:54:02] nvidia/amd has similar prices here, that wasn't the problem
+2014-11-24 22:12:37	Israphel	[11:54:06] the problem was: no discrete gpu
+2014-11-24 22:12:37	ahjolinna	[11:54:14] wow
+2014-11-24 22:12:37	Israphel	[11:54:18] so APU is the only exit
+2014-11-24 22:12:37	Israphel	[11:54:34] that's why they exist
+2014-11-24 22:12:37	ahjolinna	[11:55:07] do u know anything about hardware?
+2014-11-24 22:12:37	ahjolinna	[11:55:20] just asking
+2014-11-24 22:12:37	Israphel	[11:55:41] I know a lot
+2014-11-24 22:12:37	Israphel	[11:56:06] since I was 11
+2014-11-24 22:12:37	ahjolinna	[11:57:47] then u would know that nvidia and intel uses less energy and has less heat output (colder) than amd ..in general
+2014-11-24 22:12:37	Israphel	[11:58:02] do you know how to read?
+2014-11-24 22:12:37	Israphel	[11:58:10] energy IS NOT THE PROBLEM
+2014-11-24 22:12:37	Israphel	[11:58:20] we produce energy, we have cheap energy
+2014-11-24 22:12:37	Israphel	[11:58:25] we DON'T HAVE cheap hardware
+2014-11-24 22:12:37	ahjolinna	[11:58:51] we also have cheap energry
+2014-11-24 22:12:37	Israphel	[11:58:55] building a haswell i7 rig with nvidia and ssd will rise to $18.000 AR, thats more than $2000 USD
+2014-11-24 22:12:37	ahjolinna	[11:59:22] and hardware is ok price
+2014-11-24 22:12:37	Israphel	[11:59:27] you cut the price by half by using an APU
+2014-11-24 22:12:37	Israphel	[11:59:33] with no real video card
+2014-11-24 22:12:37	Israphel	[11:59:51] so, in the end, less energy ANYWAY
+2014-11-24 22:12:37	Israphel	[12:00:31] I use a haswell pentium Fanless because I care about the noise
+2014-11-24 22:12:37	Israphel	[12:00:36] but I don't play
+2014-11-24 22:12:37	ahjolinna	[12:01:44] do you know about nvidias gpu boost v2 ?
+2014-11-24 22:12:37	Israphel	[12:02:24] yes and what with that
+2014-11-24 22:12:37	ahjolinna	[12:03:33] less heat output and less energy they use more u can "overclock" them
+2014-11-24 22:12:37	Israphel	[12:04:08] fine, but we were talking about a 11 yo sims player
+2014-11-24 22:12:37	ahjolinna	[12:04:20] I'm not
+2014-11-24 22:12:37	Israphel	[12:04:32] every piece a hardware has a place to be
+2014-11-24 22:12:37	Israphel	[12:04:39] you can't build every pc exactly the same
+2014-11-24 22:12:37	Israphel	[12:04:41] we are not IBM
+2014-11-24 22:12:37	Israphel	[12:04:47] we are not in the 70s
+2014-11-24 22:12:37	ahjolinna	[12:07:15] I cant never buy AMD crap, way to many driver problems...plus hardware is from ok to crap
+2014-11-24 22:12:37	Israphel	[12:10:32] but only they build apus
+2014-11-24 22:12:37	Israphel	[12:10:47] they have a solution for a problem
+2014-11-24 22:12:37	ahjolinna	[12:10:57] i dont care
+2014-11-24 22:12:37	ahjolinna	[12:11:08] their drivers are still horrible
+2014-11-24 22:12:37	ahjolinna	[12:11:13] at least on linux
+2014-11-24 22:12:37	Israphel	[12:11:18] you should, you should have in mind every piece of hardware
+2014-11-24 22:12:37	ahjolinna	[12:11:29] alot of problems
+2014-11-24 22:12:37	Israphel	[12:11:36] the more you know
+2014-11-24 22:12:37	Israphel	[12:11:38] the better you are
+2014-11-24 22:12:37	Israphel	[12:12:09] if we talk about drivers, they both suck
+2014-11-24 22:12:37	Israphel	[12:12:16] one is bad, the other is closed
+2014-11-24 22:12:37	Israphel	[12:12:26] and life without KMS is not life.
+2014-11-24 22:12:37	ahjolinna	[12:13:10] I know few Linux devs/uers who have tried amd and said that they will never touch AMD again. because the experience was so bad
+2014-11-24 22:12:37	Israphel	[12:13:36] I what Linus said:
+2014-11-24 22:12:37	Israphel	[12:13:40] and*
+2014-11-24 22:12:37	Israphel	[12:13:51] nvidia, fuck you.
+2014-11-24 22:12:37	ahjolinna	[12:13:53] for example cmplayer dev and teo- (calamares dev)
+2014-11-24 22:12:37	Israphel	[12:14:13] the idea of using linux+amd is bad from the start
+2014-11-24 22:12:37	Israphel	[12:14:21] but apu + windows + games = profit.
+2014-11-24 22:12:37	Israphel	[12:14:45] intel + openElec + big tv = profit
+2014-11-24 22:12:37	ahjolinna	[12:14:48] yeah and Linus is now happy that  nvidia has become alot better
+2014-11-24 22:12:37	ahjolinna	[12:16:29] nvidia is becoming better all the time, amd is not
+2014-11-24 22:12:37	Israphel	[12:16:52] they had to
+2014-11-24 22:12:37	ahjolinna	[12:17:01] AMD have almost nobody left working on open source/linux
+2014-11-24 22:12:37	Israphel	[12:17:21] amd will win money with MS and Sony
+2014-11-24 22:12:37	Israphel	[12:17:32] so they are doing shit.
+2014-11-24 22:12:37	Israphel	[12:17:49] but steamos gave nvidia a chance
+2014-11-24 22:12:37	Israphel	[12:17:56] to suck less
+2014-11-24 22:12:37	ahjolinna	[12:19:24] its AMD own fault that they don't have any features
+2014-11-24 22:12:37	Israphel	[12:20:27] they don't care
+2014-11-24 22:12:37	Israphel	[12:20:28] that's clear
+2014-11-24 22:12:37	ahjolinna	[12:20:34] my point
+2014-11-24 22:12:37	Israphel	[12:20:39] if you don't try you can't fail
+2014-11-24 22:12:37	Israphel	[12:20:51] if you try and fail, you suck. If you don't try, you're just evil.
+2014-11-24 22:12:37	ahjolinna	[12:22:08] Nvidia and Intel is pushing the industry forward, unlike AMD
+2014-11-24 22:12:37	Israphel	[12:22:30] that's why I use plain intel
+2014-11-24 22:12:37	Israphel	[12:22:38] kms working right
+2014-11-24 22:12:37	ahjolinna	[12:22:54] I only use intel and nvidia
+2014-11-24 22:12:37	Israphel	[12:23:02] nvidia still lacks KMS
+2014-11-24 22:12:37	Israphel	[12:23:05] I'll keep waiting.
+2014-11-24 22:12:37	ahjolinna	[12:23:22] btw. what ram do use?
+2014-11-24 22:12:37	Israphel	[12:24:21] I use hyperX
+2014-11-24 22:12:37	ahjolinna	[12:24:39] its good
+2014-11-24 22:12:37	ahjolinna	[12:24:56] I use corsair dominator
+2014-11-24 22:12:37	Israphel	[12:25:11] corsair and g.skill are common here for gaming
+2014-11-24 22:12:37	Israphel	[12:25:15] and kingston for everything else
+2014-11-24 22:12:37	Israphel	[12:25:48] samsung evo is the most sold SSD here
+2014-11-24 22:12:37	ahjolinna	[12:26:16]  Dominator Platinum to be exact
+2014-11-24 22:12:37	Israphel	[12:26:21] amd 5xxx and 6xxx are the most sold video cards because of Bitcoin mining
+2014-11-24 22:12:37	Israphel	[12:26:32] thousands of them only for mining
+2014-11-24 22:12:37	ahjolinna	[12:26:34] 200e for 16gb
+2014-11-24 22:12:37	ahjolinna	[12:27:22] Corsair 16GB (2 x 8GB) Dominator Platinum, DDR3 1866MHz, CL9  is now 269.00 €
+2014-11-24 22:12:37	ahjolinna	[12:27:59] my ssd is OCZ agility 3
+2014-11-24 22:12:37	ahjolinna	[12:28:02] 120gb
+2014-11-24 22:12:37	Israphel	[12:28:03] let me check here
+2014-11-24 22:12:37	Israphel	[12:28:53] corsair dominator platinum is about € 940
+2014-11-24 22:12:37	ahjolinna	[12:29:13] nice country
+2014-11-24 22:12:37	Israphel	[12:29:51] ocz agility 3 120 is about €187
+2014-11-24 22:12:37	Israphel	[12:30:24] I bought my samsung evo 250 GB in miami for about 100 USD
+2014-11-24 22:12:37	Israphel	[12:30:53] here is about 400 USD
+2014-11-24 22:12:37	Israphel	[12:31:17] the same thing
+2014-11-24 22:12:37	ahjolinna	[12:31:55] Israphel: how much is OCZ 240GB SSD-levy, Vector 150, 2,5", SATA III, 550/530MB
+2014-11-24 22:12:37	ahjolinna	[12:32:06] here its 159.00 €
+2014-11-24 22:12:37	ahjolinna	[12:32:48] looks like this http://images.jimms.fi/8/7/115287_800x600_1.jpg
+2014-11-24 22:12:37	Israphel	[12:32:53] 400 usd so €320
+2014-11-24 22:12:37	Israphel	[12:33:21] ocz revodrive for the pci-e slot is about €1215
+2014-11-24 22:12:37	Israphel	[12:34:21] it's kinda easy to get the ssd from miami because it can be hidden
+2014-11-24 22:12:37	ahjolinna	[12:34:30] OCZ 960GB RevoDrive 350, PCI-E SSD, 1800/1700 MB/s  is 1240.00 €
+2014-11-24 22:12:37	Israphel	[12:34:31] but that's not the case with bigger stuff
+2014-11-24 22:12:37	Israphel	[12:35:03] ocz pci-e are the REAL THING
+2014-11-24 22:12:37	ahjolinna	[12:35:29] OCZ 120GB RevoDrive 3 PCI-E SSD, 975/875 MB/s  is 306.00 €
+2014-11-24 22:12:38	Israphel	[12:36:21] plus a gigabyte x99m-gaming 5
+2014-11-24 22:12:38	Israphel	[12:36:27] I can feel it
+2014-11-24 22:12:38	Israphel	[12:37:50] my feedly is empty... damn
+2014-11-24 22:12:38	ahjolinna	[12:38:18] I only find new versions with DDR4
+2014-11-24 22:12:38	Israphel	[12:38:22] main datacenter power went down on the capital city so I can't work
+2014-11-24 22:12:38	ahjolinna	[12:38:33] like Gigabyte X99 Gaming 5, LGA2011-v3, Intel X99, DDR4, ATX
+2014-11-24 22:12:38	ahjolinna	[12:38:38] 280.00 €
+2014-11-24 22:12:38	Israphel	[12:38:49] exactly that
+2014-11-24 22:12:38	ugjka	[12:38:51] Israphel: does electronics in your country have some crazy tax?
+2014-11-24 22:12:38	Israphel	[12:38:52] if you like mATX
+2014-11-24 22:12:38	Israphel	[12:39:04] ugjka: yes and no
+2014-11-24 22:12:38	Israphel	[12:39:23] ugjka: we have the biggest TAX for whatever, not only electronics
+2014-11-24 22:12:38	Israphel	[12:39:31] and also we have a dollar restrictions
+2014-11-24 22:12:38	ahjolinna	[12:39:34] -_
+2014-11-24 22:12:38	ahjolinna	[12:39:36] -
+2014-11-24 22:12:38	Israphel	[12:39:39] and a total customs shutdown
+2014-11-24 22:12:38	ahjolinna	[12:39:39] -_-
+2014-11-24 22:12:38	Israphel	[12:39:47] you can't buy even a flashlight from china
+2014-11-24 22:12:38	Israphel	[12:39:56] a $0.1 led flashlight
+2014-11-24 22:12:38	Israphel	[12:40:05] or a $2 pony toy, in my case
+2014-11-24 22:12:38	Israphel	[12:40:34] every cargo from "the world" stays in customs for "a while"
+2014-11-24 22:12:38	Israphel	[12:40:52] but most of the stuff HAVE TO be build here
+2014-11-24 22:12:38	Israphel	[12:41:11] nokias, motorolas. lgs, samsungs... all of them, build here.
+2014-11-24 22:12:38	ahjolinna	[12:41:22] Israphel: how much is Sandisk 1.6TB Optimus SSD, 2.5", SAS, 500/500 MB/s
+2014-11-24 22:12:38	Israphel	[12:41:27] so we don't know the asian/american versions
+2014-11-24 22:12:38	ahjolinna	[12:41:36] Israphel: here it is 3550.00 €
+2014-11-24 22:12:38	Israphel	[12:41:48] not available yet
+2014-11-24 22:12:38	ugjka	[12:42:08] not built yet :P
+2014-11-24 22:12:38	Israphel	[12:42:19] biggest SSD is 840 evo 1 TB
+2014-11-24 22:12:38	Israphel	[12:42:43] ugjka: if your company (ie samsung) build something (ie galaxies) they can bring something from asia (ie ssd)
+2014-11-24 22:12:38	Israphel	[12:42:58] so every company MUST build something here to sell their products
+2014-11-24 22:12:38	Israphel	[12:43:12] Dell build inspirons here, but they also sell Latitudes
+2014-11-24 22:12:38	ugjka	[12:43:19] is that some kind of evil market protection scheme?
+2014-11-24 22:12:38	Israphel	[12:43:20] Lenovo build IdeaPads and they can also sell Thinkpads
+2014-11-24 22:12:38	Israphel	[12:43:30] out president is like hitler
+2014-11-24 22:12:38	ahjolinna	[12:43:31] Sandisk 960GB Ultra II SSD -levy, 2.5", SATA III, 550/500MB/s 399.90 €
+2014-11-24 22:12:38	Israphel	[12:43:32] but female
+2014-11-24 22:12:38	Israphel	[12:43:53] they deny the data and the real results
+2014-11-24 22:12:38	Israphel	[12:44:00] so there's no official "over price"
+2014-11-24 22:12:38	Israphel	[12:44:03] it's a "lie"
+2014-11-24 22:12:38	Israphel	[12:44:15] and you can't do a new "price index" because it's not legal
+2014-11-24 22:12:38	Israphel	[12:44:31] if you buy a dollar you can go to jail
+2014-11-24 22:12:38	Israphel	[12:44:54] if you leave the country and you don't explain what you gonna do and why you have money to travel, you go to jail
+2014-11-24 22:12:38	Israphel	[12:45:20] and everystuff you buy in miami or wherever, you pay 35% extra, even when you're not in your country
+2014-11-24 22:12:38	ahjolinna	[12:46:11] ^lovely^
+2014-11-24 22:12:38	ugjka	[12:46:34] I'm glad im in EU
+2014-11-24 22:12:38	Israphel	[12:46:34] most of my friends already left the country
+2014-11-24 22:12:38	Israphel	[12:46:36] one of them is in Vancouver
+2014-11-24 22:12:38	Israphel	[12:46:40] he is having the best time
+2014-11-24 22:12:38	Israphel	[12:46:48] best place to live
+2014-11-24 22:12:38	ahjolinna	[12:46:51] Im glad I live in Finland
+2014-11-24 22:12:38	Israphel	[12:46:56] another one is in london
+2014-11-24 22:12:38	Israphel	[12:47:02] another one is in spain
+2014-11-24 22:12:38	Israphel	[12:47:19] another one is in sweden
+2014-11-24 22:12:38	Israphel	[12:47:39] and some of us wanted to stay here
+2014-11-24 22:12:38	Israphel	[12:49:05] it's easy to catch Tarja Turunen here, she's hanging out around like nothing
+2014-11-24 22:12:38	Israphel	[12:49:20] and matt damon's GF
+2014-11-24 22:12:38	Israphel	[12:49:43] no need to hide
+2014-11-24 22:12:38	ahjolinna	[12:50:38] lol
+2014-11-24 22:12:38	Israphel	[12:51:38] she has a good spanish already
+2014-11-24 22:12:38	Israphel	[12:51:50] people here loves her more than they love nightwish
+2014-11-24 22:12:38	Israphel	[12:52:04] and they hate her husband
+2014-11-24 22:12:38	Israphel	[12:52:11] he is a greedy asshole
+2014-11-24 22:12:38	Israphel	[12:52:16] and she is a blind bitch
+2014-11-24 22:12:38	ahjolinna	[12:52:35] thanks to him she had to leave nighwish
+2014-11-24 22:12:38	Israphel	[12:52:45] matt damon's gf is a pretty lucky bitch
+2014-11-24 22:12:38	Israphel	[12:52:49] he ruined everything
+2014-11-24 22:12:38	Israphel	[12:53:13] timo tolkki FTW
+2014-11-24 22:12:38	ahjolinna	[12:55:39] hmm nice: http://360.here.com/2014/11/20/beating-jams-business-benefits-interview-esri/
+2014-11-24 22:12:38	+AIDE	[12:55:40] Title: HERE launches Predictive Traffic for enterprise and car manufacturers (at 360.here.com)
+2014-11-24 22:12:38	Israphel	[12:56:39] I survived a travel with here beta
+2014-11-24 22:12:38	Israphel	[12:56:42] so it works
+2014-11-24 22:12:38	ahjolinna	[12:59:25] HERE is the best what there is
+2014-11-24 22:12:38	Israphel	[12:59:40] if they fix some memory leaks, yes
+2014-11-24 22:12:38	Israphel	[12:59:45] http://i.imgur.com/urX4iZE.png
+2014-11-24 22:12:38	ahjolinna	[12:59:48] there is a new version
+2014-11-24 22:12:38	Israphel	[13:00:12] beta2 ?
+2014-11-24 22:12:38	ahjolinna	[13:00:39] v220 it has support for android 5 and alot of fixes
+2014-11-24 22:12:38	Israphel	[13:00:49] will try it next travel
+2014-11-24 22:12:38	Israphel	[13:00:55] I don't use gps inside a 16 km2 city
+2014-11-24 22:12:38	ahjolinna	[13:01:13] it was way faster/better on my jolla
+2014-11-24 22:12:38	Israphel	[13:01:43] response time was fine, but some leaks where there
+2014-11-24 22:12:38	Israphel	[13:01:46] were
+2014-11-24 22:12:38	Israphel	[13:01:51] known issue
+2014-11-24 22:12:38	Israphel	[13:02:02] voice is fun
+2014-11-24 22:12:38	Israphel	[13:02:17] need some extra stuff like radars and cameras
+2014-11-24 22:12:38	ahjolinna	[13:02:56] http://360.here.com/2014/11/07/android-lollipop-gets-even-sweeter-updated/
+2014-11-24 22:12:38	+AIDE	[13:02:57] Title: Android Lollipop gets even sweeter with updated HERE app - HERE Three Sixty (at 360.here.com)
+2014-11-24 22:12:38	Israphel	[13:03:32] still waiting the upgrade for the motorola "letters"
+2014-11-24 22:12:38	Israphel	[13:05:31] 60 people in the office, 4 lumias, 2 bb's, 1 iphone, 53 androids
+2014-11-24 22:12:38	Israphel	[13:05:44] 0 symbian
+2014-11-24 22:12:38	ugjka	[13:05:57] symbian ahh
+2014-11-24 22:12:38	Israphel	[13:06:15] nokia c3 was sold like warm bread
+2014-11-24 22:12:38	ugjka	[13:08:31] man I need a better laptop, building webkitgtk is taking forever :/
+2014-11-24 22:12:38	ahjolinna	[13:09:11] why are u building it?
+2014-11-24 22:12:38	ugjka	[13:09:22] need it for midori-gtk3
+2014-11-24 22:12:38	ahjolinna	[13:09:30] why do u need it?
+2014-11-24 22:12:38	ugjka	[13:09:47] I have nothing to do
+2014-11-24 22:12:38	ahjolinna	[13:09:51] lol
+2014-11-24 22:12:38	Israphel	[13:09:52] lol
+2014-11-24 22:12:38	Israphel	[13:09:58] I build pavucontrol
+2014-11-24 22:12:38	Israphel	[13:10:04] It was a pain the ass too
+2014-11-24 22:12:38	Israphel	[13:10:41] I should clean my gtk shit someday
+2014-11-24 22:12:38	Israphel	[13:11:19] I installed chakra 3 years ago
+2014-11-24 22:12:38	ugjka	[13:11:59] pacman -Qm will help you
+2014-11-24 22:12:38	Israphel	[13:12:00] I still remember the bundles
+2014-11-24 22:12:38	Israphel	[13:12:17] I'll miss pavucontrol
+2014-11-24 22:12:38	bulletfreak	[13:12:20] #BringBackBundles
+2014-11-24 22:12:38	ahjolinna	[13:12:21] I will reinstall my chakra when kf5 is stable/usable
+2014-11-24 22:12:38	Israphel	[13:12:23] kmix needs... love.
+2014-11-24 22:12:38	Israphel	[13:12:40] were bundles that bad?
+2014-11-24 22:12:38	ahjolinna	[13:12:42] i use veromix
+2014-11-24 22:12:38	ahjolinna	[13:13:00] I hate kmix
+2014-11-24 22:12:38	Israphel	[13:13:11] kmix dev hates pulse
+2014-11-24 22:12:38	ugjka	[13:13:29] does veromix have volume overdrive?
+2014-11-24 22:12:38	ahjolinna	[13:13:44] yes
+2014-11-24 22:12:38	Israphel	[13:13:59] I only care about proper audio passthrough config
+2014-11-24 22:12:38	Israphel	[13:14:06] and kmix sucks at it
+2014-11-24 22:12:38	ugjka	[13:16:05] I ordered some chakra stickers, can't wait when will they arrive
+2014-11-24 22:12:38	ugjka	[13:16:47] http://www.unixstickers.com/tag/chakra
+2014-11-24 22:12:38	ahjolinna	[13:16:48] I bought some for my ultrabook
+2014-11-24 22:12:38	+AIDE	[13:16:49] Title: Search - Unixstickers (at www.unixstickers.com)
+2014-11-24 22:12:38	ahjolinna	[13:16:58] and oc extra
+2014-11-24 22:12:38	Israphel	[13:17:28] I'll buy stickers if I could get them through customs
+2014-11-24 22:12:38	Israphel	[13:17:35] BUT NOT
+2014-11-24 22:12:38	ugjka	[13:17:46] Do they open letters?
+2014-11-24 22:12:38	Israphel	[13:17:51] no
+2014-11-24 22:12:38	Israphel	[13:17:53] they store them
+2014-11-24 22:12:38	Israphel	[13:18:00] and then send them back
+2014-11-24 22:12:38	ugjka	[13:18:06] wtf?
+2014-11-24 22:12:38	ugjka	[13:18:13] that's evil
+2014-11-24 22:12:38	Israphel	[13:18:19] if you follow every step, you can retrieve your package
+2014-11-24 22:12:38	Israphel	[13:18:29] with about 6 month delay
+2014-11-24 22:12:38	Israphel	[13:18:38] a pidgeon in WWII is faster.
+2014-11-24 22:12:38	Israphel	[13:18:52] I'd rather have the NSA on my neck
+2014-11-24 22:12:38	Israphel	[13:19:02] so lucky you and and your NSA
+2014-11-24 22:12:38	Israphel	[13:19:25] you can't have privacy buy you can buy on Ebay and Amazon
+2014-11-24 22:12:38	Israphel	[13:19:28] fair enough
+2014-11-24 22:12:38	Israphel	[13:20:21] https://www.youtube.com/watch?v=-fpswA35o_s
+2014-11-24 22:12:38	+AIDE	[13:20:23] Title: La concha de tu madre All boys! - YouTube (at www.youtube.com)
+2014-11-24 22:12:38	ugjka	[13:22:00] Israphel: Can you buy games on Steam?
+2014-11-24 22:12:38	Israphel	[13:22:10] ugjka: if you pay the 35% extra, yes.
+2014-11-24 22:12:38	Israphel	[13:22:25] I bought some classics there
+2014-11-24 22:12:38	Israphel	[13:22:33] I was a sega DC player while young
+2014-11-24 22:12:38	ahjolinna	[13:23:42] http://www.theverge.com/2014/11/19/7250513/firefox-signs-yahoo-as-default-search-engine-
+2014-11-24 22:12:38	ahjolinna	[13:23:51] Mozilla Firefox has dropped Google as its default search engine and signed a five-year deal with Yahoo instead
+2014-11-24 22:12:38	Israphel	[13:25:03] I'll stay on google anyway
+2014-11-24 22:12:38	ugjka	[13:25:42] Will it only affect new installs?
+2014-11-24 22:12:38	Israphel	[13:26:16] good question
+2014-11-24 22:12:38	Israphel	[13:26:34] I delete duckduckgo and then chakra places it again
+2014-11-24 22:12:38	Israphel	[13:28:05] http://www.cracked.com/photoplasty_1178_18-common-foreign-practices-that-would-make-america-better/
+2014-11-24 22:12:38	+AIDE	[13:28:06] Title: 18 Common Foreign Practices That America Needs to Steal | Cracked.com (at www.cracked.com)
+2014-11-24 22:12:38	ahjolinna	[13:29:25] Why Mozilla is scared of Google: It's Complicated http://www.theverge.com/2014/11/20/7254085/why-mozilla-is-scared-of-google
+2014-11-24 22:12:38	Israphel	[13:30:12] chrome broke firefox's ass
+2014-11-24 22:12:38	Israphel	[13:30:16] that's the problem
+2014-11-24 22:12:38	Israphel	[13:30:17] life sucks
+2014-11-24 22:12:38	ahjolinna	[13:30:38] oh korea -_- http://bit.ly/1zGYi7p
+2014-11-24 22:12:38	+AIDE	[13:30:39] Title: There is A Korean BABYMETAL Knockoff Named PRITZ & They Are Already Sparking Outrage - Metal Injection (at bit.ly)
+2014-11-24 22:12:38	ahjolinna	[13:31:26] (Hint: Do those armbands remind you of something?)
+2014-11-24 22:12:38	Israphel	[13:32:02] lol
+2014-11-24 22:12:38	Israphel	[13:32:04] babymetal rlz
+2014-11-24 22:12:38	Israphel	[13:32:27] they exist thanks to the allies
+2014-11-24 22:12:38	Israphel	[13:32:41] so they're wrong
+2014-11-24 22:12:38	Israphel	[13:33:29] I did nazi that coming
+2014-11-24 22:12:38	ugjka	[13:34:43] In asia you can buy hitler t-shirts, for them it's funny.
+2014-11-24 22:12:38	Israphel	[13:35:36] in asia you can rape an octopus
+2014-11-24 22:12:38	Israphel	[13:36:20] damn this song sucks
+2014-11-24 22:12:38	Israphel	[13:38:47] https://www.youtube.com/watch?v=AZ2LyS6jFB4
+2014-11-24 22:12:38	+AIDE	[13:38:49] Title: Peter Capusotto y sus videos - Micky Vainilla - 9° Temporada - 3º Programa - YouTube (at www.youtube.com)
+2014-11-24 22:12:38	ahjolinna	[13:38:56] if i remember correctly south america had a lot of nazi sympathisers even after ww2 ended
+2014-11-24 22:12:38	Israphel	[13:40:17] even now
+2014-11-24 22:12:38	Israphel	[13:40:26] the president was nazi
+2014-11-24 22:12:38	Israphel	[13:40:44] lot of members of the nazi party came here
+2014-11-24 22:12:38	Israphel	[13:40:51] some of them lived a long life
+2014-11-24 22:12:38	Israphel	[13:41:30] Eichman
+2014-11-24 22:12:38	Israphel	[13:41:32] and Mengele
+2014-11-24 22:12:38	ahjolinna	[13:42:31] only countries that fought "with" nazi germany was Finland and I think Japan also
+2014-11-24 22:12:38	Israphel	[13:42:40] he moved to Argentina using false papers. Information collected by the Mossad, Israel's intelligence agency, confirmed Eichmann's location in 1960. A team of Mossad and Shin Bet agents captured Eichmann and brought him to Israel to stand trial on 15 criminal charges
+2014-11-24 22:12:38	Israphel	[13:43:05] finland won againts russia
+2014-11-24 22:12:38	Israphel	[13:43:17] finland had no choice
+2014-11-24 22:12:38	Israphel	[13:43:23] japan was just a pussy
+2014-11-24 22:12:38	Israphel	[13:43:42] you were either killed by the nazis or by the urss
+2014-11-24 22:12:38	ahjolinna	[13:43:45] btw. catholic church / vatican helped the nazi to get to south america
+2014-11-24 22:12:38	Israphel	[13:43:58] nazi party and vatican are almost the same stuff
+2014-11-24 22:12:38	Israphel	[13:44:27] people here hate jews and british
+2014-11-24 22:12:38	Israphel	[13:44:54] there were jews killings decades after WWII
+2014-11-24 22:12:38	Israphel	[13:45:24] people from Top Gear UK came here recently.... we destroyed their cars, they had to run.
+2014-11-24 22:12:38	bulletfreak	[15:16:44] http://www.thepowerbase.com/2013/05/rekonq-gaining-chrome-extension-support-still-sponsored-by-blue-systems/
+2014-11-24 22:12:38	+AIDE	[15:16:46] Title: ReKonq Gaining Chrome Extension Support, Still Sponsored By Blue Systems (at www.thepowerbase.com)
+2014-11-24 22:12:38	bulletfreak	[15:16:51] when will this happen?
+2014-11-24 22:12:38	ahjo-ultrabook	[15:17:45] kf5 time
+2014-11-24 22:12:38	ahjo-ultrabook	[15:17:58] kf5/qt5 port
+2014-11-24 22:12:38	ahjo-ultrabook	[15:19:03] Qt5 uses chromes webkit nowdays
+2014-11-24 22:12:38	ahjo-ultrabook	[15:20:12] rekonq will be nice for kf5
+2014-11-24 22:12:38	ahjo-ultrabook	[15:24:33] bulletfreak: won't happen to kde4/qt4 version
+2014-11-24 22:12:38	bulletfreak	[15:28:19] can't wait until kf5 iso
+2014-11-24 22:12:38	bulletfreak	[15:31:11] hopefully plasma next will get themes quickly
+2014-11-24 22:12:38	bulletfreak	[16:51:18] can you guys help me fix this ccr package?
+2014-11-24 22:12:38	bulletfreak	[16:52:35] http://chakraos.org/ccr/packages.php?O=0&K=mood&do_Search=+Go+
+2014-11-24 22:12:38	+AIDE	[16:52:38] Title: Chakra | CCR (en) - Search Criteria: mood (at chakraos.org)
+2014-11-24 22:12:38	ahjo-ultrabook	[16:53:25] have u checked aur?
+2014-11-24 22:12:38	bulletfreak	[16:53:35] yep
+2014-11-24 22:12:38	ahjo-ultrabook	[16:53:45] and?
+2014-11-24 22:12:38	bulletfreak	[16:53:45] i know the fix
+2014-11-24 22:12:38	bulletfreak	[16:54:00] but whenever i try to install it md5sum invalid
+2014-11-24 22:12:38	bulletfreak	[16:54:17] like every time i try to install it the md5 changes
+2014-11-24 22:12:38	ahjo-ultrabook	[16:55:10] well i cant do anything now its almost 2am here
+2014-11-24 22:12:38	Israphel	[17:15:49] I really need a portuguese speaker now
+2014-11-24 22:12:38	s8321414	[06:29:55] tetris4: hi?
+2014-11-24 22:12:38	ahjolinna	[06:35:55] http://www.linuxinsider.com/story/81385.html?rss=1
+2014-11-24 22:12:38	+AIDE	[06:35:57] Title: Jolla's Open Source Tablet Gets Crazy Crowd Love | Mobile | LinuxInsider (at www.linuxinsider.com)
+2014-11-24 22:12:38	ahjolinna	[06:37:33] http://newsroom.intel.com/community/intel_newsroom/blog/2014/11/19/world-s-first-crowdsourced-tablet-launched-today-from-jolla-powered-by-intel
+2014-11-24 22:12:38	+AIDE	[06:37:34] Title: World's First Crowdsourced Tablet Launched Today from Jolla, Powered by Intel (at newsroom.intel.com)
+2014-11-24 22:12:38	ahjolinna	[06:37:36] Jolla tablet to feature Intel GPU, powered by Atom Z37xx (Bay Trail-T) processor
+2014-11-24 22:12:38	Israphel	[06:39:40] he is like a living RSS
+2014-11-24 22:12:38	ahjolinna	[06:49:07] Israphel: :D
+2014-11-24 22:12:38	Israphel	[06:49:23] I wont pass the test :(
+2014-11-24 22:12:38	ahjolinna	[06:49:51] Israphel: what test?
+2014-11-24 22:12:38	Israphel	[06:50:06] portuguese
+2014-11-24 22:12:38	ahjolinna	[06:50:32] I told u that u suck :D
+2014-11-24 22:12:38	ahjolinna	[06:50:36] Another systemd surveys  https://docs.google.com/forms/d/1gCKnFnN_NYHzu5Y6dDnmf25TBw2mAr7TRiyRprz3-Vg
+2014-11-24 22:12:38	+AIDE	[06:50:38] Title: Complex systemd survey (at docs.google.com)
+2014-11-24 22:12:38	Israphel	[06:51:11] you told me I suck with italian
+2014-11-24 22:12:38	ahjolinna	[06:51:27] I mean both
+2014-11-24 22:12:38	Israphel	[06:51:35] I just need time
+2014-11-24 22:12:38	Israphel	[06:51:46] italian's next
+2014-11-24 22:12:38	ahjolinna	[06:51:48] actually I meant in general
+2014-11-24 22:12:38	ahjolinna	[06:52:00] :P
+2014-11-24 22:12:38	Israphel	[06:52:12] you were nazi after all
+2014-11-24 22:12:38	ahjolinna	[06:52:37] damn you figured it out
+2014-11-24 22:12:38	ahjolinna	[06:52:40] :)
+2014-11-24 22:12:38	Israphel	[06:53:55] D:
+2014-11-24 22:12:38	ahjolinna	[06:54:03] btw. my favorite anime character is the Major from Hellsing
+2014-11-24 22:12:38	Israphel	[06:54:06] call the jew rangers
+2014-11-24 22:12:38	Israphel	[06:54:18] the nazi gnome
+2014-11-24 22:12:38	Israphel	[06:54:51] denn wir fahren gegen Engeland
+2014-11-24 22:12:38	brli	[06:57:04] Israphel: it won't be that proper(or, political-correct) to say so in some region of Europe, I suppose?
+2014-11-24 22:12:38	Israphel	[06:57:35] if we talk about soccer
+2014-11-24 22:12:38	Israphel	[06:57:39] it's pretty common
+2014-11-24 22:12:38	ugjka	[07:48:12] We got our first snow here in Latvia
+2014-11-24 22:12:38	ugjka	[07:48:21] today
+2014-11-24 22:12:38	Israphel	[08:48:04] what a beautiful place
+2014-11-24 22:12:38	brli	[08:50:48] Israphel: ?
+2014-11-24 22:12:38	Israphel	[08:50:56] <ugjka> We got our first snow here in Latvia
+2014-11-24 22:12:38	ahjolinna	[09:17:52] dmnmsc: hello, what is your thoughts on ck kernel and BFQ?  (https://www.loomio.org/d/sqwup7OM/ck-kernel-by-default)
+2014-11-24 22:12:38	ahjolinna	[09:44:50] Adobe Photoshop is coming to Google Chrome, but not any time soon.
+2014-11-24 22:12:38	ahjolinna	[09:44:57] http://www.theverge.com/2014/11/21/7256819/adobes-got-photoshop-working-in-chrome-but-its-not-here-yet
+2014-11-24 22:12:38	ahjolinna	[09:50:07] http://www.pocket-lint.com/news/131808-5-reasons-why-sailfish-os-2-0-should-worry-apple-google-and-microsoft
+2014-11-24 22:12:38	+AIDE	[09:50:09] Title: 5 reasons why Sailfish OS 2.0 should worry Apple, Google and Microsoft - Pocket-lint (at www.pocket-lint.com)
+2014-11-24 22:12:38	ahjolinna	[10:34:06] "We've taken €100 off the price of ‪#‎Jolla‬ to celebrate Jolla Tablet's million dollar success! This is our way of saying thank you and giving something back to the community." - Jolla
+2014-11-24 22:12:38	ahjolinna	[11:09:35] http://user-prompt.com/please-participate-in-a-survey-about-kdes-download-manager-kget/
+2014-11-24 22:12:38	+AIDE	[11:09:37] Title: Please participate in a survey about KDEs download manager KGet | User Prompt Psychologic IT Expertise (at user-prompt.com)
+2014-11-24 22:12:38	Israphel	[11:37:54] kget still exists
+2014-11-24 22:12:38	ahjolinna	[12:45:21] Israphel: I hope the Qt5/kf5 version will get some nice features
+2014-11-24 22:12:38	ahjolinna	[12:46:16] and better UI/UX
+2014-11-24 22:12:38	ahjolinna	[12:56:51] http://www.jollausers.com/2014/11/jolla-tablet-reached-1-million-in-just-37-hours/
+2014-11-24 22:12:38	+AIDE	[12:56:53] Title: Jolla Tablet Reached $1 Million In Just 37 Hours! | Jolla Users Blog (at www.jollausers.com)
+2014-11-24 22:12:38	ahjolinna	[13:02:39]  We've taken €100 off the price of Jolla to celebrate Jolla Tablet's million dollar success! This is our way of saying thank you and giving something back to the community. http://shop.jolla.com/eu_en/
+2014-11-24 22:12:38	+AIDE	[13:02:40] Title: Jolla Online Shop | Home page (at shop.jolla.com)
+2014-11-24 22:12:38	Israphel	[13:17:28] http://i.imgur.com/OI9qaVf.jpg
+2014-11-24 22:12:38	dmnmsc	[13:19:32] Israphel: If you don't want your old RAM just send it to me. No need to make it autumn trash xD
+2014-11-24 22:12:38	Israphel	[13:19:44] XD
+2014-11-24 22:12:38	Israphel	[13:19:48] it's a wild ram
+2014-11-24 22:12:38	Israphel	[13:23:29] http://i.imgur.com/UsdiQXf.jpg
+2014-11-24 22:12:38	dmnmsc	[13:24:20] wild as well? xD
+2014-11-24 22:12:38	Israphel	[13:24:48] weak against fire type
+2014-11-24 22:12:38	Israphel	[13:25:16] NEW http://i.imgur.com/gt9Z8eN.jpg
+2014-11-24 22:12:38	ahjolinna-jolla	[13:48:34] dmnmsc: jolla phone is now 250€ at jolla shop/store
+2014-11-24 22:12:38	dmnmsc	[13:49:13] It's like 245€ over the price I can pay nowadays xD
+2014-11-24 22:12:38	dmnmsc	[13:49:38] won't change my phone until this Xperia dies
+2014-11-24 22:12:38	ahjolinna-jolla	[13:51:03] dmnmsc:  u can install FirefoxOS on one Xperia phone
+2014-11-24 22:12:38	dmnmsc	[13:51:33] ahjolinna-jolla: I'm happy with my Android version... it's working really fast
+2014-11-24 22:12:38	ahjolinna-jolla	[13:52:00] dmnmsc: lol, u are boring
+2014-11-24 22:12:38	dmnmsc	[13:52:18] Yeah, we all know that
+2014-11-24 22:12:38	ahjolinna-jolla	[13:55:20] dmnmsc: Sony said that all xperia z phones will get Android 5, don't know about others
+2014-11-24 22:12:38	dmnmsc	[13:55:46] bah, this is Xperia... so no Android 5 here
+2014-11-24 22:12:38	ahjolinna-jolla	[13:55:48] oh and z tablets
+2014-11-24 22:12:38	dmnmsc	[13:55:50] Xperia S
+2014-11-24 22:12:38	ahjolinna-jolla	[13:56:23] dmnmsc: maybe unofficial rom?
+2014-11-24 22:12:38	dmnmsc	[13:56:44] ahjolinna-jolla: Yeah, that's possible. But as I said, I'm happy with the current ROM
+2014-11-24 22:12:38	ahjolinna-jolla	[13:57:27] dmnmsc: Android 5 is way better than 4
+2014-11-24 22:12:38	dmnmsc	[13:57:28] My friends use to say isn't normal... Default Roms should suck, but mine works just perfect
+2014-11-24 22:12:38	ahjolinna-jolla	[13:58:35] dmnmsc: Sonys  default rom is really good
+2014-11-24 22:12:38	dmnmsc	[14:01:08] Yes it is. This phone has more than 2 years. Never flashed nor rebooted
+2014-11-24 22:12:38	dmnmsc	[14:01:24] restored, sorry
+2014-11-24 22:12:38	ahjolinna	[14:06:15] dmnmsc: this is one reason why Sonys android version is the best http://developer.sonymobile.com/2014/11/13/android-5-0-xperia-z3-aosp-source-code-and-binaries-now-available/
+2014-11-24 22:12:38	+AIDE	[14:06:16] Title: Android 5.0: Xperia Z3 AOSP source code and binaries now available Developer World (at developer.sonymobile.com)
+2014-11-24 22:12:38	dmnmsc	[14:07:43] Sony rules! \o/
+2014-11-24 22:12:38	ahjolinna	[14:08:07] yeah
+2014-11-24 22:12:38	ahjolinna	[14:09:48] dmnmsc: https://github.com/sonyxperiadev/
+2014-11-24 22:12:38	+AIDE	[14:09:49] Title: sonyxperiadev (Sony Xperia Developer World) · GitHub (at github.com)
+2014-11-24 22:12:38	dmnmsc	[14:11:34] nothing new for my device
+2014-11-24 22:12:38	ahjolinna	[14:20:23] dmnmsc: Sony has already ended support for Xperia S, SL, T, V, TX, SP, C, L, M, E, so there is no chance for any further android update.
+2014-11-24 22:12:38	dmnmsc	[14:20:45] ahjolinna: xda-developers to the rescue
+2014-11-24 22:12:38	ahjolinna	[14:21:36] http://forum.xda-developers.com/xperia-s/s-development/pure-aosp-lollipop-t2940839
+2014-11-24 22:12:38	+AIDE	[14:21:37] Title: Pure AOSP Lollipop test4 | Sony Xperia S, Acro S, Ion | XDA Forums (at forum.xda-developers.com)
+2014-11-24 22:12:38	ahjolinna	[14:22:22] dmnmsc: happy?
+2014-11-24 22:12:38	dmnmsc	[14:22:51] happy with my current version. Not going to update
+2014-11-24 22:12:38	dmnmsc	[14:23:58] I just installed an unofficial ROM once.. and wasn't on Android phone
+2014-11-24 22:12:38	ahjolinna	[14:24:43] dmnmsc: whatever -_-
+2014-11-24 22:12:38	dmnmsc	[14:24:47] haha
+2014-11-24 22:12:38	dmnmsc	[14:25:05] Windows Phone \o/
+2014-11-24 22:12:38	ahjolinna	[14:25:59] oh dear god
+2014-11-24 22:12:38	Israphel	[14:29:36] http://i.imgur.com/y4K2MnW.jpg
+2014-11-24 22:12:38	Israphel	[14:29:48] there's no time, I must read 4 at once
+2014-11-24 22:12:38	holmeslinux	[16:46:45] ManjaroPek OpenRc, here http://goo.gl/wfzLTh
+2014-11-24 22:12:38	+AIDE	[16:46:46] Title: ManjaroPek OpenRC for us: test (at goo.gl)
+2014-11-24 22:12:38	ahjolinna	[17:28:52] http://www.iflscience.com/brain/watch-neurosurgeon-perform-subdural-hematoma-operation
+2014-11-24 22:12:38	+AIDE	[17:28:53] Title: Watch A Neurosurgeon Perform A Subdural Hematoma Operation | IFLScience (at www.iflscience.com)
+2014-11-24 22:12:38	bulletfreak	[14:59:43] when will the KF5 iso be released?
+2014-11-24 22:12:38	tetris4_	[15:18:34] bulletfreak: there is not really a date on it
+2014-11-24 22:12:38	tetris4_	[15:19:35] but work has started to slowly transition to kf5
+2014-11-24 22:12:38	tetris4_	[15:19:40] https://www.loomio.org/d/UyKTnVvZ/start-to-package-kf5-related-package-in-platform
+2014-11-24 22:12:38	tetris4_	[15:19:44] one step at a time =)
+2014-11-24 22:12:38	bulletfreak	[15:31:07] will it be a while?
+2014-11-24 22:12:38	tetris4_	[16:41:52] bulletfreak: can't really tell..testing ISOs should available some time soon, but until we ship them by default it might be an iso or two at least
+2014-11-24 22:12:38	msx	[20:33:31] ping ahjo-ultrabook ahjolinna
+2014-11-24 22:12:38	ahjolinna	[11:41:45] https://www.indiegogo.com/projects/sailfishos-individual-developer-support
+2014-11-24 22:12:38	ugjka	[05:20:33] https://www.youtube.com/watch?v=umQDc0wPsGg
+2014-11-24 22:12:38	+AIDE	[05:20:34] Title: Tested In-Depth: Apple iPad Air 2 - YouTube (at www.youtube.com)
+2014-11-24 22:12:38	ahjolinna	[17:23:30] okay now I have a good reason to never buy a samsung product http://www.bloomberg.com/news/2014-11-21/samsung-files-complaint-to-block-nvidia-chips-from-u-s-1-.html
+2014-11-24 22:12:38	+AIDE	[17:23:31] Title: Samsung Files Complaint to Block Nvidia Chips From U.S. - Bloomberg (at www.bloomberg.com)
+2014-11-24 22:12:38	ahjolinna	[17:23:35] samsung is just becoming too childish/pathetic
+2014-11-24 22:12:38	ahjolinna	[17:28:40] http://linustechtips.com/main/topic/255281-samsung-files-complaint-with-itc-to-block-nvidia-chips-from-us-markets/
+2014-11-24 22:12:38	+AIDE	[17:28:42] Title: Samsung Files Complaint with ITC to Block Nvidia Chips From US Markets - Tech News and Reviews - Linus Tech Tips (at linustechtips.com)
+2014-11-24 22:12:38	ahjolinna	[17:32:20] Nvidia started this because Samsung used their architectures which is illegal so Nvidia is trying to take Samsung to court so Samsung's reply was NO and we will ban your stuff.
+2014-11-24 22:12:38	sange	[21:19:31] hey guys, I just switched over to chakra. I'm trying to figure out how to add the ccr repo to pacman. I'm trying to install a few programs (guake for example) and can't find them within pacman. Can anyone point me in the right direction? I've been looking through the wiki
+2014-11-24 22:12:38	***	Playback Complete.
+2014-11-24 22:12:39	ℹ 	Channel created on Fri, 03 Dec 2010 08:53:08

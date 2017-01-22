@@ -4320,3 +4320,482 @@
 2014-08-18 17:33:49	ℹ 	- ***************************************************************
 2014-08-18 17:33:49	ℹ 	End of /MOTD command.
 2014-08-18 17:33:49	ℹ 	User mode [+i] by dartagan_
+2014-08-18 20:53:05	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 20:53:05	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 20:53:05	ℹ 	Welcome to the freenode Internet Relay Chat Network dartagan_
+2014-08-18 20:53:05	ℹ 	Your host is verne.freenode.net[185.30.166.35/6667], running version ircd-seven-1.1.3
+2014-08-18 20:53:05	ℹ 	This server was created Sat Mar 22 2014 at 14:55:42 EDT
+2014-08-18 20:53:05	ℹ 	verne.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2014-08-18 20:53:05	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2014-08-18 20:53:05	ℹ 	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2014-08-18 20:53:05	ℹ 	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2014-08-18 20:53:05	ℹ 	There are 174 users and 82334 invisible on 28 servers
+2014-08-18 20:53:05	ℹ 	29 :IRC Operators online
+2014-08-18 20:53:05	ℹ 	51672 :channels formed
+2014-08-18 20:53:05	ℹ 	I have 845 clients and 1 servers
+2014-08-18 20:53:05	ℹ 	845 5686 :Current local users 845, max 5686
+2014-08-18 20:53:05	ℹ 	82508 97818 :Current global users 82508, max 97818
+2014-08-18 20:53:05	ℹ 	Highest connection count: 5687 (5686 clients) (483786 connections received)
+2014-08-18 20:53:05	ℹ 	- verne.freenode.net Message of the Day -
+2014-08-18 20:53:05	ℹ 	- Welcome to verne.freenode.net in Amsterdam, NL.
+2014-08-18 20:53:05	ℹ 	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2014-08-18 20:53:05	ℹ 	- this server!
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- VERNE, Jules (1828-1905). Born in Nantes, France, Verne was
+2014-08-18 20:53:05	ℹ 	- a pioneering french author known for novels such as Twenty
+2014-08-18 20:53:05	ℹ 	- Thousand Leagues Under the Sea, A Journey to the Center of the
+2014-08-18 20:53:05	ℹ 	- Earth, and Around the World in Eighty Days. Often lauded as the
+2014-08-18 20:53:05	ℹ 	- Father of science fiction, Verne wrote about concepts such as
+2014-08-18 20:53:05	ℹ 	- space travel, skyscrapers, and worldwide communications
+2014-08-18 20:53:05	ℹ 	- networks long before these ideas became popularised or realised.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- Welcome to freenode - supporting the free and open source
+2014-08-18 20:53:05	ℹ 	- software communities since 1998.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- By connecting to freenode you indicate that you have read and
+2014-08-18 20:53:05	ℹ 	- accept our policies as set out on http://www.freenode.net
+2014-08-18 20:53:05	ℹ 	- freenode runs an open proxy scanner. Please join #freenode for
+2014-08-18 20:53:05	ℹ 	- any network-related questions or queries, where a number of
+2014-08-18 20:53:05	ℹ 	- volunteer staff and helpful users will be happy to assist you.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2014-08-18 20:53:05	ℹ 	- together with like-minded FOSS enthusiasts for talks and
+2014-08-18 20:53:05	ℹ 	- real-life collaboration.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- We would like to thank Private Internet Access
+2014-08-18 20:53:05	ℹ 	- (https://www.privateinternetaccess.com/) and the other
+2014-08-18 20:53:05	ℹ 	- organisations that help keep freenode and our other projects
+2014-08-18 20:53:05	ℹ 	- running for their sustained support.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- In particular we would like to thank the sponsor
+2014-08-18 20:53:05	ℹ 	- of this server, details of which can be found above.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- ***************************************************************
+2014-08-18 20:53:05	ℹ 	- Please read http://blog.freenode.net/2010/11/be-safe-out-there/
+2014-08-18 20:53:05	ℹ 	- ***************************************************************
+2014-08-18 20:53:05	ℹ 	End of /MOTD command.
+2014-08-18 20:53:05	ℹ 	User mode [+i] by dartagan_
+2014-08-18 20:55:44	ℹ 	irc: disconnected from server
+2014-08-18 20:57:10	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 20:57:10	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 20:57:10	ℹ 	Welcome to the freenode Internet Relay Chat Network dartagan_
+2014-08-18 20:57:10	ℹ 	Your host is verne.freenode.net[185.30.166.35/6667], running version ircd-seven-1.1.3
+2014-08-18 20:57:10	ℹ 	This server was created Sat Mar 22 2014 at 14:55:42 EDT
+2014-08-18 20:57:10	ℹ 	verne.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2014-08-18 20:57:10	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2014-08-18 20:57:10	ℹ 	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2014-08-18 20:57:10	ℹ 	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2014-08-18 20:57:10	ℹ 	There are 174 users and 82334 invisible on 28 servers
+2014-08-18 20:57:10	ℹ 	29 :IRC Operators online
+2014-08-18 20:57:10	ℹ 	51672 :channels formed
+2014-08-18 20:57:10	ℹ 	I have 845 clients and 1 servers
+2014-08-18 20:57:10	ℹ 	845 5686 :Current local users 845, max 5686
+2014-08-18 20:57:10	ℹ 	82508 97818 :Current global users 82508, max 97818
+2014-08-18 20:57:10	ℹ 	Highest connection count: 5687 (5686 clients) (483786 connections received)
+2014-08-18 20:57:10	ℹ 	- verne.freenode.net Message of the Day -
+2014-08-18 20:57:10	ℹ 	- Welcome to verne.freenode.net in Amsterdam, NL.
+2014-08-18 20:57:10	ℹ 	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2014-08-18 20:57:10	ℹ 	- this server!
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	- VERNE, Jules (1828-1905). Born in Nantes, France, Verne was
+2014-08-18 20:57:10	ℹ 	- a pioneering french author known for novels such as Twenty
+2014-08-18 20:57:10	ℹ 	- Thousand Leagues Under the Sea, A Journey to the Center of the
+2014-08-18 20:57:10	ℹ 	- Earth, and Around the World in Eighty Days. Often lauded as the
+2014-08-18 20:57:10	ℹ 	- Father of science fiction, Verne wrote about concepts such as
+2014-08-18 20:57:10	ℹ 	- space travel, skyscrapers, and worldwide communications
+2014-08-18 20:57:10	ℹ 	- networks long before these ideas became popularised or realised.
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	- Welcome to freenode - supporting the free and open source
+2014-08-18 20:57:10	ℹ 	- software communities since 1998.
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	- By connecting to freenode you indicate that you have read and
+2014-08-18 20:57:10	ℹ 	- accept our policies as set out on http://www.freenode.net
+2014-08-18 20:57:10	ℹ 	- freenode runs an open proxy scanner. Please join #freenode for
+2014-08-18 20:57:10	ℹ 	- any network-related questions or queries, where a number of
+2014-08-18 20:57:10	ℹ 	- volunteer staff and helpful users will be happy to assist you.
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2014-08-18 20:57:10	ℹ 	- together with like-minded FOSS enthusiasts for talks and
+2014-08-18 20:57:10	ℹ 	- real-life collaboration.
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	- We would like to thank Private Internet Access
+2014-08-18 20:57:10	ℹ 	- (https://www.privateinternetaccess.com/) and the other
+2014-08-18 20:57:10	ℹ 	- organisations that help keep freenode and our other projects
+2014-08-18 20:57:10	ℹ 	- running for their sustained support.
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	- In particular we would like to thank the sponsor
+2014-08-18 20:57:10	ℹ 	- of this server, details of which can be found above.
+2014-08-18 20:57:10	ℹ 	-
+2014-08-18 20:57:10	ℹ 	- ***************************************************************
+2014-08-18 20:57:10	ℹ 	- Please read http://blog.freenode.net/2010/11/be-safe-out-there/
+2014-08-18 20:57:10	ℹ 	- ***************************************************************
+2014-08-18 20:57:10	ℹ 	End of /MOTD command.
+2014-08-18 20:57:10	ℹ 	User mode [+i] by dartagan_
+2014-08-18 20:57:49	ℹ 	irc: disconnected from server
+2014-08-18 20:58:05	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 20:58:05	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 20:58:05	ℹ 	Welcome to the freenode Internet Relay Chat Network dartagan_
+2014-08-18 20:58:05	ℹ 	Your host is verne.freenode.net[185.30.166.35/6667], running version ircd-seven-1.1.3
+2014-08-18 20:58:05	ℹ 	This server was created Sat Mar 22 2014 at 14:55:42 EDT
+2014-08-18 20:58:05	ℹ 	verne.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2014-08-18 20:58:05	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2014-08-18 20:58:05	ℹ 	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2014-08-18 20:58:05	ℹ 	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2014-08-18 20:58:05	ℹ 	There are 174 users and 82334 invisible on 28 servers
+2014-08-18 20:58:05	ℹ 	29 :IRC Operators online
+2014-08-18 20:58:05	ℹ 	51672 :channels formed
+2014-08-18 20:58:05	ℹ 	I have 845 clients and 1 servers
+2014-08-18 20:58:05	ℹ 	845 5686 :Current local users 845, max 5686
+2014-08-18 20:58:05	ℹ 	82508 97818 :Current global users 82508, max 97818
+2014-08-18 20:58:05	ℹ 	Highest connection count: 5687 (5686 clients) (483786 connections received)
+2014-08-18 20:58:05	ℹ 	- verne.freenode.net Message of the Day -
+2014-08-18 20:58:05	ℹ 	- Welcome to verne.freenode.net in Amsterdam, NL.
+2014-08-18 20:58:05	ℹ 	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2014-08-18 20:58:05	ℹ 	- this server!
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	- VERNE, Jules (1828-1905). Born in Nantes, France, Verne was
+2014-08-18 20:58:05	ℹ 	- a pioneering french author known for novels such as Twenty
+2014-08-18 20:58:05	ℹ 	- Thousand Leagues Under the Sea, A Journey to the Center of the
+2014-08-18 20:58:05	ℹ 	- Earth, and Around the World in Eighty Days. Often lauded as the
+2014-08-18 20:58:05	ℹ 	- Father of science fiction, Verne wrote about concepts such as
+2014-08-18 20:58:05	ℹ 	- space travel, skyscrapers, and worldwide communications
+2014-08-18 20:58:05	ℹ 	- networks long before these ideas became popularised or realised.
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	- Welcome to freenode - supporting the free and open source
+2014-08-18 20:58:05	ℹ 	- software communities since 1998.
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	- By connecting to freenode you indicate that you have read and
+2014-08-18 20:58:05	ℹ 	- accept our policies as set out on http://www.freenode.net
+2014-08-18 20:58:05	ℹ 	- freenode runs an open proxy scanner. Please join #freenode for
+2014-08-18 20:58:05	ℹ 	- any network-related questions or queries, where a number of
+2014-08-18 20:58:05	ℹ 	- volunteer staff and helpful users will be happy to assist you.
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2014-08-18 20:58:05	ℹ 	- together with like-minded FOSS enthusiasts for talks and
+2014-08-18 20:58:05	ℹ 	- real-life collaboration.
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	- We would like to thank Private Internet Access
+2014-08-18 20:58:05	ℹ 	- (https://www.privateinternetaccess.com/) and the other
+2014-08-18 20:58:05	ℹ 	- organisations that help keep freenode and our other projects
+2014-08-18 20:58:05	ℹ 	- running for their sustained support.
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	- In particular we would like to thank the sponsor
+2014-08-18 20:58:05	ℹ 	- of this server, details of which can be found above.
+2014-08-18 20:58:05	ℹ 	-
+2014-08-18 20:58:05	ℹ 	- ***************************************************************
+2014-08-18 20:58:05	ℹ 	- Please read http://blog.freenode.net/2010/11/be-safe-out-there/
+2014-08-18 20:58:05	ℹ 	- ***************************************************************
+2014-08-18 20:58:05	ℹ 	End of /MOTD command.
+2014-08-18 20:58:05	ℹ 	User mode [+i] by dartagan_
+2014-08-18 21:00:23	ℹ 	irc: disconnected from server
+2014-08-18 21:02:24	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 21:02:24	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 21:02:24	ℹ 	Welcome to the freenode Internet Relay Chat Network dartagan_
+2014-08-18 21:02:24	ℹ 	Your host is verne.freenode.net[185.30.166.35/6667], running version ircd-seven-1.1.3
+2014-08-18 21:02:24	ℹ 	This server was created Sat Mar 22 2014 at 14:55:42 EDT
+2014-08-18 21:02:24	ℹ 	verne.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2014-08-18 21:02:24	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2014-08-18 21:02:24	ℹ 	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2014-08-18 21:02:24	ℹ 	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2014-08-18 21:02:24	ℹ 	There are 174 users and 82334 invisible on 28 servers
+2014-08-18 21:02:24	ℹ 	29 :IRC Operators online
+2014-08-18 21:02:24	ℹ 	51672 :channels formed
+2014-08-18 21:02:24	ℹ 	I have 845 clients and 1 servers
+2014-08-18 21:02:24	ℹ 	845 5686 :Current local users 845, max 5686
+2014-08-18 21:02:24	ℹ 	82508 97818 :Current global users 82508, max 97818
+2014-08-18 21:02:24	ℹ 	Highest connection count: 5687 (5686 clients) (483786 connections received)
+2014-08-18 21:02:24	ℹ 	- verne.freenode.net Message of the Day -
+2014-08-18 21:02:24	ℹ 	- Welcome to verne.freenode.net in Amsterdam, NL.
+2014-08-18 21:02:24	ℹ 	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2014-08-18 21:02:24	ℹ 	- this server!
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	- VERNE, Jules (1828-1905). Born in Nantes, France, Verne was
+2014-08-18 21:02:24	ℹ 	- a pioneering french author known for novels such as Twenty
+2014-08-18 21:02:24	ℹ 	- Thousand Leagues Under the Sea, A Journey to the Center of the
+2014-08-18 21:02:24	ℹ 	- Earth, and Around the World in Eighty Days. Often lauded as the
+2014-08-18 21:02:24	ℹ 	- Father of science fiction, Verne wrote about concepts such as
+2014-08-18 21:02:24	ℹ 	- space travel, skyscrapers, and worldwide communications
+2014-08-18 21:02:24	ℹ 	- networks long before these ideas became popularised or realised.
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	- Welcome to freenode - supporting the free and open source
+2014-08-18 21:02:24	ℹ 	- software communities since 1998.
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	- By connecting to freenode you indicate that you have read and
+2014-08-18 21:02:24	ℹ 	- accept our policies as set out on http://www.freenode.net
+2014-08-18 21:02:24	ℹ 	- freenode runs an open proxy scanner. Please join #freenode for
+2014-08-18 21:02:24	ℹ 	- any network-related questions or queries, where a number of
+2014-08-18 21:02:24	ℹ 	- volunteer staff and helpful users will be happy to assist you.
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2014-08-18 21:02:24	ℹ 	- together with like-minded FOSS enthusiasts for talks and
+2014-08-18 21:02:24	ℹ 	- real-life collaboration.
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	- We would like to thank Private Internet Access
+2014-08-18 21:02:24	ℹ 	- (https://www.privateinternetaccess.com/) and the other
+2014-08-18 21:02:24	ℹ 	- organisations that help keep freenode and our other projects
+2014-08-18 21:02:24	ℹ 	- running for their sustained support.
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	- In particular we would like to thank the sponsor
+2014-08-18 21:02:24	ℹ 	- of this server, details of which can be found above.
+2014-08-18 21:02:24	ℹ 	-
+2014-08-18 21:02:24	ℹ 	- ***************************************************************
+2014-08-18 21:02:24	ℹ 	- Please read http://blog.freenode.net/2010/11/be-safe-out-there/
+2014-08-18 21:02:24	ℹ 	- ***************************************************************
+2014-08-18 21:02:24	ℹ 	End of /MOTD command.
+2014-08-18 21:02:24	ℹ 	User mode [+i] by dartagan_
+2014-08-18 21:04:37	ℹ 	irc: disconnected from server
+2014-08-18 21:05:28	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 21:05:28	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 21:05:28	ℹ 	Welcome to the freenode Internet Relay Chat Network dartagan_
+2014-08-18 21:05:28	ℹ 	Your host is verne.freenode.net[185.30.166.35/6667], running version ircd-seven-1.1.3
+2014-08-18 21:05:28	ℹ 	This server was created Sat Mar 22 2014 at 14:55:42 EDT
+2014-08-18 21:05:28	ℹ 	verne.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2014-08-18 21:05:28	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2014-08-18 21:05:28	ℹ 	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2014-08-18 21:05:28	ℹ 	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2014-08-18 21:05:28	ℹ 	There are 174 users and 82334 invisible on 28 servers
+2014-08-18 21:05:28	ℹ 	29 :IRC Operators online
+2014-08-18 21:05:28	ℹ 	51672 :channels formed
+2014-08-18 21:05:28	ℹ 	I have 845 clients and 1 servers
+2014-08-18 21:05:28	ℹ 	845 5686 :Current local users 845, max 5686
+2014-08-18 21:05:28	ℹ 	82508 97818 :Current global users 82508, max 97818
+2014-08-18 21:05:28	ℹ 	Highest connection count: 5687 (5686 clients) (483786 connections received)
+2014-08-18 21:05:28	ℹ 	- verne.freenode.net Message of the Day -
+2014-08-18 21:05:28	ℹ 	- Welcome to verne.freenode.net in Amsterdam, NL.
+2014-08-18 21:05:28	ℹ 	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2014-08-18 21:05:28	ℹ 	- this server!
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	- VERNE, Jules (1828-1905). Born in Nantes, France, Verne was
+2014-08-18 21:05:28	ℹ 	- a pioneering french author known for novels such as Twenty
+2014-08-18 21:05:28	ℹ 	- Thousand Leagues Under the Sea, A Journey to the Center of the
+2014-08-18 21:05:28	ℹ 	- Earth, and Around the World in Eighty Days. Often lauded as the
+2014-08-18 21:05:28	ℹ 	- Father of science fiction, Verne wrote about concepts such as
+2014-08-18 21:05:28	ℹ 	- space travel, skyscrapers, and worldwide communications
+2014-08-18 21:05:28	ℹ 	- networks long before these ideas became popularised or realised.
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	- Welcome to freenode - supporting the free and open source
+2014-08-18 21:05:28	ℹ 	- software communities since 1998.
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	- By connecting to freenode you indicate that you have read and
+2014-08-18 21:05:28	ℹ 	- accept our policies as set out on http://www.freenode.net
+2014-08-18 21:05:28	ℹ 	- freenode runs an open proxy scanner. Please join #freenode for
+2014-08-18 21:05:28	ℹ 	- any network-related questions or queries, where a number of
+2014-08-18 21:05:28	ℹ 	- volunteer staff and helpful users will be happy to assist you.
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2014-08-18 21:05:28	ℹ 	- together with like-minded FOSS enthusiasts for talks and
+2014-08-18 21:05:28	ℹ 	- real-life collaboration.
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	- We would like to thank Private Internet Access
+2014-08-18 21:05:28	ℹ 	- (https://www.privateinternetaccess.com/) and the other
+2014-08-18 21:05:28	ℹ 	- organisations that help keep freenode and our other projects
+2014-08-18 21:05:28	ℹ 	- running for their sustained support.
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	- In particular we would like to thank the sponsor
+2014-08-18 21:05:28	ℹ 	- of this server, details of which can be found above.
+2014-08-18 21:05:28	ℹ 	-
+2014-08-18 21:05:28	ℹ 	- ***************************************************************
+2014-08-18 21:05:28	ℹ 	- Please read http://blog.freenode.net/2010/11/be-safe-out-there/
+2014-08-18 21:05:28	ℹ 	- ***************************************************************
+2014-08-18 21:05:28	ℹ 	End of /MOTD command.
+2014-08-18 21:05:28	ℹ 	User mode [+i] by dartagan_
+2014-08-19 08:15:55	⚠	irc: reading data on socket: error 104 Connection reset by peer
+2014-08-19 08:15:55	ℹ 	irc: disconnecting from server...
+2014-08-19 08:15:55	ℹ 	irc: disconnected from server
+2014-08-19 08:15:55	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-19 08:16:05	ℹ 	irc: reconnecting to server...
+2014-08-19 08:16:05	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-19 08:16:05	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-19 08:16:05	ℹ 	Welcome to the freenode Internet Relay Chat Network dartagan_
+2014-08-19 08:16:05	ℹ 	Your host is verne.freenode.net[185.30.166.35/6667], running version ircd-seven-1.1.3
+2014-08-19 08:16:05	ℹ 	This server was created Sat Mar 22 2014 at 14:55:42 EDT
+2014-08-19 08:16:05	ℹ 	verne.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2014-08-19 08:16:05	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2014-08-19 08:16:05	ℹ 	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2014-08-19 08:16:05	ℹ 	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2014-08-19 08:16:05	ℹ 	There are 174 users and 82334 invisible on 28 servers
+2014-08-19 08:16:05	ℹ 	29 :IRC Operators online
+2014-08-19 08:16:05	ℹ 	51672 :channels formed
+2014-08-19 08:16:05	ℹ 	I have 845 clients and 1 servers
+2014-08-19 08:16:05	ℹ 	845 5686 :Current local users 845, max 5686
+2014-08-19 08:16:05	ℹ 	82508 97818 :Current global users 82508, max 97818
+2014-08-19 08:16:05	ℹ 	Highest connection count: 5687 (5686 clients) (483786 connections received)
+2014-08-19 08:16:05	ℹ 	- verne.freenode.net Message of the Day -
+2014-08-19 08:16:05	ℹ 	- Welcome to verne.freenode.net in Amsterdam, NL.
+2014-08-19 08:16:05	ℹ 	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2014-08-19 08:16:05	ℹ 	- this server!
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	- VERNE, Jules (1828-1905). Born in Nantes, France, Verne was
+2014-08-19 08:16:05	ℹ 	- a pioneering french author known for novels such as Twenty
+2014-08-19 08:16:05	ℹ 	- Thousand Leagues Under the Sea, A Journey to the Center of the
+2014-08-19 08:16:05	ℹ 	- Earth, and Around the World in Eighty Days. Often lauded as the
+2014-08-19 08:16:05	ℹ 	- Father of science fiction, Verne wrote about concepts such as
+2014-08-19 08:16:05	ℹ 	- space travel, skyscrapers, and worldwide communications
+2014-08-19 08:16:05	ℹ 	- networks long before these ideas became popularised or realised.
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	- Welcome to freenode - supporting the free and open source
+2014-08-19 08:16:05	ℹ 	- software communities since 1998.
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	- By connecting to freenode you indicate that you have read and
+2014-08-19 08:16:05	ℹ 	- accept our policies as set out on http://www.freenode.net
+2014-08-19 08:16:05	ℹ 	- freenode runs an open proxy scanner. Please join #freenode for
+2014-08-19 08:16:05	ℹ 	- any network-related questions or queries, where a number of
+2014-08-19 08:16:05	ℹ 	- volunteer staff and helpful users will be happy to assist you.
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2014-08-19 08:16:05	ℹ 	- together with like-minded FOSS enthusiasts for talks and
+2014-08-19 08:16:05	ℹ 	- real-life collaboration.
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	- We would like to thank Private Internet Access
+2014-08-19 08:16:05	ℹ 	- (https://www.privateinternetaccess.com/) and the other
+2014-08-19 08:16:05	ℹ 	- organisations that help keep freenode and our other projects
+2014-08-19 08:16:05	ℹ 	- running for their sustained support.
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	- In particular we would like to thank the sponsor
+2014-08-19 08:16:05	ℹ 	- of this server, details of which can be found above.
+2014-08-19 08:16:05	ℹ 	-
+2014-08-19 08:16:05	ℹ 	- ***************************************************************
+2014-08-19 08:16:05	ℹ 	- Please read http://blog.freenode.net/2010/11/be-safe-out-there/
+2014-08-19 08:16:05	ℹ 	- ***************************************************************
+2014-08-19 08:16:05	ℹ 	End of /MOTD command.
+2014-08-19 08:16:05	ℹ 	User mode [+i] by dartagan_
+2014-11-24 22:12:36	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-11-24 22:12:36	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-11-24 22:12:37	ℹ 	Welcome to the freenode Internet Relay Chat Network dartagan
+2014-11-24 22:12:37	ℹ 	Your host is morgan.freenode.net[64.32.24.176/6667], running version ircd-seven-1.1.3
+2014-11-24 22:12:37	ℹ 	This server was created Thu Jul 31 2014 at 17:07:15 UTC
+2014-11-24 22:12:37	ℹ 	morgan.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2014-11-24 22:12:37	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+2014-11-24 22:12:37	ℹ 	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+2014-11-24 22:12:37	ℹ 	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+2014-11-24 22:12:37	ℹ 	There are 178 users and 85438 invisible on 26 servers
+2014-11-24 22:12:37	ℹ 	30 :IRC Operators online
+2014-11-24 22:12:37	ℹ 	47309 :channels formed
+2014-11-24 22:12:37	ℹ 	I have 4894 clients and 1 servers
+2014-11-24 22:12:37	ℹ 	4894 8152 :Current local users 4894, max 8152
+2014-11-24 22:12:37	ℹ 	85616 99525 :Current global users 85616, max 99525
+2014-11-24 22:12:37	ℹ 	Highest connection count: 8154 (8152 clients) (1251658 connections received)
+2014-11-24 22:12:37	ℹ 	- morgan.freenode.net Message of the Day -
+2014-11-24 22:12:37	ℹ 	- Welcome to morgan.freenode.net in Chicago, IL, USA! Thank
+2014-11-24 22:12:37	ℹ 	- you to psyprus for sponsoring this server!
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- MORGAN, RICHARD K. (1965-) is an English science fiction
+2014-11-24 22:12:37	ℹ 	- author. Morgan's books are generally set in a dystopian world.
+2014-11-24 22:12:37	ℹ 	- His breakout novel Altered Carbon won the Philip K. Dick Award,
+2014-11-24 22:12:37	ℹ 	- and he has written many successful and amazing works to follow.
+2014-11-24 22:12:37	ℹ 	- His more recent writings explore the theme of autonomy
+2014-11-24 22:12:37	ℹ 	- in science fiction and escapism in fantasy.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- Welcome to freenode - supporting the free and open source
+2014-11-24 22:12:37	ℹ 	- software communities since 1998.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- **************************************************************
+2014-11-24 22:12:37	ℹ 	-                       SECURITY ALERT
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- Over the weekend of 13th-14th September freenode staff noticed
+2014-11-24 22:12:37	ℹ 	- some compromised binaries present on a number of servers.
+2014-11-24 22:12:37	ℹ 	- The servers in question have been removed from the network and
+2014-11-24 22:12:37	ℹ 	- shut down.  However, it's possible that network traffic  -
+2014-11-24 22:12:37	ℹ 	- including SSL traffic - has been sniffed and passwords
+2014-11-24 22:12:37	ℹ 	- exposed.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- We therefore recommend that all users change their nickserv
+2014-11-24 22:12:37	ℹ 	- password(s) to a new value which is not shared with any
+2014-11-24 22:12:37	ℹ 	- other service.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- You can do this with /msg nickserv set password newpasshere
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- Please note that investigation is ongoing to discover the root
+2014-11-24 22:12:37	ℹ 	- cause of the attack, and until this investigation is complete
+2014-11-24 22:12:37	ℹ 	- we cannot be 100% certain that all traces of the compromises
+2014-11-24 22:12:37	ℹ 	- have been removed. We may have to ask you to change your
+2014-11-24 22:12:37	ℹ 	- passwords again after analysis has completed.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- Further details will appear on https://blog.freenode.net/
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- **************************************************************
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- By connecting to freenode you indicate that you have read and
+2014-11-24 22:12:37	ℹ 	- accept our policies as set out on http://www.freenode.net
+2014-11-24 22:12:37	ℹ 	- freenode runs an open proxy scanner. Please join #freenode for
+2014-11-24 22:12:37	ℹ 	- any network-related questions or queries, where a number of
+2014-11-24 22:12:37	ℹ 	- volunteer staff and helpful users will be happy to assist you.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2014-11-24 22:12:37	ℹ 	- together with like-minded FOSS enthusiasts for talks and
+2014-11-24 22:12:37	ℹ 	- real-life collaboration.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- We would like to thank Private Internet Access
+2014-11-24 22:12:37	ℹ 	- (https://www.privateinternetaccess.com/) and the other
+2014-11-24 22:12:37	ℹ 	- organisations that help keep freenode and our other projects
+2014-11-24 22:12:37	ℹ 	- running for their sustained support.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- In particular we would like to thank the sponsor
+2014-11-24 22:12:37	ℹ 	- of this server, details of which can be found above.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	End of /MOTD command.
+2014-11-24 22:12:37	ℹ 	User mode [+i] by dartagan
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [17:59:16] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [17:59:16] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:59:16] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:59:16] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:59:16] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:59:16] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:17:34] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:17:34] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:17:34] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:17:35] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:17:35] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:17:35] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [05:24:59] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [05:24:59] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [05:24:59] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [05:24:59] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [05:24:59] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [05:24:59] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:32:29] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:32:29] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:32:30] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:32:30] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:32:30] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:32:30] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:09:15] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:09:15] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:09:15] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:09:15] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:09:15] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:09:15] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:58:53] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [01:58:53] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:58:54] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:58:54] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:58:54] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [01:58:54] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [04:00:02] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [04:00:02] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [04:00:02] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [04:00:02] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [04:00:02] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [04:00:02] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [17:04:47] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [17:04:47] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:04:48] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:04:48] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:04:48] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [17:04:48] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [11:55:35] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [11:55:35] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [00:41:11] [#chakra] Welcome to the Chakra discussion and support channel!
+2014-11-24 22:12:39	ℹ 	ChanServ (ChanServ@services.): [00:41:11] [#freenode] Welcome to #freenode. All network staff are voiced in here, but may not always be around - type /stats p to get a list of on call staff. Others may be hiding so do feel free to ping and /msg us at will! Also please read the channel guidelines at http://freenode.net/poundfreenode.shtml - thanks.
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [00:41:11] PRIVACY INFORMATION: LOGGING IS ENABLED!!
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [00:41:11] The following channels are being logged to provide a
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [00:41:11] convenient, searchable archive of conversation histories:
+2014-11-24 22:12:39	ℹ 	pmxbot (~pmxbot@chat-logs.dcpython.org): [00:41:11] #buildout, #dcpython, #mongodb, #pil, #pythonpackages, #velociraptor, #pypa, #pypa-dev
+2014-11-24 22:12:39	ℹ 	SaslServ (SaslServ@services.): [22:11:00] dartagan_!~quassel@c-50-170-156-10.hsd1.co.comcast.net has just authenticated as you (DArtagan)

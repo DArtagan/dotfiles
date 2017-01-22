@@ -1083,3 +1083,550 @@
 2014-08-18 17:33:50	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
 2014-08-18 17:33:50	ℹ 	Channel &bitlbee: 6 nicks (2 ops, 0 halfops, 1 voice, 3 normals)
 2014-08-18 17:37:03	<--	dartagan (dartagan@192.168.1.10) has left &bitlbee
+2014-08-18 20:54:34	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-18 20:54:34	ℹ 	Mode &bitlbee [+Ct] by 192.168.1.10
+2014-08-18 20:54:34	ℹ 	Channel &bitlbee: 10 nicks (2 ops, 0 halfops, 5 voices, 3 normals)
+2014-08-18 20:54:34	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-18 20:54:34	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
+2014-08-18 20:54:39	@dartagan	commands
+2014-08-18 20:54:39	@root	Unknown command: commands. Please use help commands to get a list of available commands.
+2014-08-18 20:55:44	<--	dartagan (dartagan@192.168.1.10) has left &bitlbee
+2014-08-18 20:55:44	ℹ 	irc: disconnected from server
+2014-08-18 20:57:17	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-18 20:57:17	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-18 20:57:17	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
+2014-08-18 20:57:17	ℹ 	Channel &bitlbee: 10 nicks (2 ops, 0 halfops, 5 voices, 3 normals)
+2014-08-18 20:57:49	<--	dartagan (dartagan@192.168.1.10) has left &bitlbee
+2014-08-18 20:57:49	ℹ 	irc: disconnected from server
+2014-08-18 20:58:09	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-18 20:58:09	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-18 20:58:09	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
+2014-08-18 20:58:09	ℹ 	Channel &bitlbee: 10 nicks (2 ops, 0 halfops, 5 voices, 3 normals)
+2014-08-18 21:00:23	ℹ 	irc: disconnected from server
+2014-08-18 21:02:45	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-18 21:02:45	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-18 21:02:45	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
+2014-08-18 21:02:45	ℹ 	Channel &bitlbee: 10 nicks (2 ops, 0 halfops, 5 voices, 3 normals)
+2014-08-18 21:04:37	ℹ 	irc: disconnected from server
+2014-08-18 21:05:35	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-18 21:05:35	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-18 21:05:35	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
+2014-08-18 21:05:35	ℹ 	Channel &bitlbee: 10 nicks (2 ops, 0 halfops, 5 voices, 3 normals)
+2014-08-18 21:14:41	-->	sykogngsta (sykogngsta@skype.com) has joined &bitlbee
+2014-08-18 21:14:41	ℹ 	Mode &bitlbee [+v sykogngsta] by 192.168.1.10
+2014-08-18 21:17:12	<--	jtran (jonathan_ct12@skype.com) has quit (Leaving...)
+2014-08-19 08:15:56	ℹ 	irc: disconnected from server
+2014-08-19 08:16:06	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-08-19 08:16:06	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-08-19 08:16:06	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
+2014-08-19 08:16:06	ℹ 	Channel &bitlbee: 10 nicks (2 ops, 0 halfops, 5 voices, 3 normals)
+2014-11-24 22:12:37	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
+2014-11-24 22:12:37	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
+2014-11-24 22:12:37	ℹ 	Topic set by root (root@192.168.1.10) on Sat, 04 Oct 2014 00:24:37
+2014-11-24 22:12:37	ℹ 	Channel &bitlbee: 5 nicks (2 ops, 0 halfops, 1 voice, 2 normals)
+2014-11-24 22:12:37	***	Buffer Playback...
+2014-11-24 22:12:37	@root	[16:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[16:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[16:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[16:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[17:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[17:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[17:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[17:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[17:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[17:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[17:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[17:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[17:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[17:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[17:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[17:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[17:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[17:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[17:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[17:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[18:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[18:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[18:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[18:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[18:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[18:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[18:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[18:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[18:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[18:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[18:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[18:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[18:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[18:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[18:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[18:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[19:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[19:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[19:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[19:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[19:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[19:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[19:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[19:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[19:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[19:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[19:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[19:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[19:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[19:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[19:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[19:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[20:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[20:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[20:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[20:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[20:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[20:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[20:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[20:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[20:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[20:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[20:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[20:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[20:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[20:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[20:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[20:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[21:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[21:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[21:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[21:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[21:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[21:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[21:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[21:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[21:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[21:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[21:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[21:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[21:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[21:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[21:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[21:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[22:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[22:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[22:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[22:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[22:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[22:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[22:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[22:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[22:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[22:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[22:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[22:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[22:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[22:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[22:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[22:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[23:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[23:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[23:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[23:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[23:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[23:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[23:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[23:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[23:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[23:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[23:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[23:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[23:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[23:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[23:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[23:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[00:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[00:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[00:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[00:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[00:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[00:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[00:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[00:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[00:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[00:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[00:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[00:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[00:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[00:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[00:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[00:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[01:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[01:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[01:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[01:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[01:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[01:25:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[01:25:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[01:25:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[01:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[01:40:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[01:40:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[01:40:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[01:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[01:55:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[01:55:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[01:55:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[02:10:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[02:10:53] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[02:10:53] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[02:10:53] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[02:25:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[02:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[02:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[02:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[02:40:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[02:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[02:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[02:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[02:55:53] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[02:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[02:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[02:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[03:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[03:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[03:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[03:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[03:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[03:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[03:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[03:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[03:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[03:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[03:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[03:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[03:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[03:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[03:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[03:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[04:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[04:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[04:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[04:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[04:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[04:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[04:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[04:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[04:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[04:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[04:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[04:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[04:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[04:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[04:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[04:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[05:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[05:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[05:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[05:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[05:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[05:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[05:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[05:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[05:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[05:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[05:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[05:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[05:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[05:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[05:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[05:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[06:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[06:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[06:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[06:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[06:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[06:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[06:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[06:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[06:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[06:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[06:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[06:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[06:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[06:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[06:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[06:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[07:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[07:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[07:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[07:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[07:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[07:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[07:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[07:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[07:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[07:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[07:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[07:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[07:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[07:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[07:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[07:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[08:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[08:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[08:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[08:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[08:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[08:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[08:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[08:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[08:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[08:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[08:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[08:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[08:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[08:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[08:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[08:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[09:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[09:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[09:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[09:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[09:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[09:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[09:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[09:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[09:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[09:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[09:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[09:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[09:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[09:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[09:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[09:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[10:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[10:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[10:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[10:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[10:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[10:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[10:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[10:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[10:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[10:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[10:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[10:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[10:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[10:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[10:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[10:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[11:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[11:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[11:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[11:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[11:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[11:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[11:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[11:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[11:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[11:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[11:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[11:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[11:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[11:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[11:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[11:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[12:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[12:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[12:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[12:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[12:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[12:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[12:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[12:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[12:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[12:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[12:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[12:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[12:51:02] twitter - Error: Stream closed (200 OK)
+2014-11-24 22:12:37	@root	[12:51:02] twitter - Signing off..
+2014-11-24 22:12:37	@root	[12:51:02] twitter - Logging in: Reconnecting in 5 seconds..
+2014-11-24 22:12:37	@root	[12:51:07] twitter - Logging in: Connecting
+2014-11-24 22:12:37	@root	[12:51:07] twitter - Logging in: Getting contact list
+2014-11-24 22:12:37	@root	[12:51:08] twitter - Logging in: Getting initial statuses
+2014-11-24 22:12:37	@root	[12:51:08] twitter - Logging in: Logged in
+2014-11-24 22:12:37	@root	[12:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:37	@root	[12:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:37	@root	[12:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:37	@root	[12:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:37	@root	[13:02:36] twitter - Error: Stream closed (200 OK)
+2014-11-24 22:12:37	@root	[13:02:36] twitter - Signing off..
+2014-11-24 22:12:37	@root	[13:02:36] twitter - Logging in: Reconnecting in 5 seconds..
+2014-11-24 22:12:37	@root	[13:02:41] twitter - Logging in: Connecting
+2014-11-24 22:12:37	@root	[13:02:41] twitter - Logging in: Getting contact list
+2014-11-24 22:12:37	@root	[13:02:42] twitter - Logging in: Getting initial statuses
+2014-11-24 22:12:37	@root	[13:02:42] twitter - Logging in: Logged in
+2014-11-24 22:12:37	@root	[13:06:37] twitter - Error: Stream closed (200 OK)
+2014-11-24 22:12:38	@root	[13:06:37] twitter - Signing off..
+2014-11-24 22:12:38	@root	[13:06:37] twitter - Logging in: Reconnecting in 5 seconds..
+2014-11-24 22:12:38	@root	[13:06:42] twitter - Logging in: Connecting
+2014-11-24 22:12:38	@root	[13:06:42] twitter - Logging in: Getting contact list
+2014-11-24 22:12:38	@root	[13:06:43] twitter - Logging in: Getting initial statuses
+2014-11-24 22:12:38	@root	[13:06:44] twitter - Logging in: Logged in
+2014-11-24 22:12:38	@root	[13:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[13:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[13:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[13:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[13:20:01] twitter - Error: Stream closed (200 OK)
+2014-11-24 22:12:38	@root	[13:20:01] twitter - Signing off..
+2014-11-24 22:12:38	@root	[13:20:01] twitter - Logging in: Reconnecting in 5 seconds..
+2014-11-24 22:12:38	@root	[13:20:06] twitter - Logging in: Connecting
+2014-11-24 22:12:38	@root	[13:20:06] twitter - Logging in: Getting contact list
+2014-11-24 22:12:38	@root	[13:20:07] twitter - Logging in: Getting initial statuses
+2014-11-24 22:12:38	@root	[13:20:08] twitter - Logging in: Logged in
+2014-11-24 22:12:38	@root	[13:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[13:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[13:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[13:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[13:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[13:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[13:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[13:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[13:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[13:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[13:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[13:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[14:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[14:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[14:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[14:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[14:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[14:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[14:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[14:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[14:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[14:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[14:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[14:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[14:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[14:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[14:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[14:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[15:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[15:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[15:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[15:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[15:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[15:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[15:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[15:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[15:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[15:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[15:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[15:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[15:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[15:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[15:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[15:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[16:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[16:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[16:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[16:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[16:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[16:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[16:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[16:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[16:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[16:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[16:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[16:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[16:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[16:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[16:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[16:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[17:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[17:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[17:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[17:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[17:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[17:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[17:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[17:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[17:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[17:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[17:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[17:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[17:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[17:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[17:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[17:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[18:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[18:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[18:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[18:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[18:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[18:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[18:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[18:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[18:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[18:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[18:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[18:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[18:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[18:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[18:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[18:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[19:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[19:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[19:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[19:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[19:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[19:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[19:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[19:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[19:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[19:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[19:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[19:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[19:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[19:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[19:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[19:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[20:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[20:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[20:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[20:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[20:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[20:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[20:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[20:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[20:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[20:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[20:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[20:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[20:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[20:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[20:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[20:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[21:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[21:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[21:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[21:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[21:25:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[21:25:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[21:25:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[21:25:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[21:40:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[21:40:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[21:40:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[21:40:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[21:55:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[21:55:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[21:55:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[21:55:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	@root	[22:10:54] skype - Logging in: Connecting
+2014-11-24 22:12:38	@root	[22:10:54] skype - Login error: Could not connect to server
+2014-11-24 22:12:38	@root	[22:10:54] skype - Logging in: Signing off..
+2014-11-24 22:12:38	@root	[22:10:54] skype - Logging in: Reconnecting in 900 seconds..
+2014-11-24 22:12:38	***	Playback Complete.
+2014-11-24 22:25:29	@root	skype - Logging in: Connecting
+2014-11-24 22:25:29	@root	skype - Login error: Could not connect to server
+2014-11-24 22:25:29	@root	skype - Logging in: Signing off..
+2014-11-24 22:25:29	@root	skype - Logging in: Reconnecting in 900 seconds..

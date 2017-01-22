@@ -20,6 +20,8 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'sudar/vim-arduino-syntax'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " Required closing lines
 call vundle#end()
@@ -56,6 +58,11 @@ map <leader>e :e! ~/.vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
+
+"-------------------------------------------------
+" Filetype
+au BufNewFile,BufRead *.txt set filetype=mkd
+set nofoldenable
 
 "-------------------------------------------------
 " Indentation Options

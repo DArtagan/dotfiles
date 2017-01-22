@@ -7406,3 +7406,190 @@
 2014-08-18 17:37:03		Options saved to irc.conf
 2014-08-18 17:37:03		perl: scripts unloaded
 2014-08-18 17:37:03		fifo: pipe closed
+2014-08-18 20:53:05		perl scripts loaded: buffers, iset
+2014-08-18 20:53:05		script: downloading list of scripts...
+2014-08-18 20:53:05		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-08-18 20:53:05		Options saved to irc.conf
+2014-08-18 20:53:05		Options saved to irc.conf
+2014-08-18 20:53:05		Options saved to irc.conf
+2014-08-18 20:53:07		script: 280 scripts for WeeChat 1.0
+2014-08-18 20:53:30	⚠	Error: unknown command "/" (type /help for help)
+2014-08-18 20:54:00		Options saved to irc.conf
+2014-08-18 20:54:34		Options saved to irc.conf
+2014-08-18 20:55:22		Options saved to sec.conf
+2014-08-18 20:55:22		Options saved to weechat.conf
+2014-08-18 20:55:22		Options saved to plugins.conf
+2014-08-18 20:55:22		Options saved to relay.conf
+2014-08-18 20:55:22		Options saved to trigger.conf
+2014-08-18 20:55:22		Options saved to aspell.conf
+2014-08-18 20:55:22		Options saved to urlgrab.conf
+2014-08-18 20:55:22		Options saved to charset.conf
+2014-08-18 20:55:22		Options saved to logger.conf
+2014-08-18 20:55:22		Options saved to xfer.conf
+2014-08-18 20:55:22		Options saved to buffers.conf
+2014-08-18 20:55:22		Options saved to iset.conf
+2014-08-18 20:55:22		Options saved to irc.conf
+2014-08-18 20:55:22		Options saved to exec.conf
+2014-08-18 20:55:22		Options saved to alias.conf
+2014-08-18 20:55:22		Options saved to script.conf
+2014-08-18 20:55:44		Options saved to irc.conf
+2014-08-18 20:55:44		Options saved to irc.conf
+2014-08-18 20:55:44		Options saved to irc.conf
+2014-08-18 20:55:44		Options saved to irc.conf
+2014-08-18 20:55:44		Options saved to irc.conf
+2014-08-18 20:55:44		Options saved to irc.conf
+2014-08-18 20:55:44		perl: scripts unloaded
+2014-08-18 20:55:47		perl scripts loaded: buffers, iset
+2014-08-18 20:55:47		script: 280 scripts for WeeChat 1.0
+2014-08-18 20:55:47		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-08-18 20:57:10		Options saved to irc.conf
+2014-08-18 20:57:17		Options saved to irc.conf
+2014-08-18 20:57:17		Options saved to irc.conf
+2014-08-18 20:57:49		Options saved to irc.conf
+2014-08-18 20:57:49		Options saved to irc.conf
+2014-08-18 20:57:49		Options saved to irc.conf
+2014-08-18 20:57:49		Options saved to irc.conf
+2014-08-18 20:57:49		Options saved to irc.conf
+2014-08-18 20:57:49		Options saved to irc.conf
+2014-08-18 20:57:49		perl: scripts unloaded
+2014-08-18 20:57:50		perl scripts loaded: buffers, iset
+2014-08-18 20:57:50		script: 280 scripts for WeeChat 1.0
+2014-08-18 20:57:50		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-08-18 20:58:05		Options saved to irc.conf
+2014-08-18 20:58:09		Options saved to irc.conf
+2014-08-18 20:58:09		Options saved to irc.conf
+2014-08-18 20:58:13		Options saved to sec.conf
+2014-08-18 20:58:13		Options saved to weechat.conf
+2014-08-18 20:58:13		Options saved to plugins.conf
+2014-08-18 20:58:13		Options saved to relay.conf
+2014-08-18 20:58:13		Options saved to trigger.conf
+2014-08-18 20:58:13		Options saved to aspell.conf
+2014-08-18 20:58:13		Options saved to urlgrab.conf
+2014-08-18 20:58:13		Options saved to charset.conf
+2014-08-18 20:58:13		Options saved to logger.conf
+2014-08-18 20:58:13		Options saved to xfer.conf
+2014-08-18 20:58:13		Options saved to buffers.conf
+2014-08-18 20:58:13		Options saved to iset.conf
+2014-08-18 20:58:13		Options saved to irc.conf
+2014-08-18 20:58:13		Options saved to exec.conf
+2014-08-18 20:58:13		Options saved to alias.conf
+2014-08-18 20:58:13		Options saved to script.conf
+2014-08-18 21:00:23		Options saved to irc.conf
+2014-08-18 21:00:23		Options saved to irc.conf
+2014-08-18 21:00:23		Options saved to irc.conf
+2014-08-18 21:00:23		Options saved to irc.conf
+2014-08-18 21:00:23		perl: scripts unloaded
+2014-08-18 21:00:25		perl scripts loaded: buffers, iset
+2014-08-18 21:00:25		script: 280 scripts for WeeChat 1.0
+2014-08-18 21:00:25		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-08-18 21:01:38		Options saved to irc.conf
+2014-08-18 21:01:38		Options saved to irc.conf
+2014-08-18 21:01:38		Options saved to irc.conf
+2014-08-18 21:01:38		perl: scripts unloaded
+2014-08-18 21:02:04		perl scripts loaded: buffers, iset
+2014-08-18 21:02:05		script: 280 scripts for WeeChat 1.0
+2014-08-18 21:02:05		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-08-18 21:02:24		Options saved to irc.conf
+2014-08-18 21:02:33		irc: server &bitlbee created (temporary server, NOT SAVED!)
+2014-08-18 21:02:45		Options saved to irc.conf
+2014-08-18 21:02:45		Options saved to irc.conf
+2014-08-18 21:03:02		Options saved to sec.conf
+2014-08-18 21:03:02		Options saved to weechat.conf
+2014-08-18 21:03:02		Options saved to plugins.conf
+2014-08-18 21:03:02		Options saved to relay.conf
+2014-08-18 21:03:02		Options saved to trigger.conf
+2014-08-18 21:03:02		Options saved to aspell.conf
+2014-08-18 21:03:02		Options saved to urlgrab.conf
+2014-08-18 21:03:02		Options saved to charset.conf
+2014-08-18 21:03:02		Options saved to logger.conf
+2014-08-18 21:03:02		Options saved to xfer.conf
+2014-08-18 21:03:02		Options saved to buffers.conf
+2014-08-18 21:03:02		Options saved to iset.conf
+2014-08-18 21:03:02		Options saved to irc.conf
+2014-08-18 21:03:02		Options saved to exec.conf
+2014-08-18 21:03:02		Options saved to alias.conf
+2014-08-18 21:03:02		Options saved to script.conf
+2014-08-18 21:03:41		Options saved to irc.conf
+2014-08-18 21:04:00		Options saved to sec.conf
+2014-08-18 21:04:00		Options saved to weechat.conf
+2014-08-18 21:04:00		Options saved to plugins.conf
+2014-08-18 21:04:00		Options saved to relay.conf
+2014-08-18 21:04:00		Options saved to trigger.conf
+2014-08-18 21:04:00		Options saved to aspell.conf
+2014-08-18 21:04:00		Options saved to urlgrab.conf
+2014-08-18 21:04:00		Options saved to charset.conf
+2014-08-18 21:04:00		Options saved to logger.conf
+2014-08-18 21:04:00		Options saved to xfer.conf
+2014-08-18 21:04:00		Options saved to buffers.conf
+2014-08-18 21:04:00		Options saved to iset.conf
+2014-08-18 21:04:00		Options saved to irc.conf
+2014-08-18 21:04:00		Options saved to exec.conf
+2014-08-18 21:04:00		Options saved to alias.conf
+2014-08-18 21:04:00		Options saved to script.conf
+2014-08-18 21:04:03		Options reloaded from sec.conf
+2014-08-18 21:04:03		Options reloaded from weechat.conf
+2014-08-18 21:04:03		Options reloaded from plugins.conf
+2014-08-18 21:04:03		Options reloaded from relay.conf
+2014-08-18 21:04:03		Options reloaded from trigger.conf
+2014-08-18 21:04:03		Options reloaded from aspell.conf
+2014-08-18 21:04:03		Options reloaded from urlgrab.conf
+2014-08-18 21:04:03		Options reloaded from charset.conf
+2014-08-18 21:04:03		Options reloaded from logger.conf
+2014-08-18 21:04:03		Options reloaded from xfer.conf
+2014-08-18 21:04:03		Options reloaded from buffers.conf
+2014-08-18 21:04:03		Options reloaded from iset.conf
+2014-08-18 21:04:03		Options reloaded from irc.conf
+2014-08-18 21:04:03		Options reloaded from exec.conf
+2014-08-18 21:04:03		Options reloaded from alias.conf
+2014-08-18 21:04:03		Options reloaded from script.conf
+2014-08-18 21:04:35		Options reloaded from sec.conf
+2014-08-18 21:04:35		Options reloaded from weechat.conf
+2014-08-18 21:04:35		Options reloaded from plugins.conf
+2014-08-18 21:04:35		Options reloaded from relay.conf
+2014-08-18 21:04:35		Options reloaded from trigger.conf
+2014-08-18 21:04:35		Options reloaded from aspell.conf
+2014-08-18 21:04:35		Options reloaded from urlgrab.conf
+2014-08-18 21:04:35		Options reloaded from charset.conf
+2014-08-18 21:04:35		Options reloaded from logger.conf
+2014-08-18 21:04:35		Options reloaded from xfer.conf
+2014-08-18 21:04:35		Options reloaded from buffers.conf
+2014-08-18 21:04:35		Options reloaded from iset.conf
+2014-08-18 21:04:35		Options reloaded from irc.conf
+2014-08-18 21:04:35		Options reloaded from exec.conf
+2014-08-18 21:04:35		Options reloaded from alias.conf
+2014-08-18 21:04:35		Options reloaded from script.conf
+2014-08-18 21:04:37		Options saved to irc.conf
+2014-08-18 21:04:37		Options saved to irc.conf
+2014-08-18 21:04:37		Options saved to irc.conf
+2014-08-18 21:04:37		perl: scripts unloaded
+2014-08-18 21:04:38		perl scripts loaded: buffers, iset
+2014-08-18 21:04:38		script: 280 scripts for WeeChat 1.0
+2014-08-18 21:04:38		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-08-18 21:05:28		Options saved to irc.conf
+2014-08-18 21:05:35		Options saved to irc.conf
+2014-08-18 21:05:35		Options saved to irc.conf
+2014-08-18 21:06:34		Message filtering enabled
+2014-08-18 21:06:34		Message filters:
+2014-08-18 21:06:34		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: * 
+2014-08-18 21:06:34		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: * 
+2014-08-19 08:15:55		Options saved to irc.conf
+2014-08-19 08:15:56		Options saved to irc.conf
+2014-08-19 08:16:05		Options saved to irc.conf
+2014-08-19 08:16:06		Options saved to irc.conf
+2014-08-19 08:16:06		Options saved to irc.conf
+2014-08-19 08:17:00		Message filtering enabled
+2014-08-19 08:17:00		Message filters:
+2014-08-19 08:17:00		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: * 
+2014-08-19 08:17:00		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: * 
+2014-11-24 22:12:36		perl scripts loaded: buffers, iset
+2014-11-24 22:12:36		script: downloading list of scripts...
+2014-11-24 22:12:36		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-24 22:12:37		Options saved to irc.conf
+2014-11-24 22:12:37		Options saved to irc.conf
+2014-11-24 22:12:38		Options saved to irc.conf
+2014-11-24 22:12:38		Options saved to irc.conf
+2014-11-24 22:12:38		Options saved to irc.conf
+2014-11-24 22:12:39		Options saved to irc.conf
+2014-11-24 22:12:49		script: 279 scripts for WeeChat 1.0
+2014-11-24 22:25:48		Options saved to irc.conf
+2014-11-24 22:25:58		Options saved to irc.conf
