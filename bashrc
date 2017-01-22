@@ -121,3 +121,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 complete -cf pacman
 complete -cf sudo
 complete -cf man
+
+alias grep="/usr/bin/grep $GREP_OPTIONS"
+unset GREP_OPTIONS

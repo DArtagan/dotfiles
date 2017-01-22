@@ -1,6 +1,0 @@
-2014-08-14 22:50:59	ℹ 	irc: connecting to server 192.168.1.10/6668...
-2014-08-14 22:50:59	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
-2014-08-14 22:50:59	ℹ 	Password required
-2014-08-14 22:50:59	ℹ 	irc.znc.in: *** You need to send your password. Try /quote PASS <username>:<password>
-2014-08-14 22:51:35	ℹ 	*status (znc@znc.in): You have no networks configured. Use /znc AddNetwork <network> to add one.
-2014-08-14 22:51:35	ℹ 	- Welcome to ZNC -
