@@ -12,6 +12,8 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Lain
 local lain = require("lain")
+-- Eminent
+require("eminent")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -384,8 +386,6 @@ globalkeys = awful.util.table.join(
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
-    -- awful.key({ modkey, "Control", "Shift" }, "h", function () awful.tag.incncol( 1)    end),
-    -- awful.key({ modkey, "Control", "Shift" }, "l", function () awful.tag.incncol(-1)    end),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -574,7 +574,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup and
       not c.size_hints.user_position
