@@ -414,12 +414,12 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
 
     -- Multimedia keys
-    -- awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
-    -- awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 5%-") end), 
-    -- awful.key({ }, "XF86AudioMute",           function () awful.util.spawn("amixer -D pulse set Master 1+ toggle") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
+    awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 5%-") end), 
+    awful.key({ }, "XF86AudioMute",           function () awful.util.spawn("amixer -D pulse set Master 1+ toggle") end)
     -- awful.key({ modkey, }, ",", null,         function () awful.util.spawn("xdotool key --clearmodifiers XF86AudioPrev") end),
     -- awful.key({ modkey, }, ".", null,         function () awful.util.spawn("xdotool key --clearmodifiers XF86AudioNext") end),
     -- awful.key({ modkey, }, "/", null,         function () awful.util.spawn("xdotool key --clearmodifiers XF86AudioPlay") end)
