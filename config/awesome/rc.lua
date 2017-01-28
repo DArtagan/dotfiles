@@ -281,43 +281,6 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "t",
-        function ()
-                  awful.prompt.run({ prompt = "New tag name: " },
-                    mypromptbox[mouse.screen].widget,
-                    function(new_name)
-                        if not new_name or #new_name == 0 then
-                            return
-                        else
-                            local i_next = awful.tag.getidx() + 1
-                            local tag_next = awful.tag.gettags(mouse.screen)[i_next]
-                            if #tag_next:clients() < 1 then
-                              awful.tag.delete(tag_next)
-                            end
-                            props = {selected = true}
-                            t = awful.tag.add(new_name, props)
-                            awful.tag.move(i_next, t)
-                            awful.tag.viewonly(t)
-                        end
-                    end
-                    )
-        end),
-     awful.key({ modkey, "Shift"  }, "t",
-              function ()
-                 awful.prompt.run({ prompt = "New tag name: " },
-                                  mypromptbox[mouse.screen].widget,
-                                  function(new_name)
-                                     if not new_name or #new_name == 0 then
-                                        return
-                                     else
-                                        local screen = mouse.screen
-                                        local tag = awful.tag.selected(screen)
-                                        if tag then
-                                           tag.name = new_name
-                                        end
-                                     end
-                                  end)
-              end),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -382,6 +345,10 @@ globalkeys = awful.util.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
+    awful.key({ modkey, "Control", "Shift" }, "h", function () awful.client.incwfact(0.05) end,
+              {description = "increase the height of the current pane", group = "layout"}),
+    awful.key({ modkey, "Control", "Shift" }, "l", function () awful.client.incwfact(-0.05) end,
+              {description = "decrease the height of the current pane", group = "layout"}),
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
