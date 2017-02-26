@@ -1,0 +1,753 @@
+2014-08-14 20:20:24	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:20:24	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:20:24	⚠	irc: error: Name or service not known
+2014-08-14 20:20:24	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-14 20:20:34	ℹ 	irc: reconnecting to server...
+2014-08-14 20:20:34	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:20:34	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:20:34	⚠	irc: error: Name or service not known
+2014-08-14 20:20:34	ℹ 	irc: reconnecting to server in 20 seconds
+2014-08-14 20:20:54	ℹ 	irc: reconnecting to server...
+2014-08-14 20:20:54	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:20:54	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:20:54	⚠	irc: error: Name or service not known
+2014-08-14 20:20:54	ℹ 	irc: reconnecting to server in 40 seconds
+2014-08-14 20:21:34	ℹ 	irc: reconnecting to server...
+2014-08-14 20:21:34	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:21:34	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:21:34	⚠	irc: error: Name or service not known
+2014-08-14 20:21:34	ℹ 	irc: reconnecting to server in 1 minute, 20 seconds
+2014-08-14 20:22:30	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:22:30	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:22:30	⚠	irc: error: Name or service not known
+2014-08-14 20:22:30	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-14 20:22:40	ℹ 	irc: reconnecting to server...
+2014-08-14 20:22:40	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:22:40	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:22:40	⚠	irc: error: Name or service not known
+2014-08-14 20:22:40	ℹ 	irc: reconnecting to server in 20 seconds
+2014-08-14 20:23:00	ℹ 	irc: reconnecting to server...
+2014-08-14 20:23:00	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:23:00	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:23:00	⚠	irc: error: Name or service not known
+2014-08-14 20:23:00	ℹ 	irc: reconnecting to server in 40 seconds
+2014-08-14 20:23:32	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:23:32	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:23:32	⚠	irc: error: Name or service not known
+2014-08-14 20:23:32	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-14 20:23:42	ℹ 	irc: reconnecting to server...
+2014-08-14 20:23:42	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:23:42	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:23:42	⚠	irc: error: Name or service not known
+2014-08-14 20:23:42	ℹ 	irc: reconnecting to server in 20 seconds
+2014-08-14 20:24:02	ℹ 	irc: reconnecting to server...
+2014-08-14 20:24:02	ℹ 	irc: connecting to server 192.168.1.10:6668/6667...
+2014-08-14 20:24:02	⚠	irc: address "192.168.1.10:6668" not found
+2014-08-14 20:24:02	⚠	irc: error: Name or service not known
+2014-08-14 20:24:02	ℹ 	irc: reconnecting to server in 40 seconds
+2014-08-14 20:24:38	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 20:24:38	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 20:24:38	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-14 20:24:38	ℹ 	Host localhost is running BitlBee 3.2.1+otr4-1 Linux/x86_64.
+2014-08-14 20:24:38	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-14 20:24:38	ℹ 	localhost 3.2.1+otr4-1 abiswRo ntC
+2014-08-14 20:24:38	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-14 20:24:38	ℹ 	- localhost Message Of The Day -
+2014-08-14 20:24:38	ℹ 	- Welcome to the BitlBee server at localhost.
+2014-08-14 20:24:38	ℹ 	-
+2014-08-14 20:24:38	ℹ 	- This server is running BitlBee version 3.2.1+otr4-1.
+2014-08-14 20:24:38	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-14 20:24:38	ℹ 	-
+2014-08-14 20:24:38	ℹ 	- You are getting this message because the server administrator has not
+2014-08-14 20:24:38	ℹ 	- yet had the time (or need) to change it.
+2014-08-14 20:24:38	ℹ 	-
+2014-08-14 20:24:38	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-14 20:24:38	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-14 20:24:38	ℹ 	- information.
+2014-08-14 20:24:38	ℹ 	-
+2014-08-14 20:24:38	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-14 20:24:38	ℹ 	- -- BitlBee development team.
+2014-08-14 20:24:38	ℹ 	-
+2014-08-14 20:24:38	ℹ 	- ... Buzzing, haha, get it?
+2014-08-14 20:24:38	ℹ 	End of MOTD
+2014-08-14 20:24:38	ℹ 	User mode [+Rs] by dartagan
+2014-08-14 20:31:19	ℹ 	MSG(philahoffmann): best recommendation you've given me since paul kalkbrenner (I think he was the one)
+2014-08-14 21:12:31	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 21:12:31	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-14 21:12:31	ℹ 	Host localhost is running BitlBee 3.2.1+otr4-1 Linux/x86_64.
+2014-08-14 21:12:31	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-14 21:12:31	ℹ 	localhost 3.2.1+otr4-1 abiswRo ntC
+2014-08-14 21:12:31	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-14 21:12:31	ℹ 	- localhost Message Of The Day -
+2014-08-14 21:12:31	ℹ 	- Welcome to the BitlBee server at localhost.
+2014-08-14 21:12:31	ℹ 	-
+2014-08-14 21:12:31	ℹ 	- This server is running BitlBee version 3.2.1+otr4-1.
+2014-08-14 21:12:31	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-14 21:12:31	ℹ 	-
+2014-08-14 21:12:31	ℹ 	- You are getting this message because the server administrator has not
+2014-08-14 21:12:31	ℹ 	- yet had the time (or need) to change it.
+2014-08-14 21:12:31	ℹ 	-
+2014-08-14 21:12:31	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-14 21:12:31	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-14 21:12:31	ℹ 	- information.
+2014-08-14 21:12:31	ℹ 	-
+2014-08-14 21:12:31	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-14 21:12:31	ℹ 	- -- BitlBee development team.
+2014-08-14 21:12:31	ℹ 	-
+2014-08-14 21:12:31	ℹ 	- ... Buzzing, haha, get it?
+2014-08-14 21:12:31	ℹ 	End of MOTD
+2014-08-14 21:12:31	ℹ 	User mode [+Rs] by dartagan
+2014-08-14 21:38:59	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 21:38:59	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-14 21:38:59	ℹ 	Host localhost is running BitlBee 3.2.1+otr4-1 Linux/x86_64.
+2014-08-14 21:38:59	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-14 21:38:59	ℹ 	localhost 3.2.1+otr4-1 abiswRo ntC
+2014-08-14 21:38:59	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-14 21:38:59	ℹ 	- localhost Message Of The Day -
+2014-08-14 21:38:59	ℹ 	- Welcome to the BitlBee server at localhost.
+2014-08-14 21:38:59	ℹ 	-
+2014-08-14 21:38:59	ℹ 	- This server is running BitlBee version 3.2.1+otr4-1.
+2014-08-14 21:38:59	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-14 21:38:59	ℹ 	-
+2014-08-14 21:38:59	ℹ 	- You are getting this message because the server administrator has not
+2014-08-14 21:38:59	ℹ 	- yet had the time (or need) to change it.
+2014-08-14 21:38:59	ℹ 	-
+2014-08-14 21:38:59	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-14 21:38:59	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-14 21:38:59	ℹ 	- information.
+2014-08-14 21:38:59	ℹ 	-
+2014-08-14 21:38:59	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-14 21:38:59	ℹ 	- -- BitlBee development team.
+2014-08-14 21:38:59	ℹ 	-
+2014-08-14 21:38:59	ℹ 	- ... Buzzing, haha, get it?
+2014-08-14 21:38:59	ℹ 	End of MOTD
+2014-08-14 21:38:59	ℹ 	User mode [+Rs] by dartagan
+2014-08-14 21:40:19	ℹ 	irc: disconnected from server
+2014-08-14 21:40:39	⚠	irc: not connected to server "bitlbee"!
+2014-08-14 21:40:46	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 21:40:46	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 21:40:46	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-14 21:40:46	ℹ 	Host localhost is running BitlBee 3.2.1+otr4-1 Linux/x86_64.
+2014-08-14 21:40:46	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-14 21:40:46	ℹ 	localhost 3.2.1+otr4-1 abiswRo ntC
+2014-08-14 21:40:46	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-14 21:40:46	ℹ 	- localhost Message Of The Day -
+2014-08-14 21:40:46	ℹ 	- Welcome to the BitlBee server at localhost.
+2014-08-14 21:40:46	ℹ 	-
+2014-08-14 21:40:46	ℹ 	- This server is running BitlBee version 3.2.1+otr4-1.
+2014-08-14 21:40:46	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-14 21:40:46	ℹ 	-
+2014-08-14 21:40:46	ℹ 	- You are getting this message because the server administrator has not
+2014-08-14 21:40:46	ℹ 	- yet had the time (or need) to change it.
+2014-08-14 21:40:46	ℹ 	-
+2014-08-14 21:40:46	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-14 21:40:46	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-14 21:40:46	ℹ 	- information.
+2014-08-14 21:40:46	ℹ 	-
+2014-08-14 21:40:46	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-14 21:40:46	ℹ 	- -- BitlBee development team.
+2014-08-14 21:40:46	ℹ 	-
+2014-08-14 21:40:46	ℹ 	- ... Buzzing, haha, get it?
+2014-08-14 21:40:46	ℹ 	End of MOTD
+2014-08-14 21:40:46	ℹ 	User mode [+Rs] by dartagan
+2014-08-14 21:41:36	ℹ 	MSG(root): hello
+2014-08-14 22:13:13	⚠	irc: reading data on socket: error 0 (connection closed by peer)
+2014-08-14 22:13:13	ℹ 	irc: disconnecting from server...
+2014-08-14 22:13:13	ℹ 	irc: disconnected from server
+2014-08-14 22:13:13	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-14 22:13:23	ℹ 	irc: reconnecting to server...
+2014-08-14 22:13:23	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 22:13:57	⚠	irc: connection refused
+2014-08-14 22:13:57	ℹ 	irc: reconnecting to server in 20 seconds
+2014-08-14 22:14:17	ℹ 	irc: reconnecting to server...
+2014-08-14 22:14:17	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 22:14:17	⚠	irc: connection refused
+2014-08-14 22:14:17	ℹ 	irc: reconnecting to server in 40 seconds
+2014-08-14 22:14:57	ℹ 	irc: reconnecting to server...
+2014-08-14 22:14:57	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 22:14:57	⚠	irc: connection refused
+2014-08-14 22:14:57	ℹ 	irc: reconnecting to server in 1 minute, 20 seconds
+2014-08-14 22:16:17	ℹ 	irc: reconnecting to server...
+2014-08-14 22:16:17	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 22:16:17	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 22:16:17	ℹ 	- Welcome to ZNC -
+2014-08-14 22:21:14	⚠	irc: this buffer is not a channel!
+2014-08-14 22:27:49	⚠	irc: this buffer is not a channel!
+2014-08-14 22:43:15	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 22:43:15	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 22:43:15	ℹ 	- Welcome to ZNC -
+2014-08-14 22:46:31	ℹ 	MSG(root): hello
+2014-08-14 23:35:31	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 23:35:31	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 23:35:31	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-14 23:35:31	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-14 23:35:31	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-14 23:35:31	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-14 23:35:31	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-14 23:35:31	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-14 23:35:31	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-14 23:35:31	ℹ 	-
+2014-08-14 23:35:31	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-14 23:35:31	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-14 23:35:31	ℹ 	-
+2014-08-14 23:35:31	ℹ 	- You are getting this message because the server administrator has not
+2014-08-14 23:35:31	ℹ 	- yet had the time (or need) to change it.
+2014-08-14 23:35:31	ℹ 	-
+2014-08-14 23:35:31	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-14 23:35:31	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-14 23:35:31	ℹ 	- information.
+2014-08-14 23:35:31	ℹ 	-
+2014-08-14 23:35:31	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-14 23:35:31	ℹ 	- -- BitlBee development team.
+2014-08-14 23:35:31	ℹ 	-
+2014-08-14 23:35:31	ℹ 	- ... Buzzing, haha, get it?
+2014-08-14 23:35:31	ℹ 	End of MOTD
+2014-08-14 23:35:31	ℹ 	User mode [+s] by dartagan
+2014-08-14 23:36:04	ℹ 	MSG(*status): listservers
+2014-08-14 23:40:25	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-14 23:40:25	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-14 23:40:25	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-14 23:40:25	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-14 23:40:25	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-14 23:40:25	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-14 23:40:25	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-14 23:40:25	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-14 23:40:25	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-14 23:40:25	ℹ 	-
+2014-08-14 23:40:25	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-14 23:40:25	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-14 23:40:25	ℹ 	-
+2014-08-14 23:40:25	ℹ 	- You are getting this message because the server administrator has not
+2014-08-14 23:40:25	ℹ 	- yet had the time (or need) to change it.
+2014-08-14 23:40:25	ℹ 	-
+2014-08-14 23:40:25	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-14 23:40:25	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-14 23:40:25	ℹ 	- information.
+2014-08-14 23:40:25	ℹ 	-
+2014-08-14 23:40:25	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-14 23:40:25	ℹ 	- -- BitlBee development team.
+2014-08-14 23:40:25	ℹ 	-
+2014-08-14 23:40:25	ℹ 	- ... Buzzing, haha, get it?
+2014-08-14 23:40:25	ℹ 	End of MOTD
+2014-08-14 23:40:25	ℹ 	User mode [+s] by dartagan
+2014-08-14 23:40:46	ℹ 	MSG(root): hello
+2014-08-14 23:41:49	ℹ 	User mode [+R] by dartagan
+2014-08-15 00:35:10	ℹ 	User mode [-Rs] by dartagan
+2014-08-15 00:35:10	ℹ 	192.168.1.10: BitlBee-IRCd initialized, please go on
+2014-08-15 00:35:10	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-15 00:35:10	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-15 00:35:10	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-15 00:35:10	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-15 00:35:10	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-15 00:35:10	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-15 00:35:10	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-15 00:35:10	ℹ 	-
+2014-08-15 00:35:10	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-15 00:35:10	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-15 00:35:10	ℹ 	-
+2014-08-15 00:35:10	ℹ 	- You are getting this message because the server administrator has not
+2014-08-15 00:35:10	ℹ 	- yet had the time (or need) to change it.
+2014-08-15 00:35:10	ℹ 	-
+2014-08-15 00:35:10	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-15 00:35:10	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-15 00:35:10	ℹ 	- information.
+2014-08-15 00:35:10	ℹ 	-
+2014-08-15 00:35:10	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-15 00:35:10	ℹ 	- -- BitlBee development team.
+2014-08-15 00:35:10	ℹ 	-
+2014-08-15 00:35:10	ℹ 	- ... Buzzing, haha, get it?
+2014-08-15 00:35:10	ℹ 	End of MOTD
+2014-08-15 00:35:10	ℹ 	User mode [+s] by dartagan
+2014-08-15 00:35:10	ℹ 	[*] dartagan (dartagan@192.168.1.10) H 0 (Will)
+2014-08-15 00:35:10	ℹ 	[dartagan] End of /WHO list
+2014-08-15 00:36:21	ℹ 	User mode [+R] by dartagan
+2014-08-15 00:58:48	ℹ 	[whweiskopf] is away: Away
+2014-08-15 13:48:45	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-15 13:48:45	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-15 13:48:45	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-15 13:48:45	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-15 13:48:45	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-15 13:48:45	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-15 13:48:45	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-15 13:48:45	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-15 13:48:45	ℹ 	-
+2014-08-15 13:48:45	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-15 13:48:45	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-15 13:48:45	ℹ 	-
+2014-08-15 13:48:45	ℹ 	- You are getting this message because the server administrator has not
+2014-08-15 13:48:45	ℹ 	- yet had the time (or need) to change it.
+2014-08-15 13:48:45	ℹ 	-
+2014-08-15 13:48:45	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-15 13:48:45	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-15 13:48:45	ℹ 	- information.
+2014-08-15 13:48:45	ℹ 	-
+2014-08-15 13:48:45	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-15 13:48:45	ℹ 	- -- BitlBee development team.
+2014-08-15 13:48:45	ℹ 	-
+2014-08-15 13:48:45	ℹ 	- ... Buzzing, haha, get it?
+2014-08-15 13:48:45	ℹ 	End of MOTD
+2014-08-15 13:48:45	ℹ 	User mode [+Rs] by dartagan
+2014-08-15 14:58:57	ℹ 	MSG(*status): listservers
+2014-08-15 15:10:25	ℹ 	MSG(&bitlbee): account list
+2014-08-15 15:10:48	ℹ 	MSG(&bitlbee): hello
+2014-08-15 22:41:39	⚠	irc: reading data on socket: error 104 Connection reset by peer
+2014-08-15 22:41:39	ℹ 	irc: disconnecting from server...
+2014-08-15 22:41:39	ℹ 	irc: disconnected from server
+2014-08-15 22:41:39	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-15 22:41:49	ℹ 	irc: reconnecting to server...
+2014-08-15 22:41:49	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-15 22:41:49	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-15 22:41:49	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-15 22:41:49	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-15 22:41:49	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-15 22:41:49	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-15 22:41:49	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-15 22:41:49	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-15 22:41:49	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-15 22:41:49	ℹ 	-
+2014-08-15 22:41:49	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-15 22:41:49	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-15 22:41:49	ℹ 	-
+2014-08-15 22:41:49	ℹ 	- You are getting this message because the server administrator has not
+2014-08-15 22:41:49	ℹ 	- yet had the time (or need) to change it.
+2014-08-15 22:41:49	ℹ 	-
+2014-08-15 22:41:49	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-15 22:41:49	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-15 22:41:49	ℹ 	- information.
+2014-08-15 22:41:49	ℹ 	-
+2014-08-15 22:41:49	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-15 22:41:49	ℹ 	- -- BitlBee development team.
+2014-08-15 22:41:49	ℹ 	-
+2014-08-15 22:41:49	ℹ 	- ... Buzzing, haha, get it?
+2014-08-15 22:41:49	ℹ 	End of MOTD
+2014-08-15 22:41:49	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 13:37:07	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 13:37:07	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 13:37:07	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 13:37:07	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 13:37:07	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 13:37:07	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 13:37:07	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 13:37:07	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 13:37:07	ℹ 	-
+2014-08-17 13:37:07	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 13:37:07	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 13:37:07	ℹ 	-
+2014-08-17 13:37:07	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 13:37:07	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 13:37:07	ℹ 	-
+2014-08-17 13:37:07	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 13:37:07	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 13:37:07	ℹ 	- information.
+2014-08-17 13:37:07	ℹ 	-
+2014-08-17 13:37:07	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 13:37:07	ℹ 	- -- BitlBee development team.
+2014-08-17 13:37:07	ℹ 	-
+2014-08-17 13:37:07	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 13:37:07	ℹ 	End of MOTD
+2014-08-17 13:37:07	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 16:53:50	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 16:53:50	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 16:53:50	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 16:53:50	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 16:53:50	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 16:53:50	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 16:53:50	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 16:53:50	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 16:53:50	ℹ 	-
+2014-08-17 16:53:50	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 16:53:50	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 16:53:50	ℹ 	-
+2014-08-17 16:53:50	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 16:53:50	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 16:53:50	ℹ 	-
+2014-08-17 16:53:50	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 16:53:50	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 16:53:50	ℹ 	- information.
+2014-08-17 16:53:50	ℹ 	-
+2014-08-17 16:53:50	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 16:53:50	ℹ 	- -- BitlBee development team.
+2014-08-17 16:53:50	ℹ 	-
+2014-08-17 16:53:50	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 16:53:50	ℹ 	End of MOTD
+2014-08-17 16:53:50	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 17:07:53	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 17:07:53	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 17:07:53	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 17:07:53	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 17:07:53	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 17:07:53	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 17:07:53	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 17:07:53	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 17:07:53	ℹ 	-
+2014-08-17 17:07:53	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 17:07:53	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 17:07:53	ℹ 	-
+2014-08-17 17:07:53	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 17:07:53	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 17:07:53	ℹ 	-
+2014-08-17 17:07:53	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 17:07:53	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 17:07:53	ℹ 	- information.
+2014-08-17 17:07:53	ℹ 	-
+2014-08-17 17:07:53	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 17:07:53	ℹ 	- -- BitlBee development team.
+2014-08-17 17:07:53	ℹ 	-
+2014-08-17 17:07:53	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 17:07:53	ℹ 	End of MOTD
+2014-08-17 17:07:53	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 17:24:32	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 17:24:32	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 17:24:32	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 17:24:32	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 17:24:32	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 17:24:32	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 17:24:32	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 17:24:32	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 17:24:32	ℹ 	-
+2014-08-17 17:24:32	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 17:24:32	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 17:24:32	ℹ 	-
+2014-08-17 17:24:32	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 17:24:32	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 17:24:32	ℹ 	-
+2014-08-17 17:24:32	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 17:24:32	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 17:24:32	ℹ 	- information.
+2014-08-17 17:24:32	ℹ 	-
+2014-08-17 17:24:32	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 17:24:32	ℹ 	- -- BitlBee development team.
+2014-08-17 17:24:32	ℹ 	-
+2014-08-17 17:24:32	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 17:24:32	ℹ 	End of MOTD
+2014-08-17 17:24:32	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 17:42:05	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 17:42:05	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 17:42:05	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 17:42:05	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 17:42:05	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 17:42:05	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 17:42:05	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 17:42:05	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 17:42:05	ℹ 	-
+2014-08-17 17:42:05	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 17:42:05	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 17:42:05	ℹ 	-
+2014-08-17 17:42:05	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 17:42:05	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 17:42:05	ℹ 	-
+2014-08-17 17:42:05	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 17:42:05	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 17:42:05	ℹ 	- information.
+2014-08-17 17:42:05	ℹ 	-
+2014-08-17 17:42:05	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 17:42:05	ℹ 	- -- BitlBee development team.
+2014-08-17 17:42:05	ℹ 	-
+2014-08-17 17:42:05	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 17:42:05	ℹ 	End of MOTD
+2014-08-17 17:42:05	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 17:43:03	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 17:43:03	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 17:43:03	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 17:43:03	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 17:43:03	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 17:43:03	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 17:43:03	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 17:43:03	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 17:43:03	ℹ 	-
+2014-08-17 17:43:03	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 17:43:03	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 17:43:03	ℹ 	-
+2014-08-17 17:43:03	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 17:43:03	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 17:43:03	ℹ 	-
+2014-08-17 17:43:03	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 17:43:03	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 17:43:03	ℹ 	- information.
+2014-08-17 17:43:03	ℹ 	-
+2014-08-17 17:43:03	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 17:43:03	ℹ 	- -- BitlBee development team.
+2014-08-17 17:43:03	ℹ 	-
+2014-08-17 17:43:03	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 17:43:03	ℹ 	End of MOTD
+2014-08-17 17:43:03	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 17:43:38	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 17:43:38	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 17:43:38	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 17:43:38	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 17:43:38	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 17:43:38	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 17:43:38	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 17:43:38	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 17:43:38	ℹ 	-
+2014-08-17 17:43:38	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 17:43:38	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 17:43:38	ℹ 	-
+2014-08-17 17:43:38	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 17:43:38	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 17:43:38	ℹ 	-
+2014-08-17 17:43:38	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 17:43:38	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 17:43:38	ℹ 	- information.
+2014-08-17 17:43:38	ℹ 	-
+2014-08-17 17:43:38	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 17:43:38	ℹ 	- -- BitlBee development team.
+2014-08-17 17:43:38	ℹ 	-
+2014-08-17 17:43:38	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 17:43:38	ℹ 	End of MOTD
+2014-08-17 17:43:38	ℹ 	User mode [+Rs] by dartagan
+2014-08-17 18:28:28	⚠	irc: reading data on socket: error 104 Connection reset by peer
+2014-08-17 18:28:28	ℹ 	irc: disconnecting from server...
+2014-08-17 18:28:28	ℹ 	irc: disconnected from server
+2014-08-17 18:28:28	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-17 18:28:38	ℹ 	irc: reconnecting to server...
+2014-08-17 18:28:38	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-17 18:28:38	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-17 18:28:38	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-17 18:28:38	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-17 18:28:38	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-17 18:28:38	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-17 18:28:38	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-17 18:28:38	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-17 18:28:38	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-17 18:28:38	ℹ 	-
+2014-08-17 18:28:38	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-17 18:28:38	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-17 18:28:38	ℹ 	-
+2014-08-17 18:28:38	ℹ 	- You are getting this message because the server administrator has not
+2014-08-17 18:28:38	ℹ 	- yet had the time (or need) to change it.
+2014-08-17 18:28:38	ℹ 	-
+2014-08-17 18:28:38	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-17 18:28:38	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-17 18:28:38	ℹ 	- information.
+2014-08-17 18:28:38	ℹ 	-
+2014-08-17 18:28:38	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-17 18:28:38	ℹ 	- -- BitlBee development team.
+2014-08-17 18:28:38	ℹ 	-
+2014-08-17 18:28:38	ℹ 	- ... Buzzing, haha, get it?
+2014-08-17 18:28:38	ℹ 	End of MOTD
+2014-08-17 18:28:38	ℹ 	User mode [+Rs] by dartagan
+2014-08-18 17:33:39	⚠	irc: reading data on socket: error 104 Connection reset by peer
+2014-08-18 17:33:39	ℹ 	irc: disconnecting from server...
+2014-08-18 17:33:39	ℹ 	irc: disconnected from server
+2014-08-18 17:33:39	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-18 17:33:49	ℹ 	irc: reconnecting to server...
+2014-08-18 17:33:49	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 17:33:49	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 17:33:49	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-18 17:33:49	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-18 17:33:49	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-18 17:33:49	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-18 17:33:49	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-18 17:33:49	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-18 17:33:49	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-18 17:33:49	ℹ 	-
+2014-08-18 17:33:49	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-18 17:33:49	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-18 17:33:49	ℹ 	-
+2014-08-18 17:33:49	ℹ 	- You are getting this message because the server administrator has not
+2014-08-18 17:33:49	ℹ 	- yet had the time (or need) to change it.
+2014-08-18 17:33:49	ℹ 	-
+2014-08-18 17:33:49	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-18 17:33:49	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-18 17:33:49	ℹ 	- information.
+2014-08-18 17:33:49	ℹ 	-
+2014-08-18 17:33:49	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-18 17:33:49	ℹ 	- -- BitlBee development team.
+2014-08-18 17:33:49	ℹ 	-
+2014-08-18 17:33:49	ℹ 	- ... Buzzing, haha, get it?
+2014-08-18 17:33:49	ℹ 	End of MOTD
+2014-08-18 17:33:49	ℹ 	User mode [+Rs] by dartagan
+2014-08-18 20:53:05	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 20:53:05	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 20:53:05	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-18 20:53:05	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-18 20:53:05	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-18 20:53:05	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-18 20:53:05	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-18 20:53:05	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-18 20:53:05	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-18 20:53:05	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- You are getting this message because the server administrator has not
+2014-08-18 20:53:05	ℹ 	- yet had the time (or need) to change it.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-18 20:53:05	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-18 20:53:05	ℹ 	- information.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-18 20:53:05	ℹ 	- -- BitlBee development team.
+2014-08-18 20:53:05	ℹ 	-
+2014-08-18 20:53:05	ℹ 	- ... Buzzing, haha, get it?
+2014-08-18 20:53:05	ℹ 	End of MOTD
+2014-08-18 20:53:05	ℹ 	User mode [+Rs] by dartagan
+2014-08-18 20:55:05	ℹ 	MSG(rocky): have you dealt with TDD in python?
+2014-08-18 20:55:05	ℹ 	[rocky] is away: Away
+2014-08-18 20:55:44	ℹ 	irc: disconnected from server
+2014-08-18 20:57:17	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 20:57:17	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 20:57:17	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-18 20:57:17	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-18 20:57:17	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-18 20:57:17	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-18 20:57:17	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-18 20:57:17	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-18 20:57:17	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-18 20:57:17	ℹ 	-
+2014-08-18 20:57:17	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-18 20:57:17	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-18 20:57:17	ℹ 	-
+2014-08-18 20:57:17	ℹ 	- You are getting this message because the server administrator has not
+2014-08-18 20:57:17	ℹ 	- yet had the time (or need) to change it.
+2014-08-18 20:57:17	ℹ 	-
+2014-08-18 20:57:17	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-18 20:57:17	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-18 20:57:17	ℹ 	- information.
+2014-08-18 20:57:17	ℹ 	-
+2014-08-18 20:57:17	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-18 20:57:17	ℹ 	- -- BitlBee development team.
+2014-08-18 20:57:17	ℹ 	-
+2014-08-18 20:57:17	ℹ 	- ... Buzzing, haha, get it?
+2014-08-18 20:57:17	ℹ 	End of MOTD
+2014-08-18 20:57:17	ℹ 	User mode [+Rs] by dartagan
+2014-08-18 20:57:49	ℹ 	irc: disconnected from server
+2014-08-18 20:58:09	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 20:58:09	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 20:58:09	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-18 20:58:09	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-18 20:58:09	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-18 20:58:09	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-18 20:58:09	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-18 20:58:09	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-18 20:58:09	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-18 20:58:09	ℹ 	-
+2014-08-18 20:58:09	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-18 20:58:09	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-18 20:58:09	ℹ 	-
+2014-08-18 20:58:09	ℹ 	- You are getting this message because the server administrator has not
+2014-08-18 20:58:09	ℹ 	- yet had the time (or need) to change it.
+2014-08-18 20:58:09	ℹ 	-
+2014-08-18 20:58:09	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-18 20:58:09	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-18 20:58:09	ℹ 	- information.
+2014-08-18 20:58:09	ℹ 	-
+2014-08-18 20:58:09	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-18 20:58:09	ℹ 	- -- BitlBee development team.
+2014-08-18 20:58:09	ℹ 	-
+2014-08-18 20:58:09	ℹ 	- ... Buzzing, haha, get it?
+2014-08-18 20:58:09	ℹ 	End of MOTD
+2014-08-18 20:58:09	ℹ 	User mode [+Rs] by dartagan
+2014-08-18 21:00:23	ℹ 	irc: disconnected from server
+2014-08-18 21:02:45	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 21:02:45	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 21:02:45	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-18 21:02:45	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-18 21:02:45	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-18 21:02:45	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-18 21:02:45	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-18 21:02:45	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-18 21:02:45	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-18 21:02:45	ℹ 	-
+2014-08-18 21:02:45	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-18 21:02:45	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-18 21:02:45	ℹ 	-
+2014-08-18 21:02:45	ℹ 	- You are getting this message because the server administrator has not
+2014-08-18 21:02:45	ℹ 	- yet had the time (or need) to change it.
+2014-08-18 21:02:45	ℹ 	-
+2014-08-18 21:02:45	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-18 21:02:45	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-18 21:02:45	ℹ 	- information.
+2014-08-18 21:02:45	ℹ 	-
+2014-08-18 21:02:45	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-18 21:02:45	ℹ 	- -- BitlBee development team.
+2014-08-18 21:02:45	ℹ 	-
+2014-08-18 21:02:45	ℹ 	- ... Buzzing, haha, get it?
+2014-08-18 21:02:45	ℹ 	End of MOTD
+2014-08-18 21:02:45	ℹ 	User mode [+Rs] by dartagan
+2014-08-18 21:04:37	ℹ 	irc: disconnected from server
+2014-08-18 21:05:35	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-18 21:05:35	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-18 21:05:35	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-18 21:05:35	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-18 21:05:35	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-18 21:05:35	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-18 21:05:35	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-18 21:05:35	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-18 21:05:35	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-18 21:05:35	ℹ 	-
+2014-08-18 21:05:35	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-18 21:05:35	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-18 21:05:35	ℹ 	-
+2014-08-18 21:05:35	ℹ 	- You are getting this message because the server administrator has not
+2014-08-18 21:05:35	ℹ 	- yet had the time (or need) to change it.
+2014-08-18 21:05:35	ℹ 	-
+2014-08-18 21:05:35	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-18 21:05:35	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-18 21:05:35	ℹ 	- information.
+2014-08-18 21:05:35	ℹ 	-
+2014-08-18 21:05:35	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-18 21:05:35	ℹ 	- -- BitlBee development team.
+2014-08-18 21:05:35	ℹ 	-
+2014-08-18 21:05:35	ℹ 	- ... Buzzing, haha, get it?
+2014-08-18 21:05:35	ℹ 	End of MOTD
+2014-08-18 21:05:35	ℹ 	User mode [+Rs] by dartagan
+2014-08-19 08:15:56	⚠	irc: reading data on socket: error 104 Connection reset by peer
+2014-08-19 08:15:56	ℹ 	irc: disconnecting from server...
+2014-08-19 08:15:56	ℹ 	irc: disconnected from server
+2014-08-19 08:15:56	ℹ 	irc: reconnecting to server in 10 seconds
+2014-08-19 08:16:06	ℹ 	irc: reconnecting to server...
+2014-08-19 08:16:06	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-08-19 08:16:06	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-08-19 08:16:06	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-08-19 08:16:06	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-08-19 08:16:06	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-08-19 08:16:06	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-08-19 08:16:06	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-08-19 08:16:06	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-08-19 08:16:06	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-08-19 08:16:06	ℹ 	-
+2014-08-19 08:16:06	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-08-19 08:16:06	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-08-19 08:16:06	ℹ 	-
+2014-08-19 08:16:06	ℹ 	- You are getting this message because the server administrator has not
+2014-08-19 08:16:06	ℹ 	- yet had the time (or need) to change it.
+2014-08-19 08:16:06	ℹ 	-
+2014-08-19 08:16:06	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-08-19 08:16:06	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-08-19 08:16:06	ℹ 	- information.
+2014-08-19 08:16:06	ℹ 	-
+2014-08-19 08:16:06	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-08-19 08:16:06	ℹ 	- -- BitlBee development team.
+2014-08-19 08:16:06	ℹ 	-
+2014-08-19 08:16:06	ℹ 	- ... Buzzing, haha, get it?
+2014-08-19 08:16:06	ℹ 	End of MOTD
+2014-08-19 08:16:06	ℹ 	User mode [+Rs] by dartagan
+2014-11-24 22:12:36	ℹ 	irc: connecting to server 192.168.1.10/6668...
+2014-11-24 22:12:36	ℹ 	irc: connected to 192.168.1.10/6668 (192.168.1.10)
+2014-11-24 22:12:37	ℹ 	Welcome to the BitlBee gateway, dartagan
+2014-11-24 22:12:37	ℹ 	Host 192.168.1.10 is running BitlBee 3.2.2 Linux/x86_64.
+2014-11-24 22:12:37	ℹ 	BitlBee <http://www.bitlbee.org/>
+2014-11-24 22:12:37	ℹ 	192.168.1.10 3.2.2 abiswRo ntC
+2014-11-24 22:12:37	ℹ 	PREFIX=(ohv)@%+ CHANTYPES=&# CHANMODES=,,,ntC NICKLEN=23 CHANNELLEN=23 NETWORK=BitlBee SAFELIST CASEMAPPING=rfc1459 MAXTARGETS=1 WATCH=128 FLOOD=0/9999 :are supported by this server
+2014-11-24 22:12:37	ℹ 	- 192.168.1.10 Message Of The Day -
+2014-11-24 22:12:37	ℹ 	- Welcome to the BitlBee server at 192.168.1.10.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- This server is running BitlBee version 3.2.2.
+2014-11-24 22:12:37	ℹ 	- The newest version can be found on http://www.bitlbee.org/
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- You are getting this message because the server administrator has not
+2014-11-24 22:12:37	ℹ 	- yet had the time (or need) to change it.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- For those who don't know it yet, this is not quite a regular Internet
+2014-11-24 22:12:37	ℹ 	- Relay Chat server. Please see the site mentioned above for more
+2014-11-24 22:12:37	ℹ 	- information.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- The developers of the Bee hope you have a buzzing time.
+2014-11-24 22:12:37	ℹ 	- -- BitlBee development team.
+2014-11-24 22:12:37	ℹ 	-
+2014-11-24 22:12:37	ℹ 	- ... Buzzing, haha, get it?
+2014-11-24 22:12:37	ℹ 	End of MOTD
+2014-11-24 22:12:37	ℹ 	User mode [+Rs] by dartagan

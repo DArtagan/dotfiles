@@ -1,0 +1,31 @@
+[2014-11-24 22:12:35] WeeChat 1.0 (compiled on Aug 17 2014 06:16:50)
+[2014-11-24 22:12:35] Reading configuration file sec.conf
+[2014-11-24 22:12:35] Reading configuration file weechat.conf
+[2014-11-24 22:12:35] Reading configuration file plugins.conf
+[2014-11-24 22:12:35] Reading configuration file relay.conf
+[2014-11-24 22:12:35] Reading configuration file trigger.conf
+[2014-11-24 22:12:35] Reading configuration file aspell.conf
+[2014-11-24 22:12:36] Reading configuration file urlgrab.conf
+[2014-11-24 22:12:36] Reading configuration file charset.conf
+[2014-11-24 22:12:36] Reading configuration file logger.conf
+[2014-11-24 22:12:36] Reading configuration file xfer.conf
+[2014-11-24 22:12:36] Reading configuration file buffers.conf
+[2014-11-24 22:12:36] Reading configuration file iset.conf
+[2014-11-24 22:12:36] Reading configuration file irc.conf
+[2014-11-24 22:12:36] irc: connecting to server 192.168.1.10/6668...
+[2014-11-24 22:12:36] irc: connecting to server 192.168.1.10/6668...
+[2014-11-24 22:12:36] Reading configuration file exec.conf
+[2014-11-24 22:12:36] Reading configuration file alias.conf
+[2014-11-24 22:12:36] Reading configuration file script.conf
+[2014-11-24 22:12:37] Writing configuration file irc.conf
+[2014-11-24 22:12:37] Writing configuration file irc.conf
+[2014-11-24 22:12:38] Writing configuration file irc.conf
+[2014-11-24 22:12:38] Writing configuration file irc.conf
+[2014-11-24 22:12:38] Writing configuration file irc.conf
+[2014-11-24 22:12:39] Writing configuration file irc.conf
+[2014-11-24 22:25:48] Writing configuration file irc.conf
+[2014-11-24 22:25:58] Writing configuration file irc.conf
+[2014-11-24 22:33:27] Signal SIGTERM received, exiting WeeChat...
+[2014-11-24 22:33:27] Terminal lost, exiting WeeChat...
+[2014-11-24 22:33:27] Signal SIGHUP received, exiting WeeChat...
+[2014-11-24 22:33:27] Writing configuration file plugins.conf

@@ -1,3 +1,3 @@
 set tabstop=4
 set shiftwidth=4
-set nosmartindent
+setlocal omnifunc=python3complete#Complete

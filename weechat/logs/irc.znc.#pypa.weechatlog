@@ -1,0 +1,508 @@
+2014-11-24 22:12:38	-->	dartagan (~dartagan@c-50-170-156-10.hsd1.co.comcast.net) has joined #pypa
+2014-11-24 22:12:38	ℹ 	Topic for #pypa is "The channel for users of PyPA tools (pip, virtualenv, setuptools, etc) | Packaging User Guide: https://packaging.python.org | Development discussion happens in #pypa-dev | Use !logs for a link to channel logs. /msg pmxbot !help for commands | Use a pastebin, e.g. https://dpaste.de"
+2014-11-24 22:12:38	ℹ 	Topic set by jezdez (~jezdez@django/committer/jezdez) on Wed, 18 Jun 2014 03:28:48
+2014-11-24 22:12:38	ℹ 	Channel #pypa: 81 nicks (0 ops, 0 voices, 81 normals)
+2014-11-24 22:12:38	***	Buffer Playback...
+2014-11-24 22:12:38	EWDurbin	[14:14:16] pip version?
+2014-11-24 22:12:38	gchristensen	[14:15:00] 1.54
+2014-11-24 22:12:38	EWDurbin	[14:15:02] gchristensen: an example of a working git dep i have on hand is:
+2014-11-24 22:12:38	gchristensen	[14:15:03] 1.5.4*
+2014-11-24 22:12:38	EWDurbin	[14:15:17] -e git+ssh://git@github.com/kissmetrics/data-thing.git@0.9.0#egg=data-thing
+2014-11-24 22:12:38	EWDurbin	[14:15:23] in a requirements.txt
+2014-11-24 22:12:38	EWDurbin	[14:15:33] git deps are hard :-x
+2014-11-24 22:12:38	gchristensen	[14:16:47] it is worth noting that I'm not attached to git deps, I'm just not sure of a good way to let my devs have private deps which can be resolved in our production packaging environment and locally
+2014-11-24 22:12:38	gchristensen	[14:18:09] hrmm -e looks interesting
+2014-11-24 22:12:38	gchristensen	[14:18:32] I guess the core of my issue, is prefixing the git repo with ssh:// is somehow preventing my ssh keys from being used for authentication :|
+2014-11-24 22:12:38	gchristensen	[14:31:07] EWDurbin: turns out git+ssh://git@github.com:account/repo.git should have been git+ssh://git@github.com/account/repo.git
+2014-11-24 22:12:38	EWDurbin	[14:31:23] ahhhhhhh
+2014-11-24 22:12:38	gchristensen	[14:31:51] what was like, a good 4 hours on that colon.
+2014-11-24 22:12:38	⚡	gchristensen [14:32:34] won't make that mistake twice
+2014-11-24 22:12:38	nicksloan	[14:34:14] haha. yikes
+2014-11-24 22:12:38	dstufft	[14:42:46] it wouldn't be python packaging if we didn't punish you for minor mistakes with little ot know useful information
+2014-11-24 22:12:38	dstufft	[14:42:55] gchristensen: open a ticket about how crappy this failure condition is?
+2014-11-24 22:12:38	gchristensen	[14:44:13] can-do
+2014-11-24 22:12:38	gchristensen	[14:45:02] yeah ... while we're at it, looking for a "this is the 1-2-3 for making a pip-compatible package" guide was pretty disappointing as well ...
+2014-11-24 22:12:38	dstufft	[14:45:34] packaging.python.org has some stuff
+2014-11-24 22:12:38	dstufft	[14:45:38] I think
+2014-11-24 22:12:38	dstufft	[14:46:02] if there's things missing from there, there's a github link and that repo would love issues (or even better, PRs) too
+2014-11-24 22:12:38	gchristensen	[14:55:10] dstufft: how about this? https://github.com/pypa/pip/issues/2124
+2014-11-24 22:12:38	dstufft	[14:55:39] lgtm
+2014-11-24 22:12:38	gchristensen	[14:56:00] great
+2014-11-24 22:12:38	tomprince	[15:05:29] gchristensen: Note that the ssh:// syntax (without the leading 'git+') is also supported by git.
+2014-11-24 22:12:38	gchristensen	[15:07:28] tomprince: that is something I came across
+2014-11-24 22:12:38	gchristensen	[15:07:31] yes
+2014-11-24 22:12:38	gchristensen	[15:07:59] before I found the : vs / error, I had asked questions in #git and ##linux going deeper and deeper into the stack (none of them were able to help much :P)
+2014-11-24 22:12:38	palendae	[18:16:36] I have a question - According to https://github.com/pypa/pip/issues/1268#issuecomment-27328306, I can use --allow-unverified in a requirements.txt. Is that one per line, or global to the file?
+2014-11-24 22:12:38	buck11	[18:53:04] was there a virtualenv change that might have caused this? https://bitbucket.org/ned/coveragepy/issue/337/test-failures-on-tip
+2014-11-24 22:12:38	buck11	[18:53:19] or: has there always been a local/lib symlink?
+2014-11-24 22:12:38	buck11	[19:17:41] i'm seeing that importing it has a side-effect http://paste.pound-python.org/show/tb2fMiTBrI770ka4NEBj/
+2014-11-24 22:12:38	buck11	[19:17:51] it == pkg_resources, ahem
+2014-11-24 22:12:38	dstufft	[19:24:12] yes
+2014-11-24 22:12:38	dstufft	[19:24:16] importing pkg_resources does
+2014-11-24 22:12:38	nedbat	[19:25:31] dstufft: why does it do that?
+2014-11-24 22:12:38	dstufft	[19:26:24] hysterical raisins
+2014-11-24 22:12:38	dstufft	[19:27:32] it's not very good, but it's always done that and some things depend on it
+2014-11-24 22:12:38	buck11	[19:41:13] nedbat: dstufft: this line is the offender https://bitbucket.org/pypa/setuptools/src/tip/pkg_resources.py?at=default#cl-2522
+2014-11-24 22:12:38	buck11	[19:41:33] nedbat: shall we just import pkg_resources at the top of try_exec.py?
+2014-11-24 22:12:38	buck11	[19:41:41] would normalize it
+2014-11-24 22:12:38	buck11	[19:41:57] # ha!
+2014-11-24 22:12:38	buck11	[19:42:18] p = np
+2014-11-24 22:12:38	buck11	[19:42:21] someone funny
+2014-11-24 22:12:38	Dulcin_	[01:15:02] Hi I´m having a bit of trouble, hoping someone can help me. I´m using an older version of pip which still has the no-global-site-packages.txt in the lib/python2.7/ folder. My virtualenv is created in the /opt/ folder, but when I want to install django in it, it tells me permission denied, so I sudo pip install it, but then it tells me packages are already satisfied and takes django from the global site packages.
+2014-11-24 22:12:38	Dulcin_	[01:16:23] Scrap that about the older version, that didn't make sense. But I guess I meant to say that I do not want it to use the global site packages, and when I sudo pip install it, it is using the global site packages
+2014-11-24 22:12:38	mgedmin	[01:17:25] sudo pip probably invokes your global pip
+2014-11-24 22:12:38	mgedmin	[01:17:45] why not sudo -u owner-of-your-virtualenv-directory /opt/your-virtualenv/bin/pip install django etc?
+2014-11-24 22:12:38	mgedmin	[01:18:09] (is the virtualenv owned as root?  are you comfortable running random build scripts downloaded from the Internet as root?)
+2014-11-24 22:12:38	Dulcin_	[01:18:32] ah, I wasn't aware I could do it like that
+2014-11-24 22:12:38	Dulcin_	[01:19:23] Currently it is owned by root yeah
+2014-11-24 22:12:38	Dulcin_	[01:19:46] Though the folder with the project source I chowned to www-data
+2014-11-24 22:12:38	Dulcin_	[01:23:32] So I suppose it would be better to chown the entire folder to www-data?
+2014-11-24 22:12:38	Dulcin_	[01:23:48] Your solution worked by the way, I'm forever grateful :-) !!
+2014-11-24 22:12:38	dAnjou	[01:35:15] Dulcin_: even better create a dedicated user and group
+2014-11-24 22:12:38	dAnjou	[01:35:49] www-data is the default for various other things, do you want to take the risk that those overwrite your data?
+2014-11-24 22:12:38	AxonetBE	[05:04:37] I installed virtualenv and created a virtualenv called env, now I want to install falcon with pip install falcon but I have problems with my certificates...
+2014-11-24 22:12:38	AxonetBE	[05:04:50] how can I solve this, I get error : SL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed -- Some packages may not be found!
+2014-11-24 22:12:38	Fah	[08:17:46] Hey, I'm working on using pip to build some binary wheels to distribute to a cluster and I find myself running into an issue that looks very similar to this: https://github.com/pypa/pip/issues/2105  what's the word with using wheels when distribute gets dragged in as a dep?
+2014-11-24 22:12:38	buck11	[09:02:48] Fah: if possible, amend those packages to not require distribute
+2014-11-24 22:12:38	buck11	[09:03:03] ie simply remove the distribute require from setup.py
+2014-11-24 22:12:38	DanielHolth	[09:23:35] Fah I sometimes put a fake .egg-info (just a text file) into site-packages to make it think distribute is installed
+2014-11-24 22:12:38	Fah	[09:24:09] Actually part of this is the packages in question are in desparate need of an upgrade
+2014-11-24 22:12:38	Fah	[09:24:58] I didn't realize how old some of this was. So the first thing I think I need to do is upgrade to versions that work with modern packaging tools and pass all their tests in the app code.
+2014-11-24 22:12:38	Fah	[09:25:29] otherwise, yes... I'm going to have to hack up their build rules up to work with pip/wheel
+2014-11-24 22:12:38	DanielHolth	[09:26:31] I have a virtualenv creation script and after it creates the virtualenv it adds the phony distribute. Then things work.
+2014-11-24 22:12:38	buck11	[10:29:14] does anyone understand why i get a local/lib symlink in my virtualenvs and ned doesn't? https://bitbucket.org/ned/coveragepy/issue/337/test-failures-on-tip#comment-13653960
+2014-11-24 22:12:38	buck11	[10:29:17] nedbat:
+2014-11-24 22:12:38	buck11	[10:31:56] if sysconfig._get_default_scheme() == 'posix_local':
+2014-11-24 22:12:38	buck11	[10:42:06] https://github.com/pypa/virtualenv/blob/develop/virtualenv.py#L1563
+2014-11-24 22:12:38	buck11	[10:42:28] i guess osx doesn't use the posix-local scheme, bit i would have though the travis ubuntu machines would
+2014-11-24 22:12:38	buck11	[10:42:46] the comment on that function is quite unconvincing. why do we need those symlinks?
+2014-11-24 22:12:38	buck11	[10:44:33] it's because of a bug report from me
+2014-11-24 22:12:38	⚡	buck11 [10:44:34] weeps
+2014-11-24 22:12:38	buck11	[10:48:06] https://github.com/pypa/virtualenv/issues/118
+2014-11-24 22:12:38	buck11	[10:55:12] if /usr/lib/python2.7/sysconfig.py:285 were .replace(join(sys.prefix, "local", sys.prefix,1)
+2014-11-24 22:12:38	buck11	[10:55:30] all would be well
+2014-11-24 22:12:38	buck11	[10:55:49] fixes the similar-but-different bug in comments from Neetuj
+2014-11-24 22:12:38	nedbat	[11:31:46] buck11: i think i have an environment i can reproduce that in, i can try later tonight
+2014-11-24 22:12:38	buck11	[11:32:07] nedbat: it's due to an ubuntu patchset
+2014-11-24 22:12:38	buck11	[11:32:16] need to use the ubuntu deb to repro i think
+2014-11-24 22:12:38	buck11	[11:32:30] ohhh travis doesn't have it bc they build from source
+2014-11-24 22:12:38	buck11	[11:32:32] via pyenv
+2014-11-24 22:12:38	buck11	[12:00:18] it seems like if i build from source, all this crud might go away
+2014-11-24 22:12:38	tdsmith	[23:42:05] do i need to install the wheel wheel to install wheels without installing pip or a recent setuptools>
+2014-11-24 22:12:38	tdsmith	[23:42:11] or download, i suppose
+2014-11-24 22:12:38	doismellburning	[07:06:36] wheel
+2014-11-24 22:12:38	Noldorin	[17:35:22] does pip have a feature to view the description of or open the description page for a package?
+2014-11-24 22:12:38	tos9	[17:48:36] presumably not, since a package does not need to have a description page.
+2014-11-24 22:12:38	Noldorin	[19:45:01] tos9, I think they all have description strings though no?
+2014-11-24 22:12:38	Noldorin	[19:45:10] tos9, in any case, it would be a useful command line utility to have...
+2014-11-24 22:12:38	tos9	[19:45:28] Noldorin: Only if they live on PyPI
+2014-11-24 22:12:38	Noldorin	[19:45:39] tos9, eh good point
+2014-11-24 22:12:38	tos9	[19:46:32] Noldorin: `function description () { open https://pypi.python.org/pypi/$1 }`
+2014-11-24 22:12:38	Noldorin	[19:47:07] tos9, thanks. seems someone has already written a utility though in fact. :) https://github.com/sloria/pypi-cli
+2014-11-24 22:12:38	Noldorin	[19:47:13] that's a good one-line function though, ta
+2014-11-24 22:12:38	tdsmith	[19:47:52] could look at installed metadata files, like site-packages/requests-2.4.3.dist-info/METADATA
+2014-11-24 22:12:38	tdsmith	[19:48:36] presumably that's inside eggs somewhere
+2014-11-24 22:12:38	tdsmith	[19:48:38] as well
+2014-11-24 22:12:38	buck11	[10:58:39] i'd like to propose backing out virtualenv#118 in the case of ubuntu trusty + https://bitbucket.org/ned/coveragepy/issue/340/keyerror-subpy#comment-13671053
+2014-11-24 22:12:38	buck11	[10:59:57] a feature-detection approach would look for sys.prefix+'local' in get_makefile_filename
+2014-11-24 22:12:38	lobachevsky	[13:43:24] Hi, i have a question regarding wheels
+2014-11-24 22:12:38	lobachevsky	[13:44:18] When I install a package with pip, I can give it additional options with --install-option. Is there a similar option for building wheels?
+2014-11-24 22:12:38	lobachevsky	[13:44:50] I want to provide a prebuilt wheel of pyzmq built against a locally built version of libzmq
+2014-11-24 22:12:38	dstufft	[17:47:45] lobachevsky: there is no install script with wheels to pass an install option to
+2014-11-24 22:12:38	dstufft	[18:03:25] nicksloan: This may be relevant to your interests https://github.com/pypa/packaging-problems/issues/57
+2014-11-24 22:12:38	nicksloan	[18:06:08] dstufft: thanks. i've been playing with that idea a bit more tonight. I'll see how far I get and maybe mention what I'm working on.
+2014-11-24 22:12:38	tos9	[19:41:07] dstufft: Hah, why have I never seen that before...
+2014-11-24 22:12:38	lobachevsky	[02:27:23] dstufft: is there no way to pass options to the build process? I mean some sort of build must be happening, when I build a wheel for something with C extensions, like numpy.
+2014-11-24 22:12:38	lobachevsky	[02:27:40] it would be nice to pass options to that
+2014-11-24 22:12:38	mgedmin	[02:29:21] lobachevsky, you can set various environment variables like CFLAGS
+2014-11-24 22:12:38	lobachevsky	[02:30:37] mgedmin: true, that would solve problems concerning numpy, which takes configuration from environment variables, but cannot solve my problem for pyzmq, though
+2014-11-24 22:12:38	mgedmin	[02:31:25] why?
+2014-11-24 22:12:38	lobachevsky	[02:32:26] no, you are right... I can alter the setup.py of pyzmq accordingly to also take an environment variable
+2014-11-24 22:12:38	lobachevsky	[02:32:31] thanks a lot
+2014-11-24 22:12:38	mgedmin	[02:33:54] oh my, https://github.com/zeromq/pyzmq/blob/master/setup.py
+2014-11-24 22:12:38	lobachevsky	[02:35:54] that's not too bad, the logic for the --zmq switch is only a couple of lines
+2014-11-24 22:12:38	lobachevsky	[02:36:35] taping on my wanted functionality should be easy :)
+2014-11-24 22:12:38	eikke	[03:15:07] I'm trying to pip install a package by providing its URL, and adding '#md5=...', where '...' is a *wrong* md5 for the source zipfile, yet pip doesn't fail. is this expected?
+2014-11-24 22:12:38	mgedmin	[03:30:03] https://pypi.python.org/pypi/objgraph shows me a very nice "Something went wrong" page
+2014-11-24 22:12:38	mgedmin	[03:30:11] https://status.python.org/ thinks nothing's wrong
+2014-11-24 22:12:38	mgedmin	[03:32:40] eikke, https://pypi.python.org/pypi/peep is a tool that wraps pip and adds checksum verification
+2014-11-24 22:12:38	mgedmin	[03:32:47] and this page also shows me a 'something is wrong' error
+2014-11-24 22:12:38	eikke	[03:33:41] mgedmin: according to https://pip.readthedocs.org/en/1.5.X/reference/pip_install.html#hash-verification I shouldn't need some external tool...
+2014-11-24 22:12:38	mgedmin	[03:34:35] I think you need to talk to dstufft about this
+2014-11-24 22:12:38	eikke	[03:35:59] on the other hand, checking the pip source-code, it seems like the checking might only be performed from URLs retrieved from a 'simple' index
+2014-11-24 22:12:38	buck1	[17:12:43] feature or bug? in requirements.txt -r ./foo is file-relative while -e ./foo is user-relative
+2014-11-24 22:12:38	mgedmin	[23:47:22] 503 error from pypi again
+2014-11-24 22:12:38	mgedmin	[23:47:29] is it just me or are those getting more frequent?
+2014-11-24 22:12:38	jrabbit	[02:34:04] does virtualenv use its own pip?
+2014-11-24 22:12:38	mgedmin	[02:37:53] usually, yes
+2014-11-24 22:12:38	mgedmin	[02:38:19] you can create a virtualenv without pip if you really want to
+2014-11-24 22:12:38	mgedmin	[02:38:43] (I'm not sure why anyone would ever want to ... well maybe if you want to test pip bootstrapping in a clean python that doesn't have pip)
+2014-11-24 22:12:38	jrabbit	[02:42:33] mgedmin: I mean its own version or if it copies the system's pip
+2014-11-24 22:12:38	jrabbit	[02:42:47] mgedmin: I'm running into a nasty bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=751827
+2014-11-24 22:12:38	jrabbit	[02:42:58] and it doesn't seem like their fix works here
+2014-11-24 22:12:38	mgedmin	[02:43:09] I think debian's virtualenv behaves differently from upstream virtualenv
+2014-11-24 22:12:38	mgedmin	[02:43:20] I believe upstream virtualenv bundles its own copy of setuptools and pip and installs those
+2014-11-24 22:12:38	jrabbit	[02:43:47] hm ok
+2014-11-24 22:12:38	⚡	jrabbit [02:49:46] will pester the maintainer
+2014-11-24 22:12:38	straycat	[08:36:46] What's the best way to bootstrap setuptools on a machine with no internet connection? From what I can see the 0.6 version of setuptools bootstraps itself, whilst this doesn't seem to work fully on 7.0, I may be mistaken though.
+2014-11-24 22:12:38	qwcode	[08:54:28] straycat, you can install pip/setuptools using local copies of "get-pip.py", pip and setuptools  see here https://pip.pypa.io/en/latest/installing.html#install-pip   specifically the bit about "Install from local copies of pip and setuptools"
+2014-11-24 22:12:38	straycat	[08:55:38] qwcode, thanks :)
+2014-11-24 22:12:38	straycat	[09:12:47] It seems a little odd to me that the 0.6 version can install itself, what stops 7.0 from doing this?
+2014-11-24 22:12:38	straycat	[10:24:34] Actually I now think this is a recent setuptools bug, checked out from the 7.0 tag I can build and install just fine using distutils. Checked out from master I encounter issues.
+2014-11-24 22:12:38	mgedmin	[23:36:50] pypi 503 again
+2014-11-24 22:12:38	mgedmin	[23:36:56] I don't think I've seen a working pypi page this week
+2014-11-24 22:12:38	mgedmin	[23:54:27] OKAY NOW THIS IS SOMETHING
+2014-11-24 22:12:38	mgedmin	[23:54:35] my browser can't use PyPI
+2014-11-24 22:12:38	mgedmin	[23:54:47] except in incognito windows! where PyPI works just fine!
+2014-11-24 22:12:38	mgedmin	[23:54:51] cookies?
+2014-11-24 22:12:38	mgedmin	[23:58:56] yup, clear pypi cookies, pypi works again!
+2014-11-24 22:12:38	delinquentme	[02:46:20] so occasionally I'm having issues with pip not installing a package when i code the command into a shell script ... anyone know what the issue might be?
+2014-11-24 22:12:38	delinquentme	[02:46:50] https://dpaste.de/rKic
+2014-11-24 22:12:38	doismellburning	[02:48:03] delinquentme: what does "not installing" mean? log?
+2014-11-24 22:12:38	delinquentme	[02:48:54] doismellburning, say I specify the version in that pip command ... and a different version ends up being installed after the script finishes
+2014-11-24 22:12:38	mgedmin	[02:49:16] wheee download code over http and run it as root!
+2014-11-24 22:12:38	mgedmin	[02:50:14] I wouldn't trust Debian's packaged pip to be able to upgrade itself from PyPI
+2014-11-24 22:12:38	mgedmin	[02:50:38] any reason why you can't use the packaged pip?
+2014-11-24 22:12:38	mgedmin	[02:51:07] if I needed a newer pip, I'd probably create a virtualenv in /opt or /srv somewhere
+2014-11-24 22:12:38	mgedmin	[02:51:20] then /opt/mystuff/bin/pip install -U pip
+2014-11-24 22:12:38	mgedmin	[02:51:37] please don't consider my answer to be authoritative
+2014-11-24 22:12:38	doismellburning	[02:51:38] mgedmin: I've never had a problem doing so fwiw
+2014-11-24 22:12:38	doismellburning	[02:52:06] (I have a lot of vagrant boxen that `apt-get install python-pip ; pip install --upgrade pip`)
+2014-11-24 22:12:38	mgedmin	[02:52:11] cool
+2014-11-24 22:12:38	mgedmin	[02:52:21] you never said *which* of the three pip commands gives you trouble
+2014-11-24 22:12:38	doismellburning	[02:52:36] delinquentme: more data please
+2014-11-24 22:12:38	mgedmin	[02:52:53] I suggest merging the two pip installs that explicitly specify versions into a single command
+2014-11-24 22:12:38	mgedmin	[02:53:06] so you know the 2nd won't upgrade the package you pinned in the 1st
+2014-11-24 22:12:38	⚡	mgedmin [02:53:21] -> afk, lunch
+2014-11-24 22:12:38	delinquentme	[02:53:27] kk smart lemme give it a go
+2014-11-24 22:12:38	delinquentme	[03:17:19] doismellburning, mgedmin sorted it out -- the apache-libcloud version in the repos was sufficiently up to date.  so they all run through correctly .. time foar sleep
+2014-11-24 22:12:38	delinquentme	[03:17:24] thanks all
+2014-11-24 22:12:38	tazle	[09:08:54] it seems that the cacert.pem bundle that's included in PIP 1.5.6 doesn't contain the CA that pypi.python.org is currently using
+2014-11-24 22:12:38	tazle	[09:09:21] am I doing something wrong? is this a known issue?
+2014-11-24 22:12:38	dstufft	[09:55:39] tazle: doesn't sound right, else everyone would be having problems
+2014-11-24 22:12:38	tazle	[09:56:08] dstufft: see https://github.com/pypa/pip/issues/2130
+2014-11-24 22:12:38	dstufft	[10:03:12] tazle: commented
+2014-11-24 22:12:38	buck1	[12:35:20] does pkg_resources have any notion of which installed pacakge deps which other?
+2014-11-24 22:12:38	buck1	[12:40:33] dist.requires()
+2014-11-24 22:12:38	delinquentme	[15:30:21] Ok so I've sorted out the issue to this command: pip install -e git+https://git-wip-us.apache.org/repos/asf/libcloud.git@trunk#egg=apache-libcloud #edge
+2014-11-24 22:12:38	delinquentme	[15:30:37] when run in console ... runs just fine ... when run via script ... fails miserably
+2014-11-24 22:12:38	delinquentme	[15:30:40] any ideas why?
+2014-11-24 22:12:38	ahmeni	[16:53:13] delinquentme: escaping issue?
+2014-11-24 22:12:38	delinquentme	[17:12:07] ahmeni, tbh it works now ... and i have no idea why
+2014-11-24 22:12:38	delinquentme	[17:12:33] some combination of pip flags, git/https protocols and tags within github
+2014-11-24 22:12:38	tos9	[10:52:52] Anyone particularly have an idea what's going on here: https://github.com/pypa/pip/issues/1661
+2014-11-24 22:12:38	tos9	[11:00:00] Oh the upstream ticket has a "solution".
+2014-11-24 22:12:38	dstufft	[11:00:17] tos9: what version of pypy
+2014-11-24 22:12:38	tos9	[11:04:17] dstufft: 2.4.0
+2014-11-24 22:12:38	tos9	[11:04:26] And in fact 3.5.0b2 does actually work.
+2014-11-24 22:12:38	tos9	[11:04:38] But there's no non-pre release of configparser that does apparently.
+2014-11-24 22:12:38	dstufft	[11:06:05] tos9: what did they change do you know?
+2014-11-24 22:12:38	tos9	[11:06:57] dstufft: I don't -- I can try to figure that out though... I started to, but I forgot that pip forks to do the install
+2014-11-24 22:12:38	tos9	[11:07:11] Let's see what they did...
+2014-11-24 22:12:38	dstufft	[11:07:33] something makes me think that 2.4.0 had that issue with pip
+2014-11-24 22:12:38	dstufft	[11:07:38] and they issued 2.4.1 to fix it
+2014-11-24 22:12:38	dstufft	[11:08:31] oh nvm
+2014-11-24 22:12:38	dstufft	[11:08:32] that was 2.2
+2014-11-24 22:12:38	tos9	[11:16:20] literally being foiled by not knowing how to switch mercurial branches
+2014-11-24 22:12:38	tos9	[11:16:41] roundrobining between hg pull, hg branch, hg checkout
+2014-11-24 22:12:38	tos9	[11:16:43] time to google.
+2014-11-24 22:12:38	dstufft	[11:19:05] hg update
+2014-11-24 22:12:38	dstufft	[11:19:06] I think
+2014-11-24 22:12:38	apollo13	[11:36:18] git checkout *scnr*
+2014-11-24 22:12:38	bassface	[20:20:23] has anyone ever seen an importerror for pip3? http://pastebin.com/tVFyxMZP
+2014-11-24 22:12:38	bassface	[20:20:36] i've tried uninstalling/reinstalling python3 with brew
+2014-11-24 22:12:38	bassface	[20:26:49] is there maybe another way to wipe out the pip3 installation?
+2014-11-24 22:12:38	skylite	[03:23:29] Hi, I'm on ubuntu 12 and installed pip3. Could someone explain to me what do I need to chmod/chown so i dont have to use pip3 with sudo?
+2014-11-24 22:12:38	skylite	[03:25:00] this is always a problem for me and I cant find any sollution
+2014-11-24 22:12:38	mgedmin	[03:42:15] use virtualenv!
+2014-11-24 22:12:38	skylite	[03:42:29] ok but
+2014-11-24 22:12:38	skylite	[03:42:39] still what are the correct permissions for this?
+2014-11-24 22:12:38	mgedmin	[03:43:02] no special permission tweaks are necessary to install packages into a virtualenv
+2014-11-24 22:12:38	mgedmin	[03:43:16] (pip3 install --user is also an option, but I haven't used it much)
+2014-11-24 22:12:38	skylite	[03:44:06] and is there a way to use pip without sudo outside a virtualenv?
+2014-11-24 22:12:38	mgedmin	[03:48:43] pip install --user
+2014-11-24 22:12:38	skylite	[03:51:27] mgedmin my problem is this: http://pastebin.com/pFnsKHbN
+2014-11-24 22:12:38	skylite	[03:51:39] or is this normal?
+2014-11-24 22:12:38	mgedmin	[03:51:46] no
+2014-11-24 22:12:38	mgedmin	[03:51:52] you somehow ended up with a pip in /usr/local/
+2014-11-24 22:12:38	mgedmin	[03:52:25] I'm guessing you did a sudo pip install ... in the past?  well, there's a reason that's considered a Bad Idea
+2014-11-24 22:12:38	mgedmin	[03:53:06] still, I wonder what sudo pip changes...
+2014-11-24 22:12:38	skylite	[03:53:14] i did a sudo apt-get install python3-setuptools  and then sudo easy_install pip
+2014-11-24 22:12:38	skylite	[03:53:23] easy_install3
+2014-11-24 22:12:38	mgedmin	[03:53:27] why would you ever do that?
+2014-11-24 22:12:38	mgedmin	[03:53:34] what's wrong with sudo apt-get install python3-pip?
+2014-11-24 22:12:38	mgedmin	[03:53:51] check for non-world-readable directories under /usr/local/?
+2014-11-24 22:12:38	mgedmin	[03:53:59] lemmesee if I can remember how to use find
+2014-11-24 22:12:38	skylite	[03:54:05] E: Unable to locate package python3-pip
+2014-11-24 22:12:38	skylite	[03:54:08] its ubuntu 12
+2014-11-24 22:12:38	mgedmin	[03:54:38] find /usr/local \! -perm /755 -ls perhaps?
+2014-11-24 22:12:38	mgedmin	[03:54:47] 12.04 or 12.10?
+2014-11-24 22:12:38	skylite	[03:56:11] http://pastebin.com/eVe82TUn
+2014-11-24 22:12:38	mgedmin	[03:57:13] ok, to fix that try sudo chmod -R a+rX /usr/local/lib/python3.2/dist-packages /usr/local/include
+2014-11-24 22:12:38	skylite	[03:57:21] to be honest I was just following this: http://askubuntu.com/questions/412178/how-to-install-pip-for-python-3-in-ubuntu-12-04-lts
+2014-11-24 22:12:38	skylite	[03:58:04] ooh
+2014-11-24 22:12:38	skylite	[03:58:10] mgedmin thx a lot that did it
+2014-11-24 22:12:38	skylite	[04:05:30] mgedmin it still fails :/ http://pastebin.com/Wd9vqSt7
+2014-11-24 22:12:38	skylite	[04:05:43] pip is running but I cant install anything
+2014-11-24 22:12:38	mgedmin	[04:06:07] as a non-root user you don't have permissions to install anything into your system packages
+2014-11-24 22:12:38	mgedmin	[04:06:11] use a virtualenv
+2014-11-24 22:12:38	mgedmin	[04:06:29] or you can risk sudo pip3 install again if you don't mind possibly breaking your system
+2014-11-24 22:12:38	skylite	[04:07:54] so i should do a sudo pip3 install virtualenv
+2014-11-24 22:12:38	skylite	[04:08:03] is that ok?
+2014-11-24 22:12:38	mgedmin	[04:09:51] let me check
+2014-11-24 22:12:38	mgedmin	[04:10:09] actually that's not necessary
+2014-11-24 22:12:38	mgedmin	[04:10:14] sudo apt-get install python-virtualenv
+2014-11-24 22:12:38	mgedmin	[04:10:23] then virtualenv -p python3 ~/my-env
+2014-11-24 22:12:38	mgedmin	[04:10:29] then ~/my-env/bin/pip install flask etc.
+2014-11-24 22:12:38	skylite	[04:14:27] isnt virtualenv only for creating a dev environment?
+2014-11-24 22:12:38	mgedmin	[04:17:33] it's for not cluttering your sytem-wide python installation with random packages
+2014-11-24 22:12:38	skylite	[04:19:21] say I want to write a backupscript in python and for that I use some packages I create a virtualenv for that, write my code etc but if I want to actually run that system-wide, I still have to install the packages it requires system-wide?
+2014-11-24 22:12:38	mgedmin	[04:22:43] that's one option
+2014-11-24 22:12:38	skylite	[04:24:44] but thats not a good idea so I'm assuming there is a better one?
+2014-11-24 22:12:38	mgedmin	[04:26:04] the problem with computers is that there are so many options sometimes it's hard to say which one's the best :/
+2014-11-24 22:12:38	mgedmin	[04:26:29] if I were writing a Python backup script, I'd try to depend on Python packages that are already packaged in Ubuntu
+2014-11-24 22:12:38	mgedmin	[04:26:38] and maybe package my backup script in a .deb and upload it to a ppa
+2014-11-24 22:12:38	mgedmin	[04:26:52] (this is in case I needed a backup script for several servers)
+2014-11-24 22:12:38	skylite	[04:27:15] how about a flask site?
+2014-11-24 22:12:38	mgedmin	[04:27:19] if I were writing a Python backup script for my own use, I'd probably make it runnable straight out from a github repo
+2014-11-24 22:12:38	mgedmin	[04:27:43] if I were writing a webapp/website, I'd make it runnable from a github repo too
+2014-11-24 22:12:38	mgedmin	[04:27:49] then clone it in /opt/mysite
+2014-11-24 22:12:38	mgedmin	[04:28:07] then run the build which would create a virtualenv co-located in /opt/mysite with all the stuff
+2014-11-24 22:12:38	skylite	[04:28:24] what do you mean make it runnable from a github repo?
+2014-11-24 22:12:38	mgedmin	[04:28:26] and have a .wsgi script in /opt/mysite that activates the virtualenv before creating the wsgi app object
+2014-11-24 22:12:38	mgedmin	[04:28:57] I mean 'git clone ..../myproject && cd myproject && make run' should work, as long as you've got all the necessary system packages
+2014-11-24 22:12:38	mgedmin	[04:29:27] (python itself, make, a C compiler in case your project needs pypi packages with C extension modules, dev headers for those -- e.g. libxml/libjpeg etc for Pillow, ...)
+2014-11-24 22:12:38	mgedmin	[04:29:49] 'make run' is an approximation
+2014-11-24 22:12:38	skylite	[04:29:50] so the git repo should be basically a virtualenv?
+2014-11-24 22:12:38	skylite	[04:30:19] I mean I create a virtualenv cd into it and git init...
+2014-11-24 22:12:38	mgedmin	[04:30:33] they can share the directory, yes (.gitignore ignores virtualenv's bin/, lib/, local/, include/; a Makefile commited in git does 'virtualenv .' if it doesn't find a bin/pip)
+2014-11-24 22:12:38	mgedmin	[04:31:00] e.g. https://github.com/mgedmin/ShoppingList
+2014-11-24 22:12:38	mgedmin	[04:31:13] here's my makefile: https://github.com/mgedmin/ShoppingList/blob/master/Makefile
+2014-11-24 22:12:38	skylite	[04:31:45] is the makefile created with pip freeze?
+2014-11-24 22:12:38	mgedmin	[04:31:50] for production deployments I wouldn't use 'make run', I'd run 'make' to create the virtualenv and install all the requirements the have apache + mod_wsgi actually run the thing
+2014-11-24 22:12:38	mgedmin	[04:32:03] requirements.txt is created with pip freeze, the Makefile I wrote by hand
+2014-11-24 22:12:38	mgedmin	[04:32:27] (copying and pasting bits between my projects because it's hard to write one from scratch!)
+2014-11-24 22:12:38	mgedmin	[04:32:56] this approach has certain downsides (running a build on the production server instead of building on jenkins and then deploying wheels) but I haven't had the time to improve it
+2014-11-24 22:12:38	mgedmin	[04:33:38] the point is, if I need two different flask websites on the same server, and one of them needs some 3rd-party package X version 1.0, and the other requires X version 1.2, I don't get conflicts
+2014-11-24 22:12:38	mgedmin	[04:33:49] which I would get if I installed everything into the system python
+2014-11-24 22:12:38	skylite	[04:36:21] I see
+2014-11-24 22:12:38	skylite	[04:36:59] so every site could have its own virtualenv
+2014-11-24 22:12:38	skylite	[04:37:13] isnt that somehow inefficient?
+2014-11-24 22:12:38	mgedmin	[04:38:33] disk space is cheap these days
+2014-11-24 22:12:38	mgedmin	[04:38:37] isolation is good
+2014-11-24 22:12:38	mgedmin	[04:39:08] what is perhaps not so good is that you have to keep track of security updates for each virtualenv by hand
+2014-11-24 22:12:38	mgedmin	[04:39:14] requires.io might be a useful tool there
+2014-11-24 22:12:38	apollo13	[04:45:46] grml, I should have finished my project :(
+2014-11-24 22:12:38	apollo13	[04:46:15] had something like this at the django dash 2 or 3 years ago
+2014-11-24 22:12:38	⚡	mgedmin [04:48:48] is slowly transitioning from a dev to a devops person
+2014-11-24 22:12:38	skylite	[05:26:16] mgedmin how about this one? https://github.com/spotify/dh-virtualenv
+2014-11-24 22:12:38	mgedmin	[06:12:33] looks interesting!
+2014-11-24 22:12:38	skylite	[06:14:44] mgedmin if i create a virtualenv and I want to use git should I exclude everything it creates ?
+2014-11-24 22:12:38	mgedmin	[06:14:56] yes
+2014-11-24 22:12:38	skylite	[06:15:38] and if I do a clone how can I setup the virtualenv?
+2014-11-24 22:12:38	mgedmin	[06:18:22] something like cd checkout-dir && virtualenv . && bin/pip install -r requirements.txt
+2014-11-24 22:12:38	mgedmin	[06:18:41] (I like make so I have a Makefile do the virtualenv . && bin/pip install steps for me)
+2014-11-24 22:12:38	skylite	[06:19:24] huh
+2014-11-24 22:12:38	skylite	[06:19:39] how can I write a makefile?
+2014-11-24 22:12:38	mgedmin	[06:20:48] you don't have to
+2014-11-24 22:12:38	mgedmin	[06:21:00] but, generally, one uses a text editor
+2014-11-24 22:12:38	skylite	[06:21:26] I mean are there any docs for that?
+2014-11-24 22:12:38	doismellburning	[06:21:35] `info make`
+2014-11-24 22:12:38	doismellburning	[06:21:54] but why not just create a virtualenv elsewhere?
+2014-11-24 22:12:38	skylite	[06:22:27] wow
+2014-11-24 22:12:38	skylite	[06:22:28] ok
+2014-11-24 22:12:38	mgedmin	[06:23:07] for simplicity: I like managing a single directory per project
+2014-11-24 22:12:38	mgedmin	[06:23:37] and since I never use the activate script I like being able to run commands with bin/foo
+2014-11-24 22:12:38	mgedmin	[06:23:49] while I'm in the project's root directory
+2014-11-24 22:12:38	skylite	[06:24:00] yea in one single directory sounds good to me too
+2014-11-24 22:12:38	doismellburning	[06:24:23] in which case, why not create it in `.virtualenv` and have `/.virtualenv` in your global gitignore
+2014-11-24 22:12:38	mgedmin	[06:24:59] I wouldn't have a bin/django etc. if I created the virtualenv in .virtualenv/
+2014-11-24 22:12:38	mgedmin	[06:25:21] as for global ignores -- when there are many developers it's better when they don't have to tweak their global config too much
+2014-11-24 22:12:38	mgedmin	[06:25:29] so I avoid them
+2014-11-24 22:12:38	mgedmin	[06:25:39] unless it's for stuff that's idiosyncratic to my own habits
+2014-11-24 22:12:38	doismellburning	[06:25:44] this would be
+2014-11-24 22:12:38	doismellburning	[06:25:56] and yes you wouldn't have bin/django, you'd have .virtualenv/bin/django
+2014-11-24 22:12:38	skylite	[06:26:11] thats sounds good actually
+2014-11-24 22:12:38	mgedmin	[06:26:15] before virtualenv existed I used to use zc.buildout
+2014-11-24 22:12:38	mgedmin	[06:26:20] zc.buildout creates scripts in ./bin/
+2014-11-24 22:12:38	mgedmin	[06:26:23] I got used to that
+2014-11-24 22:12:38	hynek	[06:26:33] hi, is there anything I can do such that running https://github.com/hynek/structlog/blob/master/setup.py using `python setup.py test` doesn’t result in my home directory being polluted by .egg directories? Running tox leads to this beauty: http://i.glui.me/1v24Q01 if I install the deps using pip install directly, it doesn’t happen
+2014-11-24 22:12:38	doismellburning	[06:27:06] skylite: it is essentially what I do
+2014-11-24 22:12:38	mgedmin	[06:27:09] hynek, "don't use setup.py test" is the best I can offer :/
+2014-11-24 22:12:38	mgedmin	[06:27:23] you can use python setup.py test in tox.ini iff you also specify all the test deps in tox.ini
+2014-11-24 22:12:38	mgedmin	[06:27:35] then setup.py test will see that they all are already installed and won't clutter your $PWD
+2014-11-24 22:12:38	mgedmin	[06:27:56] downside: you have to duplicate your test dependencies in setup.py and tox.ini because there's no API to extract test_requires from a setup.py
+2014-11-24 22:12:38	skylite	[06:27:59] doismellburning so when you clone a repo you then create the virtualenv for it in .virtualenv and source that?
+2014-11-24 22:12:38	mgedmin	[06:28:03] (this is why people hate setuptools)
+2014-11-24 22:12:38	doismellburning	[06:28:36] skylite: I rarely source it, but yes
+2014-11-24 22:12:38	skylite	[06:28:49] why?
+2014-11-24 22:12:38	skylite	[06:29:00] dont you have to source it in order to use it?
+2014-11-24 22:12:38	doismellburning	[06:29:04] skylite: and I have `/.virtualenv` in my global gitignore, so it's ignored by default
+2014-11-24 22:12:38	doismellburning	[06:29:08] skylite: no
+2014-11-24 22:12:38	skylite	[06:29:21] oh
+2014-11-24 22:12:38	doismellburning	[06:29:47] skylite: see mgedmin's comments above
+2014-11-24 22:12:38	mgedmin	[06:30:46] you can either . my-virtualenv/activate and then it'll modify $PATH and $PYTHONPATH
+2014-11-24 22:12:38	mgedmin	[06:30:57] but that way I open a new terminal tab and I have to remember to activate the same venv
+2014-11-24 22:12:38	dstufft	[06:31:10] hynek: if you upgrade your setuptools all that will get put into a single .egg directory
+2014-11-24 22:12:38	skylite	[06:31:14] right
+2014-11-24 22:12:38	dstufft	[06:31:14] hynek: if you consider that better
+2014-11-24 22:12:38	mgedmin	[06:31:20] or you can run my-virtualenv/bin/script using the full (relative) path every time
+2014-11-24 22:12:38	hynek	[06:31:21] dstufft: sorta :)
+2014-11-24 22:12:38	dstufft	[06:31:33] (to be clear, .egg/Twisted-whatever.egg instead of Twisted-wahtever.egg
+2014-11-24 22:12:38	dstufft	[06:31:39] might be .eggs actually
+2014-11-24 22:12:38	dstufft	[06:31:41] I forget the name
+2014-11-24 22:12:38	mgedmin	[06:31:47] I prefer my shell sessions to be as stateless as possible
+2014-11-24 22:12:38	skylite	[06:32:27] that sounds great
+2014-11-24 22:12:38	dstufft	[06:32:29] hynek: the other alternative is to write your own test command and install the test dependencies however you want inside of that
+2014-11-24 22:12:38	hynek	[06:32:30] dstufft: i saw it somewhere already. i guess it’s differences in my setuptools versions within my venvs
+2014-11-24 22:12:38	hynek	[06:32:38] .eggs is fine
+2014-11-24 22:12:38	dstufft	[06:32:47] hynek: yea, you just want to be on setuptools 7.0+ then
+2014-11-24 22:12:38	dstufft	[06:32:58] virtualenv is using a pretty old setuptools at this point
+2014-11-24 22:12:38	dstufft	[06:33:01] 3.6 I think?
+2014-11-24 22:12:38	hynek	[06:34:07] my tox is even within a separate venv (via pips)
+2014-11-24 22:12:38	hynek	[06:35:25] ugh now I see the problem. tox will create virtualenvs which has their setuptools…
+2014-11-24 22:12:38	dstufft	[06:36:40] hynek: add a setuptools dep
+2014-11-24 22:12:38	dstufft	[06:36:44] in tox.ini
+2014-11-24 22:12:38	hynek	[06:36:45] yep
+2014-11-24 22:12:38	hynek	[06:36:49] that’s what i did
+2014-11-24 22:12:38	dstufft	[06:37:06] or you can refactor your setup.py so that you have a tests extra as wella s tests_require
+2014-11-24 22:12:38	dstufft	[06:37:10] and tell tox to install that
+2014-11-24 22:12:38	hynek	[06:37:38] dstufft: https://github.com/hynek/structlog/commit/eed09e122528d167fc8cd0a0f3c2e32f2950bd75
+2014-11-24 22:12:38	hynek	[06:37:48] i have tests require
+2014-11-24 22:12:38	hynek	[06:39:39] dstufft: anyways, thanks <3
+2014-11-24 22:12:38	dstufft	[06:39:53] hynek: no problem :D
+2014-11-24 22:12:38	⚡	hynek [06:40:04] adding it to all the projects
+2014-11-24 22:12:38	skylite	[09:02:19] how can I know if I have header files and a static library installed for Python?
+2014-11-24 22:12:38	buck1	[11:24:10] skylite: try to include/link them
+2014-11-24 22:12:38	buck1	[11:24:37] is there any way to retrieve what extras a package was installed with, via pkg_resources?
+2014-11-24 22:12:38	buck1	[11:24:56] i can get the list of valid extras, and the requirements given some particular extras
+2014-11-24 22:12:38	buck1	[12:02:47] !logs
+2014-11-24 22:12:38	pmxbot	[12:02:47] http://chat-logs.dcpython.org/channel/pypa
+2014-11-24 22:12:38	DanielHolth	[13:03:45] buck1 no there is not
+2014-11-24 22:12:38	DanielHolth	[13:04:20] either the extra dependencies are installed, ore they aren't, but the name of that "extra" is not recorded.
+2014-11-24 22:12:38	buck1	[13:38:34] DanielHolth: sad!
+2014-11-24 22:12:38	buck1	[13:39:35] thanks for the information though
+2014-11-24 22:12:38	skylite	[14:42:03] buck1 how can I include them?
+2014-11-24 22:12:38	buck1	[14:43:14] #include
+2014-11-24 22:12:38	buck1	[14:43:31] it's C
+2014-11-24 22:12:38	skylite	[14:43:37] anyone managed to make vim aware of the virtualenv when doing :py3 % ? I tried it with a plugin but that causes python to crash
+2014-11-24 22:12:38	buck1	[14:45:12] skylite: activating before opening vim should work
+2014-11-24 22:12:38	buck1	[14:45:20] although i think :py uses the builtin python
+2014-11-24 22:12:38	buck1	[14:45:26] embedded*
+2014-11-24 22:12:38	skylite	[14:46:13] avtivating before opening vim does net help i tried:(
+2014-11-24 22:12:38	buck1	[14:49:08] skylite: don't use :py imo
+2014-11-24 22:12:38	buck1	[14:49:17] use :!python instead?
+2014-11-24 22:12:38	skylite	[14:50:17] I need python3 i cant use py thats python2
+2014-11-24 22:12:38	skylite	[14:50:46] but I guess I just end up calling :! virtualenv/bin/python3 % by hand
+2014-11-24 22:12:38	skylite	[14:50:53] that works
+2014-11-24 22:12:38	buck1	[14:59:58] skylite: if you have it activated, it's just :!python
+2014-11-24 22:12:38	buck1	[15:00:14] perosonally i keep tmux tabs, or hit ctrl+z
+2014-11-24 22:12:38	DonQuestion	[07:34:54] Hi! Can me someone explain how to use a setup.cfg with python 2.7? pastebin: http://pastebin.com/RReWSbbE
+2014-11-24 22:12:38	DonQuestion	[07:35:38] Essentially i want to use setup.cfg to fill out all the default keywords...
+2014-11-24 22:12:38	DonQuestion	[07:56:55] The documentation in this regard is rather lacking, so i was hoping to find someone, who could explain, why my example does not work as intended
+2014-11-24 22:12:38	pf_moore	[08:00:26] DonQuestion: I don't think you can do that. For setup.cfg, the section name is the command (e.g. [build]) and the values are command line option names. You can't set metadata via command-line options, though.
+2014-11-24 22:12:38	DonQuestion	[08:06:50] @pf_moore: i guess this is a distutils2 example: http://alexis.notmyidea.org/distutils2/setupcfg.html  so this is not working with python2-stdlib distutils?
+2014-11-24 22:12:38	DonQuestion	[08:15:13] @pf_moore: Turning distutils debug mode on, shows, that distutils takes the metadata provided: http://pastebin.com/urEge3eM
+2014-11-24 22:12:38	DonQuestion	[08:17:04] @pf_moore: but it seems to use it as a "metadata" command, so you might be right.
+2014-11-24 22:12:38	pf_moore	[08:34:03] DonQuestion: ah, yes, distutils2 is a completely different thing - it never got fully implemented, and is no longer being worked on AFAIK
+2014-11-24 22:12:38	DonQuestion	[08:38:06] @pf_moore: is there no way to achieve the same with the current distutils in the stdlib? i took a glance at the source, but quite frankly, my eyes started bleeding after a few seconds ;-)
+2014-11-24 22:12:38	pf_moore	[12:02:23] DonQuestion: Sorry, was afk - not really, just put the values in setup.py.
+2014-11-24 22:12:38	sontek	[12:50:18] Hey, is there a way to use pip to install sdists in the same location every time instead of by their version?
+2014-11-24 22:12:38	sontek	[12:50:37] i.e I don't wont app-1.0-py27.egg-info/  and then app-1.5-py27.egg-info/
+2014-11-24 22:12:38	sontek	[12:50:44] I just want app-py27.egg-info/
+2014-11-24 22:12:38	sontek	[13:01:16] The problem I'm trying to solve is with zero downtime deploys, when we gracefully reload our application the egg-info directory has moved
+2014-11-24 22:12:38	sontek	[13:01:38] but sys.path has already been loaded in the master process, so it thinks it should get the entrypoints from 1.0 instead of 1.5
+2014-11-24 22:12:38	nanonyme	[15:52:05] sontek, some people solve this by having fresh new Docker containers with new versions of software, then route to new one instead of old when the new one is ready
+2014-11-24 22:12:38	nanonyme	[15:52:59] Zero downtime without a new Python process is rather hacky
+2014-11-24 22:12:38	apollo13	[15:53:50] also, one usually has loadbalancers in front anyways, take out one server, update and put back in -- now rinse and repeat
+2014-11-24 22:12:38	doismellburning	[15:53:55] s/Docker containers/instances/
+2014-11-24 22:12:38	doismellburning	[15:54:33] (spot who's bored of people talking about Docker like it's Magic New OMG)
+2014-11-24 22:12:38	nanonyme	[15:56:00] doismellburning, fine. I was just meaning you probably want some light-weight container
+2014-11-24 22:12:38	sontek	[17:50:52] nanonyme: Reloading the process works perfectly as long as I'm using editable installations instead of sdists
+2014-11-24 22:12:38	sontek	[17:51:04] I'd like it to work no matter how I install
+2014-11-24 22:12:38	ThisIsDog	[20:35:47] I'm trying to set up a virtualenv for python3 on my Mac. I installed virtualenv 1.11.6 with 'pip install virtualenv', and I installed python3 on my machine with 'brew install python3'. I then tried to create my virtualenv with 'virtualenv -p /usr/local/bin/python3 <location_for_virtualenv>'. I get the error 'ImportError: No module named 'ConfigParser''. Any suggestions?
+2014-11-24 22:12:38	ThisIsDog	[20:38:19] This is the output I get http://pastebin.com/NDK4ebPF
+2014-11-24 22:12:38	apollo13	[06:49:32] dstufft: around?
+2014-11-24 22:12:38	The-Compiler	[09:18:18] Is it actually a good idea to do  "import ez_setup; ez_setup.use_setuptools()"  in my setup.py? It might make sense on Windows or so, but people who want to package my application on Linux get trouble because their distribution doesn't whave the newest version of setuptools maybe, and then my package contains setuptools
+2014-11-24 22:12:38	nanonyme	[11:20:28] sontek, even when it works, it's rather hacky and fragile. I'd just have fresh processes and solve zero downtime in another way
+2014-11-24 22:12:38	deasy	[14:35:51] hi :p
+2014-11-24 22:12:38	deasy	[14:35:58] some has broke his PIP
+2014-11-24 22:12:38	deasy	[14:36:17] is it stored somewhere which packets pip has installed ?
+2014-11-24 22:12:38	deasy	[14:36:24] thank you very much
+2014-11-24 22:12:38	deasy	[14:36:30] someone* oops
+2014-11-24 22:12:38	carljm	[14:41:12] deasy: it's stored where the packages are installed, more or less (that is, the site-packages directory)
+2014-11-24 22:12:38	carljm	[14:41:27] there will be .egg-info directories there for every installed package, containing its metdata
+2014-11-24 22:12:38	deasy	[14:43:46] .egg-info is only created by pip ?
+2014-11-24 22:12:38	carljm	[14:45:13] generally yes
+2014-11-24 22:12:38	carljm	[14:45:23] easy_install will create .egg directories or zip files
+2014-11-24 22:12:38	deasy	[14:45:28] ok ok
+2014-11-24 22:12:38	carljm	[14:45:57] technically possible for someone to install a package using "python setup.py install --single-version-externally-managed" -- that will create a .egg-info dir
+2014-11-24 22:12:38	carljm	[14:46:07] but nobody does that outside pip
+2014-11-24 22:12:38	deasy	[14:51:18] so how pip do the output of freeze ? it read each directory names?
+2014-11-24 22:12:38	mgedmin	[01:04:16] dear dear pypi people, can you figure out why I keep getting these 503 errors from varnish?  they go away if I clear the cookies, then come back a week later
+2014-11-24 22:12:38	webhenrik	[02:16:21] Hey peeps, did I just dream that there was a new package manager in lieu of pip?
+2014-11-24 22:12:38	The-Compiler	[02:32:19] *another* one? :D
+2014-11-24 22:12:38	webhenrik	[02:39:00] :D - i distinctly remember reading some article called something like "how i abandoned pip for XXX". I want to say it's called Webload, but I've been working with Webpack for JavaScript and stuff lately so it might be just me that's going crazy
+2014-11-24 22:12:38	doismellburning	[02:41:21] welp, I started writing one in Haskell, but you won't have heard of it
+2014-11-24 22:12:38	jrabbit	[02:48:32] lol
+2014-11-24 22:12:38	mgedmin	[02:57:27] perhaps you were thinking of http://www.egenix.com/library/presentations/PyCon-UK-2014-Python-Web-Installer/?
+2014-11-24 22:12:38	mgedmin	[02:58:16] there's also Conda, which is a bit more mature AFAIU
+2014-11-24 22:12:38	doismellburning	[02:58:18] wtf
+2014-11-24 22:12:38	doismellburning	[02:58:22] I was _at_ that talk
+2014-11-24 22:12:38	doismellburning	[02:58:25] how did I miss it
+2014-11-24 22:12:38	webhenrik	[03:09:50] :D
+2014-11-24 22:12:38	webhenrik	[03:11:48] it might've been conda... but my brain says no... :)
+2014-11-24 22:12:38	webhenrik	[03:15:42] i hope i ever find it
+2014-11-24 22:12:38	mgedmin	[03:36:19] eh, pip's good enough for me
+2014-11-24 22:12:38	webhenrik	[03:41:01] it's not that i'm looking for something better, it's just that i want to find my brain-ghost :)
+2014-11-24 22:12:38	skylite	[05:52:02] how can I install something on a virtualenv without virualenv's activate script?
+2014-11-24 22:12:38	mgedmin	[05:54:21] /path/to/virtualenv/bin/pip install something
+2014-11-24 22:12:38	skylite	[05:54:30] oh nice
+2014-11-24 22:12:38	skylite	[05:54:31] thx
+2014-11-24 22:12:38	mgedmin	[05:54:46] btw you can use a virtualenv without ever using activate
+2014-11-24 22:12:38	skylite	[05:56:27] thats what I want actually
+2014-11-24 22:12:38	skylite	[05:56:47] only thing I ever need is runinng pip and python from my virtualenv
+2014-11-24 22:12:38	skylite	[05:57:07] so I guess thats it
+2014-11-24 22:12:38	deasy	[07:22:26] plop
+2014-11-24 22:12:38	deasy	[07:22:53] the xapian binding for python doesn't exist in pip packages ?
+2014-11-24 22:12:38	apollo13	[07:39:37] no
+2014-11-24 22:12:38	apollo13	[07:39:50] you have to manually compile it
+2014-11-24 22:12:38	apollo13	[07:40:02] but you probably don't want to use xapian anyways :þ
+2014-11-24 22:12:38	deasy	[07:59:29] apollo13, yes yes i need i use pootle :)
+2014-11-24 22:12:38	deasy	[07:59:57] else i have set the prefix in my virtual env for install the binding but it uses /usr/lib...
+2014-11-24 22:12:38	deasy	[08:00:15] instead of what i set
+2014-11-24 22:12:38	apollo13	[08:01:17] deasy: there are a few options, run ./configure --help
+2014-11-24 22:12:38	apollo13	[08:01:30] should tell you which you can use, but installing into a venv certainly works
+2014-11-24 22:12:38	deasy	[08:02:10] yep yep it just try to install that in my / instead of my venv and seems to ignore my --prefix=$VENV
+2014-11-24 22:12:38	deasy	[08:04:30] i will check again into the help
+2014-11-24 22:12:38	herrwolfe45	[08:27:05] dstufft: I've been working on some code that uses extra_requires and am curious - has there ever been a desire to report to the user that an extra failed to install because the extra couldn't be found? An example being, a user tries to `pip install "twisted[zorro]"`, since the zorro option doesn't exist, would it be helpful to report an error?
+2014-11-24 22:12:38	herrwolfe45	[08:27:49] that should read - because the extra *option* couldn't be found
+2014-11-24 22:12:38	deasy	[08:31:41] "checking for directory to install python bindings in... /usr/lib/python2.7/dist-packages"
+2014-11-24 22:12:38	deasy	[08:46:29] it's in the doc
+2014-11-24 22:12:38	dstufft	[09:02:41] herrwolfe45: I dunno, i'd have to think about that. I think a problem would be what happens for extras that are only defined in certain versions of a project
+2014-11-24 22:12:38	dstufft	[09:02:55] like would Twisted[ssl] effectively mean Twisted >=14.3 or whatever
+2014-11-24 22:12:38	dstufft	[09:03:37] (Twisted[ssl] is probably a bad example, because in that case you probably don't want to install, but for optional things that just sort of extend? I don't know)
+2014-11-24 22:12:38	herrwolfe45	[09:04:31] dstufft: that is a good point - the main issue I was targeting is when a user just mistypes an option (or has an error in a file). The user can figure out the install didn't happen if they either read the logs and notice that the option didn't install what they expect, or if they run pip freeze/list
+2014-11-24 22:12:38	dstufft	[09:04:57] a warning might be appropiate if we don't already have one
+2014-11-24 22:12:38	dstufft	[09:05:15] that'll show up colored if the output supports it
+2014-11-24 22:12:38	herrwolfe45	[09:05:20] dstufft: yeah, that is exactly what I was thinking
+2014-11-24 22:12:38	herrwolfe45	[09:05:40] would it help if I filed an issue for this on github?
+2014-11-24 22:12:38	herrwolfe45	[09:05:43] ergh bitbucket
+2014-11-24 22:12:38	dstufft	[09:05:45] a warnning would just require logger.warning("blah blah blah")
+2014-11-24 22:12:38	dstufft	[09:05:53] in pip's code at least
+2014-11-24 22:12:38	dstufft	[09:06:11] herrwolfe45: pip's on github, you can file an issue sure
+2014-11-24 22:12:38	herrwolfe45	[09:06:22] ok, I'll look through pip a bit and do it. Thanks!
+2014-11-24 22:12:38	herrwolfe45	[09:17:54] filed https://github.com/pypa/pip/issues/2138
+2014-11-24 22:12:38	jrabbit	[09:45:24] pip folks following the debian bug?
+2014-11-24 22:12:38	dstufft	[09:46:19] which debian bug
+2014-11-24 22:12:38	jrabbit	[09:46:51] oh wait looks like theres a new pip-whl maybe
+2014-11-24 22:12:38	jrabbit	[09:46:56] hold on :)
+2014-11-24 22:12:38	jrabbit	[09:49:49] yeah i screwed up
+2014-11-24 22:12:38	jrabbit	[09:50:05] debian undid a weird patch of theirs
+2014-11-24 22:12:38	jrabbit	[09:51:24] the debian whl package tripped me up
+2014-11-24 22:12:38	Fah	[10:56:18] Hey. I'm using pip/wheel to generate binary packages. So far, no issues. Does anyone know of a plugin that will let pip use s3 as a uri protocol vs http, https or file?
+2014-11-24 22:12:38	Fah	[11:00:28] I suppose i could make the bucket accessible via http and set a policy to ensure requests are only from internal users in IAM
+2014-11-24 22:12:38	herrwolfe45	[15:20:06] dstufft:  the more I think about this, the more I think the warning we discussed is something that setuptools would handle, and not pip, since setuptools has to parse the extra_requires first before pip could emit any warning
+2014-11-24 22:12:38	***	Playback Complete.
+2014-11-24 22:12:41	ℹ 	Channel created on Thu, 28 Mar 2013 05:00:12
+2014-11-24 22:21:37	<--	thomi (~quassel@ubuntu/member/thomi) has quit (Remote host closed the connection)

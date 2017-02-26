@@ -19,6 +19,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sudar/vim-arduino-syntax'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'gregsexton/MatchTag'
 Plugin 'godlygeek/tabular' " vim-markdown dependency
@@ -113,6 +115,11 @@ nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
+
+"-------------------------------------------------
+" Filetype
+au BufNewFile,BufRead *.txt set filetype=mkd
+set nofoldenable
 
 "-------------------------------------------------
 " Indentation Options
