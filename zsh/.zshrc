@@ -25,7 +25,7 @@ for i in ~/.autoload/*.sh; do
 done
 
 # Colors
-eval `dircolors ~/.dotfiles/dircolors.ansi-light`
+eval `dircolors ~/.dircolors.ansi-light`
 
 # Ruby bundler
 export PATH=/home/will/.gem/ruby/2.1.0/bin:$PATH

@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/will/.config'
+let g:netrw_dirhist_2='/home/will'
+let g:netrw_dirhist_3='/home/will/.config'
+let g:netrw_dirhist_4='/home/will/.config/configstore'
+let g:netrw_dirhist_5='/home/will'
+let g:netrw_dirhist_6='/home/will/.gstreamer-0.10'
+let g:netrw_dirhist_7='/home/will/.dotfiles/config/awesome'
+let g:netrw_dirhist_8='/var/local'
