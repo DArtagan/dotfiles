@@ -23,8 +23,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'gregsexton/MatchTag'
-Plugin 'godlygeek/tabular' " vim-markdown dependency
-Plugin 'plasticboy/vim-markdown'
 Plugin 'Shougo/unite.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-surround'
