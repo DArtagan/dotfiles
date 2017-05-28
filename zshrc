@@ -27,12 +27,6 @@ done
 # Colors
 eval `dircolors ~/.dotfiles/dircolors.ansi-light`
 
-# Ruby bundler
-export PATH=/home/will/.gem/ruby/2.1.0/bin:$PATH
-export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 ###-begin-npm-completion-###
 #
 # npm command completion script
