@@ -1,31 +1,20 @@
-"-------------------------------------------------
-" Vundle
 set nocompatible
-filetype off " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Vim-Plug for plugin management
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/syntastic'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ervandew/supertab'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'bling/vim-airline'
+Plug 'sudar/vim-arduino-syntax'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'gregsexton/MatchTag'
+call plug#end()
 
-" List installed plugins here
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/syntastic'
-Plugin 'ervandew/supertab'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-Plugin 'sudar/vim-arduino-syntax'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'gregsexton/MatchTag'
-
-" Required closing lines
-call vundle#end()
-filetype plugin indent on
 
 "-------------------------------------------------
 " Usability & Appearance Options
