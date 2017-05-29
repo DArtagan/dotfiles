@@ -1,11 +1,5 @@
-[submodule "config/awesome/lain"]
-	path = config/awesome/lain
-	url = https://github.com/copycat-killer/lain.git
-[submodule "autoenv"]
-	path = autoenv
-	url = https://github.com/kennethreitz/autoenv.git
 [submodule "antigen"]
-	path = antigen
+	path = zsh/.antigen
 	url = https://github.com/zsh-users/antigen
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
