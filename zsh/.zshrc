@@ -16,9 +16,6 @@ bashcompinit
 # Virtualenv
 source /usr/bin/virtualenvwrapper.sh
 
-# autoenv
-source ~/.autoenv/activate.sh
-
 # Scripts in the autoload folder
 for i in ~/.autoload/*.sh; do
   source $i
