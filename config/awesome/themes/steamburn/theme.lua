@@ -77,4 +77,11 @@ theme.titlebar_maximized_button_focus_active    = theme.zenburn_dir.."/titlebar/
 theme.layout_txt_termfair                       = "[termfair]"
 theme.layout_txt_centerfair                     = "[centerfair]"
 
+-- lain related
+theme.layout_txt_termfair           = "[termfair]"
+theme.layout_txt_uselessfair        = "[ufv]"
+theme.layout_txt_uselessfairh       = "[ufh]"
+theme.layout_txt_uselessdwindle     = "[ud]"
+theme.layout_txt_uselesstile        = "[ut]"
+
 return theme

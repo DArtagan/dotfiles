@@ -16,16 +16,27 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'gregsexton/MatchTag'
+Plugin 'Shougo/unite.vim'
+Plugin 'tmhedberg/matchit'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-ragtag'
 
 " Required closing lines
 call vundle#end()
 filetype plugin indent on
+
+"-------------------------------------------------
+"Handling swap and backup files
+set backupdir=~/.backup/vim-backup//
+set nowritebackup
+set directory=~/.backup/vim-swap//
 
 "-------------------------------------------------
 " Usability & Appearance Options
@@ -36,9 +47,11 @@ let g:solarized_termcolors=16
 let g:solarized_termtrans = 1 " Set to 0 for urxvt
 colorscheme solarized
 call togglebg#map("<F5>")
+set mouse=a
 
 " Turn on line numbering (turn off with "set nonu")
 set nu
+set relativenumber
 
 " Wrap lines and navigate accordingly
 set wrap
@@ -89,8 +102,6 @@ nmap ,d :b#<bar>bd#<CR>
 " \b \f \g : go back/forward/last-used
 " \1 \2 \3 : go to buffer 1/2/3 etc
 nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR>
-nnoremap <Leader>f :bn<CR>
 nnoremap <Leader>g :e#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
@@ -130,36 +141,43 @@ iabbrev </ </<C-X><C-O>
 "-------------------------------------------------
 "Plugin Settings
 
-"Zen Coding Plugin
-  let g:user_zen_settings = {
-    \  'indentation' : '  ',
-    \  'perl' : {
-    \    'aliases' : {
-    \      'req' : 'require '
-    \    },
-    \    'snippets' : {
-    \      'use' : "use strict\nuse warnings\n\n",
-    \      'warn' : "warn \"|\";",
-    \    }
-    \  }
-    \}
+" Unite.vim
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>u :<C-u>Unite -no-split -start-insert -buffer-name=unite<CR>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec<CR>
+nnoremap <leader>b :<C-u>Unite -start-insert -buffer-name=buffers buffer<CR>
+" <C-u> clears any selection input on the command line (:'<,'>)
+" -no-split opens the unite dialog in the current window (not a new split)
+" -start-insert starts the unite dialog in insert mode
+" -buffer-name for easy closing of vim (no unnamed buffer warning), amongst other things
 
-    let g:user_zen_expandabbr_key = '<c-e>'
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
-    let g:use_zen_complete_tag = 1
-
-"-------------------------------------------------
-"Handling swap and backup files
-set backupdir=~/.backup/vim-backup//
-set nowritebackup
-set directory=~/.backup/vim-swap//
-
-set mouse=a
 
 "Supertab
 let g:SuperTabDefaultCompletionType = "context"
+
 
 "airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 set noshowmode
+
+
+" Syntastic
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+autocmd BufNewFile,BufRead *.txt setlocal filetype=markdown
+
