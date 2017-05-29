@@ -7,7 +7,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sudar/vim-arduino-syntax'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -131,4 +132,5 @@ let g:SuperTabDefaultCompletionType = "context"
 set laststatus=2
 let g:airline_powerline_fonts = 1
 set noshowmode
+
 
