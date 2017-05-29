@@ -1,4 +1,5 @@
-* direnv
 * awesome
+* direnv
+* playerctl
 * vim
 * zsh
