@@ -122,13 +122,16 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
-lain.widgets.calendar:attach(mytextclock, {
-  font = "Inconsolata"
+lain.widget.calendar({
+  attach_to = {mytextclock},
 })
+--lain.widget.calendar:attach(mytextclock, {
+--  font = "Inconsolata"
+--})
 
 
 -- Battery
-batwidget = lain.widgets.bat({
+batwidget = lain.widget.bat({
   timeout = 4,
   battery = "BAT1",
   settings = function()
@@ -138,7 +141,7 @@ batwidget = lain.widgets.bat({
 
 -- Alsa Bar
 volicon = wibox.widget.imagebox(beautiful.vol)
-volume = lain.widgets.alsabar({width = 55, ticks_size = 6,
+volume = lain.widget.alsabar({width = 55, ticks_size = 6,
 settings = function()
     if volume_now.status == "off" then
         volicon:set_image(beautiful.vol_mute)
