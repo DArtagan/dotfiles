@@ -117,27 +117,6 @@ cmap w!! w !sudo tee %
 iabbrev </ </<C-X><C-O>
 
 "-------------------------------------------------
-"Plugin Settings
-
-"Zen Coding Plugin
-  let g:user_zen_settings = {
-    \  'indentation' : '  ',
-    \  'perl' : {
-    \    'aliases' : {
-    \      'req' : 'require '
-    \    },
-    \    'snippets' : {
-    \      'use' : "use strict\nuse warnings\n\n",
-    \      'warn' : "warn \"|\";",
-    \    }
-    \  }
-    \}
-
-    let g:user_zen_expandabbr_key = '<c-e>'
-
-    let g:use_zen_complete_tag = 1
-
-"-------------------------------------------------
 "Handling swap and backup files
 set backupdir=~/.backup/vim-backup//
 set nowritebackup
@@ -152,3 +131,4 @@ let g:SuperTabDefaultCompletionType = "context"
 set laststatus=2
 let g:airline_powerline_fonts = 1
 set noshowmode
+
