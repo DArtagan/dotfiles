@@ -60,6 +60,11 @@ set smartcase
 set hlsearch
 set incsearch
 
+" Spellcheck
+set spellang=en
+" set spellfile=$HOME/.vim/spellfile
+set spell
+
 " Fast editing of the .vimrc
 map <leader>e :e! ~/.vimrc<cr>
 
