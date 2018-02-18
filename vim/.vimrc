@@ -62,8 +62,8 @@ set hlsearch
 set incsearch
 
 " Spellcheck
-set spellang=en
-set spellfile=$VIMHOME/spellfile
+set spelllang=en
+set spellfile=$VIMHOME/spell/en.utf-8.add
 set spell
 
 " Fast editing of the .vimrc
