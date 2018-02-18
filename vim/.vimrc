@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag'
 call plug#end()
 
+let $VIMHOME=expand('<sfile>:p:h:h')
 
 "-------------------------------------------------
 "Handling swap and backup files
@@ -62,7 +63,7 @@ set incsearch
 
 " Spellcheck
 set spellang=en
-" set spellfile=$HOME/.vim/spellfile
+set spellfile=$VIMHOME/spellfile
 set spell
 
 " Fast editing of the .vimrc
