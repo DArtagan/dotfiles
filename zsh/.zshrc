@@ -13,9 +13,6 @@ antigen apply
 autoload bashcompinit
 bashcompinit
 
-# Virtualenv
-source /usr/bin/virtualenvwrapper.sh
-
 # Scripts in the autoload folder
 for i in ~/.autoload/*.sh; do
   source $i
