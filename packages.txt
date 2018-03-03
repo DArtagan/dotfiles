@@ -1,5 +1,7 @@
 * awesome
 * direnv
+* tty-inconsolata
 * playerctl
+* powerline-fonts
 * vim
 * zsh
