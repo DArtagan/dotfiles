@@ -7,6 +7,7 @@ c.tabs.last_close = 'startpage'
 
 # Key bindings
 config.bind('t', 'set-cmd-text -s :open -t')
+config.bind('O', 'set-cmd-text :open {url:pretty}')
 
 # Search engines
 c.url.searchengines = {
