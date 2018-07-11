@@ -1,5 +1,7 @@
+* ag (the silver searcher)
 * awesome
 * direnv
+* fzf
 * tty-inconsolata
 * playerctl
 * powerline-fonts

@@ -1,22 +1,23 @@
 set nocompatible
 " Vim-Plug for plugin management
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/syntastic'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'gregsexton/MatchTag'
+Plug 'jmcantrell/vim-virtualenv'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/syntastic'
+Plug 'sudar/vim-arduino-syntax'
+Plug 'tmhedberg/matchit'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sudar/vim-arduino-syntax'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'jmcantrell/vim-virtualenv'
-Plug 'gregsexton/MatchTag'
-Plug 'Shougo/unite.vim'
-Plug 'tmhedberg/matchit'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-ragtag'
 call plug#end()
 
 let $VIMHOME=expand('<sfile>:p:h:h')
@@ -135,27 +136,7 @@ iabbrev </ </<C-X><C-O>
 "-------------------------------------------------
 "Plugin Settings
 
-" Unite.vim
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>u :<C-u>Unite -no-split -start-insert -buffer-name=unite<CR>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec<CR>
-nnoremap <leader>b :<C-u>Unite -start-insert -buffer-name=buffers buffer<CR>
-" <C-u> clears any selection input on the command line (:'<,'>)
-" -no-split opens the unite dialog in the current window (not a new split)
-" -start-insert starts the unite dialog in insert mode
-" -buffer-name for easy closing of vim (no unnamed buffer warning), amongst other things
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
-
-
+ 
 "Supertab
 let g:SuperTabDefaultCompletionType = "context"
 
