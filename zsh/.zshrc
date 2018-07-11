@@ -14,12 +14,16 @@ autoload bashcompinit
 bashcompinit
 
 # Scripts in the autoload folder
-for i in ~/.autoload/*.sh; do
-  source $i
-done
+if [ -d "~/.autoload" ]; then
+  for i in ~/.autoload/*.sh; do
+    source $i
+  done
+fi
 
 # Colors
-eval `dircolors ~/.dircolors.ansi-light`
+if command -v dircolors; then
+  eval `dircolors ~/.dircolors.ansi-light`
+fi
 
 ###-begin-npm-completion-###
 #
