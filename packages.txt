@@ -7,3 +7,4 @@
 * powerline-fonts
 * vim
 * zsh
+* tldr (npm install -g tldr)
