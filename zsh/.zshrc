@@ -25,6 +25,12 @@ if command -v dircolors; then
   eval `dircolors ~/.dircolors.ansi-light`
 fi
 
+# pipsi (https://github.com/mitsuhiko/pipsi)
+export PATH="/Users/weiskopfw/.local/bin:$PATH"
+
+# pyenv
+eval "$(pyenv init -)"
+
 # Searching
 ## fzf
 if ! type "$ag" > /dev/null; then
@@ -34,3 +40,4 @@ fi
 
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
+
