@@ -2,16 +2,16 @@ set nocompatible
 " Vim-Plug for plugin management
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
+Plug 'andymass/vim-matchup'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
-Plug 'gregsexton/MatchTag'
 Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-signify'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'sudar/vim-arduino-syntax'
-Plug 'tmhedberg/matchit'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
@@ -58,7 +58,7 @@ nmap j gj
 set ignorecase
 set smartcase
 
-" Highlight searches
+" ighlight searches
 set hlsearch
 set incsearch
 
@@ -136,16 +136,41 @@ iabbrev </ </<C-X><C-O>
 "-------------------------------------------------
 "Plugin Settings
 
- 
-"Supertab
-let g:SuperTabDefaultCompletionType = "context"
-
-
 "airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 set noshowmode
 
+" FZF
+"" Search lines in all open vim buffers
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . v:name . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+
+command! FZFLines call fzf#run({
+\   'source':  <sid>buffer_lines(),
+\   'sink':    function('<sid>line_handler'),
+\   'options': '--extended --nth=3..',
+\   'down':    '60%'
+\})
+
+" Signify
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_disable_by_default = 1
+
+"Supertab
+let g:SuperTabDefaultCompletionType = "context"
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
