@@ -25,6 +25,9 @@ if command -v dircolors; then
   eval `dircolors ~/.dircolors.ansi-light`
 fi
 
+# OS-specific settings
+source  "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
+
 # pipsi (https://github.com/mitsuhiko/pipsi)
 export PATH="/Users/weiskopfw/.local/bin:$PATH"
 
