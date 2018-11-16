@@ -141,13 +141,14 @@ shift + alt - 7 : chunkc tiling::window --send-to-desktop 7
 #shift + cmd - c : chunkc tiling::window --send-to-desktop next; chunkc tiling::desktop --focus next
 #shift + cmd - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
 
-# focus monitor
+# monitor
 ctrl + alt - x : chunkc tiling::monitor -f $(chunkc get _last_active_monitor)
 ctrl + alt - z : chunkc tiling::monitor -f prev
 ctrl + alt - c : chunkc tiling::monitor -f next
 ctrl + alt - 1 : chunkc tiling::monitor -f 1
 ctrl + alt - 2 : chunkc tiling::monitor -f 2
 ctrl + alt - 3 : chunkc tiling::monitor -f 3
+ctrl + alt - o : chunkc tiling::window --send-to-monitor next
 
 # send window to monitor and follow focus
 #ctrl + cmd - z  : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
