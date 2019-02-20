@@ -3,18 +3,22 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'andymass/vim-matchup'
+Plug 'ap/vim-css-color'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'mbbill/undotree'
 Plug 'mhinz/vim-signify'
+Plug 'mileszs/ack.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
-Plug 'sudar/vim-arduino-syntax'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -58,7 +62,7 @@ nmap j gj
 set ignorecase
 set smartcase
 
-" ighlight searches
+" Highlight searches
 set hlsearch
 set incsearch
 
@@ -138,8 +142,16 @@ iabbrev </ </<C-X><C-O>
 
 "airline
 set laststatus=2
-let g:airline_powerline_fonts = 1
 set noshowmode
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#virtualenv#enabled = 0
+
+
+
+" Ack.vim (using for ag support)
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " FZF
 "" Search lines in all open vim buffers
