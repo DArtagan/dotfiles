@@ -1,3 +1,6 @@
+tmux/.tmux/plugins/*
+!tmux/.tmux/plugins/tpm
+tmux/.tmux/sidebar/*
 qutebrowser/.config/qutebrowser/autoconfig.yml
 vim/.backup/*
 !vim/.backup/vim-swap
