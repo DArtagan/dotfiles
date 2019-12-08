@@ -6,6 +6,7 @@ antigen bundle git
 #antigen bundle themes
 #antigen theme awesomepanda
 #antigen theme jeremyFreeAgent/oh-my-zsh-powerline-theme powerline
+#antigen theme denysdovhan/spaceship-prompt
 antigen theme https://gist.github.com/DArtagan/ae910462359c98839e7a.git agnoster
 antigen apply
 
@@ -21,9 +22,12 @@ if [ -d "~/.autoload" ]; then
 fi
 
 # Colors
-if command -v dircolors; then
-  eval `dircolors ~/.dircolors.ansi-light`
+if type dircolors > /dev/null; then
+  eval `dircolors ~/.dircolors.ansi-universal`
+elif type gdircolors > /dev/null; then
+  eval `gdircolors ~/.dircolors.ansi-universal`
 fi
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # OS-specific settings
 source  "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
@@ -44,3 +48,7 @@ fi
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
+# tmuxp
+if type tmuxp > /dev/null; then
+  eval "$(_TMUXP_COMPLETE=source_zsh tmuxp)"
+fi
