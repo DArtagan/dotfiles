@@ -2,6 +2,7 @@ tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
 tmux/.tmux/sidebar/*
 qutebrowser/.config/qutebrowser/autoconfig.yml
+qutebrowser/.config/qutebrowser/blocked-hosts
 vim/.backup/*
 !vim/.backup/vim-swap
 vim/.backup/vim-swap/*
