@@ -8,6 +8,7 @@ antigen bundle git
 #antigen theme jeremyFreeAgent/oh-my-zsh-powerline-theme powerline
 #antigen theme denysdovhan/spaceship-prompt
 antigen theme https://gist.github.com/DArtagan/ae910462359c98839e7a.git agnoster
+#antigen theme romkatv/powerlevel10k
 antigen apply
 
 # Bash complete
@@ -52,3 +53,5 @@ unset GREP_OPTIONS
 if type tmuxp > /dev/null; then
   eval "$(_TMUXP_COMPLETE=source_zsh tmuxp)"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
