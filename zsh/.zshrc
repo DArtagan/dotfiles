@@ -31,13 +31,17 @@ fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # OS-specific settings
-source  "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
+if [ -f "${ZDOTDIR:-${HOME}}/.zshrc-`uname`" ]; then
+  source  "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
+fi
 
 # pipsi (https://github.com/mitsuhiko/pipsi)
 export PATH="/Users/weiskopfw/.local/bin:$PATH"
 
 # pyenv
-eval "$(pyenv init -)"
+if command -v pyenv; then
+  eval "$(pyenv init -)"
+fi
 
 # Searching
 ## fzf
