@@ -125,7 +125,7 @@ ctrl + alt - o : yabai -m window --display next
 ctrl + alt + shift - o : yabai -m window --display prev
 
 # increase region size
-ctrl + alt - k: yabai -m window --ratio rel:0.1
+ctrl + alt - h: yabai -m window --ratio rel:0.1
 ctrl + alt - l: yabai -m window --ratio rel:-0.1
 
 # set insertion point for focused container
