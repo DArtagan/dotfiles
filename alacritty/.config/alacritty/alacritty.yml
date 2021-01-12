@@ -64,6 +64,9 @@ window:
 
   # Window title
   #title: Alacritty
+ 
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
 
   # Window class (Linux only):
   #class: Alacritty
@@ -111,7 +114,7 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   #italic:
@@ -288,7 +291,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -357,9 +360,6 @@ selection:
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: false
 
-# Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
-
 cursor:
   # Cursor style
   #
@@ -398,7 +398,7 @@ shell:
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-# working_directory: /Users/weiskopfw/repositories/
+working_directory: /Users/weiskopfw/repositories/
 
 # Windows 10 ConPTY backend (Windows only)
 #

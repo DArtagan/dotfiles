@@ -15,12 +15,20 @@ antigen apply
 autoload bashcompinit
 bashcompinit
 
-# Scripts in the autoload folder
-if [ -d "~/.autoload" ]; then
-  for i in ~/.autoload/*.sh; do
-    source $i
-  done
-fi
+# Completion
+autoload compinit
+compinit
+
+# History
+export HISTFILE=~/.zsh_history
+export HISTFILESIZE=1000000000
+export SAVEHIST=1000000000
+export HISTSIZE=1000000000
+export HISTTIMEFORMAT="[%F %T] "
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt SHARE_HISTORY
+setopt HIST_VERIFY
 
 # Colors
 if type dircolors > /dev/null; then
