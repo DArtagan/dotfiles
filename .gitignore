@@ -10,3 +10,6 @@ vim/.backup/vim-swap/*
 vim/.vim/.netrwhist
 vim/.vim/autoload/vim-plug/plug.vim.old
 vim/.vim/plugged
+vim/.config/coc/extensions/*
+!vim/.config/coc/extensions/package.json
+
