@@ -13,3 +13,6 @@ vim/.vim/plugged
 vim/.config/coc/extensions/*
 !vim/.config/coc/extensions/package.json
 
+zsh/.zinit/completions
+zsh/.zinit/plugins
+zsh/.zinit/snippets
