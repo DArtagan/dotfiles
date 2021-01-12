@@ -1,6 +1,6 @@
 ZINIT_HOME=~/.zinit/
 if [[ ! -f $ZINIT_HOME/bin/zinit.zsh ]]; then
-    git clone https://github.com/psprint/zinit $ZINIT_HOME/bin
+    git clone https://github.com/zdharma/zinit $ZINIT_HOME/bin
       zcompile $ZINIT_HOME/bin/zinit.zsh
 fi
 source $ZINIT_HOME/bin/zinit.zsh
