@@ -156,6 +156,10 @@ set expandtab
 set pastetoggle=<F12>
 set backspace=indent,eol,start
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
 "-------------------------------------------------
 " Mapping
 
@@ -186,6 +190,20 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_python_flake8_options = '--ignore=E501'
 let $PIPENV_MAX_DEPTH = 5
 
+" coc.nvim
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 " FZF
 "" Search lines in all open vim buffers
