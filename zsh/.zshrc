@@ -112,3 +112,9 @@ unset GREP_OPTIONS
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ### End of Zinit's installer chunk
+
+# Created by `pipx` on 2021-03-08 20:40:27
+export PATH="$PATH:/Users/wweiskopf/Library/Python/3.8/bin"
+
+# Created by `pipx` on 2021-03-08 20:40:28
+export PATH="$PATH:/Users/wweiskopf/.local/bin"
