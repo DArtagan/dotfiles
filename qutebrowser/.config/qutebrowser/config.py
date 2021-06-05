@@ -14,3 +14,5 @@ c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?hl=en&q={}',
     'google': 'https://www.google.com/search?hl=en&q={}',
 }
+
+config.load_autoconfig(False)

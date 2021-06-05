@@ -10,6 +10,7 @@ Plug 'janko/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'jparise/vim-graphql'
 Plug 'jvirtanen/vim-hcl'
 " Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
@@ -18,11 +19,13 @@ Plug 'mbbill/undotree'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'PieterjanMontens/vim-pipenv'
 Plug 'plasticboy/vim-markdown'
-"Plug 'scrooloose/syntastic'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -154,6 +157,10 @@ set expandtab
 set pastetoggle=<F12>
 set backspace=indent,eol,start
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
 "-------------------------------------------------
 " Mapping
 
@@ -184,6 +191,20 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_python_flake8_options = '--ignore=E501'
 let $PIPENV_MAX_DEPTH = 5
 
+" coc.nvim
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 " FZF
 "" Search lines in all open vim buffers
@@ -233,3 +254,29 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+
+
+" Git diff branches
+let s:git_status_dictionary = {
+            \ "A": "Added",
+            \ "B": "Broken",
+            \ "C": "Copied",
+            \ "D": "Deleted",
+            \ "M": "Modified",
+            \ "R": "Renamed",
+            \ "T": "Changed",
+            \ "U": "Unmerged",
+            \ "X": "Unknown"
+            \ }
+function! s:get_diff_files(rev)
+  let gitroot = system('git rev-parse --show-toplevel')[:-2]
+  let list = map(split(system(
+              \ 'git diff --name-status '.a:rev), '\n'),
+              \ '{"filename":"' . fnameescape(gitroot)
+              \ . '/" . matchstr(v:val, "\\S\\+$"),"text":s:git_status_dictionary[matchstr(v:val, "^\\w")]}'
+              \ )
+  call setqflist(list)
+  copen
+endfunction
+
+command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)

@@ -2,6 +2,7 @@ tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
 tmux/.tmux/sidebar/*
 qutebrowser/.config/qutebrowser/autoconfig.yml
+qutebrowser/.config/qutebrowser/blocked-hosts
 vim/.backup/*
 !vim/.backup/vim-swap
 vim/.backup/vim-swap/*
@@ -9,3 +10,9 @@ vim/.backup/vim-swap/*
 vim/.vim/.netrwhist
 vim/.vim/autoload/vim-plug/plug.vim.old
 vim/.vim/plugged
+vim/.config/coc/extensions/*
+!vim/.config/coc/extensions/package.json
+
+zsh/.zinit/completions
+zsh/.zinit/plugins
+zsh/.zinit/snippets
