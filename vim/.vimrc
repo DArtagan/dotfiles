@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jparise/vim-graphql'
 Plug 'jvirtanen/vim-hcl'
 Plug 'leafgarland/typescript-vim'
+" Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mbbill/undotree'
