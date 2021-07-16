@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "coc-json": ">=1.3.2",
-    "coc-pyright": ">=1.1.101"
+    "coc-eslint": ">=1.4.5",
+    "coc-json": ">=1.3.4",
+    "coc-pyright": ">=1.1.143",
+    "coc-tsserver": ">=1.8.1"
   }
 }

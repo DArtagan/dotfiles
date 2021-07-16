@@ -1,2 +1,6 @@
+eslint.createConfig
+eslint.manageLibraryExecution
+eslint.showOutputChannel
+pyright.createtypestub
 python.runLinting
 pyright.restartserver
