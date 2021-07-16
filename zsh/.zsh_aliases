@@ -1,3 +1,11 @@
 alias ack="ack-grep"
 alias dotenv=$'export $(egrep -v \'^#\' .env | xargs)'
 alias kubeutil="kubectl get po --all-namespaces -o=jsonpath=\"{range .items[*]}{.metadata.namespace}:{.kind}/{.metadata.name}{'\n'}{range .spec.containers[*]}  {.name}:{.resources.limits.cpu},{.resources.limits.memory}{'\n'}{end}{'\n'}{end}\""
+alias ua-drop-caches='sudo paccache -rk3; sudo aura -Sc --noconfirm'
+alias ua-update-all='export TMPFILE="$(mktemp)"; \
+  sudo true; \
+  rate-mirrors --save=$TMPFILE manjaro --max-delay=21600 \
+    && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
+    && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
+    && ua-drop-caches \
+    && sudo aura -Syyu --noconfirm'
