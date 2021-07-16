@@ -10,8 +10,10 @@ Plug 'janko/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jparise/vim-graphql'
 Plug 'jvirtanen/vim-hcl'
+Plug 'leafgarland/typescript-vim'
 " Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
 Plug 'machakann/vim-highlightedyank'
@@ -20,6 +22,7 @@ Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'PieterjanMontens/vim-pipenv'
 Plug 'plasticboy/vim-markdown'
 Plug 'tomtom/tcomment_vim'
@@ -31,7 +34,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -172,23 +175,28 @@ set updatetime=300
 "-------------------------------------------------
 "Plugin Settings
 
-" Ack.vim (using for ag support)
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+" Ack.vim (using for ripgrep support)
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
 endif
 
 
 "airline
 set laststatus=2
 set noshowmode
+let g:airline_detect_spell=0
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline#extensions#virtualenv#enabled = 0
 
 
 " ALE
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_flake8_options = '--ignore=E501'
+let g:ale_disable_lsp = 1
+let g:ale_hover_cursor = 1
+" let g:ale_set_balloons = 1
 let $PIPENV_MAX_DEPTH = 5
 
 " coc.nvim
@@ -207,6 +215,8 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 
 " FZF
+nnoremap <leader>f :Files<CR>
+
 "" Search lines in all open vim buffers
 function! s:line_handler(l)
   let keys = split(a:l, ':\t')

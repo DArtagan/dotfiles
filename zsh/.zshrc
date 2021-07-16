@@ -91,16 +91,28 @@ fi
 # pipsi (https://github.com/mitsuhiko/pipsi)
 export PATH="/Users/weiskopfw/.local/bin:$PATH"
 
+# direnv
+zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+    atpull'%atclone' src"zhook.zsh"
+zinit light direnv/direnv
+
 # pyenv
-#if command -v pyenv; then
-#  eval "$(pyenv init -)"
-#fi
+if command -v pyenv; then
+  eval "$(pyenv init -)"
+fi
+
 
 # Searching
 ## fzf
 if ! type "$ag" > /dev/null; then
   export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
 alias grep="/usr/bin/grep $GREP_OPTIONS"
