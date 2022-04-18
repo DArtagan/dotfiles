@@ -6,7 +6,6 @@ Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
-Plug 'janko/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -14,17 +13,20 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jparise/vim-graphql'
 Plug 'jvirtanen/vim-hcl'
 Plug 'leafgarland/typescript-vim'
-" Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mbbill/undotree'
+Plug 'mgedmin/coverage-highlight.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'PieterjanMontens/vim-pipenv'
+"Plug 'PieterjanMontens/vim-pipenv'
 Plug 'plasticboy/vim-markdown'
+Plug 'psf/black'
+" Plug 'ruanyl/coverage.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -34,6 +36,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-test/vim-test'
 "Plug 'w0rp/ale'
 
 call plug#end()
@@ -172,6 +175,21 @@ set updatetime=300
 "cmap w!! w !sudo tee %
 "iabbrev </ </<C-X><C-O>
 
+
+command! -bar DuplicateTabpane
+  \ let s:sessionoptions = &sessionoptions |
+  \ try |
+  \   let &sessionoptions = 'blank,help,folds,winsize,localoptions' |
+  \   let s:file = tempname() |
+  \   execute 'mksession ' . s:file |
+  \   tabnew |
+  \   execute 'source ' . s:file |
+  \ finally |
+  \   silent call delete(s:file) |
+  \   let &sessionoptions = s:sessionoptions |
+  \   unlet! s:file s:sessionoptions |
+  \ endtry
+
 "-------------------------------------------------
 "Plugin Settings
 
@@ -204,6 +222,21 @@ let $PIPENV_MAX_DEPTH = 5
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Coverage.vim
+" " Specify the path to `coverage.json` file relative to your current working directory.
+" let g:coverage_json_report_path = 'coverage/coverage.json'
+" " Define the symbol display for covered lines
+" let g:coverage_sign_covered = '⦿'
+" " Define the interval time of updating the coverage lines
+" let g:coverage_interval = 5000
+" " Do not display signs on covered lines
+" let g:coverage_show_covered = 0
+" " Display signs on uncovered lines
+" let g:coverage_show_uncovered = 0
+
+" coverage-highlight.vim
+let g:coverage_script = 'pipenv run coverage'
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -259,6 +292,7 @@ autocmd BufNewFile,BufRead *.txt setlocal filetype=markdown
 
 " vim-test
 let test#strategy = "dispatch"
+let test#python#runner = 'pytest'
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>

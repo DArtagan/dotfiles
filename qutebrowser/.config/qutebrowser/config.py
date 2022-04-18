@@ -9,6 +9,10 @@ c.tabs.last_close = 'startpage'
 config.bind('t', 'set-cmd-text -s :open -t')
 config.bind('O', 'set-cmd-text :open {url:pretty}')
 
+# Default homepage
+c.url.default_page = "https://web.tabliss.io/"
+c.url.start_page = "https://web.tabliss.io/"
+
 # Search engines
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?hl=en&q={}',

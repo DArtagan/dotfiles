@@ -1,6 +1,6 @@
 ZINIT_HOME=~/.zinit/
 if [[ ! -f $ZINIT_HOME/bin/zinit.zsh ]]; then
-    git clone https://github.com/zdharma/zinit $ZINIT_HOME/bin
+    git clone https://github.com/zdharma-continuum/zinit $ZINIT_HOME/bin
       zcompile $ZINIT_HOME/bin/zinit.zsh
 fi
 source $ZINIT_HOME/bin/zinit.zsh
@@ -27,7 +27,7 @@ zinit wait lucid light-mode for \
       OMZ::lib/termsupport.zsh \
       OMZ::plugins/git-auto-fetch/git-auto-fetch.plugin.zsh \
   atinit"zicompinit; zicdreplay" \
-        zdharma/fast-syntax-highlighting \
+        zdharma-continuum/fast-syntax-highlighting \
       OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh \
       OMZ::plugins/command-not-found/command-not-found.plugin.zsh \
   atload"_zsh_autosuggest_start" \
@@ -35,6 +35,10 @@ zinit wait lucid light-mode for \
   as"completion" \
       OMZ::plugins/docker/_docker \
       OMZ::plugins/pyenv/pyenv.plugin.zsh
+
+# Vim keybinding
+# zinit ice depth=1
+# zinit load jeffreytse/zsh-vi-mode
 
 #source "$HOME/.antigen/antigen.zsh"
 #antigen use oh-my-zsh
@@ -92,9 +96,9 @@ fi
 export PATH="/Users/weiskopfw/.local/bin:$PATH"
 
 # direnv
-zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
-    atpull'%atclone' src"zhook.zsh"
-zinit light direnv/direnv
+# zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+#     atpull'%atclone' src"zhook.zsh"
+# zinit light direnv/direnv
 
 # pyenv
 if command -v pyenv; then
