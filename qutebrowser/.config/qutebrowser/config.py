@@ -11,7 +11,7 @@ config.bind('O', 'set-cmd-text :open {url:pretty}')
 
 # Default homepage
 c.url.default_page = "https://web.tabliss.io/"
-c.url.start_page = "https://web.tabliss.io/"
+c.url.start_pages = ["https://web.tabliss.io/"]
 
 # Search engines
 c.url.searchengines = {
