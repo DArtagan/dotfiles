@@ -130,3 +130,7 @@ export PATH="$PATH:/Users/wweiskopf/Library/Python/3.8/bin"
 
 # Created by `pipx` on 2021-03-08 20:40:28
 export PATH="$PATH:/Users/wweiskopf/.local/bin"
+
+# Created by `pipx` on 2022-01-16 19:37:36
+export PATH="$PATH:/home/will/.local/bin"
+eval "$(register-python-argcomplete pipx)"
