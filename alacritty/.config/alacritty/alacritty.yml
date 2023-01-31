@@ -421,12 +421,16 @@ live_config_reload: true
 #  program: /bin/bash
 #  args:
 #    - --login
+#shell:
+#  program: /bin/zsh
+#  args:
+#    - -l
+#    - -c
+#    - "tmux"
 shell:
-  program: /bin/zsh
+  program: /usr/local/bin/fish
   args:
-    - -l
-    - -c
-    - "tmux"
+    - --login
 
 # Startup directory
 #
