@@ -1,5 +1,5 @@
 alias ack="ack-grep"
-alias dotenv=$'export $(egrep -v \'^#\' .env | xargs)'
+#alias dotenv=$'export $(egrep -v \'^#\' .env | xargs)'
 alias kubeutil="kubectl get po --all-namespaces -o=jsonpath=\"{range .items[*]}{.metadata.namespace}:{.kind}/{.metadata.name}{'\n'}{range .spec.containers[*]}  {.name}:{.resources.limits.cpu},{.resources.limits.memory}{'\n'}{end}{'\n'}{end}\""
 alias ua-drop-caches='sudo paccache -rk3; sudo aura -Sc --noconfirm'
 alias ua-update-all='export TMPFILE="$(mktemp)"; \

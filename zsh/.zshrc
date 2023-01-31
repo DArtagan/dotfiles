@@ -36,6 +36,11 @@ zinit wait lucid light-mode for \
       OMZ::plugins/docker/_docker \
       OMZ::plugins/pyenv/pyenv.plugin.zsh
 
+zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
+zinit snippet OMZP::dotenv
+
+typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=37
+
 # Vim keybinding
 # zinit ice depth=1
 # zinit load jeffreytse/zsh-vi-mode
