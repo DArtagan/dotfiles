@@ -44,7 +44,11 @@ end
 -- Themes define colours, icons, font and wallpapers.
 local configdir = awful.util.getdir ("config")
 beautiful.init(configdir .. "/themes/copland/theme.lua")
--- beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+
+
+-- {{{ Override theme settings
+beautiful.font = "Hack 11"
+-- }}}
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
