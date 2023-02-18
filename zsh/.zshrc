@@ -36,9 +36,15 @@ zinit wait lucid light-mode for \
       OMZ::plugins/docker/_docker \
       OMZ::plugins/pyenv/pyenv.plugin.zsh
 
+#zinit pack"default+keys" for fzf
+
 # Vim keybinding
 # zinit ice depth=1
 # zinit load jeffreytse/zsh-vi-mode
+
+# Manually sourcing the key-bindings as I do far below should work, but it wasn't on Manjaro-Beast so I did this instead.
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
 
 #source "$HOME/.antigen/antigen.zsh"
 #antigen use oh-my-zsh
@@ -51,6 +57,8 @@ zinit wait lucid light-mode for \
 ##antigen theme romkatv/powerlevel10k
 #antigen apply
 
+#eval "$(starship init zsh)"
+#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Pure prompt configuration
 zstyle :prompt:pure:git:stash show yes
@@ -108,21 +116,17 @@ fi
 
 # Searching
 ## fzf
-if ! type "$ag" > /dev/null; then
-  export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
-
 if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
+#source /usr/share/fzf/key-bindings.zsh
+#source /usr/share/fzf/completion.zsh
+
 
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
