@@ -97,7 +97,7 @@ set incsearch
 
 " Spellcheck
 set spelllang=en
-set spellfile=$VIMHOME/spell/en.utf-8.add
+set spellfile=$HOME/.vim/spell/en.utf-8.add
 set spell
 
 " Fast editing of the .vimrc
