@@ -427,6 +427,12 @@ shell:
     - -l
     - -c
     - "tmux"
+#shell:
+#  program: /usr/local/bin/fish
+#  args:
+#    - --login
+#    - -c
+#    - "tmux"
 
 # Startup directory
 #
