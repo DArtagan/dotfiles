@@ -3,20 +3,7 @@
 #	url = https://github.com/zsh-users/antigen
 [submodule "lain"]
 	path = awesome/.config/awesome/lain
-	url = https://github.com/lcpz/lain.git
-[submodule "tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
-[submodule "vim/bundle/MatchTagAlways"]
-	url = http://github.com/Valloric/MatchTagAlways.git
-[submodule "vim/bundle/breeze"]
-	url = https://github.com/gcmt/breeze.vim
-#[submodule "config/awesome/lain"]
-#	url = https://github.com/copycat-killer/lain.git
-[submodule "autoenv"]
-	url = https://github.com/kennethreitz/autoenv.git
-[submodule "antigen"]
-	url = https://github.com/zsh-users/antigen
+	krl = https://github.com/lcpz/lain.git
 [submodule "zinit"]
-	path = zsh/.config/zinit
+	path = zinit
 	url = https://github.com/zdharma-continuum/zinit.git
