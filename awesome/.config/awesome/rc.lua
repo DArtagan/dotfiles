@@ -126,7 +126,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
-lain.widget.calendar({
+lain.widget.cal({
   attach_to = {mytextclock},
 })
 --lain.widget.calendar:attach(mytextclock, {
