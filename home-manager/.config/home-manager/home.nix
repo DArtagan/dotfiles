@@ -31,6 +31,7 @@
     };
     "qutebrowser".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/qutebrowser/.config/qutebrowser/";
     "sway".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sway/.config/sway/";
+    "i3status-rust".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sway/.config/i3status-rust/";
   };
   programs = {
     foot = {
