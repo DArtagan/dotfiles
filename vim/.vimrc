@@ -1,7 +1,7 @@
 set nocompatible
 " Vim-Plug for plugin management
 call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'ervandew/supertab'
@@ -44,9 +44,9 @@ let $VIMHOME=expand('<sfile>:p:h:h')
 
 "-------------------------------------------------
 "Handling swap and backup files
-set backupdir=~/.backup/vim-backup//
+set backupdir=~/.vim/backup//
 set nowritebackup
-set directory=~/.backup/vim-swap//
+set directory=~/.vim/swap//
 
 "-------------------------------------------------
 " Usability & Appearance Options
@@ -58,8 +58,6 @@ if exists('+termguicolors')
   set termguicolors
 endif
 set background=light
-let g:solarized_termcolors=16
-"let g:solarized_visibility="flat"
 let g:solarized_termtrans = 1 " Set to 0 for urxvt
 "colorscheme solarized
 colorscheme solarized8
