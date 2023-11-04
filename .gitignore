@@ -1,3 +1,4 @@
+fish/.config/fish/fish_variables
 tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
 tmux/.tmux/sidebar/*
