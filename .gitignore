@@ -4,10 +4,10 @@ tmux/.tmux/plugins/*
 tmux/.tmux/sidebar/*
 qutebrowser/.config/qutebrowser/autoconfig.yml
 qutebrowser/.config/qutebrowser/blocked-hosts
-vim/.backup/*
-!vim/.backup/vim-swap
-vim/.backup/vim-swap/*
-!vim/.backup/vim-swap/.keep
+vim/.vim/backup/*
+!vim/.vim/backup/.keep
+vim/.vim/swap/*
+!vim/.vim/swap/.keep
 vim/.vim/.netrwhist
 vim/.vim/autoload/vim-plug/plug.vim.old
 vim/.vim/plugged

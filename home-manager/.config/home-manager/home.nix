@@ -12,6 +12,7 @@
     packages = with pkgs; [
       firefox
       fish
+      magic-wormhole
       nodejs
       qutebrowser
       ripgrep
