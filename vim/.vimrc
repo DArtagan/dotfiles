@@ -22,6 +22,7 @@ Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'NoahTheDuke/vim-just'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
@@ -145,6 +146,7 @@ nnoremap <Leader>0 :10b<CR>
 "-------------------------------------------------
 " Filetype
 au BufNewFile,BufRead *.txt set filetype=mkd
+au BufNewFile,BufRead *.tf set filetype=hcl
 set nofoldenable
 
 "-------------------------------------------------
