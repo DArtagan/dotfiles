@@ -1,6 +1,12 @@
-[submodule "antigen"]
-	path = zsh/.antigen
-	url = https://github.com/zsh-users/antigen
-[submodule "vim/bundle/Vundle.vim"]
-	path = vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim.git
+#[submodule "antigen"]
+#	path = zsh/.antigen
+#	url = https://github.com/zsh-users/antigen
+[submodule "lain"]
+	path = awesome/.config/awesome/lain
+	krl = https://github.com/lcpz/lain.git
+[submodule "zinit"]
+	path = zsh/.config/zinit
+	url = https://github.com/zdharma-continuum/zinit.git
+[submodule "tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
