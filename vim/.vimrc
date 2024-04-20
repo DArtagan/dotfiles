@@ -160,6 +160,9 @@ set expandtab
 set pastetoggle=<F12>
 set backspace=indent,eol,start
 
+autocmd BufNewFile,BufReadPost * if &filetype == "python" | set indentkeys-=0# | endif
+autocmd BufNewFile,BufReadPost * if &filetype == "yaml" | set expandtab shiftwidth=2 indentkeys-=0# | endif
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300

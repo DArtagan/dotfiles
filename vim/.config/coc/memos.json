@@ -38,6 +38,36 @@
         "etag": "\"80e08ca9849bd81:0\"",
         "fileName": "000bfbdd14d2fb8ec5b0d59bec32ef98.schema.json",
         "updateTime": 1672885712805
+      },
+      "https://json.schemastore.org/web-manifest-combined.json": {
+        "etag": "\"9256526360d0d91:0\"",
+        "fileName": "b06e2f702dd4972ea2bb3d76ff088406.schema.json",
+        "updateTime": 1709089259405
+      },
+      "https://json.schemastore.org/web-manifest-app-info.json": {
+        "etag": "\"b27da80326ad81:0\"",
+        "fileName": "37e25b60beaa201ec2222b96a2ea00d6.schema.json",
+        "updateTime": 1709089259986
+      },
+      "https://json.schemastore.org/web-manifest.json": {
+        "etag": "\"8059190326ad81:0\"",
+        "fileName": "6edb6ea4435d040104641056c40c6326.schema.json",
+        "updateTime": 1709089260024
+      },
+      "https://json.schemastore.org/web-manifest-share-target.json": {
+        "etag": "\"8047ce18b33da1:0\"",
+        "fileName": "cdeb8e92350ff78b8eec26631dae6f2d.schema.json",
+        "updateTime": 1709089259956
+      },
+      "https://json.schemastore.org/foxx-manifest.json": {
+        "etag": "\"0a624b1156da1:0\"",
+        "fileName": "5e1deef4adbcb453011b95df734ed4a0.schema.json",
+        "updateTime": 1709089259482
+      },
+      "https://json.schemastore.org/webextension.json": {
+        "etag": "\"07f86260d0d91:0\"",
+        "fileName": "b731fe11a3d127fd02a39912a2530816.schema.json",
+        "updateTime": 1709089259483
       }
     }
   }
