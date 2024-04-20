@@ -60,8 +60,8 @@ alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
-cmd - k : yabai -m window --focus prev
-cmd - j : yabai -m window --focus next
+#cmd - k : yabai -m window --focus prev
+#cmd - j : yabai -m window --focus next
 
 # equalize size of windows
 shift + alt - 0 : yabai -m space --balance

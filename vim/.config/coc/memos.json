@@ -5,39 +5,39 @@
   "coc-json|global": {
     "json-schema-cache": {
       "https://json.schemastore.org/package.json": {
-        "etag": "\"032a04c70f0d81:0\"",
+        "etag": "\"0dac66160d0d91:0\"",
         "fileName": "473f72b44c2905902dfbcc770aab7f7a.schema.json",
-        "updateTime": 1672885712394
+        "updateTime": 1692985397078
       },
       "https://json.schemastore.org/prettierrc.json": {
         "etag": "\"80e08ca9849bd81:0\"",
         "fileName": "ea5ab10330a3ab77dfd6d00a735b0925.schema.json",
-        "updateTime": 1672885712792
+        "updateTime": 1692985397482
       },
       "https://json.schemastore.org/jscpd.json": {
         "etag": "\"80bec5ba1984d81:0\"",
         "fileName": "22bfc1ab1ff56aae62322f6ce45dab5a.schema.json",
-        "updateTime": 1672885712793
+        "updateTime": 1692985397458
       },
       "https://json.schemastore.org/ava.json": {
         "etag": "\"80cdbd40989d91:0\"",
         "fileName": "635f57185b22bce9d3a56c68f5da4ad7.schema.json",
-        "updateTime": 1672885712794
+        "updateTime": 1692985397467
       },
       "https://json.schemastore.org/semantic-release.json": {
         "etag": "\"808cdec3a9a4d81:0\"",
         "fileName": "fbc95702ba6eddb3e2de4f52e31ca82a.schema.json",
-        "updateTime": 1672885712802
+        "updateTime": 1692985397469
       },
       "https://json.schemastore.org/eslintrc.json": {
-        "etag": "\"0a4fb9ee1ed91:0\"",
+        "etag": "\"09c10cf5f2bd91:0\"",
         "fileName": "c5064f140d4cfdbf4d6fbe68f68abbb1.schema.json",
-        "updateTime": 1672885712804
+        "updateTime": 1692985397483
       },
       "https://json.schemastore.org/stylelintrc.json": {
-        "etag": "\"80e08ca9849bd81:0\"",
+        "etag": "\"0d52dd6eabd91:0\"",
         "fileName": "000bfbdd14d2fb8ec5b0d59bec32ef98.schema.json",
-        "updateTime": 1672885712805
+        "updateTime": 1692985397472
       },
       "https://json.schemastore.org/web-manifest-combined.json": {
         "etag": "\"9256526360d0d91:0\"",
@@ -68,6 +68,11 @@
         "etag": "\"07f86260d0d91:0\"",
         "fileName": "b731fe11a3d127fd02a39912a2530816.schema.json",
         "updateTime": 1709089259483
+      },
+      "https://json.schemastore.org/config.json": {
+        "etag": "\"bcd1f6fd316ad81:0\"",
+        "fileName": "ee050b74d016c5f06e4024d2dce36b54.schema.json",
+        "updateTime": 1682893230092
       }
     }
   }

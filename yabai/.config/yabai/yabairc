@@ -15,7 +15,7 @@ yabai -m config window_border_width 2
 yabai -m config active_window_border_color 0xff775759
 yabai -m config normal_window_border_color 0xff505050
 #yabai -m config insert_window_border_color 0xffd75f5f
-yabai -m config mouse_modifier fn
+yabai -m config mouse_modifier fn  # Also works around Zoom issue, https://github.com/koekeishiya/yabai/issues/1706
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 yabai -m config window_gap     10
@@ -23,5 +23,14 @@ yabai -m config top_padding    10
 yabai -m config right_padding  10
 yabai -m config left_padding   10
 yabai -m config bottom_padding 10
-yabai -m rule --add app="Spark" title!="Spark -.*" manage=off  # Ignore all excepts Sparks main-window
+#yabai -m rule --add app="Spark" title!="Spark -.*" manage=off  # Ignore all excepts Sparks main-window
 yabai -m config window_border_blur off
+
+# disable focus_follows_mouse when a Zoom window is focused
+yabai -m signal --add event=window_focused app=^zoom.us$ action="yabai -m config focus_follows_mouse off"
+# renable focus_follows_mouse autofocus after Zoom meeting is finished
+yabai -m signal --add event=application_deactivated app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
+yabai -m signal --add event=application_terminated app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
+yabai -m signal --add event=application_hidden app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
+yabai -m signal --add event=window_destroyed app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
+yabai -m signal --add event=window_minimized app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
