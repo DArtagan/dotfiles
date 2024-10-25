@@ -47,7 +47,7 @@ beautiful.init(configdir .. "/themes/copland/theme.lua")
 
 
 -- {{{ Override theme settings
-beautiful.font = "Hack 11"
+beautiful.font = "Hack 15"
 -- }}}
 
 -- This is used later as the default terminal and editor to run.

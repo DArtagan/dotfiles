@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'altercation/vim-colors-solarized'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 "Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
@@ -12,7 +12,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jparise/vim-graphql'
 Plug 'jvirtanen/vim-hcl'
-Plug 'leafgarland/typescript-vim'
+Plug 'leafOfTree/vim-svelte-plugin'
 "Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
 Plug 'machakann/vim-highlightedyank'
@@ -22,11 +22,10 @@ Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'NoahTheDuke/vim-just'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'plasticboy/vim-markdown'
-Plug 'psf/black'
 " Plug 'ruanyl/coverage.vim'
+Plug 'TabbyML/vim-tabby'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -271,21 +270,28 @@ endfunction
 command! FZFLines call fzf#run({
 \   'source':  <sid>buffer_lines(),
 \   'sink':    function('<sid>line_handler'),
-\   'options': '--extended --nth=3..',
+\   'options': '--extended --nth=3..',jjjj
 \   'down':    '60%'
 \})
+
+" LLM
+command! -range -nargs=0 ModsExplain :'<,'>w !mods explain this, be very succint
+command! -range -nargs=* ModsRefactor :'<,'>!mods --format --format-as=code refactor this to improve its readability
+command! -range -nargs=+ Mods :'<,'>w !mods <q-args>
 
 " Signify
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_disable_by_default = 1
 
 "Supertab
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 
 " Syntastic
 "let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 "nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
+" Tabby
+let g:tabby_keybinding_accept = '<Tab>'
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1

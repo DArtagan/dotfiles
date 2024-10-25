@@ -43,7 +43,7 @@ print_events = false
 render_timer = false
 
 [font]
-size = 10.0
+size = 11.0
 
 [font.bold]
 style = "Bold"
