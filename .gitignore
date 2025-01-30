@@ -14,6 +14,8 @@ vim/.vim/autoload/vim-plug/plug.vim.old
 vim/.vim/plugged
 vim/.config/coc/extensions/*
 !vim/.config/coc/extensions/package.json
+vim/.config/coc/lists
+vim/.config/coc/list_history.dot
 
 zsh/.zinit/completions
 zsh/.zinit/plugins
