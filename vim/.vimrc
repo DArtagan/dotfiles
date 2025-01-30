@@ -224,6 +224,20 @@ let $PIPENV_MAX_DEPTH = 5
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 " Coverage.vim
 " " Specify the path to `coverage.json` file relative to your current working directory.
 " let g:coverage_json_report_path = 'coverage/coverage.json'
@@ -273,11 +287,6 @@ command! FZFLines call fzf#run({
 \   'options': '--extended --nth=3..',jjjj
 \   'down':    '60%'
 \})
-
-" LLM
-command! -range -nargs=0 ModsExplain :'<,'>w !mods explain this, be very succint
-command! -range -nargs=* ModsRefactor :'<,'>!mods --format --format-as=code refactor this to improve its readability
-command! -range -nargs=+ Mods :'<,'>w !mods <q-args>
 
 " Signify
 let g:signify_vcs_list = [ 'git' ]
