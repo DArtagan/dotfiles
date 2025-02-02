@@ -1,7 +1,9 @@
 { lib, pkgs, ... }:
+{
   home = {
     packages = with pkgs; [
-      hello
+      devenv
+      home-manager
     ];
 
     username = "will";
