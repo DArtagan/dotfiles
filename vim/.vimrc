@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 Plug 'Exafunction/codeium.vim', { 'tag': '1.8.49' }
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 "Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
@@ -14,7 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jparise/vim-graphql'
 Plug 'jvirtanen/vim-hcl'
-Plug 'leafgarland/typescript-vim'
+Plug 'leafOfTree/vim-svelte-plugin'
 "Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
 Plug 'machakann/vim-highlightedyank'
@@ -27,8 +27,8 @@ Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'plasticboy/vim-markdown'
-Plug 'psf/black'
 " Plug 'ruanyl/coverage.vim'
+Plug 'TabbyML/vim-tabby'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -164,6 +164,9 @@ set expandtab
 set pastetoggle=<F12>
 set backspace=indent,eol,start
 
+autocmd BufNewFile,BufReadPost * if &filetype == "python" | set indentkeys-=0# | endif
+autocmd BufNewFile,BufReadPost * if &filetype == "yaml" | set expandtab shiftwidth=2 indentkeys-=0# | endif
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -225,6 +228,20 @@ let $PIPENV_MAX_DEPTH = 5
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 " Coverage.vim
 " " Specify the path to `coverage.json` file relative to your current working directory.
 " let g:coverage_json_report_path = 'coverage/coverage.json'
@@ -277,7 +294,7 @@ endfunction
 command! FZFLines call fzf#run({
 \   'source':  <sid>buffer_lines(),
 \   'sink':    function('<sid>line_handler'),
-\   'options': '--extended --nth=3..',
+\   'options': '--extended --nth=3..',jjjj
 \   'down':    '60%'
 \})
 
@@ -286,12 +303,14 @@ let g:signify_vcs_list = [ 'git' ]
 let g:signify_disable_by_default = 1
 
 "Supertab
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 
 " Syntastic
 "let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 "nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
+" Tabby
+let g:tabby_keybinding_accept = '<Tab>'
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
