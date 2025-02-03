@@ -33,4 +33,15 @@ yabai -m signal --add event=application_deactivated app=^zoom.us$ action="yabai 
 yabai -m signal --add event=application_terminated app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
 yabai -m signal --add event=application_hidden app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
 yabai -m signal --add event=window_destroyed app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
-yabai -m signal --add event=window_minimized app=^zoom.us$ action="yabai -m config focus_follows_mouse autofocus"
+#
+# disable focus_follows_mouse when a Excel window is focused
+#yabai -m rule --add app=^QuickLookUIService$ sticky=on layer=above manage=off
+#yabai -m rule --add app=^com.apple.appkit.xpc.openAndSavePanelService$ sticky=on layer=above manage=off
+#yabai -m signal --add event=window_focused app=^Microsoft Excel$ action="yabai -m config focus_follows_mouse off"
+## renable focus_follows_mouse autofocus after Microsoft Excel meeting is finished
+#yabai -m signal --add event=application_deactivated app=^Microsoft Excel$ action="yabai -m config focus_follows_mouse autofocus"
+#yabai -m signal --add event=application_terminated app=^Microsoft Excel$ action="yabai -m config focus_follows_mouse autofocus"
+#yabai -m signal --add event=application_hidden app=^Microsoft Excel$ action="yabai -m config focus_follows_mouse autofocus"
+#yabai -m signal --add event=window_destroyed app=^Microsoft Excel$ action="yabai -m config focus_follows_mouse autofocus"
+#yabai -m signal --add event=window_minimized app=^Microsoft Excel$ action="yabai -m config focus_follows_mouse autofocus"
+#yabai -m signal --add event=window_minimized app=^Microsoft Excel$ action="yabai -m config focus_follows_mouse autofocus"

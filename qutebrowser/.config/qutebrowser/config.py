@@ -6,8 +6,8 @@ c.tabs.background = True
 c.tabs.last_close = 'startpage'
 
 # Key bindings
-config.bind('t', 'set-cmd-text -s :open -t')
-config.bind('O', 'set-cmd-text :open {url:pretty}')
+config.bind('t', 'cmd-set-text -s :open -t')
+config.bind('O', 'cmd-set-text :open {url:pretty}')
 
 # Default homepage
 c.url.default_page = "https://web.tabliss.io/"

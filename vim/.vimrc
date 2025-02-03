@@ -4,10 +4,12 @@ call plug#begin('~/.vim/plugged')
 "Plug 'altercation/vim-colors-solarized'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
+Plug 'Exafunction/codeium.vim', { 'tag': '1.8.49' }
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 "Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jparise/vim-graphql'
@@ -17,12 +19,12 @@ Plug 'leafgarland/typescript-vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mbbill/undotree'
+Plug 'metakirby5/codi.vim'
 Plug 'mgedmin/coverage-highlight.vim'
 Plug 'mhinz/vim-signify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'NoahTheDuke/vim-just'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'plasticboy/vim-markdown'
 Plug 'psf/black'
@@ -206,6 +208,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#virtualenv#enabled = 0
+let g:airline#extensions#codeium#enabled = 1
 
 
 " ALE
@@ -233,6 +236,12 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " let g:coverage_show_covered = 0
 " " Display signs on uncovered lines
 " let g:coverage_show_uncovered = 0
+
+" Codeium
+let g:codeium_server_config = {
+    \'portal_url': 'https://codeium.dev-tools.ginkgo.zone',
+    \'api_url': 'https://codeium.dev-tools.ginkgo.zone/_route/api_server' }
+" let g:codeium_enabled = v:true
 
 " coverage-highlight.vim
 let g:coverage_script = 'pipenv run coverage'
@@ -287,6 +296,14 @@ let g:SuperTabDefaultCompletionType = "context"
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 autocmd BufNewFile,BufRead *.txt setlocal filetype=markdown
+
+
+" vim-slime
+let g:slime_target = "tmux"
+let g:slime_preserve_curpos = 1
+let g:slime_bracketed_paste = 1
+let g:slime_debug = 0
+let g:slime_python_ipython = 0
 
 
 " vim-test
