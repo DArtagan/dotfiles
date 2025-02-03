@@ -13,13 +13,33 @@
   outputs = { nixpkgs, home-manager, ... }:
     let
       lib = nixpkgs.lib;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
     in {
       homeConfigurations = {
         will = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ];
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          modules = [
+            ./home.nix
+            {
+              home = {
+                username = "will";
+                homeDirectory = "/home/will";
+                stateVersion = "24.11";
+              };
+            }
+          ];
+        };
+        wweiskopf = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "x86_64-darwin"; };
+          modules = [
+            ./home.nix
+            {
+              home = {
+                username = "wweiskopf";
+                homeDirectory = "/Users/wweiskopf";
+                stateVersion = "24.11";
+              };
+            }
+          ];
         };
       };
     };
