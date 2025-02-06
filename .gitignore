@@ -28,3 +28,13 @@ vim/.config/coc/list_history.dat
 zsh/.zinit/completions
 zsh/.zinit/plugins
 zsh/.zinit/snippets
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml

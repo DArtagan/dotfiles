@@ -10,10 +10,9 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-    let
-      lib = nixpkgs.lib;
-    in {
+  outputs =
+    { nixpkgs, home-manager, ... }:
+    {
       homeConfigurations = {
         will = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "x86_64-linux"; };
