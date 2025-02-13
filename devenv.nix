@@ -8,10 +8,12 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [
+    pkgs.git
+  ];
 
   languages.nix.enable = true;
-  # TODO: figure out how to incorporate `nil` the nix LSP into Zed automatically.
+  # TODO: figure out how to incorporate `nixd` or `nil` the nix LSPs into Zed automatically.
 
   # https://devenv.sh/processes/
   # processes.cargo-watch.exec = "cargo-watch";
