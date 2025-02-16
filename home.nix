@@ -4,7 +4,7 @@
     packages = with pkgs; [
       devenv
       home-manager
-      nom
+      nix-output-monitor
       zed
     ];
   };
@@ -30,8 +30,10 @@
           version = "2";
           default_open_ai_model = null;
           default_model = {
-            provider = "zed.dev";
-            model = "claude-3-5-sonnet-latest";
+            provider = "ollama";
+            model = "codegemma:7b";
+            #provider = "zed.dev";
+            #model = "claude-3-5-sonnet-latest";
           };
           # inline_alternatives = [
           #     {
@@ -39,6 +41,29 @@
           #         model = "gpt-3.5-turbo";
           #     }
           # ];
+        };
+
+        language_models = {
+          ollama = {
+            apiUrl = "http://localhost:11434";
+            availableModels = [
+              {
+                name = "codestral";
+                displayName = "codestral 22b";
+                maxTokens = 262144;
+              }
+              {
+                name = "qwen2.5-coder:32b";
+                displayName = "qwen2.5-coder:32b";
+                maxTokens = 32768;
+              }
+              {
+                name = "codegemma:7b";
+                displayName = "codegemma:7b";
+                maxTokens = 8192;
+              }
+            ];
+          };
         };
 
         hour_format = "hour24";
@@ -75,9 +100,7 @@
           };
         };
 
-        languages =
-          {
-          };
+        languages = {};
 
         load_direnv = "shell_hook";
         show_completions_on_input = true;
@@ -91,6 +114,11 @@
         #show_whitespaces = "all" ;
         ui_font_size = 14;
         buffer_font_size = 12;
+        #buffer_font_size = 14;
+        #buffer_font_family = "Hack Nerd Font";
+        #buffer_font_weight = 400;
+        cursor_blink = false;
+        relative_line_numbers = true;
       };
     };
   };
