@@ -7,6 +7,7 @@
       nix-output-monitor
       zed
     ];
+    shell.enableShellIntegration = true;
   };
 
   programs = {
