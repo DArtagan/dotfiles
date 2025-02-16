@@ -4,6 +4,7 @@
     packages = with pkgs; [
       devenv
       home-manager
+      nom
       zed
     ];
   };
