@@ -5,7 +5,7 @@
       devenv
       home-manager
       nix-output-monitor
-      zed
+      zed-editor
     ];
     shell.enableShellIntegration = true;
   };
@@ -26,22 +26,20 @@
 
       # everything inside of these brackets are Zed options - saved to settings.json
       userSettings = {
+        features = {
+          edit_prediction_provider = "zed";
+        };
+
         assistant = {
           enabled = true;
           version = "2";
           default_open_ai_model = null;
           default_model = {
-            provider = "ollama";
-            model = "codegemma:7b";
-            #provider = "zed.dev";
-            #model = "claude-3-5-sonnet-latest";
+            #provider = "ollama";
+            #model = "codegemma:7b";
+            provider = "zed.dev";
+            model = "claude-2-5-sonnet-latest";
           };
-          # inline_alternatives = [
-          #     {
-          #         provider = "copilot_chat";
-          #         model = "gpt-3.5-turbo";
-          #     }
-          # ];
         };
 
         language_models = {
@@ -101,7 +99,13 @@
           };
         };
 
-        languages = {};
+        tab_size = 4;
+
+        languages = {
+          nix = {
+            tab_size = 2;
+          };
+        };
 
         load_direnv = "shell_hook";
         show_completions_on_input = true;
@@ -112,7 +116,11 @@
           light = "Solarized Light";
           dark = "Solarized Dark";
         };
-        #show_whitespaces = "all" ;
+        show_whitespaces = "none";
+        indent_guides = {
+          enabled = true;
+          coloring = "indent_aware";
+        };
         ui_font_size = 14;
         buffer_font_size = 12;
         #buffer_font_size = 14;
@@ -121,6 +129,17 @@
         cursor_blink = false;
         relative_line_numbers = true;
       };
+      userKeymaps = [
+        {
+          context = "Dock";
+          bindings = {
+            "ctrl-w h" = "workspace::ActivatePaneLeft";
+            "ctrl-w l" = "workspace::ActivatePaneRight";
+            "ctrl-w k" = "workspace::ActivatePaneUp";
+            "ctrl-w j" = "workspace::ActivatePaneDown";
+          };
+        }
+      ];
     };
   };
 }
