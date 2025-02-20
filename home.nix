@@ -38,7 +38,7 @@
             #provider = "ollama";
             #model = "codegemma:7b";
             provider = "zed.dev";
-            model = "claude-2-5-sonnet-latest";
+            model = "claude-3-5-sonnet-latest";
           };
         };
 
@@ -131,12 +131,12 @@
       };
       userKeymaps = [
         {
-          context = "Dock";
+          context = "Dock || Editor";
           bindings = {
-            "ctrl-w h" = "workspace::ActivatePaneLeft";
-            "ctrl-w l" = "workspace::ActivatePaneRight";
-            "ctrl-w k" = "workspace::ActivatePaneUp";
-            "ctrl-w j" = "workspace::ActivatePaneDown";
+            "ctrl-a h" = "workspace::ActivatePaneLeft";
+            "ctrl-a l" = "workspace::ActivatePaneRight";
+            "ctrl-a k" = "workspace::ActivatePaneUp";
+            "ctrl-a j" = "workspace::ActivatePaneDown";
           };
         }
       ];
