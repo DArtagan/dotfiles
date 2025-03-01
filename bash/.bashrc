@@ -106,11 +106,6 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper_lazy.sh
 
-# Scripts in the autoload folder
-for i in ~/.autoload/*; do
-  source $i
-done
-
 # ack is short for ack-grep
 alias ack="ack-grep"
 
