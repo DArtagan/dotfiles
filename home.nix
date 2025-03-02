@@ -5,6 +5,7 @@
       devenv
       home-manager
       nix-output-monitor
+      nixos-rebuild
       zed-editor
     ];
     shell.enableShellIntegration = true;
@@ -22,6 +23,7 @@
         "nix"
         "toml"
         "make"
+        "zed-legacy-themes"
       ];
 
       # everything inside of these brackets are Zed options - saved to settings.json
@@ -113,8 +115,8 @@
 
         theme = {
           mode = "system";
-          light = "Solarized Light";
-          dark = "Solarized Dark";
+          light = "Zed Legacy: Solarized Light";
+          dark = "Zed Legacy: Solarized Dark";
         };
         show_whitespaces = "none";
         indent_guides = {

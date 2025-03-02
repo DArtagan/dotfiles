@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'altercation/vim-colors-solarized'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
-Plug 'Exafunction/codeium.vim', { 'tag': '1.8.49' }
+"Plug 'Exafunction/codeium.vim', { 'tag': '1.8.49' }
 "Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 "Plug 'jmcantrell/vim-virtualenv'
@@ -74,7 +74,7 @@ set relativenumber
 " Wrap lines and navigate accordingly
 set wrap
 set linebreak
-set showbreak=>\ 
+set showbreak=>\
 "imap <silent> <Down> <C-o>gj
 "imap <silent> <Up> <C-o>gk
 "nmap <silent> <Down> gj
@@ -156,7 +156,7 @@ set nofoldenable
 "-------------------------------------------------
 " Indentation Options
 set smarttab
-set autoindent 
+set autoindent
 set si "Smart indent
 set shiftwidth=2
 set softtabstop=2
@@ -175,7 +175,7 @@ set updatetime=300
 " Mapping
 
 " Map Ctrl-C to copy to clipboard
-"map <C-c> "+y<CR> 
+"map <C-c> "+y<CR>
 "cmap w!! w !sudo tee %
 "iabbrev </ </<C-X><C-O>
 
@@ -211,7 +211,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#virtualenv#enabled = 0
-let g:airline#extensions#codeium#enabled = 1
+"let g:airline#extensions#codeium#enabled = 1
 
 
 " ALE
@@ -255,10 +255,9 @@ inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " let g:coverage_show_uncovered = 0
 
 " Codeium
-let g:codeium_server_config = {
-    \'portal_url': 'https://codeium.dev-tools.ginkgo.zone',
-    \'api_url': 'https://codeium.dev-tools.ginkgo.zone/_route/api_server' }
-" let g:codeium_enabled = v:true
+"let g:codeium_server_config = {
+"    \'portal_url': 'https://codeium.dev-tools.ginkgo.zone',
+"    \'api_url': 'https://codeium.dev-tools.ginkgo.zone/_route/api_server' }
 
 " coverage-highlight.vim
 let g:coverage_script = 'pipenv run coverage'
