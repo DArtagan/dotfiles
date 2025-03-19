@@ -1,3 +1,4 @@
+fish/.config/fish/conf.d/virtualfish-loader.fish
 fish/.config/fish/fish_variables
 fish/.config/fish/fisher/completions/*
 fish/.config/fish/fisher/conf.d/*
@@ -5,15 +6,18 @@ fish/.config/fish/fisher/functions/*
 fish/.config/fish/fisher/themes/*
 !fish/.config/fish/fisher/completions/fisher.fish
 !fish/.config/fish/fisher/functions/fisher.fish
+
 tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
 tmux/.tmux/sidebar/*
+
 qutebrowser/.config/qutebrowser/autoconfig.yml
 qutebrowser/.config/qutebrowser/blocked-hosts
+
 vim/.backup/*
-vim/.vim/backup/*
+vim/.vim/backup/
 !vim/.vim/backup/.keep
-vim/.vim/swap/*
+vim/.vim/swap/
 !vim/.vim/swap/.keep
 vim/.vim/.netrwhist
 vim/.vim/autoload/vim-plug/plug.vim.old
@@ -24,10 +28,9 @@ vim/.config/coc/extensions/
 !vim/.config/coc/extensions/package.json
 vim/.config/coc/lists
 vim/.config/coc/list_history.dat
+vim/.config/coc/suggest.txt
 
-zsh/.zinit/completions
-zsh/.zinit/plugins
-zsh/.zinit/snippets
+zsh/.zinit
 
 # Devenv
 .devenv*

@@ -36,12 +36,10 @@
           enabled = true;
           version = "2";
           default_open_ai_model = null;
-          default_model = {
-            #provider = "ollama";
-            #model = "codegemma:7b";
-            provider = "zed.dev";
-            model = "claude-3-7-sonnet-latest";
-          };
+          #default_model = {
+          #  provider = "ollama";
+          #  model = "codegemma:7b";
+          #};
         };
 
         language_models = {
