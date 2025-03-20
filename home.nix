@@ -4,6 +4,7 @@
     packages = with pkgs; [
       devenv
       home-manager
+      fluxcd
       nix-output-monitor
       nixos-rebuild
       zed-editor
