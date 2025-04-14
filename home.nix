@@ -2,11 +2,23 @@
 {
   home = {
     packages = with pkgs; [
+      awscli2
+      bottom
+      curl
       devenv
+      graphviz
       home-manager
       fluxcd
+      fzf
+      jq
+      magic-wormhole
       nix-output-monitor
       nixos-rebuild
+      pgcli
+      pstree
+      rclone
+      ripgrep
+      tree
       zed-editor
     ];
     shell.enableShellIntegration = true;
