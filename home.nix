@@ -10,9 +10,6 @@
       curl
       devenv
       graphviz
-      #fishPlugins.done
-      #fishPlugins.fzf-fish
-      #fishPlugins.tide
       fluxcd
       magic-wormhole
       nix-output-monitor
