@@ -7,6 +7,7 @@ Plug 'ap/vim-css-color'
 "Plug 'Exafunction/codeium.vim', { 'tag': '1.8.49' }
 "Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
+Plug 'grafana/vim-alloy'
 "Plug 'jmcantrell/vim-virtualenv'
 Plug '/usr/local/opt/fzf'
 Plug 'jpalardy/vim-slime'

@@ -615,7 +615,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [terminal.shell]
 args = ["-l", "-c", "tmux"]
-program = "/bin/zsh"
+program = "/bin/sh"
 
 [window]
 decorations = "none"
