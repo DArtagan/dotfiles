@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   imports = [
-    ../modules/zed
+    modules/zed
   ];
 
   home = {
