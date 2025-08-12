@@ -1,7 +1,6 @@
 set nocompatible
 " Vim-Plug for plugin management
 call plug#begin('~/.vim/plugged')
-"Plug 'altercation/vim-colors-solarized'
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
 "Plug 'Exafunction/codeium.vim', { 'tag': '1.8.49' }
@@ -29,7 +28,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'plasticboy/vim-markdown'
 " Plug 'ruanyl/coverage.vim'
-Plug 'TabbyML/vim-tabby'
+" Plug 'TabbyML/vim-tabby'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -56,14 +55,13 @@ set directory=~/.vim/swap//
 " Usability & Appearance Options
 
 syntax enable
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+"if exists('+termguicolors')
+"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"  set termguicolors
+"endif
 set background=light
 let g:solarized_termtrans = 1 " Set to 0 for urxvt
-"colorscheme solarized
 colorscheme solarized8
 "call togglebg#map("<F5>")
 set mouse=a

@@ -87,6 +87,9 @@
       '';
     };
     fzf.enable = true;
+    helix = {
+      enable = true;
+    };
     home-manager.enable = true;
     jq.enable = true;
     ripgrep.enable = true;
@@ -117,7 +120,7 @@
 
         language_models = {
           ollama = {
-            apiUrl = "http://localhost:11434";
+            apiUrl = "http://192.168.1.10:11434";
             availableModels = [
               {
                 name = "codestral";
