@@ -1,3 +1,5 @@
+Nix configuration is using this approach as its spirit guide: https://github.com/Baitinq/nixos-config
+
 Deprecated dotfiles:
 * chunkwm: project is no longer developed.  Move to `yabai` instead.
 * fish: configuration moved to `home.nix`, now ceasing to maintain the `fish` directory.
