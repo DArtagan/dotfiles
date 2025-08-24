@@ -65,7 +65,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.willy = {
+                users.willy = _: {
                   imports = [ ./home.nix ];
                   home = {
                     username = "willy";
