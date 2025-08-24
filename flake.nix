@@ -1,5 +1,5 @@
 {
-  description = "will's Home Manager configuration.";
+  description = "dartagan's assorted Nix configurations.";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";

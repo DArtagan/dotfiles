@@ -27,7 +27,7 @@ _: {
 
         language_models = {
           ollama = {
-            apiUrl = "http://localhost:11434";
+            apiUrl = "http://192.168.1.10:11434";
             availableModels = [
               {
                 name = "codestral";
