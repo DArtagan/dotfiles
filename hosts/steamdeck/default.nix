@@ -1,19 +1,7 @@
-{ jovian-nixos, pkgs }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    jovian-nixos.nixosModules.default
-    {
-      jovian = {
-        devices.steamdeck = {
-          enable = true;
-          autoUpdate = true;
-        };
-        hardware.has.amd.gpu = true;
-        steam.enable = true;
-        steamos.useSteamOSConfig = true;
-      };
-    }
   ];
 
   networking = {
@@ -21,13 +9,13 @@
   };
 
   # Enable the GNOME Desktop Environment.
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
+  services = {
     desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    xserver.enable = true;
   };
 
-  packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator # app icon system tray
   ];
 

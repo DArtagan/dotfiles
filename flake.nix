@@ -2,7 +2,7 @@
   description = "dartagan's assorted Nix configurations.";
 
   inputs = {
-    nixpkgs.url = "github:nixo/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -54,19 +54,32 @@
         };
       };
       nixosConfigurations = {
-        nix-steam-deck = nixpkgs.lib.nixosSystem {
-          inherit jovian-nixos;
+        nix-steamdeck = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
+            # TODO: figure out how to put jovian (and its definition up above) into steamdeck/default.nix
+            jovian-nixos.nixosModules.default
+            {
+              jovian = {
+                devices.steamdeck = {
+                  enable = true;
+                  autoUpdate = true;
+                };
+                hardware.has.amd.gpu = true;
+                steam.enable = true;
+                steamos.useSteamOSConfig = true;
+              };
+            }
             ./hosts/steamdeck
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.willy = _: {
+                users.willy = {
                   imports = [ ./home.nix ];
+                  # TODO: is this inter-mixing working?
                   home = {
                     username = "willy";
                     homeDirectory = "/home/willy";

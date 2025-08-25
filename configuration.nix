@@ -73,8 +73,8 @@
     ];
 
     # Clean up nix store storage
-    nix.settings.auto-optimise-store = true;
-    nix.gc = {
+    settings.auto-optimise-store = true;
+    gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 90d";
@@ -99,6 +99,14 @@
     vim
     wget
   ];
+
+  programs = {
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "willy" ];
+    };
+  };
 
   environment.variables.EDITOR = "vim";
 
