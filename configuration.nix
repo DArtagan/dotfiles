@@ -95,6 +95,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    lm_sensors # for `sensors` command
     tmux
     vim
     wget

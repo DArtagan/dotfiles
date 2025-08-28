@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+
     jovian-nixos = {
       url = "github:Jovian-Experiments/Jovian-NixOS/development";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +19,7 @@
 
   outputs =
     {
+      alacritty-theme,
       home-manager,
       jovian-nixos,
       nixpkgs,
@@ -28,7 +31,11 @@
           # Used by TheManjaroBeast
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
+            (_: {
+              nixpkgs.overlays = [ alacritty-theme.overlays.default ];
+            })
             ./home.nix
+            ./modules/syncthing
             {
               home = {
                 username = "will";
@@ -42,6 +49,9 @@
           # Used by ginkgo-macbook
           pkgs = import nixpkgs { system = "x86_64-darwin"; };
           modules = [
+            (_: {
+              nixpkgs.overlays = [ alacritty-theme.overlays.default ];
+            })
             ./home.nix
             {
               home = {
@@ -72,6 +82,9 @@
               };
             }
             ./hosts/steamdeck
+            (_: {
+              nixpkgs.overlays = [ alacritty-theme.overlays.default ];
+            })
             home-manager.nixosModules.home-manager
             {
               home-manager = {

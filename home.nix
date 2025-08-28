@@ -21,12 +21,7 @@
   # home.file.".xxx".text = ''
   #     xxx
   # '';
-
-  # Services
-  services = {
-    syncthing.enable = true;
-    syncthing.tray.enable = true;
-  };
+  fonts.fontconfig.enable = true;
 
   home = {
     activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -42,8 +37,8 @@
       fluxcd
       kubectl
       ldns # replacement of `dig`, it provide the command `drill`
-      lm_sensors # for `sensors` command
       lsof # list open files
+      nerd-fonts.hack
       magic-wormhole
       nix-output-monitor
       nixos-rebuild
@@ -68,11 +63,12 @@
   programs = {
     alacritty = {
       enable = true;
-      # custom settings
       settings = {
+        general.import = [ pkgs.alacritty-theme.solarized_light ];
         env.TERM = "xterm-256color";
         font = {
           size = 11;
+          normal.family = "Hack Nerd Font";
         };
         scrolling.multiplier = 5;
         selection.save_to_clipboard = true;
