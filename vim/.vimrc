@@ -3,6 +3,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 Plug 'andymass/vim-matchup'
 Plug 'ap/vim-css-color'
+Plug 'chrisbra/Recover.Vim'
 "Plug 'Exafunction/codeium.vim', { 'tag': '1.8.49' }
 "Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
@@ -50,6 +51,7 @@ let $VIMHOME=expand('<sfile>:p:h:h')
 set backupdir=~/.vim/backup//
 set nowritebackup
 set directory=~/.vim/swap//
+let g:RecoverPlugin_Delete_Unmodified_Swapfile=1
 
 "-------------------------------------------------
 " Usability & Appearance Options

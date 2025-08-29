@@ -107,6 +107,13 @@
       enable = true;
       polkitPolicyOwners = [ "willy" ];
     };
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 90d --keep 2";
+      };
+    };
   };
 
   environment.variables.EDITOR = "vim";

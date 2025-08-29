@@ -153,77 +153,38 @@
     home-manager.enable = true;
     jq.enable = true;
     k9s.enable = true;
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 90d --keep 2";
+      };
+    };
     ripgrep.enable = true;
     tmux = {
       enable = true;
+      baseIndex = 1;
+      escapeTime = 0;
+      focusEvents = true;
+      historyLimit = 100000;
       keyMode = "vi";
+      mouse = true;
+      shell = "${pkgs.fish}/bin/fish";
       shortcut = "a";
       terminal = "tmux-256color";
-      historyLimit = 100000;
+      plugins = with pkgs.tmuxPlugins; [
+        pain-control
+        fingers
+      ];
       extraConfig = ''
-        # Bind "prefix" for summoning tmux to Ctrl-a
-        set-option -g prefix C-a
-
-        # Default shell
-        set-option -g default-shell ${pkgs.fish}/bin/fish
-
-        # We're 256 color ready
-        set -g default-terminal "screen-256color"
-        set -ga terminal-overrides ",*256col*:Tc"
-
-        # Turn on mouse mode
-        set -g mouse on
-
-        # Start numbering windows from 1
-        set -g base-index 1
+        # Duration to show status bar messages
+        set-option -g display-time 4000;
 
         # Set the Window titles based on what's open in tmux
         set-option -g set-titles on
 
-        # Increase scrollback history limit
-        set-option -g history-limit 5000
-
-        # reload config file
-        bind r source-file ~/.tmux.conf
-
-        # Pane navigation
-        ### Consider: tmux-pain-control plugin instead
-        ## pane_navigation_bindings
-        bind h   select-pane -L
-        bind C-h select-pane -L
-        bind j   select-pane -D
-        bind C-j select-pane -D
-        bind k   select-pane -U
-        bind C-k select-pane -U
-        bind l   select-pane -R
-        bind C-l select-pane -R
-
-        ## window_move_bindings
-        bind -r "<" swap-window -t -1
-        bind -r ">" swap-window -t +1
-
-        ## pane_resizing_bindings
-        bind -r H resize-pane -L 2
-        bind -r J resize-pane -D 2
-        bind -r K resize-pane -U 2
-        bind -r L resize-pane -R 2
-
-        ## pane_split_bindings
-        bind "|" split-window -h -c "#{pane_current_path}"
-        bind "\\" split-window -fh -c "#{pane_current_path}"
-        bind "-" split-window -v -c "#{pane_current_path}"
-        bind "_" split-window -fv -c "#{pane_current_path}"
-        bind "%" split-window -h -c "#{pane_current_path}"
-        bind '"' split-window -v -c "#{pane_current_path}"
-
         ## improve_new_window_binding
         bind "c" new-window -c "#{pane_current_path}"
-
-        # copy/paste
-        set-window-option -g mode-keys vi
-        bind -T copy-mode-vi v send-keys -X begin-selection
-        bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
-        bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
       '';
     };
   };
