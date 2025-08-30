@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 {
   imports = [
+    modules/vim
     modules/zed
   ];
 
@@ -46,6 +47,7 @@
       pciutils # lspci
       pgcli
       pstree
+      python313Packages.psutil # For vim Recover.vim
       rclone
       talosctl
       texlive.combined.scheme-medium
@@ -153,11 +155,12 @@
     home-manager.enable = true;
     jq.enable = true;
     k9s.enable = true;
+    man.generateCaches = false; # Because it's slow.  Can't search without it though
     nh = {
       enable = true;
       clean = {
         enable = true;
-        extraArgs = "--keep-since 90d --keep 2";
+        extraArgs = "--keep-since 90d --keep 3";
       };
     };
     ripgrep.enable = true;

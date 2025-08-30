@@ -2,7 +2,6 @@
   "dependencies": {
     "coc-eslint": ">=1.6.0",
     "coc-json": ">=1.8.0",
-    "coc-pyright": ">=1.1.325",
     "coc-tsserver": ">=2.2.0"
   },
   "disabled": [],
