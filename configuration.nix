@@ -95,6 +95,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    lm_sensors # for `sensors` command
     tmux
     vim
     wget
@@ -105,6 +106,13 @@
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = [ "willy" ];
+    };
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 90d --keep 2";
+      };
     };
   };
 
