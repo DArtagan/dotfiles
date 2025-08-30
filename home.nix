@@ -154,6 +154,10 @@
       enable = true;
       userName = "William Weiskopf";
       userEmail = "william@weiskopf.me";
+      extraConfig = {
+        pull.rebase = false;
+        pull.ff = true;
+      };
     };
     home-manager.enable = true;
     jq.enable = true;
