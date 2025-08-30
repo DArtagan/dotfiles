@@ -45,7 +45,7 @@
       nixos-rebuild
       nodejs # For vim CoC
       pciutils # lspci
-      pgcli
+      #pgcli  # tests broken on darwin_x86-64. Probably some way I could disable them in the derivation.
       pstree
       python313Packages.psutil # For vim Recover.vim
       rclone
