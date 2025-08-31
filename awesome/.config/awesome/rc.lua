@@ -51,7 +51,7 @@ beautiful.font = "Hack 15"
 -- }}}
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "nixGL alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -392,7 +392,7 @@ globalkeys = awful.util.table.join(
 
     -- Multimedia keys
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end), 
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
     awful.key({ }, "XF86AudioMute",       function () awful.util.spawn("amixer -D pulse set Master 1+ toggle") end),
     awful.key({ }, "XF86AudioPlay",       function () awful.util.spawn("playerctl play-pause") end),
     awful.key({ }, "XF86AudioNext",       function () awful.util.spawn("playerctl next") end),
