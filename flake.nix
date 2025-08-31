@@ -97,6 +97,7 @@
                     username = "willy";
                     homeDirectory = "/home/willy";
                     stateVersion = "24.05";
+                    programs.alacritty.settings.general.import = [ pkgs.alacritty-theme.solarized_dark ];
                   };
                   systemd.user.targets.tray = {
                     Unit = {
