@@ -64,6 +64,30 @@
         };
       };
       nixosConfigurations = {
+        thenixbeast = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./configuration.nix
+            ./modules/sway # TODO: would be nice if this could be pushed into the host file
+            ./hosts/thenixbeast
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.willy = {
+                  imports = [ ./home.nix ];
+                  # TODO: is this inter-mixing working?
+                  home = {
+                    username = "willy";
+                    homeDirectory = "/home/willy"; # TODO: speak now on this username or forever hold your peace
+                    stateVersion = "25.05";
+                  };
+                };
+              };
+            }
+          ];
+        };
         nix-steamdeck = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [

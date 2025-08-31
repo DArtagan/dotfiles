@@ -140,11 +140,11 @@
         awsume = "source (which awsume.fish)";
       };
       shellInit = ''
-        	set -g -x PIP_REQUIRE_VIRTUALENV true
+        set -g -x PIP_REQUIRE_VIRTUALENV true
 
-                # Added by OrbStack: command-line tools and integration
-                # This won't be added again if you remove it.
-        	source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+        # Added by OrbStack: command-line tools and integration
+        # This won't be added again if you remove it.
+        source ~/.orbstack/shell/init2.fish 2>/dev/null || :
       '';
     };
     fzf.enable = true;
@@ -169,6 +169,7 @@
       };
     };
     ripgrep.enable = true;
+    #qbittorrent.enable = true;
     tmux = {
       enable = true;
       baseIndex = 1;
@@ -185,6 +186,11 @@
         fingers
       ];
       extraConfig = ''
+        # Use f for tmux-fingers
+        unbind-key f  # Used for find-window by default, to prevent accidental activation
+        set -g @fingers-key F
+        set -g @fingers-jump-key T
+
         # Duration to show status bar messages
         set-option -g display-time 4000;
 

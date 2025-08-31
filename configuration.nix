@@ -2,6 +2,7 @@
 {
   imports = [
     modules/audio
+    modules/bluetooth
     modules/distributed_builders
   ];
 
@@ -80,6 +81,15 @@
       options = "--delete-older-than 90d";
     };
   };
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    #(nerdfonts.override { fonts = [ "Hack" ]; })  # Pre 25.05
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
