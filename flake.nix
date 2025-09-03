@@ -60,6 +60,12 @@
                 stateVersion = "24.11";
               };
             }
+            (
+              { pkgs, ... }:
+              {
+                programs.vim.packageConfigurable = pkgs.vim-darwin;
+              }
+            )
           ];
         };
       };
