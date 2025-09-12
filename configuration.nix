@@ -119,10 +119,10 @@
     };
     nh = {
       enable = true;
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 90d --keep 2";
-      };
+      #clean = {
+      #  enable = true;
+      #  extraArgs = "--keep-since 90d --keep 2";
+      #};
     };
   };
 
