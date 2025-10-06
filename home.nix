@@ -91,6 +91,14 @@
       enable = true;
       nix-direnv.enable = true;
     };
+    # Move this to a NixOS declaration/module, for enabling droidcam (NixOS so that the enableVirtualCamera option works - inherently installs v4l2loopback-dkms)
+    obs-studio = {
+      enable = true;
+      #  enableVirtualCamera = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        droidcam-obs
+      ];
+    };
     firefox.enable = true;
     fish = {
       enable = true;
