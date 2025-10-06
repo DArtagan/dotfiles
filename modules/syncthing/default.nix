@@ -1,6 +1,13 @@
 _: {
   services = {
-    syncthing.enable = true;
-    syncthing.tray.enable = true;
+    syncthing = {
+      enable = true;
+      tray.enable = true;
+      #settings = {
+      #  devices = {
+      #    "" = { id = ""; };
+      #  };
+      #};
+    };
   };
 }
