@@ -190,14 +190,15 @@
       shortcut = "a";
       terminal = "tmux-256color";
       plugins = with pkgs.tmuxPlugins; [
+        #fingers
         pain-control
-        fingers
       ];
       extraConfig = ''
         # Use f for tmux-fingers
-        unbind-key f  # Used for find-window by default, to prevent accidental activation
-        set -g @fingers-key F
-        set -g @fingers-jump-key T
+        # TODO: disabling fingers for now, because the jump override never works and interferes with pain-control
+        #unbind-key f  # Used for find-window by default, to prevent accidental activation
+        #set -g @fingers-key F
+        #set -g @fingers-jump-key T
 
         # Duration to show status bar messages
         set-option -g display-time 4000;
