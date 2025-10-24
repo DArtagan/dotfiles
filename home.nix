@@ -155,11 +155,15 @@
     fzf.enable = true;
     git = {
       enable = true;
-      userName = "William Weiskopf";
-      userEmail = "william@weiskopf.me";
-      extraConfig = {
-        pull.rebase = false;
-        pull.ff = true;
+      settings = {
+        user = {
+          name = "William Weiskopf";
+          email = "william@weiskopf.me";
+        };
+        pull = {
+          rebase = false;
+          ff = true;
+        };
       };
     };
     home-manager.enable = true;

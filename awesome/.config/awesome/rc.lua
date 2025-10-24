@@ -51,7 +51,7 @@ beautiful.font = "Hack 15"
 -- }}}
 
 -- This is used later as the default terminal and editor to run.
-terminal = "nixGL alacritty"
+terminal = "/usr/bin/alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
