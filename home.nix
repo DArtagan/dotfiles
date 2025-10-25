@@ -31,6 +31,7 @@
     '';
 
     packages = with pkgs; [
+      calibre
       curl
       devenv
       dnsutils # `dig` + `nslookup`
