@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +30,7 @@
       home-manager,
       jovian-nixos,
       nixpkgs,
+      nixos-facter-modules,
       #sops-nix,
       ...
     }:
@@ -76,10 +79,38 @@
         };
       };
       nixosConfigurations = {
+        iso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            (
+              { pkgs, modulesPath, ... }:
+              {
+                imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+                environment.systemPackages =
+                  with pkgs;
+                  map lib.lowPrio [
+                    vim
+                  ];
+
+                systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+                users.users.root.openssh.authorizedKeys.keys = [
+                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFmUpFV6Aa7SrDryunARrpcOM3spgYwRZQantYB6gPYZ"
+                ];
+
+                networking = {
+                  useDHCP = nixpkgs.lib.mkForce true;
+                  nameservers = [ "1.1.1.1" ];
+                };
+              }
+            )
+          ];
+        };
         thenixbeast = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
+            nixos-facter-modules.nixosModules.facter
+            { config.facter.reportPath = ./hosts/thenixbeast/facter.json; }
             ./modules/sway # TODO: would be nice if this could be pushed into the host file
             ./hosts/thenixbeast
             home-manager.nixosModules.home-manager
