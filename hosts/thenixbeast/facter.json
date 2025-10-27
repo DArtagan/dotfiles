@@ -3661,7 +3661,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 53
+            "address": 57
           },
           {
             "type": "phwaddr",
@@ -3854,6 +3854,69 @@
     "network_interface": [
       {
         "index": 100,
+        "attached_to": 0,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
+        },
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_names": [
+          "lo"
+        ]
+      },
+      {
+        "index": 101,
+        "attached_to": 33,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
+        },
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/wlp9s0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:02.1/0000:03:00.0/0000:04:0b.0/0000:09:00.0",
+        "unix_device_names": [
+          "wlp9s0"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 57
+          },
+          {
+            "type": "phwaddr",
+            "address": 50
+          }
+        ],
+        "driver": "mt7921e",
+        "driver_module": "mt7921e",
+        "drivers": [
+          "mt7921e"
+        ],
+        "driver_modules": [
+          "mt7921e"
+        ]
+      },
+      {
+        "index": 102,
         "attached_to": 40,
         "class_list": [
           "network_interface"
@@ -3891,69 +3954,6 @@
         ],
         "driver_modules": [
           "igc"
-        ]
-      },
-      {
-        "index": 101,
-        "attached_to": 33,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
-        },
-        "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/wlp9s0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:02.1/0000:03:00.0/0000:04:0b.0/0000:09:00.0",
-        "unix_device_names": [
-          "wlp9s0"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 53
-          },
-          {
-            "type": "phwaddr",
-            "address": 50
-          }
-        ],
-        "driver": "mt7921e",
-        "driver_module": "mt7921e",
-        "drivers": [
-          "mt7921e"
-        ],
-        "driver_modules": [
-          "mt7921e"
-        ]
-      },
-      {
-        "index": 102,
-        "attached_to": 0,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
-        },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
-        "unix_device_names": [
-          "lo"
         ]
       }
     ],
