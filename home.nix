@@ -31,14 +31,15 @@
     '';
 
     packages = with pkgs; [
-      calibre
+      #calibre
       curl
       devenv
       dnsutils # `dig` + `nslookup`
+      gparted
       graphviz
       fluxcd
       kubectl
-      ldns # replacement of `dig`, it provide the command `drill`
+      ldns # replacement of `dig`, it provides the command `drill`
       lsof # list open files
       nerd-fonts.hack
       magic-wormhole
@@ -65,9 +66,10 @@
   programs = {
     alacritty = {
       enable = true;
+      theme = "solarized_light";
+      #themePackage = pkgs.alacritty-theme.solarized_light;
       settings = {
-        general.import = [ pkgs.alacritty-theme.solarized_light ];
-        env.TERM = "xterm-256color";
+        #general.import = [ pkgs.alacritty-theme.solarized_light ];
         font = {
           size = 11;
           normal.family = "Hack Nerd Font";
@@ -190,7 +192,6 @@
       mouse = true;
       shell = "${pkgs.fish}/bin/fish";
       shortcut = "a";
-      terminal = "tmux-256color";
       plugins = with pkgs.tmuxPlugins; [
         #fingers
         pain-control
@@ -201,6 +202,9 @@
         #unbind-key f  # Used for find-window by default, to prevent accidental activation
         #set -g @fingers-key F
         #set -g @fingers-jump-key T
+
+        # Color
+        set -as terminal-features ",alacritty*:RGB"
 
         # Duration to show status bar messages
         set-option -g display-time 4000;

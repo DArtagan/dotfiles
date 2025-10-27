@@ -10,6 +10,7 @@
   # https://devenv.sh/packages/
   packages = [
     pkgs.git
+    pkgs.sops
   ];
 
   languages.nix.enable = true;

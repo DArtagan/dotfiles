@@ -11,8 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-
     jovian-nixos = {
       url = "github:Jovian-Experiments/Jovian-NixOS/development";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,12 +24,11 @@
 
   outputs =
     {
-      alacritty-theme,
       home-manager,
       jovian-nixos,
       nixpkgs,
       nixos-facter-modules,
-      #sops-nix,
+      sops-nix,
       ...
     }:
     {
@@ -40,9 +37,6 @@
           # Used by TheManjaroBeast
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
-            (_: {
-              nixpkgs.overlays = [ alacritty-theme.overlays.default ];
-            })
             ./home.nix
             ./modules/syncthing
             {
@@ -58,9 +52,6 @@
           # Used by ginkgo-macbook
           pkgs = import nixpkgs { system = "x86_64-darwin"; };
           modules = [
-            (_: {
-              nixpkgs.overlays = [ alacritty-theme.overlays.default ];
-            })
             ./home.nix
             {
               home = {
@@ -111,20 +102,23 @@
             ./configuration.nix
             nixos-facter-modules.nixosModules.facter
             { config.facter.reportPath = ./hosts/thenixbeast/facter.json; }
-            ./modules/sway # TODO: would be nice if this could be pushed into the host file
+            sops-nix.nixosModules.sops
+            # TODO: does passing values like this work, to get deeper into configuring the home-manager details of sway?
+            #./modules/sway {config.username = "willy";} # TODO: would be nice if this could be pushed into the host file
+            ./modules/sway
             ./hosts/thenixbeast
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.willy = {
-                  imports = [ ./home.nix ];
-                  # TODO: is this inter-mixing working?
-                  home = {
-                    username = "willy";
-                    homeDirectory = "/home/willy"; # TODO: speak now on this username or forever hold your peace
-                    stateVersion = "25.05";
+                users = {
+                  will = {
+                    imports = [ ./home.nix ];
+                    # TODO: is this inter-mixing working?
+                    home = {
+                      stateVersion = "25.05";
+                    };
                   };
                 };
               };
@@ -136,6 +130,7 @@
           modules = [
             ./configuration.nix
             # TODO: figure out how to put jovian (and its definition up above) into steamdeck/default.nix
+            sops-nix.nixosModules.sops
             jovian-nixos.nixosModules.default
             {
               jovian = {
@@ -149,27 +144,23 @@
               };
             }
             ./hosts/steamdeck
-            (_: {
-              nixpkgs.overlays = [ alacritty-theme.overlays.default ];
-            })
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.willy = {
-                  imports = [ ./home.nix ];
-                  # TODO: is this inter-mixing working?
-                  home = {
-                    username = "willy";
-                    homeDirectory = "/home/willy";
-                    stateVersion = "24.05";
-                    # programs.alacritty.settings.general.import = [ pkgs.alacritty-theme.solarized_dark ];
-                  };
-                  systemd.user.targets.tray = {
-                    Unit = {
-                      Description = "Home Manager System Tray";
-                      Requires = [ "graphical-session-pre.target" ];
+                users = {
+                  willy = {
+                    imports = [ ./home.nix ];
+                    # TODO: is this inter-mixing working?
+                    home = {
+                      stateVersion = "24.05";
+                    };
+                    systemd.user.targets.tray = {
+                      Unit = {
+                        Description = "Home Manager System Tray";
+                        Requires = [ "graphical-session-pre.target" ];
+                      };
                     };
                   };
                 };

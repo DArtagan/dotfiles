@@ -1,14 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     modules/audio
     modules/bluetooth
     modules/distributed_builders
   ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   # Locality
   i18n.defaultLocale = "en_US.UTF-8";
@@ -61,12 +57,6 @@
   };
 
   nix = {
-    # Enable users to be trusted users of the Nix store (useful for devenv)
-    extraOptions = ''
-      trusted-users = root willy
-      builders-use-substitutes = true
-    '';
-
     # Enable flakes support
     settings.experimental-features = [
       "nix-command"
@@ -115,7 +105,6 @@
     _1password.enable = true;
     _1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "willy" ];
     };
     nh = {
       enable = true;
@@ -128,12 +117,7 @@
 
   environment.variables.EDITOR = "vim";
 
-  users.users.willy = {
-    isNormalUser = true;
-    description = "Willy";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+  users = {
+    mutableUsers = false;
   };
 }

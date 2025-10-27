@@ -1,13 +1,42 @@
-_: {
+{ config, ... }:
+{
   imports = [
     #./hardware-configuration.nix
   ];
 
+  sops =
+    let
+      host_ssh_private_key = "/etc/ssh/ssh_host_ed25519_key";
+      user_ssh_private_key = "/home/will/.ssh/id_ed25519";
+    in
+    {
+      defaultSopsFile = ./secrets.yaml;
+      age.sshKeyPaths = [ host_ssh_private_key ];
+      environment.SOPS_AGE_SSH_PRIVATE_KEY_FILE = host_ssh_private_key;
+      secrets = {
+        "users/will/hashedPassword".neededForUsers = true;
+        "users/will/ssh_private_key" = {
+          mode = "600";
+          path = user_ssh_private_key;
+        };
+        "users/will/ssh_public_key" = {
+          mode = "644";
+          path = user_ssh_private_key + ".pub";
+        };
+      };
+    };
+
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      # TODO: once moved off of manjaro, consider condensing this and the steamdeck bootloader declaration, into just using systemd-boot in configuration.nix
       efi.canTouchEfiVariables = true;
-      grub.memtest86.enable = true;
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+        memtest86.enable = true;
+      };
     };
 
     supportedFilesystems = [ "zfs" ];
@@ -32,26 +61,26 @@ _: {
 
   fileSystems = {
     "/" = {
-      device = "zpool/root";
+      device = "rpool/root";
       fsType = "zfs";
       # the zfsutil option is needed when mounting zfs datasets without "legacy" mountpoints
       options = [ "zfsutil" ];
     };
 
     "/nix" = {
-      device = "zpool/nix";
+      device = "rpool/nix";
       fsType = "zfs";
       options = [ "zfsutil" ];
     };
 
     "/var" = {
-      device = "zpool/var";
+      device = "rpool/var";
       fsType = "zfs";
       options = [ "zfsutil" ];
     };
 
     "/home" = {
-      device = "zpool/home";
+      device = "rpool/home";
       fsType = "zfs";
       options = [ "zfsutil" ];
     };
@@ -67,6 +96,35 @@ _: {
   hardware.nvidia.open = true;
   services.xserver.videoDrivers = [ "nvidia" ]; # Yes it says 'xserver', it also loads for Wayland
 
+  users.users = {
+    will = {
+      # TODO: impermanence, https://github.com/Mic92/sops-nix?tab=readme-ov-file#setting-a-users-password
+      hashedPasswordFile = config.sops.secrets."users/will/hashedPassword".path;
+      home = "/home/will";
+      description = "Will";
+      isNormalUser = true;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
+    };
+  };
+
+  programs = {
+    _1password-gui = {
+      # TODO: set here to match the one user declared here
+      polkitPolicyOwners = [ "will" ];
+    };
+  };
+
+  nix = {
+    # Enable users to be trusted users of the Nix store (useful for devenv)
+    # TODO: set here to match the one user declared here
+    extraOptions = ''
+      trusted-users = root will
+      builders-use-substitutes = true
+    '';
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database
   # versions on your system were taken. It‘s perfectly fine and

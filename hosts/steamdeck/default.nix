@@ -1,8 +1,24 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
   ];
+
+  sops =
+    let
+      local_ssh_private_key = ../../../.ssh/id_ed25519;
+    in
+    {
+      defaultSopsFile = ./secrets.yaml;
+      age.sshKeyPaths = [ local_ssh_private_key ];
+      environment.SOPS_AGE_SSH_PRIVATE_KEY_FILE = local_ssh_private_key;
+      secrets."users/willy/hashedPassword".neededForUsers = true;
+    };
+
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
   networking = {
     hostName = "nix-steamdeck";
@@ -18,6 +34,37 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator # app icon system tray
   ];
+
+  # TODO: unify usernames to `will` and move this all to configuration.nix
+  users.users = {
+    willy = {
+      # TODO: impermanence, https://github.com/Mic92/sops-nix?tab=readme-ov-file#setting-a-users-password
+      hashedPasswordFile = config.sops.secrets."users/willy/hashedPassword".path;
+      home = "/home/willy";
+      description = "Willy";
+      isNormalUser = true;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
+    };
+  };
+
+  programs = {
+    _1password-gui = {
+      # TODO: set here to match the one user declared here
+      polkitPolicyOwners = [ "willy" ];
+    };
+  };
+
+  nix = {
+    # Enable users to be trusted users of the Nix store (useful for devenv)
+    # TODO: set here to match the one user declared here
+    extraOptions = ''
+      trusted-users = root willy
+      builders-use-substitutes = true
+    '';
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database
