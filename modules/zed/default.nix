@@ -64,8 +64,9 @@ _: {
               activate_script = "default";
             };
           };
-          font_family = "Hack Nerd Font";
-          font_size = null;
+          # TODO: stylix, remove
+          #font_family = "Hack Nerd Font";
+          #font_size = null;
           button = false;
         };
 
@@ -94,18 +95,20 @@ _: {
         show_completions_on_input = true;
         vim_mode = true;
 
-        theme = {
-          mode = "system";
-          light = "Zed Legacy: Solarized Light";
-          dark = "Zed Legacy: Solarized Dark";
-        };
+        # TODO: stylix, remove
+        #theme = {
+        #  mode = "system";
+        #  light = "Zed Legacy: Solarized Light";
+        #  dark = "Zed Legacy: Solarized Dark";
+        #};
         show_whitespaces = "none";
         indent_guides = {
           enabled = true;
           coloring = "indent_aware";
         };
-        ui_font_size = 14;
-        buffer_font_size = 12;
+        # TODO: stylix, remove
+        #ui_font_size = 14;
+        #buffer_font_size = 12;
         #buffer_font_size = 14;
         #buffer_font_family = "Hack Nerd Font";
         #buffer_font_weight = 400;

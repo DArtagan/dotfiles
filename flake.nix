@@ -20,6 +20,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +34,7 @@
       nixpkgs,
       nixos-facter-modules,
       sops-nix,
+      stylix,
       ...
     }:
     {
@@ -37,6 +43,7 @@
           # Used by TheManjaroBeast
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
+            stylix.homeModules.stylix
             ./home.nix
             ./modules/syncthing
             {
@@ -46,26 +53,6 @@
                 stateVersion = "24.11";
               };
             }
-          ];
-        };
-        wweiskopf = home-manager.lib.homeManagerConfiguration {
-          # Used by ginkgo-macbook
-          pkgs = import nixpkgs { system = "x86_64-darwin"; };
-          modules = [
-            ./home.nix
-            {
-              home = {
-                username = "wweiskopf";
-                homeDirectory = "/Users/wweiskopf";
-                stateVersion = "24.11";
-              };
-            }
-            (
-              { pkgs, ... }:
-              {
-                programs.vim.packageConfigurable = pkgs.vim-darwin;
-              }
-            )
           ];
         };
       };
@@ -103,8 +90,10 @@
             nixos-facter-modules.nixosModules.facter
             { config.facter.reportPath = ./hosts/thenixbeast/facter.json; }
             sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
             # TODO: does passing values like this work, to get deeper into configuring the home-manager details of sway?
             #./modules/sway {config.username = "willy";} # TODO: would be nice if this could be pushed into the host file
+            ./modules/stylix
             ./modules/sway
             ./hosts/thenixbeast
             home-manager.nixosModules.home-manager
@@ -130,8 +119,9 @@
           modules = [
             ./configuration.nix
             # TODO: figure out how to put jovian (and its definition up above) into steamdeck/default.nix
-            sops-nix.nixosModules.sops
             jovian-nixos.nixosModules.default
+            sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
             {
               jovian = {
                 devices.steamdeck = {

@@ -78,7 +78,6 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
-    #(nerdfonts.override { fonts = [ "Hack" ]; })  # Pre 25.05
   ];
 
   # Allow unfree packages

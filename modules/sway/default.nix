@@ -96,9 +96,10 @@
         menu = "bemenu-run";
         terminal = "alacritty";
         window.titlebar = false;
-        fonts = {
-          size = 12.0;
-        };
+        # TODO: stylix remove
+        #fonts = {
+        #  size = 12.0;
+        #};
         bars = [
           {
             position = "top";
@@ -121,21 +122,16 @@
             };
           }
         ];
-        keybindings =
-          let
-            # deadnix: skip
-            inherit modifier;
-          in
-          lib.mkOptionDefault {
-            XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ +5%";
-            XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ -5%";
-            XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-            XF86AudioPlay = "exec playerctl play-pause";
-            XF86AudioPause = "exec playerctl play-pause";
-            XF86AudioNext = "exec playerctl next";
-            XF86AudioPrev = "exec playerctl previous";
-            XF86AudioStop = "exec playerctl stop";
-          };
+        keybindings = lib.mkOptionDefault {
+          XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ +5%";
+          XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ -5%";
+          XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
+          XF86AudioPlay = "exec playerctl play-pause";
+          XF86AudioPause = "exec playerctl play-pause";
+          XF86AudioNext = "exec playerctl next";
+          XF86AudioPrev = "exec playerctl previous";
+          XF86AudioStop = "exec playerctl stop";
+        };
       };
     };
   };

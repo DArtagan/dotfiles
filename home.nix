@@ -32,6 +32,7 @@
 
     packages = with pkgs; [
       #calibre
+      broot
       curl
       devenv
       dnsutils # `dig` + `nslookup`
@@ -52,11 +53,13 @@
       rclone
       talosctl
       texlive.combined.scheme-medium
-      tree
+      # tree  # Use `broot` instead, eventually remove this line if you prefer it
+      ueberzugpp # Image preview for yazi
       unzip
       usbutils # lsusb
       uv
       xz
+      yazi
       zip
       zstd
     ];
@@ -70,10 +73,11 @@
       #themePackage = pkgs.alacritty-theme.solarized_light;
       settings = {
         #general.import = [ pkgs.alacritty-theme.solarized_light ];
-        font = {
-          size = 11;
-          normal.family = "Hack Nerd Font";
-        };
+        # TODO: stylix, remove
+        #font = {
+        #  size = 11;
+        #  normal.family = "Hack Nerd Font";
+        #};
         scrolling.multiplier = 5;
         selection.save_to_clipboard = true;
         terminal.shell = {
@@ -214,6 +218,11 @@
 
         ## improve_new_window_binding
         bind "c" new-window -c "#{pane_current_path}"
+
+        ## Yazi image display support
+        set -g allow-passthrough on
+        set -ga update-environment TERM
+        set -ga update-environment TERM_PROGRAM
       '';
     };
   };
