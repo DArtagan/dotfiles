@@ -16,10 +16,12 @@
       secrets = {
         "users/will/hashedPassword".neededForUsers = true;
         "users/will/ssh_private_key" = {
+          owner = "will";
           mode = "600";
           path = user_ssh_private_key;
         };
         "users/will/ssh_public_key" = {
+          owner = "will";
           mode = "644";
           path = user_ssh_private_key + ".pub";
         };
@@ -84,7 +86,16 @@
       fsType = "zfs";
       options = [ "zfsutil" ];
     };
+
+    "/boot" = {
+      device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part1";
+      fsType = "vfat";
+    };
   };
+
+  swapDevices = [
+    { device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part7"; }
+  ];
 
   networking = {
     hostId = "bcd82e4b"; # Randomly generated

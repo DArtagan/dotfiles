@@ -44,7 +44,7 @@
         set nowritebackup
         let swap_dir = expand("~/.vim/swap")
         if !isdirectory(swap_dir)
-          call mkdir(swap_dir)
+          call mkdir(swap_dir, 'p')
         endif
         set directory=~/.vim/swap//
         let g:RecoverPlugin_Delete_Unmodified_Swapfile=1

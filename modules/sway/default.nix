@@ -43,30 +43,63 @@
 
   # TODO: generalize this username
   home-manager.users.will = {
+    home = {
+      packages = with pkgs; [
+        gsimplecal
+      ];
+    };
+
     programs = {
       bemenu.enable = true;
       i3status-rust = {
         enable = true;
+        bars = {
+          top = {
+            blocks = [
+              {
+                block = "sound";
+                driver = "pulseaudio";
+                click = [
+                  {
+                    button = "left";
+                    cmd = "pavucontrol";
+                  }
+                ];
+              }
+              {
+                block = "time";
+                format = " $icon $timestamp.datetime(f:'%a %e %b %R') ";
+                click = [
+                  {
+                    button = "left";
+                    cmd = "gsimplecal";
+                  }
+                ];
+              }
+            ];
+          };
+        };
       };
     };
     services.swaync.enable = true;
     wayland.windowManager.sway = {
       enable = true;
+      checkConfig = true;
       config = {
         modifier = "Mod4";
         menu = "bemenu-run";
         terminal = "alacritty";
+        window.titlebar = false;
+        fonts = {
+          size = 12.0;
+        };
         bars = [
           {
-            fonts = {
-              names = [
-                "DejaVu Sans Mono"
-                "FontAwesome"
-              ];
-              size = 12;
-            };
             position = "top";
-            command = "i3status-rs";
+            statusCommand = "i3status-rs ~/.config/i3status-rust/config-top.toml";
+            fonts = {
+              size = 12.0;
+            };
             colors = {
               separator = "#666666";
               background = "#222222";
