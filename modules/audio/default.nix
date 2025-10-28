@@ -6,7 +6,6 @@
 
   security.rtkit.enable = true;
   services = {
-    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -15,5 +14,7 @@
       # If you want to use JACK applications, uncomment this
       # jack.enable = true;
     };
+    playerctld.enable = true; # Enable keyboard media controls
+    pulseaudio.enable = false;
   };
 }
