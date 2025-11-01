@@ -39,6 +39,7 @@
         useOSProber = true;
         memtest86.enable = true;
       };
+      timeout = 20;
     };
 
     supportedFilesystems = [ "zfs" ];
@@ -116,6 +117,7 @@
       isNormalUser = true;
       extraGroups = [
         "networkmanager"
+        "podman"
         "wheel"
       ];
     };

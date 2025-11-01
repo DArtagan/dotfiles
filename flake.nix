@@ -91,8 +91,8 @@
             { config.facter.reportPath = ./hosts/thenixbeast/facter.json; }
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            # TODO: does passing values like this work, to get deeper into configuring the home-manager details of sway?
             #./modules/sway {config.username = "willy";} # TODO: would be nice if this could be pushed into the host file
+            ./modules/containers
             ./modules/stylix
             ./modules/sway
             ./hosts/thenixbeast
@@ -103,7 +103,11 @@
                 useUserPackages = true;
                 users = {
                   will = {
-                    imports = [ ./home.nix ];
+                    imports = [
+                      #stylix.homeModules.stylix
+                      ./modules/stylix/hm.nix
+                      ./home.nix
+                    ];
                     # TODO: is this inter-mixing working?
                     home = {
                       stateVersion = "25.05";

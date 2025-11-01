@@ -14,12 +14,17 @@
 
   services.greetd = {
     enable = true;
+    # unitConfig.After = [ "docker.service" ];
     settings = {
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'sway --unsupported-gpu'";
         user = "greeter";
       };
     };
+  };
+
+  systemd.services.greetd = {
+    serviceConfig.Type = "idle";
   };
 
   environment.etc."greetd/environments".text = ''
@@ -54,7 +59,7 @@
     };
 
     programs = {
-      bemenu.enable = true;
+      kickoff.enable = true;
       i3status-rust = {
         enable = true;
         bars = {
@@ -93,7 +98,8 @@
       checkConfig = true;
       config = {
         modifier = "Mod4";
-        menu = "bemenu-run";
+        defaultWorkspace = "workspace number 1";
+        menu = "kickoff";
         terminal = "alacritty";
         window.titlebar = false;
         # TODO: stylix remove
@@ -123,8 +129,8 @@
           }
         ];
         keybindings = lib.mkOptionDefault {
-          XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ +5%";
-          XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ -5%";
+          XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
+          XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
           XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
           XF86AudioPlay = "exec playerctl play-pause";
           XF86AudioPause = "exec playerctl play-pause";

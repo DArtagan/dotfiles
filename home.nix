@@ -143,8 +143,9 @@
           src = pkgs.fetchFromGitHub {
             owner = "Realiserad";
             repo = "fish-ai";
-            rev = "v1.7.0";
-            sha256 = "GnUBPkZZ0mfMUPnk62jxrAMGPFW8YxChhFBUBsdEwLA=";
+            rev = "v2.3.1";
+            # Fetch this sha by changing it to be an empty string, running, you'll get an error with the real sha value, copy paste that in.
+            sha256 = "bgFvzjX/TphyoAz4X9Xsux8zK/N9QeBY04d9q5z8lwc=";
           };
         }
       ];
