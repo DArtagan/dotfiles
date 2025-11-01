@@ -68,6 +68,12 @@
         set wrap
         set linebreak
         set showbreak=>\
+        nnoremap j gj
+        nnoremap k gk
+        vnoremap j gj
+        vnoremap k gk
+        inoremap <buffer> <silent> <Up>   <C-o>gk
+        inoremap <buffer> <silent> <Down> <C-o>gj
 
         " Use case insensitive search, except when using capital letters
         set ignorecase
