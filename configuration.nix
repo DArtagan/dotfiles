@@ -94,6 +94,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    inxi # hardware info
     lm_sensors # for `sensors` command
     tmux
     vim

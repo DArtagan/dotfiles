@@ -137,6 +137,9 @@
       trusted-users = root will
       builders-use-substitutes = true
     '';
+    settings = {
+      cores = 6;
+    };
   };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database
