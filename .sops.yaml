@@ -1,11 +1,13 @@
 keys:
   - &steamdeck_willy ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYSwODOrerKkBNuitwqjNioFXLDRBKqSJTayFoo1Ude
+  - &steamdeck ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3g7cDUbFypZlqSxWfblUe8E+I7lGxkJTmAw5VaWK89
   - &thenixbeast ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEB74qOTioDeqED1VPlfAHWsQuh5x5TQs7kji2S8QiEM
   - &thenixbeast_will ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIyPkfTI0io9dZsJstcf29tddyrsHr9bnM8UXKtaVJwm
 creation_rules:
   - path_regex: hosts/steamdeck/secrets.yaml
     key_groups:
       - age:
+        - *steamdeck
         - *steamdeck_willy
         - *thenixbeast_will
   - path_regex: hosts/thenixbeast/secrets.yaml
@@ -18,6 +20,7 @@ creation_rules:
     key_groups:
       - age:
         - *thenixbeast
+        - *steamdeck
         - *steamdeck_willy
         - *thenixbeast_will
 stores:

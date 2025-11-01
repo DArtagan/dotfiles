@@ -6,13 +6,26 @@
 
   sops =
     let
-      local_ssh_private_key = ../../../.ssh/id_ed25519;
+      host_ssh_private_key = "/etc/ssh/ssh_host_ed25519_key";
+      user_ssh_private_key = "/home/willy/.ssh/id_ed25519";
     in
     {
       defaultSopsFile = ./secrets.yaml;
-      age.sshKeyPaths = [ local_ssh_private_key ];
-      environment.SOPS_AGE_SSH_PRIVATE_KEY_FILE = local_ssh_private_key;
-      secrets."users/willy/hashedPassword".neededForUsers = true;
+      age.sshKeyPaths = [ host_ssh_private_key ];
+      environment.SOPS_AGE_SSH_PRIVATE_KEY_FILE = host_ssh_private_key;
+      secrets = {
+        "users/willy/hashedPassword".neededForUsers = true;
+        "users/willy/ssh_private_key" = {
+          owner = "willy";
+          mode = "600";
+          path = user_ssh_private_key;
+        };
+        "users/willy/ssh_public_key" = {
+          owner = "willy";
+          mode = "644";
+          path = user_ssh_private_key + ".pub";
+        };
+      };
     };
 
   boot.loader = {
@@ -64,6 +77,9 @@
       trusted-users = root willy
       builders-use-substitutes = true
     '';
+    settings = {
+      cores = 4;
+    };
   };
 
   # This value determines the NixOS release from which the default

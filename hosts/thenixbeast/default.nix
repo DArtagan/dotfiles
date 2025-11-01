@@ -137,7 +137,7 @@
       builders-use-substitutes = true
     '';
     settings = {
-      cores = 6;
+      cores = 12;
     };
   };
   # This value determines the NixOS release from which the default
