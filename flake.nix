@@ -118,7 +118,7 @@
             }
           ];
         };
-        steamdeck = nixpkgs.lib.nixosSystem {
+        nix-steamdeck = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
