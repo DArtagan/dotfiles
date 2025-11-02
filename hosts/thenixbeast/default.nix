@@ -127,16 +127,14 @@
       # TODO: set here to match the one user declared here
       polkitPolicyOwners = [ "will" ];
     };
+    steam.enable = true; # TODO: Maybe move into its own module, include other steam settings: https://search.nixos.org/options?channel=unstable&query=steam
   };
 
   nix = {
-    # Enable users to be trusted users of the Nix store (useful for devenv)
-    # TODO: set here to match the one user declared here
-    extraOptions = ''
-      trusted-users = root will
-      builders-use-substitutes = true
-    '';
     settings = {
+      # Enable users to be trusted users of the Nix store (useful for devenv)
+      # TODO: set here to match the one user declared here
+      trusted-users = [ "will" ];
       cores = 12;
     };
   };

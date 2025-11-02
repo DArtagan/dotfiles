@@ -71,13 +71,10 @@
   };
 
   nix = {
-    # Enable users to be trusted users of the Nix store (useful for devenv)
-    # TODO: set here to match the one user declared here
-    extraOptions = ''
-      trusted-users = root willy
-      builders-use-substitutes = true
-    '';
     settings = {
+      # Enable users to be trusted users of the Nix store (useful for devenv)
+      # TODO: set here to match the one user declared here
+      trusted-users = [ "willy" ];
       cores = 4;
     };
   };

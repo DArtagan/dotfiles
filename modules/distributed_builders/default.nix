@@ -39,7 +39,7 @@
             supportedFeatures
             systems
             ;
-          hostName = "192.168.1.10"; # thenixbeast
+          hostName = "thenixbeast";
           maxJobs = 12;
           speedFactor = 132;
         }
@@ -51,7 +51,7 @@
             supportedFeatures
             systems
             ;
-          hostName = "192.168.1.12"; # steamdeck
+          hostName = "steamdeck";
           maxJobs = 4;
           speedFactor = 28;
         }
@@ -62,14 +62,47 @@
     };
   };
 
-  users.users.nix = {
-    isSystemUser = true;
-    home = "/var/empty";
-    group = "nix";
-    openssh.authorizedKeys.keyFiles = [
-      config.sops.secrets."distributed_builders/ssh_public_key".path
-    ];
+  users = {
+    users.nix = {
+      isSystemUser = true;
+      home = "/var/empty";
+      group = "nix";
+      # TODO: lock this down further using something like: https://discourse.nixos.org/t/wrapper-to-restrict-builder-access-through-ssh-worth-upstreaming/25834/17
+      openssh.authorizedKeys.keys = [
+        "no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEufEieU/OuOiSA3jfmUo4ro9UQFC2tMkzL/NdRuP3Qh"
+      ];
+      useDefaultShell = true;
+    };
+
+    groups.nix = { };
   };
 
-  users.groups.nix = { };
+  programs.ssh = {
+    extraConfig = ''
+      Host steamdeck
+        HostName 192.168.1.12
+        User nix
+        IdentitiesOnly yes
+        IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
+      Host thenixbeast
+        HostName 192.168.1.10
+        User nix
+        IdentitiesOnly yes
+        IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
+    '';
+    knownHosts = {
+      steamdeck = {
+        extraHostNames = [ "192.168.1.12" ];
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3g7cDUbFypZlqSxWfblUe8E+I7lGxkJTmAw5VaWK89";
+      };
+      thenixbeast = {
+        extraHostNames = [ "192.168.1.10" ];
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEB74qOTioDeqED1VPlfAHWsQuh5x5TQs7kji2S8QiEM";
+      };
+    };
+  };
+
+  services.openssh = {
+    enable = true;
+  };
 }
