@@ -22,38 +22,7 @@
   time.timeZone = "America/New_York";
 
   networking = {
-    firewall.allowedUDPPorts = [ 51820 ]; # Wireguard
-
-    # Enable networking
     networkmanager.enable = true;
-
-    wg-quick.interfaces = {
-      # Launch using: `sudo systemctl restart wg-quick-wg0.service`
-      wg0 = {
-        address = [ "10.0.1.10/32" ];
-        autostart = false;
-        dns = [
-          "192.168.0.202"
-          "1.1.1.1"
-        ];
-        #listenPort = 51820;
-        privateKeyFile = "/etc/wireguard/private.key";
-        peers = [
-          {
-            publicKey = "ky2MMTdJmLKAT/QwgUNpRCmXJb1Mn4Qs/51rqFq6/jo=";
-            allowedIPs = [
-              "0.0.0.0/0"
-              "::/0"
-            ];
-            # Or only particular subnets
-            #allowedIPs = [ "10.0.1.0/24", "10.0.0.0/24", "192.168.0.0/24" ];
-            endpoint = "immortalkeep.com:51820";
-            persistentKeepalive = 25;
-          }
-        ];
-        #postUp = "ping -c1 10.0.1.1";
-      };
-    };
   };
 
   nix = {

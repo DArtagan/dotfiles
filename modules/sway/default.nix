@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -128,16 +129,27 @@
             };
           }
         ];
-        keybindings = lib.mkOptionDefault {
-          XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
-          XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
-          XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-          XF86AudioPlay = "exec playerctl play-pause";
-          XF86AudioPause = "exec playerctl play-pause";
-          XF86AudioNext = "exec playerctl next";
-          XF86AudioPrev = "exec playerctl previous";
-          XF86AudioStop = "exec playerctl stop";
-        };
+        keybindings =
+          let
+            inherit (config.home-manager.users.will.wayland.windowManager.sway.config) modifier;
+          in
+          lib.mkOptionDefault {
+            # Resize
+            "${modifier}+Ctrl+l" = "exec sway resize shrink width 50 px";
+            "${modifier}+Ctrl+k" = "exec sway resize grow height 50 px";
+            "${modifier}+Ctrl+j" = "exec sway resize shrink height 50 px";
+            "${modifier}+Ctrl+h" = "exec sway resize grow width 50 px";
+
+            # Media keys
+            XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
+            XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
+            XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
+            XF86AudioPlay = "exec playerctl play-pause";
+            XF86AudioPause = "exec playerctl play-pause";
+            XF86AudioNext = "exec playerctl next";
+            XF86AudioPrev = "exec playerctl previous";
+            XF86AudioStop = "exec playerctl stop";
+          };
       };
     };
   };

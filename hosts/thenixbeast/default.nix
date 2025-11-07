@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     #./hardware-configuration.nix
@@ -25,6 +25,7 @@
           mode = "644";
           path = user_ssh_private_key + ".pub";
         };
+        "users/will/wireguard_private_key" = { };
       };
     };
 
@@ -55,6 +56,11 @@
       enable = true;
     };
   };
+
+  #services.murmur = {
+  #  enable = true;
+  #  openFirewall = true;
+  #};
 
   # services.sanoid  # TODO: zfs auto-snapshotting
 
@@ -91,6 +97,16 @@
       device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part1";
       fsType = "vfat";
     };
+
+    "/mnt/manjaro" = {
+      device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part4";
+      fsType = "ext4";
+    };
+
+    "/mnt/mamba" = {
+      device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part6";
+      fsType = "ext4";
+    };
   };
 
   swapDevices = [
@@ -100,6 +116,32 @@
   networking = {
     hostId = "bcd82e4b"; # Randomly generated
     hostName = "thenixbeast";
+
+    wg-quick.interfaces = {
+      wg0 = {
+        address = [ "10.0.1.10/32" ];
+        autostart = false;
+        dns = [
+          "192.168.0.202"
+          "1.1.1.1"
+        ];
+        privateKeyFile = config.sops.secrets."users/will/wireguard_private_key".path;
+        peers = [
+          {
+            publicKey = "ky2MMTdJmLKAT/QwgUNpRCmXJb1Mn4Qs/51rqFq6/jo=";
+            allowedIPs = [
+              "10.0.1.0/24"
+              "192.168.0.0/24"
+            ];
+            endpoint = "immortalkeep.com:51820";
+          }
+        ];
+        postUp = [
+          "${pkgs.inetutils}/bin/ping -c1 10.0.1.1"
+        ];
+      };
+    };
+
   };
 
   # Nvidia
@@ -127,7 +169,11 @@
       # TODO: set here to match the one user declared here
       polkitPolicyOwners = [ "will" ];
     };
-    steam.enable = true; # TODO: Maybe move into its own module, include other steam settings: https://search.nixos.org/options?channel=unstable&query=steam
+    # TODO: Maybe move into its own module, include other steam settings: https://search.nixos.org/options?channel=unstable&query=steam
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
   };
 
   nix = {

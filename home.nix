@@ -39,11 +39,14 @@
       gparted
       graphviz
       fluxcd
+      inetutils # ping
       kubectl
       ldns # replacement of `dig`, it provides the command `drill`
       lsof # list open files
       nerd-fonts.hack
       magic-wormhole
+      #(mumble.override { pipewireSupport = true; })
+      mumble
       nix-output-monitor
       nixos-rebuild
       nodejs # For vim CoC
@@ -51,6 +54,7 @@
       pstree
       python313Packages.psutil # For vim Recover.vim
       rclone
+      qutebrowser
       talosctl
       texlive.combined.scheme-medium
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
@@ -59,7 +63,6 @@
       usbutils # lsusb
       uv
       xz
-      yazi
       zip
       zstd
     ];
@@ -225,6 +228,20 @@
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
       '';
+    };
+    yazi = {
+      enable = true;
+      keymap = {
+        manager.prepend_keymap = [
+          {
+            run = "plugin mount";
+            on = [ "M" ];
+          }
+        ];
+      };
+      plugins = {
+        inherit (pkgs.yaziPlugins) mount;
+      };
     };
   };
 }
