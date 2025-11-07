@@ -38,9 +38,7 @@
       dnsutils # `dig` + `nslookup`
       gparted
       graphviz
-      fluxcd
       inetutils # ping
-      kubectl
       ldns # replacement of `dig`, it provides the command `drill`
       lsof # list open files
       nerd-fonts.hack
@@ -55,7 +53,6 @@
       python313Packages.psutil # For vim Recover.vim
       rclone
       qutebrowser
-      talosctl
       texlive.combined.scheme-medium
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
       ueberzugpp # Image preview for yazi
@@ -179,7 +176,6 @@
     };
     home-manager.enable = true;
     jq.enable = true;
-    k9s.enable = true;
     man.generateCaches = false; # Because it's slow.  Can't search without it though
     nh = {
       enable = true;

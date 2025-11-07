@@ -57,10 +57,10 @@
     };
   };
 
-  #services.murmur = {
-  #  enable = true;
-  #  openFirewall = true;
-  #};
+  services.murmur = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # services.sanoid  # TODO: zfs auto-snapshotting
 

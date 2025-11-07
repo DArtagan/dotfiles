@@ -26,6 +26,7 @@
 
   systemd.services.greetd = {
     serviceConfig.Type = "idle";
+    unitConfig.After = [ "timers.target" ];
   };
 
   environment.etc."greetd/environments".text = ''
