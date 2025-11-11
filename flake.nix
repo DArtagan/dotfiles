@@ -45,7 +45,6 @@
           modules = [
             stylix.homeModules.stylix
             ./home.nix
-            ./modules/syncthing
             {
               home = {
                 username = "will";
@@ -89,26 +88,25 @@
             ./configuration.nix
             nixos-facter-modules.nixosModules.facter
             { config.facter.reportPath = ./hosts/thenixbeast/facter.json; }
+            home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            #./modules/sway {config.username = "willy";} # TODO: would be nice if this could be pushed into the host file
             ./modules/containers
             ./modules/stylix
             ./modules/sway
             ./hosts/thenixbeast
-            home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users = {
                   will = {
+                    syncthing.username = "will";
                     imports = [
-                      #stylix.homeModules.stylix
-                      ./modules/stylix/hm.nix
                       ./home.nix
+                      ./modules/stylix/hm.nix
+                      ./modules/syncthing
                     ];
-                    # TODO: is this inter-mixing working?
                     home = {
                       stateVersion = "25.05";
                     };
@@ -122,10 +120,11 @@
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
-            # TODO: figure out how to put jovian (and its definition up above) into steamdeck/default.nix
             jovian-nixos.nixosModules.default
+            home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
+            ./hosts/steamdeck
             {
               jovian = {
                 devices.steamdeck = {
@@ -136,17 +135,16 @@
                 steam.enable = true;
                 steamos.useSteamOSConfig = true;
               };
-            }
-            ./hosts/steamdeck
-            home-manager.nixosModules.home-manager
-            {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users = {
                   willy = {
-                    imports = [ ./home.nix ];
-                    # TODO: is this inter-mixing working?
+                    syncthing.username = "willy";
+                    imports = [
+                      ./home.nix
+                      ./modules/syncthing
+                    ];
                     home = {
                       stateVersion = "24.05";
                     };
