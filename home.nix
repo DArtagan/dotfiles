@@ -176,6 +176,7 @@
     };
     home-manager.enable = true;
     jq.enable = true;
+    mpv.enable = true;
     man.generateCaches = false; # Because it's slow.  Can't search without it though
     nh = {
       enable = true;
