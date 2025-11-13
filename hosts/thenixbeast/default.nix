@@ -57,11 +57,6 @@
     };
   };
 
-  services.murmur = {
-    enable = true;
-    openFirewall = true;
-  };
-
   # services.sanoid  # TODO: zfs auto-snapshotting
 
   # TODO: have opted to manually edit the hardware configuration, adding `options = [ "zfsutil" ];` to each of the applicable entries, which should get around the below.  Delete if it is indeed unnecessary.

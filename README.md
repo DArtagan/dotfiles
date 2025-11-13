@@ -79,6 +79,14 @@ Reference: https://wiki.nixos.org/wiki/ZFS
   nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-facter ./hosts/thenixbeast/facter.json --extra-files "$TEMP_SSH" --phases kexec,install,reboot --flake .#thenixbeast --target-host root@<ip address>
   ```
 
+## tailscale
+
+Once tailscale is installed and running on your system, join the network by:
+1. Run `tailscale up --login-server=https://headscale.immortalkeep.com`
+2. Via a connection to the headscale server, run the command it gives you to register the node.  In this case, we're going to do so using kubectl:
+  a. Find/confirm which username to register the node under: `kubectl exec -n apps headscale-abcdef-0123 -- headscale users list`
+  b. `kubectl exec -n apps headscale-abcdef-0123 -- headscale nodes register --user {username_from_above} mkey:0123456789abcdef...`
+
 
 ## Deprecated dotfiles:
 * chunkwm: project is no longer developed.  Move to `yabai` instead.

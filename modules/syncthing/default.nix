@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  username = config.syncthing.username;
+  inherit (config.syncthing) username;
 in
 {
   options.syncthing.username = lib.mkOption {

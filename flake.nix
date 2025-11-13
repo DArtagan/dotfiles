@@ -94,6 +94,7 @@
             ./modules/containers
             ./modules/stylix
             ./modules/sway
+            ./modules/tailscale
             ./hosts/thenixbeast
             {
               home-manager = {
@@ -124,6 +125,7 @@
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
+            ./modules/tailscale
             ./hosts/steamdeck
             {
               jovian = {
