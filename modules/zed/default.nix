@@ -27,7 +27,7 @@ _: {
 
         language_models = {
           ollama = {
-            apiUrl = "http://192.168.1.10:11434";
+            apiUrl = "http://thenixbeast.forge.local:11434";
             availableModels = [
               {
                 name = "codestral";
