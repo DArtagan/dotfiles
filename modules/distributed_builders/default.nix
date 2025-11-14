@@ -80,23 +80,29 @@
   programs.ssh = {
     extraConfig = ''
       Host steamdeck
-        HostName 192.168.1.12
+        HostName nix-steamdeck.forge.local
         User nix
         IdentitiesOnly yes
         IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
       Host thenixbeast
-        HostName 192.168.1.10
+        HostName thenixbeast.forge.local
         User nix
         IdentitiesOnly yes
         IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
     '';
     knownHosts = {
       steamdeck = {
-        extraHostNames = [ "192.168.1.12" ];
+        extraHostNames = [
+          "192.168.1.12"
+          "nix-steamdeck.forge.local"
+        ];
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3g7cDUbFypZlqSxWfblUe8E+I7lGxkJTmAw5VaWK89";
       };
       thenixbeast = {
-        extraHostNames = [ "192.168.1.10" ];
+        extraHostNames = [
+          "192.168.1.10"
+          "thenixbeast.forge.local"
+        ];
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEB74qOTioDeqED1VPlfAHWsQuh5x5TQs7kji2S8QiEM";
       };
     };
