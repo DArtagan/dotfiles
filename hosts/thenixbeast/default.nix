@@ -140,8 +140,11 @@
   };
 
   # Nvidia
-  hardware.graphics.enable = true;
-  hardware.nvidia.open = true;
+  hardware = {
+    graphics.enable = true;
+    nvidia.open = true;
+    xone.enable = true; # Xbox One wireless adapter
+  };
   services.xserver.videoDrivers = [ "nvidia" ]; # Yes it says 'xserver', it also loads for Wayland
 
   users.users = {
