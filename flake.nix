@@ -92,6 +92,7 @@
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
             ./modules/containers
+            ./modules/ai-server
             ./modules/stylix
             ./modules/sway
             ./modules/tailscale
