@@ -46,6 +46,7 @@
       #(mumble.override { pipewireSupport = true; })
       mumble
       nix-output-monitor
+      nix-tree # explore the package dependency tree, what derivation is using what
       nixos-rebuild
       nodejs # For vim CoC
       pciutils # lspci
