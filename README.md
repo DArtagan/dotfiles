@@ -88,6 +88,14 @@ Once tailscale is installed and running on your system, join the network by:
   b. `kubectl exec -n apps headscale-abcdef-0123 -- headscale nodes register --user {username_from_above} mkey:0123456789abcdef...`
 
 
+## Wifi
+
+1. List network interfaces: `nmcli device`
+2. List nearby networks: `nm device wifi list`
+3. Connect: `nm device wifi connect {network_name} --ask`
+4. Disconnect: `nm device disconnect {wifi_interface_name}`
+
+
 ## Deprecated dotfiles:
 * chunkwm: project is no longer developed.  Move to `yabai` instead.
 * fish: configuration moved to `home.nix`, now ceasing to maintain the `fish` directory.
