@@ -139,8 +139,8 @@
 
   };
 
-  # Nvidia
   hardware = {
+    bluetooth.enable = true;
     graphics.enable = true;
     nvidia.open = true;
     xone.enable = true; # Xbox One wireless adapter
