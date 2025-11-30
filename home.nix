@@ -31,8 +31,8 @@
     '';
 
     packages = with pkgs; [
-      #calibre
       broot
+      calibre
       curl
       devenv
       dnsutils # `dig` + `nslookup`
@@ -43,7 +43,6 @@
       lsof # list open files
       nerd-fonts.hack
       magic-wormhole
-      #(mumble.override { pipewireSupport = true; })
       mumble
       nix-output-monitor
       nix-tree # explore the package dependency tree, what derivation is using what

@@ -55,6 +55,12 @@
   services = {
     printing.enable = true;
     tailscale.enable = true;
+
+    # Automatic disk mounting
+    devmon.enable = true;
+    gvfs.enable = true;
+    udisks2.enable = true;
+
     xserver.xkb = {
       layout = "us";
       variant = "";
