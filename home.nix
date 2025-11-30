@@ -53,6 +53,7 @@
       python313Packages.psutil # For vim Recover.vim
       rclone
       qutebrowser
+      spotify
       texlive.combined.scheme-medium
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
       ueberzugpp # Image preview for yazi
