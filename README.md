@@ -86,6 +86,9 @@ Once tailscale is installed and running on your system, join the network by:
 2. Via a connection to the headscale server, run the command it gives you to register the node.  In this case, we're going to do so using kubectl:
   a. Find/confirm which username to register the node under: `kubectl exec -n apps headscale-abcdef-0123 -- headscale users list`
   b. `kubectl exec -n apps headscale-abcdef-0123 -- headscale nodes register --user {username_from_above} mkey:0123456789abcdef...`
+3. You may also want to rename the node in headscale:
+  a. Get the numeric ID of the node: `kubectl exec -n apps headscale-abcdef-0123 -- headscale nodes list`
+  b. Using the numeric ID as the index, give the node a new name: `headscale nodes rename -i 7 new-name`
 
 
 ## Wifi

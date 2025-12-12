@@ -50,10 +50,13 @@
     zfs.devNodes = "/dev/";
   };
 
-  services.zfs = {
-    trim.enable = true;
-    autoScrub = {
-      enable = true;
+  services = {
+    gnome.gnome-keyring.enable = true; # So 1Password can store its vault 2FA locally
+    zfs = {
+      trim.enable = true;
+      autoScrub = {
+        enable = true;
+      };
     };
   };
 
