@@ -51,7 +51,16 @@
   };
 
   services = {
+    esphome.enable = true; # For connecting to and programming ESP32 microcontrollers
     gnome.gnome-keyring.enable = true; # So 1Password can store its vault 2FA locally
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "no"; # disable root login
+        PasswordAuthentication = false; # disable password login, require keys
+      };
+      openFirewall = true;
+    };
     zfs = {
       trim.enable = true;
       autoScrub = {
@@ -145,6 +154,7 @@
   hardware = {
     bluetooth.enable = true;
     graphics.enable = true;
+    libftdi.enable = true; # For connecting to and programming ESP32 microcontrollers
     nvidia.open = true;
     xone.enable = true; # Xbox One wireless adapter
   };
@@ -158,9 +168,14 @@
       description = "Will";
       isNormalUser = true;
       extraGroups = [
+        "dialout"
         "networkmanager"
         "podman"
+        "tty"
         "wheel"
+      ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKYSwODOrerKkBNuitwqjNioFXLDRBKqSJTayFoo1Ude willy@steamdeck"
       ];
     };
   };
