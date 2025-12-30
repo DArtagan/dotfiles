@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+_: {
   sops.secrets = {
     "distributed_builders/ssh_private_key" = {
       sopsFile = ./secrets.yaml;
@@ -79,18 +78,19 @@
   };
 
   programs.ssh = {
-    extraConfig = ''
-      Host steamdeck
-        HostName nix-steamdeck.forge.local
-        User nix
-        IdentitiesOnly yes
-        IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
-      Host thenixbeast
-        HostName thenixbeast.forge.local
-        User nix
-        IdentitiesOnly yes
-        IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
-    '';
+    # TODO: heads up, these pre-defined configs might grab and over-ride if one were trying to do something like `ssh will@thenixbeat`, while `ssh will@thenixbeast.force.local` still works.
+    #extraConfig = ''
+    #  Host steamdeck
+    #    HostName nix-steamdeck.forge.local
+    #    User nix
+    #    IdentitiesOnly yes
+    #    IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
+    #  Host thenixbeast
+    #    HostName thenixbeast.forge.local
+    #    User nix
+    #    IdentitiesOnly yes
+    #    IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
+    #'';
     knownHosts = {
       steamdeck = {
         extraHostNames = [
