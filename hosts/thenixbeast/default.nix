@@ -185,11 +185,6 @@
       # TODO: set here to match the one user declared here
       polkitPolicyOwners = [ "will" ];
     };
-    # TODO: Maybe move into its own module, include other steam settings: https://search.nixos.org/options?channel=unstable&query=steam
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
   };
 
   nix = {

@@ -34,6 +34,7 @@
       broot
       calibre
       curl
+      deluge # bittorrent
       devenv
       dnsutils # `dig` + `nslookup`
       gparted
@@ -187,7 +188,6 @@
       };
     };
     ripgrep.enable = true;
-    #qbittorrent.enable = true;
     tmux = {
       enable = true;
       baseIndex = 1;
