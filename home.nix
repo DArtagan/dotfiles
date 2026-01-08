@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 {
   imports = [
+    modules/qutebrowser
     modules/vim
     modules/zed
   ];
@@ -53,7 +54,6 @@
       pstree
       python313Packages.psutil # For vim Recover.vim
       rclone
-      qutebrowser
       spotify
       texlive.combined.scheme-medium
       # tree  # Use `broot` instead, eventually remove this line if you prefer it

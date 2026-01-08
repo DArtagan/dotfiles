@@ -15,7 +15,8 @@ c.url.start_pages = ["https://web.tabliss.io/"]
 
 # Search engines
 c.url.searchengines = {
-    'DEFAULT': 'https://www.google.com/search?hl=en&q={}',
+    'DEFAULT': 'https://kagi.com/search?q={}',
+    'kagi': 'https://kagi.com/search?q={}',
     'google': 'https://www.google.com/search?hl=en&q={}',
 }
 
