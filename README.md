@@ -37,7 +37,7 @@ Reference: https://wiki.nixos.org/wiki/ZFS
 5. Optionally, do steps similar to the ones above - creating user SSH keys to be deployed onto the machine.  Update the corresponding host secrets file with those keys, so they're deployed.  Also add new entries for them to the `.sops.yaml` because ideally the user can edit all other secrets files.
   ```
   TEMP_USER_SSH=$(mktemp -d)
-  ssh-keygen -t ed25519 -f "$TEMP_USER_SSH/etc/ssh/ssh_host_ed25519_key"
+  ssh-keygen -t ed25519 -f "$TEMP_USER_SSH/id_ed25519"
   ```
 2. Boot the target machine using the liveUSB.
 3. Change to `root`: `sudo su`

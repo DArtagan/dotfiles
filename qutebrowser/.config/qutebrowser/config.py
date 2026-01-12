@@ -20,4 +20,7 @@ c.url.searchengines = {
     'google': 'https://www.google.com/search?hl=en&q={}',
 }
 
+# Open PDFs in pdf.js by default (instead of showing a download prompt)
+c.content.pdfjs = True
+
 config.load_autoconfig(False)
