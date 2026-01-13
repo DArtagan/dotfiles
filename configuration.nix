@@ -26,18 +26,27 @@
   };
 
   nix = {
-    # Enable flakes support
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-
-    # Clean up nix store storage
-    settings.auto-optimise-store = true;
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 90d";
+    };
+
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      # Clean up nix store storage
+      auto-optimise-store = true;
+
+      substituters = [
+        "http://mini-nas.forge.local:8770"
+      ];
+      trusted-public-keys = [
+        "public:YyCDrhNMvRWl7OxoW+8ueMcmVOOc1bllsVCMRNfZWpQ="
+      ];
     };
   };
 
