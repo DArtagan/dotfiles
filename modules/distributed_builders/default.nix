@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   sops.secrets = {
     "distributed_builders/ssh_private_key" = {
       sopsFile = ./secrets.yaml;
@@ -10,6 +11,25 @@ _: {
 
   nix = {
     distributedBuilds = true;
+    buildMachines = [
+      {
+        protocol = "ssh-ng";
+        hostName = "mini-nas.forge.local";
+        maxJobs = 20;
+        sshKey = config.sops.secrets."distributed_builders/ssh_private_key".path;
+        sshUser = "nix";
+        supportedFeatures = [
+          "nixos-test"
+          "benchmark"
+          "big-parallel"
+          "kvm"
+        ];
+        systems = [
+          "x86_64-linux"
+          "i686-linux"
+        ];
+      }
+    ];
     # TODO: disabling distributed builders for now, since self-building just causes borked locks
     #buildMachines =
     #  let
