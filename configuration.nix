@@ -42,7 +42,7 @@
       auto-optimise-store = true;
 
       substituters = [
-        "http://mini-nas.forge.local:8770"
+        "http://mini-nas.forge.local:8770/public"
       ];
       trusted-public-keys = [
         "public:YyCDrhNMvRWl7OxoW+8ueMcmVOOc1bllsVCMRNfZWpQ="
