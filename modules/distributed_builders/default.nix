@@ -65,7 +65,6 @@ _: {
   users = {
     users.nix = {
       isSystemUser = true;
-      home = "/var/empty";
       group = "nix";
       # TODO: lock this down further using something like: https://discourse.nixos.org/t/wrapper-to-restrict-builder-access-through-ssh-worth-upstreaming/25834/17
       openssh.authorizedKeys.keys = [
@@ -81,7 +80,7 @@ _: {
     # TODO: heads up, these pre-defined configs might grab and over-ride if one were trying to do something like `ssh will@thenixbeat`, while `ssh will@thenixbeast.force.local` still works.
     #extraConfig = ''
     #  Host steamdeck
-    #    HostName nix-steamdeck.forge.local
+    #    HostName steamdeck.forge.local
     #    User nix
     #    IdentitiesOnly yes
     #    IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
@@ -95,7 +94,7 @@ _: {
       steamdeck = {
         extraHostNames = [
           "192.168.1.12"
-          "nix-steamdeck.forge.local"
+          "steamdeck.forge.local"
         ];
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3g7cDUbFypZlqSxWfblUe8E+I7lGxkJTmAw5VaWK89";
       };

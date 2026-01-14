@@ -37,7 +37,7 @@
   };
 
   networking = {
-    hostName = "nix-steamdeck";
+    hostName = "steamdeck";
 
     wg-quick.interfaces = {
       # Launch using: `sudo systemctl restart wg-quick-wg0.service`

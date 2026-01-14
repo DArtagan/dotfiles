@@ -41,6 +41,7 @@
       gparted
       graphviz
       inetutils # ping
+      inxi # show computer specs (sadly unmaintained since 2014)
       ldns # replacement of `dig`, it provides the command `drill`
       lsof # list open files
       nerd-fonts.hack
