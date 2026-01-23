@@ -152,12 +152,12 @@
                     home = {
                       stateVersion = "24.05";
                     };
-                    systemd.user.targets.tray = {
-                      Unit = {
-                        Description = "Home Manager System Tray";
-                        Requires = [ "graphical-session-pre.target" ];
-                      };
-                    };
+                    #systemd.user.targets.tray = {
+                    #  Unit = {
+                    #    Description = "Home Manager System Tray";
+                    #    Requires = [ "graphical-session-pre.target" ];
+                    #  };
+                    #};
                   };
                 };
               };

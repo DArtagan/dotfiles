@@ -39,6 +39,10 @@
   networking = {
     hostName = "steamdeck";
 
+    #interfaces."wlo1_prime" = {
+    #
+    #};
+
     wg-quick.interfaces = {
       # Launch using: `sudo systemctl restart wg-quick-wg0.service`
       wg0 = {
@@ -72,6 +76,19 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
     xserver.enable = true;
+
+    # Share wifi as a hotspot
+    # TODO: currently requires a virtual interface be first created using
+    # iw dev wlan0 interface add wlo1_prime type managed addr 12:34:56:78:ab:ce
+    #create_ap = {
+    #  enable = true;
+    #  settings = {
+    #    INTERNET_IFACE = "wlo1_prime";
+    #    WIFI_IFACE = "wlo1";
+    #    SSID = "steam_powered_internet";
+    #    PASSPHRASE = "qwertyui";
+    #  };
+    #};
   };
 
   environment.systemPackages = with pkgs; [

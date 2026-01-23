@@ -10,7 +10,8 @@ in
   config = {
     services.syncthing = {
       enable = true;
-      tray.enable = true;
+      # Duplicates what is already showing in Gnome.  Check whether that's true for sway too, or whether these devices need different settings.  Don't know where Gnome is getting their syncthing-tray binary.
+      #tray.enable = true;
       settings = {
         devices = {
           TheBeast_Manjaro.id = "XFBFA7U-QHO6RGW-6O5LUX3-4AFGAHF-477KYYN-NYPGRJ2-PDU35JO-GYBVJQG";
