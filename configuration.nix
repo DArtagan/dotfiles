@@ -26,11 +26,11 @@
   };
 
   nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 90d";
-    };
+    #gc = {
+    #  automatic = true;
+    #  dates = "weekly";
+    #  options = "--delete-older-than 90d";
+    #};
 
     settings = {
       experimental-features = [
@@ -92,10 +92,11 @@
     };
     nh = {
       enable = true;
-      #clean = {
-      #  enable = true;
-      #  extraArgs = "--keep-since 90d --keep 2";
-      #};
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 4d --keep 2 --optimise";
+        dates = "weekly";
+      };
     };
   };
 

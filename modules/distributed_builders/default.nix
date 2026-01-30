@@ -86,6 +86,7 @@
     users.nix = {
       isSystemUser = true;
       group = "nix";
+      # TODO: this key is probably wrong, which doesn't let the mini-nas use these machines as builders.  On the upside though, it also can't get into the lock loop this way.
       # TODO: lock this down further using something like: https://discourse.nixos.org/t/wrapper-to-restrict-builder-access-through-ssh-worth-upstreaming/25834/17
       openssh.authorizedKeys.keys = [
         "no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEufEieU/OuOiSA3jfmUo4ro9UQFC2tMkzL/NdRuP3Qh"

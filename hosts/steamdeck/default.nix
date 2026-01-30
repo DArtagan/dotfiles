@@ -25,6 +25,7 @@
           mode = "644";
           path = user_ssh_private_key + ".pub";
         };
+        "users/willy/wireguard_private_key" = { };
       };
     };
 
@@ -52,8 +53,7 @@
           "192.168.0.202"
           "1.1.1.1"
         ];
-        #listenPort = 51820;
-        privateKeyFile = "/etc/wireguard/private.key";
+        privateKeyFile = config.sops.secrets."users/willy/wireguard_private_key".path;
         peers = [
           {
             publicKey = "ky2MMTdJmLKAT/QwgUNpRCmXJb1Mn4Qs/51rqFq6/jo=";
