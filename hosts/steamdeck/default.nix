@@ -47,7 +47,8 @@
     wg-quick.interfaces = {
       # Launch using: `sudo systemctl restart wg-quick-wg0.service`
       wg0 = {
-        address = [ "10.0.1.12/32" ];
+        # TODO: make the rest of this wireguard config a reusable module across hosts, with this address and privateKey the only things passed in.
+        address = [ "10.0.1.11/32" ];
         autostart = false;
         dns = [
           "192.168.0.202"
