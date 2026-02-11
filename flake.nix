@@ -57,7 +57,6 @@
       };
       nixosConfigurations = {
         iso = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [
             (
               { pkgs, modulesPath, ... }:
@@ -83,7 +82,6 @@
           ];
         };
         thenixbeast = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [
             ./configuration.nix
             nixos-facter-modules.nixosModules.facter
@@ -120,7 +118,6 @@
           ];
         };
         steamdeck = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [
             ./configuration.nix
             jovian-nixos.nixosModules.default
