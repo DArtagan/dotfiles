@@ -242,6 +242,7 @@
       plugins = {
         inherit (pkgs.yaziPlugins) mount;
       };
+      shellWrapperName = "y";
     };
   };
 }
