@@ -53,6 +53,35 @@
   services = {
     esphome.enable = true; # For connecting to and programming ESP32 microcontrollers
     gnome.gnome-keyring.enable = true; # So 1Password can store its vault 2FA locally
+    lact = {
+      # GPU optimization/overclocking/undervolting
+      enable = true;
+      settings = {
+        version = 5;
+        daemon = {
+          log_level = "info";
+          admin_group = "wheel";
+          disable_clocks_cleanup = false;
+        };
+        apply_settings_timer = 5;
+        gpus = {
+          "10DE:2684-10DE:165B-0000:01:00.0" = {
+            fan_control_enabled = false;
+            power_cap = 600.0;
+            min_core_clock = 210;
+            max_core_clock = 2725;
+            gpu_clock_offsets = {
+              "0" = 315;
+            };
+            mem_clock_offsets = {
+              "0" = 1500;
+            };
+          };
+        };
+        current_profile = null;
+        auto_switch_profiles = false;
+      };
+    };
     openssh = {
       enable = true;
       settings = {
