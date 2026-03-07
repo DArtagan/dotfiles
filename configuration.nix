@@ -19,7 +19,6 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-  time.timeZone = "America/New_York";
 
   networking = {
     networkmanager.enable = true;
@@ -62,6 +61,7 @@
   nixpkgs.config.allowUnfree = true;
 
   services = {
+    automatic-timezoned.enable = true;
     printing.enable = true;
     tailscale.enable = true;
 
