@@ -34,6 +34,7 @@
     packages = with pkgs; [
       broot
       calibre
+      claude-code
       curl
       deluge # bittorrent
       devenv
