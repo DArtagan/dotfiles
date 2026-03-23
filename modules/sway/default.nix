@@ -60,6 +60,8 @@
       ];
     };
 
+    gtk.gtk4.theme = null;
+
     programs = {
       kickoff.enable = true;
       i3status-rust = {

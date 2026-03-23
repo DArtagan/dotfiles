@@ -60,7 +60,6 @@
       spotify
       texlive.combined.scheme-medium
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
-      tidal-hifi
       ueberzugpp # Image preview for yazi
       unzip
       usbutils # lsusb
