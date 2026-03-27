@@ -91,6 +91,7 @@
             stylix.nixosModules.stylix
             ./modules/ai-server # If nixos is failing to switch because of these containers & their GPU option, temporarily comment this line out, reboot, and then re-enable this line
             ./modules/containers
+            ./modules/droidcam
             ./modules/gaming
             ./modules/stylix
             ./modules/sway
@@ -124,6 +125,7 @@
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
+            ./modules/droidcam
             ./modules/tailscale
             ./hosts/steamdeck
             {
