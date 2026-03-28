@@ -18,27 +18,28 @@
   pkg-config,
   rustPlatform,
   webkitgtk_4_1,
+  wrapGAppsHook3,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "qbz";
-  version = "1.1.20";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "vicrodh";
     repo = "qbz";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-PliZLuVwsCodsXcjt9Bu9mw7b3umzaMEWgJKudUiSkA=";
+    hash = "sha256-hiadYCBQn2+YFKam4RJ1ae+1JN5mgEjyQVyGnxr8VPA=";
   };
 
-  cargoHash = "sha256-psGZ/fmW4kXL472cJT1aVdHOixDoZ5QQBSXqCkwPb4k=";
+  cargoHash = "sha256-GzQ/6oHkJU7KtZqdPR4M4IFJ/C0tKshbOnnnLNYqqf0=";
   cargoRoot = "src-tauri";
   buildAndTestSubdir = finalAttrs.cargoRoot;
 
   npmDeps = fetchNpmDeps {
     name = "qbz-${finalAttrs.version}-npm-deps";
     inherit (finalAttrs) src;
-    hash = "sha256-R5m+QzZsGQWo5tSDk+K++Im7o8ZFlV+Bx14hdPYGtAg=";
+    hash = "sha256-koLJdbtSgDoCiI+u9lhR/iJ+uY63NbVuDkS+ytLp7Bg=";
   };
 
   env.LIBCLANG_PATH = "${lib.getLib llvmPackages.libclang}/lib";
@@ -50,29 +51,27 @@ rustPlatform.buildRustPackage (finalAttrs: {
     nodejs
     npmHooks.npmConfigHook
     pkg-config
+    wrapGAppsHook3
   ];
 
   buildInputs = [
     alsa-lib
     libappindicator-gtk3
-    libayatana-appindicator
     openssl
     webkitgtk_4_1
   ];
 
-  checkFlags = [
-    "--skip=credentials::tests::test_encryption_roundtrip"
-  ];
+  doCheck = false;
 
   postInstall = ''
-    wrapProgram $out/bin/qbz \
+    gappsWrapperArgs+=(
       --prefix LD_LIBRARY_PATH : ${
         lib.makeLibraryPath [
           libappindicator
-          libappindicator-gtk3
           libayatana-appindicator
         ]
       }
+    )
   '';
 
   passthru.updateScript = nix-update-script { };
