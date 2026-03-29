@@ -83,6 +83,13 @@
         #  size = 11;
         #  normal.family = "Hack Nerd Font";
         #};
+        keyboard.bindings = [
+          {
+            key = "Return";
+            mods = "Shift";
+            chars = "\\u001b\\r"; # Something Claude Code can catch, for multi-line input.
+          }
+        ];
         scrolling.multiplier = 5;
         selection.save_to_clipboard = true;
         terminal.shell = {
