@@ -186,6 +186,7 @@
         " vim-markdown
         let g:vim_markdown_folding_disabled = 1
         autocmd BufNewFile,BufRead *.txt setlocal filetype=markdown
+        let g:vim_markdown_new_list_item_indent = 2
 
         " vim-slime
         let g:slime_target = "tmux"

@@ -57,7 +57,6 @@
       python313Packages.psutil # For vim Recover.vim
       (pkgs.callPackage ./pkgs/qbz/package.nix { }) # TODO: remove once https://github.com/NixOS/nixpkgs/pull/498106 merges, then use pkgs.qbz
       rclone
-      spotify
       texlive.combined.scheme-medium
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
       ueberzugpp # Image preview for yazi
