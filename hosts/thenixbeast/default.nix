@@ -4,6 +4,8 @@
     #./hardware-configuration.nix
   ];
 
+  "ai-server".startAfter = [ "greetd.service" ];
+
   sops =
     let
       host_ssh_private_key = "/etc/ssh/ssh_host_ed25519_key";
