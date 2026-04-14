@@ -45,12 +45,24 @@
       timeout = 20;
     };
 
+    resumeDevice = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part7";
+
+    extraModprobeConfig = ''
+      options snd_hda_intel power_save=0  # Disables HDA audio power saving; without this the controller times out on resume causing spurious response errors and Sway to crash back to the greeter
+    '';
+
     supportedFilesystems = [ "zfs" ];
 
     tmp.useTmpfs = true;
 
-    zfs.devNodes = "/dev/";
+    zfs = {
+      devNodes = "/dev/";
+      allowHibernation = true; # Lets NixOS handle proper ZFS pool export before hibernate instead of blanket-banning it with nohibernate
+      forceImportRoot = false; # Must be disabled when allowHibernation is true; safe since datasets use zfsutil (not legacy) mountpoints
+    };
   };
+
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
 
   services = {
     esphome.enable = true; # For connecting to and programming ESP32 microcontrollers
@@ -83,6 +95,10 @@
         current_profile = null;
         auto_switch_profiles = false;
       };
+    };
+    logind.settings.Login = {
+      IdleAction = "suspend-then-hibernate";
+      IdleActionSec = "20min";
     };
     openssh = {
       enable = true;
@@ -184,9 +200,13 @@
 
   hardware = {
     bluetooth.enable = true;
+    cpu.amd.updateMicrocode = true;
     graphics.enable = true;
     libftdi.enable = true; # For connecting to and programming ESP32 microcontrollers
-    nvidia.open = true;
+    nvidia = {
+      open = true;
+      powerManagement.enable = true; # Required for proper suspend/resume; without this the GPU fails to re-initialize on wake, causing a black screen hang
+    };
     xone.enable = true; # Xbox One wireless adapter
   };
   services.xserver.videoDrivers = [ "nvidia" ]; # Yes it says 'xserver', it also loads for Wayland
