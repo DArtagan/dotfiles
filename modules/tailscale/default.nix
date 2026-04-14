@@ -37,7 +37,7 @@
         exit 0
       fi
 
-      ${tailscale}/bin/tailscale up
+      ${tailscale}/bin/tailscale up --timeout 60s || true
     '';
   };
 }
