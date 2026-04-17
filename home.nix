@@ -70,6 +70,14 @@
     shell.enableShellIntegration = true;
   };
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = [ "firefox.desktop" ];
+      "x-scheme-handler/claude-cli" = [ "claude-code-url-handler.desktop" ];
+    };
+  };
+
   programs = {
     alacritty = {
       enable = true;
