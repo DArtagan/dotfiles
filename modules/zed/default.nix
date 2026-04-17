@@ -11,38 +11,47 @@ _: {
 
       # everything inside of these brackets are Zed options - saved to settings.json
       userSettings = {
-        features = {
-          edit_prediction_provider = "zed";
+        edit_predictions = {
+          provider = "zed";
         };
 
-        assistant = {
-          enabled = true;
-          version = "2";
-          default_open_ai_model = null;
-          #default_model = {
-          #  provider = "ollama";
-          #  model = "codegemma:7b";
-          #};
+        agent = {
+          default_model = {
+            provider = "ollama";
+            model = "qwen2.5-coder:32b";
+          };
+          inline_assistant_model = {
+            provider = "ollama";
+            model = "qwen2.5-coder:32b";
+          };
+          commit_message_model = {
+            provider = "ollama";
+            model = "qwen2.5-coder:32b";
+          };
+          thread_summary_model = {
+            provider = "ollama";
+            model = "qwen2.5-coder:32b";
+          };
         };
 
         language_models = {
           ollama = {
-            apiUrl = "http://thenixbeast.forge.local:11434";
-            availableModels = [
+            api_url = "http://thenixbeast.forge.local:11434";
+            available_models = [
               {
                 name = "codestral";
-                displayName = "codestral 22b";
-                maxTokens = 262144;
+                display_name = "codestral 22b";
+                max_tokens = 262144;
               }
               {
                 name = "qwen2.5-coder:32b";
-                displayName = "qwen2.5-coder:32b";
-                maxTokens = 32768;
+                display_name = "qwen2.5-coder:32b";
+                max_tokens = 32768;
               }
               {
                 name = "codegemma:7b";
-                displayName = "codegemma:7b";
-                maxTokens = 8192;
+                display_name = "codegemma:7b";
+                max_tokens = 8192;
               }
             ];
           };
@@ -52,6 +61,9 @@ _: {
         auto_update = false;
 
         terminal = {
+          shell = {
+            program = "fish";
+          };
           copy_on_select = true;
           detect_venv = {
             on = {
@@ -113,7 +125,7 @@ _: {
         #buffer_font_family = "Hack Nerd Font";
         #buffer_font_weight = 400;
         cursor_blink = false;
-        relative_line_numbers = true;
+        relative_line_numbers = "enabled";
       };
       userKeymaps = [
         {
