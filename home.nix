@@ -165,6 +165,7 @@
         awsume = "source (which awsume.fish)";
       };
       shellInit = ''
+        _tide_find_and_remove kubectl tide_right_prompt_items
         set -g -x PIP_REQUIRE_VIRTUALENV true
 
         # Added by OrbStack: command-line tools and integration
