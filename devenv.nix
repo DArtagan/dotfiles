@@ -28,23 +28,4 @@
     statix.enable = true;
     trim-trailing-whitespace.enable = true;
   };
-
-  # https://devenv.sh/scripts/
-  # TODO: might be interesting to put `stow` here (and as a pkg), until everything is nix-ed
-  # or maybe in tasks?
-  scripts.hello.exec = ''
-    echo hello from $GREET
-  '';
-
-  # https://devenv.sh/tasks/
-  # tasks = {
-  #   "myproj:setup".exec = "mytool build";
-  #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
-
-  # https://devenv.sh/tests/
-  enterTest = ''
-    echo "Running tests"
-    git --version | grep --color=auto "${pkgs.git.version}"
-  '';
 }
