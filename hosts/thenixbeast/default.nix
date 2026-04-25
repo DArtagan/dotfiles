@@ -4,7 +4,7 @@
     #./hardware-configuration.nix
   ];
 
-  "ai-server".startAfter = [ "greetd.service" ];
+  "ai-server".startAfter = [ "graphical.target" ];
 
   sops =
     let

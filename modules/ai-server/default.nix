@@ -62,6 +62,7 @@
     systemd.services = lib.mkIf (config."ai-server".startAfter != [ ]) (
       lib.genAttrs [ "podman-ollama" "podman-open-webui" "podman-speaches" ] (_: {
         after = config."ai-server".startAfter;
+        wantedBy = lib.mkForce [ "graphical.target" ];
       })
     );
   };

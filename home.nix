@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  osConfig ? { },
+  ...
+}:
 {
   imports = [
     modules/qutebrowser
@@ -32,6 +37,19 @@
     '';
 
     packages = with pkgs; [
+      # bwrap uses --die-with-parent (prctl PR_SET_PDEATHSIG SIGKILL), so when
+      # kickoff exits after launching steam, bwrap is immediately killed. From a
+      # terminal fish stays open so bwrap survives. systemd-run --user reparents
+      # the process to systemd, breaking the link to kickoff. Terminal PTY
+      # launches (/dev/pts/*) run steam directly so output stays visible.
+      (writeShellScriptBin "steam" ''
+        case "$(readlink /proc/$$/fd/1 2>/dev/null)" in
+          /dev/pts/*) exec ${osConfig.programs.steam.package or pkgs.steam}/bin/steam "$@" ;;
+          *)          exec systemd-run --user --collect -- ${
+            osConfig.programs.steam.package or pkgs.steam
+          }/bin/steam "$@" ;;
+        esac
+      '')
       broot
       calibre
       claude-code

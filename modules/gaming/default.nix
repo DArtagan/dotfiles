@@ -9,9 +9,6 @@
   ];
 
   programs = {
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
+    steam.enable = true;
   };
 }
