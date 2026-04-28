@@ -23,7 +23,7 @@
         vim-matchup # extends vim's % key to language-specific words
         vim-repeat # makes hitting '.' work for more plugins
         vim-sensible # tpope's sensible vim defaults
-        vim-signify # indicate what lines have been edited
+        vim-signify # indicate in the gutter what lines have been edited (git)
         vim-sleuth # set shiftwidth and expandtab based on the current file/folder context
         vim-slime # send/execute selected text to another tmux split/REPL/etc.
         vim-solarized8 # Solarized colorscheme for vim 8+

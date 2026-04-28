@@ -15,6 +15,10 @@
         image = "ollama/ollama";
         autoRemoveOnStop = true;
         autoStart = true;
+        environment = {
+          OLLAMA_FLASH_ATTENTION = "1";
+          OLLAMA_KV_CACHE_TYPE = "q8_0";
+        };
         ports = [ "11434:11434" ];
         pull = "newer";
         volumes = [

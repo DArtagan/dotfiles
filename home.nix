@@ -43,6 +43,7 @@
       deluge # bittorrent
       devenv
       dnsutils # `dig` + `nslookup`
+      gh
       gparted
       graphviz
       inetutils # ping
@@ -61,7 +62,6 @@
       python313Packages.psutil # For vim Recover.vim
       qbz
       rclone
-      texlive.combined.scheme-medium
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
       ueberzugpp # Image preview for yazi
       unzip
@@ -113,7 +113,29 @@
         };
       };
     };
+    bat.enable = true;
     bottom.enable = true;
+    delta = {
+      # Diff with syntax highlighting, styling, and layout
+      enable = true;
+      #enableGitIntegration = true;
+      options = {
+        light = true;
+        line-numbers = true;
+        navigate = true;
+        #side-by-side = true;
+      };
+    };
+    difftastic = {
+      # Diff, super syntax aware (e.g. ignore formatting changes, focuses on material differences (currently preferred, delta as backup)
+      enable = true;
+      git.enable = true;
+      options = {
+        color = "always"; # Wasn't successfully detecting color support in my terminal
+        background = "light";
+        syntax-highlight = "off"; # Likes to put comment lines in solid blue, disabling until they implement finer control
+      };
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -181,6 +203,9 @@
     git = {
       enable = true;
       settings = {
+        diff = {
+          colorMoved = "default";
+        };
         user = {
           name = "William Weiskopf";
           email = "william@weiskopf.me";
@@ -193,6 +218,16 @@
     };
     home-manager.enable = true;
     jq.enable = true;
+    less = {
+      enable = true;
+      options = {
+        mouse = true;
+        no-init = true;
+        quit-if-one-screen = true;
+        RAW-CONTROL-CHARS = true; # Doing this to support showing colors, safely handling other control characters
+        wheel-lines = 2;
+      };
+    };
     mpv.enable = true;
     man.generateCaches = false; # Because it's slow.  Can't search without it though
     nh = {
@@ -214,16 +249,10 @@
       shell = "${pkgs.fish}/bin/fish";
       shortcut = "a";
       plugins = with pkgs.tmuxPlugins; [
-        #fingers
+        better-mouse-mode # Scroll in one pane, while you type in the other
         pain-control
       ];
       extraConfig = ''
-        # Use f for tmux-fingers
-        # TODO: disabling fingers for now, because the jump override never works and interferes with pain-control
-        #unbind-key f  # Used for find-window by default, to prevent accidental activation
-        #set -g @fingers-key F
-        #set -g @fingers-jump-key T
-
         # Color
         set -as terminal-features ",alacritty*:RGB"
 
