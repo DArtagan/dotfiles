@@ -169,6 +169,10 @@
           inherit (pkgs.fishPlugins.done) src;
         }
         {
+          name = "forgit";
+          inherit (pkgs.fishPlugins.forgit) src;
+        }
+        {
           name = "fzf-fish";
           inherit (pkgs.fishPlugins.fzf-fish) src;
         }
@@ -228,8 +232,13 @@
         wheel-lines = 2;
       };
     };
-    mpv.enable = true;
     man.generateCaches = false; # Because it's slow.  Can't search without it though
+    mpv.enable = true;
+    mergiraf = {
+      # Syntax-aware git merge driver
+      enable = true;
+      enableGitIntegration = true;
+    };
     nh = {
       enable = true;
       clean = {
