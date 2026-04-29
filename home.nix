@@ -67,12 +67,18 @@
       unzip
       usbutils # lsusb
       uv
+      worktrunk
       xz
       zip
       zstd
     ];
     shell.enableShellIntegration = true;
   };
+
+  xdg.configFile."worktrunk/config.toml".text = ''
+    # Worktrunk user config — global defaults for all repos
+    worktree-path = "{{ repo_path }}/.worktrees/{{ branch | sanitize }}"
+  '';
 
   xdg.mimeApps = {
     enable = true;
@@ -193,19 +199,24 @@
       ];
       shellAliases = {
         awsume = "source (which awsume.fish)";
+        wsc = "wt switch --create --execute=claude";
       };
       shellInit = ''
         _tide_find_and_remove kubectl tide_right_prompt_items
         set -g -x PIP_REQUIRE_VIRTUALENV true
 
-        # Added by OrbStack: command-line tools and integration
-        # This won't be added again if you remove it.
-        source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+        if command -q wt
+          wt config shell init fish | source
+        end
       '';
     };
     fzf.enable = true;
     git = {
       enable = true;
+      ignores = [
+        ".worktrees/"
+        "**/.claude/settings.local.json"
+      ];
       settings = {
         diff = {
           colorMoved = "default";
