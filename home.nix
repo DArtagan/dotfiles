@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -147,7 +148,11 @@
       nix-direnv.enable = true;
     };
     # Move this to a NixOS declaration/module, for enabling droidcam (NixOS so that the enableVirtualCamera option works - inherently installs v4l2loopback-dkms)
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox"; # Because home.stateVersion < 26.05
+    };
+
     fish = {
       enable = true;
       functions = {
