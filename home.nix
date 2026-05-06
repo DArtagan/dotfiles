@@ -79,6 +79,16 @@
   xdg.configFile."worktrunk/config.toml".text = ''
     # Worktrunk user config — global defaults for all repos
     worktree-path = "{{ repo_path }}/.worktrees/{{ branch | sanitize }}"
+
+    [aliases]
+    move-changes = ''''
+    if git diff --quiet HEAD && test -z "$(git ls-files --others --exclude-standard)"; then
+      wt switch --create {{ to }} --execute="{{ args }}"
+    else
+      git stash push --include-untracked --quiet
+      wt switch --create {{ to }} --execute="git stash pop --index; {{ args }}"
+    fi
+    ''''
   '';
 
   xdg.mimeApps = {
@@ -87,6 +97,166 @@
       "application/pdf" = [ "firefox.desktop" ];
       "x-scheme-handler/claude-cli" = [ "claude-code-url-handler.desktop" ];
     };
+  };
+
+  home.file.".claude/statusline-command.sh" = {
+    executable = true;
+    text = ''
+      #!/usr/bin/env bash
+      # Claude Code statusLine command — styled after tide prompt configuration
+      # Left prompt items: pwd, git | Right prompt items: status, cmd_duration, context,
+      #   jobs, direnv, terraform, nix_shell, kubectl
+      # Plus Claude-specific: model, context window usage, session limit countdown
+
+      input=$(cat)
+
+      # --- Claude Code data ---
+      cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // empty')
+      model=$(echo "$input" | jq -r '.model.display_name // empty')
+      used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
+      five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+      five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
+      seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+
+      # --- pwd (shorten $HOME to ~) ---
+      short_pwd="''${cwd/#$HOME/~}"
+
+      # --- git branch + dirty indicator ---
+      git_info=""
+      if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
+          branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null \
+                   || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
+          if [ -n "$branch" ]; then
+              dirty=""
+              if ! git -C "$cwd" diff --quiet 2>/dev/null \
+                 || ! git -C "$cwd" diff --cached --quiet 2>/dev/null; then
+                  dirty="*"
+              fi
+              untracked=""
+              if [ -n "$(git -C "$cwd" ls-files --others --exclude-standard 2>/dev/null | head -1)" ]; then
+                  untracked="?"
+              fi
+              git_info=$' on \033[35m'"''${branch}''${dirty}''${untracked}"$'\033[0m'
+          fi
+      fi
+
+      # --- context (user@host) ---
+      context_info="$(whoami)@$(hostname -s)"
+
+      # --- terraform workspace ---
+      tf_workspace=""
+      if [ -f "$cwd/.terraform/environment" ]; then
+          ws=$(cat "$cwd/.terraform/environment" 2>/dev/null)
+          if [ -n "$ws" ] && [ "$ws" != "default" ]; then
+              tf_workspace=$' \033[35mtf:'"''${ws}"$'\033[0m'
+          fi
+      fi
+
+      # --- nix shell indicator ---
+      nix_info=""
+      if [ -n "$IN_NIX_SHELL" ] || [ -n "$DEVENV_ROOT" ]; then
+          nix_info=$' \033[34mnix\033[0m'
+      fi
+
+      # --- kubectl context ---
+      kube_info=""
+      if command -v kubectl > /dev/null 2>&1; then
+          kube_ctx=$(kubectl config current-context 2>/dev/null)
+          if [ -n "$kube_ctx" ]; then
+              kube_namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
+              kube_namespace="''${kube_namespace:-default}"
+              kube_info=$' \033[36mk8s:'"''${kube_ctx}/''${kube_namespace}"$'\033[0m'
+          fi
+      fi
+
+      # --- model ---
+      model_info=""
+      if [ -n "$model" ]; then
+          model_info=$' \033[33m'"''${model}"$'\033[0m'
+      fi
+
+      # --- context window usage ---
+      ctx_info=""
+      if [ -n "$used_pct" ]; then
+          # Colour: green < 50%, yellow < 80%, red >= 80%
+          used_int=$(printf '%.0f' "$used_pct")
+          if [ "$used_int" -ge 80 ]; then
+              color=$'\033[31m'
+          elif [ "$used_int" -ge 50 ]; then
+              color=$'\033[33m'
+          else
+              color=$'\033[32m'
+          fi
+          ctx_info=$' '"''${color}ctx:''${used_int}%"$'\033[0m'
+      fi
+
+      # --- rate limits ---
+      rate_info=""
+      if [ -n "$five_hour_pct" ] || [ -n "$seven_day_pct" ]; then
+          rate_parts=""
+          if [ -n "$five_hour_pct" ]; then
+              five_int=$(printf '%.0f' "$five_hour_pct")
+              if [ "$five_int" -ge 80 ]; then
+                  five_color=$'\033[31m'
+              elif [ "$five_int" -ge 50 ]; then
+                  five_color=$'\033[33m'
+              else
+                  five_color=$'\033[32m'
+              fi
+              # Compute time until reset
+              reset_str=""
+              if [ -n "$five_hour_resets" ]; then
+                  now=$(date +%s)
+                  secs_left=$(( five_hour_resets - now ))
+                  if [ "$secs_left" -gt 0 ]; then
+                      mins_left=$(( secs_left / 60 ))
+                      hrs_left=$(( mins_left / 60 ))
+                      mins_rem=$(( mins_left % 60 ))
+                      if [ "$hrs_left" -gt 0 ]; then
+                          reset_str=" (''${hrs_left}h''${mins_rem}m)"
+                      else
+                          reset_str=" (''${mins_left}m)"
+                      fi
+                  fi
+              fi
+              rate_parts="''${five_color}5h:''${five_int}%''${reset_str}"$'\033[0m'
+          fi
+          if [ -n "$seven_day_pct" ]; then
+              seven_int=$(printf '%.0f' "$seven_day_pct")
+              if [ "$seven_int" -ge 80 ]; then
+                  seven_color=$'\033[31m'
+              elif [ "$seven_int" -ge 50 ]; then
+                  seven_color=$'\033[33m'
+              else
+                  seven_color=$'\033[32m'
+              fi
+              if [ -n "$rate_parts" ]; then
+                  rate_parts="''${rate_parts} ''${seven_color}7d:''${seven_int}%"$'\033[0m'
+              else
+                  rate_parts="''${seven_color}7d:''${seven_int}%"$'\033[0m'
+              fi
+          fi
+          rate_info=" ''${rate_parts}"
+      fi
+
+      # --- worktrunk statusline ---
+      wt_info=""
+      if command -v wt > /dev/null 2>&1 && git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
+          wt_line=$(cd "$cwd" && wt list statusline --format=claude-code 2>/dev/null)
+          if [ -n "$wt_line" ]; then
+              wt_info="$wt_line"
+          fi
+      fi
+
+      # --- assemble ---
+      printf "\033[34m%s\033[0m%s" "$short_pwd" "$git_info"
+      printf " \033[2m%s\033[0m" "$context_info"
+      printf "%s%s%s%s%s%s" "$tf_workspace" "$nix_info" "$kube_info" "$model_info" "$ctx_info" "$rate_info"
+      if [ -n "$wt_info" ]; then
+          printf "\n%s" "$wt_info"
+      fi
+      printf "\n"
+    '';
   };
 
   programs = {
@@ -105,7 +275,7 @@
           {
             key = "Return";
             mods = "Shift";
-            chars = "\\u001b\\r"; # Something Claude Code can catch, for multi-line input.
+            chars = "\n"; # Sends Ctrl+J (LF), which is Claude Code's default chat:newline binding.
           }
         ];
         scrolling.multiplier = 5;
@@ -280,6 +450,10 @@
       extraConfig = ''
         # Color
         set -as terminal-features ",alacritty*:RGB"
+
+        # Active pane border in Solarized blue, inactive dimmed
+        set -g pane-active-border-style 'fg=#268bd2,bold'
+        set -g pane-border-style 'fg=#93a1a1'
 
         # Duration to show status bar messages
         set-option -g display-time 4000;

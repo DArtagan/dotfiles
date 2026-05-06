@@ -1,5 +1,13 @@
 { config, pkgs, ... }:
 {
+  # TODO: revert once https://github.com/NixOS/nixpkgs/issues/513245 is resolved
+  nixpkgs.overlays = [
+    (_: prev: {
+      openldap = prev.openldap.overrideAttrs {
+        doCheck = !prev.stdenv.hostPlatform.isi686;
+      };
+    })
+  ];
   hardware.graphics.enable32Bit = true; # Needed for Epic Game Store
 
   environment.systemPackages = with pkgs; [

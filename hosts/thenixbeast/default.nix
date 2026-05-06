@@ -57,7 +57,7 @@
 
     zfs = {
       devNodes = "/dev/";
-      allowHibernation = true; # Lets NixOS handle proper ZFS pool export before hibernate instead of blanket-banning it with nohibernate
+      unsafeAllowHibernation = true; # Lets NixOS handle proper ZFS pool export before hibernate instead of blanket-banning it with nohibernate
       forceImportRoot = false; # Must be disabled when allowHibernation is true; safe since datasets use zfsutil (not legacy) mountpoints
     };
   };
