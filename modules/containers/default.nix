@@ -13,7 +13,7 @@
     serviceConfig.ExecCondition = toString (
       pkgs.writeShellScript "nvidia-version-check" ''
         expected="${config.hardware.nvidia.package.version}"
-        actual=$(grep -oP 'Kernel Module\s+\K[0-9.]+' /proc/driver/nvidia/version 2>/dev/null || echo "")
+        actual=$(grep '^NVRM' /proc/driver/nvidia/version 2>/dev/null | grep -oP '\d+\.\d+\.\d+' | head -1 || echo "")
         if [ -z "$actual" ] || [ "$actual" != "$expected" ]; then
           echo "nvidia kernel ($actual) != expected ($expected); deferring CDI generation until reboot" >&2
           exit 1

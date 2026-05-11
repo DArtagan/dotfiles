@@ -100,6 +100,8 @@
     };
   };
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   environment.variables.EDITOR = "vim";
 
   users = {
