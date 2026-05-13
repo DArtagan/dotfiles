@@ -50,7 +50,7 @@ Each host directory contains its own `default.nix` (hardware, filesystems, host-
 
 ### Modules (`modules/`)
 Reusable opt-in modules imported per-host in `flake.nix`:
-- `sway/` — Wayland desktop (greetd, i3status-rust, kickoff menu)
+- `sway/` — Wayland desktop (greetd, ironbar, kickoff menu)
 - `stylix/` — unified theming (NixOS + home-manager variant)
 - `tailscale/` — auto-connect to headscale at `headscale.immortalkeep.com`
 - `ai-server/` — local AI stack (Ollama, Open-WebUI, Speaches via Podman)

@@ -50,7 +50,8 @@
   home-manager.users.will = {
     home = {
       packages = with pkgs; [
-        gsimplecal
+        ironbar
+        pwvucontrol
       ];
     };
 
@@ -58,45 +59,131 @@
 
     programs = {
       kickoff.enable = true;
-      i3status-rust = {
-        enable = true;
-        bars = {
-          top = {
-            blocks =
-              (lib.optional config.hardware.bluetooth.enable {
-                block = "bluetooth";
-                mac = "6C:12:70:17:02:31";
-                disconnected_format = "";
-              })
-              ++ [
-                {
-                  block = "sound";
-                  driver = "pulseaudio";
-                  click = [
-                    {
-                      button = "left";
-                      cmd = "pavucontrol";
-                    }
-                  ];
-                }
-                {
-                  block = "time";
-                  format = " $icon $timestamp.datetime(f:'%a %e %b %R') ";
-                  click = [
-                    {
-                      button = "left";
-                      cmd = "gsimplecal";
-                    }
-                  ];
-                }
-              ];
-          };
-        };
-      };
     };
+
     services = {
       swaync.enable = true;
     };
+
+    xdg.configFile."ironbar/config.json".text = builtins.toJSON {
+      position = "top";
+      start = [
+        {
+          type = "workspaces";
+          all_monitors = false;
+        }
+      ];
+      end = [
+        { type = "music"; }
+        { type = "tray"; }
+        { type = "network_manager"; }
+      ]
+      ++ (lib.optional config.hardware.bluetooth.enable {
+        type = "bluetooth";
+      })
+      ++ [
+        {
+          type = "volume";
+          on_click_right = "pwvucontrol";
+          on_scroll_up = "wpctl set-volume @DEFAULT_SINK@ 1%+";
+          on_scroll_down = "wpctl set-volume @DEFAULT_SINK@ 1%-";
+        }
+        {
+          type = "clock";
+          format = "%a %e %b %H:%M";
+        }
+      ];
+    };
+
+    xdg.configFile."ironbar/style.css".text = ''
+      @define-color bg_base #002b36;
+      @define-color bg_highlight #073642;
+      @define-color fg #ffffff;
+      @define-color blue #268bd2;
+      @define-color cyan #2aa198;
+
+      * {
+        color: @fg;
+      }
+
+      .background {
+        background-color: @bg_base;
+        margin: -5px 0;
+        padding: 2px 0;
+      }
+
+      #end {
+        padding: 8px;
+      }
+
+      #end .widget {
+        padding: 0 10px;
+        border-right: 2px solid @blue;
+      }
+
+      #end revealer:last-child .widget {
+        border-right: 0;
+      }
+
+      .workspaces .item.focused {
+        background-color: @blue;
+      }
+
+      button {
+        background: transparent;
+        border-radius: 0;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 0 5px;
+      }
+
+      button:hover,
+      .workspaces .item:hover {
+        background-color: @cyan;
+      }
+
+      .popup {
+        background-color: @bg_base;
+        padding: 4px;
+      }
+
+      popover, popover contents {
+        border-radius: 12px;
+        padding: 0;
+        margin: 0;
+      }
+
+      calendar {
+        background-color: @bg_base;
+        padding: 10px
+      }
+
+      .popup-clock .calendar-clock {
+        font-size: 18px;
+      }
+
+      .popup-clock .calendar .today {
+        background-color: @blue;
+        border-radius: 0.25em;
+      }
+
+      .popup-music .album-art {
+        border-radius: 5px;
+      }
+
+      .popup-music .volume .icon {
+        margin-left: 4px;
+      }
+
+      .popup-volume .device-box .device-selector * > * {
+        background-color: @bg_base;
+      }
+
+      .popup-volume .device-box .device-selector * > *:hover {
+        background-color: @cyan;
+      }
+    '';
+
     wayland.windowManager.sway = {
       enable = true;
       checkConfig = true;
@@ -106,31 +193,9 @@
         menu = "kickoff";
         terminal = "alacritty";
         window.titlebar = false;
-        # TODO: stylix remove
-        #fonts = {
-        #  size = 12.0;
-        #};
-        bars = [
-          {
-            position = "top";
-            statusCommand = "i3status-rs ~/.config/i3status-rust/config-top.toml";
-            fonts = {
-              size = 12.0;
-            };
-            colors = {
-              separator = "#666666";
-              background = "#222222";
-              statusline = "#dddddd";
-              focusedWorkspace = {
-                border = "#0088CC";
-                background = "#0088CC";
-                text = "#ffffff";
-              };
-              #active_workspace #333333 #333333 #ffffff";
-              #inactive_workspace #333333 #333333 #888888";
-              #urgent_workspace #2f343a #900000 #ffffff";
-            };
-          }
+        bars = [ ];
+        startup = [
+          { command = "ironbar"; }
         ];
         keybindings =
           let

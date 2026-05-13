@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    pavucontrol
+    pwvucontrol
   ];
 
   security.rtkit.enable = true;
