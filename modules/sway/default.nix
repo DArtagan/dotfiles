@@ -46,12 +46,6 @@
     enable = true;
     wlr.enable = true;
   };
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-  };
-
   # TODO: generalize this username
   home-manager.users.will = {
     home = {
@@ -68,28 +62,34 @@
         enable = true;
         bars = {
           top = {
-            blocks = [
-              {
-                block = "sound";
-                driver = "pulseaudio";
-                click = [
-                  {
-                    button = "left";
-                    cmd = "pavucontrol";
-                  }
-                ];
-              }
-              {
-                block = "time";
-                format = " $icon $timestamp.datetime(f:'%a %e %b %R') ";
-                click = [
-                  {
-                    button = "left";
-                    cmd = "gsimplecal";
-                  }
-                ];
-              }
-            ];
+            blocks =
+              (lib.optional config.hardware.bluetooth.enable {
+                block = "bluetooth";
+                mac = "6C:12:70:17:02:31";
+                disconnected_format = "";
+              })
+              ++ [
+                {
+                  block = "sound";
+                  driver = "pulseaudio";
+                  click = [
+                    {
+                      button = "left";
+                      cmd = "pavucontrol";
+                    }
+                  ];
+                }
+                {
+                  block = "time";
+                  format = " $icon $timestamp.datetime(f:'%a %e %b %R') ";
+                  click = [
+                    {
+                      button = "left";
+                      cmd = "gsimplecal";
+                    }
+                  ];
+                }
+              ];
           };
         };
       };
@@ -136,23 +136,28 @@
           let
             inherit (config.home-manager.users.will.wayland.windowManager.sway.config) modifier;
           in
-          lib.mkOptionDefault {
-            # Resize
-            "${modifier}+Ctrl+l" = "exec sway resize shrink width 50 px";
-            "${modifier}+Ctrl+k" = "exec sway resize grow height 50 px";
-            "${modifier}+Ctrl+j" = "exec sway resize shrink height 50 px";
-            "${modifier}+Ctrl+h" = "exec sway resize grow width 50 px";
+          lib.mkOptionDefault (
+            {
+              # Resize
+              "${modifier}+Ctrl+l" = "exec sway resize shrink width 50 px";
+              "${modifier}+Ctrl+k" = "exec sway resize grow height 50 px";
+              "${modifier}+Ctrl+j" = "exec sway resize shrink height 50 px";
+              "${modifier}+Ctrl+h" = "exec sway resize grow width 50 px";
 
-            # Media keys
-            XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
-            XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
-            XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-            XF86AudioPlay = "exec playerctl play-pause";
-            XF86AudioPause = "exec playerctl play-pause";
-            XF86AudioNext = "exec playerctl next";
-            XF86AudioPrev = "exec playerctl previous";
-            XF86AudioStop = "exec playerctl stop";
-          };
+              # Media keys
+              XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%+";
+              XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
+              XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
+              XF86AudioPlay = "exec playerctl play-pause";
+              XF86AudioPause = "exec playerctl play-pause";
+              XF86AudioNext = "exec playerctl next";
+              XF86AudioPrev = "exec playerctl previous";
+              XF86AudioStop = "exec playerctl stop";
+            }
+            // lib.optionalAttrs config.hardware.bluetooth.enable {
+              "${modifier}+b" = "exec alacritty -e bluetuith";
+            }
+          );
       };
     };
   };
