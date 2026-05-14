@@ -109,19 +109,20 @@
       .background {
         background-color: @bg_base;
         margin: -5px 0;
-        padding: 2px 0;
-      }
-
-      #end {
-        padding: 8px;
       }
 
       #end .widget {
-        padding: 0 10px;
-        border-right: 2px solid @blue;
+        margin: 0;
+        padding: 0;
       }
 
-      #end revealer:last-child .widget {
+      #end .widget > *:first-child {
+        border-right: 2px solid @blue;
+        margin: 10px 0px;
+        padding: 0px 10px;
+      }
+
+      #end revealer:last-child .widget > *:first-child {
         border-right: 0;
       }
 
