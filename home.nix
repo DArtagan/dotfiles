@@ -61,6 +61,7 @@
       pciutils # lspci
       pstree
       python313Packages.psutil # For vim Recover.vim
+      pulseaudio # pactl needed by qbz; remove once nixpkgs qbz wraps it
       qbz
       rclone
       shotcut
