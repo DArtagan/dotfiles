@@ -56,6 +56,10 @@
     };
 
     gtk.gtk4.theme = null;
+    gtk.iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
 
     programs = {
       kickoff.enable = true;
@@ -65,35 +69,44 @@
       swaync.enable = true;
     };
 
-    xdg.configFile."ironbar/config.json".text = builtins.toJSON {
-      position = "top";
-      start = [
-        {
-          type = "workspaces";
-          all_monitors = false;
-        }
-      ];
-      end = [
-        { type = "music"; }
-        { type = "tray"; }
-        { type = "network_manager"; }
-      ]
-      ++ (lib.optional config.hardware.bluetooth.enable {
-        type = "bluetooth";
-      })
-      ++ [
-        {
-          type = "volume";
-          on_click_right = "pwvucontrol";
-          on_scroll_up = "wpctl set-volume @DEFAULT_SINK@ 1%+";
-          on_scroll_down = "wpctl set-volume @DEFAULT_SINK@ 1%-";
-        }
-        {
-          type = "clock";
-          format = "%a %e %b %H:%M";
-        }
-      ];
-    };
+    xdg.configFile."ironbar/config.json".text =
+      let
+        icon = {
+          icon_size = 16;
+        };
+      in
+      builtins.toJSON {
+        position = "top";
+        start = [
+          {
+            type = "workspaces";
+            all_monitors = false;
+          }
+        ];
+        end = [
+          (icon // { type = "music"; })
+          { type = "tray"; }
+          (icon // { type = "network_manager"; })
+        ]
+        ++ (lib.optional config.hardware.bluetooth.enable (
+          icon
+          // {
+            type = "bluetooth";
+          }
+        ))
+        ++ [
+          {
+            type = "volume";
+            on_click_right = "pwvucontrol";
+            on_scroll_up = "wpctl set-volume @DEFAULT_SINK@ 1%+";
+            on_scroll_down = "wpctl set-volume @DEFAULT_SINK@ 1%-";
+          }
+          {
+            type = "clock";
+            format = "%a %e %b %H:%M";
+          }
+        ];
+      };
 
     xdg.configFile."ironbar/style.css".text = ''
       @define-color bg_base #002b36;
@@ -129,6 +142,19 @@
       .workspaces .item.focused {
         background-color: @blue;
       }
+
+      .network_manager image {
+        padding: 0 0 0 8px;
+      }
+
+      .network_manager .icon:first-child image {
+        padding: 0px;
+      }
+
+      .network_manager .icon:last-child image {
+        padding: 0 6px 0 8px;
+      }
+
 
       button {
         background: transparent;
