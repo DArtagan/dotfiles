@@ -39,7 +39,6 @@
 
       # Clean up nix store storage
       auto-optimise-store = true;
-      allow-import-from-derivation = false;
 
       substituters = [
         "http://mini-nas.forge.local:8770/public"
