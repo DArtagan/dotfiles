@@ -61,7 +61,6 @@
       pciutils # lspci
       pstree
       python313Packages.psutil # For vim Recover.vim
-      pulseaudio # pactl needed by qbz; remove once nixpkgs qbz wraps it
       qbz
       rclone
       shotcut
@@ -242,14 +241,7 @@
     alacritty = {
       enable = true;
       theme = "solarized_light";
-      #themePackage = pkgs.alacritty-theme.solarized_light;
       settings = {
-        #general.import = [ pkgs.alacritty-theme.solarized_light ];
-        # TODO: stylix, remove
-        #font = {
-        #  size = 11;
-        #  normal.family = "Hack Nerd Font";
-        #};
         keyboard.bindings = [
           {
             key = "Return";
