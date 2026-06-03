@@ -292,6 +292,13 @@
     firefox = {
       enable = true;
       configPath = "${config.xdg.configHome}/mozilla/firefox"; # Because home.stateVersion < 26.05
+      # Keep DoH on for privacy generally, but exclude immortalkeep.com so its
+      # split-horizon names resolve via CoreDNS instead of a cloud DoH resolver.
+      policies.DNSOverHTTPS = {
+        Enabled = true;
+        Fallback = true;
+        ExcludedDomains = [ "immortalkeep.com" ];
+      };
     };
 
     fish = {
