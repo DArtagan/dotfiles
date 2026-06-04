@@ -17,5 +17,8 @@
         terminal = 11;
       };
     };
+    targets = {
+      kmscon.enable = false; # Temporary, while deprecate issues are resolved: https://github.com/nix-community/stylix/issues/2334
+    };
   };
 }

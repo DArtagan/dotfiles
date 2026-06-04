@@ -61,7 +61,6 @@
       pciutils # lspci
       pstree
       python313Packages.psutil # For vim Recover.vim
-      pulseaudio # pactl needed by qbz; remove once nixpkgs qbz wraps it
       qbz
       rclone
       shotcut
@@ -148,33 +147,11 @@
           fi
       fi
 
-      # --- context (user@host) ---
-      context_info="$(whoami)@$(hostname -s)"
-
-      # --- terraform workspace ---
-      tf_workspace=""
-      if [ -f "$cwd/.terraform/environment" ]; then
-          ws=$(cat "$cwd/.terraform/environment" 2>/dev/null)
-          if [ -n "$ws" ] && [ "$ws" != "default" ]; then
-              tf_workspace=$' \033[35mtf:'"''${ws}"$'\033[0m'
-          fi
-      fi
 
       # --- nix shell indicator ---
       nix_info=""
       if [ -n "$IN_NIX_SHELL" ] || [ -n "$DEVENV_ROOT" ]; then
           nix_info=$' \033[34mnix\033[0m'
-      fi
-
-      # --- kubectl context ---
-      kube_info=""
-      if command -v kubectl > /dev/null 2>&1; then
-          kube_ctx=$(kubectl config current-context 2>/dev/null)
-          if [ -n "$kube_ctx" ]; then
-              kube_namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
-              kube_namespace="''${kube_namespace:-default}"
-              kube_info=$' \033[36mk8s:'"''${kube_ctx}/''${kube_namespace}"$'\033[0m'
-          fi
       fi
 
       # --- model ---
@@ -258,8 +235,7 @@
 
       # --- assemble ---
       printf "\033[34m%s\033[0m%s" "$short_pwd" "$git_info"
-      printf " \033[2m%s\033[0m" "$context_info"
-      printf "%s%s%s%s%s%s" "$tf_workspace" "$nix_info" "$kube_info" "$model_info" "$ctx_info" "$rate_info"
+      printf "%s%s%s%s" "$nix_info" "$model_info" "$ctx_info" "$rate_info"
       if [ -n "$wt_info" ]; then
           printf "\n%s" "$wt_info"
       fi
@@ -271,14 +247,7 @@
     alacritty = {
       enable = true;
       theme = "solarized_light";
-      #themePackage = pkgs.alacritty-theme.solarized_light;
       settings = {
-        #general.import = [ pkgs.alacritty-theme.solarized_light ];
-        # TODO: stylix, remove
-        #font = {
-        #  size = 11;
-        #  normal.family = "Hack Nerd Font";
-        #};
         keyboard.bindings = [
           {
             key = "Return";
@@ -329,6 +298,13 @@
     firefox = {
       enable = true;
       configPath = "${config.xdg.configHome}/mozilla/firefox"; # Because home.stateVersion < 26.05
+      # Keep DoH on for privacy generally, but exclude immortalkeep.com so its
+      # split-horizon names resolve via CoreDNS instead of a cloud DoH resolver.
+      policies.DNSOverHTTPS = {
+        Enabled = true;
+        Fallback = true;
+        ExcludedDomains = [ "immortalkeep.com" ];
+      };
     };
 
     fish = {
