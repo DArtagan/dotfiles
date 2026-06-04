@@ -55,7 +55,6 @@
       ];
     };
 
-    gtk.gtk4.theme = null;
     gtk.iconTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;

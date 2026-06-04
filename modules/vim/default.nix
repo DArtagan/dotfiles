@@ -147,19 +147,18 @@
         nmap <silent> [g <Plug>(coc-diagnostic-prev)
         nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-        " use <tab> to trigger completion and navigate to the next complete item
-        function! CheckBackspace() abort
+        " <Tab> triggers completion and selects/accepts completion items
+        " (cycling through them), or inserts a literal tab when indenting.
+        function! WhitespaceBeforeCursor() abort
           let col = col('.') - 1
           return !col || getline('.')[col - 1]  =~# '\s'
         endfunction
 
         inoremap <silent><expr> <Tab>
               \ coc#pum#visible() ? coc#pum#next(1) :
-              \ CheckBackspace() ? "\<Tab>" :
+              \ WhitespaceBeforeCursor() ? "\<Tab>" :
               \ coc#refresh()
         inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
-
-        inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
         " Use <c-space> to trigger completion
         inoremap <silent><expr> <c-@> coc#refresh()
