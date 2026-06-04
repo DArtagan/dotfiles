@@ -98,6 +98,12 @@
             ./modules/tailscale
             ./hosts/thenixbeast
             {
+              my.sway.outputs = {
+                "DP-3" = {
+                  adaptive_sync = "on";
+                  mode = "3840x2160@144Hz"; # Workaround for NVIDIA DSC bug causing horizontal line artifacts at 160Hz when there's a lot on the screen (e.g. 3 firefox windows) — try removing periodically to check if fixed upstream
+                };
+              };
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
@@ -126,9 +132,12 @@
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
             ./modules/droidcam
+            ./modules/sway
             ./modules/tailscale
             ./hosts/steamdeck
             {
+              my.sway.username = "willy";
+              my.sway.enableGreetd = false;
               jovian = {
                 devices.steamdeck = {
                   enable = true;
