@@ -41,7 +41,11 @@
       homeConfigurations = {
         will = home-manager.lib.homeManagerConfiguration {
           # Used by TheManjaroBeast
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfreePredicate =
+              pkg: builtins.elem (nixpkgs.lib.getName pkg) (import ./unfree-allowlist.nix);
+          };
           modules = [
             stylix.homeModules.stylix
             ./home.nix
@@ -62,9 +66,10 @@
               { pkgs, modulesPath, ... }:
               {
                 imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+                nixpkgs.hostPlatform = "x86_64-linux";
                 environment.systemPackages =
                   with pkgs;
-                  map lib.lowPrio [
+                  map pkgs.lib.lowPrio [
                     vim
                   ];
 
@@ -130,7 +135,6 @@
             jovian-nixos.nixosModules.default
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
-            stylix.nixosModules.stylix
             ./modules/droidcam
             ./modules/sway
             ./modules/tailscale

@@ -25,12 +25,6 @@
   };
 
   nix = {
-    #gc = {
-    #  automatic = true;
-    #  dates = "weekly";
-    #  options = "--delete-older-than 90d";
-    #};
-
     settings = {
       experimental-features = [
         "nix-command"
@@ -58,7 +52,8 @@
   ];
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate =
+    pkg: builtins.elem (pkgs.lib.getName pkg) (import ./unfree-allowlist.nix);
 
   services = {
     automatic-timezoned.enable = true;
