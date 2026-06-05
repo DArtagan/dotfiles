@@ -28,7 +28,8 @@
     {
       environment.systemPackages = with pkgs; [
         brightnessctl
-        grim
+        grim # screenshot
+        slurp # select a sub-set of the display, for passing to grim for screenshotting
         swayidle
         swaylock
         wl-clipboard
@@ -67,7 +68,14 @@
       # xdg portal + pipewire = screensharing
       xdg.portal = {
         enable = true;
-        wlr.enable = true;
+        wlr = {
+          enable = true;
+          # Specify using `kickoff` as wlr portal's chooser (else it would try the hardcoded list of: slurp, wmenu, wofi, rofi, bemenu).
+          settings.screencast = {
+            chooser_type = "dmenu";
+            chooser_cmd = "${pkgs.kickoff}/bin/kickoff --from-stdin --stdout";
+          };
+        };
       };
 
       home-manager.users.${username} = {
