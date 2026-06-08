@@ -28,13 +28,26 @@
     hardware.nvidia-container-toolkit.enable = true;
 
     # When nh os switch deploys a new nvidia driver, the old kernel module stays
-    # loaded (display server holds it). The CDI generator would fail with
-    # "Driver/library version mismatch". ExecCondition detects this and exits 1,
-    # which systemd treats as "activated successfully, but skipped" — no failure
-    # cascade to podman. The udev rule re-runs the generator after reboot when
-    # the new kernel module loads.
+    # loaded (display server holds it), so the new userspace mismatches it. Two
+    # things keep the switch (and the GPU containers) healthy until the reboot
+    # that loads the new module:
+    #
+    #   1. ExecCondition: on a driver bump the generator's ExecStart changes, so
+    #      switch restarts it; it would then call nvidia-ctk -> NVML and fail on
+    #      the version mismatch, breaking the switch. The guard exits 1 instead,
+    #      which systemd treats as "activated successfully, but skipped".
+    #   2. RuntimeDirectoryPreserve: the generator writes its spec to
+    #      /run/cdi (a RuntimeDirectory, which systemd deletes on stop by
+    #      default). Preserving it means the *old* spec — still pointing at the
+    #      old, still-present nvidia store paths that match the loaded module —
+    #      survives the switch. The GPU containers can restart and resolve
+    #      nvidia.com/gpu=all against it with no downtime. The udev rule
+    #      regenerates the spec for the new driver once it loads on reboot.
     systemd.services.nvidia-container-toolkit-cdi-generator = {
-      serviceConfig.ExecCondition = toString config.nvidiaContainers.versionGuard;
+      serviceConfig = {
+        ExecCondition = toString config.nvidiaContainers.versionGuard;
+        RuntimeDirectoryPreserve = "yes";
+      };
     };
 
     virtualisation = {
