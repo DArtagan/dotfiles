@@ -63,11 +63,26 @@
       };
     };
 
-    systemd.services = lib.mkIf (config."ai-server".startAfter != [ ]) (
-      lib.genAttrs [ "podman-ollama" "podman-open-webui" "podman-speaches" ] (_: {
-        after = config."ai-server".startAfter;
-        wantedBy = lib.mkForce [ "graphical.target" ];
-      })
-    );
+    systemd.services = lib.mkMerge [
+      (lib.mkIf (config."ai-server".startAfter != [ ]) (
+        lib.genAttrs [ "podman-ollama" "podman-open-webui" "podman-speaches" ] (_: {
+          after = config."ai-server".startAfter;
+          wantedBy = lib.mkForce [ "graphical.target" ];
+        })
+      ))
+
+      # ollama and speaches request nvidia.com/gpu=all. Across a driver update
+      # the CDI generator defers (modules/containers), so the CDI spec is absent
+      # until reboot and these would fail with "unresolvable CDI devices",
+      # aborting the switch. Reuse the same version guard so they skip in
+      # lockstep with the generator; the udev rule restarts everything once the
+      # new kernel module loads on reboot. Order After the generator so on boot
+      # the CDI spec exists before the container starts (the guard checks the
+      # driver version, not spec presence).
+      (lib.genAttrs [ "podman-ollama" "podman-speaches" ] (_: {
+        after = [ "nvidia-container-toolkit-cdi-generator.service" ];
+        serviceConfig.ExecCondition = toString config.nvidiaContainers.versionGuard;
+      }))
+    ];
   };
 }
