@@ -27,6 +27,9 @@ in
           "dropbox" = {
             id = "rwt4c-vtghd";
             path = "/home/${username}/dropbox";
+            # Cluster spans Windows + a CIFS/SMB-backed hub that can't represent
+            # POSIX modes, so syncing perms only manufactures conflicts.
+            ignorePerms = true;
             devices = [
               "vulcanus"
               "TheBeast_Manjaro"
@@ -38,6 +41,7 @@ in
           "ebooks" = {
             id = "ynwr5-igvw5";
             path = "/home/${username}/ebooks";
+            ignorePerms = true;
             devices = [
               "vulcanus"
               "TheBeast_Manjaro"
@@ -49,6 +53,7 @@ in
           "projects" = {
             id = "hzhvg-z5atl";
             path = "/home/${username}/projects";
+            ignorePerms = true;
             devices = [
               "vulcanus"
               "TheBeast_Manjaro"
@@ -60,6 +65,7 @@ in
           "school" = {
             id = "wkpyo-eeckc";
             path = "/home/${username}/school";
+            ignorePerms = true;
             devices = [
               "vulcanus"
               "TheBeast_Manjaro"

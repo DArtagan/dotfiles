@@ -380,6 +380,9 @@
         diff = {
           colorMoved = "default";
         };
+        init = {
+          defaultBranch = "main";
+        };
         user = {
           name = "William Weiskopf";
           email = "william@weiskopf.me";
