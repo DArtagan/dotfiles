@@ -15,7 +15,12 @@
     description = "Path to a script usable as a systemd ExecCondition that exits non-zero (skip) when the running nvidia kernel module version does not match the deployed driver.";
     default = pkgs.writeShellScript "nvidia-version-check" ''
       expected="${config.hardware.nvidia.package.version}"
-      actual=$(grep '^NVRM' /proc/driver/nvidia/version 2>/dev/null | grep -oP '\d+\.\d+\.\d+' | head -1 || echo "")
+      # The loaded module version, reported verbatim (e.g. "595.80" or
+      # "570.86.16"). Read it directly rather than regex-parsing the NVRM
+      # banner, which assumed a three-component version and silently produced
+      # an empty string — and thus a permanent skip — for two-component
+      # releases like 595.80.
+      actual=$(cat /sys/module/nvidia/version 2>/dev/null || echo "")
       if [ -z "$actual" ] || [ "$actual" != "$expected" ]; then
         echo "nvidia kernel ($actual) != expected ($expected); deferring until reboot" >&2
         exit 1
