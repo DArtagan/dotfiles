@@ -1,9 +1,25 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options."ai-server".startAfter = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [ ];
     description = "Systemd units that all ai-server container services should be ordered After=.";
+  };
+
+  options."ai-server".models = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    default = [
+      "qwen3.6:27b" # Alibaba: primary agentic/tool-use + general reasoning driver
+      "gpt-oss:20b" # OpenAI: fast, large-context, low-VRAM model for lighter/short tasks
+      "gemma4:31b-it-qat" # Google: QAT int4 second-opinion reasoner (near-bf16 quality, fits 24GB)
+      "mistral-nemo" # Mistral: natural prose / creative writing; many strong community finetunes exist
+    ];
+    description = "Ollama models to ensure are pulled on this host.";
   };
 
   config = {
@@ -18,6 +34,9 @@
         environment = {
           OLLAMA_FLASH_ATTENTION = "1";
           OLLAMA_KV_CACHE_TYPE = "q8_0";
+          # Models support 128K-256K context, but Ollama defaults to 4096.
+          # 32K is a realistic window on 24GB with the q8_0 KV cache.
+          OLLAMA_CONTEXT_LENGTH = "32768";
         };
         ports = [ "11434:11434" ];
         pull = "newer";
@@ -80,6 +99,30 @@
       (lib.genAttrs [ "podman-ollama" "podman-speaches" ] (_: {
         after = [ "nvidia-container-toolkit-cdi-generator.service" ];
       }))
+
+      # Ensure the declared models are present. `ollama pull` is idempotent
+      # (a no-op when already up to date), so this is safe on every boot. Wait
+      # for the container's API before pulling to avoid racing its startup.
+      (lib.mkIf (config."ai-server".models != [ ]) {
+        ollama-pull-models = {
+          description = "Pull declared Ollama models";
+          after = [ "podman-ollama.service" ];
+          requires = [ "podman-ollama.service" ];
+          wantedBy = [ "multi-user.target" ];
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+          };
+          script = ''
+            until ${pkgs.podman}/bin/podman exec ollama ollama list >/dev/null 2>&1; do
+              sleep 2
+            done
+            ${lib.concatMapStringsSep "\n" (
+              m: "${pkgs.podman}/bin/podman exec ollama ollama pull ${lib.escapeShellArg m}"
+            ) config."ai-server".models}
+          '';
+        };
+      })
     ];
   };
 }

@@ -18,19 +18,19 @@ _: {
         agent = {
           default_model = {
             provider = "ollama";
-            model = "qwen2.5-coder:32b";
+            model = "qwen3.6:27b";
           };
           inline_assistant_model = {
             provider = "ollama";
-            model = "qwen2.5-coder:32b";
+            model = "qwen3.6:27b";
           };
           commit_message_model = {
             provider = "ollama";
-            model = "qwen2.5-coder:32b";
+            model = "gpt-oss:20b";
           };
           thread_summary_model = {
             provider = "ollama";
-            model = "qwen2.5-coder:32b";
+            model = "gpt-oss:20b";
           };
         };
 
@@ -39,19 +39,19 @@ _: {
             api_url = "http://thenixbeast.forge.local:11434";
             available_models = [
               {
-                name = "codestral";
-                display_name = "codestral 22b";
-                max_tokens = 262144;
-              }
-              {
-                name = "qwen2.5-coder:32b";
-                display_name = "qwen2.5-coder:32b";
+                name = "qwen3.6:27b";
+                display_name = "qwen3.6 27b";
                 max_tokens = 32768;
               }
               {
-                name = "codegemma:7b";
-                display_name = "codegemma:7b";
-                max_tokens = 8192;
+                name = "gpt-oss:20b";
+                display_name = "gpt-oss 20b";
+                max_tokens = 32768;
+              }
+              {
+                name = "gemma4:31b-it-qat";
+                display_name = "gemma4 31b (qat)";
+                max_tokens = 32768;
               }
             ];
           };
