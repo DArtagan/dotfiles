@@ -124,6 +124,7 @@
       five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
       five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
       seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+      seven_day_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
 
       # --- pwd (shorten $HOME to ~) ---
       short_pwd="''${cwd/#$HOME/~}"
@@ -215,10 +216,30 @@
               else
                   seven_color=$'\033[32m'
               fi
+              # Compute time until reset
+              seven_reset_str=""
+              if [ -n "$seven_day_resets" ]; then
+                  now=$(date +%s)
+                  secs_left=$(( seven_day_resets - now ))
+                  if [ "$secs_left" -gt 0 ]; then
+                      mins_left=$(( secs_left / 60 ))
+                      hrs_left=$(( mins_left / 60 ))
+                      days_left=$(( hrs_left / 24 ))
+                      hrs_rem=$(( hrs_left % 24 ))
+                      if [ "$days_left" -gt 0 ]; then
+                          seven_reset_str=" (''${days_left}d''${hrs_rem}h)"
+                      elif [ "$hrs_left" -gt 0 ]; then
+                          mins_rem=$(( mins_left % 60 ))
+                          seven_reset_str=" (''${hrs_left}h''${mins_rem}m)"
+                      else
+                          seven_reset_str=" (''${mins_left}m)"
+                      fi
+                  fi
+              fi
               if [ -n "$rate_parts" ]; then
-                  rate_parts="''${rate_parts} ''${seven_color}7d:''${seven_int}%"$'\033[0m'
+                  rate_parts="''${rate_parts} ''${seven_color}7d:''${seven_int}%''${seven_reset_str}"$'\033[0m'
               else
-                  rate_parts="''${seven_color}7d:''${seven_int}%"$'\033[0m'
+                  rate_parts="''${seven_color}7d:''${seven_int}%''${seven_reset_str}"$'\033[0m'
               fi
           fi
           rate_info=" ''${rate_parts}"
