@@ -125,6 +125,7 @@
                 on_click_right = "alacritty -e bluetuith";
               }
             ))
+            ++ (lib.optional (config.jovian.devices.steamdeck.enable or false) (icon // { type = "battery"; }))
             ++ [
               {
                 type = "volume";
