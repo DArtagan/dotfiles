@@ -24,16 +24,41 @@
   config =
     let
       username = config.my.sway.username;
+      # GTK askpass helper so `sudo` invoked without a TTY (e.g. from a Claude
+      # Code session via `! sudo ...`) pops a graphical password prompt instead
+      # of failing. sudo uses this automatically when no terminal is available.
+      sudoAskpass = pkgs.writeShellScriptBin "sway-sudo-askpass" ''
+        exec ${pkgs.zenity}/bin/zenity --password --title="''${1:-sudo password}"
+      '';
     in
     {
-      environment.systemPackages = with pkgs; [
-        brightnessctl
-        grim # screenshot
-        slurp # select a sub-set of the display, for passing to grim for screenshotting
-        swayidle
-        swaylock
-        wl-clipboard
-      ];
+      environment = {
+        systemPackages = with pkgs; [
+          brightnessctl
+          grim # screenshot
+          slurp # select a sub-set of the display, for passing to grim for screenshotting
+          sudoAskpass
+          swayidle
+          swaylock
+          wl-clipboard
+          zenity
+        ];
+
+        # No credential caching carries across separate Claude tool calls (each is
+        # a fresh, TTY-less shell → ppid-keyed timestamp), so every privileged
+        # action re-prompts. That is intentional: tight, per-command control.
+        etc."sudo.conf".text = ''
+          Path askpass ${sudoAskpass}/bin/sway-sudo-askpass
+        '';
+
+        etc."greetd/environments" = lib.mkIf config.my.sway.enableGreetd {
+          text = ''
+            sway --unsupported-gpu
+            fish
+            bash
+          '';
+        };
+      };
 
       services.greetd = lib.mkIf config.my.sway.enableGreetd {
         enable = true;
@@ -49,14 +74,6 @@
       systemd.services.greetd = lib.mkIf config.my.sway.enableGreetd {
         serviceConfig.Type = "idle";
         unitConfig.After = [ "timers.target" ];
-      };
-
-      environment.etc."greetd/environments" = lib.mkIf config.my.sway.enableGreetd {
-        text = ''
-          sway --unsupported-gpu
-          fish
-          bash
-        '';
       };
 
       programs.sway = {
