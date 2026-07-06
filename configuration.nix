@@ -71,6 +71,20 @@
     };
   };
 
+  # Keep automatic timezone detection self-healing. Without this the daemon dies
+  # (Restart=no) the first time geoclue idle-times-out mid-query, and the clock
+  # stays on the old timezone until the next reboot/rebuild.
+  systemd.services.automatic-timezoned.serviceConfig = {
+    Restart = "on-failure";
+    RestartSec = 30;
+  };
+
+  # Re-query location on wake; covers traveling while the machine is suspended,
+  # where geoclue never sees a location-change event for the new location.
+  powerManagement.resumeCommands = ''
+    ${pkgs.systemd}/bin/systemctl try-restart automatic-timezoned.service
+  '';
+
   environment.systemPackages = with pkgs; [
     git
     inxi # hardware info

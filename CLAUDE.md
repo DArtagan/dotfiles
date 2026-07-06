@@ -52,7 +52,7 @@ Each host directory contains its own `default.nix` (hardware, filesystems, host-
 Reusable opt-in modules imported per-host in `flake.nix`:
 - `sway/` — Wayland desktop (greetd, ironbar, kickoff menu)
 - `stylix/` — unified theming (NixOS + home-manager variant)
-- `tailscale/` — auto-connect to headscale at `headscale.immortalkeep.com`
+- `tailscale/` — auto-connect to headscale at `headscale.immortalkeep.com` (MagicDNS `forge.local`; requires `--accept-dns=true`). See `modules/tailscale/README.md` for bootstrap, runtime toggles, and gotchas.
 - `ai-server/` — local AI stack (Ollama, Open-WebUI, Speaches via Podman)
 - `containers/` — Podman with nvidia-container-toolkit
 - `gaming/` — Steam, Lutris, Wine
