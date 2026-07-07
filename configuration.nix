@@ -34,9 +34,17 @@
       # Clean up nix store storage
       auto-optimise-store = true;
 
+      # cache.nixos.org listed first so a down LAN cache never blocks a build.
+      # mini-nas is a home cache on Tailscale (forge.local); when it is offline
+      # the daemon can hang querying it and — on nix 2.34.x — crash the whole
+      # nix-daemon. `connect-timeout` bounds that wait so an unreachable
+      # substituter fails fast and is skipped instead of wedging the switch.
       substituters = [
+        "https://cache.nixos.org/"
         "http://mini-nas.forge.local:8770/public"
       ];
+      connect-timeout = 5;
+      fallback = true;
       trusted-public-keys = [
         "public:YyCDrhNMvRWl7OxoW+8ueMcmVOOc1bllsVCMRNfZWpQ="
       ];

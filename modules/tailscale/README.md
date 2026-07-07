@@ -86,11 +86,29 @@ Deliberate split — don't "fix" it by making everything declarative:
   entirely** (`sudo tailscale down`) to get through the portal, then bring it
   back up — do *not* leave `accept-dns` off.
 - **MagicDNS resolves offline peers.** A name resolving (`getent hosts …`) does
-  not mean the host is up. `mini-nas` has been powered off with only its jetKVM
-  (`jetkvm-mini-nas`) reachable — the name still resolves.
+  not mean the host is up *or reachable* — MagicDNS answers from the netmap
+  regardless. Confirm reachability separately with `tailscale ping <host>`. (A
+  jetKVM like `jetkvm-mini-nas` can be up while its host is down — or the host
+  can be flapping via the deadlock above while its name still resolves.)
 - **WireGuard fallback (`wg0`).** A separate, plain WireGuard tunnel provides an
   out-of-band path to one network for when Headscale itself is down. It is *not*
   Tailscale; don't confuse `wg0` routes with `tailscale0`.
+- **A remote NAT'd node gets stuck offline and won't self-heal** (shows
+  `offline`/DERP-only from peers; on the box, `PollNetMap … context deadline
+  exceeded` and `getent hosts headscale.immortalkeep.com` times out). This is a
+  **DNS circular-dependency deadlock**, not a per-node fault: with
+  `override_local_dns: true`, resolving `headscale.immortalkeep.com` was routed
+  to internal resolvers that are *only reachable over the tailnet* — so reaching
+  the control server required the tailnet, and the tailnet required the control
+  server. Any netmap blip then became permanent. Fixed server-side (2026-07-07,
+  `vulcanus-proxmox` commit `26cabb6`) by a more-specific split-DNS route that
+  resolves the control host via public DNS (`headscale.immortalkeep.com →
+  1.1.1.1, 1.0.0.1`; longest-suffix match wins over the `immortalkeep.com`
+  split). Nodes heal on their next poll — **except one already stuck**, which
+  needs a one-time nudge to break the deadlock: `tailscale set --accept-dns=false`
+  (falls back to the LAN resolver, which resolves the control host publicly),
+  wait for it to reconnect, then `tailscale set --accept-dns=true`. That
+  momentary `false` is a deliberate recovery step — leave it back at `true`.
 
 ## Diagnostics cheat sheet
 
@@ -99,4 +117,6 @@ tailscale debug prefs | jq '{RouteAll, ExitNodeID, ExitNodeIP, CorpDNS}'  # exit
 tailscale dns status                                                       # is Tailscale DNS enabled? split routes?
 tailscale status                                                           # peers, online/offline, exit-node offers
 ip route get <ip>                                                          # which interface/tunnel is used
+getent hosts headscale.immortalkeep.com                                    # control host must resolve WITHOUT the tailnet (times out = DNS deadlock)
+journalctl -u tailscaled | grep -i pollnetmap                              # "context deadline exceeded" = can't reach control plane
 ```
