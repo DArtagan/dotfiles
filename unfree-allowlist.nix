@@ -4,6 +4,7 @@
   "1password"
   "1password-cli"
   "claude-code"
+  "displaylink"
   "nvidia-settings"
   "nvidia-x11"
   "steam"

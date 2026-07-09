@@ -78,6 +78,17 @@
     displayManager.gdm.enable = true;
     xserver.enable = true;
 
+    # Dell USB-C DisplayLink adapter. "displaylink" pulls in the evdi kernel
+    # module + the dlm (DisplayLink Manager) service, which the compositor
+    # picks up as an extra DRM output. "modesetting" keeps the internal AMD
+    # display working. Requires the unfree driver blob to be added to the Nix
+    # store manually (Synaptics forbids redistribution) — the build will print
+    # the exact URL + `nix-store --add-fixed` command if it is missing.
+    xserver.videoDrivers = [
+      "displaylink"
+      "modesetting"
+    ];
+
     # Share wifi as a hotspot
     # TODO: currently requires a virtual interface be first created using
     # iw dev wlan0 interface add wlo1_prime type managed addr 12:34:56:78:ab:ce
