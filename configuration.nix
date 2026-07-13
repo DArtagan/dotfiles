@@ -34,9 +34,17 @@
       # Clean up nix store storage
       auto-optimise-store = true;
 
+      # cache.nixos.org listed first so a down LAN cache never blocks a build.
+      # mini-nas is a home cache on Tailscale (forge.local); when it is offline
+      # the daemon can hang querying it and — on nix 2.34.x — crash the whole
+      # nix-daemon. `connect-timeout` bounds that wait so an unreachable
+      # substituter fails fast and is skipped instead of wedging the switch.
       substituters = [
+        "https://cache.nixos.org/"
         "http://mini-nas.forge.local:8770/public"
       ];
+      connect-timeout = 5;
+      fallback = true;
       trusted-public-keys = [
         "public:YyCDrhNMvRWl7OxoW+8ueMcmVOOc1bllsVCMRNfZWpQ="
       ];
@@ -70,6 +78,20 @@
       variant = "";
     };
   };
+
+  # Keep automatic timezone detection self-healing. Without this the daemon dies
+  # (Restart=no) the first time geoclue idle-times-out mid-query, and the clock
+  # stays on the old timezone until the next reboot/rebuild.
+  systemd.services.automatic-timezoned.serviceConfig = {
+    Restart = "on-failure";
+    RestartSec = 30;
+  };
+
+  # Re-query location on wake; covers traveling while the machine is suspended,
+  # where geoclue never sees a location-change event for the new location.
+  powerManagement.resumeCommands = ''
+    ${pkgs.systemd}/bin/systemctl try-restart automatic-timezoned.service
+  '';
 
   environment.systemPackages = with pkgs; [
     git

@@ -264,6 +264,42 @@
     '';
   };
 
+  # Claude Code writes to settings.json at runtime (e.g. /model, /config), so we can't
+  # symlink it read-only like statusline-command.sh. Instead, declare the settings we
+  # want version-controlled here and jq-merge them into the live file on activation,
+  # with declared values taking precedence but any other runtime-written keys preserved.
+  home.activation.claudeSettings =
+    let
+      managedSettings = {
+        theme = "light";
+        statusLine = {
+          type = "command";
+          command = "~/.claude/statusline-command.sh";
+        };
+        extraKnownMarketplaces = {
+          doist = {
+            source = {
+              source = "github";
+              repo = "doist/todoist-mcp";
+            };
+          };
+        };
+      };
+      managedSettingsFile = pkgs.writeText "claude-settings-managed.json" (
+        builtins.toJSON managedSettings
+      );
+    in
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      settingsFile="$HOME/.claude/settings.json"
+      mkdir -p "$HOME/.claude"
+      if [ -f "$settingsFile" ]; then
+        merged=$(${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$settingsFile" ${managedSettingsFile})
+      else
+        merged=$(${pkgs.jq}/bin/jq '.' ${managedSettingsFile})
+      fi
+      echo "$merged" > "$settingsFile"
+    '';
+
   programs = {
     alacritty = {
       enable = true;
