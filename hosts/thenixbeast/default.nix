@@ -66,6 +66,11 @@
 
   services = {
     esphome.enable = true; # For connecting to and programming ESP32 microcontrollers
+    # World-writable access to TI OMAP USB boot ROM devices (Nest thermostat
+    # flashing via NoLongerEvil); matches the rule from docs.nolongerevil.com
+    udev.extraRules = ''
+      SUBSYSTEM=="usb", ATTR{idVendor}=="0451", MODE="0666"
+    '';
     gnome.gnome-keyring.enable = true; # So 1Password can store its vault 2FA locally
     lact = {
       # GPU optimization/overclocking/undervolting
@@ -246,6 +251,10 @@
       # TODO: set here to match the one user declared here
       polkitPolicyOwners = [ "will" ];
     };
+    # Shim FHS dynamic loader so unpatched binaries (npm-downloaded Electron,
+    # AppImages, etc.) can run; per-project libs come from NIX_LD_LIBRARY_PATH
+    # set in each project's dev shell.
+    nix-ld.enable = true;
   };
 
   nix = {
