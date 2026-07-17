@@ -71,7 +71,10 @@
       # GPU optimization/overclocking/undervolting
       enable = true;
       settings = {
-        version = 5;
+        # lact persists a schema migration on startup; bumping this in lockstep
+        # with the lact package avoids a v5->v6 migration write against the
+        # read-only Nix-store config (which crashes the daemon). See below.
+        version = 6;
         daemon = {
           log_level = "info";
           admin_group = "wheel";
@@ -115,6 +118,13 @@
       };
     };
   };
+
+  # Defense-in-depth: lact leaks its unix socket on exit (even on graceful
+  # SIGTERM) and then refuses to start while /run/lactd.sock exists. Any
+  # non-graceful exit therefore wedges every restart with "Socket already
+  # exists" until the next reboot (/run is tmpfs). Remove a stale socket before
+  # starting so a crash self-heals instead of requiring a reboot.
+  systemd.services.lactd.serviceConfig.ExecStartPre = "-${pkgs.coreutils}/bin/rm -f /run/lactd.sock";
 
   # services.sanoid  # TODO: zfs auto-snapshotting
 
