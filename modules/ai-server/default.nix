@@ -100,15 +100,22 @@
         after = [ "nvidia-container-toolkit-cdi-generator.service" ];
       }))
 
-      # Ensure the declared models are present. `ollama pull` is idempotent
-      # (a no-op when already up to date), so this is safe on every boot. Wait
-      # for the container's API before pulling to avoid racing its startup.
+      # Ensure the declared models are present, pulling whenever the ollama
+      # container (re)starts. `ollama pull` is idempotent (a no-op when already
+      # up to date), so re-running is safe; the script waits for the container's
+      # API before pulling to avoid racing its startup.
+      #
+      # Bound to the container's lifecycle (wantedBy/after/requires
+      # podman-ollama) rather than a boot target: pulled models are meaningless
+      # without the container, and this keeps the unit out of the target graph,
+      # which would otherwise form an ordering cycle (the container is ordered
+      # After=graphical.target, itself After=multi-user.target).
       (lib.mkIf (config."ai-server".models != [ ]) {
         ollama-pull-models = {
           description = "Pull declared Ollama models";
           after = [ "podman-ollama.service" ];
           requires = [ "podman-ollama.service" ];
-          wantedBy = [ "multi-user.target" ];
+          wantedBy = [ "podman-ollama.service" ];
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;
