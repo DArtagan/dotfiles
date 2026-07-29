@@ -42,10 +42,26 @@
         useOSProber = true;
         memtest86.enable = true;
       };
-      timeout = 20;
+      timeout = 5;
     };
 
     resumeDevice = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part7";
+
+    # A USB device that fails to enumerate holds udevd's stop job open, and that job
+    # gates switch-root -- so the 90s default becomes a 90s boot stall.  Healthy stops
+    # here are under 1s; being killed at the cap is harmless because stage 2 re-runs a
+    # full coldplug in ~90ms anyway.
+    initrd.systemd.services.systemd-udevd = {
+      overrideStrategy = "asDropin";
+      serviceConfig.TimeoutStopSec = 5;
+    };
+
+    # The full-speed YubiKey NEO sits two hub tiers down (monitor KVM hub -> desk hub)
+    # and fails the new scheme's pre-address descriptor probe there; the old scheme
+    # addresses first and resets once.  Has to be a kernel param rather than the
+    # per-port <hub>-portN/quirks sysfs equivalent, which a udev rule cannot set before
+    # the initrd enumerates the hub's children.
+    kernelParams = [ "usbcore.old_scheme_first=1" ];
 
     extraModprobeConfig = ''
       options snd_hda_intel power_save=0  # Disables HDA audio power saving; without this the controller times out on resume causing spurious response errors and Sway to crash back to the greeter
