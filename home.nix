@@ -63,6 +63,7 @@
       python313Packages.psutil # For vim Recover.vim
       qbz
       rclone
+      rustdesk
       shotcut
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
       ueberzugpp # Image preview for yazi

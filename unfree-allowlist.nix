@@ -5,6 +5,7 @@
   "1password-cli"
   "claude-code"
   "displaylink"
+  "libsciter"
   "nvidia-settings"
   "nvidia-x11"
   "steam"
