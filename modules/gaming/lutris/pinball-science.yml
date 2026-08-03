@@ -1,0 +1,45 @@
+# Lutris installer for Pinball Science (DK Multimedia, 1998).
+#
+#   lutris -i modules/gaming/lutris/pinball-science.yml
+#
+# Delegates the real work to install-pinball-science.sh in this directory, which
+# is the validated path; this file only wires up the launcher and the runtime
+# settings. See README.md for why each setting is what it is.
+name: Pinball Science
+game_slug: pinball-science
+version: DK Multimedia CD
+slug: pinball-science-dk
+runner: wine
+
+script:
+  files:
+    - disc: "N/A:Select the disc root — a mounted ISO, or an existing ~/Games/pinball-science/cd"
+    - setup: "N/A:Select install-pinball-science.sh (dotfiles/modules/gaming/lutris/)"
+
+  game:
+    exe: $GAMEDIR/drive_c/Program Files/DK Multimedia's/Pinball Science/mscience.exe
+    prefix: $GAMEDIR
+    working_dir: $GAMEDIR/drive_c/Program Files/DK Multimedia's/Pinball Science
+
+  wine:
+    # Do NOT put `version: system` here. Lutris appends "-x86_64" and tries to
+    # DOWNLOAD a runner named "system-x86_64", failing the install with
+    # "Failed to retrieve wine (system-x86_64) information". `system` is only
+    # valid in a game's own config (see the installed config in
+    # ~/.local/share/lutris/games/), not in an installer's runner phase.
+    # Omitting it uses the default runner; set "System" in the game's
+    # configuration afterwards to pick up the flake's wineWow64Packages.
+    #
+    # Matches the game's SetDisplayMode(640,480,8). This is NOT what fixes the
+    # black backgrounds (cnc-ddraw is) — it just avoids a real 640x480x8 mode
+    # switch on a 4K output, which can wedge the display.
+    Desktop: true
+    WineDesktop: 640x480
+
+  installer:
+    - execute:
+        file: $setup
+        args: $disc
+        env:
+          GAMEDIR: $GAMEDIR
+        description: "Building the Wine prefix — fully unattended, no clicks needed (~10s)"
