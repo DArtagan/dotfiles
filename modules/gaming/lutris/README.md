@@ -374,6 +374,74 @@ All tested against the fully-corrected configuration, all still black:
   thunking layer differs.
 - **DDrawCompat** — crashes, see above.
 
+## Known-broken: intermittent freeze at 100% CPU
+
+**Status: unresolved, reported upstream.** See `winehq-bug-report.md` in this directory.
+
+After a few minutes of play the UI stops responding while one core stays pinned. Some of the
+game keeps drawing and some controls still react, which makes it look like a partial crash.
+
+**Mitigation that works today:** turn the game's own sound settings down (Options → sound
+level, narration). Freezes largely stop; turning them back up brings them back. The cost is
+narration, which matters for this title — hence the upstream report.
+
+### What it is
+
+The main thread spins in `NtYieldExecution` — i.e. `SwitchToThread()` / `Sleep(0)` — around
+320,000 times a second, waiting on a condition that never becomes true. Every other thread
+is idle. It is **not** a deadlock: the thread is `R` and busy.
+
+`getrusage` is the fingerprint. It has exactly one caller in Wine
+(`dlls/ntdll/unix/sync.c`, `NtYieldExecution`, twice per yield), so a profile with
+`getrusage`/`sched_yield` at a 2:1 ratio *is* a yield-spin:
+
+```
+ 63.50%   643178   getrusage      <- 2 per yield
+ 32.78%   321589   sched_yield
+  1.46%     6364   read           <- almost no wineserver IPC
+```
+
+A second signature exists with heavy wineserver IPC instead (a `PeekMessage` pump). Same
+symptom, different wait site — which probably explains why parts of the game stay alive.
+
+DirectSound is **not** the culprit, despite appearances: a `+dsound` trace of the transition
+shows playback working normally (`playpos` advancing), then a clean
+`Stop` + `SetCurrentPosition(0)`, and only then the hang — with no further dsound calls from
+the game thread while the mixer keeps running. Earlier traces that only captured the
+*aftermath* made this look like a stuck buffer; it isn't.
+
+### Dead ends — don't retry
+
+Audio backend (`winepulse` **and** `winealsa`), audio hardware (USB DAC **and** PCI HDMI
+sink), Wine's builtin dsound **and** native MS DirectX 9 `dsound.dll`, MS-ADPCM vs PCM,
+corrupt/truncated media, the graphics stack (`renderer=gdi`, `renderer=no3d`, X11 and
+Wayland), and both Wine build types (new-WoW64 and classic 32-bit `WINEARCH=win32`).
+
+Two specifically misleading trails:
+
+- **`drawer.wav` appears in every capture.** It is not special — it is the sound that plays
+  on nearly every screen transition, so it is open during most interactions.
+- **320 of the 321 MS-ADPCM files on the disc have a truncated final block.** That is how
+  the disc was authored, not corruption.
+
+### Capturing a freeze
+
+Run this the moment it wedges, **before** killing anything:
+
+```bash
+./modules/gaming/lutris/diagnose-freeze.sh
+```
+
+It writes thread states, a syscall profile, a backtrace, the assets in flight and the real
+audio state to a timestamped directory. Three traps it encodes, learned the hard way:
+
+- **`pactl` is not installed here** — use `wpctl` / `pw-dump`. `pactl` "returning nothing"
+  looks exactly like "audio is gone" and is not.
+- **Never attach `winedbg`** — it reproducibly faults and kills the process. `gdb` attaches
+  and detaches safely (but cannot unwind WoW64, so it yields no Win32 frames).
+- **`kernel.yama.ptrace_scope` must be `0`** for the syscall profile, otherwise `strace` can
+  only attach to its own descendants. `sudo sysctl kernel.yama.ptrace_scope=0`.
+
 ## Harmless noise in the logs
 
 Not worth chasing:
