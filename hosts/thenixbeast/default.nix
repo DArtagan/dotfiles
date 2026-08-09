@@ -42,7 +42,7 @@
         useOSProber = true;
         memtest86.enable = true;
       };
-      timeout = 5;
+      timeout = 10;
     };
 
     resumeDevice = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part7";
