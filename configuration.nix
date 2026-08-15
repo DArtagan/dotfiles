@@ -107,6 +107,10 @@
     _1password-gui = {
       enable = true;
     };
+    fish = {
+      enable = true;
+      generateCompletions = false;
+    };
     nh = {
       enable = true;
       clean = {

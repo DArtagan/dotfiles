@@ -386,6 +386,16 @@
           end
         '';
       };
+      interactiveShellInit = ''
+        _tide_find_and_remove kubectl tide_right_prompt_items
+
+        # worktrunk ships no vendor_functions.d, so the `wt` wrapper (cd + --execute
+        # directives) can only come from the binary. Do NOT run `wt config shell install`
+        # — it writes untracked files into ~/.config/fish/{functions,completions}/.
+        if command -q wt
+          wt config shell init fish | source
+        end
+      '';
       plugins = [
         {
           name = "done";
@@ -419,12 +429,7 @@
         wsc = "wt switch --create --execute=claude";
       };
       shellInit = ''
-        _tide_find_and_remove kubectl tide_right_prompt_items
         set -g -x PIP_REQUIRE_VIRTUALENV true
-
-        if command -q wt
-          wt config shell init fish | source
-        end
       '';
     };
     fzf.enable = true;
