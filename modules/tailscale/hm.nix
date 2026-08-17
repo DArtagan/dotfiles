@@ -5,33 +5,6 @@
 # `tailscale` CLI and `jq` in PATH. See ./README.md.
 _: {
   programs.fish.functions = {
-    # Toggle acceptance of tailnet subnet routes at runtime (persists via
-    # `tailscale set`, so the bare `tailscale up` in the autoconnect service
-    # keeps whatever you last chose). Turn ON at an untrusted/remote network
-    # to reach tailnet subnets; OFF when using the local LAN directly.
-    ts-routes = ''
-      switch "$argv[1]"
-        case on true
-          tailscale set --accept-routes=true
-          and echo "tailscale: accept-routes ON — tailnet subnet routes accepted"
-        case off false
-          tailscale set --accept-routes=false
-          and echo "tailscale: accept-routes OFF — using local network directly"
-        case toggle
-          if test (tailscale debug prefs | jq -r .RouteAll) = true
-            tailscale set --accept-routes=false
-            and echo "tailscale: accept-routes OFF"
-          else
-            tailscale set --accept-routes=true
-            and echo "tailscale: accept-routes ON"
-          end
-        case status ""
-          echo "accept-routes: "(tailscale debug prefs | jq -r .RouteAll)
-        case '*'
-          echo "usage: ts-routes [on|off|toggle|status]" >&2
-          return 1
-      end
-    '';
     # Route ALL internet traffic through a tailnet exit node (privacy on
     # untrusted wifi). `--exit-node-allow-lan-access` keeps the local LAN
     # (printers, NAS) reachable. Run with no args to see current + choices.

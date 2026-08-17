@@ -12,17 +12,24 @@ runtime](#declarative-vs-runtime-state) below.
 
 ## What this module pins (declarative invariants)
 
-Set in [`default.nix`](./default.nix), overridable per host in `flake.nix` via
-`my.tailscale.*`:
+One option, in [`default.nix`](./default.nix), set per host in `flake.nix`:
 
-| Option        | Default                              | Why it's pinned |
-|---------------|--------------------------------------|-----------------|
-| `loginServer` | `https://headscale.immortalkeep.com` | A bare `tailscale up` would otherwise target Tailscale's SaaS coordinator, not ours. |
-| `acceptDns`   | `true`                               | **Required.** Headscale serves `*.forge.local` via MagicDNS. With `--accept-dns=false`, those names fail with `NXDOMAIN`. The advertised resolvers are public/reachable, so this is not a black-hole risk. |
-| `operator`    | `null` (set to `will` / `willy`)     | Lets that user run `tailscale up` / `tailscale set` (and the `ts-*` helpers) without `sudo`. |
+| Option     | Default                          | Why it's an option |
+|------------|----------------------------------|--------------------|
+| `operator` | `null` (set to `will` / `willy`) | The username genuinely differs per host. Lets that user run `tailscale up` / `tailscale set` (and `ts-exit`) without `sudo`. |
 
-The `tailscale-autoconnect` oneshot applies these on a fresh `tailscale up`. It
-**does not** use a pre-auth key — see [Bootstrapping](#bootstrapping-a-new-host).
+Everything else is a **literal in the script**. Each has one value that works
+here, so a knob would only offer a way to break it:
+
+| Flag | Value | What another value breaks |
+|------|-------|---------------------------|
+| `--login-server`  | `https://headscale.immortalkeep.com` | A bare `tailscale up` targets Tailscale's SaaS coordinator instead of ours. |
+| `--accept-dns`    | `true` | `*.forge.local` goes `NXDOMAIN`; MagicDNS is the only thing serving it. The resolvers Headscale advertises are public, so there is no black-hole risk to hedge against. |
+| `--accept-routes` | `true` | `*.immortalkeep.com` stops resolving away from the LAN — `vulcanus`' `192.168.0.0/24` is the only path to CoreDNS (`192.168.0.202`) and the internal ingress (`192.168.0.203`). Safe on-LAN: Tailscale won't install a route matching the host's own subnet. |
+
+The `tailscale-autoconnect` oneshot applies all of these, on every rebuild and
+reboot. It **does not** use a pre-auth key — see
+[Bootstrapping](#bootstrapping-a-new-host).
 
 ## Bootstrapping a new host
 
@@ -35,6 +42,7 @@ On a fresh machine, after the first rebuild:
 sudo tailscale up \
   --login-server https://headscale.immortalkeep.com \
   --accept-dns=true \
+  --accept-routes=true \
   --operator=$USER
 # then follow the printed URL, or register the node from the Headscale host:
 #   headscale nodes register --user <user> --key <nodekey-from-url>
@@ -53,12 +61,9 @@ Defined as fish helpers in `home.nix`. They use `tailscale set`, so they apply
 live **and work even when fully black-holed** (local daemon calls, no network):
 
 ```bash
-ts-routes on|off|toggle|status   # accept tailnet subnet routes (remote LAN access)
 ts-exit <node>|off|status        # route ALL traffic via an exit node (+ LAN access)
 ```
 
-- `ts-routes` — turn **on** to reach subnets a peer advertises (e.g. a remote
-  LAN); **off** when you're on that LAN directly.
 - `ts-exit` — full-tunnel through a chosen exit node for privacy on untrusted
   wifi. Clears with `ts-exit off`.
 
@@ -66,12 +71,18 @@ ts-exit <node>|off|status        # route ALL traffic via an exit node (+ LAN acc
 
 Deliberate split — don't "fix" it by making everything declarative:
 
-- **Declarative (this module):** login server, `accept-dns`, operator. These are
-  properties of *the tailnet* and should be identical on every deploy.
-- **Runtime (`ts-*` helpers, persisted in `/var/lib/tailscale`):** exit node and
-  subnet-route acceptance. These are properties of *where the laptop currently
-  is*, so they're intentionally imperative and survive reboots ("persist last
-  state").
+- **Declarative (this module):** login server, `accept-dns`, `accept-routes`,
+  operator. Properties of *the tailnet*, so they are identical on every deploy
+  — which is why only the operator username is an option at all. The autoconnect
+  unit reasserts them on every rebuild and reboot, via `tailscale set` on hosts
+  that are already registered and `tailscale up` on those that are not.
+- **Runtime (`ts-exit`, persisted in `/var/lib/tailscale`):** exit node. A
+  property of *where the laptop currently is*, so intentionally imperative,
+  surviving reboots ("persist last state").
+
+Because the unit reasserts these, a manual `tailscale set` of any of them lasts
+only until the next rebuild or reboot. For a captive portal, use `tailscale
+down` rather than turning `accept-dns` off — see [Gotchas](#gotchas).
 
 ## Gotchas
 
