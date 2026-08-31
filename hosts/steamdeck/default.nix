@@ -54,8 +54,17 @@
           path = user_ssh_private_key + ".pub";
         };
         "users/willy/wireguard_private_key" = { };
+        "wifi/hotspot_psk" = { };
       };
     };
+
+  # Lives here rather than with the other `my.*` settings in flake.nix because
+  # pskFile has to reference this host's sops secret.
+  my.hotspot = {
+    enable = true;
+    ssid = "steam_powered_internet";
+    pskFile = config.sops.secrets."wifi/hotspot_psk".path;
+  };
 
   boot.loader = {
     systemd-boot = {
@@ -116,19 +125,6 @@
       "displaylink"
       "modesetting"
     ];
-
-    # Share wifi as a hotspot
-    # TODO: currently requires a virtual interface be first created using
-    # iw dev wlan0 interface add wlo1_prime type managed addr 12:34:56:78:ab:ce
-    #create_ap = {
-    #  enable = true;
-    #  settings = {
-    #    INTERNET_IFACE = "wlo1_prime";
-    #    WIFI_IFACE = "wlo1";
-    #    SSID = "steam_powered_internet";
-    #    PASSPHRASE = "qwertyui";
-    #  };
-    #};
   };
 
   environment.systemPackages = with pkgs; [
