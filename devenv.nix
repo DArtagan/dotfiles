@@ -23,6 +23,11 @@
     nixfmt.enable = true;
     shellcheck.enable = true;
     statix.enable = true;
-    trim-trailing-whitespace.enable = true;
+    trim-trailing-whitespace = {
+      enable = true;
+      # Unified diffs mark a blank context line with a single leading space.
+      # Trimming it corrupts the patch, so leave vendored patches alone.
+      excludes = [ "\\.(patch|diff)$" ];
+    };
   };
 }
