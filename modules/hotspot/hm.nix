@@ -14,7 +14,7 @@ _: {
           and echo "hotspot: up — clients get 10.42.0.0/24, NAT'd out the uplink"
         case off stop down
           sudo systemctl stop hotspot
-          and echo "hotspot: down — AP interface removed, radio released"
+          and echo "hotspot: down — NAT removed, ap0 left down (`sudo iw dev ap0 del` frees the radio)"
         case "" status
           echo "hostapd: "(systemctl is-active hotspot)"  dnsmasq: "(systemctl is-active hotspot-dnsmasq)
           echo

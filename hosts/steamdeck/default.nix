@@ -77,10 +77,6 @@
   networking = {
     hostName = "steamdeck";
 
-    #interfaces."wlo1_prime" = {
-    #
-    #};
-
     wg-quick.interfaces = {
       # Launch using: `sudo systemctl restart wg-quick-wg0.service`
       wg0 = {
