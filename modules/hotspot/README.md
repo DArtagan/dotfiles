@@ -95,6 +95,11 @@ wifi device currently holds the connection, which is not knowable at build time.
 - **An MSS clamp on forwarded SYNs.** The uplinks worth sharing are exactly the
   ones with a sub-1500 PMTU — in-flight satellite, hotel VPN. Without it, HTTPS
   to some hosts hangs while everything else looks fine.
+- **`ip_forward` is restored, but only if we set it.** It is a global knob that
+  tailscale (subnet routing), podman and NM's shared mode also drive. Setup
+  records its prior value in `/run/hotspot/ip_forward`; teardown reverts to `0`
+  only if it read `0` there, so switching the hotspot off never breaks another
+  service's forwarding. If the record is missing, teardown leaves it alone.
 - **WPA2, not WPA3.** This exists to get devices on without fuss.
 
 ## Usage

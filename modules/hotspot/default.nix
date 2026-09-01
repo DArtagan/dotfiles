@@ -80,6 +80,9 @@ let
       # NAT out the uplink, so clients egress behind this host's address and a
       # one-device-at-a-time network still sees one device. -C first because
       # these are appended at runtime and must not stack up across restarts.
+      # Remember the prior value so teardown can put it back. RuntimeDirectory is
+      # recreated on every start, so this is always this run's own reading.
+      cat /proc/sys/net/ipv4/ip_forward > ${rundir}/ip_forward
       sysctl -qw net.ipv4.ip_forward=1
       iptables -t nat -C POSTROUTING -s "$net.0/24" -o "$uplink" -j MASQUERADE 2>/dev/null \
         || iptables -t nat -A POSTROUTING -s "$net.0/24" -o "$uplink" -j MASQUERADE
@@ -100,6 +103,7 @@ let
     runtimeInputs = [
       pkgs.iproute2
       pkgs.iptables
+      pkgs.procps # sysctl
     ];
     text = ''
       ap=${cfg.interface}
@@ -111,6 +115,12 @@ let
         iptables -D FORWARD -i "$ap" -o "$uplink" -j ACCEPT 2>/dev/null || true
         iptables -D FORWARD -i "$uplink" -o "$ap" -m state --state RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || true
         iptables -t mangle -D FORWARD -o "$uplink" -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu 2>/dev/null || true
+      fi
+
+      # ip_forward is global: tailscale (subnet routing), podman and NM's shared
+      # mode all set it too. Only revert it if this service is what turned it on.
+      if [ "$(cat ${rundir}/ip_forward 2>/dev/null || echo 1)" = "0" ]; then
+        sysctl -qw net.ipv4.ip_forward=0
       fi
 
       # The vif is brought down but NOT deleted. `iw dev <ap> del` resets the
