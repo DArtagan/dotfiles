@@ -8,7 +8,7 @@
   # callback argument (drm_atomic_state -> drm_atomic_commit), and evdi's
   # conftest.sh probes silently misdetect the kernel API because the test
   # compiles lack KBUILD_MODNAME. Bump to 1.15.0 + the upstream conftest fix.
-  # Drop this once nixpkgs#555981 lands.
+  # TODO: drop this once nixpkgs#555981 lands.
   nixpkgs.overlays = [
     (final: prev: {
       linuxPackagesFor =
