@@ -14,7 +14,17 @@ _: {
           tailscale set --exit-node=
           and echo "tailscale: exit node cleared — direct internet via local link"
         case "" status
-          echo "current exit-node: "(tailscale debug prefs | jq -r 'if .ExitNodeIP == "" then "none" else .ExitNodeIP end')
+          # Read the routing state, not the ExitNodeIP pref. `--exit-node=<name>`
+          # resolves the name to a node ID and leaves ExitNodeIP empty, so that
+          # pref reports "none" while every packet is going through the tunnel.
+          # .ExitNode is the peer actually carrying traffic; .ExitNodeOption is
+          # merely one offering to.
+          set -l active (tailscale status --json \
+            | jq -r '.Peer[] | select(.ExitNode == true) | .HostName + " (" + .TailscaleIPs[0] + ")"')
+          if test -z "$active"
+            set active none
+          end
+          echo "current exit-node: $active"
           echo
           echo "available exit nodes:"
           tailscale exit-node list
