@@ -4,34 +4,6 @@
     ./hardware-configuration.nix
   ];
 
-  # evdi 1.14.15 does not build against Linux 7.2: DRM renamed the atomic
-  # callback argument (drm_atomic_state -> drm_atomic_commit), and evdi's
-  # conftest.sh probes silently misdetect the kernel API because the test
-  # compiles lack KBUILD_MODNAME. Bump to 1.15.0 + the upstream conftest fix.
-  # TODO: drop this once nixpkgs#555981 lands.
-  nixpkgs.overlays = [
-    (final: prev: {
-      linuxPackagesFor =
-        kernel:
-        (prev.linuxPackagesFor kernel).extend (
-          _: kprev: {
-            evdi = kprev.evdi.overrideAttrs (old: rec {
-              version = "1.15.0";
-              src = final.fetchFromGitHub {
-                owner = "DisplayLink";
-                repo = "evdi";
-                tag = "v${version}";
-                hash = "sha256-CXF7PvmrPjjNoWXbWxEkFE/Sw4bO6YqDplPwF/OxhB0=";
-              };
-              # 1.15.0 dropped the /etc/os-release distro detection this patched.
-              prePatch = "";
-              patches = (old.patches or [ ]) ++ [ ./evdi-fix-conftest-probes.patch ];
-            });
-          }
-        );
-    })
-  ];
-
   sops =
     let
       host_ssh_private_key = "/etc/ssh/ssh_host_ed25519_key";
@@ -73,6 +45,19 @@
     };
     efi.canTouchEfiVariables = true;
   };
+
+  # Without this the card sits in regulatory domain 00 (the world domain), which
+  # marks all of 5 GHz passive-scan: the radio waits to overhear a beacon rather
+  # than probing for the network, and transmit power is capped. Seen as
+  # NetworkManager reporting "the Wi-Fi network could not be found" for an AP
+  # its own scan list contained, and repeated "association took too long".
+  # hostapd sets the domain from its country_code while the hotspot runs and it
+  # reverts to 00 when hostapd stops, so the radio is otherwise only correct
+  # while the hotspot happens to be up.
+  hardware.wirelessRegulatoryDatabase = true;
+  boot.extraModprobeConfig = ''
+    options cfg80211 ieee80211_regdom="US"
+  '';
 
   networking = {
     hostName = "steamdeck";
