@@ -56,4 +56,3 @@ Trying to update an unexisting bundle gives an error.
   $ antigen-update /tmp/example/non-existing-bundle
   Bundle not found in record. Try 'antigen bundle *' first. (glob)
   [1]
-

@@ -24,7 +24,7 @@
 2014-03-31 20:16:03	=!=	Error: unknown command "stat" (type /help for help)
 2014-03-31 20:25:24		Option changed: irc.look.smart_filter = on
 2014-03-31 20:25:43		Filter "irc_smart" added:
-2014-03-31 20:25:43		  [irc_smart] buffer: * / tags: irc_smart_filter / regex: * 
+2014-03-31 20:25:43		  [irc_smart] buffer: * / tags: irc_smart_filter / regex: *
 2014-03-31 22:37:27		fifo: pipe closed
 2014-03-31 22:37:29		Plugins loaded: alias, aspell, charset, fifo, guile, irc, logger, lua, perl, python, relay, rmodifier, ruby, script, tcl, xfer
 2014-03-31 22:55:36		script: downloading list of scripts...
@@ -41,28 +41,28 @@
 2014-03-31 22:57:19		Plugins loaded: alias, aspell, charset, fifo, guile, irc, logger, lua, perl, python, relay, rmodifier, ruby, script, tcl, xfer
 2014-03-31 22:58:16		Alias "sfilter" => "filter add irc_smart_$server_$channel irc.$server.$channel irc_smart_filter *" created
 2014-03-31 22:58:33		[core]
-2014-03-31 22:58:33		  away     cursor   history  mute     reload   unset    window 
+2014-03-31 22:58:33		  away     cursor   history  mute     reload   unset    window
 2014-03-31 22:58:33		  bar      debug    input    plugin   repeat   upgrade
-2014-03-31 22:58:33		  buffer   eval     key      print    save     uptime 
+2014-03-31 22:58:33		  buffer   eval     key      print    save     uptime
 2014-03-31 22:58:33		  color    filter   layout   proxy    secure   version
-2014-03-31 22:58:33		  command  help     mouse    quit     set      wait   
+2014-03-31 22:58:33		  command  help     mouse    quit     set      wait
 2014-03-31 22:58:33		[script]
 2014-03-31 22:58:33		  script
 2014-03-31 22:58:33		[irc]
-2014-03-31 22:58:33		  admin       ignore      motd        reconnect   summon    
-2014-03-31 22:58:33		  allchan     info        msg         rehash      time      
-2014-03-31 22:58:33		  allserv     invite      names       restart     topic     
-2014-03-31 22:58:33		  ban         ison        nick        sajoin      trace     
-2014-03-31 22:58:33		  connect     join        notice      samode      unban     
-2014-03-31 22:58:33		  ctcp        kick        notify      sanick      userhost  
-2014-03-31 22:58:33		  cycle       kickban     op          sapart      users     
-2014-03-31 22:58:33		  dcc         kill        oper        saquit      version   
-2014-03-31 22:58:33		  dehalfop    links       part        server      voice     
-2014-03-31 22:58:33		  deop        list        ping        service     wallchops 
-2014-03-31 22:58:33		  devoice     lusers      pong        servlist    wallops   
-2014-03-31 22:58:33		  die         map         query       squery      who       
-2014-03-31 22:58:33		  disconnect  me          quiet       squit       whois     
-2014-03-31 22:58:33		  halfop      mode        quote       stats       whowas    
+2014-03-31 22:58:33		  admin       ignore      motd        reconnect   summon
+2014-03-31 22:58:33		  allchan     info        msg         rehash      time
+2014-03-31 22:58:33		  allserv     invite      names       restart     topic
+2014-03-31 22:58:33		  ban         ison        nick        sajoin      trace
+2014-03-31 22:58:33		  connect     join        notice      samode      unban
+2014-03-31 22:58:33		  ctcp        kick        notify      sanick      userhost
+2014-03-31 22:58:33		  cycle       kickban     op          sapart      users
+2014-03-31 22:58:33		  dcc         kill        oper        saquit      version
+2014-03-31 22:58:33		  dehalfop    links       part        server      voice
+2014-03-31 22:58:33		  deop        list        ping        service     wallchops
+2014-03-31 22:58:33		  devoice     lusers      pong        servlist    wallops
+2014-03-31 22:58:33		  die         map         query       squery      who
+2014-03-31 22:58:33		  disconnect  me          quiet       squit       whois
+2014-03-31 22:58:33		  halfop      mode        quote       stats       whowas
 2014-03-31 22:58:33		[charset]
 2014-03-31 22:58:33		  charset
 2014-03-31 22:58:33		[python]
@@ -72,11 +72,11 @@
 2014-03-31 22:58:33		[logger]
 2014-03-31 22:58:33		  logger
 2014-03-31 22:58:33		[alias]
-2014-03-31 22:58:33		  AAWAY    BEEP     CLOSE    KB       Q        T        W      
-2014-03-31 22:58:33		  alias    BYE      EXIT     LEAVE    REDRAW   UB       WC     
-2014-03-31 22:58:33		  AME      C        IG       M        SAY      UMODE    WI     
-2014-03-31 22:58:33		  AMSG     CHAT     J        MUB      sfilter  unalias  WII    
-2014-03-31 22:58:33		  ANICK    CL       K        N        SIGNOFF  V        WW     
+2014-03-31 22:58:33		  AAWAY    BEEP     CLOSE    KB       Q        T        W
+2014-03-31 22:58:33		  alias    BYE      EXIT     LEAVE    REDRAW   UB       WC
+2014-03-31 22:58:33		  AME      C        IG       M        SAY      UMODE    WI
+2014-03-31 22:58:33		  AMSG     CHAT     J        MUB      sfilter  unalias  WII
+2014-03-31 22:58:33		  ANICK    CL       K        N        SIGNOFF  V        WW
 2014-03-31 22:58:33		[xfer]
 2014-03-31 22:58:33		  me  xfer
 2014-03-31 22:58:33		[guile]
@@ -146,15 +146,15 @@
 2014-03-31 22:59:13		    /filter add sucks irc.freenode.#weechat * weechat sucks
 2014-03-31 22:59:25		Message filtering enabled
 2014-03-31 22:59:25		Message filters:
-2014-03-31 22:59:25		  [irc_smart] buffer: * / tags: irc_smart_filter / regex: * 
+2014-03-31 22:59:25		  [irc_smart] buffer: * / tags: irc_smart_filter / regex: *
 2014-03-31 23:00:00		Filter "irc_smart" deleted
 2014-03-31 23:00:06		Alias "sfilter" => "filter add irc_smart_$server_$channel irc.$server.$channel irc_smart_filter *" created
 2014-03-31 23:00:17		Filter "irc_smart_$server_$channel" added:
-2014-03-31 23:00:17		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: * 
+2014-03-31 23:00:17		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: *
 2014-03-31 23:00:31	=!=	irc: command "join" must be executed on irc buffer (server or channel)
 2014-03-31 23:00:43	=!=	irc: command "join" must be executed on irc buffer (server or channel)
 2014-03-31 23:01:25		Filter "irc_smart_freenode_#freenode" added:
-2014-03-31 23:01:25		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: * 
+2014-03-31 23:01:25		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: *
 2014-03-31 23:07:43		script: script "auto-join" not found
 2014-03-31 23:07:51		script: script "autojoin" not found
 2014-03-31 23:08:32		script: script "autoconnect" not found
@@ -733,29 +733,29 @@
 2014-03-31 23:25:11	=!=	You can not write text in this buffer
 2014-03-31 23:25:26	=!=	Error with command "disconnect" (try /help disconnect)
 2014-03-31 23:25:30		[core]
-2014-03-31 23:25:30		  away     debug    key      proxy    set      window 
-2014-03-31 23:25:30		  bar      eval     layout   quit     unset  
+2014-03-31 23:25:30		  away     debug    key      proxy    set      window
+2014-03-31 23:25:30		  bar      eval     layout   quit     unset
 2014-03-31 23:25:30		  buffer   filter   mouse    reload   upgrade
-2014-03-31 23:25:30		  color    help     mute     repeat   uptime 
+2014-03-31 23:25:30		  color    help     mute     repeat   uptime
 2014-03-31 23:25:30		  command  history  plugin   save     version
-2014-03-31 23:25:30		  cursor   input    print    secure   wait   
+2014-03-31 23:25:30		  cursor   input    print    secure   wait
 2014-03-31 23:25:30		[script]
 2014-03-31 23:25:30		  script
 2014-03-31 23:25:30		[irc]
-2014-03-31 23:25:30		  admin       ignore      motd        reconnect   summon    
-2014-03-31 23:25:30		  allchan     info        msg         rehash      time      
-2014-03-31 23:25:30		  allserv     invite      names       restart     topic     
-2014-03-31 23:25:30		  ban         ison        nick        sajoin      trace     
-2014-03-31 23:25:30		  connect     join        notice      samode      unban     
-2014-03-31 23:25:30		  ctcp        kick        notify      sanick      userhost  
-2014-03-31 23:25:30		  cycle       kickban     op          sapart      users     
-2014-03-31 23:25:30		  dcc         kill        oper        saquit      version   
-2014-03-31 23:25:30		  dehalfop    links       part        server      voice     
-2014-03-31 23:25:30		  deop        list        ping        service     wallchops 
-2014-03-31 23:25:30		  devoice     lusers      pong        servlist    wallops   
-2014-03-31 23:25:30		  die         map         query       squery      who       
-2014-03-31 23:25:30		  disconnect  me          quiet       squit       whois     
-2014-03-31 23:25:30		  halfop      mode        quote       stats       whowas    
+2014-03-31 23:25:30		  admin       ignore      motd        reconnect   summon
+2014-03-31 23:25:30		  allchan     info        msg         rehash      time
+2014-03-31 23:25:30		  allserv     invite      names       restart     topic
+2014-03-31 23:25:30		  ban         ison        nick        sajoin      trace
+2014-03-31 23:25:30		  connect     join        notice      samode      unban
+2014-03-31 23:25:30		  ctcp        kick        notify      sanick      userhost
+2014-03-31 23:25:30		  cycle       kickban     op          sapart      users
+2014-03-31 23:25:30		  dcc         kill        oper        saquit      version
+2014-03-31 23:25:30		  dehalfop    links       part        server      voice
+2014-03-31 23:25:30		  deop        list        ping        service     wallchops
+2014-03-31 23:25:30		  devoice     lusers      pong        servlist    wallops
+2014-03-31 23:25:30		  die         map         query       squery      who
+2014-03-31 23:25:30		  disconnect  me          quiet       squit       whois
+2014-03-31 23:25:30		  halfop      mode        quote       stats       whowas
 2014-03-31 23:25:30		[charset]
 2014-03-31 23:25:30		  charset
 2014-03-31 23:25:30		[python]
@@ -765,12 +765,12 @@
 2014-03-31 23:25:30		[logger]
 2014-03-31 23:25:30		  logger
 2014-03-31 23:25:30		[alias]
-2014-03-31 23:25:30		  AAWAY    BYE      IG       MUB      SIGNOFF  W      
-2014-03-31 23:25:30		  alias    C        J        N        T        WC     
-2014-03-31 23:25:30		  AME      CHAT     K        Q        UB       WI     
-2014-03-31 23:25:30		  AMSG     CL       KB       REDRAW   UMODE    WII    
-2014-03-31 23:25:30		  ANICK    CLOSE    LEAVE    SAY      unalias  WW     
-2014-03-31 23:25:30		  BEEP     EXIT     M        sfilter  V      
+2014-03-31 23:25:30		  AAWAY    BYE      IG       MUB      SIGNOFF  W
+2014-03-31 23:25:30		  alias    C        J        N        T        WC
+2014-03-31 23:25:30		  AME      CHAT     K        Q        UB       WI
+2014-03-31 23:25:30		  AMSG     CL       KB       REDRAW   UMODE    WII
+2014-03-31 23:25:30		  ANICK    CLOSE    LEAVE    SAY      unalias  WW
+2014-03-31 23:25:30		  BEEP     EXIT     M        sfilter  V
 2014-03-31 23:25:30		[xfer]
 2014-03-31 23:25:30		  me  xfer
 2014-03-31 23:25:30		[guile]
@@ -896,29 +896,29 @@
 2014-03-31 23:46:27	=!=	irc: command "msg" must be executed on irc buffer (server or channel)
 2014-03-31 23:47:54	=!=	Error with command "disconnect" (try /help disconnect)
 2014-03-31 23:47:58		[core]
-2014-03-31 23:47:58		  away     debug    key      proxy    set      window 
-2014-03-31 23:47:58		  bar      eval     layout   quit     unset  
+2014-03-31 23:47:58		  away     debug    key      proxy    set      window
+2014-03-31 23:47:58		  bar      eval     layout   quit     unset
 2014-03-31 23:47:58		  buffer   filter   mouse    reload   upgrade
-2014-03-31 23:47:58		  color    help     mute     repeat   uptime 
+2014-03-31 23:47:58		  color    help     mute     repeat   uptime
 2014-03-31 23:47:58		  command  history  plugin   save     version
-2014-03-31 23:47:58		  cursor   input    print    secure   wait   
+2014-03-31 23:47:58		  cursor   input    print    secure   wait
 2014-03-31 23:47:58		[script]
 2014-03-31 23:47:58		  script
 2014-03-31 23:47:58		[irc]
-2014-03-31 23:47:58		  admin       ignore      motd        reconnect   summon    
-2014-03-31 23:47:58		  allchan     info        msg         rehash      time      
-2014-03-31 23:47:58		  allserv     invite      names       restart     topic     
-2014-03-31 23:47:58		  ban         ison        nick        sajoin      trace     
-2014-03-31 23:47:58		  connect     join        notice      samode      unban     
-2014-03-31 23:47:58		  ctcp        kick        notify      sanick      userhost  
-2014-03-31 23:47:58		  cycle       kickban     op          sapart      users     
-2014-03-31 23:47:58		  dcc         kill        oper        saquit      version   
-2014-03-31 23:47:58		  dehalfop    links       part        server      voice     
-2014-03-31 23:47:58		  deop        list        ping        service     wallchops 
-2014-03-31 23:47:58		  devoice     lusers      pong        servlist    wallops   
-2014-03-31 23:47:58		  die         map         query       squery      who       
-2014-03-31 23:47:58		  disconnect  me          quiet       squit       whois     
-2014-03-31 23:47:58		  halfop      mode        quote       stats       whowas    
+2014-03-31 23:47:58		  admin       ignore      motd        reconnect   summon
+2014-03-31 23:47:58		  allchan     info        msg         rehash      time
+2014-03-31 23:47:58		  allserv     invite      names       restart     topic
+2014-03-31 23:47:58		  ban         ison        nick        sajoin      trace
+2014-03-31 23:47:58		  connect     join        notice      samode      unban
+2014-03-31 23:47:58		  ctcp        kick        notify      sanick      userhost
+2014-03-31 23:47:58		  cycle       kickban     op          sapart      users
+2014-03-31 23:47:58		  dcc         kill        oper        saquit      version
+2014-03-31 23:47:58		  dehalfop    links       part        server      voice
+2014-03-31 23:47:58		  deop        list        ping        service     wallchops
+2014-03-31 23:47:58		  devoice     lusers      pong        servlist    wallops
+2014-03-31 23:47:58		  die         map         query       squery      who
+2014-03-31 23:47:58		  disconnect  me          quiet       squit       whois
+2014-03-31 23:47:58		  halfop      mode        quote       stats       whowas
 2014-03-31 23:47:58		[charset]
 2014-03-31 23:47:58		  charset
 2014-03-31 23:47:58		[python]
@@ -928,12 +928,12 @@
 2014-03-31 23:47:58		[logger]
 2014-03-31 23:47:58		  logger
 2014-03-31 23:47:58		[alias]
-2014-03-31 23:47:58		  AAWAY    BYE      IG       MUB      SIGNOFF  W      
-2014-03-31 23:47:58		  alias    C        J        N        T        WC     
-2014-03-31 23:47:58		  AME      CHAT     K        Q        UB       WI     
-2014-03-31 23:47:58		  AMSG     CL       KB       REDRAW   UMODE    WII    
-2014-03-31 23:47:58		  ANICK    CLOSE    LEAVE    SAY      unalias  WW     
-2014-03-31 23:47:58		  BEEP     EXIT     M        sfilter  V      
+2014-03-31 23:47:58		  AAWAY    BYE      IG       MUB      SIGNOFF  W
+2014-03-31 23:47:58		  alias    C        J        N        T        WC
+2014-03-31 23:47:58		  AME      CHAT     K        Q        UB       WI
+2014-03-31 23:47:58		  AMSG     CL       KB       REDRAW   UMODE    WII
+2014-03-31 23:47:58		  ANICK    CLOSE    LEAVE    SAY      unalias  WW
+2014-03-31 23:47:58		  BEEP     EXIT     M        sfilter  V
 2014-03-31 23:47:58		[xfer]
 2014-03-31 23:47:58		  me  xfer
 2014-03-31 23:47:58		[guile]
@@ -990,7 +990,7 @@
 2014-04-01 00:08:09		Alias "rmsfilter" => "filter del irc_smart_$server_$channel" created
 2014-04-01 00:08:14		Filter "irc_smart_freenode_#freenode" deleted
 2014-04-01 00:08:36		Filter "irc_smart_freenode_#freenode" added:
-2014-04-01 00:08:36		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: * 
+2014-04-01 00:08:36		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: *
 2014-04-01 00:11:28		irc: server oftc created (temporary server, NOT SAVED!)
 2014-04-01 00:11:56	=!=	irc: server "oftc" already exists, can't create it!
 2014-04-01 00:13:21		Options saved to irc.conf
@@ -2670,24 +2670,24 @@
 2014-07-25 17:18:59	=!=	You can not write text in this buffer
 2014-07-25 17:19:02		[core]
 2014-07-25 17:19:02		  away     command  filter   key      plugin   reload   set      version
-2014-07-25 17:19:02		  bar      cursor   help     layout   print    repeat   unset    wait   
-2014-07-25 17:19:02		  buffer   debug    history  mouse    proxy    save     upgrade  window 
-2014-07-25 17:19:02		  color    eval     input    mute     quit     secure   uptime 
+2014-07-25 17:19:02		  bar      cursor   help     layout   print    repeat   unset    wait
+2014-07-25 17:19:02		  buffer   debug    history  mouse    proxy    save     upgrade  window
+2014-07-25 17:19:02		  color    eval     input    mute     quit     secure   uptime
 2014-07-25 17:19:02		[script]
 2014-07-25 17:19:02		  script
 2014-07-25 17:19:02		[irc]
-2014-07-25 17:19:02		  admin       disconnect  lusers      part        sapart      unban     
-2014-07-25 17:19:02		  allchan     halfop      map         ping        saquit      userhost  
-2014-07-25 17:19:02		  allserv     ignore      me          pong        server      users     
-2014-07-25 17:19:02		  ban         info        mode        query       service     version   
-2014-07-25 17:19:02		  connect     invite      motd        quiet       servlist    voice     
-2014-07-25 17:19:02		  ctcp        ison        msg         quote       squery      wallchops 
-2014-07-25 17:19:02		  cycle       join        names       reconnect   squit       wallops   
-2014-07-25 17:19:02		  dcc         kick        nick        rehash      stats       who       
-2014-07-25 17:19:02		  dehalfop    kickban     notice      restart     summon      whois     
-2014-07-25 17:19:02		  deop        kill        notify      sajoin      time        whowas    
-2014-07-25 17:19:02		  devoice     links       op          samode      topic     
-2014-07-25 17:19:02		  die         list        oper        sanick      trace     
+2014-07-25 17:19:02		  admin       disconnect  lusers      part        sapart      unban
+2014-07-25 17:19:02		  allchan     halfop      map         ping        saquit      userhost
+2014-07-25 17:19:02		  allserv     ignore      me          pong        server      users
+2014-07-25 17:19:02		  ban         info        mode        query       service     version
+2014-07-25 17:19:02		  connect     invite      motd        quiet       servlist    voice
+2014-07-25 17:19:02		  ctcp        ison        msg         quote       squery      wallchops
+2014-07-25 17:19:02		  cycle       join        names       reconnect   squit       wallops
+2014-07-25 17:19:02		  dcc         kick        nick        rehash      stats       who
+2014-07-25 17:19:02		  dehalfop    kickban     notice      restart     summon      whois
+2014-07-25 17:19:02		  deop        kill        notify      sajoin      time        whowas
+2014-07-25 17:19:02		  devoice     links       op          samode      topic
+2014-07-25 17:19:02		  die         list        oper        sanick      trace
 2014-07-25 17:19:02		[charset]
 2014-07-25 17:19:02		  charset
 2014-07-25 17:19:02		[python]
@@ -2697,12 +2697,12 @@
 2014-07-25 17:19:02		[logger]
 2014-07-25 17:19:02		  logger
 2014-07-25 17:19:02		[alias]
-2014-07-25 17:19:02		  AAWAY      BYE        IG         MUB        sfilter    V        
-2014-07-25 17:19:02		  alias      C          J          N          SIGNOFF    W        
-2014-07-25 17:19:02		  AME        CHAT       K          Q          T          WC       
-2014-07-25 17:19:02		  AMSG       CL         KB         REDRAW     UB         WI       
-2014-07-25 17:19:02		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII      
-2014-07-25 17:19:02		  BEEP       EXIT       M          SAY        unalias    WW       
+2014-07-25 17:19:02		  AAWAY      BYE        IG         MUB        sfilter    V
+2014-07-25 17:19:02		  alias      C          J          N          SIGNOFF    W
+2014-07-25 17:19:02		  AME        CHAT       K          Q          T          WC
+2014-07-25 17:19:02		  AMSG       CL         KB         REDRAW     UB         WI
+2014-07-25 17:19:02		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII
+2014-07-25 17:19:02		  BEEP       EXIT       M          SAY        unalias    WW
 2014-07-25 17:19:02		[xfer]
 2014-07-25 17:19:02		  me  xfer
 2014-07-25 17:19:02		[guile]
@@ -2723,24 +2723,24 @@
 2014-07-25 17:19:28	=!=	Error with command "connect" (try /help connect)
 2014-07-25 17:19:31		[core]
 2014-07-25 17:19:31		  away     command  filter   key      plugin   reload   set      version
-2014-07-25 17:19:31		  bar      cursor   help     layout   print    repeat   unset    wait   
-2014-07-25 17:19:31		  buffer   debug    history  mouse    proxy    save     upgrade  window 
-2014-07-25 17:19:31		  color    eval     input    mute     quit     secure   uptime 
+2014-07-25 17:19:31		  bar      cursor   help     layout   print    repeat   unset    wait
+2014-07-25 17:19:31		  buffer   debug    history  mouse    proxy    save     upgrade  window
+2014-07-25 17:19:31		  color    eval     input    mute     quit     secure   uptime
 2014-07-25 17:19:31		[script]
 2014-07-25 17:19:31		  script
 2014-07-25 17:19:31		[irc]
-2014-07-25 17:19:31		  admin       disconnect  lusers      part        sapart      unban     
-2014-07-25 17:19:31		  allchan     halfop      map         ping        saquit      userhost  
-2014-07-25 17:19:31		  allserv     ignore      me          pong        server      users     
-2014-07-25 17:19:31		  ban         info        mode        query       service     version   
-2014-07-25 17:19:31		  connect     invite      motd        quiet       servlist    voice     
-2014-07-25 17:19:31		  ctcp        ison        msg         quote       squery      wallchops 
-2014-07-25 17:19:31		  cycle       join        names       reconnect   squit       wallops   
-2014-07-25 17:19:31		  dcc         kick        nick        rehash      stats       who       
-2014-07-25 17:19:31		  dehalfop    kickban     notice      restart     summon      whois     
-2014-07-25 17:19:31		  deop        kill        notify      sajoin      time        whowas    
-2014-07-25 17:19:31		  devoice     links       op          samode      topic     
-2014-07-25 17:19:31		  die         list        oper        sanick      trace     
+2014-07-25 17:19:31		  admin       disconnect  lusers      part        sapart      unban
+2014-07-25 17:19:31		  allchan     halfop      map         ping        saquit      userhost
+2014-07-25 17:19:31		  allserv     ignore      me          pong        server      users
+2014-07-25 17:19:31		  ban         info        mode        query       service     version
+2014-07-25 17:19:31		  connect     invite      motd        quiet       servlist    voice
+2014-07-25 17:19:31		  ctcp        ison        msg         quote       squery      wallchops
+2014-07-25 17:19:31		  cycle       join        names       reconnect   squit       wallops
+2014-07-25 17:19:31		  dcc         kick        nick        rehash      stats       who
+2014-07-25 17:19:31		  dehalfop    kickban     notice      restart     summon      whois
+2014-07-25 17:19:31		  deop        kill        notify      sajoin      time        whowas
+2014-07-25 17:19:31		  devoice     links       op          samode      topic
+2014-07-25 17:19:31		  die         list        oper        sanick      trace
 2014-07-25 17:19:31		[charset]
 2014-07-25 17:19:31		  charset
 2014-07-25 17:19:31		[python]
@@ -2750,12 +2750,12 @@
 2014-07-25 17:19:31		[logger]
 2014-07-25 17:19:31		  logger
 2014-07-25 17:19:31		[alias]
-2014-07-25 17:19:31		  AAWAY      BYE        IG         MUB        sfilter    V        
-2014-07-25 17:19:31		  alias      C          J          N          SIGNOFF    W        
-2014-07-25 17:19:31		  AME        CHAT       K          Q          T          WC       
-2014-07-25 17:19:31		  AMSG       CL         KB         REDRAW     UB         WI       
-2014-07-25 17:19:31		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII      
-2014-07-25 17:19:31		  BEEP       EXIT       M          SAY        unalias    WW       
+2014-07-25 17:19:31		  AAWAY      BYE        IG         MUB        sfilter    V
+2014-07-25 17:19:31		  alias      C          J          N          SIGNOFF    W
+2014-07-25 17:19:31		  AME        CHAT       K          Q          T          WC
+2014-07-25 17:19:31		  AMSG       CL         KB         REDRAW     UB         WI
+2014-07-25 17:19:31		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII
+2014-07-25 17:19:31		  BEEP       EXIT       M          SAY        unalias    WW
 2014-07-25 17:19:31		[xfer]
 2014-07-25 17:19:31		  me  xfer
 2014-07-25 17:19:31		[guile]
@@ -4091,16 +4091,16 @@
 2014-07-26 13:55:02		script: 279 scripts for WeeChat 0.4.3
 2014-07-26 13:56:53	=!=	Error: unknown command "vimode" (type /help for help)
 2014-07-26 13:56:59		[core]
-2014-07-26 13:56:59		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-07-26 13:56:59		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-07-26 13:56:59		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-07-26 13:56:59		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-07-26 13:56:59		[script]
 2014-07-26 13:56:59		  script
 2014-07-26 13:56:59		[irc]
-2014-07-26 13:56:59		  admin       ctcp        devoice     info        kickban     map         names       oper        quiet       sajoin      server      stats       unban       wallchops 
-2014-07-26 13:56:59		  allchan     cycle       die         invite      kill        me          nick        part        quote       samode      service     summon      userhost    wallops   
-2014-07-26 13:56:59		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   sanick      servlist    time        users       who       
-2014-07-26 13:56:59		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sapart      squery      topic       version     whois     
-2014-07-26 13:56:59		  connect     deop        ignore      kick        lusers      msg         op          query       restart     saquit      squit       trace       voice       whowas    
+2014-07-26 13:56:59		  admin       ctcp        devoice     info        kickban     map         names       oper        quiet       sajoin      server      stats       unban       wallchops
+2014-07-26 13:56:59		  allchan     cycle       die         invite      kill        me          nick        part        quote       samode      service     summon      userhost    wallops
+2014-07-26 13:56:59		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   sanick      servlist    time        users       who
+2014-07-26 13:56:59		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sapart      squery      topic       version     whois
+2014-07-26 13:56:59		  connect     deop        ignore      kick        lusers      msg         op          query       restart     saquit      squit       trace       voice       whowas
 2014-07-26 13:56:59		[charset]
 2014-07-26 13:56:59		  charset
 2014-07-26 13:56:59		[python]
@@ -4110,9 +4110,9 @@
 2014-07-26 13:56:59		[logger]
 2014-07-26 13:56:59		  logger
 2014-07-26 13:56:59		[alias]
-2014-07-26 13:56:59		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-07-26 13:56:59		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-07-26 13:56:59		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-07-26 13:56:59		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-07-26 13:56:59		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-07-26 13:56:59		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-07-26 13:56:59		[xfer]
 2014-07-26 13:56:59		  me  xfer
 2014-07-26 13:56:59		[guile]
@@ -5017,17 +5017,17 @@
 2014-07-26 14:19:43		Command 'help' not found.
 2014-07-26 14:19:50		Command 'help' not found.
 2014-07-26 14:20:05		[core]
-2014-07-26 14:20:05		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-07-26 14:20:05		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-07-26 14:20:05		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-07-26 14:20:05		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-07-26 14:20:05		[script]
 2014-07-26 14:20:05		  script
 2014-07-26 14:20:05		[irc]
-2014-07-26 14:20:05		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas    
-2014-07-26 14:20:05		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice     
-2014-07-26 14:20:05		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops 
-2014-07-26 14:20:05		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops   
-2014-07-26 14:20:05		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who       
-2014-07-26 14:20:05		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois     
+2014-07-26 14:20:05		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas
+2014-07-26 14:20:05		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice
+2014-07-26 14:20:05		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops
+2014-07-26 14:20:05		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops
+2014-07-26 14:20:05		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who
+2014-07-26 14:20:05		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois
 2014-07-26 14:20:05		[charset]
 2014-07-26 14:20:05		  charset
 2014-07-26 14:20:05		[python]
@@ -5037,9 +5037,9 @@
 2014-07-26 14:20:05		[logger]
 2014-07-26 14:20:05		  logger
 2014-07-26 14:20:05		[alias]
-2014-07-26 14:20:05		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-07-26 14:20:05		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-07-26 14:20:05		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-07-26 14:20:05		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-07-26 14:20:05		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-07-26 14:20:05		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-07-26 14:20:05		[xfer]
 2014-07-26 14:20:05		  me  xfer
 2014-07-26 14:20:05		[guile]
@@ -5060,17 +5060,17 @@
 2014-07-26 14:20:05		  trigger
 2014-07-26 14:20:13		Command 'help' not found.
 2014-07-26 14:20:14		[core]
-2014-07-26 14:20:14		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-07-26 14:20:14		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-07-26 14:20:14		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-07-26 14:20:14		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-07-26 14:20:14		[script]
 2014-07-26 14:20:14		  script
 2014-07-26 14:20:14		[irc]
-2014-07-26 14:20:14		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas    
-2014-07-26 14:20:14		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice     
-2014-07-26 14:20:14		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops 
-2014-07-26 14:20:14		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops   
-2014-07-26 14:20:14		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who       
-2014-07-26 14:20:14		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois     
+2014-07-26 14:20:14		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas
+2014-07-26 14:20:14		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice
+2014-07-26 14:20:14		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops
+2014-07-26 14:20:14		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops
+2014-07-26 14:20:14		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who
+2014-07-26 14:20:14		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois
 2014-07-26 14:20:14		[charset]
 2014-07-26 14:20:14		  charset
 2014-07-26 14:20:14		[python]
@@ -5080,9 +5080,9 @@
 2014-07-26 14:20:14		[logger]
 2014-07-26 14:20:14		  logger
 2014-07-26 14:20:14		[alias]
-2014-07-26 14:20:14		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-07-26 14:20:14		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-07-26 14:20:14		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-07-26 14:20:14		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-07-26 14:20:14		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-07-26 14:20:14		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-07-26 14:20:14		[xfer]
 2014-07-26 14:20:14		  me  xfer
 2014-07-26 14:20:14		[guile]
@@ -5102,17 +5102,17 @@
 2014-07-26 14:20:14		[trigger]
 2014-07-26 14:20:14		  trigger
 2014-07-26 14:20:37		[core]
-2014-07-26 14:20:37		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-07-26 14:20:37		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-07-26 14:20:37		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-07-26 14:20:37		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-07-26 14:20:37		[script]
 2014-07-26 14:20:37		  script
 2014-07-26 14:20:37		[irc]
-2014-07-26 14:20:37		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas    
-2014-07-26 14:20:37		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice     
-2014-07-26 14:20:37		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops 
-2014-07-26 14:20:37		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops   
-2014-07-26 14:20:37		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who       
-2014-07-26 14:20:37		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois     
+2014-07-26 14:20:37		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas
+2014-07-26 14:20:37		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice
+2014-07-26 14:20:37		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops
+2014-07-26 14:20:37		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops
+2014-07-26 14:20:37		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who
+2014-07-26 14:20:37		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois
 2014-07-26 14:20:37		[charset]
 2014-07-26 14:20:37		  charset
 2014-07-26 14:20:37		[python]
@@ -5122,9 +5122,9 @@
 2014-07-26 14:20:37		[logger]
 2014-07-26 14:20:37		  logger
 2014-07-26 14:20:37		[alias]
-2014-07-26 14:20:37		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-07-26 14:20:37		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-07-26 14:20:37		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-07-26 14:20:37		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-07-26 14:20:37		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-07-26 14:20:37		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-07-26 14:20:37		[xfer]
 2014-07-26 14:20:37		  me  xfer
 2014-07-26 14:20:37		[guile]
@@ -5148,17 +5148,17 @@
 2014-07-26 14:25:33		Options saved to irc.conf
 2014-07-26 14:26:01		Command '/join' not found.
 2014-07-26 14:26:16		[core]
-2014-07-26 14:26:16		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-07-26 14:26:16		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-07-26 14:26:16		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-07-26 14:26:16		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-07-26 14:26:16		[script]
 2014-07-26 14:26:16		  script
 2014-07-26 14:26:16		[irc]
-2014-07-26 14:26:16		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas    
-2014-07-26 14:26:16		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice     
-2014-07-26 14:26:16		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops 
-2014-07-26 14:26:16		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops   
-2014-07-26 14:26:16		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who       
-2014-07-26 14:26:16		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois     
+2014-07-26 14:26:16		  admin       ctcp        die         ison        list        msg         oper        quote       samode      servlist    topic       version     whowas
+2014-07-26 14:26:16		  allchan     cycle       disconnect  join        lusers      names       part        reconnect   sanick      squery      trace       voice
+2014-07-26 14:26:16		  allpv       dcc         halfop      kick        map         nick        ping        rehash      sapart      squit       unban       wallchops
+2014-07-26 14:26:16		  allserv     dehalfop    ignore      kickban     me          notice      pong        remove      saquit      stats       unquiet     wallops
+2014-07-26 14:26:16		  ban         deop        info        kill        mode        notify      query       restart     server      summon      userhost    who
+2014-07-26 14:26:16		  connect     devoice     invite      links       motd        op          quiet       sajoin      service     time        users       whois
 2014-07-26 14:26:16		[charset]
 2014-07-26 14:26:16		  charset
 2014-07-26 14:26:16		[python]
@@ -5168,9 +5168,9 @@
 2014-07-26 14:26:16		[logger]
 2014-07-26 14:26:16		  logger
 2014-07-26 14:26:16		[alias]
-2014-07-26 14:26:16		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-07-26 14:26:16		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-07-26 14:26:16		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-07-26 14:26:16		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-07-26 14:26:16		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-07-26 14:26:16		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-07-26 14:26:16		[xfer]
 2014-07-26 14:26:16		  me  xfer
 2014-07-26 14:26:16		[guile]
@@ -5190,16 +5190,16 @@
 2014-07-26 14:26:16		[trigger]
 2014-07-26 14:26:16		  trigger
 2014-07-26 14:26:38		[core]
-2014-07-26 14:26:38		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-07-26 14:26:38		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-07-26 14:26:38		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-07-26 14:26:38		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-07-26 14:26:38		[script]
 2014-07-26 14:26:38		  script
 2014-07-26 14:26:38		[irc]
-2014-07-26 14:26:38		  admin       connect     deop        ignore      kick        lusers      msg         op          query       remove      sapart      squery      topic       users       who       
-2014-07-26 14:26:38		  allchan     ctcp        devoice     info        kickban     map         names       oper        quiet       restart     saquit      squit       trace       version     whois     
-2014-07-26 14:26:38		  allpv       cycle       die         invite      kill        me          nick        part        quote       sajoin      server      stats       unban       voice       whowas    
-2014-07-26 14:26:38		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   samode      service     summon      unquiet     wallchops 
-2014-07-26 14:26:38		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sanick      servlist    time        userhost    wallops   
+2014-07-26 14:26:38		  admin       connect     deop        ignore      kick        lusers      msg         op          query       remove      sapart      squery      topic       users       who
+2014-07-26 14:26:38		  allchan     ctcp        devoice     info        kickban     map         names       oper        quiet       restart     saquit      squit       trace       version     whois
+2014-07-26 14:26:38		  allpv       cycle       die         invite      kill        me          nick        part        quote       sajoin      server      stats       unban       voice       whowas
+2014-07-26 14:26:38		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   samode      service     summon      unquiet     wallchops
+2014-07-26 14:26:38		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sanick      servlist    time        userhost    wallops
 2014-07-26 14:26:38		[charset]
 2014-07-26 14:26:38		  charset
 2014-07-26 14:26:38		[python]
@@ -5209,9 +5209,9 @@
 2014-07-26 14:26:38		[logger]
 2014-07-26 14:26:38		  logger
 2014-07-26 14:26:38		[alias]
-2014-07-26 14:26:38		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-07-26 14:26:38		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-07-26 14:26:38		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-07-26 14:26:38		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-07-26 14:26:38		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-07-26 14:26:38		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-07-26 14:26:38		[xfer]
 2014-07-26 14:26:38		  me  xfer
 2014-07-26 14:26:38		[guile]
@@ -5249,16 +5249,16 @@
 2014-07-26 14:40:41	=!=	Error: unknown command "/pluginlist" (type /help for help)
 2014-07-26 14:41:02	=!=	Error: unknown command "/pluginlist" (type /help for help)
 2014-07-26 14:41:04		[core]
-2014-07-26 14:41:04		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-07-26 14:41:04		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-07-26 14:41:04		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-07-26 14:41:04		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-07-26 14:41:04		[script]
 2014-07-26 14:41:04		  script
 2014-07-26 14:41:04		[irc]
-2014-07-26 14:41:04		  admin       connect     deop        ignore      kick        lusers      msg         op          query       remove      sapart      squery      topic       users       who       
-2014-07-26 14:41:04		  allchan     ctcp        devoice     info        kickban     map         names       oper        quiet       restart     saquit      squit       trace       version     whois     
-2014-07-26 14:41:04		  allpv       cycle       die         invite      kill        me          nick        part        quote       sajoin      server      stats       unban       voice       whowas    
-2014-07-26 14:41:04		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   samode      service     summon      unquiet     wallchops 
-2014-07-26 14:41:04		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sanick      servlist    time        userhost    wallops   
+2014-07-26 14:41:04		  admin       connect     deop        ignore      kick        lusers      msg         op          query       remove      sapart      squery      topic       users       who
+2014-07-26 14:41:04		  allchan     ctcp        devoice     info        kickban     map         names       oper        quiet       restart     saquit      squit       trace       version     whois
+2014-07-26 14:41:04		  allpv       cycle       die         invite      kill        me          nick        part        quote       sajoin      server      stats       unban       voice       whowas
+2014-07-26 14:41:04		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   samode      service     summon      unquiet     wallchops
+2014-07-26 14:41:04		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sanick      servlist    time        userhost    wallops
 2014-07-26 14:41:04		[charset]
 2014-07-26 14:41:04		  charset
 2014-07-26 14:41:04		[python]
@@ -5268,9 +5268,9 @@
 2014-07-26 14:41:04		[logger]
 2014-07-26 14:41:04		  logger
 2014-07-26 14:41:04		[alias]
-2014-07-26 14:41:04		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-07-26 14:41:04		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-07-26 14:41:04		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-07-26 14:41:04		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-07-26 14:41:04		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-07-26 14:41:04		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-07-26 14:41:04		[xfer]
 2014-07-26 14:41:04		  me  xfer
 2014-07-26 14:41:04		[guile]
@@ -6441,23 +6441,23 @@
 2014-08-05 16:25:30	⚠	Error with command "/connect" (help on command: /help connect)
 2014-08-05 16:25:37		[core]
 2014-08-05 16:25:37		  away     command  filter   key      plugin   reload   set      version
-2014-08-05 16:25:37		  bar      cursor   help     layout   print    repeat   unset    wait   
-2014-08-05 16:25:37		  buffer   debug    history  mouse    proxy    save     upgrade  window 
-2014-08-05 16:25:37		  color    eval     input    mute     quit     secure   uptime 
+2014-08-05 16:25:37		  bar      cursor   help     layout   print    repeat   unset    wait
+2014-08-05 16:25:37		  buffer   debug    history  mouse    proxy    save     upgrade  window
+2014-08-05 16:25:37		  color    eval     input    mute     quit     secure   uptime
 2014-08-05 16:25:37		[script]
 2014-08-05 16:25:37		  script
 2014-08-05 16:25:37		[irc]
-2014-08-05 16:25:37		  admin       devoice     kill        notice      rehash      squery      version   
-2014-08-05 16:25:37		  allchan     die         links       notify      remove      squit       voice     
-2014-08-05 16:25:37		  allpv       disconnect  list        op          restart     stats       wallchops 
-2014-08-05 16:25:37		  allserv     halfop      lusers      oper        sajoin      summon      wallops   
-2014-08-05 16:25:37		  ban         ignore      map         part        samode      time        who       
-2014-08-05 16:25:37		  connect     info        me          ping        sanick      topic       whois     
-2014-08-05 16:25:37		  ctcp        invite      mode        pong        sapart      trace       whowas    
-2014-08-05 16:25:37		  cycle       ison        motd        query       saquit      unban     
-2014-08-05 16:25:37		  dcc         join        msg         quiet       server      unquiet   
-2014-08-05 16:25:37		  dehalfop    kick        names       quote       service     userhost  
-2014-08-05 16:25:37		  deop        kickban     nick        reconnect   servlist    users     
+2014-08-05 16:25:37		  admin       devoice     kill        notice      rehash      squery      version
+2014-08-05 16:25:37		  allchan     die         links       notify      remove      squit       voice
+2014-08-05 16:25:37		  allpv       disconnect  list        op          restart     stats       wallchops
+2014-08-05 16:25:37		  allserv     halfop      lusers      oper        sajoin      summon      wallops
+2014-08-05 16:25:37		  ban         ignore      map         part        samode      time        who
+2014-08-05 16:25:37		  connect     info        me          ping        sanick      topic       whois
+2014-08-05 16:25:37		  ctcp        invite      mode        pong        sapart      trace       whowas
+2014-08-05 16:25:37		  cycle       ison        motd        query       saquit      unban
+2014-08-05 16:25:37		  dcc         join        msg         quiet       server      unquiet
+2014-08-05 16:25:37		  dehalfop    kick        names       quote       service     userhost
+2014-08-05 16:25:37		  deop        kickban     nick        reconnect   servlist    users
 2014-08-05 16:25:37		[charset]
 2014-08-05 16:25:37		  charset
 2014-08-05 16:25:37		[python]
@@ -6467,11 +6467,11 @@
 2014-08-05 16:25:37		[logger]
 2014-08-05 16:25:37		  logger
 2014-08-05 16:25:37		[alias]
-2014-08-05 16:25:37		  AAWAY      BEEP       CLOSE      KB         Q          SIGNOFF    V          WW       
-2014-08-05 16:25:37		  alias      BYE        EXIT       LEAVE      REDRAW     T          W          znc      
-2014-08-05 16:25:37		  AME        C          IG         M          rmsfilter  UB         WC       
-2014-08-05 16:25:37		  AMSG       CHAT       J          MUB        SAY        UMODE      WI       
-2014-08-05 16:25:37		  ANICK      CL         K          N          sfilter    unalias    WII      
+2014-08-05 16:25:37		  AAWAY      BEEP       CLOSE      KB         Q          SIGNOFF    V          WW
+2014-08-05 16:25:37		  alias      BYE        EXIT       LEAVE      REDRAW     T          W          znc
+2014-08-05 16:25:37		  AME        C          IG         M          rmsfilter  UB         WC
+2014-08-05 16:25:37		  AMSG       CHAT       J          MUB        SAY        UMODE      WI
+2014-08-05 16:25:37		  ANICK      CL         K          N          sfilter    unalias    WII
 2014-08-05 16:25:37		[xfer]
 2014-08-05 16:25:37		  me  xfer
 2014-08-05 16:25:37		[guile]
@@ -6553,30 +6553,30 @@
 2014-08-14 13:21:59	⚠	irc: command "msg" must be executed on irc buffer (server or channel)
 2014-08-14 13:22:11	⚠	You can not write text in this buffer
 2014-08-14 13:22:14		[core]
-2014-08-14 13:22:14		  away     debug    key      proxy    set      window 
-2014-08-14 13:22:14		  bar      eval     layout   quit     unset  
+2014-08-14 13:22:14		  away     debug    key      proxy    set      window
+2014-08-14 13:22:14		  bar      eval     layout   quit     unset
 2014-08-14 13:22:14		  buffer   filter   mouse    reload   upgrade
-2014-08-14 13:22:14		  color    help     mute     repeat   uptime 
+2014-08-14 13:22:14		  color    help     mute     repeat   uptime
 2014-08-14 13:22:14		  command  history  plugin   save     version
-2014-08-14 13:22:14		  cursor   input    print    secure   wait   
+2014-08-14 13:22:14		  cursor   input    print    secure   wait
 2014-08-14 13:22:14		[script]
 2014-08-14 13:22:14		  script
 2014-08-14 13:22:14		[irc]
-2014-08-14 13:22:14		  admin       ignore      msg         remove      topic     
-2014-08-14 13:22:14		  allchan     info        names       restart     trace     
-2014-08-14 13:22:14		  allpv       invite      nick        sajoin      unban     
-2014-08-14 13:22:14		  allserv     ison        notice      samode      unquiet   
-2014-08-14 13:22:14		  ban         join        notify      sanick      userhost  
-2014-08-14 13:22:14		  connect     kick        op          sapart      users     
-2014-08-14 13:22:14		  ctcp        kickban     oper        saquit      version   
-2014-08-14 13:22:14		  cycle       kill        part        server      voice     
-2014-08-14 13:22:14		  dcc         links       ping        service     wallchops 
-2014-08-14 13:22:14		  dehalfop    list        pong        servlist    wallops   
-2014-08-14 13:22:14		  deop        lusers      query       squery      who       
-2014-08-14 13:22:14		  devoice     map         quiet       squit       whois     
-2014-08-14 13:22:14		  die         me          quote       stats       whowas    
-2014-08-14 13:22:14		  disconnect  mode        reconnect   summon    
-2014-08-14 13:22:14		  halfop      motd        rehash      time      
+2014-08-14 13:22:14		  admin       ignore      msg         remove      topic
+2014-08-14 13:22:14		  allchan     info        names       restart     trace
+2014-08-14 13:22:14		  allpv       invite      nick        sajoin      unban
+2014-08-14 13:22:14		  allserv     ison        notice      samode      unquiet
+2014-08-14 13:22:14		  ban         join        notify      sanick      userhost
+2014-08-14 13:22:14		  connect     kick        op          sapart      users
+2014-08-14 13:22:14		  ctcp        kickban     oper        saquit      version
+2014-08-14 13:22:14		  cycle       kill        part        server      voice
+2014-08-14 13:22:14		  dcc         links       ping        service     wallchops
+2014-08-14 13:22:14		  dehalfop    list        pong        servlist    wallops
+2014-08-14 13:22:14		  deop        lusers      query       squery      who
+2014-08-14 13:22:14		  devoice     map         quiet       squit       whois
+2014-08-14 13:22:14		  die         me          quote       stats       whowas
+2014-08-14 13:22:14		  disconnect  mode        reconnect   summon
+2014-08-14 13:22:14		  halfop      motd        rehash      time
 2014-08-14 13:22:14		[charset]
 2014-08-14 13:22:14		  charset
 2014-08-14 13:22:14		[python]
@@ -6586,14 +6586,14 @@
 2014-08-14 13:22:14		[logger]
 2014-08-14 13:22:14		  logger
 2014-08-14 13:22:14		[alias]
-2014-08-14 13:22:14		  AAWAY      CHAT       LEAVE      sfilter    WC       
-2014-08-14 13:22:14		  alias      CL         M          SIGNOFF    WI       
-2014-08-14 13:22:14		  AME        CLOSE      MUB        T          WII      
-2014-08-14 13:22:14		  AMSG       EXIT       N          UB         WW       
-2014-08-14 13:22:14		  ANICK      IG         Q          UMODE      znc      
-2014-08-14 13:22:14		  BEEP       J          REDRAW     unalias  
-2014-08-14 13:22:14		  BYE        K          rmsfilter  V        
-2014-08-14 13:22:14		  C          KB         SAY        W        
+2014-08-14 13:22:14		  AAWAY      CHAT       LEAVE      sfilter    WC
+2014-08-14 13:22:14		  alias      CL         M          SIGNOFF    WI
+2014-08-14 13:22:14		  AME        CLOSE      MUB        T          WII
+2014-08-14 13:22:14		  AMSG       EXIT       N          UB         WW
+2014-08-14 13:22:14		  ANICK      IG         Q          UMODE      znc
+2014-08-14 13:22:14		  BEEP       J          REDRAW     unalias
+2014-08-14 13:22:14		  BYE        K          rmsfilter  V
+2014-08-14 13:22:14		  C          KB         SAY        W
 2014-08-14 13:22:14		[xfer]
 2014-08-14 13:22:14		  me  xfer
 2014-08-14 13:22:14		[guile]
@@ -6605,8 +6605,8 @@
 2014-08-14 13:22:14		[relay]
 2014-08-14 13:22:14		  relay
 2014-08-14 13:22:14		[perl]
-2014-08-14 13:22:14		  buffers_detach     iset             
-2014-08-14 13:22:14		  buffers_whitelist  perl             
+2014-08-14 13:22:14		  buffers_detach     iset
+2014-08-14 13:22:14		  buffers_whitelist  perl
 2014-08-14 13:22:14		[exec]
 2014-08-14 13:22:14		  exec
 2014-08-14 13:22:14		[ruby]
@@ -6743,18 +6743,18 @@
 2014-08-14 20:18:37	⚠	Error: unknown command "/" (type /help for help)
 2014-08-14 20:18:42	⚠	Error with command "/connect" (help on command: /help connect)
 2014-08-14 20:19:03		[core]
-2014-08-14 20:19:03		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-08-14 20:19:03		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-08-14 20:19:03		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-08-14 20:19:03		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-08-14 20:19:03		[script]
 2014-08-14 20:19:03		  script
 2014-08-14 20:19:03		[irc]
-2014-08-14 20:19:03		  admin       cycle       halfop      kickban     mode        op          quote       sanick      squit       unquiet     who       
-2014-08-14 20:19:03		  allchan     dcc         ignore      kill        motd        oper        reconnect   sapart      stats       userhost    whois     
-2014-08-14 20:19:03		  allpv       dehalfop    info        links       msg         part        rehash      saquit      summon      users       whowas    
-2014-08-14 20:19:03		  allserv     deop        invite      list        names       ping        remove      server      time        version   
-2014-08-14 20:19:03		  ban         devoice     ison        lusers      nick        pong        restart     service     topic       voice     
-2014-08-14 20:19:03		  connect     die         join        map         notice      query       sajoin      servlist    trace       wallchops 
-2014-08-14 20:19:03		  ctcp        disconnect  kick        me          notify      quiet       samode      squery      unban       wallops   
+2014-08-14 20:19:03		  admin       cycle       halfop      kickban     mode        op          quote       sanick      squit       unquiet     who
+2014-08-14 20:19:03		  allchan     dcc         ignore      kill        motd        oper        reconnect   sapart      stats       userhost    whois
+2014-08-14 20:19:03		  allpv       dehalfop    info        links       msg         part        rehash      saquit      summon      users       whowas
+2014-08-14 20:19:03		  allserv     deop        invite      list        names       ping        remove      server      time        version
+2014-08-14 20:19:03		  ban         devoice     ison        lusers      nick        pong        restart     service     topic       voice
+2014-08-14 20:19:03		  connect     die         join        map         notice      query       sajoin      servlist    trace       wallchops
+2014-08-14 20:19:03		  ctcp        disconnect  kick        me          notify      quiet       samode      squery      unban       wallops
 2014-08-14 20:19:03		[charset]
 2014-08-14 20:19:03		  charset
 2014-08-14 20:19:03		[python]
@@ -6764,9 +6764,9 @@
 2014-08-14 20:19:03		[logger]
 2014-08-14 20:19:03		  logger
 2014-08-14 20:19:03		[alias]
-2014-08-14 20:19:03		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-08-14 20:19:03		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-08-14 20:19:03		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-08-14 20:19:03		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-08-14 20:19:03		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-08-14 20:19:03		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-08-14 20:19:03		[xfer]
 2014-08-14 20:19:03		  me  xfer
 2014-08-14 20:19:03		[guile]
@@ -6982,16 +6982,16 @@
 2014-08-14 23:02:05	⚠	Error: unknown command "/" (type /help for help)
 2014-08-14 23:02:23	⚠	You can not write text in this buffer
 2014-08-14 23:02:25		[core]
-2014-08-14 23:02:25		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
-2014-08-14 23:02:25		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-08-14 23:02:25		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window
+2014-08-14 23:02:25		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait
 2014-08-14 23:02:25		[script]
 2014-08-14 23:02:25		  script
 2014-08-14 23:02:25		[irc]
-2014-08-14 23:02:25		  admin       connect     deop        ignore      kick        lusers      msg         op          query       remove      sapart      squery      topic       users       who       
-2014-08-14 23:02:25		  allchan     ctcp        devoice     info        kickban     map         names       oper        quiet       restart     saquit      squit       trace       version     whois     
-2014-08-14 23:02:25		  allpv       cycle       die         invite      kill        me          nick        part        quote       sajoin      server      stats       unban       voice       whowas    
-2014-08-14 23:02:25		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   samode      service     summon      unquiet     wallchops 
-2014-08-14 23:02:25		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sanick      servlist    time        userhost    wallops   
+2014-08-14 23:02:25		  admin       connect     deop        ignore      kick        lusers      msg         op          query       remove      sapart      squery      topic       users       who
+2014-08-14 23:02:25		  allchan     ctcp        devoice     info        kickban     map         names       oper        quiet       restart     saquit      squit       trace       version     whois
+2014-08-14 23:02:25		  allpv       cycle       die         invite      kill        me          nick        part        quote       sajoin      server      stats       unban       voice       whowas
+2014-08-14 23:02:25		  allserv     dcc         disconnect  ison        links       mode        notice      ping        reconnect   samode      service     summon      unquiet     wallchops
+2014-08-14 23:02:25		  ban         dehalfop    halfop      join        list        motd        notify      pong        rehash      sanick      servlist    time        userhost    wallops
 2014-08-14 23:02:25		[charset]
 2014-08-14 23:02:25		  charset
 2014-08-14 23:02:25		[python]
@@ -7001,9 +7001,9 @@
 2014-08-14 23:02:25		[logger]
 2014-08-14 23:02:25		  logger
 2014-08-14 23:02:25		[alias]
-2014-08-14 23:02:25		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc      
-2014-08-14 23:02:25		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII      
-2014-08-14 23:02:25		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW       
+2014-08-14 23:02:25		  AAWAY      AMSG       BYE        CL         IG         KB         MUB        REDRAW     sfilter    UB         V          WI         znc
+2014-08-14 23:02:25		  alias      ANICK      C          CLOSE      J          LEAVE      N          rmsfilter  SIGNOFF    UMODE      W          WII
+2014-08-14 23:02:25		  AME        BEEP       CHAT       EXIT       K          M          Q          SAY        T          unalias    WC         WW
 2014-08-14 23:02:25		[xfer]
 2014-08-14 23:02:25		  me  xfer
 2014-08-14 23:02:25		[guile]
@@ -7100,25 +7100,25 @@
 2014-08-15 00:35:28		Options saved to irc.conf
 2014-08-15 00:36:46		[core]
 2014-08-15 00:36:46		  away     command  filter   key      plugin   reload   set      version
-2014-08-15 00:36:46		  bar      cursor   help     layout   print    repeat   unset    wait   
-2014-08-15 00:36:46		  buffer   debug    history  mouse    proxy    save     upgrade  window 
-2014-08-15 00:36:46		  color    eval     input    mute     quit     secure   uptime 
+2014-08-15 00:36:46		  bar      cursor   help     layout   print    repeat   unset    wait
+2014-08-15 00:36:46		  buffer   debug    history  mouse    proxy    save     upgrade  window
+2014-08-15 00:36:46		  color    eval     input    mute     quit     secure   uptime
 2014-08-15 00:36:46		[script]
 2014-08-15 00:36:46		  script
 2014-08-15 00:36:46		[irc]
-2014-08-15 00:36:46		  admin       disconnect  map         pong        server      users     
-2014-08-15 00:36:46		  allchan     halfop      me          query       service     version   
-2014-08-15 00:36:46		  allpv       ignore      mode        quiet       servlist    voice     
-2014-08-15 00:36:46		  allserv     info        motd        quote       squery      wallchops 
-2014-08-15 00:36:46		  ban         invite      msg         reconnect   squit       wallops   
-2014-08-15 00:36:46		  connect     ison        names       rehash      stats       who       
-2014-08-15 00:36:46		  ctcp        join        nick        remove      summon      whois     
-2014-08-15 00:36:46		  cycle       kick        notice      restart     time        whowas    
-2014-08-15 00:36:46		  dcc         kickban     notify      sajoin      topic     
-2014-08-15 00:36:46		  dehalfop    kill        op          samode      trace     
-2014-08-15 00:36:46		  deop        links       oper        sanick      unban     
-2014-08-15 00:36:46		  devoice     list        part        sapart      unquiet   
-2014-08-15 00:36:46		  die         lusers      ping        saquit      userhost  
+2014-08-15 00:36:46		  admin       disconnect  map         pong        server      users
+2014-08-15 00:36:46		  allchan     halfop      me          query       service     version
+2014-08-15 00:36:46		  allpv       ignore      mode        quiet       servlist    voice
+2014-08-15 00:36:46		  allserv     info        motd        quote       squery      wallchops
+2014-08-15 00:36:46		  ban         invite      msg         reconnect   squit       wallops
+2014-08-15 00:36:46		  connect     ison        names       rehash      stats       who
+2014-08-15 00:36:46		  ctcp        join        nick        remove      summon      whois
+2014-08-15 00:36:46		  cycle       kick        notice      restart     time        whowas
+2014-08-15 00:36:46		  dcc         kickban     notify      sajoin      topic
+2014-08-15 00:36:46		  dehalfop    kill        op          samode      trace
+2014-08-15 00:36:46		  deop        links       oper        sanick      unban
+2014-08-15 00:36:46		  devoice     list        part        sapart      unquiet
+2014-08-15 00:36:46		  die         lusers      ping        saquit      userhost
 2014-08-15 00:36:46		[charset]
 2014-08-15 00:36:46		  charset
 2014-08-15 00:36:46		[python]
@@ -7128,12 +7128,12 @@
 2014-08-15 00:36:46		[logger]
 2014-08-15 00:36:46		  logger
 2014-08-15 00:36:46		[alias]
-2014-08-15 00:36:46		  AAWAY      BYE        IG         MUB        sfilter    V          znc      
-2014-08-15 00:36:46		  alias      C          J          N          SIGNOFF    W        
-2014-08-15 00:36:46		  AME        CHAT       K          Q          T          WC       
-2014-08-15 00:36:46		  AMSG       CL         KB         REDRAW     UB         WI       
-2014-08-15 00:36:46		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII      
-2014-08-15 00:36:46		  BEEP       EXIT       M          SAY        unalias    WW       
+2014-08-15 00:36:46		  AAWAY      BYE        IG         MUB        sfilter    V          znc
+2014-08-15 00:36:46		  alias      C          J          N          SIGNOFF    W
+2014-08-15 00:36:46		  AME        CHAT       K          Q          T          WC
+2014-08-15 00:36:46		  AMSG       CL         KB         REDRAW     UB         WI
+2014-08-15 00:36:46		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII
+2014-08-15 00:36:46		  BEEP       EXIT       M          SAY        unalias    WW
 2014-08-15 00:36:46		[xfer]
 2014-08-15 00:36:46		  me  xfer
 2014-08-15 00:36:46		[guile]
@@ -7168,23 +7168,23 @@
 2014-08-15 14:48:38	⚠	Error: unknown command "/weechat" (type /help for help)
 2014-08-15 14:48:46		[core]
 2014-08-15 14:48:46		  away     command  filter   key      plugin   reload   set      version
-2014-08-15 14:48:46		  bar      cursor   help     layout   print    repeat   unset    wait   
-2014-08-15 14:48:46		  buffer   debug    history  mouse    proxy    save     upgrade  window 
-2014-08-15 14:48:46		  color    eval     input    mute     quit     secure   uptime 
+2014-08-15 14:48:46		  bar      cursor   help     layout   print    repeat   unset    wait
+2014-08-15 14:48:46		  buffer   debug    history  mouse    proxy    save     upgrade  window
+2014-08-15 14:48:46		  color    eval     input    mute     quit     secure   uptime
 2014-08-15 14:48:46		[script]
 2014-08-15 14:48:46		  script
 2014-08-15 14:48:46		[irc]
-2014-08-15 14:48:46		  admin       devoice     kill        notice      rehash      squery      version   
-2014-08-15 14:48:46		  allchan     die         links       notify      remove      squit       voice     
-2014-08-15 14:48:46		  allpv       disconnect  list        op          restart     stats       wallchops 
-2014-08-15 14:48:46		  allserv     halfop      lusers      oper        sajoin      summon      wallops   
-2014-08-15 14:48:46		  ban         ignore      map         part        samode      time        who       
-2014-08-15 14:48:46		  connect     info        me          ping        sanick      topic       whois     
-2014-08-15 14:48:46		  ctcp        invite      mode        pong        sapart      trace       whowas    
-2014-08-15 14:48:46		  cycle       ison        motd        query       saquit      unban     
-2014-08-15 14:48:46		  dcc         join        msg         quiet       server      unquiet   
-2014-08-15 14:48:46		  dehalfop    kick        names       quote       service     userhost  
-2014-08-15 14:48:46		  deop        kickban     nick        reconnect   servlist    users     
+2014-08-15 14:48:46		  admin       devoice     kill        notice      rehash      squery      version
+2014-08-15 14:48:46		  allchan     die         links       notify      remove      squit       voice
+2014-08-15 14:48:46		  allpv       disconnect  list        op          restart     stats       wallchops
+2014-08-15 14:48:46		  allserv     halfop      lusers      oper        sajoin      summon      wallops
+2014-08-15 14:48:46		  ban         ignore      map         part        samode      time        who
+2014-08-15 14:48:46		  connect     info        me          ping        sanick      topic       whois
+2014-08-15 14:48:46		  ctcp        invite      mode        pong        sapart      trace       whowas
+2014-08-15 14:48:46		  cycle       ison        motd        query       saquit      unban
+2014-08-15 14:48:46		  dcc         join        msg         quiet       server      unquiet
+2014-08-15 14:48:46		  dehalfop    kick        names       quote       service     userhost
+2014-08-15 14:48:46		  deop        kickban     nick        reconnect   servlist    users
 2014-08-15 14:48:46		[charset]
 2014-08-15 14:48:46		  charset
 2014-08-15 14:48:46		[python]
@@ -7194,12 +7194,12 @@
 2014-08-15 14:48:46		[logger]
 2014-08-15 14:48:46		  logger
 2014-08-15 14:48:46		[alias]
-2014-08-15 14:48:46		  AAWAY      BYE        IG         MUB        sfilter    V          znc      
-2014-08-15 14:48:46		  alias      C          J          N          SIGNOFF    W        
-2014-08-15 14:48:46		  AME        CHAT       K          Q          T          WC       
-2014-08-15 14:48:46		  AMSG       CL         KB         REDRAW     UB         WI       
-2014-08-15 14:48:46		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII      
-2014-08-15 14:48:46		  BEEP       EXIT       M          SAY        unalias    WW       
+2014-08-15 14:48:46		  AAWAY      BYE        IG         MUB        sfilter    V          znc
+2014-08-15 14:48:46		  alias      C          J          N          SIGNOFF    W
+2014-08-15 14:48:46		  AME        CHAT       K          Q          T          WC
+2014-08-15 14:48:46		  AMSG       CL         KB         REDRAW     UB         WI
+2014-08-15 14:48:46		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII
+2014-08-15 14:48:46		  BEEP       EXIT       M          SAY        unalias    WW
 2014-08-15 14:48:46		[xfer]
 2014-08-15 14:48:46		  me  xfer
 2014-08-15 14:48:46		[guile]
@@ -7279,23 +7279,23 @@
 2014-08-15 14:55:59	⚠	irc: command "msg" must be executed on irc buffer (server or channel)
 2014-08-15 14:58:15		[core]
 2014-08-15 14:58:15		  away     command  filter   key      plugin   reload   set      version
-2014-08-15 14:58:15		  bar      cursor   help     layout   print    repeat   unset    wait   
-2014-08-15 14:58:15		  buffer   debug    history  mouse    proxy    save     upgrade  window 
-2014-08-15 14:58:15		  color    eval     input    mute     quit     secure   uptime 
+2014-08-15 14:58:15		  bar      cursor   help     layout   print    repeat   unset    wait
+2014-08-15 14:58:15		  buffer   debug    history  mouse    proxy    save     upgrade  window
+2014-08-15 14:58:15		  color    eval     input    mute     quit     secure   uptime
 2014-08-15 14:58:15		[script]
 2014-08-15 14:58:15		  script
 2014-08-15 14:58:15		[irc]
-2014-08-15 14:58:15		  admin       devoice     kill        notice      rehash      squery      version   
-2014-08-15 14:58:15		  allchan     die         links       notify      remove      squit       voice     
-2014-08-15 14:58:15		  allpv       disconnect  list        op          restart     stats       wallchops 
-2014-08-15 14:58:15		  allserv     halfop      lusers      oper        sajoin      summon      wallops   
-2014-08-15 14:58:15		  ban         ignore      map         part        samode      time        who       
-2014-08-15 14:58:15		  connect     info        me          ping        sanick      topic       whois     
-2014-08-15 14:58:15		  ctcp        invite      mode        pong        sapart      trace       whowas    
-2014-08-15 14:58:15		  cycle       ison        motd        query       saquit      unban     
-2014-08-15 14:58:15		  dcc         join        msg         quiet       server      unquiet   
-2014-08-15 14:58:15		  dehalfop    kick        names       quote       service     userhost  
-2014-08-15 14:58:15		  deop        kickban     nick        reconnect   servlist    users     
+2014-08-15 14:58:15		  admin       devoice     kill        notice      rehash      squery      version
+2014-08-15 14:58:15		  allchan     die         links       notify      remove      squit       voice
+2014-08-15 14:58:15		  allpv       disconnect  list        op          restart     stats       wallchops
+2014-08-15 14:58:15		  allserv     halfop      lusers      oper        sajoin      summon      wallops
+2014-08-15 14:58:15		  ban         ignore      map         part        samode      time        who
+2014-08-15 14:58:15		  connect     info        me          ping        sanick      topic       whois
+2014-08-15 14:58:15		  ctcp        invite      mode        pong        sapart      trace       whowas
+2014-08-15 14:58:15		  cycle       ison        motd        query       saquit      unban
+2014-08-15 14:58:15		  dcc         join        msg         quiet       server      unquiet
+2014-08-15 14:58:15		  dehalfop    kick        names       quote       service     userhost
+2014-08-15 14:58:15		  deop        kickban     nick        reconnect   servlist    users
 2014-08-15 14:58:15		[charset]
 2014-08-15 14:58:15		  charset
 2014-08-15 14:58:15		[python]
@@ -7305,12 +7305,12 @@
 2014-08-15 14:58:15		[logger]
 2014-08-15 14:58:15		  logger
 2014-08-15 14:58:15		[alias]
-2014-08-15 14:58:15		  AAWAY      BYE        IG         MUB        sfilter    V          znc      
-2014-08-15 14:58:15		  alias      C          J          N          SIGNOFF    W        
-2014-08-15 14:58:15		  AME        CHAT       K          Q          T          WC       
-2014-08-15 14:58:15		  AMSG       CL         KB         REDRAW     UB         WI       
-2014-08-15 14:58:15		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII      
-2014-08-15 14:58:15		  BEEP       EXIT       M          SAY        unalias    WW       
+2014-08-15 14:58:15		  AAWAY      BYE        IG         MUB        sfilter    V          znc
+2014-08-15 14:58:15		  alias      C          J          N          SIGNOFF    W
+2014-08-15 14:58:15		  AME        CHAT       K          Q          T          WC
+2014-08-15 14:58:15		  AMSG       CL         KB         REDRAW     UB         WI
+2014-08-15 14:58:15		  ANICK      CLOSE      LEAVE      rmsfilter  UMODE      WII
+2014-08-15 14:58:15		  BEEP       EXIT       M          SAY        unalias    WW
 2014-08-15 14:58:15		[xfer]
 2014-08-15 14:58:15		  me  xfer
 2014-08-15 14:58:15		[guile]
@@ -7570,8 +7570,8 @@
 2014-08-18 21:05:35		Options saved to irc.conf
 2014-08-18 21:06:34		Message filtering enabled
 2014-08-18 21:06:34		Message filters:
-2014-08-18 21:06:34		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: * 
-2014-08-18 21:06:34		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: * 
+2014-08-18 21:06:34		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: *
+2014-08-18 21:06:34		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: *
 2014-08-19 08:15:55		Options saved to irc.conf
 2014-08-19 08:15:56		Options saved to irc.conf
 2014-08-19 08:16:05		Options saved to irc.conf
@@ -7579,8 +7579,8 @@
 2014-08-19 08:16:06		Options saved to irc.conf
 2014-08-19 08:17:00		Message filtering enabled
 2014-08-19 08:17:00		Message filters:
-2014-08-19 08:17:00		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: * 
-2014-08-19 08:17:00		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: * 
+2014-08-19 08:17:00		  [irc_smart_$server_$channel] buffer: irc.$server.$channel / tags: irc_smart_filter / regex: *
+2014-08-19 08:17:00		  [irc_smart_freenode_#freenode] buffer: irc.freenode.#freenode / tags: irc_smart_filter / regex: *
 2014-11-24 22:12:36		perl scripts loaded: buffers, iset
 2014-11-24 22:12:36		script: downloading list of scripts...
 2014-11-24 22:12:36		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer

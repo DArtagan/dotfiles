@@ -54,9 +54,8 @@
     echo "${(j:\n:)bundle_files}"
     return
   fi
-  
+
   # Add to PATH (binary bundle)
   echo "$location"
   return
 }
-

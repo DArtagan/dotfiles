@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -67,7 +68,11 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if test -r ~/.dircolors; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -92,6 +97,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
+    # shellcheck disable=SC1090
     . ~/.bash_aliases
 fi
 
@@ -99,11 +105,13 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    # shellcheck disable=SC1091
     . /etc/bash_completion
 fi
 
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
+# shellcheck disable=SC1091
 source /usr/bin/virtualenvwrapper_lazy.sh
 
 # ack is short for ack-grep
@@ -117,5 +125,6 @@ complete -cf pacman
 complete -cf sudo
 complete -cf man
 
+# shellcheck disable=SC2139
 alias grep="/usr/bin/grep $GREP_OPTIONS"
 unset GREP_OPTIONS

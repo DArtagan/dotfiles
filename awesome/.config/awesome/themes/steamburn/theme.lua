@@ -1,9 +1,9 @@
 
 --[[
-                                     
-     Steamburn Awesome WM config 3.0 
-     github.com/copycat-killer       
-                                     
+
+     Steamburn Awesome WM config 3.0
+     github.com/copycat-killer
+
 --]]
 
 local theme                                     = {}

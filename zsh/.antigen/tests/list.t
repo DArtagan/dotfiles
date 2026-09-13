@@ -57,7 +57,7 @@ Find bundle/record internal function.
   [1]
 
   $ -antigen-find-record nonexisting
-  
+
 
   $ -antigen-find-record test
   *test-plugin* (glob)
@@ -89,4 +89,3 @@ List bundle no git repo.
   *test-plugin4 @ master (glob)
   $ hello-world
   hello world
-

@@ -27,7 +27,7 @@ function stats/main () {
     echo "Define a path to Antigen with '--antigen' argument. Given: $antigen"
     exit 1
   fi
-  
+
   echo "Using zsh: $zsh ($($zsh --version))"
   echo "Using Antigen from: $antigen ($(cat $antigen/VERSION || echo unknown))"
 
@@ -118,4 +118,3 @@ function stats/parse() {
 }
 
 stats/main $@
-

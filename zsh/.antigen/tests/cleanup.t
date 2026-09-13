@@ -38,11 +38,11 @@ Do the cleanup.
 
   $ antigen-cleanup --force
   You have clones for the following repos, but are not used.
-  
+
   .*/test-plugin (re)
   .*/test-plugin2 (re)
-  
-  
+
+
   Deleting clone "*/test-plugin"... done. (glob)
   Deleting clone "*/test-plugin2"... done. (glob)
 
@@ -58,9 +58,9 @@ Confirm the plugin directory does not exist after cleanup.
   0
 # TODO
 # Do not remove local bundles (--no-local-clone).
-# 
+#
 #   $ ls $ANTIGEN_BUNDLES
-# 
+#
 #   $ _ANTIGEN_BUNDLE_RECORD=()
 #   $ antigen list &> /dev/null
 #   [1]
@@ -68,7 +68,6 @@ Confirm the plugin directory does not exist after cleanup.
 #   $ antigen apply &> /dev/null
 #   $ antigen list --long
 #   .*cleanup.t/test-plugin / plugin false (re)
-# 
+#
 #   $ antigen cleanup --force
 #   You don't have any bundles.
-

@@ -28,4 +28,3 @@ antigen-restore () {
   echo ' done.'
   echo 'Please open a new shell to get the restored changes.'
 }
-

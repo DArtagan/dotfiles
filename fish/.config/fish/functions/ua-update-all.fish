@@ -7,5 +7,5 @@ function ua-update-all --wraps=export\ TMPFILE=\"\$\(mktemp\)\"\;\ \\\n\ \ sudo\
     && ua-drop-caches \
     && sudo aura -Sy --noconfirm archlinux-keyring \
     && sudo aura -Syyu --noconfirm $argv
-        
+
 end

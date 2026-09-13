@@ -41,4 +41,3 @@ antigen-init () {
     eval $line
   done
 }
-

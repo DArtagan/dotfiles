@@ -15,4 +15,3 @@ antigen-revert () {
     return 1
   fi
 }
-

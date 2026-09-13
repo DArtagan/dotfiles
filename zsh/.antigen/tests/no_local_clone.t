@@ -38,10 +38,10 @@ The cleanup should list the bundle's clone.
   $ antigen-cache-gen
   $ antigen-cleanup --force
   You have clones for the following repos, but are not used.
-  
+
   .*/test-plugin (re)
-  
-  
+
+
   Deleting clone ".*/test-plugin"... done. (re)
 
   $ ls $ANTIGEN_BUNDLES/cram-testdir-*

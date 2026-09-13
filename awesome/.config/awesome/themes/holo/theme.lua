@@ -1,9 +1,9 @@
 
 --[[
-                                
-     Holo Awesome WM config 3.0 
-     github.com/copycat-killer  
-                                
+
+     Holo Awesome WM config 3.0
+     github.com/copycat-killer
+
 --]]
 
 local theme                                     = {}

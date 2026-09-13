@@ -9,34 +9,34 @@
 2014-08-14 20:25:07	@root	End of account list
 2014-08-14 20:34:21	@dartagan	help account
 2014-08-14 20:34:21	@root	Syntax: account [<account id>] <action> [<arguments>]
-2014-08-14 20:34:21	@root	 
+2014-08-14 20:34:21	@root
 2014-08-14 20:34:21	@root	Available actions: add, del, list, on, off and set. See help account <action> for more information.
 2014-08-14 20:34:35	@dartagan	help account set
 2014-08-14 20:34:35	@root	Syntax: account <account id> set
 2014-08-14 20:34:35	@root	Syntax: account <account id> set <setting>
 2014-08-14 20:34:35	@root	Syntax: account <account id> set <setting> <value>
 2014-08-14 20:34:35	@root	Syntax: account <account id> set -del <setting>
-2014-08-14 20:34:35	@root	 
+2014-08-14 20:34:35	@root
 2014-08-14 20:34:35	@root	This command can be used to change various settings for IM accounts. For all protocols, this command can be used to change the handle or the password BitlBee uses to log in and if it should be logged in automatically. Some protocols have additional settings. You can see the settings available for a connection by typing account <account id> set.
-2014-08-14 20:34:35	@root	 
+2014-08-14 20:34:35	@root
 2014-08-14 20:34:35	@root	For more infomation about a setting, see help set <setting>.
-2014-08-14 20:34:35	@root	 
+2014-08-14 20:34:35	@root
 2014-08-14 20:34:35	@root	The account ID can be a number/tag (see account list), the protocol name or (part of) the screenname, as long as it matches only one connection.
 2014-08-14 20:34:58	@dartagan	help set
 2014-08-14 20:34:58	@root	Syntax: set
 2014-08-14 20:34:58	@root	Syntax: set <variable>
 2014-08-14 20:34:58	@root	Syntax: set <variable> <value>
 2014-08-14 20:34:58	@root	Syntax: set -del <variable>
-2014-08-14 20:34:58	@root	 
+2014-08-14 20:34:58	@root
 2014-08-14 20:34:58	@root	Without any arguments, this command lists all the set variables. You can also specify a single argument, a variable name, to get that variable's value. To change this value, specify the new value as the second argument. With -del you can reset a setting to its default value.
-2014-08-14 20:34:58	@root	 
+2014-08-14 20:34:58	@root
 2014-08-14 20:34:58	@root	To get more help information about a setting, try:
-2014-08-14 20:34:58	@root	 
+2014-08-14 20:34:58	@root
 2014-08-14 20:34:58	@root	Example:
 2014-08-14 20:34:58	@root	<ctrlsoft> help set private
 2014-08-14 20:35:32	@dartagan	help set list
 2014-08-14 20:35:32	@root	These are the available help subjects:
-2014-08-14 20:35:32	@root	 
+2014-08-14 20:35:32	@root
 2014-08-14 20:35:32	@root	 quickstart - A short introduction into BitlBee
 2014-08-14 20:35:32	@root	 commands - All available commands and settings
 2014-08-14 20:35:32	@root	 channels - About creating and customizing channels
@@ -44,15 +44,15 @@
 2014-08-14 20:35:32	@root	 groupchats - How to work with groupchats on BitlBee
 2014-08-14 20:35:32	@root	 nick_changes - Changing your nickname without losing any settings
 2014-08-14 20:35:32	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
-2014-08-14 20:35:32	@root	 
+2014-08-14 20:35:32	@root
 2014-08-14 20:35:32	@root	You can read more about them with help <subject>
-2014-08-14 20:35:32	@root	 
+2014-08-14 20:35:32	@root
 2014-08-14 20:35:32	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
-2014-08-14 20:35:32	@root	 
+2014-08-14 20:35:32	@root
 2014-08-14 20:35:32	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
 2014-08-14 20:35:45	@dartagan	help commands
 2014-08-14 20:35:45	@root	These are all root commands. See help <command name> for more details on each command.
-2014-08-14 20:35:45	@root	 
+2014-08-14 20:35:45	@root
 2014-08-14 20:35:45	@root	 * account - IM-account list maintenance
 2014-08-14 20:35:45	@root	 * channel - Channel list maintenance
 2014-08-14 20:35:45	@root	 * chat - Chatroom list maintenance
@@ -75,16 +75,16 @@
 2014-08-14 20:35:45	@root	 * blist - List all the buddies in the current channel
 2014-08-14 20:35:45	@root	 * group - Contact group management
 2014-08-14 20:35:45	@root	 * transfer - Monitor, cancel, or reject file transfers
-2014-08-14 20:35:45	@root	 
+2014-08-14 20:35:45	@root
 2014-08-14 20:35:45	@root	Most commands can be shortened. For example instead of account list, try ac l.
 2014-08-14 20:36:08	@dartagan	help rename
 2014-08-14 20:36:08	@root	Syntax: rename <oldnick> <newnick>
 2014-08-14 20:36:08	@root	Syntax: rename -del <oldnick>
-2014-08-14 20:36:08	@root	 
+2014-08-14 20:36:08	@root
 2014-08-14 20:36:08	@root	Renick a user in your buddy list. Very useful, in fact just very important, if you got a lot of people with stupid account names (or hard ICQ numbers).
-2014-08-14 20:36:08	@root	 
+2014-08-14 20:36:08	@root
 2014-08-14 20:36:08	@root	rename -del can be used to erase your manually set nickname for a contact and reset it to what was automatically generated.
-2014-08-14 20:36:08	@root	 
+2014-08-14 20:36:08	@root
 2014-08-14 20:36:08	@root	Example:
 2014-08-14 20:36:08	@root	<itsme> rename itsme_ you
 2014-08-14 20:36:08	@root	* itsme_ is now known as you
@@ -107,7 +107,7 @@
 2014-08-14 20:37:19	@root	Homepage: https://plus.google.com/108440062814250270778
 2014-08-14 20:39:43	@dartagan	help set name
 2014-08-14 20:39:43	@root	These are the available help subjects:
-2014-08-14 20:39:43	@root	 
+2014-08-14 20:39:43	@root
 2014-08-14 20:39:43	@root	 quickstart - A short introduction into BitlBee
 2014-08-14 20:39:43	@root	 commands - All available commands and settings
 2014-08-14 20:39:43	@root	 channels - About creating and customizing channels
@@ -115,34 +115,34 @@
 2014-08-14 20:39:43	@root	 groupchats - How to work with groupchats on BitlBee
 2014-08-14 20:39:43	@root	 nick_changes - Changing your nickname without losing any settings
 2014-08-14 20:39:43	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
-2014-08-14 20:39:43	@root	 
+2014-08-14 20:39:43	@root
 2014-08-14 20:39:43	@root	You can read more about them with help <subject>
-2014-08-14 20:39:43	@root	 
+2014-08-14 20:39:43	@root
 2014-08-14 20:39:43	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
-2014-08-14 20:39:43	@root	 
+2014-08-14 20:39:43	@root
 2014-08-14 20:39:43	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
 2014-08-14 20:39:48	@dartagan	help set
 2014-08-14 20:39:48	@root	Syntax: set
 2014-08-14 20:39:48	@root	Syntax: set <variable>
 2014-08-14 20:39:48	@root	Syntax: set <variable> <value>
 2014-08-14 20:39:48	@root	Syntax: set -del <variable>
-2014-08-14 20:39:48	@root	 
+2014-08-14 20:39:48	@root
 2014-08-14 20:39:48	@root	Without any arguments, this command lists all the set variables. You can also specify a single argument, a variable name, to get that variable's value. To change this value, specify the new value as the second argument. With -del you can reset a setting to its default value.
-2014-08-14 20:39:48	@root	 
+2014-08-14 20:39:48	@root
 2014-08-14 20:39:48	@root	To get more help information about a setting, try:
-2014-08-14 20:39:48	@root	 
+2014-08-14 20:39:48	@root
 2014-08-14 20:39:48	@root	Example:
 2014-08-14 20:39:48	@root	<ctrlsoft> help set private
-2014-08-14 20:40:06	@dartagan	help set 
+2014-08-14 20:40:06	@dartagan	help set
 2014-08-14 20:40:06	@root	Syntax: set
 2014-08-14 20:40:06	@root	Syntax: set <variable>
 2014-08-14 20:40:06	@root	Syntax: set <variable> <value>
 2014-08-14 20:40:06	@root	Syntax: set -del <variable>
-2014-08-14 20:40:06	@root	 
+2014-08-14 20:40:06	@root
 2014-08-14 20:40:06	@root	Without any arguments, this command lists all the set variables. You can also specify a single argument, a variable name, to get that variable's value. To change this value, specify the new value as the second argument. With -del you can reset a setting to its default value.
-2014-08-14 20:40:06	@root	 
+2014-08-14 20:40:06	@root
 2014-08-14 20:40:06	@root	To get more help information about a setting, try:
-2014-08-14 20:40:06	@root	 
+2014-08-14 20:40:06	@root
 2014-08-14 20:40:06	@root	Example:
 2014-08-14 20:40:06	@root	<ctrlsoft> help set private
 2014-08-14 20:40:10	@dartagan	account 0 set
@@ -170,7 +170,7 @@
 2014-08-14 20:40:10	@root	xmlconsole = `false'
 2014-08-14 20:44:25	@dartagan	help set password -del
 2014-08-14 20:44:25	@root	These are the available help subjects:
-2014-08-14 20:44:25	@root	 
+2014-08-14 20:44:25	@root
 2014-08-14 20:44:25	@root	 quickstart - A short introduction into BitlBee
 2014-08-14 20:44:25	@root	 commands - All available commands and settings
 2014-08-14 20:44:25	@root	 channels - About creating and customizing channels
@@ -178,11 +178,11 @@
 2014-08-14 20:44:25	@root	 groupchats - How to work with groupchats on BitlBee
 2014-08-14 20:44:25	@root	 nick_changes - Changing your nickname without losing any settings
 2014-08-14 20:44:25	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
-2014-08-14 20:44:25	@root	 
+2014-08-14 20:44:25	@root
 2014-08-14 20:44:25	@root	You can read more about them with help <subject>
-2014-08-14 20:44:25	@root	 
+2014-08-14 20:44:25	@root
 2014-08-14 20:44:25	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
-2014-08-14 20:44:25	@root	 
+2014-08-14 20:44:25	@root
 2014-08-14 20:44:25	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
 2014-08-14 20:44:31	@dartagan	account 0 set password -del
 2014-08-14 20:44:31	@root	Setting changed successfully
@@ -391,7 +391,7 @@
 2014-08-14 20:57:56	@root	jabber - Login error: Error while reading from server
 2014-08-14 20:57:56	@root	jabber - Logging in: Signing off..
 2014-08-14 20:57:56	@root	jabber - Logging in: Reconnecting in 900 seconds..
-2014-08-14 20:59:19	@dartagan	account 0 
+2014-08-14 20:59:19	@dartagan	account 0
 2014-08-14 20:59:19	@root	Not enough parameters given (need 2).
 2014-08-14 20:59:21	@dartagan	account 0 info
 2014-08-14 20:59:21	@root	Unknown command: account [...] info. Please use help commands to get a list of available commands.
@@ -403,9 +403,9 @@
 2014-08-14 20:59:26	@root	jabber - Login error: Error while reading from server
 2014-08-14 20:59:26	@root	jabber - Logging in: Signing off..
 2014-08-14 20:59:26	@root	jabber - Logging in: Reconnecting in 900 seconds..
-2014-08-14 20:59:40	@dartagan	help account 0 
+2014-08-14 20:59:40	@dartagan	help account 0
 2014-08-14 20:59:40	@root	These are the available help subjects:
-2014-08-14 20:59:40	@root	 
+2014-08-14 20:59:40	@root
 2014-08-14 20:59:40	@root	 quickstart - A short introduction into BitlBee
 2014-08-14 20:59:40	@root	 commands - All available commands and settings
 2014-08-14 20:59:40	@root	 channels - About creating and customizing channels
@@ -413,15 +413,15 @@
 2014-08-14 20:59:40	@root	 groupchats - How to work with groupchats on BitlBee
 2014-08-14 20:59:40	@root	 nick_changes - Changing your nickname without losing any settings
 2014-08-14 20:59:40	@root	 smileys - A summary of some non-standard smileys you might find and fail to understand
-2014-08-14 20:59:40	@root	 
+2014-08-14 20:59:40	@root
 2014-08-14 20:59:40	@root	You can read more about them with help <subject>
-2014-08-14 20:59:40	@root	 
+2014-08-14 20:59:40	@root
 2014-08-14 20:59:40	@root	Some more help can be found on http://wiki.bitlbee.org/. Bugs can be reported at http://bugs.bitlbee.org/.
-2014-08-14 20:59:40	@root	 
+2014-08-14 20:59:40	@root
 2014-08-14 20:59:40	@root	For other things than bug reports, you can join #BitlBee on OFTC (irc.oftc.net) (OFTC, *not* FreeNode!) and flame us right in the face. :-)
-2014-08-14 20:59:46	@dartagan	help account 
+2014-08-14 20:59:46	@dartagan	help account
 2014-08-14 20:59:46	@root	Syntax: account [<account id>] <action> [<arguments>]
-2014-08-14 20:59:46	@root	 
+2014-08-14 20:59:46	@root
 2014-08-14 20:59:46	@root	Available actions: add, del, list, on, off and set. See help account <action> for more information.
 2014-08-14 21:00:09	@dartagan	account 0 set
 2014-08-14 21:00:09	@root	activity_timeout = `600'
@@ -737,7 +737,7 @@
 2014-08-14 21:50:04	-->	_3up1dbbevqhik3sat7t9b4 (3up1dbbevqhik3sat7t9b430wr@public.talk.google.com) has joined &bitlbee
 2014-08-14 21:57:50	@dartagan	help commands
 2014-08-14 21:57:50	@root	These are all root commands. See help <command name> for more details on each command.
-2014-08-14 21:57:50	@root	 
+2014-08-14 21:57:50	@root
 2014-08-14 21:57:50	@root	 * account - IM-account list maintenance
 2014-08-14 21:57:50	@root	 * channel - Channel list maintenance
 2014-08-14 21:57:50	@root	 * chat - Chatroom list maintenance
@@ -760,7 +760,7 @@
 2014-08-14 21:57:50	@root	 * blist - List all the buddies in the current channel
 2014-08-14 21:57:50	@root	 * group - Contact group management
 2014-08-14 21:57:50	@root	 * transfer - Monitor, cancel, or reject file transfers
-2014-08-14 21:57:50	@root	 
+2014-08-14 21:57:50	@root
 2014-08-14 21:57:50	@root	Most commands can be shortened. For example instead of account list, try ac l.
 2014-08-14 21:58:00	@dartagan	rename philahoffmann phil
 2014-08-14 21:58:00	ℹ 	philahoffmann is now known as phil
@@ -781,7 +781,7 @@
 2014-08-14 22:10:16	@dartagan	account add skype
 2014-08-14 22:10:16	@root	Not enough parameters given (need 3).
 2014-08-14 22:13:09	@dartagan	:bitlbee disconnect
-2014-08-14 22:13:09	@root	User does not exist: 
+2014-08-14 22:13:09	@root	User does not exist:
 2014-08-14 22:13:13	ℹ 	irc: disconnected from server
 2014-08-14 23:41:49	-->	dartagan (dartagan@192.168.1.10) has joined &bitlbee
 2014-08-14 23:41:49	ℹ 	Mode &bitlbee [+Ct] by 192.168.1.10
@@ -869,7 +869,7 @@
 2014-08-15 00:35:10	ℹ 	Topic for &bitlbee is "Welcome to the control channel. Type help for help information."
 2014-08-15 00:35:10	ℹ 	Topic set by root (root@192.168.1.10) on Fri, 15 Aug 2014 00:35:10
 2014-08-15 00:35:10	@root	Welcome to the BitlBee gateway!
-2014-08-15 00:35:10	@root	 
+2014-08-15 00:35:10	@root
 2014-08-15 00:35:10	@root	If you've never used BitlBee before, please do read the help information using the help command. Lots of FAQs are answered there.
 2014-08-15 00:35:10	@root	If you already have an account on this server, just use the identify command to identify yourself.
 2014-08-15 00:35:42	@dartagan	hello
@@ -878,7 +878,7 @@
 2014-08-15 00:35:47	@root	End of account list
 2014-08-15 00:36:03	@dartagan	help commands
 2014-08-15 00:36:03	@root	These are all root commands. See help <command name> for more details on each command.
-2014-08-15 00:36:03	@root	 
+2014-08-15 00:36:03	@root
 2014-08-15 00:36:03	@root	 * account - IM-account list maintenance
 2014-08-15 00:36:03	@root	 * channel - Channel list maintenance
 2014-08-15 00:36:03	@root	 * chat - Chatroom list maintenance
@@ -901,7 +901,7 @@
 2014-08-15 00:36:03	@root	 * blist - List all the buddies in the current channel
 2014-08-15 00:36:03	@root	 * group - Contact group management
 2014-08-15 00:36:03	@root	 * transfer - Monitor, cancel, or reject file transfers
-2014-08-15 00:36:03	@root	 
+2014-08-15 00:36:03	@root
 2014-08-15 00:36:03	@root	Most commands can be shortened. For example instead of account list, try ac l.
 2014-08-15 00:36:06	@dartagan	save
 2014-08-15 00:36:06	@root	Please create an account first (see help register)
@@ -914,9 +914,9 @@
 2014-08-15 00:36:21	ℹ 	Mode &bitlbee [+C] by root
 2014-08-15 00:36:21	@root	Password accepted, settings and accounts loaded
 2014-08-15 00:36:21	@root	dartagan: This seems to be your first time using this this version of BitlBee. Here's a list of new features you may like to know about:
-2014-08-15 00:36:21	@root	 
+2014-08-15 00:36:21	@root
 2014-08-15 00:36:21	@root	The OTR plugin now uses libotr 4.0 (AKA libotr5 in debian based distros)
-2014-08-15 00:36:21	@root	 
+2014-08-15 00:36:21	@root
 2014-08-15 00:36:21	@root	A few minor fixes/additions, like being able to use /oper to change passwords with account tag set -del password
 2014-08-15 00:36:21	@root	Trying to get all accounts connected...
 2014-08-15 00:36:21	@root	jabber - Logging in: Connecting

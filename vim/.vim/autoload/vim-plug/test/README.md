@@ -22,4 +22,3 @@ Test cases for the following features are currently missing:
 - User prompt in PlugClean command
 - Single-threaded installer
 - Windows support
-

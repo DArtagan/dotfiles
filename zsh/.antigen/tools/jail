@@ -75,7 +75,7 @@ function jail/create () {
   echo --\> rm $jail/dev/null
   rm $jail/dev/null && cp /dev/null $jail/dev/null
   chmod a+rwx $jail/dev/null
-  
+
   echo Mount missing /proc
   echo --\> mkdir -p $jail/proc
   mkdir -p $jail/proc && mount -t proc proc $jail/proc
@@ -116,5 +116,3 @@ function jail/install () {
 }
 
 jail/main "$@"
-
-

@@ -1,9 +1,9 @@
 
 --[[
-                                             
-     Powerarrow Darker Awesome WM config 2.0 
-     github.com/copycat-killer               
-                                             
+
+     Powerarrow Darker Awesome WM config 2.0
+     github.com/copycat-killer
+
 --]]
 
 -- {{{ Required libraries
@@ -154,7 +154,7 @@ lain.widgets.calendar.attach(mytextclock, {
         font = "Terminus 10",
         fg   = beautiful.fg_normal,
         bg   = beautiful.bg_normal
-    } 
+    }
 })
 
 -- Mail IMAP check

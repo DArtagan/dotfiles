@@ -8,11 +8,10 @@
 
   [[ "$bundle_name" =~ '.*/(.*/.*).*$' ]] && bundle_name=$match[1]
   bundle_name="${bundle_name%.git*}"
-  
+
   if [[ -n $bundle_branch ]]; then
     bundle_name="$bundle_name@$bundle_branch"
   fi
 
   echo $bundle_name
 }
-

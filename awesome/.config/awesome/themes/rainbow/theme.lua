@@ -1,9 +1,9 @@
 
 --[[
-                                   
-     Rainbow Awesome WM config 2.0 
-     github.com/copycat-killer     
-                                   
+
+     Rainbow Awesome WM config 2.0
+     github.com/copycat-killer
+
 --]]
 
 local theme                                     = {}

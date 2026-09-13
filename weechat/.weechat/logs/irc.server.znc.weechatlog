@@ -274,12 +274,12 @@
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): others from using that nick. NickServ allows the owner of a
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): nickname to disconnect a user from the network that is using
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): their nickname.
-2014-07-26 12:53:21	--	NickServ (NickServ@services.):  
+2014-07-26 12:53:21	--	NickServ (NickServ@services.):
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): For more information on a command, type:
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): /msg NickServ help <command>
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): For a verbose listing of all commands, type:
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): /msg NickServ help commands
-2014-07-26 12:53:21	--	NickServ (NickServ@services.):  
+2014-07-26 12:53:21	--	NickServ (NickServ@services.):
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): The following commands are available:
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): GHOST           Reclaims use of a nickname.
 2014-07-26 12:53:21	--	NickServ (NickServ@services.): GROUP           Adds a nickname to your account.
@@ -290,9 +290,9 @@
 2014-07-26 12:53:22	--	NickServ (NickServ@services.): RELEASE         Releases a services enforcer.
 2014-07-26 12:53:22	--	NickServ (NickServ@services.): SET             Sets various control flags.
 2014-07-26 12:53:22	--	NickServ (NickServ@services.): UNGROUP         Removes a nickname from your account.
-2014-07-26 12:53:22	--	NickServ (NickServ@services.):  
-2014-07-26 12:53:22	--	NickServ (NickServ@services.): Other commands: ACC, ACCESS, CERT, DROP, HELP, LISTOWNMAIL, 
-2014-07-26 12:53:22	--	NickServ (NickServ@services.):                 LOGOUT, REGAIN, SETPASS, STATUS, TAXONOMY, 
+2014-07-26 12:53:22	--	NickServ (NickServ@services.):
+2014-07-26 12:53:22	--	NickServ (NickServ@services.): Other commands: ACC, ACCESS, CERT, DROP, HELP, LISTOWNMAIL,
+2014-07-26 12:53:22	--	NickServ (NickServ@services.):                 LOGOUT, REGAIN, SETPASS, STATUS, TAXONOMY,
 2014-07-26 12:53:22	--	NickServ (NickServ@services.):                 VACATION, VERIFY
 2014-07-26 12:53:22	--	NickServ (NickServ@services.): ***** End of Help *****
 2014-07-26 12:53:46	=!=	irc: this buffer is not a channel!

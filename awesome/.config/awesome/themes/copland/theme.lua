@@ -1,9 +1,9 @@
 
 --[[
-                               
-     Copland Awesome WM config 
-     github.com/copycat-killer 
-                               
+
+     Copland Awesome WM config
+     github.com/copycat-killer
+
 --]]
 
 local theme                                     = {}

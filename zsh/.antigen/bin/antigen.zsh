@@ -87,7 +87,7 @@ antigen () {
 
   [[ "$bundle_name" =~ '.*/(.*/.*).*$' ]] && bundle_name=$match[1]
   bundle_name="${bundle_name%.git*}"
-  
+
   if [[ -n $bundle_branch ]]; then
     bundle_name="$bundle_name@$bundle_branch"
   fi
@@ -120,7 +120,7 @@ antigen () {
 #   String if record is found
 -antigen-find-record () {
   local bundle=$1
-  
+
   if [[ $# -eq 0 ]]; then
     return 1
   fi
@@ -547,7 +547,7 @@ antigen () {
     echo "${(j:\n:)bundle_files}"
     return
   fi
-  
+
   # Add to PATH (binary bundle)
   echo "$location"
   return

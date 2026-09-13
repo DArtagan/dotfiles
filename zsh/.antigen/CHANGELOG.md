@@ -26,7 +26,7 @@ Thanks everyone who reported issues and provided feedback.
 
 ### Fixed
 - [#487] Fix documentation regarding `ANTIGEN_CHECK_FILES`
-- [#486, #485] Missing env vars for Oh-My-Zsh 
+- [#486, #485] Missing env vars for Oh-My-Zsh
 - [#492, #490] Fix parsing git/ssh URLS
 - [#495, #494] Fix `antigen-theme` command changing CWD
 - [#493, #491] Fix `no-local-clone` flag being ignored
@@ -122,21 +122,21 @@ Thanks @lukechilds, @shoeffner and everyone who reported issues and provided fee
 ## [1.3.5] - 2017-02-03
 
 ### Changed
-- [#393, #392] Add hint in readme to alternative install methods 
+- [#393, #392] Add hint in readme to alternative install methods
 
 ### Fixed
-- [#398, #396] Add argument completion for `antigen-list` command 
-- [#394, #395] Fix syntax issue on zsh 4.3.11 
+- [#398, #396] Add argument completion for `antigen-list` command
+- [#394, #395] Fix syntax issue on zsh 4.3.11
 
 Thanks @TBird2001, @einSelbst and everyone who reported issues and provided feedback.
 
 ## [1.3.4] - 2017-01-16
 
 ### Changed
-- [#389, #385] `antigen-theme` command load themes from path 
+- [#389, #385] `antigen-theme` command load themes from path
 
 ### Fixed
-- [#384] Fix updating version references 
+- [#384] Fix updating version references
 
 Thanks to everyone who reported issues and provided feedback.
 
@@ -217,8 +217,8 @@ provided feedback.
 ## [1.2.2] - 2016-11-18
 
 ### Changed
-- [#315, #308] Bundle command returns error if repository is not found 
-- [#313, #314] Enhanced cache process-source function 
+- [#315, #308] Bundle command returns error if repository is not found
+- [#313, #314] Enhanced cache process-source function
 
 ### Fixed
 - [#310, #307] Disabling cache-related commands if cache is disabled
@@ -237,7 +237,7 @@ Activate this functionality with `_ANTIGEN_FORCE_RESET_COMPDUMP`, defaults to `t
 Antigen previously didn't created `$ADOTDIR` explicitly, now it does so on start up.
 This directory defaults to `$HOME/.antigen` and it's used to store logs, repositories
 and cache files.
-    
+
 Theme switching, with `antigen-theme` command, now removes hooks applied by themes.
 This is done in order to be able to interactively switch between themes without
 issues, such as prompt broken by hooks left by previous themes.
@@ -321,7 +321,7 @@ New environment variables:
 ### Changed
 - [#248] Enhanced caching performance
 - [#245, #244] Changed default caching and logging paths
- 
+
 ### Fixed
 - [#249, #240, #246] Makefile BSD compatibility
 - [#247, #228] Fix apply and antigen-apply command
@@ -334,9 +334,9 @@ issues and provided feedback.
 
 ### Changed
 - [#236] Add Makefile release and publish tasks
- 
+
 ### Fixed
-- [#239] Issue with BSD sed (MacOS, FreeBSD) 
+- [#239] Issue with BSD sed (MacOS, FreeBSD)
 
 Thanks @pawelad, @laurenbenichou, @zawadzkip and everyone who reported
 issues and provided feedback.
@@ -346,7 +346,7 @@ issues and provided feedback.
 ### Changed
 - [#234] Cache process-source function now handles function-context
 - [#233] Antigen selfupdate command now clears cache automatically
- 
+
 ### Fixed
 - [#219] Issue with zsh-navigation-tools plugin and powerlevel9k theme
 - [#230] Issue with stalled cache
@@ -358,7 +358,7 @@ issues and provided feedback.
 
 ### Changed
 - [#223] Update tests cases
- 
+
 ### Fixed
 - [#220] Fpath was not updated correctly
 - [#221, #217] Fix various typos in CHANGELOG.md
@@ -366,10 +366,10 @@ issues and provided feedback.
 
 Thanks @xasx, @azu and @mikeys
 
-## [1.1.0] - 2016-09-10 
+## [1.1.0] - 2016-09-10
 
 New environment variables:
-    
+
   - `_ANTIGEN_LOG_PATH`: Antigen path for logging (mostly git commands).
 
   - `_ANTIGEN_COMP_ENABLED`: Flag to enable/disable Antigen own completions
@@ -380,37 +380,37 @@ New environment variables:
 New commands:
 
 - `init`: Use this command to load antigen configuration. Example set up:
-    
+
     .zshrc:
-        
+
         source antigen.zsh
         antigen init .antigenrc
-        
+
     .antigenrc:
 
         antigen use oh-my-zsh
-        
+
         antigen bundle ...
         antigen theme ...
-        
+
         antigen apply
 
-    
+
 This setup further improves cache performance (`~0.02s`). It's fully optional.
-        
+
 - `cache-reset`: Clears current cache. Doesn't removes your bundles. This is done automatically after `antigen update` command.
-    
+
 - `version`: Show antigen running version.
 
 ### Added
 - [#129] Cache system for better performance
 - [#191] Version command
-- [#211] Option to disable antigen's own completions compinit on start up 
+- [#211] Option to disable antigen's own completions compinit on start up
 
 ### Changed
 - [#205] Bundle short syntax on install/update
-- [#156, #213] Improved continuos integration set up 
-- [#195] Restructured project directory 
+- [#156, #213] Improved continuos integration set up
+- [#195] Restructured project directory
 
 ### Fixed
 - [#210] Prezto issue with environment variable
@@ -433,7 +433,7 @@ This setup further improves cache performance (`~0.02s`). It's fully optional.
 ## [1.0.3] - 2016-08-20
 
 ### Changed
-- [#172] Fix TravisCI configuration 
+- [#172] Fix TravisCI configuration
 
 ## [1.0.2] - 2016-08-11
 
@@ -472,4 +472,3 @@ This setup further improves cache performance (`~0.02s`). It's fully optional.
 [1.0.3]: https://github.com/zsh-users/antigen/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/zsh-users/antigen/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/zsh-users/antigen/compare/v1...v1.0.1
-

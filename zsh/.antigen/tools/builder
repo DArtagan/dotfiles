@@ -6,7 +6,7 @@ typeset -g ZSH_BIN_LOCATION=/usr/local/bin/zsh
 
 # Build and install zsh version from source
 function builder/usage () {
-  echo "Usage: $0 --source /path/to/source --target /path/to/target --version ZSH_VERSION" 
+  echo "Usage: $0 --source /path/to/source --target /path/to/target --version ZSH_VERSION"
 }
 
 function builder/main () {

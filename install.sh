@@ -17,31 +17,31 @@ swapdir=~/.backup/vim-swap         # directory for vim swap files
 if [ -d $gitdir ]; then
   mv $gitdir $dir
   echo "$gitdir moved to $dir"
-else 
+else
   echo "Could not find $gitdir, assuming the location is $dir."
-fi 
+fi
 
 # change to the dotfiles directory
-echo "Changing to the $dir directory"   
-cd $dir
+echo "Changing to the $dir directory"
+cd "$dir" || exit
 echo "...done"
 
 # Pull in git submodules
 git pull --recurse-submodules
-git submodule init 
-git submodule update --recursive 
+git submodule init
+git submodule update --recursive
 git submodule status
 
 # Runs solarize.sh to change the terminal theme to light, unless "dark" is specified as a parameter at the beginning.
 if [ "$1" == "dark" ]; then
   $dir/solarize.sh dark
   echo "Dark theme set."
-else 
+else
   $dir/solarize.sh light
   echo "Light theme set."
 fi
 
-# Ensure the existance of a folder for vim backup and swap files 
+# Ensure the existance of a folder for vim backup and swap files
 if [ ! -d $backupdir ]; then
   mkdir -p $backupdir
   mkdir -p $swapdir
@@ -49,4 +49,3 @@ if [ ! -d $backupdir ]; then
 else
   echo "Vim backup and swap folder already exists at $backupdir."
 fi
-

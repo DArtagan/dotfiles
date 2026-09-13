@@ -45,4 +45,3 @@
         local btype=\""$btype\""
         "
 }
-

@@ -109,4 +109,3 @@ Long SSH github url.
 
   $ parse git@github.com:zsh-users/antigen.git
   local url='git@github.com:zsh-users/antigen.git'
-
