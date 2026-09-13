@@ -78,7 +78,21 @@
     };
   };
 
-  systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
+  #systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
+
+  # Belt-and-braces for the 2026-08-28 away week: masking the sleep targets makes
+  # suspend/hibernate unreachable by *any* path (a stray `systemctl suspend`, an
+  # app's inhibitor-less request, the power key), not just the logind idle timer
+  # above.  Drop this block to restore normal suspend behaviour.
+  systemd.targets = {
+    sleep.enable = false;
+    suspend.enable = false;
+    hibernate.enable = false;
+    hybrid-sleep.enable = false;
+    # Not reachable once sleep.target is masked (its service Requires= it), but
+    # masked explicitly since this is the mode the idle timer used to trigger.
+    suspend-then-hibernate.enable = false;
+  };
 
   services = {
     esphome.enable = true; # For connecting to and programming ESP32 microcontrollers
@@ -121,8 +135,10 @@
       };
     };
     logind.settings.Login = {
-      IdleAction = "suspend-then-hibernate";
-      IdleActionSec = "20min";
+      # Away from the machine 2026-08-28 for a week; it must stay reachable over
+      # Tailscale the whole time, so nothing may idle it out.  Restore
+      # "suspend-then-hibernate" / "20min" to resume normal power saving.
+      IdleAction = "ignore";
     };
     openssh = {
       enable = true;
