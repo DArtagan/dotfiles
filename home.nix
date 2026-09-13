@@ -40,6 +40,7 @@
       broot
       calibre
       claude-code
+      claude-monitor
       curl
       deluge # bittorrent
       devenv

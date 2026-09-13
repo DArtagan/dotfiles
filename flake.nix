@@ -140,6 +140,7 @@
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             ./modules/droidcam
+            ./modules/hotspot
             ./modules/sway
             ./modules/tailscale
             ./hosts/steamdeck
@@ -166,6 +167,7 @@
                     syncthing.username = "willy";
                     imports = [
                       ./home.nix
+                      ./modules/hotspot/hm.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
                     ];

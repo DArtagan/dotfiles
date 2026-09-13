@@ -26,8 +26,17 @@
           path = user_ssh_private_key + ".pub";
         };
         "users/willy/wireguard_private_key" = { };
+        "wifi/hotspot_psk" = { };
       };
     };
+
+  # Lives here rather than with the other `my.*` settings in flake.nix because
+  # pskFile has to reference this host's sops secret.
+  my.hotspot = {
+    enable = true;
+    ssid = "steam_powered_internet";
+    pskFile = config.sops.secrets."wifi/hotspot_psk".path;
+  };
 
   boot.loader = {
     systemd-boot = {
@@ -37,12 +46,21 @@
     efi.canTouchEfiVariables = true;
   };
 
+  # Without this the card sits in regulatory domain 00 (the world domain), which
+  # marks all of 5 GHz passive-scan: the radio waits to overhear a beacon rather
+  # than probing for the network, and transmit power is capped. Seen as
+  # NetworkManager reporting "the Wi-Fi network could not be found" for an AP
+  # its own scan list contained, and repeated "association took too long".
+  # hostapd sets the domain from its country_code while the hotspot runs and it
+  # reverts to 00 when hostapd stops, so the radio is otherwise only correct
+  # while the hotspot happens to be up.
+  hardware.wirelessRegulatoryDatabase = true;
+  boot.extraModprobeConfig = ''
+    options cfg80211 ieee80211_regdom="US"
+  '';
+
   networking = {
     hostName = "steamdeck";
-
-    #interfaces."wlo1_prime" = {
-    #
-    #};
 
     wg-quick.interfaces = {
       # Launch using: `sudo systemctl restart wg-quick-wg0.service`
@@ -88,19 +106,6 @@
       "displaylink"
       "modesetting"
     ];
-
-    # Share wifi as a hotspot
-    # TODO: currently requires a virtual interface be first created using
-    # iw dev wlan0 interface add wlo1_prime type managed addr 12:34:56:78:ab:ce
-    #create_ap = {
-    #  enable = true;
-    #  settings = {
-    #    INTERNET_IFACE = "wlo1_prime";
-    #    WIFI_IFACE = "wlo1";
-    #    SSID = "steam_powered_internet";
-    #    PASSPHRASE = "qwertyui";
-    #  };
-    #};
   };
 
   environment.systemPackages = with pkgs; [
