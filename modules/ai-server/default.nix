@@ -14,7 +14,7 @@
   options."ai-server".models = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [
-      "qwen3.6:27b" # Alibaba: primary agentic/tool-use + general reasoning driver
+      "qwen3.8:27b" # Alibaba: primary agentic/tool-use + general reasoning driver
       "gpt-oss:20b" # OpenAI: fast, large-context, low-VRAM model for lighter/short tasks
       "gemma4:31b-it-qat" # Google: QAT int4 second-opinion reasoner (near-bf16 quality, fits 24GB)
       "mistral-nemo" # Mistral: natural prose / creative writing; many strong community finetunes exist

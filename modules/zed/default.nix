@@ -18,11 +18,11 @@ _: {
         agent = {
           default_model = {
             provider = "ollama";
-            model = "qwen3.6:27b";
+            model = "qwen3.8:27b";
           };
           inline_assistant_model = {
             provider = "ollama";
-            model = "qwen3.6:27b";
+            model = "qwen3.8:27b";
           };
           commit_message_model = {
             provider = "ollama";
@@ -39,8 +39,8 @@ _: {
             api_url = "http://thenixbeast.forge.local:11434";
             available_models = [
               {
-                name = "qwen3.6:27b";
-                display_name = "qwen3.6 27b";
+                name = "qwen3.8:27b";
+                display_name = "qwen3.8 27b";
                 max_tokens = 32768;
               }
               {
