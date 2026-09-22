@@ -62,7 +62,7 @@
       pciutils # lspci
       pstree
       python313Packages.psutil # For vim Recover.vim
-      qbz
+      (pkgs.callPackage ./pkgs/qbz/package.nix { }) # removed from nixpkgs 2026-09-18 (upstream withdrawn); source comes from binary caches, see pkgs/qbz
       rclone
       rustdesk
       shotcut

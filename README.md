@@ -11,6 +11,44 @@ nix flake update
 sudo nixos-rebuild switch --flake .
 ```
 
+## Binary caches
+
+Substituters are set in `configuration.nix` (`nix.settings`). Nix tries them in priority order:
+
+| Cache | Priority | Purpose |
+|---|---|---|
+| `https://cache.nixos.org` | 40 | Upstream. |
+| `http://mini-nas.forge.local:8770/public` | 41 | Attic on mini-nas. mini-nas's post-build-hook pushes its builds here. Paths expire 6 months after last access (server default). |
+| `http://mini-nas.forge.local:8770/archive` | 50 | Attic on mini-nas, **garbage collection disabled** (retention 0). For store paths that must never disappear, such as sources whose upstream was withdrawn. |
+
+### `archive`: keeping a package whose source vanished
+
+If upstream deletes its source, a package can still build as long as its fixed-output paths (the `src`, plus things like `cargoDeps`/`npmDeps`) can be substituted by hash. Keep the old `hash`/`cargoHash`, and make sure those paths live in `archive`. Current contents:
+
+- **qbz 2.0.2** (`pkgs/qbz`, removed from nixpkgs 2026-09-18 after the author withdrew it):
+  `/nix/store/2jfmb3dj1l1sc7pf6gca0vsczdkrikpi-source`, `/nix/store/ww0rw91wr6cgyjcpzg3zwr0vz8xikh30-qbz-2.0.2-vendor`
+
+To add paths (Attic server config lives in the mini-nas repo, `modules/attic`):
+
+1. Make sure the paths are local: `nix-store --realise <path>...` (they're usually still on cache.nixos.org).
+2. You need a token with push access to `archive`. The everyday `mini-nas` token in `~/.config/attic/config.toml` can't do this. Mint a short-lived one on mini-nas and log in under a separate name:
+   ```bash
+   sudo atticd-atticadm make-token --sub will --validity 1d --push archive --pull archive
+   attic login mini-nas-admin http://mini-nas.forge.local:8770 <token>
+   ```
+3. Push. `--ignore-upstream-cache-filter` is **required**: the cache lists `cache.nixos.org-1` as upstream, so without the flag Attic silently skips anything cache.nixos.org has signed.
+   ```bash
+   attic push --ignore-upstream-cache-filter mini-nas-admin:archive <path>...
+   ```
+4. Verify: `nix path-info --sigs --store http://mini-nas.forge.local:8770/archive <path>...` should list each path with an `archive:` signature.
+5. Record the paths in the list above, then remove the `[servers.mini-nas-admin]` block from `~/.config/attic/config.toml`.
+
+If a push fails:
+- **Times out after about 30 s, and atticd logs `Connection pool timed out`:** SQLite has no query statistics. It picks `idx-chunk-state-holders` instead of `idx-chunk-chunk-hash`, and every chunk lookup scans about 1.5M rows. Fix it on mini-nas: stop atticd, `sqlite3 /var/lib/private/atticd/server.db` console run `ANALYZE;`, then start atticd again. First fixed 2026-09-21.
+- **Fails with a fast 500, and atticd logs `database is locked`, right after atticd restarts:** atticd runs a GC pass on startup that holds the write lock. Wait until `server.db-wal` stops growing, then retry.
+
+The cache was created with `attic cache create …:archive --public` and `attic cache configure …:archive --priority 50 --retention-period 0s`. Its public key, `archive:1X1f2tklkN82QbeLjMYnySG9zhP+fWJsBSjK9Y6tPrY=`, is in `trusted-public-keys`.
+
 ## Generate NixOS iso
 
 https://nixos.wiki/wiki/Creating_a_NixOS_live_CD

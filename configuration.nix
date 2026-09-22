@@ -42,11 +42,16 @@
       substituters = [
         "https://cache.nixos.org/"
         "http://mini-nas.forge.local:8770/public"
+        # GC-disabled archive for sources whose upstream was withdrawn (e.g.
+        # qbz, see pkgs/qbz). Priority 50, so it's only hit as a last resort.
+        # See "Binary caches" in README.md.
+        "http://mini-nas.forge.local:8770/archive"
       ];
       connect-timeout = 5;
       fallback = true;
       trusted-public-keys = [
         "public:YyCDrhNMvRWl7OxoW+8ueMcmVOOc1bllsVCMRNfZWpQ="
+        "archive:1X1f2tklkN82QbeLjMYnySG9zhP+fWJsBSjK9Y6tPrY="
       ];
     };
   };

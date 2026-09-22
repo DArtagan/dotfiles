@@ -62,6 +62,9 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 ### Secrets Management
 SOPS + age encryption. Each host has `hosts/<name>/secrets.yaml` encrypted with that host's SSH key. Key assignments are in `.sops.yaml`. Edit secrets with `sops hosts/<name>/secrets.yaml`.
 
+### Binary Caches
+Substituters: cache.nixos.org, then Attic on mini-nas (`public`, 6-month GC; `archive`, GC disabled). `archive` pins store paths that must never disappear, e.g. sources of packages whose upstream was withdrawn (`pkgs/qbz`). The procedure for pushing to it is in `README.md` under "Binary caches".
+
 ### Theming
 Stylix provides unified color scheme (Solarized Light) and fonts across all apps. Override per-app stylix settings in `modules/stylix/`.
 
