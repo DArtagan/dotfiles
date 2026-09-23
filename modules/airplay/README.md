@@ -5,7 +5,8 @@ plays out of the desktop's speakers. Receive-only: nothing here sends audio *to*
 the phone.
 
 - **Server:** [UxPlay](https://github.com/FDH2/UxPlay) (GPLv3), an AirPlay 2
-  receiver — mirroring plus an audio-only mode that carries Apple Lossless.
+  receiver — mirroring with audio, plus an audio-only mode carrying Apple
+  Lossless.
 - **Advertised as:** the host's `networking.hostName` (`-nh` keeps UxPlay from
   appending `@hostname` to it).
 - **Ports:** TCP+UDP 7100-7102, pinned with `-p 7100`, plus UDP 5353 for mDNS.
@@ -26,11 +27,44 @@ the phone.
 UxPlay is one package from nixpkgs, needs no override, tracks Apple's protocol
 changes closely (v1.73.7 is from 2026-09-04), and runs fine as a user service.
 
-## Enabling mirroring
+## GStreamer plugins are wrapped in by hand
 
-`-vs 0` in [`hm.nix`](./hm.nix) disables video, so mirroring requests are
-downgraded to audio and no window ever appears. Swap it for `-vs waylandsink` to
-accept screen mirroring into a sway window; everything else stays as-is.
+nixpkgs' `uxplay` lists the GStreamer plugin sets in `buildInputs` but installs
+a **bare, unwrapped ELF** — no `GST_PLUGIN_SYSTEM_PATH_1_0`, so GStreamer finds
+none of them. Straight from nixpkgs, `gst-inspect-1.0 waylandsink` and
+`avdec_h264` both come up empty and the service aborts at startup with:
+
+```
+gst_parse_launch error (audio 1): no element "pipewiresink"
+```
+
+[`hm.nix`](./hm.nix) therefore re-wraps the binary with an explicit plugin path.
+Two traps in doing so:
+
+- `pipewiresink` is in the **pipewire** package, not in any `gst-plugins-*`.
+- `gst_all_1.gstreamer`'s default output is `bin`, whose `lib/gstreamer-1.0` is
+  empty; the core plugins (`queue`, `capsfilter`) are in `out`. Hence
+  `lib.makeSearchPathOutput "out"` rather than `lib.makeSearchPath`.
+
+Audio-only masked most of this for a while, because uxplay decodes ALAC itself
+and needed nothing but a sink. Mirroring needs `h264parse`, `avdec_h264`,
+`videoconvert` and `waylandsink` on top.
+
+To check the wrapper after a change, pull the path back out of the built binary
+and inspect against it:
+
+```bash
+bin=$(nix eval --raw .#nixosConfigurations.thenixbeast.config.home-manager.users.will.systemd.user.services.uxplay.Service.ExecStart \
+  | grep -o '/nix/store/[^ ]*/bin/uxplay')
+gst_path=$(grep -o '/nix/store/[^:"]*gstreamer-1\.0' "$bin" | sort -u | tr '\n' ':')
+GST_PLUGIN_SYSTEM_PATH_1_0="$gst_path" gst-inspect-1.0 waylandsink
+```
+
+## Audio-only mode
+
+Video is on (`-vs waylandsink`), so mirroring opens a sway window. Set `-vs 0`
+instead to refuse video and downgrade mirroring requests to audio; nothing else
+changes.
 
 ## Gotchas
 
