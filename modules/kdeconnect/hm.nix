@@ -1,5 +1,4 @@
-# Home-manager half of the kdeconnect module: the per-session daemon and the
-# per-device settings that decide what a paired phone may do here.
+# KDE Connect: clipboard sync with the phone, on sway sessions.
 #
 # Clipboard sync works on sway because the plugin goes through
 # KSystemClipboard, which needs ext_data_control_manager_v1 /
@@ -9,75 +8,65 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
-  cfg = config.kdeconnect;
+  # Pairing is all-or-nothing, and per-device config only binds devices already
+  # paired at switch time. Deleting the plugins is the only form that holds for
+  # every device, including one paired next week: the capability is not in the
+  # package, so it is never advertised and no GUI toggle brings it back.
+  forbiddenPlugins = [
+    "findmyphone"
+    "findthisdevice"
+    "mousepad" # a keyboard and mouse for this machine
+    "presenter"
+    "runcommand" # remote execution
+    "share" # drops files here, opens URLs here; files go over Taildrop
+    "shareinputdevicesremote"
+  ];
 
-  pluginLines =
-    device: lib.concatMapStrings (p: "kdeconnect_${p}Enabled=false\n") device.disabledPlugins;
+  # Peers to reach over the tailnet. kdeconnect parses these with QHostAddress
+  # and does no DNS, so MagicDNS names do not work here — IP literals only.
+  tailnetPeers = [
+    "100.64.0.5" # theguide-iphone17
+  ];
 
-  deviceFiles = lib.concatMapAttrs (id: device: {
-    # kdeconnectd writes plugin state here when toggled in kdeconnect-settings;
-    # as a read-only symlink those toggles no longer stick, which is the point.
-    "kdeconnect/${id}/config" = lib.mkIf (device.disabledPlugins != [ ]) {
-      text = ''
-        [Plugins]
-        ${pluginLines device}'';
-    };
+  package = pkgs.kdePackages.kdeconnect-kde.overrideAttrs (prev: {
+    # Auto-sharing the clipboard on every connection breaks phone -> desktop
+    # pushes outright: the desktop overwrites the phone's clipboard as the link
+    # re-establishes, so the phone sends our own text back. The default lives
+    # in the source, and flipping it here beats a config file per paired device.
+    postPatch = (prev.postPatch or "") + ''
+      substituteInPlace plugins/clipboard/clipboardplugin.cpp \
+        --replace-fail 'QStringLiteral("sendUnknown"), true' \
+                       'QStringLiteral("sendUnknown"), false'
+    '';
 
-    "kdeconnect/${id}/kdeconnect_clipboard/config" = lib.mkIf (!device.clipboardAutoShare) {
-      text = ''
-        [General]
-        autoShare=false
-      '';
-    };
-  }) cfg.devices;
+    postInstall = (prev.postInstall or "") + ''
+      for p in ${lib.concatStringsSep " " forbiddenPlugins}; do
+        rm -v "$out/lib/qt-6/plugins/kdeconnect/kdeconnect_$p.so"
+      done
+    '';
+  });
 in
 {
-  options.kdeconnect.devices = lib.mkOption {
-    default = { };
-    description = ''
-      Per-device settings, keyed by the paired device ID that
-      `kdeconnect-cli -l` prints. Re-pairing a device regenerates its ID, so
-      these keys have to be updated then.
-    '';
-    type = lib.types.attrsOf (
-      lib.types.submodule {
-        options = {
-          disabledPlugins = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            default = [ ];
-            example = [ "mousepad" ];
-            description = ''
-              Plugins this device may not use, named without the
-              `kdeconnect_` prefix. Pairing is all-or-nothing, so this is the
-              only place to say that a paired phone may sync the clipboard but
-              not, say, type into the machine (`mousepad`).
-            '';
-          };
-
-          clipboardAutoShare = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = ''
-              Whether to push this desktop's clipboard on every connection.
-              Leaving it on breaks phone → desktop pushes outright: the
-              desktop overwrites the phone's clipboard as the link
-              re-establishes, so the phone sends our own text back.
-            '';
-          };
-        };
-      }
-    );
+  services.kdeconnect = {
+    inherit package;
+    enable = true;
+    indicator = false;
   };
 
-  config = {
-    services.kdeconnect = {
-      enable = true;
-      indicator = false;
-    };
-
-    xdg.configFile = deviceFiles;
-  };
+  # Discovery is a LAN broadcast and does not cross the tailnet, so peers there
+  # have to be named. This is kdeconnectd's own file — it writes `name` and
+  # `keyAlgorithm` into it — so set the one key with KDE's own tool rather than
+  # symlinking the whole thing read-only underneath the daemon.
+  home.activation.kdeconnectCustomDevices = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run ${lib.getExe' pkgs.kdePackages.kconfig "kwriteconfig6"} \
+      --file ${config.xdg.configHome}/kdeconnect/config \
+      --group General --key customDevices "${lib.concatStringsSep "," tailnetPeers}"
+    # customDevices is read at startup and on network change, so a running
+    # daemon would not see this until it restarts.
+    run --quiet systemctl --user try-restart kdeconnect.service || true
+  '';
 }

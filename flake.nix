@@ -123,19 +123,6 @@
                 users = {
                   will = {
                     syncthing.username = "will";
-                    kdeconnect.devices."0b01f8bf_a921_4464_be14_346b51cf92ad" = {
-                      # The Guide (iPhone). Keep clipboard, ping and battery;
-                      # nothing that can drive or execute on this machine.
-                      disabledPlugins = [
-                        "findmyphone"
-                        "findthisdevice"
-                        "mousepad"
-                        "presenter"
-                        "runcommand"
-                        "share"
-                        "shareinputdevicesremote"
-                      ];
-                    };
                     imports = [
                       ./home.nix
                       ./modules/airplay/hm.nix
@@ -185,19 +172,6 @@
                 users = {
                   willy = {
                     syncthing.username = "willy";
-                    kdeconnect.devices."0b01f8bf_a921_4464_be14_346b51cf92ad" = {
-                      # The Guide (iPhone). Keep clipboard, ping and battery;
-                      # nothing that can drive or execute on this machine.
-                      disabledPlugins = [
-                        "findmyphone"
-                        "findthisdevice"
-                        "mousepad"
-                        "presenter"
-                        "runcommand"
-                        "share"
-                        "shareinputdevicesremote"
-                      ];
-                    };
                     imports = [
                       ./home.nix
                       ./modules/hotspot/hm.nix

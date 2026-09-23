@@ -2,44 +2,46 @@
 
 Clipboard sync with the iPhone (`The Guide`), on `thenixbeast` and on the Deck
 in sway mode. Files go over Taildrop instead — see
-[`modules/tailscale/README.md`](../tailscale/README.md).
+[`modules/tailscale/README.md`](../tailscale/README.md) — and a URL is just
+text, so the clipboard carries those too.
 
-Everything lives in [`hm.nix`](./hm.nix): the daemon as a user service, and the
-per-device settings. There is no NixOS half — see *Reachable over the tailnet
-and the hotspot, nowhere else* below.
+Everything lives in [`hm.nix`](./hm.nix): the daemon as a user service, the
+package it runs, and the policy below. There is no NixOS half and nothing to
+configure per host.
 
 Clipboard sync works on sway because the plugin goes through `KSystemClipboard`,
 which wants `ext_data_control_manager_v1` or `zwlr_data_control_manager_v1`.
-wlroots implements both; GNOME's Wayland session implements neither, which is why
-clipboard sync is reported broken there and works here.
+wlroots implements both; GNOME's Wayland session implements neither, which is
+why clipboard sync is reported broken there and works here.
 
-## Clipboard auto-share must stay off
+## The policy is in the package, not in config files
 
-`kdeconnect.clipboardAutoShareDisabled` in [`hm.nix`](./hm.nix) lists the paired
-device IDs that get:
+Pairing is all-or-nothing: accept a device and every plugin it advertises goes
+live, including `mousepad` — a keyboard and mouse for this machine. KDE Connect
+only offers per-device config for this, keyed by a paired device ID that
+changes on re-pair, and that binds nothing for a device paired after the last
+`nh os switch`.
 
-```ini
-# ~/.config/kdeconnect/<device-id>/kdeconnect_clipboard/config
-[General]
-autoShare=false
-```
+So the package is overridden instead. Two changes, both global and both
+outliving any pairing:
 
-Leave it at the plugin's default (`true`) and **phone → desktop cannot work**:
+- **Seven plugins are deleted**: `mousepad` and `shareinputdevicesremote`
+  (remote control), `runcommand` (remote execution), `share` (drops files here
+  and opens URLs here), `presenter`, `findthisdevice`, `findmyphone`. What
+  remains is `clipboard`, `ping` and `battery`. A missing plugin is never
+  advertised as a capability, so no device can ask for it and no toggle in
+  `kdeconnect-settings` brings it back.
+- **Clipboard auto-share defaults to off**, by patching the default in
+  `clipboardplugin.cpp`. Leaving it on breaks phone → desktop pushes outright:
+  the desktop overwrites the phone's clipboard as the link re-establishes, so
+  "Send clipboard" ships our own text back, which the desktop then applies (a
+  received `kdeconnect.clipboard` packet is applied unconditionally). The
+  protocol does guard connect packets with a timestamp, but iOS cannot observe
+  its own clipboard in the background, so its timestamp is stale and the guard
+  never fires.
 
-- the plugin calls `sendConnectPacket()` on *every* connection, pushing the
-  desktop's clipboard to the phone;
-- the iOS app drops the link whenever it is backgrounded, so going to another
-  app to copy something and then reopening KDE Connect to push re-establishes
-  the link — and the desktop's clipboard lands on the phone first, overwriting
-  what was copied;
-- "Send clipboard" then sends the desktop's own text back, which the desktop
-  applies (a received `kdeconnect.clipboard` packet is applied unconditionally).
-
-The protocol does guard `kdeconnect.clipboard.connect` packets with a timestamp,
-but iOS cannot observe its own clipboard in the background, so its local
-timestamp is stale and the guard does not fire. Symptom when this bites: pushes
-from the phone appear to do nothing, and the phone's clipboard keeps turning
-back into whatever the desktop last copied.
+The cost is a ~2 minute local build of kdeconnect-kde whenever nixpkgs bumps
+it, since neither change can come from the binary cache.
 
 With auto-share off, desktop → phone becomes deliberate:
 
@@ -49,53 +51,33 @@ busctl --user call org.kde.kdeconnect \
   org.kde.kdeconnect.device.clipboard sendClipboard
 ```
 
-Two consequences of keeping this in the flake: the file is a read-only symlink,
-so the matching toggle in `kdeconnect-settings` will not stick, and the path is
-keyed by the paired device ID — **re-pairing a device regenerates its ID**, so
-the list in `flake.nix` has to be updated to match (`kdeconnect-cli -l`).
-
-On the phone, iOS asks for pasteboard access the first time the app pushes a
-clipboard; either answer works, "Allow" just stops it asking again.
-
-## What a paired phone may do
-
-Pairing is all-or-nothing: accept a device and every plugin it advertises is
-live, including `mousepad` — a keyboard and mouse for this machine.
-`kdeconnect.devices.<id>.disabledPlugins` is the only place to narrow that.
-
-Kept: `clipboard`, `ping`, `battery`. Disabled: `mousepad` and
-`shareinputdevicesremote` (remote control), `runcommand` (remote execution),
-`share` (drops files here and opens URLs here), `presenter`, `findthisdevice`
-and `findmyphone`.
-
-Plugins are named without the `kdeconnect_` prefix, and land in
-`~/.config/kdeconnect/<device-id>/config` as `kdeconnect_<name>Enabled=false`.
-Only plugins matching a peer's advertised capabilities ever load, so the other
-~22 in the package never apply to an iOS device and listing them would be
-noise. `busctl --user tree org.kde.kdeconnect` shows what actually loaded.
-
 ## Reachable over the tailnet and the hotspot, nowhere else
 
 Nothing here opens a firewall port. `modules/tailscale` already puts
-`tailscale0` in `networking.firewall.trustedInterfaces`, and `modules/hotspot`
+`tailscale0` in `networking.firewall.trustedInterfaces` and `modules/hotspot`
 does the same for its AP, so KDE Connect is reachable on exactly those two and
-on no untrusted LAN — which matters because it runs on a Deck that travels.
+on no untrusted LAN — which matters on a Deck that travels.
 
-The cost is discovery. Broadcast does not cross the tailnet, so over it the
-phone has to be named explicitly, once, in `~/.config/kdeconnect/config`:
+The cost is discovery. A LAN broadcast does not cross the tailnet, so peers
+there are named in `customDevices`, written at activation time with
+`kwriteconfig6`:
 
-```ini
-[General]
+```
 customDevices=100.64.0.5
 ```
 
 That file is kdeconnectd's own — it writes `name` and `keyAlgorithm` there — so
-it stays runtime state rather than a read-only symlink, in the same spirit as
-the tailscale module's declarative/runtime split. A link is bidirectional once
-established, so only one side needs to initiate. The phone's Tailscale VPN has
-to be on.
+the activation sets the single key rather than symlinking the file read-only
+underneath the daemon. kdeconnect parses these with `QHostAddress` and does no
+DNS, so **MagicDNS names do not work here**; the list is IP literals. The list
+is read at startup and on network change, so activation restarts the daemon.
 
-Over the hotspot none of that applies: broadcast discovery works normally.
+A link is bidirectional once established, so only one side needs to initiate,
+and the phone's Tailscale VPN has to be on. Over the hotspot none of this
+applies: broadcast discovery works normally there.
+
+Pairing itself still needs the two devices to find each other — do it at home,
+over the hotspot, or with both on the tailnet and the peer listed above.
 
 ## Gotchas
 
@@ -105,23 +87,21 @@ Over the hotspot none of that applies: broadcast discovery works normally.
 - **The DBus object path only exists while the device is connected**, so any
   `busctl` call against the clipboard plugin fails with "No such object path"
   when the app is closed.
-- **Discovery is LAN broadcast**, which does not cross the tailnet — hence the
-  custom device entry below. It does work over the hotspot, which is one
-  layer-2 segment.
+- **iOS asks for pasteboard access** the first time the app pushes a clipboard.
+  Either answer works; "Allow" just stops it asking again.
 
 ## Diagnostics cheat sheet
 
 ```bash
-kdeconnect-cli -l                                     # paired? reachable? which address?
-busctl --user tree org.kde.kdeconnect | grep clipboard # is the plugin loaded for the device?
+kdeconnect-cli -l                                      # paired? reachable? which address?
+busctl --user tree org.kde.kdeconnect | grep clipboard  # is the plugin loaded for the device?
 busctl --user get-property org.kde.kdeconnect \
   /modules/kdeconnect/devices/<id>/clipboard \
-  org.kde.kdeconnect.device.clipboard isAutoShareDisabled   # true = configured correctly
-wl-paste -l                                           # data-control works if this prints types
-wl-paste --watch <script>                             # log every clipboard change, timestamped
+  org.kde.kdeconnect.device.clipboard isAutoShareDisabled    # true = as intended
+kreadconfig6 --file ~/.config/kdeconnect/config \
+  --group General --key customDevices                  # tailnet peers the daemon knows
+wl-paste -l                                            # data-control works if this prints types
+wl-paste --watch <script>                              # log every clipboard change, timestamped
 systemctl --user set-environment QT_LOGGING_RULES='kdeconnect.*=true'
-systemctl --user restart kdeconnect                   # ...then journalctl --user -u kdeconnect -f
+systemctl --user restart kdeconnect                    # ...then journalctl --user -u kdeconnect -f
 ```
-
-Received clipboard packets are not logged even at debug level, so `wl-paste
---watch` writing to a file is the reliable way to tell whether a push landed.
