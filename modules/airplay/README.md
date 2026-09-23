@@ -27,37 +27,34 @@ the phone.
 UxPlay is one package from nixpkgs, needs no override, tracks Apple's protocol
 changes closely (v1.73.7 is from 2026-09-04), and runs fine as a user service.
 
-## GStreamer plugins are wrapped in by hand
+## pipewiresink has to be added to the package
 
-nixpkgs' `uxplay` lists the GStreamer plugin sets in `buildInputs` but installs
-a **bare, unwrapped ELF** — no `GST_PLUGIN_SYSTEM_PATH_1_0`, so GStreamer finds
-none of them. Straight from nixpkgs, `gst-inspect-1.0 waylandsink` and
-`avdec_h264` both come up empty and the service aborts at startup with:
+nixpkgs' `uxplay` already wraps its binary with `GST_PLUGIN_SYSTEM_PATH_1_0`
+covering `gstreamer`, `-base`, `-good`, `-bad`, `-ugly` and `-libav` — the
+wrapper is a compiled `makeBinaryWrapper` ELF, so `file` calls it an executable
+and a plain `grep` for the variable finds nothing (grep skips binaries without
+`-a`). Do not conclude from either that the binary is unwrapped.
+
+What is genuinely missing is **`pipewiresink`**, which ships in the `pipewire`
+package rather than in any `gst-plugins-*`, and is not among uxplay's
+`buildInputs`. Without it the service aborts at startup:
 
 ```
 gst_parse_launch error (audio 1): no element "pipewiresink"
 ```
 
-[`hm.nix`](./hm.nix) therefore re-wraps the binary with an explicit plugin path.
-Two traps in doing so:
+[`hm.nix`](./hm.nix) therefore adds `pipewire` to `buildInputs` and lets the
+existing gstreamer setup hook extend the wrapper it already builds. Audio-only
+use hid the gap for a while, because uxplay decodes ALAC itself and needs
+nothing from GStreamer but a sink.
 
-- `pipewiresink` is in the **pipewire** package, not in any `gst-plugins-*`.
-- `gst_all_1.gstreamer`'s default output is `bin`, whose `lib/gstreamer-1.0` is
-  empty; the core plugins (`queue`, `capsfilter`) are in `out`. Hence
-  `lib.makeSearchPathOutput "out"` rather than `lib.makeSearchPath`.
-
-Audio-only masked most of this for a while, because uxplay decodes ALAC itself
-and needed nothing but a sink. Mirroring needs `h264parse`, `avdec_h264`,
-`videoconvert` and `waylandsink` on top.
-
-To check the wrapper after a change, pull the path back out of the built binary
-and inspect against it:
+To check what the built wrapper actually exports (note `strings -a`, not
+`grep`):
 
 ```bash
 bin=$(nix eval --raw .#nixosConfigurations.thenixbeast.config.home-manager.users.will.systemd.user.services.uxplay.Service.ExecStart \
   | grep -o '/nix/store/[^ ]*/bin/uxplay')
-gst_path=$(grep -o '/nix/store/[^:"]*gstreamer-1\.0' "$bin" | sort -u | tr '\n' ':')
-GST_PLUGIN_SYSTEM_PATH_1_0="$gst_path" gst-inspect-1.0 waylandsink
+strings -a "$bin" | tr ':' '\n' | grep -o '/nix/store/[a-z0-9]*-[^/]*' | sort -u
 ```
 
 ## Why xvimagesink and software decoding

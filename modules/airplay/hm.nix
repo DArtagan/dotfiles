@@ -10,31 +10,16 @@
   ...
 }:
 let
-  # nixpkgs' uxplay lists these in buildInputs but installs a bare, unwrapped
-  # ELF, so GStreamer never sees them: `gst-inspect-1.0 waylandsink` comes up
-  # empty and the service aborts at startup with
-  # `gst_parse_launch error (audio 1): no element "pipewiresink"`.
-  # Audio alone would need only a sink (uxplay decodes ALAC itself), but
-  # mirroring also needs a parser, a decoder and a video sink.
-  gstPlugins = with pkgs.gst_all_1; [
-    pkgs.pipewire # pipewiresink
-    gstreamer # queue, capsfilter (in its `out`, not its default `bin`)
-    gst-plugins-base # videoconvert, audioconvert, playback
-    gst-plugins-good # autodetect and friends
-    gst-plugins-bad # waylandsink, h264parse
-    gst-libav # avdec_h264
-  ];
-  uxplay = pkgs.symlinkJoin {
-    name = "uxplay-with-gst-plugins";
-    paths = [ pkgs.uxplay ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/uxplay \
-        --prefix GST_PLUGIN_SYSTEM_PATH_1_0 : "${
-          lib.makeSearchPathOutput "out" "lib/gstreamer-1.0" gstPlugins
-        }"
-    '';
-  };
+  # nixpkgs' uxplay already wraps its binary with GST_PLUGIN_SYSTEM_PATH_1_0
+  # covering gstreamer, -base, -good, -bad, -ugly and -libav. `pipewiresink`
+  # is the one element it needs that lives outside all of those (it ships in
+  # the pipewire package), and without it the service aborts at startup with
+  # `gst_parse_launch error (audio 1): no element "pipewiresink"`. Adding
+  # pipewire to buildInputs lets the existing gstreamer setup hook extend the
+  # wrapper, rather than wrapping the wrapper a second time.
+  uxplay = pkgs.uxplay.overrideAttrs (prev: {
+    buildInputs = prev.buildInputs ++ [ pkgs.pipewire ];
+  });
 in
 {
   systemd.user.services.uxplay = {
@@ -60,7 +45,7 @@ in
       #  stdbuf   uxplay's stdout is a pipe to journald, so glibc block-buffers
       #           it and the journal stays empty until the process exits --
       #           which makes every problem here invisible while it happens.
-      ExecStart = "${pkgs.coreutils}/bin/stdbuf -oL -eL ${uxplay}/bin/uxplay -n ${osConfig.networking.hostName} -nh -p 7100 -as pipewiresink -vs xvimagesink -avdec";
+      ExecStart = "${pkgs.coreutils}/bin/stdbuf -oL -eL ${lib.getExe uxplay} -n ${osConfig.networking.hostName} -nh -p 7100 -as pipewiresink -vs xvimagesink -avdec";
       Restart = "on-failure";
       RestartSec = 5;
     };

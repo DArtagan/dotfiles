@@ -26,10 +26,18 @@ let
         # both. --conflict=rename because the default (skip) leaves a duplicate
         # sitting in the inbox, where it would be re-reported on every wakeup.
         if out=$(tailscale file get --wait --verbose --conflict=rename "$dir" 2>&1); then
+          # notify-send bodies are parsed as Pango markup, so a filename
+          # containing & or <> would mangle or drop the notification.
+          body=$(printf '%s' "$out" | tail -n 5 | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
           # Losing the notification (no daemon, no session bus) must not kill
           # the loop -- the file already landed.
-          notify-send "Taildrop" "$(printf '%s' "$out" | tail -n 5)" || true
+          notify-send "Taildrop" "$body" || true
         else
+          # Say why. Without this the failure is invisible: the loop retries
+          # every 5s, the unit still reports active, and nothing reaches the
+          # journal -- so a wrong operator or an unwritable inbox looks
+          # exactly like an idle, healthy wait.
+          printf 'taildrop-inbox: %s\n' "$out" >&2
           sleep 5
         fi
       done
@@ -79,10 +87,16 @@ in
       end
       set -l target $argv[-1]
       set -l files $argv[1..-2]
-      # The peer goes last, which is easy to forget. Without this, tailscale
-      # tries to resolve the filename as a hostname and fails on DNS.
-      if test -e "$target"
-        echo "ts-send: last argument must be the peer, not a file ('$target')" >&2
+      # The peer goes last, which is easy to forget. Check it against the real
+      # target list rather than the filesystem: `test -e` would reject a
+      # perfectly good peer whenever a file of the same name sits in the
+      # current directory -- and this repo has hosts/thenixbeast and
+      # hosts/steamdeck, which are exactly the names one sends to.
+      set -l targets (tailscale file cp --targets 2>/dev/null | awk '{print $1; print $2}')
+      if test (count $targets) -gt 0; and not contains -- "$target" $targets
+        echo "ts-send: '$target' is not a taildrop target" >&2
+        echo "targets:" >&2
+        tailscale file cp --targets >&2
         return 1
       end
       # `tailscale file cp` rejects directories -- but only when it reaches
