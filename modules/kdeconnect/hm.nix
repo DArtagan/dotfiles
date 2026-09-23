@@ -5,6 +5,10 @@
 # ext_data_control_manager_v1 / zwlr_data_control_manager_v1 — protocols
 # sway/wlroots implements (and GNOME's Wayland session does not, which is why
 # clipboard sync is reported broken there and not here).
+#
+# Clipboard sync also needs two settings that live outside this flake -- the
+# desktop's autoShare and an iOS paste permission. Without them the phone ->
+# desktop direction fails silently. See ./README.md.
 _: {
   services.kdeconnect = {
     enable = true;
