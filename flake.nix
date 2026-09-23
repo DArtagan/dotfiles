@@ -99,7 +99,6 @@
             ./modules/containers
             ./modules/droidcam
             ./modules/gaming
-            ./modules/kdeconnect
             ./modules/stylix
             ./modules/sway
             ./modules/tailscale
@@ -124,10 +123,19 @@
                 users = {
                   will = {
                     syncthing.username = "will";
-                    # `kdeconnect-cli -l` prints this; a re-pair changes it.
-                    kdeconnect.clipboardAutoShareDisabled = [
-                      "0b01f8bf_a921_4464_be14_346b51cf92ad" # The Guide (iPhone)
-                    ];
+                    kdeconnect.devices."0b01f8bf_a921_4464_be14_346b51cf92ad" = {
+                      # The Guide (iPhone). Keep clipboard, ping and battery;
+                      # nothing that can drive or execute on this machine.
+                      disabledPlugins = [
+                        "findmyphone"
+                        "findthisdevice"
+                        "mousepad"
+                        "presenter"
+                        "runcommand"
+                        "share"
+                        "shareinputdevicesremote"
+                      ];
+                    };
                     imports = [
                       ./home.nix
                       ./modules/airplay/hm.nix
@@ -177,9 +185,23 @@
                 users = {
                   willy = {
                     syncthing.username = "willy";
+                    kdeconnect.devices."0b01f8bf_a921_4464_be14_346b51cf92ad" = {
+                      # The Guide (iPhone). Keep clipboard, ping and battery;
+                      # nothing that can drive or execute on this machine.
+                      disabledPlugins = [
+                        "findmyphone"
+                        "findthisdevice"
+                        "mousepad"
+                        "presenter"
+                        "runcommand"
+                        "share"
+                        "shareinputdevicesremote"
+                      ];
+                    };
                     imports = [
                       ./home.nix
                       ./modules/hotspot/hm.nix
+                      ./modules/kdeconnect/hm.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
                     ];

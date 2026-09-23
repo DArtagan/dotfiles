@@ -1,11 +1,12 @@
 # KDE Connect module
 
-Clipboard sync with the iPhone (`The Guide`), plus the ping/share/find-my-phone
-plugins that come along with it. Files go over Taildrop instead — see
+Clipboard sync with the iPhone (`The Guide`), on `thenixbeast` and on the Deck
+in sway mode. Files go over Taildrop instead — see
 [`modules/tailscale/README.md`](../tailscale/README.md).
 
-- [`default.nix`](./default.nix) — package + firewall (TCP/UDP 1714-1764).
-- [`hm.nix`](./hm.nix) — `kdeconnectd` as a user service.
+Everything lives in [`hm.nix`](./hm.nix): the daemon as a user service, and the
+per-device settings. There is no NixOS half — see *Reachable over the tailnet
+and the hotspot, nowhere else* below.
 
 Clipboard sync works on sway because the plugin goes through `KSystemClipboard`,
 which wants `ext_data_control_manager_v1` or `zwlr_data_control_manager_v1`.
@@ -56,6 +57,46 @@ the list in `flake.nix` has to be updated to match (`kdeconnect-cli -l`).
 On the phone, iOS asks for pasteboard access the first time the app pushes a
 clipboard; either answer works, "Allow" just stops it asking again.
 
+## What a paired phone may do
+
+Pairing is all-or-nothing: accept a device and every plugin it advertises is
+live, including `mousepad` — a keyboard and mouse for this machine.
+`kdeconnect.devices.<id>.disabledPlugins` is the only place to narrow that.
+
+Kept: `clipboard`, `ping`, `battery`. Disabled: `mousepad` and
+`shareinputdevicesremote` (remote control), `runcommand` (remote execution),
+`share` (drops files here and opens URLs here), `presenter`, `findthisdevice`
+and `findmyphone`.
+
+Plugins are named without the `kdeconnect_` prefix, and land in
+`~/.config/kdeconnect/<device-id>/config` as `kdeconnect_<name>Enabled=false`.
+Only plugins matching a peer's advertised capabilities ever load, so the other
+~22 in the package never apply to an iOS device and listing them would be
+noise. `busctl --user tree org.kde.kdeconnect` shows what actually loaded.
+
+## Reachable over the tailnet and the hotspot, nowhere else
+
+Nothing here opens a firewall port. `modules/tailscale` already puts
+`tailscale0` in `networking.firewall.trustedInterfaces`, and `modules/hotspot`
+does the same for its AP, so KDE Connect is reachable on exactly those two and
+on no untrusted LAN — which matters because it runs on a Deck that travels.
+
+The cost is discovery. Broadcast does not cross the tailnet, so over it the
+phone has to be named explicitly, once, in `~/.config/kdeconnect/config`:
+
+```ini
+[General]
+customDevices=100.64.0.5
+```
+
+That file is kdeconnectd's own — it writes `name` and `keyAlgorithm` there — so
+it stays runtime state rather than a read-only symlink, in the same spirit as
+the tailscale module's declarative/runtime split. A link is bidirectional once
+established, so only one side needs to initiate. The phone's Tailscale VPN has
+to be on.
+
+Over the hotspot none of that applies: broadcast discovery works normally.
+
 ## Gotchas
 
 - **The phone is only connected while the app is foregrounded.** Expect the
@@ -64,9 +105,9 @@ clipboard; either answer works, "Allow" just stops it asking again.
 - **The DBus object path only exists while the device is connected**, so any
   `busctl` call against the clipboard plugin fails with "No such object path"
   when the app is closed.
-- **Discovery is LAN broadcast**, but an established link will happily ride the
-  tailnet — the device has shown up on `192.168.1.176`, on IPv6, and on
-  `100.64.0.5` in the same session.
+- **Discovery is LAN broadcast**, which does not cross the tailnet — hence the
+  custom device entry below. It does work over the hotspot, which is one
+  layer-2 segment.
 
 ## Diagnostics cheat sheet
 
