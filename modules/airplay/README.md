@@ -9,7 +9,14 @@ the phone.
   Lossless.
 - **Advertised as:** the host's `networking.hostName` (`-nh` keeps UxPlay from
   appending `@hostname` to it).
-- **Ports:** TCP+UDP 7100-7102, pinned with `-p 7100`, plus UDP 5353 for mDNS.
+- **Ports:** TCP+UDP 7100-7102, pinned with `-p 7100`, plus UDP 5353 for mDNS —
+  opened only on the interfaces named in `my.airplay.interfaces`.
+
+uxplay runs with **no pin and no password**, so every interface where these
+ports are open is one where anyone can play audio here and take the screen.
+That is why the rule is per-interface rather than global. `modules/hotspot`
+puts its AP in `networking.firewall.trustedInterfaces`, so hotspot guests can
+cast without being listed.
 
 ## Why xvimagesink and software decoding
 

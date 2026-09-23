@@ -106,6 +106,7 @@
             ./hosts/thenixbeast
             {
               my = {
+                airplay.interfaces = [ "eno1" ]; # wired LAN only
                 tailscale.operator = "will";
                 sway.outputs = {
                   "DP-3" = {
