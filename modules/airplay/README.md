@@ -60,11 +60,55 @@ gst_path=$(grep -o '/nix/store/[^:"]*gstreamer-1\.0' "$bin" | sort -u | tr '\n' 
 GST_PLUGIN_SYSTEM_PATH_1_0="$gst_path" gst-inspect-1.0 waylandsink
 ```
 
+## Why xvimagesink and software decoding
+
+Mirroring needs two non-obvious flags on this machine. Both were found by
+capturing a real session (`-vdmp` dumps the received h264) and replaying it into
+each candidate sink while screenshotting the result with `grim`.
+
+**`-avdec` (software h264).** `decodebin` picks `nvh264dec`, which outputs
+frames in `CUDAMemory`. `videoconvert` cannot transform that:
+
+```
+videoconvert0: transform could not transform video/x-raw(memory:CUDAMemory), format=NV12 ... in anything we support
+decodebin0:src_0: could not send sticky events
+```
+
+Caps negotiation then fails and no frame ever reaches the sink. Upstream
+suggests `-vd nvh264dec` with `glimagesink` for NVIDIA, but glimagesink renders
+solid black here (verified with a test pattern), so software decoding it is —
+1080p h264 is nothing for this CPU.
+
+**`-vs xvimagesink` (not waylandsink).** waylandsink cannot take YUV on this
+box: a pipeline with an `I420` or `NV12` caps filter into it produces no window
+at all, while `BGRx` works. With uxplay's I420 frames it does open a window,
+reports thousands of successful `show_frame` calls, and has each buffer
+released by the compositor — yet the surface is black, and `grim` confirms the
+black is real, not a capture artifact. The same frames replayed into
+`xvimagesink` (through XWayland) display perfectly. This is very likely
+downstream of sway running `--unsupported-gpu` on NVIDIA.
+
+waylandsink also segfaulted once in `output_done` (a `wl_output` event handler),
+a [known upstream crash family](https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1306).
+
+## Mirroring vs AirPlay audio
+
+The iPhone has two different AirPlay modes, and picking the wrong one looks like
+a bug. With a video app in the foreground, "Screen Mirroring" often opens an
+**audio-only** session: audio comes out the desktop, video stays on the phone,
+and the two drift apart because remote audio is buffered ~2s with no attempt to
+sync the phone's picture to it. The log tells you which you got:
+
+```
+ct=2 spf=352 usingScreen=0 isMedia=1   <- audio only, no video will ever arrive
+ct=8 spf=480 usingScreen=1 isMedia=1   <- real mirroring
+```
+
+For real mirroring, start it from the Home screen or a non-video app.
+
 ## Audio-only mode
 
-Video is on (`-vs waylandsink`), so mirroring opens a sway window. Set `-vs 0`
-instead to refuse video and downgrade mirroring requests to audio; nothing else
-changes.
+Set `-vs 0` to refuse video entirely and downgrade mirroring requests to audio.
 
 ## Gotchas
 
