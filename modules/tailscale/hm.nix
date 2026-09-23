@@ -1,9 +1,42 @@
-# Home-manager half of the tailscale module: user-facing CLI helpers.
+# Home-manager half of the tailscale module: user-facing CLI helpers and the
+# Taildrop inbox.
 #
 # Pairs with ./default.nix (the NixOS service). Imported per-user in flake.nix
 # on hosts that manage tailscale declaratively. The helpers only need the
-# `tailscale` CLI and `jq` in PATH. See ./README.md.
-_: {
+# `tailscale` CLI and `jq` in PATH; both halves of Taildrop need the caller to
+# be tailscale's `--operator`, which ./default.nix already pins. See ./README.md.
+{ lib, pkgs, ... }:
+let
+  # Taildrop's receive half. Incoming files queue in *this node's* inbox and
+  # stay there until something moves them out, so with nothing running this
+  # loop, a file sent from the phone simply never appears.
+  taildrop-inbox = pkgs.writeShellApplication {
+    name = "taildrop-inbox";
+    runtimeInputs = [
+      pkgs.tailscale
+      pkgs.libnotify
+    ];
+    text = ''
+      dir="$HOME/Downloads/taildrop"
+      mkdir -p "$dir"
+      while true; do
+        # --wait blocks while the inbox is empty, so this is event-driven, not
+        # a poll. A failure here is a tailscaled restart or a dead network,
+        # never a lost file: the inbox lives in /var/lib/tailscale and outlives
+        # both. --conflict=rename because the default (skip) leaves a duplicate
+        # sitting in the inbox, where it would be re-reported on every wakeup.
+        if out=$(tailscale file get --wait --verbose --conflict=rename "$dir" 2>&1); then
+          # Losing the notification (no daemon, no session bus) must not kill
+          # the loop -- the file already landed.
+          notify-send "Taildrop" "$(printf '%s' "$out" | tail -n 5)" || true
+        else
+          sleep 5
+        fi
+      done
+    '';
+  };
+in
+{
   programs.fish.functions = {
     # Route ALL internet traffic through a tailnet exit node (privacy on
     # untrusted wifi). `--exit-node-allow-lan-access` keeps the local LAN
@@ -33,5 +66,49 @@ _: {
           and echo "tailscale: all traffic via exit node '$argv[1]' (local LAN still reachable)"
       end
     '';
+
+    # Send files over Taildrop. The peer must be online -- Taildrop is
+    # peer-to-peer and does not queue anything server-side.
+    ts-send = ''
+      if test (count $argv) -lt 2
+        echo "usage: ts-send <file>... <host>"
+        echo
+        echo "targets:"
+        tailscale file cp --targets
+        return 1
+      end
+      set -l target $argv[-1]
+      set -l files $argv[1..-2]
+      # The peer goes last, which is easy to forget. Without this, tailscale
+      # tries to resolve the filename as a hostname and fails on DNS.
+      if test -e "$target"
+        echo "ts-send: last argument must be the peer, not a file ('$target')" >&2
+        return 1
+      end
+      # `tailscale file cp` rejects directories -- but only when it reaches
+      # one, after any files before it have already gone over. Check up front
+      # so the send is all-or-nothing.
+      for f in $files
+        if test -d "$f"
+          echo "ts-send: '$f' is a directory; taildrop sends files only" >&2
+          echo "         tar czf - '$f' | tailscale file cp --name "(basename $f)".tar.gz - $target:" >&2
+          return 1
+        end
+      end
+      tailscale file cp $files "$target:"
+      and echo "taildrop: sent "(count $files)" file(s) to $target"
+    '';
+  };
+
+  systemd.user.services.taildrop-inbox = {
+    Unit.Description = "Move incoming Taildrop files into ~/Downloads/taildrop";
+    # default.target, not graphical-session.target: receiving files has nothing
+    # to do with a compositor being up.
+    Install.WantedBy = [ "default.target" ];
+    Service = {
+      ExecStart = lib.getExe taildrop-inbox;
+      Restart = "always";
+      RestartSec = 5;
+    };
   };
 }
