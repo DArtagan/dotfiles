@@ -12,11 +12,10 @@ which wants `ext_data_control_manager_v1` or `zwlr_data_control_manager_v1`.
 wlroots implements both; GNOME's Wayland session implements neither, which is why
 clipboard sync is reported broken there and works here.
 
-## Two settings this needs, neither of them in this repo
+## Clipboard auto-share must stay off
 
-Both live outside the flake, and clipboard sync is silently broken without them.
-
-### 1. Desktop: turn `autoShare` off
+`kdeconnect.clipboardAutoShareDisabled` in [`hm.nix`](./hm.nix) lists the paired
+device IDs that get:
 
 ```ini
 # ~/.config/kdeconnect/<device-id>/kdeconnect_clipboard/config
@@ -24,7 +23,7 @@ Both live outside the flake, and clipboard sync is silently broken without them.
 autoShare=false
 ```
 
-Leave it at its default (`true`) and **phone → desktop cannot work**:
+Leave it at the plugin's default (`true`) and **phone → desktop cannot work**:
 
 - the plugin calls `sendConnectPacket()` on *every* connection, pushing the
   desktop's clipboard to the phone;
@@ -41,7 +40,7 @@ timestamp is stale and the guard does not fire. Symptom when this bites: pushes
 from the phone appear to do nothing, and the phone's clipboard keeps turning
 back into whatever the desktop last copied.
 
-With `autoShare=false`, desktop → phone becomes deliberate:
+With auto-share off, desktop → phone becomes deliberate:
 
 ```bash
 busctl --user call org.kde.kdeconnect \
@@ -49,18 +48,13 @@ busctl --user call org.kde.kdeconnect \
   org.kde.kdeconnect.device.clipboard sendClipboard
 ```
 
-**Not declarative on purpose.** The path is keyed by the *paired device id*,
-which is regenerated if the phone is ever unpaired and re-paired, and
-kdeconnectd owns that directory and writes to it. A home-manager symlink there
-would either go stale silently or block the daemon's own writes. Re-apply the
-file by hand after a re-pair; `kdeconnect-cli -l` prints the current id.
+Two consequences of keeping this in the flake: the file is a read-only symlink,
+so the matching toggle in `kdeconnect-settings` will not stick, and the path is
+keyed by the paired device ID — **re-pairing a device regenerates its ID**, so
+the list in `flake.nix` has to be updated to match (`kdeconnect-cli -l`).
 
-### 2. iPhone: allow pasting
-
-**Settings → KDE Connect → Paste from Other Apps → Allow.** It defaults to
-*Ask*, and the prompt only appears while the app is in the foreground — which is
-also the only time it can push at all. Left at *Ask* and dismissed, the app
-reads nothing and sends nothing, with no error at either end.
+On the phone, iOS asks for pasteboard access the first time the app pushes a
+clipboard; either answer works, "Allow" just stops it asking again.
 
 ## Gotchas
 

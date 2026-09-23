@@ -1,8 +1,3 @@
-# Home-manager half of the airplay module: the UxPlay server.
-#
-# Pairs with ./default.nix (avahi + firewall). This has to be a *user* service:
-# PipeWire runs per-session here, so a system daemon would have no sink to play
-# into. See ./README.md.
 {
   lib,
   pkgs,

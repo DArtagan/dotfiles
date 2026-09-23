@@ -1,8 +1,3 @@
-# AirPlay receiver: play iPhone audio through this machine's speakers.
-#
-# NixOS half: mDNS publishing plus the fixed ports UxPlay is pinned to. The
-# server itself runs in the user session (./hm.nix), because it has to reach
-# that session's PipeWire. See ./README.md.
 _: {
   services.avahi = {
     enable = true;
@@ -15,9 +10,10 @@ _: {
     };
   };
 
-  # UxPlay is started with `-p 7100`, i.e. 7100-7102 on both protocols. Pinning
-  # them is the only reason a static firewall rule is possible: left alone it
-  # picks three random ports per run.
+  # `-p 7100` does not pin one port: uxplay needs three TCP and three UDP, and
+  # -p sets the base, so it takes 7100, 7101 and 7102 on both protocols. The
+  # range matches exactly. Pinning is what makes a static rule possible at all:
+  # left alone uxplay picks three random ports per run.
   networking.firewall = {
     allowedTCPPortRanges = [
       {

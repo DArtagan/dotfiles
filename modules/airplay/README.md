@@ -11,22 +11,6 @@ the phone.
   appending `@hostname` to it).
 - **Ports:** TCP+UDP 7100-7102, pinned with `-p 7100`, plus UDP 5353 for mDNS.
 
-## Why UxPlay and not shairport-sync
-
-`shairport-sync` is the better-known answer and is the wrong one here:
-
-- its **classic AirPlay 1 mode is broken by iOS 18+**
-  ([#1866](https://github.com/mikebrady/shairport-sync/issues/1866)), so a
-  modern iPhone will list it and then fail to play;
-- its AirPlay 2 mode needs a package override (`enableAirplay2 = true`) *and* a
-  hand-rolled `nqptp` daemon on UDP 319/320;
-- the nixpkgs module runs it as a **system** user, which cannot reach the
-  per-session PipeWire socket this config uses (`modules/audio`). Making it work
-  would mean a system-wide PipeWire or a TCP pulse socket.
-
-UxPlay is one package from nixpkgs, needs no override, tracks Apple's protocol
-changes closely (v1.73.7 is from 2026-09-04), and runs fine as a user service.
-
 ## pipewiresink has to be added to the package
 
 nixpkgs' `uxplay` already wraps its binary with `GST_PLUGIN_SYSTEM_PATH_1_0`
@@ -59,34 +43,22 @@ strings -a "$bin" | tr ':' '\n' | grep -o '/nix/store/[a-z0-9]*-[^/]*' | sort -u
 
 ## Why xvimagesink and software decoding
 
-Mirroring needs two non-obvious flags on this machine. Both were found by
-capturing a real session (`-vdmp` dumps the received h264) and replaying it into
-each candidate sink while screenshotting the result with `grim`.
+Mirroring opens a window that stays black unless both `-avdec` and
+`-vs xvimagesink` are set. What was tried, and why each failed:
 
-**`-avdec` (software h264).** `decodebin` picks `nvh264dec`, which outputs
-frames in `CUDAMemory`. `videoconvert` cannot transform that:
+| Attempt | Result |
+|---|---|
+| `decodebin` (picks `nvh264dec`) | outputs `CUDAMemory`; `videoconvert` cannot transform it, caps negotiation fails, no frame reaches the sink |
+| `glimagesink` (upstream's NVIDIA advice, with `-vd nvh264dec`) | renders solid black, verified with a test pattern |
+| `waylandsink` + I420/NV12 | no window at all; only `BGRx` negotiates |
+| `waylandsink` + uxplay's I420 frames | window opens, thousands of `show_frame` calls, every buffer released — surface still black (`grim` confirms it is not a capture artifact). Also segfaulted once in `output_done`, a [known upstream crash](https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1306) |
+| `-avdec` + `xvimagesink` (via XWayland) | works |
 
-```
-videoconvert0: transform could not transform video/x-raw(memory:CUDAMemory), format=NV12 ... in anything we support
-decodebin0:src_0: could not send sticky events
-```
+Software decoding costs little here and `xvimagesink` takes uxplay's I420
+directly. Probably all downstream of sway running `--unsupported-gpu` on NVIDIA.
 
-Caps negotiation then fails and no frame ever reaches the sink. Upstream
-suggests `-vd nvh264dec` with `glimagesink` for NVIDIA, but glimagesink renders
-solid black here (verified with a test pattern), so software decoding it is —
-1080p h264 is nothing for this CPU.
-
-**`-vs xvimagesink` (not waylandsink).** waylandsink cannot take YUV on this
-box: a pipeline with an `I420` or `NV12` caps filter into it produces no window
-at all, while `BGRx` works. With uxplay's I420 frames it does open a window,
-reports thousands of successful `show_frame` calls, and has each buffer
-released by the compositor — yet the surface is black, and `grim` confirms the
-black is real, not a capture artifact. The same frames replayed into
-`xvimagesink` (through XWayland) display perfectly. This is very likely
-downstream of sway running `--unsupported-gpu` on NVIDIA.
-
-waylandsink also segfaulted once in `output_done` (a `wl_output` event handler),
-a [known upstream crash family](https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1306).
+To test a sink without a phone, dump a session's h264 with `-vdmp`, then replay
+it into the candidate and screenshot the window with `grim`.
 
 ## Mirroring vs AirPlay audio
 
@@ -102,10 +74,6 @@ ct=8 spf=480 usingScreen=1 isMedia=1   <- real mirroring
 ```
 
 For real mirroring, start it from the Home screen or a non-video app.
-
-## Audio-only mode
-
-Set `-vs 0` to refuse video entirely and downgrade mirroring requests to audio.
 
 ## Gotchas
 
