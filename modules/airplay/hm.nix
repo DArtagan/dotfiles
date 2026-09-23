@@ -5,13 +5,11 @@
   ...
 }:
 let
-  # nixpkgs' uxplay already wraps its binary with GST_PLUGIN_SYSTEM_PATH_1_0
-  # covering gstreamer, -base, -good, -bad, -ugly and -libav. `pipewiresink`
-  # is the one element it needs that lives outside all of those (it ships in
-  # the pipewire package), and without it the service aborts at startup with
+  # `pipewiresink` ships in the pipewire package rather than in any
+  # gst-plugins-*, and it is not among uxplay's buildInputs, so the gstreamer
+  # setup hook leaves it off the wrapper's plugin path and uxplay aborts with
   # `gst_parse_launch error (audio 1): no element "pipewiresink"`. Adding
-  # pipewire to buildInputs lets the existing gstreamer setup hook extend the
-  # wrapper, rather than wrapping the wrapper a second time.
+  # pipewire here puts it on.
   uxplay = pkgs.uxplay.overrideAttrs (prev: {
     buildInputs = prev.buildInputs ++ [ pkgs.pipewire ];
   });

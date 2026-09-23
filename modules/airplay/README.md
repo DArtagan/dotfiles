@@ -11,36 +11,6 @@ the phone.
   appending `@hostname` to it).
 - **Ports:** TCP+UDP 7100-7102, pinned with `-p 7100`, plus UDP 5353 for mDNS.
 
-## pipewiresink has to be added to the package
-
-nixpkgs' `uxplay` already wraps its binary with `GST_PLUGIN_SYSTEM_PATH_1_0`
-covering `gstreamer`, `-base`, `-good`, `-bad`, `-ugly` and `-libav` — the
-wrapper is a compiled `makeBinaryWrapper` ELF, so `file` calls it an executable
-and a plain `grep` for the variable finds nothing (grep skips binaries without
-`-a`). Do not conclude from either that the binary is unwrapped.
-
-What is genuinely missing is **`pipewiresink`**, which ships in the `pipewire`
-package rather than in any `gst-plugins-*`, and is not among uxplay's
-`buildInputs`. Without it the service aborts at startup:
-
-```
-gst_parse_launch error (audio 1): no element "pipewiresink"
-```
-
-[`hm.nix`](./hm.nix) therefore adds `pipewire` to `buildInputs` and lets the
-existing gstreamer setup hook extend the wrapper it already builds. Audio-only
-use hid the gap for a while, because uxplay decodes ALAC itself and needs
-nothing from GStreamer but a sink.
-
-To check what the built wrapper actually exports (note `strings -a`, not
-`grep`):
-
-```bash
-bin=$(nix eval --raw .#nixosConfigurations.thenixbeast.config.home-manager.users.will.systemd.user.services.uxplay.Service.ExecStart \
-  | grep -o '/nix/store/[^ ]*/bin/uxplay')
-strings -a "$bin" | tr ':' '\n' | grep -o '/nix/store/[a-z0-9]*-[^/]*' | sort -u
-```
-
 ## Why xvimagesink and software decoding
 
 Mirroring opens a window that stays black unless both `-avdec` and
