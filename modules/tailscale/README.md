@@ -57,7 +57,7 @@ unit's bare-ish `up` keeps them across reboots.
 
 ## Runtime toggles (roaming)
 
-Defined as fish helpers in `home.nix`. They use `tailscale set`, so they apply
+Defined as fish helpers in [`hm.nix`](./hm.nix). They use `tailscale set`, so they apply
 live **and work even when fully black-holed** (local daemon calls, no network):
 
 ```bash
@@ -66,6 +66,42 @@ ts-exit <node>|off|status        # route ALL traffic via an exit node (+ LAN acc
 
 - `ts-exit` — full-tunnel through a chosen exit node for privacy on untrusted
   wifi. Clears with `ts-exit off`.
+
+## Taildrop (files to and from the phone)
+
+Taildrop is how files move between these hosts and `theguide-iphone17`. There is
+nothing to configure in Headscale — the capability rides on the netmap, and a
+peer showing up in `tailscale file cp --targets` is the proof it works.
+
+Two halves, both in [`hm.nix`](./hm.nix), so every host importing it gets both:
+
+```bash
+ts-send <file> [file...] <host>           # send one or more files; no args lists targets
+systemctl --user status taildrop-inbox    # receive; lands in ~/Downloads/taildrop
+```
+
+The last argument is the peer; each file arrives as its own item.
+**Directories cannot be sent** — Taildrop has no notion of one — so `ts-send`
+refuses them and prints the `tar` line to use instead. Received files land in
+`~/Downloads/taildrop` with a desktop notification.
+
+### Taildrop gotchas
+
+- **An offline peer cannot receive.** Taildrop is peer-to-peer with no
+  server-side queue: a send to a phone with the VPN switched off fails then and
+  there, it is not delivered later. `tailscale file cp --targets` prints each
+  peer's online state, so check there first when a send fails.
+- **The inbox only drains while a user session exists.** Files that arrive
+  while logged out wait in `/var/lib/tailscale` and land at the next login —
+  nothing is lost. `loginctl enable-linger <user>` if that ever needs to be
+  sooner.
+- **Headscale does not do Taildrop between users**
+  ([#2194](https://github.com/juanfont/headscale/issues/2194)). Every node here
+  belongs to `will` except `vulcanus` (`tagged-devices`) — which is exactly why
+  the phone is a valid target and `vulcanus` is not.
+- **On the iPhone, files arrive inside the Tailscale app**, not in Files or
+  Photos; saving them somewhere useful is a manual step. iOS is also the one
+  platform where an interrupted *receive* cannot resume.
 
 ## Declarative vs. runtime state
 

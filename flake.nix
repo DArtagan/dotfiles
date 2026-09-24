@@ -95,6 +95,7 @@
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
             ./modules/ai-server
+            ./modules/airplay
             ./modules/containers
             ./modules/droidcam
             ./modules/gaming
@@ -104,6 +105,10 @@
             ./hosts/thenixbeast
             {
               my = {
+                airplay.interfaces = [
+                  "eno1" # wired LAN
+                  "wlp9s0" # MT7922, unused while on ethernet
+                ];
                 tailscale.operator = "will";
                 sway.outputs = {
                   "DP-3" = {
@@ -120,6 +125,8 @@
                     syncthing.username = "will";
                     imports = [
                       ./home.nix
+                      ./modules/airplay/hm.nix
+                      ./modules/kdeconnect/hm.nix
                       ./modules/stylix/hm.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
@@ -168,6 +175,7 @@
                     imports = [
                       ./home.nix
                       ./modules/hotspot/hm.nix
+                      ./modules/kdeconnect/hm.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
                     ];

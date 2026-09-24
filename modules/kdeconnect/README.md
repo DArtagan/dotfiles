@@ -1,0 +1,94 @@
+# KDE Connect module
+
+Clipboard sync with the iPhone (`The Guide`), on `thenixbeast` and on the Deck
+in sway mode. Files go over Taildrop instead — see
+[`modules/tailscale/README.md`](../tailscale/README.md) — and a URL is just
+text, so the clipboard carries those too.
+
+Clipboard sync works on sway because the plugin goes through `KSystemClipboard`,
+which wants `ext_data_control_manager_v1` or `zwlr_data_control_manager_v1`.
+wlroots implements both; GNOME's Wayland session implements neither, which is
+why clipboard sync is reported broken there and works here.
+
+## What a paired phone may use
+
+`allowedPlugins` in [`hm.nix`](./hm.nix) is the full set of plugins offered:
+`clipboard`, `ping` and `battery`. Every other plugin is deleted from the
+package at build time, so it is never advertised as a capability, no device can
+ask for it, and no toggle in `kdeconnect-settings` brings it back. The build
+fails if an allowlisted plugin is missing.
+
+## Clipboard auto-share is left on, deliberately
+
+Phone → desktop often works: opening the app, clicking a button, and
+allowing paste.
+
+The plugin pushes this desktop's clipboard on every connection. On iOS that
+makes desktop → phone work the way you would want — copy here, open the app
+there, paste — because the connection *is* the delivery.
+
+Either direction, it's honestly a little flaky, sometimes requiring multiple
+attempts.
+
+A clipboard push can also be forced without waiting for a reconnect:
+
+```bash
+busctl --user call org.kde.kdeconnect \
+  /modules/kdeconnect/devices/<device-id>/clipboard \
+  org.kde.kdeconnect.device.clipboard sendClipboard
+```
+
+## Reachable over the tailnet and the hotspot, nowhere else
+
+Nothing here opens a firewall port. `modules/tailscale` already puts
+`tailscale0` in `networking.firewall.trustedInterfaces` and `modules/hotspot`
+does the same for its AP, so KDE Connect is reachable on exactly those two and
+on no untrusted LAN — which matters on a Deck that travels.
+
+The cost is discovery. A LAN broadcast does not cross the tailnet, so peers
+there are named in `customDevices`, written at activation time with
+`kwriteconfig6`:
+
+```
+customDevices=100.64.0.5
+```
+
+That file is kdeconnectd's own — it writes `name` and `keyAlgorithm` there — so
+the activation sets the single key rather than symlinking the file read-only
+underneath the daemon. kdeconnect parses these with `QHostAddress` and does no
+DNS, so **MagicDNS names do not work here**; the list is IP literals. The list
+is read at startup and on network change, so activation restarts the daemon.
+
+A link is bidirectional once established, so only one side needs to initiate,
+and the phone's Tailscale VPN has to be on. Over the hotspot none of this
+applies: broadcast discovery works normally there.
+
+Pairing itself still needs the two devices to find each other — do it at home,
+over the hotspot, or with both on the tailnet and the peer listed above.
+
+## Gotchas
+
+- **The phone is only connected while the app is foregrounded.** Expect the
+  link to flap; `kdeconnect-cli -l` showing `(paired)` without "reachable"
+  is normal, not a fault.
+- **The DBus object path only exists while the device is connected**, so any
+  `busctl` call against the clipboard plugin fails with "No such object path"
+  when the app is closed.
+- **iOS asks for pasteboard access** the first time the app pushes a clipboard.
+  Either answer works; "Allow" just stops it asking again.
+
+## Diagnostics cheat sheet
+
+```bash
+kdeconnect-cli -l                                      # paired? reachable? which address?
+busctl --user tree org.kde.kdeconnect | grep clipboard  # is the plugin loaded for the device?
+busctl --user get-property org.kde.kdeconnect \
+  /modules/kdeconnect/devices/<id>/clipboard \
+  org.kde.kdeconnect.device.clipboard isAutoShareDisabled    # true = as intended
+kreadconfig6 --file ~/.config/kdeconnect/config \
+  --group General --key customDevices                  # tailnet peers the daemon knows
+wl-paste -l                                            # data-control works if this prints types
+wl-paste --watch <script>                              # log every clipboard change, timestamped
+systemctl --user set-environment QT_LOGGING_RULES='kdeconnect.*=true'
+systemctl --user restart kdeconnect                    # ...then journalctl --user -u kdeconnect -f
+```
