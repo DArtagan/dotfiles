@@ -76,20 +76,14 @@ peer showing up in `tailscale file cp --targets` is the proof it works.
 Two halves, both in [`hm.nix`](./hm.nix), so every host importing it gets both:
 
 ```bash
-ts-send <file>... <host>                  # send; no args lists the targets
+ts-send <file> [file...] <host>           # send one or more files; no args lists targets
 systemctl --user status taildrop-inbox    # receive; lands in ~/Downloads/taildrop
 ```
 
-- **`ts-send`** wraps `tailscale file cp`; the last argument is the peer. Any
-  number of files is fine — each arrives as its own item — but **directories
-  are not**: Taildrop has no notion of one, and `tailscale file cp` only
-  notices when it reaches it, after the files before it have already gone over.
-  `ts-send` checks up front instead, and prints the
-  `tar czf - dir | tailscale file cp --name dir.tar.gz - <host>:` line to use
-  in its place.
-- **`taildrop-inbox`** loops on `tailscale file get --wait`, which blocks until
-  something arrives (so it idles rather than polls), moves it into
-  `~/Downloads/taildrop` and raises a desktop notification.
+The last argument is the peer; each file arrives as its own item.
+**Directories cannot be sent** — Taildrop has no notion of one — so `ts-send`
+refuses them and prints the `tar` line to use instead. Received files land in
+`~/Downloads/taildrop` with a desktop notification.
 
 Both need the caller to be tailscale's `--operator`, which
 [`default.nix`](./default.nix) already pins — neither needs `sudo`.

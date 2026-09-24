@@ -5,10 +5,6 @@
 }:
 let
   cfg = config.my.airplay;
-  # `-p 7100` does not pin one port: uxplay needs three TCP and three UDP, and
-  # -p sets the base, so it takes 7100, 7101 and 7102 on both protocols.
-  # Pinning is what makes a static rule possible at all: left alone uxplay
-  # picks three random ports per run.
   uxplayPorts = [
     {
       from = 7100;

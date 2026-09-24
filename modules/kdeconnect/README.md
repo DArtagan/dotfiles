@@ -5,10 +5,6 @@ in sway mode. Files go over Taildrop instead — see
 [`modules/tailscale/README.md`](../tailscale/README.md) — and a URL is just
 text, so the clipboard carries those too.
 
-Everything lives in [`hm.nix`](./hm.nix): the daemon as a user service, the
-package it runs, and the policy below. There is no NixOS half and nothing to
-configure per host.
-
 Clipboard sync works on sway because the plugin goes through `KSystemClipboard`,
 which wants `ext_data_control_manager_v1` or `zwlr_data_control_manager_v1`.
 wlroots implements both; GNOME's Wayland session implements neither, which is

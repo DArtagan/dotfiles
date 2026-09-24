@@ -1,10 +1,3 @@
-# KDE Connect: clipboard sync with the phone, on sway sessions.
-#
-# Clipboard sync works on sway because the plugin goes through
-# KSystemClipboard, which needs ext_data_control_manager_v1 /
-# zwlr_data_control_manager_v1 — protocols sway/wlroots implements (and GNOME's
-# Wayland session does not, which is why clipboard sync is reported broken
-# there and not here). See ./README.md.
 {
   config,
   lib,

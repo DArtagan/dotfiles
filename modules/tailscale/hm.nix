@@ -76,7 +76,7 @@ in
     # peer-to-peer and does not queue anything server-side.
     ts-send = ''
       if test (count $argv) -lt 2
-        echo "usage: ts-send <file>... <host>"
+        echo "usage: ts-send <file> [file...] <host>"
         echo
         echo "targets:"
         tailscale file cp --targets

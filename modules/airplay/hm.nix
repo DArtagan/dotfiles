@@ -5,11 +5,8 @@
   ...
 }:
 let
-  # `pipewiresink` ships in the pipewire package rather than in any
-  # gst-plugins-*, and it is not among uxplay's buildInputs, so the gstreamer
-  # setup hook leaves it off the wrapper's plugin path and uxplay aborts with
-  # `gst_parse_launch error (audio 1): no element "pipewiresink"`. Adding
-  # pipewire here puts it on.
+  # `pipewiresink` (in the service below) ships in the `pipewire` package, and
+  # uxplay does not list it, so without this it is missing from the plugin path.
   uxplay = pkgs.uxplay.overrideAttrs (prev: {
     buildInputs = prev.buildInputs ++ [ pkgs.pipewire ];
   });
