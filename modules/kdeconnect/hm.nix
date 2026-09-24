@@ -9,14 +9,14 @@ let
   # paired at switch time. Deleting the plugins is the only form that holds for
   # every device, including one paired next week: the capability is not in the
   # package, so it is never advertised and no GUI toggle brings it back.
-  forbiddenPlugins = [
-    "findmyphone"
-    "findthisdevice"
-    "mousepad" # a keyboard and mouse for this machine
-    "presenter"
-    "runcommand" # remote execution
-    "share" # drops files here, opens URLs here; files go over Taildrop
-    "shareinputdevicesremote"
+  #
+  # An allowlist, because a blocklist missed `shareinputdevices` -- a second
+  # plugin accepting `kdeconnect.mousepad.request`, which put "Remote input"
+  # back in the phone's UI -- and would miss whatever a future release adds.
+  allowedPlugins = [
+    "battery"
+    "clipboard"
+    "ping"
   ];
 
   # Peers to reach over the tailnet. kdeconnect parses these with QHostAddress
@@ -27,8 +27,16 @@ let
 
   package = pkgs.kdePackages.kdeconnect-kde.overrideAttrs (prev: {
     postInstall = (prev.postInstall or "") + ''
-      for p in ${lib.concatStringsSep " " forbiddenPlugins}; do
-        rm -v "$out/lib/qt-6/plugins/kdeconnect/kdeconnect_$p.so"
+      cd "$out/lib/qt-6/plugins/kdeconnect"
+      keep=${lib.escapeShellArg (lib.concatMapStringsSep "|" (p: "kdeconnect_${p}.so") allowedPlugins)}
+      for f in *.so; do
+        if [[ ! "$f" =~ ^($keep)$ ]]; then
+          rm -v "$f"
+        fi
+      done
+      # Guard against a rename upstream silently emptying the allowlist.
+      for p in ${lib.concatStringsSep " " allowedPlugins}; do
+        test -e "kdeconnect_$p.so" || { echo "allowlisted plugin $p is missing"; exit 1; }
       done
     '';
   });

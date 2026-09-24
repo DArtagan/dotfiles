@@ -18,13 +18,18 @@ only offers per-device config for this, keyed by a paired device ID that
 changes on re-pair, and that binds nothing for a device paired after the last
 `nh os switch`.
 
-So the package is overridden instead: **seven plugins are deleted** —
-`mousepad` and `shareinputdevicesremote` (remote control), `runcommand`
-(remote execution), `share` (drops files here and opens URLs here),
-`presenter`, `findthisdevice`, `findmyphone`. What remains is `clipboard`,
-`ping` and `battery`. A missing plugin is never advertised as a capability, so
-no device can ask for it whenever it pairs, and no toggle in
-`kdeconnect-settings` brings it back.
+So the package is overridden instead: **only `clipboard`, `ping` and `battery`
+survive**; every other plugin is deleted at build time. A missing plugin is
+never advertised as a capability, so no device can ask for it whenever it
+pairs, and no toggle in `kdeconnect-settings` brings it back.
+
+This is an allowlist because a blocklist leaked. Removing `mousepad` and
+`shareinputdevicesremote` left `shareinputdevices` in place — a third plugin
+that also accepts `kdeconnect.mousepad.request` — so "Remote input" kept
+appearing in the phone's UI. `remotecontrol` and `remotekeyboard` handle the
+same packet type in the other direction. An allowlist also holds when a future
+release adds a plugin nobody here has heard of. The build fails if an
+allowlisted plugin is missing, so an upstream rename cannot quietly empty it.
 
 ## Clipboard auto-share is left on, deliberately
 
