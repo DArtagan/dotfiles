@@ -19,8 +19,7 @@ ask for it, and no toggle in `kdeconnect-settings` brings it back. The build
 fails if an allowlisted plugin is missing.
 
 Notably absent is remote input — a paired phone cannot type or click here —
-along with remote command execution and file transfer, which goes over Taildrop
-instead. A URL is just text, so the clipboard carries those.
+along with remote command execution and file transfer.
 
 ## Clipboard auto-share is left on, deliberately
 
