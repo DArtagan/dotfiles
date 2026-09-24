@@ -18,31 +18,17 @@ package at build time, so it is never advertised as a capability, no device can
 ask for it, and no toggle in `kdeconnect-settings` brings it back. The build
 fails if an allowlisted plugin is missing.
 
-Notably absent is remote input — a paired phone cannot type or click here —
-along with remote command execution and file transfer.
-
 ## Clipboard auto-share is left on, deliberately
+
+Phone → desktop often works: opening the app, clicking a button, and
+allowing paste.
 
 The plugin pushes this desktop's clipboard on every connection. On iOS that
 makes desktop → phone work the way you would want — copy here, open the app
 there, paste — because the connection *is* the delivery.
 
-The same push is why phone → desktop does not work: opening the app to push
-re-establishes the link, the desktop's clipboard lands on the phone first and
-overwrites what was copied, so "Send clipboard" returns our own text, which
-the desktop then applies (a received `kdeconnect.clipboard` packet is applied
-unconditionally). The protocol guards connect packets with a timestamp, but
-iOS cannot observe its own clipboard in the background, so its timestamp is
-stale and the guard never fires.
-
-Both directions cannot work at once on iOS, and desktop → phone is the one in
-daily use, so auto-share stays at its default. Two consequences: phone →
-desktop is not available, and every connection ships whatever was last copied
-here — including anything pulled from a password manager — to the phone
-unprompted.
-
-The cost is a ~2 minute local build of kdeconnect-kde whenever nixpkgs bumps
-it, since the plugin removal cannot come from the binary cache.
+Either direction, it's honestly a little flaky, sometimes requiring multiple
+attempts.
 
 A clipboard push can also be forced without waiting for a reconnect:
 
