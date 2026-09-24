@@ -33,16 +33,6 @@ let
   ];
 
   package = pkgs.kdePackages.kdeconnect-kde.overrideAttrs (prev: {
-    # Auto-sharing the clipboard on every connection breaks phone -> desktop
-    # pushes outright: the desktop overwrites the phone's clipboard as the link
-    # re-establishes, so the phone sends our own text back. The default lives
-    # in the source, and flipping it here beats a config file per paired device.
-    postPatch = (prev.postPatch or "") + ''
-      substituteInPlace plugins/clipboard/clipboardplugin.cpp \
-        --replace-fail 'QStringLiteral("sendUnknown"), true' \
-                       'QStringLiteral("sendUnknown"), false'
-    '';
-
     postInstall = (prev.postInstall or "") + ''
       for p in ${lib.concatStringsSep " " forbiddenPlugins}; do
         rm -v "$out/lib/qt-6/plugins/kdeconnect/kdeconnect_$p.so"

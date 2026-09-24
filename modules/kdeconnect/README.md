@@ -22,28 +22,38 @@ only offers per-device config for this, keyed by a paired device ID that
 changes on re-pair, and that binds nothing for a device paired after the last
 `nh os switch`.
 
-So the package is overridden instead. Two changes, both global and both
-outliving any pairing:
+So the package is overridden instead: **seven plugins are deleted** —
+`mousepad` and `shareinputdevicesremote` (remote control), `runcommand`
+(remote execution), `share` (drops files here and opens URLs here),
+`presenter`, `findthisdevice`, `findmyphone`. What remains is `clipboard`,
+`ping` and `battery`. A missing plugin is never advertised as a capability, so
+no device can ask for it whenever it pairs, and no toggle in
+`kdeconnect-settings` brings it back.
 
-- **Seven plugins are deleted**: `mousepad` and `shareinputdevicesremote`
-  (remote control), `runcommand` (remote execution), `share` (drops files here
-  and opens URLs here), `presenter`, `findthisdevice`, `findmyphone`. What
-  remains is `clipboard`, `ping` and `battery`. A missing plugin is never
-  advertised as a capability, so no device can ask for it and no toggle in
-  `kdeconnect-settings` brings it back.
-- **Clipboard auto-share defaults to off**, by patching the default in
-  `clipboardplugin.cpp`. Leaving it on breaks phone → desktop pushes outright:
-  the desktop overwrites the phone's clipboard as the link re-establishes, so
-  "Send clipboard" ships our own text back, which the desktop then applies (a
-  received `kdeconnect.clipboard` packet is applied unconditionally). The
-  protocol does guard connect packets with a timestamp, but iOS cannot observe
-  its own clipboard in the background, so its timestamp is stale and the guard
-  never fires.
+## Clipboard auto-share is left on, deliberately
+
+The plugin pushes this desktop's clipboard on every connection. On iOS that
+makes desktop → phone work the way you would want — copy here, open the app
+there, paste — because the connection *is* the delivery.
+
+The same push is why phone → desktop does not work: opening the app to push
+re-establishes the link, the desktop's clipboard lands on the phone first and
+overwrites what was copied, so "Send clipboard" returns our own text, which
+the desktop then applies (a received `kdeconnect.clipboard` packet is applied
+unconditionally). The protocol guards connect packets with a timestamp, but
+iOS cannot observe its own clipboard in the background, so its timestamp is
+stale and the guard never fires.
+
+Both directions cannot work at once on iOS, and desktop → phone is the one in
+daily use, so auto-share stays at its default. Two consequences: phone →
+desktop is not available, and every connection ships whatever was last copied
+here — including anything pulled from a password manager — to the phone
+unprompted.
 
 The cost is a ~2 minute local build of kdeconnect-kde whenever nixpkgs bumps
-it, since neither change can come from the binary cache.
+it, since the plugin removal cannot come from the binary cache.
 
-With auto-share off, desktop → phone becomes deliberate:
+A clipboard push can also be forced without waiting for a reconnect:
 
 ```bash
 busctl --user call org.kde.kdeconnect \
