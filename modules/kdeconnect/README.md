@@ -10,26 +10,17 @@ which wants `ext_data_control_manager_v1` or `zwlr_data_control_manager_v1`.
 wlroots implements both; GNOME's Wayland session implements neither, which is
 why clipboard sync is reported broken there and works here.
 
-## The policy is in the package, not in config files
+## What a paired phone may use
 
-Pairing is all-or-nothing: accept a device and every plugin it advertises goes
-live, including `mousepad` — a keyboard and mouse for this machine. KDE Connect
-only offers per-device config for this, keyed by a paired device ID that
-changes on re-pair, and that binds nothing for a device paired after the last
-`nh os switch`.
+`allowedPlugins` in [`hm.nix`](./hm.nix) is the full set of plugins offered:
+`clipboard`, `ping` and `battery`. Every other plugin is deleted from the
+package at build time, so it is never advertised as a capability, no device can
+ask for it, and no toggle in `kdeconnect-settings` brings it back. The build
+fails if an allowlisted plugin is missing.
 
-So the package is overridden instead: **only `clipboard`, `ping` and `battery`
-survive**; every other plugin is deleted at build time. A missing plugin is
-never advertised as a capability, so no device can ask for it whenever it
-pairs, and no toggle in `kdeconnect-settings` brings it back.
-
-This is an allowlist because a blocklist leaked. Removing `mousepad` and
-`shareinputdevicesremote` left `shareinputdevices` in place — a third plugin
-that also accepts `kdeconnect.mousepad.request` — so "Remote input" kept
-appearing in the phone's UI. `remotecontrol` and `remotekeyboard` handle the
-same packet type in the other direction. An allowlist also holds when a future
-release adds a plugin nobody here has heard of. The build fails if an
-allowlisted plugin is missing, so an upstream rename cannot quietly empty it.
+Notably absent is remote input — a paired phone cannot type or click here —
+along with remote command execution and file transfer, which goes over Taildrop
+instead. A URL is just text, so the clipboard carries those.
 
 ## Clipboard auto-share is left on, deliberately
 

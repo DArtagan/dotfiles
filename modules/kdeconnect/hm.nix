@@ -5,14 +5,8 @@
   ...
 }:
 let
-  # Pairing is all-or-nothing, and per-device config only binds devices already
-  # paired at switch time. Deleting the plugins is the only form that holds for
-  # every device, including one paired next week: the capability is not in the
-  # package, so it is never advertised and no GUI toggle brings it back.
-  #
-  # An allowlist, because a blocklist missed `shareinputdevices` -- a second
-  # plugin accepting `kdeconnect.mousepad.request`, which put "Remote input"
-  # back in the phone's UI -- and would miss whatever a future release adds.
+  # Plugins offered to paired devices; every other plugin is removed from the
+  # package.
   allowedPlugins = [
     "battery"
     "clipboard"

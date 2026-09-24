@@ -5,8 +5,7 @@
   ...
 }:
 let
-  # `pipewiresink` (in the service below) ships in the `pipewire` package, and
-  # uxplay does not list it, so without this it is missing from the plugin path.
+  # `pipewiresink` (in the service below) ships in the `pipewire` package.
   uxplay = pkgs.uxplay.overrideAttrs (prev: {
     buildInputs = prev.buildInputs ++ [ pkgs.pipewire ];
   });

@@ -85,9 +85,6 @@ The last argument is the peer; each file arrives as its own item.
 refuses them and prints the `tar` line to use instead. Received files land in
 `~/Downloads/taildrop` with a desktop notification.
 
-Both need the caller to be tailscale's `--operator`, which
-[`default.nix`](./default.nix) already pins — neither needs `sudo`.
-
 ### Taildrop gotchas
 
 - **An offline peer cannot receive.** Taildrop is peer-to-peer with no
