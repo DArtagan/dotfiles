@@ -60,6 +60,7 @@
       nixos-rebuild
       nodejs # For vim CoC
       pciutils # lspci
+      pi-coding-agent
       pstree
       python313Packages.psutil # For vim Recover.vim
       (pkgs.callPackage ./pkgs/qbz/package.nix { }) # removed from nixpkgs 2026-09-18 (upstream withdrawn); source comes from binary caches, see pkgs/qbz
