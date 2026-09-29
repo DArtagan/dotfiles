@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    modules/pi
     modules/qutebrowser
     modules/vim
     modules/zed
@@ -60,7 +61,6 @@
       nixos-rebuild
       nodejs # For vim CoC
       pciutils # lspci
-      pi-coding-agent
       pstree
       python313Packages.psutil # For vim Recover.vim
       (pkgs.callPackage ./pkgs/qbz/package.nix { }) # removed from nixpkgs 2026-09-18 (upstream withdrawn); source comes from binary caches, see pkgs/qbz
@@ -268,12 +268,10 @@
   };
 
   # Claude Code writes to settings.json at runtime (e.g. /model, /config), so we can't
-  # symlink it read-only like statusline-command.sh. Instead, declare the settings we
-  # want version-controlled here and jq-merge them into the live file on activation,
-  # with declared values taking precedence but any other runtime-written keys preserved.
-  home.activation.claudeSettings =
-    let
-      managedSettings = {
+  # symlink it read-only like statusline-command.sh.
+  home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] (
+    import ./lib/merge-json-into.nix { inherit pkgs; } "claude-settings-managed" ".claude/settings.json"
+      {
         theme = "light";
         statusLine = {
           type = "command";
@@ -287,21 +285,8 @@
             };
           };
         };
-      };
-      managedSettingsFile = pkgs.writeText "claude-settings-managed.json" (
-        builtins.toJSON managedSettings
-      );
-    in
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      settingsFile="$HOME/.claude/settings.json"
-      mkdir -p "$HOME/.claude"
-      if [ -f "$settingsFile" ]; then
-        merged=$(${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$settingsFile" ${managedSettingsFile})
-      else
-        merged=$(${pkgs.jq}/bin/jq '.' ${managedSettingsFile})
-      fi
-      echo "$merged" > "$settingsFile"
-    '';
+      }
+  );
 
   programs = {
     alacritty = {
