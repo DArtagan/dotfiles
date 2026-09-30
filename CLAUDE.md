@@ -26,11 +26,17 @@ direnv allow   # once, then automatic on cd
 # or: devenv shell
 ```
 
-**Linting (run automatically as git pre-commit hooks via devenv):**
+**Linting (run automatically as git pre-commit hooks via devenv, using prek):**
 - `nixfmt` — Nix formatting
 - `deadnix` — remove dead Nix code
 - `statix` — Nix linting/anti-patterns
 - `shellcheck` — shell script linting
+- `flake-checker`, `end-of-file-fixer`, `trim-trailing-whitespace`
+
+**Build one local package without a full switch** (new files must be `git add`ed first, or the flake can't see them):
+```bash
+nix build --no-link --print-out-paths --impure --expr 'let f = builtins.getFlake (toString ./.); in f.nixosConfigurations.steamdeck.pkgs.callPackage ./pkgs/<name>/package.nix { }'
+```
 
 **Generate bootable ISO:**
 ```bash
@@ -58,7 +64,10 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `gaming/` — Steam, Lutris, Wine
 - `syncthing/` — file sync with predefined devices/folders
 - `vim/`, `zed/`, `qutebrowser/` — app configs
-- `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`).
+- `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`).
+
+### Local Packages (`pkgs/`)
+Packages missing from nixpkgs, or needing a newer version or local patches, each in `pkgs/<name>/package.nix` and pulled in with `pkgs.callPackage`. When one exists in nixpkgs, model it on the nixpkgs version and leave a `TODO` to switch back once nixpkgs catches up (see `pkgs/ketch`).
 
 ### Secrets Management
 SOPS + age encryption. Each host has `hosts/<name>/secrets.yaml` encrypted with that host's SSH key. Key assignments are in `.sops.yaml`. Edit secrets with `sops hosts/<name>/secrets.yaml`.
@@ -75,3 +84,9 @@ Stylix provides unified color scheme (Solarized Light) and fonts across all apps
 - **Home-manager**: configured inline in `flake.nix` per host, importing `./home.nix` plus host-specific extras
 - **`ai-server` caveat**: if `nixos-rebuild switch` fails due to GPU container options, temporarily comment out `./modules/ai-server` in `flake.nix`, reboot, then re-enable
 - **nixpkgs channel**: `nixos-unstable` for all hosts
+
+## Git Gotchas
+
+- **`git diff` uses difftastic.** Pass `--no-ext-diff` whenever the output must be a real patch (`git diff`/`git show` piped to `git apply`).
+- **Hooks are shared across worktrees, but their config path isn't.** `.git/hooks/pre-commit` hardcodes the `.pre-commit-config.yaml` of whichever checkout last entered devenv, so commits from another checkout can run prek against the wrong tree. A staged file has silently gone missing from a commit this way. After committing, check `git show --stat HEAD`. After removing a worktree, re-enter devenv in the main checkout so the hook points back at it.
+- **prek stashes unstaged changes while hooks run.** If a commit is interrupted, they may not come back; prek keeps a copy in `.devenv/state/prek/patches/<timestamp>.patch` (`git apply` it).
