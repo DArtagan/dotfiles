@@ -43,18 +43,6 @@ in
           provider.pathToClaudeCodeExecutable = lib.getExe pkgs.claude-code;
         }
       );
-
-      # pi-quotas' feature toggles (`/quotas:settings` writes here too). Its presence
-      # also stops pi-quotas from posting its first-run notice into the conversation.
-      piQuotasSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] (
-        mergeJsonInto "pi-quotas-managed" ".pi/agent/extensions/quotas.json" {
-          quotasCommand = true; # /quotas
-          providerCommands = true; # /anthropic:quotas etc.
-          usageStatus = true; # 5h/7d plan windows in the footer
-          tokenStatus = false; # OpenCode Go spend tracking, which we don't use
-          quotaWarnings = true;
-        }
-      );
     };
   };
 }

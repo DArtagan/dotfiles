@@ -31,7 +31,8 @@ direnv allow   # once, then automatic on cd
 - `deadnix` — remove dead Nix code
 - `statix` — Nix linting/anti-patterns
 - `shellcheck` — shell script linting
-- `flake-checker`, `end-of-file-fixer`, `trim-trailing-whitespace`
+- `flake-checker` — flake.lock health (outdated or non-standard nixpkgs inputs)
+- `end-of-file-fixer`, `trim-trailing-whitespace` — whitespace cleanup (skips `.patch`/`.diff`)
 
 **Build one local package without a full switch** (new files must be `git add`ed first, or the flake can't see them):
 ```bash
