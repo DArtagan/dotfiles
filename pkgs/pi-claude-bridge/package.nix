@@ -24,8 +24,6 @@ buildNpmPackage {
   patches = [
     # Five dev-only lockfile entries lack `integrity`, which fetchNpmDeps requires.
     ./lockfile-integrity.patch
-    # Show plan utilization (5h/7d) in pi's footer. Not yet upstream.
-    ./footer-rate-limits.patch
   ];
 
   # Dev dependencies (pi itself, typescript, tsx) are only for upstream's tests; pi

@@ -8,6 +8,12 @@ than symlinked; see `lib/merge-json-into.nix`.
 - **Model provider:** [`pi-claude-bridge`](https://github.com/elidickinson/pi-claude-bridge),
   which runs Claude Code (via the Agent SDK) on the Claude subscription. Packaged in
   `pkgs/pi-claude-bridge` to carry local patches, and loaded from the store.
+- **Plan quotas:** [pi-quotas](https://github.com/latentminds-ai/pi-quotas), packaged
+  in `pkgs/pi-quotas`. Shows the Claude plan's 5h/7d windows in the footer, plus
+  `/quotas` and near-limit warnings. Pinned to
+  [#51](https://github.com/latentminds-ai/pi-quotas/pull/51), which reads Claude
+  Code's login so claude-bridge models get quotas; it never refreshes that login,
+  so an expired one shows until Claude Code refreshes it.
 - **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
 
 ## Web access: ketch
