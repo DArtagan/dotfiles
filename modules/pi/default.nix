@@ -6,10 +6,16 @@
 let
   # pi and its extensions write runtime state into the same JSON files we configure.
   mergeJsonInto = import ../../lib/merge-json-into.nix { inherit pkgs; };
+  pi-claude-bridge = pkgs.callPackage ../../pkgs/pi-claude-bridge/package.nix { };
+  pi-quotas = pkgs.callPackage ../../pkgs/pi-quotas/package.nix { };
+  ketch = pkgs.callPackage ../../pkgs/ketch/package.nix { };
 in
 {
   home = {
-    packages = [ pkgs.pi-coding-agent ];
+    packages = [
+      pkgs.pi-coding-agent
+      ketch
+    ];
 
     activation = {
       piSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] (
@@ -18,9 +24,15 @@ in
           defaultModel = "claude-opus-5-5";
           defaultThinkingLevel = "high";
           theme = "light";
-          # Declares the extension; pi still installs/updates it into ~/.pi/agent/npm
-          # (`pi update --extensions`).
-          packages = [ "npm:pi-claude-bridge" ];
+          # Loaded in place from the store, so `pi update --extensions` leaves these
+          # alone; bump them in pkgs/.
+          packages = [
+            "${pi-claude-bridge}/lib/node_modules/pi-claude-bridge"
+            "${pi-quotas}"
+          ];
+          extensions = [ "${./exit.ts}" ];
+          # Web search and fetch, through the ketch CLI. See README.md.
+          skills = [ "${ketch}/share/ketch/skills/ketch" ];
         }
       );
 
