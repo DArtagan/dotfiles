@@ -15,6 +15,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   Code's login so claude-bridge models get quotas; it never refreshes that login,
   so an expired one shows until Claude Code refreshes it.
 - **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
+- **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
+  It waits for a running agent turn to finish before exiting; `/quit` doesn't.
 
 ## Web access: ketch
 
