@@ -20,6 +20,11 @@ devenv update
 ```
 Once those complete, then commit using the message "Update."
 
+**Larger changes go on a branch in a worktree under `.worktrees/`** (gitignored), then merge to `main` through a GitHub PR:
+```bash
+git worktree add -b <branch> .worktrees/<branch> main
+```
+
 **Enter dev shell (activates git hooks):**
 ```bash
 direnv allow   # once, then automatic on cd

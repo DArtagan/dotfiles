@@ -44,3 +44,6 @@ devenv.local.nix
 
 # nix
 result
+
+# git worktrees
+.worktrees/
