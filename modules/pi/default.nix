@@ -6,6 +6,7 @@
 let
   # pi and its extensions write runtime state into the same JSON files we configure.
   mergeJsonInto = import ../../lib/merge-json-into.nix { inherit pkgs; };
+  pi-claude-bridge = pkgs.callPackage ../../pkgs/pi-claude-bridge/package.nix { };
 in
 {
   home = {
@@ -18,9 +19,9 @@ in
           defaultModel = "claude-opus-5-5";
           defaultThinkingLevel = "high";
           theme = "light";
-          # Declares the extension; pi still installs/updates it into ~/.pi/agent/npm
-          # (`pi update --extensions`).
-          packages = [ "npm:pi-claude-bridge" ];
+          # Loaded in place from the store, so `pi update --extensions` leaves it alone;
+          # bump it in pkgs/pi-claude-bridge.
+          packages = [ "${pi-claude-bridge}/lib/node_modules/pi-claude-bridge" ];
         }
       );
 
