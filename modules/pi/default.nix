@@ -30,7 +30,10 @@ in
             "${pi-claude-bridge}/lib/node_modules/pi-claude-bridge"
             "${pi-quotas}"
           ];
-          extensions = [ "${./exit.ts}" ];
+          extensions = [
+            "${./exit.ts}"
+            "${./hide-cursor-unfocused.ts}"
+          ];
           # Web search and fetch, through the ketch CLI. See README.md.
           skills = [ "${ketch}/share/ketch/skills/ketch" ];
         }

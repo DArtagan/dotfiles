@@ -17,6 +17,13 @@ than symlinked; see `lib/merge-json-into.nix`.
 - **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
+- **Cursor hidden when unfocused:** a local extension (`hide-cursor-unfocused.ts`)
+  turns on terminal focus reporting, which pi only uses in fullscreen mode, and
+  drops the editor's cursor while the window or tmux pane is unfocused (tmux
+  needs `focus-events`, set in `home.nix`). It replaces the editor with a
+  `CustomEditor` subclass, so it would conflict with another extension that
+  replaces the editor. Inert in fullscreen mode, where pi consumes the focus
+  events itself.
 
 The bridge and pi-quotas are loaded from the store, so `pi update --extensions`
 doesn't touch them: bump their versions in `pkgs/`.
