@@ -1,0 +1,58 @@
+# pi module
+
+Installs [pi](https://pi.dev) and merges the keys we manage into its config
+(`~/.pi/agent/settings.json`, `~/.pi/agent/claude-bridge.json`). pi writes its
+own runtime state into the same files, so they are merged on each switch rather
+than symlinked; see `lib/merge-json-into.nix`.
+
+- **Model provider:** [`pi-claude-bridge`](https://github.com/elidickinson/pi-claude-bridge),
+  which runs Claude Code (via the Agent SDK) on the Claude subscription. Packaged in
+  `pkgs/pi-claude-bridge` to carry local patches, and loaded from the store.
+- **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
+
+## Web access: ketch
+
+pi has no built-in web search or fetch. And although the provider is Claude Code,
+the bridge runs it with `tools: []`, so Claude Code's own WebSearch/WebFetch are
+unavailable too.
+
+ketch is a stateless Go CLI (`search`, `scrape`, `crawl`, plus `code` for public
+source via grep.app and `docs` for library docs via Context7). pi reaches it
+through its bash tool, guided by ketch's upstream skill (`skills/ketch`, listed
+in `settings.json` `skills`).
+
+Why ketch:
+
+- **Token cost.** A skill keeps only its name and description in the system
+  prompt and loads its instructions on demand. Extension tools send their full
+  schemas with every request. The skill also has the agent bound every fetch
+  (`--max-chars`, `--trim`).
+- **Money.** The default `auto` search backend falls through keyless providers
+  (Parallel, Exa, Keenable, You.com, Firecrawl, DuckDuckGo), so it costs nothing
+  with no keys. Keys only raise limits, e.g. Brave's $5/month free credit:
+  `KETCH_BRAVE_API_KEY`.
+- **Packaging.** One Go binary with env-var config; not tied to pi.
+
+The package wraps `ketch` to render JS-only pages with nixpkgs' Chromium
+(`KETCH_BROWSER`) and to silence its self-update notices. Plain pages never
+start the browser.
+
+## Alternatives, if ketch stops fitting
+
+- [**pi-web-access**](https://github.com/nicobailon/pi-web-access): a pi
+  extension (`web_search`, `fetch_content`, `get_search_content`, `source_check`)
+  supporting ~35 search providers. Worth it if we want TinyFish (free search
+  and fetch; ketch has no TinyFish or Kagi backend), YouTube/video analysis, or
+  its store-then-page retrieval of long pages. Costs: large (~1.1 MB of
+  TypeScript), and its tool schemas ride along on every request.
+- [**pi-lean-dimension**](https://github.com/coreyryanhanson/pi-lean-dimension):
+  interactive Playwright browsing (click, type, and navigate by accessibility-tree
+  refs rather than screenshots), declarative REST API recipes, and search via
+  SearXNG only. Relevant if pi needs to drive logged-in or JS-heavy sites. As of
+  2026-09 it is early (one author, AGPL-3.0), its tool toggles invalidate the
+  prompt cache mid-session, and its downloaded Playwright browsers need
+  replacing with nixpkgs' `playwright-driver.browsers` on NixOS.
+- **Claude Code's WebSearch/WebFetch**: covered by the subscription, and
+  WebFetch summarizes pages with Haiku before the main model sees them. Would
+  need a bridge patch to allow those builtins in provider mode, and only works
+  while claude-bridge is the provider.
