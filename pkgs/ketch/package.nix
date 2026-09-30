@@ -4,12 +4,22 @@
   fetchFromGitHub,
   lib,
   makeWrapper,
+  versionCheckHook,
 }:
 
-# Web search, OSS code search, library docs, and scraping for agents. Not in nixpkgs.
+# Web search, OSS code search, library docs, and scraping for agents. Modeled on
+# nixpkgs' pkgs/by-name/ke/ketch, plus the skill and the wrapper below.
+#
+# TODO: Switch to pkgs.ketch once nixpkgs catches up to this version (it has 0.14.0;
+# NixOS/nixpkgs#564213 bumps it to 0.17.0). nixpkgs doesn't install the skill, so
+# take it from `pkgs.ketch.src + "/skills/ketch"` and keep the wrapper, e.g.
+# with symlinkJoin.
 buildGoModule (finalAttrs: {
   pname = "ketch";
   version = "0.18.1";
+
+  __structuredAttrs = true;
+  strictDeps = true;
 
   src = fetchFromGitHub {
     owner = "1broseidon";
@@ -31,6 +41,10 @@ buildGoModule (finalAttrs: {
   # Its golden file pins the User-Agent of an unversioned ("dev") build.
   checkFlags = [ "-skip=^TestRegistryConfigCompatibilityGolden$" ];
 
+  doInstallCheck = true;
+  nativeInstallCheckInputs = [ versionCheckHook ];
+  versionCheckProgramArg = "version";
+
   postInstall = ''
     mkdir -p $out/share/ketch
     cp -r skills $out/share/ketch/
@@ -49,6 +63,7 @@ buildGoModule (finalAttrs: {
   meta = {
     description = "Stateless CLI for web search, code search, library docs, and scraping, built for AI agents";
     homepage = "https://ketch.run";
+    changelog = "https://github.com/1broseidon/ketch/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.mit;
     mainProgram = "ketch";
   };
