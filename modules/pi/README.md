@@ -18,6 +18,24 @@ than symlinked; see `lib/merge-json-into.nix`.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
 
+The bridge and pi-quotas are loaded from the store, so `pi update --extensions`
+doesn't touch them: bump their versions in `pkgs/`.
+
+## Testing an extension without switching
+
+Load it into a throwaway session (`-ne` skips the configured extensions, so add
+the bridge back for Claude models), running inside tmux so the footer can be
+read with `tmux capture-pane -p`:
+
+```bash
+pi -ne -e <bridge>/src/index.ts -e <extension path> --no-session --no-tools \
+  --model claude-bridge/claude-haiku-4-5
+```
+
+The bridge's store path is the first entry of `packages` in
+`~/.pi/agent/settings.json`. An extension can also run from a clone, or from a
+store path built as described in `CLAUDE.md`.
+
 ## Web access: ketch
 
 pi has no built-in web search or fetch. And although the provider is Claude Code,

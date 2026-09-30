@@ -67,7 +67,7 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`).
 
 ### Local Packages (`pkgs/`)
-Packages missing from nixpkgs, or needing a newer version or local patches, each in `pkgs/<name>/package.nix` and pulled in with `pkgs.callPackage`. When one exists in nixpkgs, model it on the nixpkgs version and leave a `TODO` to switch back once nixpkgs catches up (see `pkgs/ketch`).
+Packages missing from nixpkgs, or needing a newer version or local patches, each in `pkgs/<name>/package.nix` and pulled in with `pkgs.callPackage`. When one exists in nixpkgs, model it on the nixpkgs version and leave a `TODO` to switch back once nixpkgs catches up (see `pkgs/ketch`). When one is pinned to an unmerged upstream PR or carries a patch, name the PR/issue in a comment, so it's clear when to go back to a release (see `pkgs/pi-quotas`).
 
 ### Secrets Management
 SOPS + age encryption. Each host has `hosts/<name>/secrets.yaml` encrypted with that host's SSH key. Key assignments are in `.sops.yaml`. Edit secrets with `sops hosts/<name>/secrets.yaml`.
@@ -84,6 +84,7 @@ Stylix provides unified color scheme (Solarized Light) and fonts across all apps
 - **Home-manager**: configured inline in `flake.nix` per host, importing `./home.nix` plus host-specific extras
 - **`ai-server` caveat**: if `nixos-rebuild switch` fails due to GPU container options, temporarily comment out `./modules/ai-server` in `flake.nix`, reboot, then re-enable
 - **nixpkgs channel**: `nixos-unstable` for all hosts
+- **Configs that apps also write to** (Claude Code, pi and its extensions): merge the keys we manage with `lib/merge-json-into.nix` in a home-manager activation, rather than `home.file`, which symlinks a read-only file. See `modules/pi` and `claudeSettings` in `home.nix`.
 
 ## Git Gotchas
 
