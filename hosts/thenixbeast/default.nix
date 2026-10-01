@@ -81,7 +81,7 @@
   #systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
 
   services = {
-    esphome.enable = true; # For connecting to and programming ESP32 microcontrollers
+    # esphome.enable = true; # For connecting to and programming ESP32 microcontrollers  # TODO: disabled pending https://github.com/NixOS/nixpkgs/pull/550245
     # World-writable access to TI OMAP USB boot ROM devices (Nest thermostat
     # flashing via NoLongerEvil); matches the rule from docs.nolongerevil.com
     udev.extraRules = ''
