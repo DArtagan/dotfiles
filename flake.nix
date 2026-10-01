@@ -127,6 +127,7 @@
                       ./home.nix
                       ./modules/airplay/hm.nix
                       ./modules/kdeconnect/hm.nix
+                      ./modules/pi/remote.nix
                       ./modules/stylix/hm.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
@@ -176,6 +177,7 @@
                       ./home.nix
                       ./modules/hotspot/hm.nix
                       ./modules/kdeconnect/hm.nix
+                      ./modules/pi/remote.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
                     ];
