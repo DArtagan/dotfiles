@@ -17,13 +17,18 @@ than symlinked; see `lib/merge-json-into.nix`.
 - **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
-- **Cursor hidden when unfocused:** a local extension (`hide-cursor-unfocused.ts`)
-  turns on terminal focus reporting, which pi only uses in fullscreen mode, and
-  drops the editor's cursor while the window or tmux pane is unfocused (tmux
-  needs `focus-events`, set in `home.nix`). It replaces the editor with a
-  `CustomEditor` subclass, so it would conflict with another extension that
-  replaces the editor. Inert in fullscreen mode, where pi consumes the focus
-  events itself.
+- **Terminal cursor:** a local extension (`terminal-cursor.ts`) shows the
+  terminal's own cursor in place of the reverse-video one pi paints, so it
+  reflects focus: hollow while the Alacritty window is unfocused, absent in
+  inactive tmux panes. Covers the editor and selector search boxes, but not the
+  `/settings` search, which doesn't mark its cursor. It wraps a private pi-tui
+  method; if a pi update removes it, the extension warns at startup, and if the
+  painted cursor changes shape, it quietly falls back to pi's painted cursor.
+  Upstream fixes ([#5268](https://github.com/earendil-works/pi/pull/5268),
+  [#9924](https://github.com/earendil-works/pi/pull/9924)) were auto-closed
+  unreviewed; if pi stops painting the cursor itself when `showHardwareCursor`
+  is on (issue [#3896](https://github.com/earendil-works/pi/issues/3896)),
+  set that and drop the extension.
 
 The bridge and pi-quotas are loaded from the store, so `pi update --extensions`
 doesn't touch them: bump their versions in `pkgs/`.

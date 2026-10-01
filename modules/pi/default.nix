@@ -32,7 +32,7 @@ in
           ];
           extensions = [
             "${./exit.ts}"
-            "${./hide-cursor-unfocused.ts}"
+            "${./terminal-cursor.ts}"
           ];
           # Web search and fetch, through the ketch CLI. See README.md.
           skills = [ "${ketch}/share/ketch/skills/ketch" ];
