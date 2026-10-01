@@ -24,6 +24,10 @@ buildNpmPackage {
   patches = [
     # Five dev-only lockfile entries lack `integrity`, which fetchNpmDeps requires.
     ./lockfile-integrity.patch
+    # Register the provider in every session of a host that runs several in one process
+    # (agegr/pi-web), which otherwise start with no claude-bridge models. Local; not yet
+    # sent upstream.
+    ./multi-session-registration.patch
   ];
 
   # Dev dependencies (pi itself, typescript, tsx) are only for upstream's tests; pi
