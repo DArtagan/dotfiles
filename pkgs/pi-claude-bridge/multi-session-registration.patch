@@ -1,0 +1,103 @@
+diff --git a/src/index.ts b/src/index.ts
+index eaf56c2..16fdb93 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -131,6 +131,8 @@ function diagDump(label: string, data: Record<string, unknown>) {
+ // Full registration policy (first vs later instances, shared vs own registry):
+ // see the "--- Provider ---" block in activate() below.
+ const ACTIVE_STREAM_SIMPLE_KEY = Symbol.for("claude-bridge:activeStreamSimple");
++// Which module instance's streamSimple each ModelRuntime was registered with; see "Provider".
++const RUNTIME_OWNERS_KEY = Symbol.for("claude-bridge:runtimeOwners");
+ 
+ // Claude Code's own builtin tools, for the AskClaude path where CC really runs
+ // them. The provider path never sees these — it starts CC with `tools: []`.
+@@ -2536,29 +2538,31 @@ export default function (pi: ExtensionAPI) {
+ 
+ 	// --- Provider ---
+ 	//
+-	// Registration policy across module instances (a subagent session can load
+-	// this module fresh): the FIRST instance registers unconditionally at load,
+-	// which is what puts claude-bridge models in the picker before any session
+-	// starts. Later instances decide at session_start, when ctx.modelRegistry
+-	// reveals who owns this session's registry:
++	// Registration policy across module instances (a subagent session, or each
++	// session of a host that runs several in one process, can load this module
++	// fresh): every instance registers at load. That is what puts claude-bridge
++	// models in the picker before any session starts, and what a host that picks
++	// the session's model before session_start (pi-web) needs: pi flushes load-time
++	// registrations into the runtime the session's services are built on.
+ 	//
+-	// - Registry already has the provider (host passes the parent's registry down,
+-	//   e.g. pi-subagents >=0.14.3): skip. Re-registering would overwrite the
+-	//   parent's pinned streamSimple with this instance's fresh — empty-state —
+-	//   stream fn, and the parent's next tool-result delivery would route into it.
+-	// - Registry lacks the provider (host gives the child its own, e.g. older
+-	//   pi-subagents forks): register, or every claude-bridge/* dispatch in the
+-	//   child fails with "Model not found" (#91). Even loading the bridge via the
+-	//   agent's `extensions:` frontmatter didn't help there — the module loaded,
+-	//   hit the old skip-guard, and the child's registry stayed empty.
++	// That is wrong only when the host passes the parent's registry down (e.g.
++	// pi-subagents >=0.14.3, pi-web's own subagents): the child's registration
++	// overwrites the parent's pinned streamSimple with this instance's fresh —
++	// empty-state — stream fn, and the parent's next tool-result delivery would
++	// route into it. So each ModelRuntime remembers the instance that owns it, and
++	// a child that finds its runtime already owned puts the owner's streamSimple
++	// back at session_start. The parent can't call in between: it is waiting on
++	// the tool that is creating the child. A child given its own registry (older
++	// pi-subagents forks) keeps its registration, or every claude-bridge/*
++	// dispatch in it fails with "Model not found" (#91).
+ 	//
+ 	// A per-instance stream fn registered into a per-instance registry is
+ 	// self-consistent: that session's traffic flows through this module state,
+ 	// which starts clean and serves only that session.
+ 	//
+ 	// On session_shutdown (including /reload), clearSession() resets
+-	// ACTIVE_STREAM_SIMPLE_KEY so a freshly loaded module can register as first
+-	// again.
++	// ACTIVE_STREAM_SIMPLE_KEY, and the instance gives up its runtime, so a freshly
++	// loaded module on the same runtime registers and owns it again.
+ 
+ 	const g = globalThis as Record<symbol, any>;
+ 	const providerConfig = {
+@@ -2570,22 +2574,30 @@ export default function (pi: ExtensionAPI) {
+ 		// Context models (toBridgeContext normalizes at the stream entry points).
+ 		streamSimple: streamClaudeAgentSdk as any,
+ 	};
++	const owners: WeakMap<object, typeof streamClaudeAgentSdk> = (g[RUNTIME_OWNERS_KEY] ??= new WeakMap());
++	const registryRuntime = (ctx: ExtensionContext): object =>
++		(ctx.modelRegistry as unknown as { runtime?: object }).runtime ?? ctx.modelRegistry;
+ 	if (!g[ACTIVE_STREAM_SIMPLE_KEY]) {
+ 		// First instance: store our streamSimple and register.
+ 		g[ACTIVE_STREAM_SIMPLE_KEY] = streamClaudeAgentSdk;
+-		pi.registerProvider(PROVIDER_ID, providerConfig);
+ 	} else {
+-		// Later instance: register only if this session's registry lacks the provider.
+-		debug(`provider: deferring registration decision to session_start (module=${moduleInstanceId})`);
+-		pi.on("session_start", (_event, ctx) => {
+-			if (ctx.modelRegistry.getProvider(PROVIDER_ID)) {
+-				debug(`provider: registry already has ${PROVIDER_ID}, skipping registration (module=${moduleInstanceId})`);
+-				return;
+-			}
+-			debug(`provider: registry lacks ${PROVIDER_ID}, registering (module=${moduleInstanceId})`);
+-			pi.registerProvider(PROVIDER_ID, providerConfig);
+-		});
++		debug(`provider: later instance, registering at load (module=${moduleInstanceId})`);
+ 	}
++	pi.registerProvider(PROVIDER_ID, providerConfig);
++	pi.on("session_start", (_event, ctx) => {
++		const runtime = registryRuntime(ctx);
++		const owner = owners.get(runtime);
++		if (owner && owner !== streamClaudeAgentSdk) {
++			debug(`provider: registry owned by another instance, restoring its streamSimple (module=${moduleInstanceId})`);
++			pi.registerProvider(PROVIDER_ID, { ...providerConfig, streamSimple: owner as any });
++			return;
++		}
++		owners.set(runtime, streamClaudeAgentSdk);
++	});
++	pi.on("session_shutdown", (_event, ctx) => {
++		const runtime = registryRuntime(ctx);
++		if (owners.get(runtime) === streamClaudeAgentSdk) owners.delete(runtime);
++	});
+ 
+ 	// --- AskClaude tool ---
+ 
