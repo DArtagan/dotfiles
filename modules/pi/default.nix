@@ -12,6 +12,15 @@ let
 in
 {
   home = {
+    # pi only rewrites this file to migrate old action names, so it can be a symlink.
+    # Ctrl+Shift+Enter reaches pi through the Alacritty binding in home.nix.
+    file.".pi/agent/keybindings.json".text = builtins.toJSON {
+      "app.message.followUp" = [
+        "ctrl+shift+enter"
+        "alt+enter"
+      ];
+    };
+
     packages = [
       pkgs.pi-coding-agent
       ketch

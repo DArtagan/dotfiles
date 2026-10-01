@@ -293,11 +293,20 @@
       enable = true;
       theme = "solarized_light";
       settings = {
+        # Send modified Enter as CSI-u sequences, which Alacritty doesn't do on its own
+        # unless an app requests the kitty keyboard protocol, and tmux doesn't. tmux
+        # passes them through to apps that ask for extended keys (pi, Claude Code), and
+        # sends plain Enter to the rest. Needs tmux's extended-keys, set below.
         keyboard.bindings = [
           {
             key = "Return";
             mods = "Shift";
-            chars = "\n"; # Sends Ctrl+J (LF), which is Claude Code's default chat:newline binding.
+            chars = builtins.fromJSON ''"\u001b[13;2u"''; # newline in pi and Claude Code
+          }
+          {
+            key = "Return";
+            mods = "Control|Shift";
+            chars = builtins.fromJSON ''"\u001b[13;6u"''; # pi: queue a follow-up message
           }
         ];
         scrolling.multiplier = 5;
@@ -487,6 +496,10 @@
       extraConfig = ''
         # Color
         set -as terminal-features ",alacritty*:RGB"
+
+        # Pass modified keys (e.g. Shift+Enter) to apps that ask for them, like pi
+        set -g extended-keys on
+        set -g extended-keys-format csi-u
 
         # Active pane border in Solarized blue, inactive dimmed
         set -g pane-active-border-style 'fg=#268bd2,bold'

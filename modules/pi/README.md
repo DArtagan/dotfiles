@@ -29,6 +29,12 @@ than symlinked; see `lib/merge-json-into.nix`.
   unreviewed; if pi stops painting the cursor itself when `showHardwareCursor`
   is on (issue [#3896](https://github.com/earendil-works/pi/issues/3896)),
   set that and drop the extension.
+- **Modified Enter:** `Shift+Enter` inserts a newline and `Ctrl+Shift+Enter`
+  (or `Alt+Enter`) queues a follow-up (`keybindings.json`). Alacritty sends both
+  as CSI-u sequences, and tmux passes them on with `extended-keys` (both set in
+  `home.nix`). An older setup mapped `Shift+Enter` to a raw LF (Ctrl+J). pi's
+  `docs/terminal-setup.md` advises against that because it hides the real key,
+  and it left tmux's `extended-keys` off, which pi warns about at startup.
 
 The bridge and pi-quotas are loaded from the store, so `pi update --extensions`
 doesn't touch them: bump their versions in `pkgs/`.
