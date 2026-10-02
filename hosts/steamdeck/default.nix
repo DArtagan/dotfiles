@@ -94,6 +94,7 @@
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
+    openssh.enable = true;
     xserver.enable = true;
 
     # Dell USB-C DisplayLink adapter. "displaylink" pulls in the evdi kernel

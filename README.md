@@ -18,8 +18,17 @@ Substituters are set in `configuration.nix` (`nix.settings`). Nix tries them in 
 | Cache | Priority | Purpose |
 |---|---|---|
 | `https://cache.nixos.org` | 40 | Upstream. |
-| `http://mini-nas.forge.local:8770/public` | 41 | Attic on mini-nas. mini-nas's post-build-hook pushes its builds here. Paths expire 6 months after last access (server default). |
+| `http://mini-nas.forge.local:8770/public` | 41 | Attic on mini-nas. mini-nas and thenixbeast push everything they build here (`modules/attic-push`). Paths expire 6 months after last access (server default). |
 | `http://mini-nas.forge.local:8770/archive` | 50 | Attic on mini-nas, **garbage collection disabled** (retention 0). For store paths that must never disappear, such as sources whose upstream was withdrawn. |
+
+### Pushing a host's builds to `public`
+
+Import `modules/attic-push` for the host in `flake.nix`. Its post-build-hook queues each build, and a daemon pushes it, retrying for an hour if mini-nas is unreachable. The host needs a push token in its secrets before it can be built:
+
+1. On mini-nas: `sudo atticd-atticadm make-token --sub <host> --validity 99y --pull public --push public`
+2. `sops hosts/<host>/secrets.yaml`, and add the token as `attic: { push_token: <token> }`.
+
+Check it's working with `journalctl -u queued-build-hook`.
 
 ### `archive`: keeping a package whose source vanished
 

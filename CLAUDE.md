@@ -66,6 +66,8 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `stylix/` — unified theming (NixOS + home-manager variant)
 - `tailscale/` — auto-connect to headscale at `headscale.immortalkeep.com` (MagicDNS `forge.local`; requires `--accept-dns=true`). See `modules/tailscale/README.md` for bootstrap, runtime toggles, and gotchas.
 - `ai-server/` — local AI stack (Ollama, Open-WebUI, Speaches via Podman)
+- `attic-push/` — pushes everything the host builds to the Attic cache on mini-nas, through `queued-build-hook` (see "Binary caches" in `README.md`)
+- `distributed_builders/` — `my.distributedBuilders.builders` sends builds to faster hosts; `acceptBuilds` takes them. Keep the graph acyclic: Nix fills free remote slots before building locally, and builds that loop back to their sender deadlock (NixOS/nix#2029)
 - `containers/` — Podman with nvidia-container-toolkit
 - `gaming/` — Steam, Lutris, Wine
 - `syncthing/` — file sync with predefined devices/folders

@@ -1,135 +1,127 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  cfg = config.my.distributedBuilders;
+  inherit (config.networking) hostName;
+
+  # A remote build runs with the sending host's `cores`, so maxJobs is the builder's
+  # threads divided by the senders' `cores` (4 on steamdeck).
+  # speedFactor only ranks builders against each other (CPU GHz * threads, normalized to
+  # mini-nas, matching the mini-nas repo).
+  machines = {
+    thenixbeast = {
+      maxJobs = 6;
+      speedFactor = 4;
+    };
+    mini-nas = {
+      maxJobs = 2;
+      speedFactor = 1;
+    };
+  };
+in
 {
-  sops.secrets = {
-    "distributed_builders/ssh_private_key" = {
-      sopsFile = ./secrets.yaml;
+  options.my.distributedBuilders = {
+    builders = lib.mkOption {
+      type = lib.types.listOf (lib.types.enum (lib.attrNames machines));
+      default = [ ];
+      example = [ "thenixbeast" ];
+      description = ''
+        Hosts to send builds to. Nix takes any free slot on a builder before building
+        locally, whatever its speedFactor, so only list hosts faster than this one.
+      '';
     };
-    "distributed_builders/ssh_public_key" = {
-      sopsFile = ./secrets.yaml;
-    };
+
+    acceptBuilds = lib.mkEnableOption "builds sent from the other hosts, as the `nix` user over SSH";
   };
 
-  nix = {
-    distributedBuilds = true;
-    buildMachines = [
-      {
-        protocol = "ssh-ng";
-        hostName = "mini-nas.forge.local";
-        maxJobs = 20;
-        sshKey = config.sops.secrets."distributed_builders/ssh_private_key".path;
-        sshUser = "nix";
-        supportedFeatures = [
-          "nixos-test"
-          "benchmark"
-          "big-parallel"
-          "kvm"
-        ];
-        systems = [
-          "x86_64-linux"
-          "i686-linux"
-        ];
-      }
-    ];
-    # TODO: disabling distributed builders for now, since self-building just causes borked locks
-    #buildMachines =
-    #  let
-    #    protocol = "ssh-ng";
-    #    sshKey = config.sops.secrets."distributed_builders/ssh_private_key".path;
-    #    sshUser = "nix";
-    #    supportedFeatures = [
-    #      "nixos-test"
-    #      "benchmark"
-    #      "big-parallel"
-    #      "kvm"
-    #    ];
-    #    systems = [
-    #      "x86_64-linux"
-    #      "i686-linux"
-    #    ];
-    #  in
-    #  [
-    #      # speedFactor calculation: CPU GHz * CPU threads
-    #      #   thenixbeast: 5.5 * 24 = 132
-    #      #   steamdeck: 3.5 * 8 = 28
-    #      {
-    #        inherit
-    #          protocol
-    #          sshKey
-    #          sshUser
-    #          supportedFeatures
-    #          systems
-    #          ;
-    #        hostName = "thenixbeast";
-    #        maxJobs = 12;
-    #        speedFactor = 132;
-    #      }
-    #      {
-    #        inherit
-    #          protocol
-    #          sshKey
-    #          sshUser
-    #          supportedFeatures
-    #          systems
-    #          ;
-    #        hostName = "steamdeck";
-    #        maxJobs = 4;
-    #        speedFactor = 28;
-    #      }
-    #  ];
-    settings = {
-      builders-use-substitutes = true;
-      trusted-users = [ "nix" ];
-    };
-  };
+  config = lib.mkMerge [
+    (lib.mkIf (cfg.builders != [ ]) {
+      sops.secrets."distributed_builders/ssh_private_key".sopsFile = ./secrets.yaml;
 
-  users = {
-    users.nix = {
-      isSystemUser = true;
-      group = "nix";
-      # TODO: this key is probably wrong, which doesn't let the mini-nas use these machines as builders.  On the upside though, it also can't get into the lock loop this way.
-      # TODO: lock this down further using something like: https://discourse.nixos.org/t/wrapper-to-restrict-builder-access-through-ssh-worth-upstreaming/25834/17
-      openssh.authorizedKeys.keys = [
-        "no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEufEieU/OuOiSA3jfmUo4ro9UQFC2tMkzL/NdRuP3Qh"
-      ];
-      useDefaultShell = true;
-    };
-
-    groups.nix = { };
-  };
-
-  programs.ssh = {
-    # TODO: heads up, these pre-defined configs might grab and over-ride if one were trying to do something like `ssh will@thenixbeat`, while `ssh will@thenixbeast.force.local` still works.
-    #extraConfig = ''
-    #  Host steamdeck
-    #    HostName steamdeck.forge.local
-    #    User nix
-    #    IdentitiesOnly yes
-    #    IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
-    #  Host thenixbeast
-    #    HostName thenixbeast.forge.local
-    #    User nix
-    #    IdentitiesOnly yes
-    #    IdentityFile ${config.sops.secrets."distributed_builders/ssh_private_key".path}
-    #'';
-    knownHosts = {
-      steamdeck = {
-        extraHostNames = [
-          "192.168.1.12"
-          "steamdeck.forge.local"
-        ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3g7cDUbFypZlqSxWfblUe8E+I7lGxkJTmAw5VaWK89";
+      nix = {
+        distributedBuilds = true;
+        buildMachines = map (name: {
+          inherit (machines.${name}) maxJobs speedFactor;
+          protocol = "ssh-ng";
+          hostName = "${name}.forge.local";
+          sshKey = config.sops.secrets."distributed_builders/ssh_private_key".path;
+          sshUser = "nix";
+          supportedFeatures = [
+            "nixos-test"
+            "benchmark"
+            "big-parallel"
+            "kvm"
+          ];
+          systems = [
+            "x86_64-linux"
+            "i686-linux"
+          ];
+        }) cfg.builders;
+        settings = {
+          # Read the machine list from a file only this host has. A builder adopts the
+          # `builders` value of a trusted client, so a build sent from here reads
+          # /etc/nix/machines.${hostName} on the builder, finds nothing, and runs there
+          # rather than being forwarded again. Forwarding is what let builds loop back
+          # to the host that sent them, and deadlock on its locks (NixOS/nix#2029).
+          builders = "@/etc/nix/machines.${hostName}";
+          builders-use-substitutes = true;
+        };
       };
-      thenixbeast = {
-        extraHostNames = [
-          "192.168.1.10"
-          "thenixbeast.forge.local"
-        ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEB74qOTioDeqED1VPlfAHWsQuh5x5TQs7kji2S8QiEM";
-      };
-    };
-  };
 
-  services.openssh = {
-    enable = true;
-  };
+      environment.etc."nix/machines.${hostName}".source = config.environment.etc."nix/machines".source;
+
+      # Without this, a builder that's switched off stalls every build for the full TCP
+      # connect timeout before Nix moves on.
+      programs.ssh.extraConfig = ''
+        Match user nix host ${lib.concatMapStringsSep "," (name: "${name}.forge.local") cfg.builders}
+          ConnectTimeout 5
+        Match all
+      '';
+    })
+
+    (lib.mkIf cfg.acceptBuilds {
+      nix.settings.trusted-users = [ "nix" ];
+
+      users = {
+        users.nix = {
+          isSystemUser = true;
+          group = "nix";
+          # TODO: lock this down further using something like: https://discourse.nixos.org/t/wrapper-to-restrict-builder-access-through-ssh-worth-upstreaming/25834/17
+          openssh.authorizedKeys.keys = [
+            "no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEufEieU/OuOiSA3jfmUo4ro9UQFC2tMkzL/NdRuP3Qh"
+          ];
+          useDefaultShell = true;
+        };
+
+        groups.nix = { };
+      };
+
+      services.openssh.enable = true;
+    })
+
+    {
+      programs.ssh.knownHosts = {
+        mini-nas = {
+          extraHostNames = [
+            "192.168.1.11"
+            "mini-nas.forge.local"
+          ];
+          publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFxk3SUTMe8de1v8ultvy4cR7N5/Rs4Q8ozX4nl6kOwA";
+        };
+        steamdeck = {
+          extraHostNames = [
+            "192.168.1.12"
+            "steamdeck.forge.local"
+          ];
+          publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3g7cDUbFypZlqSxWfblUe8E+I7lGxkJTmAw5VaWK89";
+        };
+        thenixbeast = {
+          extraHostNames = [
+            "192.168.1.10"
+            "thenixbeast.forge.local"
+          ];
+          publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEB74qOTioDeqED1VPlfAHWsQuh5x5TQs7kji2S8QiEM";
+        };
+      };
+    }
+  ];
 }
