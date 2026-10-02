@@ -136,11 +136,16 @@
   };
 
   nix = {
+    # Builds only get the CPU when nothing else, such as a game, wants it.
+    daemonCPUSchedPolicy = "idle";
     settings = {
       # Enable users to be trusted users of the Nix store (useful for devenv)
       # TODO: set here to match the one user declared here
       trusted-users = [ "willy" ];
-      cores = 4;
+      # Builds sent to thenixbeast and mini-nas run with these `cores` too, so a big
+      # one, like the kernel, gets 8 threads there (see modules/distributed_builders).
+      cores = 8;
+      max-jobs = 2;
     };
   };
 

@@ -3,8 +3,9 @@ let
   cfg = config.my.distributedBuilders;
   inherit (config.networking) hostName;
 
-  # A remote build runs with the sending host's `cores`, so maxJobs is the builder's
-  # threads divided by the senders' `cores` (4 on steamdeck).
+  # Every host sets max-jobs * cores to twice its threads. A remote build runs with the
+  # sending host's `cores`, so maxJobs gives senders the same budget: twice the builder's
+  # threads, divided by the senders' `cores` (8 on steamdeck, the only sender).
   # speedFactor only ranks builders against each other (CPU GHz * threads, normalized to
   # mini-nas, matching the mini-nas repo).
   machines = {
@@ -85,9 +86,11 @@ in
         users.nix = {
           isSystemUser = true;
           group = "nix";
-          # TODO: lock this down further using something like: https://discourse.nixos.org/t/wrapper-to-restrict-builder-access-through-ssh-worth-upstreaming/25834/17
+          # The key can only talk to the Nix daemon, which is all `ssh-ng` builds need.
+          # It stays a trusted user: builders must accept unsigned build inputs, and
+          # adopt the sender's `builders` setting (see above).
           openssh.authorizedKeys.keys = [
-            "no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEufEieU/OuOiSA3jfmUo4ro9UQFC2tMkzL/NdRuP3Qh"
+            "restrict,command=\"${config.nix.package}/bin/nix-daemon --stdio\" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEufEieU/OuOiSA3jfmUo4ro9UQFC2tMkzL/NdRuP3Qh"
           ];
           useDefaultShell = true;
         };

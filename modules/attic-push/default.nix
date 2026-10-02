@@ -1,8 +1,8 @@
 # Pushes everything this host builds to the `public` cache on mini-nas, without making
 # builds wait on the upload. Mirrors modules/attic in the mini-nas repo.
 #
-# Needs an `attic/push_token` in the host's secrets.yaml. Mint it on mini-nas:
-#   sudo atticd-atticadm make-token --sub <host> --validity 99y --pull public --push public
+# The hosts share one token, in ./secrets.yaml: Attic can't revoke a single token anyway,
+# only rotate the key that signs them all. See "Adding a host" in README.md.
 { config, pkgs, ... }:
 let
   queued-build-hook = pkgs.callPackage ../../pkgs/queued-build-hook/package.nix { };
@@ -28,7 +28,11 @@ let
   '';
 in
 {
-  sops.secrets."attic/push_token" = { };
+  sops.secrets."attic/push_token".sopsFile =
+    if builtins.pathExists ./secrets.yaml then
+      ./secrets.yaml
+    else
+      throw "modules/attic-push/secrets.yaml is missing. Mint the push token: see \"Pushing a host's builds to `public`\" in README.md.";
 
   # A queue rather than `attic watch-store`: watch-store never retries a failed upload
   # and skips every `-source` path.
