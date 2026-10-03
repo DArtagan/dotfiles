@@ -27,6 +27,8 @@ If upstream deletes its source, a package can still build as long as its fixed-o
 
 - **qbz 2.0.2** (`pkgs/qbz`, removed from nixpkgs 2026-09-18 after the author withdrew it):
   `/nix/store/2jfmb3dj1l1sc7pf6gca0vsczdkrikpi-source`, `/nix/store/ww0rw91wr6cgyjcpzg3zwr0vz8xikh30-qbz-2.0.2-vendor`
+  - Built output, with its full closure (pushed with `--ignore-upstream-cache-filter`), so a known-good build survives even if a later nixpkgs breaks the build. Built 2026-10-02 against nixpkgs `c59305b`; it needs ~40 GB of RAM + swap to compile (see `pkgs/qbz`):
+    `/nix/store/9qhhlswxz79vfcgjnprjj09nacl4gwv5-qbz-2.0.2`
 
 To add paths (Attic server config lives in the mini-nas repo, `modules/attic`):
 
