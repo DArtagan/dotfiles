@@ -6,8 +6,16 @@ let
   # Every host sets max-jobs * cores to twice its threads. A remote build runs with the
   # sending host's `cores`, so maxJobs gives senders the same budget: twice the builder's
   # threads, divided by the senders' `cores` (8 on steamdeck, the only sender).
-  # speedFactor only ranks builders against each other (CPU GHz * threads, normalized to
-  # mini-nas, matching the mini-nas repo).
+  #
+  # speedFactor is boost GHz * threads, normalized to mini-nas (the mini-nas repo uses the
+  # same numbers):
+  #   thenixbeast  Ryzen 9 9900X (Zen 5)  5.6 GHz * 24 = 134  -> 3.8 -> 4
+  #   mini-nas     Intel Haswell          4.4 GHz *  8 =  35  -> 1
+  #   steamdeck    Zen 2 APU              3.5 GHz *  8 =  28  -> 0.8 (not a builder)
+  # It ignores how much more Zen 5 does per clock, so the real gap is wider. That barely
+  # matters: Nix gives the next job to the builder with the lowest running jobs divided by
+  # speedFactor, so an idle builder always beats a busy one, and the factor only breaks
+  # ties and decides how soon a busy builder gets more.
   machines = {
     thenixbeast = {
       maxJobs = 6;

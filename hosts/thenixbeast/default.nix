@@ -283,10 +283,13 @@
       # Enable users to be trusted users of the Nix store (useful for devenv)
       # TODO: set here to match the one user declared here
       trusted-users = [ "will" ];
-      # max-jobs * cores is twice the threads, as on every host (see
-      # modules/distributed_builders). A big build gets every physical core, and memory
-      # stays well inside 30 GiB. More jobs don't speed up the many tiny derivations a
-      # switch builds: 120 took the same ~3 s at 4, 8 and 24 jobs.
+      # A big build runs 12 threads. Alone, Linux puts them one per physical core before
+      # doubling up on hyper-threads, leaving the 12 sibling threads idle. With 4 builds
+      # running, 48 threads share 24 hardware threads: twice the threads, as on every
+      # host (see modules/distributed_builders). That keeps the CPU busy through each
+      # build's single-threaded phases (configure, install, fixup), and memory well
+      # inside 30 GiB. More jobs don't speed up the many tiny derivations a switch
+      # builds: 120 took the same ~3 s at 4, 8 and 24 jobs.
       cores = 12;
       max-jobs = 4;
     };

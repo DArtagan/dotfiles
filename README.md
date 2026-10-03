@@ -18,7 +18,7 @@ Substituters are set in `configuration.nix` (`nix.settings`). Nix tries them in 
 | Cache | Priority | Purpose |
 |---|---|---|
 | `https://cache.nixos.org` | 40 | Upstream. |
-| `http://mini-nas.forge.local:8770/public` | 41 | Attic on mini-nas. mini-nas and thenixbeast push everything they build here (`modules/attic-push`). Paths expire 6 months after last access (server default). |
+| `http://mini-nas.forge.local:8770/public` | 41 | Attic on mini-nas. mini-nas, thenixbeast and steamdeck push everything they build here (`modules/attic-push`). Paths expire 6 months after last access (server default). |
 | `http://mini-nas.forge.local:8770/archive` | 50 | Attic on mini-nas, **garbage collection disabled** (retention 0). For store paths that must never disappear, such as sources whose upstream was withdrawn. |
 
 ### Pushing a host's builds to `public`

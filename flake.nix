@@ -149,6 +149,7 @@
             jovian-nixos.nixosModules.default
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
+            ./modules/attic-push
             ./modules/distributed_builders
             ./modules/droidcam
             ./modules/hotspot
