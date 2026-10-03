@@ -94,9 +94,6 @@
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    # Every host used to get sshd from modules/distributed_builders, which the deck no
-    # longer imports for accepting builds. No authorized keys, so it's password login.
-    openssh.enable = true;
     xserver.enable = true;
 
     # Dell USB-C DisplayLink adapter. "displaylink" pulls in the evdi kernel

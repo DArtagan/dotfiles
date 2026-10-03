@@ -5,9 +5,9 @@
 }:
 
 # Queues and retries Nix post-build-hook runs, so a slow hook doesn't hold up builds.
-# Not in nixpkgs. Modeled on upstream's default.nix, at the revision mini-nas pins.
-# mini-nas takes it from upstream's flake instead, as a flake input; nothing breaks if
-# the two revisions drift apart.
+# Not in nixpkgs. Modeled on upstream's default.nix. Pinned rather than taken from
+# upstream's flake: its code hasn't changed since 2024, but its lock file is bumped twice
+# a week. The mini-nas repo has a copy of this file; keep the two in step.
 buildGoModule {
   pname = "queued-build-hook";
   version = "0-unstable-2026-07-29";
