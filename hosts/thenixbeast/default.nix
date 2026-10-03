@@ -201,6 +201,14 @@
     { device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0X145827A-part7"; }
   ];
 
+  # Compressed swap in RAM, used before the NVMe partition. Building qbz
+  # (pkgs/qbz) needs ~34 GB for one rustc, more than RAM + disk swap leaves
+  # free with the desktop running. Root is ZFS, so no swapfile there.
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
+
   networking = {
     hostId = "bcd82e4b"; # Randomly generated
     hostName = "thenixbeast";
