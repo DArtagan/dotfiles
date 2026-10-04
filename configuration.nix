@@ -3,7 +3,6 @@
   imports = [
     modules/audio
     modules/bluetooth
-    modules/distributed_builders
   ];
 
   # Locality
