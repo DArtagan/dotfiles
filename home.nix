@@ -65,7 +65,16 @@
       python313Packages.psutil # For vim Recover.vim
       (pkgs.callPackage ./pkgs/qbz/package.nix { }) # removed from nixpkgs 2026-09-18 (upstream withdrawn); source comes from binary caches, see pkgs/qbz
       rclone
-      rustdesk
+      # TODO: drop once https://github.com/NixOS/nixpkgs/pull/569507 reaches nixos-unstable. Upstream re-tagged 1.5.0
+      # after nixpkgs hashed it (https://github.com/NixOS/nixpkgs/issues/569440). Only applies while nixpkgs has the stale hash.
+      (
+        if rustdesk.src.outputHash == "sha256-xuIUWxicsqCJoKRvIDy0YISCHK3qolf1nWS3XMAM3PM=" then
+          rustdesk.overrideAttrs (prev: {
+            src = prev.src.override { hash = "sha256-1xa7X+swBIb8Lz3c6m8SeNZAiJWNCUpw+UbdSsMkeSk="; };
+          })
+        else
+          rustdesk
+      )
       shotcut
       # tree  # Use `broot` instead, eventually remove this line if you prefer it
       ueberzugpp # Image preview for yazi

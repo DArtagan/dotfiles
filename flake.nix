@@ -96,7 +96,9 @@
             stylix.nixosModules.stylix
             ./modules/ai-server
             ./modules/airplay
+            ./modules/attic-push
             ./modules/containers
+            ./modules/distributed_builders
             ./modules/droidcam
             ./modules/gaming
             ./modules/stylix
@@ -109,6 +111,7 @@
                   "eno1" # wired LAN
                   "wlp9s0" # MT7922, unused while on ethernet
                 ];
+                distributedBuilders.acceptBuilds = true;
                 tailscale.operator = "will";
                 sway.outputs = {
                   "DP-3" = {
@@ -146,6 +149,8 @@
             jovian-nixos.nixosModules.default
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
+            ./modules/attic-push
+            ./modules/distributed_builders
             ./modules/droidcam
             ./modules/hotspot
             ./modules/sway
@@ -153,6 +158,10 @@
             ./hosts/steamdeck
             {
               my = {
+                distributedBuilders.builders = [
+                  "thenixbeast"
+                  "mini-nas"
+                ];
                 tailscale.operator = "willy";
                 sway.username = "willy";
                 sway.enableGreetd = false;

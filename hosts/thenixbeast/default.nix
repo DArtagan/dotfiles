@@ -81,7 +81,7 @@
   #systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
 
   services = {
-    esphome.enable = true; # For connecting to and programming ESP32 microcontrollers
+    # esphome.enable = true; # For connecting to and programming ESP32 microcontrollers  # TODO: disabled pending https://github.com/NixOS/nixpkgs/pull/550245
     # World-writable access to TI OMAP USB boot ROM devices (Nest thermostat
     # flashing via NoLongerEvil); matches the rule from docs.nolongerevil.com
     udev.extraRules = ''
@@ -277,11 +277,21 @@
   };
 
   nix = {
+    # Builds give way to the desktop.
+    daemonCPUSchedPolicy = "batch";
     settings = {
       # Enable users to be trusted users of the Nix store (useful for devenv)
       # TODO: set here to match the one user declared here
       trusted-users = [ "will" ];
+      # A big build runs 12 threads. Alone, Linux puts them one per physical core before
+      # doubling up on hyper-threads, leaving the 12 sibling threads idle. With 4 builds
+      # running, 48 threads share 24 hardware threads: twice the threads, as on every
+      # host (see modules/distributed_builders). That keeps the CPU busy through each
+      # build's single-threaded phases (configure, install, fixup), and memory well
+      # inside 30 GiB. More jobs don't speed up the many tiny derivations a switch
+      # builds: 120 took the same ~3 s at 4, 8 and 24 jobs.
       cores = 12;
+      max-jobs = 4;
     };
   };
   # This value determines the NixOS release from which the default

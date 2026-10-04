@@ -18,8 +18,17 @@ Substituters are set in `configuration.nix` (`nix.settings`). Nix tries them in 
 | Cache | Priority | Purpose |
 |---|---|---|
 | `https://cache.nixos.org` | 40 | Upstream. |
-| `http://mini-nas.forge.local:8770/public` | 41 | Attic on mini-nas. mini-nas's post-build-hook pushes its builds here. Paths expire 6 months after last access (server default). |
+| `http://mini-nas.forge.local:8770/public` | 41 | Attic on mini-nas. mini-nas, thenixbeast and steamdeck push everything they build here (`modules/attic-push`). Paths expire 6 months after last access (server default). |
 | `http://mini-nas.forge.local:8770/archive` | 50 | Attic on mini-nas, **garbage collection disabled** (retention 0). For store paths that must never disappear, such as sources whose upstream was withdrawn. |
+
+### Pushing a host's builds to `public`
+
+Hosts that import `modules/attic-push` queue each build from a post-build-hook, and a daemon pushes it, retrying for an hour if mini-nas is unreachable. Check it with `journalctl -u queued-build-hook`. mini-nas does the same, and mints its own token at boot.
+
+The other hosts share one token, in `modules/attic-push/secrets.yaml`. Attic can't revoke a single token, only rotate the key that signs them all, so per-host tokens would buy nothing. To create or replace it:
+
+1. On mini-nas: `sudo atticd-atticadm make-token --sub workstations --validity 99y --pull public --push public`
+2. `sops modules/attic-push/secrets.yaml`, and set `attic: { push_token: <token> }`.
 
 ### `archive`: keeping a package whose source vanished
 
@@ -70,7 +79,7 @@ Reference: https://wiki.nixos.org/wiki/ZFS
   ssh-keygen -t ed25519 -N "" -f "$TEMP_SSH/etc/ssh/ssh_host_ed25519_key"
   chmod 600 "$TEMP_SSH/etc/ssh/ssh_host_ed25519_key"
   ```
-3. `cat $TEMP_SSH/etc/ssh/ssh_host_ed25519_key.pub` and add that value to the `.sops.yaml` in this repo, constrain it to only caring about its own host secrets file.
+3. `cat $TEMP_SSH/etc/ssh/ssh_host_ed25519_key.pub` and add that value to the `.sops.yaml` in this repo, constrain it to only caring about its own host secrets file, plus the shared ones under "Adding a host to the build network" below.
 4. `sops updatekeys` for the file/host you'll be deploying to.
 5. Optionally, do steps similar to the ones above - creating user SSH keys to be deployed onto the machine.  Update the corresponding host secrets file with those keys, so they're deployed.  Also add new entries for them to the `.sops.yaml` because ideally the user can edit all other secrets files.
   ```
@@ -116,6 +125,16 @@ Reference: https://wiki.nixos.org/wiki/ZFS
   ```
   nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-facter ./hosts/thenixbeast/facter.json --extra-files "$TEMP_SSH" --phases kexec,install,reboot --flake .#thenixbeast --target-host root@<ip address>
   ```
+
+## Adding a host to the build network
+
+After the host's SSH key is in `.sops.yaml` (step 3 above):
+
+1. If it will push to the cache or send builds, add its key to the `modules/(attic-push|distributed_builders)/secrets.yaml` rule in `.sops.yaml`, then `sops updatekeys modules/attic-push/secrets.yaml modules/distributed_builders/secrets.yaml`. That's all it needs for the cache: there's no token to mint.
+2. Add its host key to `programs.ssh.knownHosts` in `modules/distributed_builders`, and to the mini-nas repo's copy.
+3. In `flake.nix`, import `./modules/attic-push` to push its builds, and `./modules/distributed_builders` to set `my.distributedBuilders.builders` (only hosts faster than it) or `acceptBuilds`. A host that accepts builds also needs an entry in that module's `machines`, sized as described there.
+4. Set `cores` and `max-jobs` in its `hosts/<host>/default.nix` so that `max-jobs * cores` is twice its threads, as on the other hosts.
+5. In the mini-nas repo, add it to the `build dotfiles …` line in `modules/nightly_config_builder`, so the cache is warm for it.
 
 ## tailscale
 
