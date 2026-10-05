@@ -8,6 +8,8 @@ than symlinked; see `lib/merge-json-into.nix`.
 - **Model provider:** [`pi-claude-bridge`](https://github.com/elidickinson/pi-claude-bridge),
   which runs Claude Code (via the Agent SDK) on the Claude subscription. Packaged in
   `pkgs/pi-claude-bridge` to carry local patches, and loaded from the store.
+  Its opt-in AskClaude tool is on: when another provider's model is in use, it can
+  hand questions or tasks to Claude Code (read-only unless it asks for `full`).
 - **Plan quotas:** [pi-quotas](https://github.com/latentminds-ai/pi-quotas), packaged
   in `pkgs/pi-quotas`. Shows the Claude plan's 5h/7d windows in the footer, plus
   `/quotas` and near-limit warnings. Pinned to
@@ -26,8 +28,9 @@ than symlinked; see `lib/merge-json-into.nix`.
   the context window at startup and `/reload` (`Ctrl+O` cycles detail); traceline
   collapses each tool call to one line (`Ctrl+T` toggles, with thinking blocks);
   cachemire warns when the prompt cache needs attention (`/cache` for the ledger);
-  meantime breaks down latency, but stays off until its config sets
-  `"enabled": true`.
+  meantime breaks down latency (a tempo line while it runs, slow-call notices,
+  `/pace` for the ledger). Meantime is off upstream unless
+  `~/.pi/agent/pi-meantime.json` sets `"enabled": true`, which ours does.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
 - **Terminal cursor:** a local extension (`terminal-cursor.ts`) shows the

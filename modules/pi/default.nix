@@ -16,11 +16,16 @@ in
   home = {
     # pi only rewrites this file to migrate old action names, so it can be a symlink.
     # Ctrl+Shift+Enter reaches pi through the Alacritty binding in home.nix.
-    file.".pi/agent/keybindings.json".text = builtins.toJSON {
-      "app.message.followUp" = [
-        "ctrl+shift+enter"
-        "alt+enter"
-      ];
+    file = {
+      ".pi/agent/keybindings.json".text = builtins.toJSON {
+        "app.message.followUp" = [
+          "ctrl+shift+enter"
+          "alt+enter"
+        ];
+      };
+      # pine-of-glass's latency extension is off unless this says otherwise. It only
+      # reads the file.
+      ".pi/agent/pi-meantime.json".text = builtins.toJSON { enabled = true; };
     };
 
     packages = [
@@ -57,6 +62,9 @@ in
       piClaudeBridgeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] (
         mergeJsonInto "pi-claude-bridge-managed" ".pi/agent/claude-bridge.json" {
           provider.pathToClaudeCodeExecutable = lib.getExe pkgs.claude-code;
+          # The AskClaude tool, which lets other providers' models delegate to Claude
+          # Code. claude-bridge's own models don't get it.
+          askClaude.enabled = true;
         }
       );
     };
