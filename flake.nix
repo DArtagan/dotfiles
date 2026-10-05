@@ -104,6 +104,7 @@
             ./modules/stylix
             ./modules/sway
             ./modules/tailscale
+            ./modules/todoist
             ./hosts/thenixbeast
             {
               my = {
@@ -113,6 +114,7 @@
                 ];
                 distributedBuilders.acceptBuilds = true;
                 tailscale.operator = "will";
+                todoist.user = "will";
                 sway.outputs = {
                   "DP-3" = {
                     adaptive_sync = "on";
@@ -134,6 +136,7 @@
                       ./modules/stylix/hm.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
+                      ./modules/todoist/hm.nix
                     ];
                     home = {
                       stateVersion = "25.05";
@@ -156,6 +159,7 @@
             ./modules/hotspot
             ./modules/sway
             ./modules/tailscale
+            ./modules/todoist
             ./hosts/steamdeck
             {
               my = {
@@ -164,6 +168,7 @@
                   "mini-nas"
                 ];
                 tailscale.operator = "willy";
+                todoist.user = "willy";
                 sway.username = "willy";
                 sway.enableGreetd = false;
               };
@@ -189,6 +194,7 @@
                       ./modules/pi/remote.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
+                      ./modules/todoist/hm.nix
                     ];
                     home = {
                       stateVersion = "24.05";
