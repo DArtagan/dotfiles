@@ -4,11 +4,19 @@ Doist's [Todoist CLI](https://github.com/Doist/todoist-cli), `td`, logged in
 declaratively from a sops-managed personal API token, with its agent skill
 linked into `~/.pi/agent/skills`.
 
-- `default.nix` (NixOS) decrypts `todoist/api_token` from `./secrets.yaml` to
-  `/run/secrets/todoist/api_token`, readable only by `my.todoist.user`.
-- `hm.nix` (home-manager) puts a wrapped `td` on `PATH` that reads the token on
-  each run, links `td`'s own skill for pi, and links `~/.config/todoist/token`
-  to the secret for scripts that call the API directly.
+- `hm.nix` (home-manager), imported by `home.nix` so every home gets it: puts
+  `td` on `PATH` and links `td`'s own skill for pi. When `my.todoist.tokenFile`
+  is set, `td` is wrapped to read the token from it on each run, and
+  `~/.config/todoist/token` links to it for scripts that call the API directly.
+  When it isn't, `td` falls back to `td auth login`.
+- `default.nix` (NixOS), imported per host in `flake.nix`: decrypts
+  `todoist/api_token` from `./secrets.yaml` to `/run/secrets/todoist/api_token`,
+  readable only by `my.todoist.user`, and sets that user's `tokenFile`.
+
+`td` itself only looks for a token in `TODOIST_API_TOKEN`, then GNOME Keyring,
+then a plaintext `api_token` in `~/.config/todoist-cli/config.json` (written
+only by `--credential-store=plaintext`). It never reads
+`~/.config/todoist/token`; that link is for our scripts.
 
 ## Why a personal token, not `td auth login`
 
@@ -45,4 +53,4 @@ td today
 ```
 
 `secrets.yaml` is encrypted for both hosts and both users' keys through the
-shared rule in `.sops.yaml`.
+`modules/<name>/secrets.yaml` rule in `.sops.yaml`.

@@ -72,14 +72,14 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `gaming/` — Steam, Lutris, Wine
 - `syncthing/` — file sync with predefined devices/folders
 - `vim/`, `zed/`, `qutebrowser/` — app configs
-- `todoist/` — Doist's `td` CLI, logged in from a sops-managed API token rather than `td auth login`, with its skill linked for pi. `my.todoist.user` names who can read the token. See `modules/todoist/README.md`.
+- `todoist/` — Doist's `td` CLI and its skill for pi, in every home via `home.nix`. On NixOS hosts that import the module, `td` logs in from a sops-managed API token rather than `td auth login`; `my.todoist.user` names whose. See `modules/todoist/README.md`.
 - `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, a question dialog via `rpiv-ask-user-question`, context/tool/cache observability via `pine-of-glass`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`). `modules/pi/remote.nix` adds browser access over the tailnet (agegr/pi-web and Pi Remote Control, on trial), imported per host.
 
 ### Local Packages (`pkgs/`)
 Packages missing from nixpkgs, or needing a newer version or local patches, each in `pkgs/<name>/package.nix` and pulled in with `pkgs.callPackage`. When one exists in nixpkgs, model it on the nixpkgs version and leave a `TODO` to switch back once nixpkgs catches up (see `pkgs/ketch`). When one is pinned to an unmerged upstream PR or carries a patch, name the PR/issue in a comment, so it's clear when to go back to a release (see `pkgs/pi-quotas`). To bump or add a pi package (the bridge, extensions, pi-web, ketch), follow `modules/pi/UPDATING.md`.
 
 ### Secrets Management
-SOPS + age encryption. Each host has `hosts/<name>/secrets.yaml` encrypted with that host's SSH key. Key assignments are in `.sops.yaml`. Edit secrets with `sops hosts/<name>/secrets.yaml`.
+SOPS + age encryption. Each host has `hosts/<name>/secrets.yaml` encrypted with that host's SSH key. Modules that need a secret on every host keep it in `modules/<name>/secrets.yaml`, which one `.sops.yaml` rule encrypts for all hosts and users. Key assignments are in `.sops.yaml`. Edit secrets with `sops <path>/secrets.yaml`.
 
 ### Binary Caches
 Substituters: cache.nixos.org, then Attic on mini-nas (`public`, 6-month GC; `archive`, GC disabled). `archive` pins store paths that must never disappear, e.g. sources of packages whose upstream was withdrawn (`pkgs/qbz`). The procedure for pushing to it is in `README.md` under "Binary caches".

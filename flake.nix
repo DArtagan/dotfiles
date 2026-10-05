@@ -136,7 +136,6 @@
                       ./modules/stylix/hm.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
-                      ./modules/todoist/hm.nix
                     ];
                     home = {
                       stateVersion = "25.05";
@@ -194,7 +193,6 @@
                       ./modules/pi/remote.nix
                       ./modules/syncthing
                       ./modules/tailscale/hm.nix
-                      ./modules/todoist/hm.nix
                     ];
                     home = {
                       stateVersion = "24.05";

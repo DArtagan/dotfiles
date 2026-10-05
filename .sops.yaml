@@ -16,7 +16,7 @@ creation_rules:
         - *thenixbeast
         - *steamdeck_willy
         - *thenixbeast_will
-  - path_regex: modules/(attic-push|distributed_builders|todoist)/secrets.yaml
+  - path_regex: modules/[^/]+/secrets\.yaml$
     key_groups:
       - age:
         - *thenixbeast
