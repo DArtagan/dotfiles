@@ -12,7 +12,7 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 | Package | Source | Pinned by | Other hashes | Carries |
 |---|---|---|---|---|
 | pi (`pi-coding-agent`) | nixpkgs | `flake.lock` | | |
-| `pi-claude-bridge` | GitHub commit (no tags upstream) | `rev`, `hash` | `npmDepsHash` | two patches |
+| `pi-claude-bridge` | GitHub commit (no tags upstream) | `rev`, `hash` | `npmDepsHash` | one patch; `postPatch` drops dev and peer dependencies |
 | `pi-quotas` | GitHub commit on a fork | `rev`, `hash` | | the fork itself ([#51](https://github.com/latentminds-ai/pi-quotas/pull/51)) |
 | `pine-of-glass` | GitHub tag | `version`, `hash` | | |
 | `rpiv-ask-user-question` | npm tarball | `version`, `hash` | `rpiv-config` tarball | |
@@ -107,11 +107,27 @@ git diff --no-ext-diff > /path/to/dotfiles/pkgs/<name>/<patch>
 `--no-ext-diff` matters: `git diff` here uses difftastic. Keep each patch's comment
 in `package.nix` current, and note when one has been sent upstream.
 
-The `lockfile-integrity.patch` files (bridge and agegr) add `integrity` to lockfile
-entries that lack it, since `fetchNpmDeps` requires it. The missing entries change
-with the lockfile, so regenerate the patch rather than rebasing it. In a clone at the
-new version (for agegr, the repo at the release tag), this fills each one from the
-registry, right after its `resolved` line:
+`fetchNpmDeps` fetches every entry in a lockfile, including ones npm won't install
+(`--omit=dev` only applies at install), and fails on any entry without `integrity`.
+Some upstream lockfiles have such entries, which come in two kinds:
+
+- **Dev-only** (`"dev": true`), as in the bridge: delete them in `postPatch`, which
+  `fetchNpmDeps` also runs. That needs no upkeep across versions. Delete
+  `peerDependencies` too, if the package declares pi as one: npm would otherwise
+  try to fetch pi to satisfy them, and pi supplies its own packages at load time.
+- **Needed at runtime**, as in agegr pi-web, which runs its own pi: fill them in with
+  `lockfile-integrity.patch`.
+
+Check which kind with:
+
+```bash
+jq -r '.packages | to_entries[] | select(.value.resolved and (.value.integrity | not))
+  | "\(.key) \(.value.version) dev=\(.value.dev // false)"' package-lock.json
+```
+
+The missing entries change with the lockfile, so regenerate `lockfile-integrity.patch`
+rather than rebasing it. In a clone at the new version (for agegr, the repo at the
+release tag), this fills each one from the registry, right after its `resolved` line:
 
 ```bash
 filter='.'
