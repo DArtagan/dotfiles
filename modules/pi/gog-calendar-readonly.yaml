@@ -1,0 +1,48 @@
+# gog safety profile for google.nix: reading calendars, and nothing else. Commands not
+# listed are blocked. Leaves are listed one by one, so commands added to gog later
+# stay blocked until they're added here.
+name: calendar-readonly
+description: Read Google Calendar only.
+
+version: true
+schema: true
+time: true
+
+calendar:
+  acl: true
+  alias:
+    list: true
+  calendars: true
+  changed: true
+  colors: true
+  conflicts: true
+  event: true
+  events: true
+  freebusy: true
+  raw: true
+  search: true
+  time: true
+
+# To inspect the login; changing it takes the unrestricted gog (see README.md).
+auth:
+  credentials:
+    list: true
+  doctor: true
+  list: true
+  services: true
+  status: true
+
+config:
+  get: true
+  keys: true
+  list: true
+  path: true
+
+aliases:
+  status: true
+
+locked-flags:
+  # Event titles and descriptions come from whoever sends an invite.
+  wrap-untrusted: true
+  readonly: true
+  no-input: true
