@@ -53,7 +53,7 @@ than symlinked; see `lib/merge-json-into.nix`.
   and it left tmux's `extended-keys` off, which pi warns about at startup.
 
 These packages are loaded from the store, so `pi update --extensions` doesn't
-touch them: bump their versions in `pkgs/`.
+touch them: bump their versions in `pkgs/`, following `UPDATING.md`.
 
 ## Testing an extension without switching
 
