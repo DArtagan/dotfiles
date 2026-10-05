@@ -72,7 +72,7 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `gaming/` — Steam, Lutris, Wine
 - `syncthing/` — file sync with predefined devices/folders
 - `vim/`, `zed/`, `qutebrowser/` — app configs
-- `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`).
+- `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`). `modules/pi/remote.nix` adds browser access over the tailnet (agegr/pi-web and Pi Remote Control, on trial), imported per host.
 
 ### Local Packages (`pkgs/`)
 Packages missing from nixpkgs, or needing a newer version or local patches, each in `pkgs/<name>/package.nix` and pulled in with `pkgs.callPackage`. When one exists in nixpkgs, model it on the nixpkgs version and leave a `TODO` to switch back once nixpkgs catches up (see `pkgs/ketch`). When one is pinned to an unmerged upstream PR or carries a patch, name the PR/issue in a comment, so it's clear when to go back to a release (see `pkgs/pi-quotas`).

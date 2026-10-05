@@ -100,3 +100,57 @@ start the browser.
   WebFetch summarizes pages with Haiku before the main model sees them. Would
   need a bridge patch to allow those builtins in provider mode, and only works
   while claude-bridge is the provider.
+
+## Remote access
+
+Two browser UIs for pi sessions, on trial against each other. `remote.nix` sets
+them up as user services on the NixOS hosts (imported per host in `flake.nix`).
+Neither starts on its own:
+
+| UI | Start | Open |
+|---|---|---|
+| [agegr/pi-web](https://github.com/agegr/pi-web) | `systemctl --user start pi-web` | `http://<host>.forge.local:30141` |
+| [Pi Remote Control](https://github.com/mipsel64/pi-remote-control) (prc) | `systemctl --user start pi-remote-control` | `http://<host>.forge.local:8787` |
+
+They work differently, which decides how they fit alongside the TUI:
+
+- **agegr** runs sessions itself, reading and writing the same session files as
+  the TUI. It can start sessions and resume any TUI session, and shows edits as
+  diffs. It doesn't see what a running TUI does to an open session, nor the TUI
+  what it does: if both continue the same session, it forks. Hand off instead:
+  quit the TUI before continuing from the browser, and on returning `/resume`
+  the session in the TUI (`/tree` to pick the branch that went on in the
+  browser). Picking a model for a new session sets pi's default, as `/model`
+  does; a switch puts ours back. It unloads sessions idle for 10 minutes.
+- **prc** mirrors running TUI sessions, live, in both directions: prompts from
+  the browser land in the TUI. Attach a session with `/rc` in the TUI (again
+  after `/new`). It can't start sessions, and a session goes read-only in the
+  browser once its TUI exits. Its password is generated on first start:
+  `jq -r .adminPassword ~/.config/prc/config.json`. Logins last a week, but the
+  server keeps them in memory, so log in again after restarting it.
+
+Both listen on every address and rely on the firewall, which trusts only
+loopback, `tailscale0`, and the Steam Deck's hotspot (`ap0`). agegr has no
+password; both reject requests from other sites. agegr serves `<host>`,
+`<host>.forge.local`, and IP addresses; prc only `http://<host>.forge.local:8787`.
+It's plain HTTP: Headscale can't issue certificates for `tailscale serve`
+([juanfont/headscale#2527](https://github.com/juanfont/headscale/issues/2527)),
+so neither can send push notifications or install as an app.
+
+agegr's sessions get the service's environment, not a shell's: `PATH` is set to
+the user profile and system paths in `remote.nix`, but nothing else is.
+
+Local changes, none sent upstream yet:
+
+- `pkgs/pi-claude-bridge/multi-session-registration.patch`: without it, agegr's
+  sessions start with no claude-bridge models. The bridge registered its
+  provider only once per process and expected later sessions to share that
+  registry; agegr gives each session its own and picks its model before the
+  bridge's deferred registration ran.
+- `pkgs/pi-remote-control/edit-diff-view.patch`: prc showed edits as raw JSON.
+- `pkgs/agegr-pi-web` packages the npm release (prebuilt), since building from
+  source fetches a Google font.
+
+Ending the trial: drop the loser's service and package from `remote.nix` (and,
+for prc, the activation that loads its extension), or delete `remote.nix` and its
+imports in `flake.nix`.
