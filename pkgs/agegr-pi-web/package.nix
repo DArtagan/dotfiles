@@ -10,7 +10,7 @@
 # the sandbox blocks. The release has no lockfile, so this uses the repo's lockfile
 # at the same tag, whose root dependencies match the release's.
 let
-  version = "0.9.3";
+  version = "0.10.0";
 in
 buildNpmPackage {
   pname = "agegr-pi-web";
@@ -18,28 +18,28 @@ buildNpmPackage {
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@agegr/pi-web/-/pi-web-${version}.tgz";
-    hash = "sha512-tH7D8aGjt1UsJxuejIjw6ZJwhMqikFwlQrbG3BKZ2jEJFLLq0fHzIRXYyi5Tiaj354321hUfkOslXxYa1hxPCw==";
+    hash = "sha512-ePmDbLYBrPH5rLIk+0ia8yKMd0iMh/Zk9P5c3kvO1TzWGzwpIlB9fqSmLvBr6fteKjAfGYyzTnmdQNv1GzpcGQ==";
   };
 
   prePatch = ''
     cp ${
       fetchurl {
         url = "https://raw.githubusercontent.com/agegr/pi-web/v${version}/package-lock.json";
-        hash = "sha256-fEz8iPChX6RnfNvAbiQxJWaLzAoDXmYS0W8kg6vTtQY=";
+        hash = "sha256-46W3N3+W4v46Z8TJZBOWrRk0pDLkJKbNsxd5VWAQ+M0=";
       }
     } package-lock.json
     chmod u+w package-lock.json
   '';
 
   patches = [
-    # Five entries lack `integrity`, which fetchNpmDeps requires; hashes from the npm registry.
+    # Seven entries lack `integrity`, which fetchNpmDeps requires; hashes from the npm registry.
     ./lockfile-integrity.patch
   ];
 
-  # v1 can't find the tarballs the lockfile lists twice (pi 0.87.1's packages, nested
+  # v1 can't find the tarballs the lockfile lists twice (pi 1.0.0's packages, nested
   # under pi-coding-agent as well as at the top level).
   npmDepsFetcherVersion = 2;
-  npmDepsHash = "sha256-nSb8yxZpfXrI1QoX2XeR+LSpqg1aXTUGCQYrIqTIkAM=";
+  npmDepsHash = "sha256-b5jPpRshUBAxZN/BUlvD7cbJX4qSuSs6EsJc6MzDylI=";
 
   npmInstallFlags = [ "--omit=dev" ];
   dontNpmBuild = true;
