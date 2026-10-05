@@ -8,6 +8,8 @@ let
   mergeJsonInto = import ../../lib/merge-json-into.nix { inherit pkgs; };
   pi-claude-bridge = pkgs.callPackage ../../pkgs/pi-claude-bridge/package.nix { };
   pi-quotas = pkgs.callPackage ../../pkgs/pi-quotas/package.nix { };
+  pine-of-glass = pkgs.callPackage ../../pkgs/pine-of-glass/package.nix { };
+  rpiv-ask-user-question = pkgs.callPackage ../../pkgs/rpiv-ask-user-question/package.nix { };
   ketch = pkgs.callPackage ../../pkgs/ketch/package.nix { };
 in
 {
@@ -38,6 +40,8 @@ in
           packages = [
             "${pi-claude-bridge}/lib/node_modules/pi-claude-bridge"
             "${pi-quotas}"
+            "${pine-of-glass}"
+            "${rpiv-ask-user-question}"
           ];
           extensions = [
             "${./exit.ts}"

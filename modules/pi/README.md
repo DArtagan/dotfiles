@@ -15,6 +15,19 @@ than symlinked; see `lib/merge-json-into.nix`.
   Code's login so claude-bridge models get quotas; it never refreshes that login,
   so an expired one shows until Claude Code refreshes it.
 - **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
+- **Asking instead of guessing:**
+  [rpiv-ask-user-question](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question),
+  packaged in `pkgs/rpiv-ask-user-question` from its npm release. Adds an
+  `ask_user_question` tool, which opens a dialog of up to four multiple-choice
+  questions (each with a free-text row); `Ctrl+]` collapses it to read the
+  transcript. Optional config: `~/.config/rpiv-ask-user-question/config.json`.
+- **Observability:** [pine-of-glass](https://github.com/tmustier/pine-of-glass),
+  packaged in `pkgs/pine-of-glass`. Four extensions: contextimate lists what fills
+  the context window at startup and `/reload` (`Ctrl+O` cycles detail); traceline
+  collapses each tool call to one line (`Ctrl+T` toggles, with thinking blocks);
+  cachemire warns when the prompt cache needs attention (`/cache` for the ledger);
+  meantime breaks down latency, but stays off until its config sets
+  `"enabled": true`.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
 - **Terminal cursor:** a local extension (`terminal-cursor.ts`) shows the
@@ -36,8 +49,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   `docs/terminal-setup.md` advises against that because it hides the real key,
   and it left tmux's `extended-keys` off, which pi warns about at startup.
 
-The bridge and pi-quotas are loaded from the store, so `pi update --extensions`
-doesn't touch them: bump their versions in `pkgs/`.
+These packages are loaded from the store, so `pi update --extensions` doesn't
+touch them: bump their versions in `pkgs/`.
 
 ## Testing an extension without switching
 
