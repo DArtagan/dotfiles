@@ -1,42 +1,60 @@
+diff --git a/package-lock.json b/package-lock.json
+index f5926cf..a6f2ed0 100644
 --- a/package-lock.json
 +++ b/package-lock.json
-@@ -1252,6 +1252,7 @@
+@@ -1220,6 +1220,7 @@
      "node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/chord": {
-       "version": "0.87.1",
-       "resolved": "https://registry.npmjs.org/@earendil-works/chord/-/chord-0.87.1.tgz",
-+      "integrity": "sha512-bg7IkJGFcEaMqqYgOGUiq5Ky9RghpRfrlZ8I/v/1b4bBZ02A7t3E+6uhPRbadwWb/kWsnVFbZsqOKRN4a3LLCg==",
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/@earendil-works/chord/-/chord-1.0.0.tgz",
++      "integrity": "sha512-BIfWfrByM0pKq6tfKYXuwx0ed2CvaqIM3EDA7Dps+fP+d3CiPWdlHi1cDsJC05llqKJoRz5//G0hz0yQwwjISQ==",
        "license": "MIT",
        "dependencies": {
          "esbuild": "0.28.2"
-@@ -1263,6 +1264,7 @@
+@@ -1231,6 +1232,7 @@
      "node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-agent-core": {
-       "version": "0.87.1",
-       "resolved": "https://registry.npmjs.org/@earendil-works/pi-agent-core/-/pi-agent-core-0.87.1.tgz",
-+      "integrity": "sha512-Zev3B0HK7YS5A4EZQ2XnEqiJuirx6QBiltJ+LpmjV5a/+2IU0cfKtIfnkNkORK707XOvKBY2WRtk7cAwHpbh2Q==",
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/@earendil-works/pi-agent-core/-/pi-agent-core-1.0.0.tgz",
++      "integrity": "sha512-bHFONjtEBDqiV+g1DmmtkSlfAaqHELr+XO+6I5Nah4gswwZrLJO4yZB/JjsnlI4AKWTayBLfgS6DCbeBBz9e2Q==",
        "license": "MIT",
        "dependencies": {
-         "@earendil-works/chord": "^0.87.1",
-@@ -1280,6 +1282,7 @@
+         "@earendil-works/pi-ai": "^1.0.0",
+@@ -1243,6 +1245,7 @@
      "node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-ai": {
-       "version": "0.87.1",
-       "resolved": "https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-0.87.1.tgz",
-+      "integrity": "sha512-X/3PfQBnnoeVdO9Cv8zHghUMglzlgNZYGNzoPnbRoGnHl3Rw3TlA2UKSUB7BRHUOxMryHXYa8dnjWZlbRheDZA==",
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-1.0.0.tgz",
++      "integrity": "sha512-3/W1vdDaVtpeMd23ElvJC12HLA5yS/BGqqcXF+0SK082dN7cbgNcCwguTBRBC258Ke8SzSvUW1B75iAf8w8IxA==",
        "license": "MIT",
        "dependencies": {
          "@anthropic-ai/sdk": "0.124.0",
 @@ -1326,6 +1329,7 @@
+     "node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-codemode": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/@earendil-works/pi-codemode/-/pi-codemode-1.0.0.tgz",
++      "integrity": "sha512-LPpFI4+T9NzDnhBDs15izWAolaoM8xnwqdziRd6Zx8BQeoEPvzefD2vMMzSyF0rOtq34TfQqkZ0ki16f6cGdMg==",
+       "license": "MIT",
+       "dependencies": {
+         "quickjs-wasi": "3.6.2"
+@@ -1337,6 +1341,7 @@
+     "node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-mcp": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/@earendil-works/pi-mcp/-/pi-mcp-1.0.0.tgz",
++      "integrity": "sha512-rYra0aF5iPmJd+fsB+VBuqxWNABGJ3Iiyhg0CqIc/91ta2n7IvQmCp0Cac/YkUTNnvRsVZnjgAiBkRi6+ouWuw==",
+       "license": "MIT",
+       "dependencies": {
+         "cross-spawn": "7.0.6"
+@@ -1348,6 +1353,7 @@
      "node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-telemetry": {
-       "version": "0.87.1",
-       "resolved": "https://registry.npmjs.org/@earendil-works/pi-telemetry/-/pi-telemetry-0.87.1.tgz",
-+      "integrity": "sha512-MC6TRQH5lgMXpcN+Vku2WMI2T8BsiUPzMQHGo81uqFZD3/9O79WWJAysEDGuzduP6R4tvtgwMLwmqIxynM10JQ==",
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/@earendil-works/pi-telemetry/-/pi-telemetry-1.0.0.tgz",
++      "integrity": "sha512-WjNBj5TYIiPZFQEz2WlULcDwPLaKwIlmsKjVeYM+LJSbnSp38kWsHUJysIDGnu23IcLbKoPtywsvYfUJCeZePA==",
        "license": "MIT",
        "engines": {
          "node": ">=22.19.0"
-@@ -1334,6 +1338,7 @@
+@@ -1356,6 +1362,7 @@
      "node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-tui": {
-       "version": "0.87.1",
-       "resolved": "https://registry.npmjs.org/@earendil-works/pi-tui/-/pi-tui-0.87.1.tgz",
-+      "integrity": "sha512-YEH2vRyOeiO7hhN6j6AE6YwKSq2Kz2f3XR8bj1TbR+aGE/JsnY1hLPMI2pvaZfRM1n9Y00tejxFQ4zbzvF7nkQ==",
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/@earendil-works/pi-tui/-/pi-tui-1.0.0.tgz",
++      "integrity": "sha512-JsT7kXnpZA2YOtQu6RyriyxEO0eJIzPyfiH09bH+OLN5+s18HYkwaUD/tBkjhnSfMu6/50CQPRYJagzSP6HdPw==",
        "license": "MIT",
        "dependencies": {
          "get-east-asian-width": "1.6.0",

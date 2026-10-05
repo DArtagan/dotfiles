@@ -109,18 +109,22 @@ in `package.nix` current, and note when one has been sent upstream.
 
 The `lockfile-integrity.patch` files (bridge and agegr) add `integrity` to lockfile
 entries that lack it, since `fetchNpmDeps` requires it. The missing entries change
-with the lockfile, so regenerate the patch rather than rebasing it. List the entries
-that need it:
+with the lockfile, so regenerate the patch rather than rebasing it. In a clone at the
+new version (for agegr, the repo at the release tag), this fills each one from the
+registry, right after its `resolved` line:
 
 ```bash
-jq -r '.packages | to_entries[] | select(.value.resolved and (.value.integrity | not))
-  | "\(.key) \(.value.version)"' package-lock.json
+filter='.'
+while read -r key ver; do
+  integ=$(npm view "${key##*node_modules/}@$ver" dist.integrity)
+  filter+=" | .packages[\"$key\"] |= (to_entries | map(if .key == \"resolved\" then ., {key: \"integrity\", value: \"$integ\"} else . end) | from_entries)"
+done < <(jq -r '.packages | to_entries[] | select(.value.resolved and (.value.integrity | not)) | "\(.key) \(.value.version)"' package-lock.json)
+jq "$filter" package-lock.json > lock.tmp && mv lock.tmp package-lock.json
+git diff --no-ext-diff --stat   # only insertions, one per entry
+git diff --no-ext-diff package-lock.json > /path/to/dotfiles/pkgs/<name>/lockfile-integrity.patch
 ```
 
-Look each one up with `npm view <name>@<version> dist.integrity`, using the package
-name from the end of the path, and add an `"integrity"` line after its `"resolved"`
-line. Then `git diff --no-ext-diff package-lock.json`. If the list is empty, delete
-the patch.
+If no entries lack integrity, delete the patch instead.
 
 ### 5. Keep the docs in step
 
@@ -151,10 +155,36 @@ errors. Then try what it does:
 | pine-of-glass | The contextimate panel at startup; after one prompt, the cachemire/traceline turn line; `/cache` and `/pace` answer (`/pace` needs `pi-meantime.json` with `"enabled": true`, which works project-level in `<cwd>/.pi/`). |
 | rpiv-ask-user-question | Ask the model to use `ask_user_question`; the dialog opens and the chosen answer reaches the model. |
 | pi-remote-control | After a switch: `systemctl --user restart pi-remote-control`, `/rc` in a TUI session, and the session shows at `http://<host>.forge.local:8787`. |
-| agegr-pi-web | After a switch: `systemctl --user restart pi-web`; `http://<host>.forge.local:30141` lists sessions, and a new one gets claude-bridge models. |
+| agegr-pi-web | Before switching, run the new build alongside the service (below). Two new sessions in a row must both answer on a claude-bridge model: the bridge's registration patch is for the second. |
 | ketch | `ketch search --json --limit 3 "<query>"` returns results. |
 
 Kill the tmux session afterwards. Say in the commit or PR what wasn't tested.
+
+To test pi-web (or a new bridge inside it) without touching the running service or
+your settings, give it a scratch agent dir and a spare port, in tmux:
+
+```bash
+mkdir /tmp/pi-agent-test
+jq --arg b "<bridge store path>/lib/node_modules/pi-claude-bridge" '.packages = [$b]' \
+  ~/.pi/agent/settings.json > /tmp/pi-agent-test/settings.json
+cp ~/.pi/agent/claude-bridge.json /tmp/pi-agent-test/
+PI_CODING_AGENT_DIR=/tmp/pi-agent-test PI_WEB_SKIP_VERSION_CHECK=1 \
+  <pi-web store path>/bin/pi-web --hostname 127.0.0.1 --port 30199 --no-open
+```
+
+Its API only serves folders that hold sessions or have been validated, as the UI
+does when a folder is picked; anything else gets `{"error":"Access denied"}`.
+Avoid `POST /api/default-cwd`, which creates `~/pi-cwd/<date>`.
+
+```bash
+web() { curl -s -H 'Origin: http://127.0.0.1:30199' -H 'Content-Type: application/json' "$@"; }
+web -X POST -d '{"cwd":"/tmp/x"}' http://127.0.0.1:30199/api/cwd/validate
+web -X POST -d '{"cwd":"/tmp/x","type":"prompt","message":"Reply with exactly: ok","provider":"claude-bridge","modelId":"claude-haiku-4-5"}' \
+  http://127.0.0.1:30199/api/agent/new
+```
+
+The reply lands in the newest `/tmp/pi-agent-test/sessions/*/*.jsonl`. Delete
+`/tmp/pi-agent-test` afterwards.
 
 ### 8. Build the hosts and commit
 

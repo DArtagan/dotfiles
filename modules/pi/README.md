@@ -154,7 +154,8 @@ It's plain HTTP: Headscale can't issue certificates for `tailscale serve`
 so neither can send push notifications or install as an app.
 
 agegr's sessions get the service's environment, not a shell's: `PATH` is set to
-the user profile and system paths in `remote.nix`, but nothing else is.
+the user profile and system paths in `remote.nix`, but nothing else is. A new
+session starts in a folder for the day, `~/pi-cwd/YYYYMMDD`, unless one is picked.
 
 Local changes, none sent upstream yet:
 

@@ -9,20 +9,20 @@
 # TypeScript that pi compiles at load time, so there is no build step.
 buildNpmPackage {
   pname = "pi-claude-bridge";
-  version = "0.9.0";
+  version = "0.9.1";
 
-  # No v0.9.0 tag upstream; this is the "Release 0.9.0" commit, which matches npm.
+  # No v0.9.1 tag upstream; this is the "Release 0.9.1" commit, which matches npm.
   src = fetchFromGitHub {
     owner = "elidickinson";
     repo = "pi-claude-bridge";
-    rev = "20485034a865c64088dc4ba8d0cb3c23df85aada";
-    hash = "sha256-UprlmG6K97pHXqlkBDxU9qoKI/wkonXSfZJbs99s1xE=";
+    rev = "9dafd0301faad79cf6a1974d92af424189476b5d";
+    hash = "sha256-Y3uNnHRrcdc3v9PJepG9W+GjBNmq1V9XW08aeV/UM5U=";
   };
 
-  npmDepsHash = "sha256-pLpEarP11q+ePUE/dsJavOVJ9fnLtfo57dg8ICzYn8g=";
+  npmDepsHash = "sha256-ZKaXrGJmOD59qTmOwJF/aTxvtZGr4TFPOzGDozU0uNQ=";
 
   patches = [
-    # Five dev-only lockfile entries lack `integrity`, which fetchNpmDeps requires.
+    # Seven dev-only lockfile entries lack `integrity`, which fetchNpmDeps requires.
     ./lockfile-integrity.patch
     # Register the provider in every session of a host that runs several in one process
     # (agegr/pi-web), which otherwise start with no claude-bridge models. Local; not yet
