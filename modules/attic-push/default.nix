@@ -16,9 +16,16 @@ let
     token-file = "/run/credentials/queued-build-hook.service/attic-push-token"
   '';
 
-  # Run by the queued-build-hook daemon, which retries it on failure.
+  # Run by the queued-build-hook daemon. Retries itself rather than through the daemon's
+  # --retries, to cap the whole push at an hour: an attempt that atticd fails can take 15
+  # minutes, so a count of retries doesn't bound the time, and a successful push can
+  # take 25, so neither can a timeout on each attempt.
   pushHook = pkgs.writeShellScript "attic-push" ''
-    exec ${pkgs.attic-client}/bin/attic push mini-nas:public $OUT_PATHS
+    exec ${pkgs.coreutils}/bin/timeout 1h ${pkgs.bash}/bin/bash -c '
+      until ${pkgs.attic-client}/bin/attic push mini-nas:public $OUT_PATHS; do
+        sleep 60
+      done
+    '
   '';
 
   # Nix runs the post-build-hook synchronously, while still holding the build's output
@@ -56,11 +63,11 @@ in
     requires = [ "queued-build-hook.socket" ];
     environment.XDG_CONFIG_HOME = "${atticConfig}";
     serviceConfig = {
-      # Retries ride out an hour of mini-nas being unreachable. Pushes still queued after
-      # that, or when this service stops, are dropped; the queue only lives in memory.
+      # pushHook does the retrying, so the daemon runs it once. Pushes it gives up on, or
+      # still queued when this service stops, are dropped; the queue only lives in memory.
       # Concurrency is capped because each finished derivation queues its own push, and
-      # a large build otherwise starts hundreds at once against atticd's SQLite.
-      ExecStart = "${queued-build-hook}/bin/queued-build-hook daemon --hook ${pushHook} --retry-interval 60 --retries 60 --concurrency 2";
+      # a large build otherwise starts hundreds at once against atticd's database.
+      ExecStart = "${queued-build-hook}/bin/queued-build-hook daemon --hook ${pushHook} --retries 1 --concurrency 2";
       DynamicUser = true;
       LoadCredential = "attic-push-token:${config.sops.secrets."attic/push_token".path}";
       Restart = "on-failure";
