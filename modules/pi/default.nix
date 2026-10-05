@@ -13,6 +13,8 @@ let
   ketch = pkgs.callPackage ../../pkgs/ketch/package.nix { };
 in
 {
+  imports = [ ./google.nix ];
+
   home = {
     # pi only rewrites this file to migrate old action names, so it can be a symlink.
     # Ctrl+Shift+Enter reaches pi through the Alacritty binding in home.nix.

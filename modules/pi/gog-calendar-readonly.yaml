@@ -32,15 +32,6 @@ auth:
   services: true
   status: true
 
-config:
-  get: true
-  keys: true
-  list: true
-  path: true
-
-aliases:
-  status: true
-
 locked-flags:
   # Event titles and descriptions come from whoever sends an invite.
   wrap-untrusted: true

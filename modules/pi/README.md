@@ -17,8 +17,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   Code's login so claude-bridge models get quotas; it never refreshes that login,
   so an expired one shows until Claude Code refreshes it.
 - **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
-- **Google Calendar:** read-only, through [gog](https://gogcli.sh), on hosts that
-  import `google.nix`. See below.
+- **Google Calendar:** read-only, through [gog](https://gogcli.sh) (`google.nix`).
+  See below.
 - **Asking instead of guessing:**
   [rpiv-ask-user-question](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question),
   packaged in `pkgs/rpiv-ask-user-question` from its npm release. Adds an
@@ -121,7 +121,7 @@ start the browser.
 
 ## Google Calendar
 
-`google.nix` (imported per host in `flake.nix`) gives pi read access to
+`google.nix` gives pi read access to
 william@weiskopf.me's calendars through [gog](https://gogcli.sh), with gog's
 `gog` and `gog-calendar` skills linked into `~/.pi/agent/skills`. We chose gog
 over Google's `gws` for its safety controls.
