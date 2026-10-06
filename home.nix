@@ -8,6 +8,7 @@
   imports = [
     modules/pi
     modules/qutebrowser
+    modules/todoist
     modules/vim
     modules/zed
   ];
