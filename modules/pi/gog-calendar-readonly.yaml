@@ -23,14 +23,11 @@ calendar:
   search: true
   time: true
 
-# To inspect the login; changing it takes the unrestricted gog (see README.md).
+# gog's skills check the login with these. Changing it takes the unrestricted gog
+# (see README.md).
 auth:
-  credentials:
-    list: true
   doctor: true
   list: true
-  services: true
-  status: true
 
 locked-flags:
   # Event titles and descriptions come from whoever sends an invite.
