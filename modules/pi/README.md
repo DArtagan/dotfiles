@@ -17,6 +17,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   Code's login so claude-bridge models get quotas; it never refreshes that login,
   so an expired one shows until Claude Code refreshes it.
 - **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
+- **Google Calendar:** read-only, through [gog](https://gogcli.sh) (`google.nix`).
+  See below.
 - **Asking instead of guessing:**
   [rpiv-ask-user-question](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question),
   packaged in `pkgs/rpiv-ask-user-question` from its npm release. Adds an
@@ -116,6 +118,47 @@ start the browser.
   WebFetch summarizes pages with Haiku before the main model sees them. Would
   need a bridge patch to allow those builtins in provider mode, and only works
   while claude-bridge is the provider.
+
+## Google Calendar
+
+`google.nix` gives pi read access to
+william@weiskopf.me's calendars through [gog](https://gogcli.sh), with gog's
+`gog` and `gog-calendar` skills linked into `~/.pi/agent/skills`. We chose gog
+over Google's `gws` for its safety controls.
+
+The `gog` on `PATH` is built by `pkgs/gog-safe` with a safety profile compiled in
+(`gog-calendar-readonly.yaml`). It runs calendar reads and nothing else, and
+always wraps event text as untrusted, since anyone can send an invite. Flags,
+env vars and config can't loosen it. Its token, under the OAuth client name
+`calendar-readonly`, only has the `calendar.readonly` scope.
+
+The scope is the real limit. pi's bash runs as us, so it could reach the token
+or run another gog. The profile guards against mistakes and casual prompt
+injection, not a determined attacker. Give a future profile (mail, writes) its
+own client name so it gets its own token.
+
+### Logging in
+
+Once, in the Google Cloud console:
+
+1. Create a project and enable the Google Calendar API.
+2. Set the OAuth consent screen's audience to **Internal**. For a Workspace
+   account this skips Google's verification and the 7-day token expiry of
+   External apps in testing.
+3. Create an OAuth client of type **Desktop app** and download its JSON.
+
+Then on each host, with the unrestricted gog (our `gog` blocks auth changes):
+
+```bash
+nix run nixpkgs#gogcli -- --client calendar-readonly auth credentials set ~/Downloads/client_secret_*.json
+nix run nixpkgs#gogcli -- --client calendar-readonly auth add william@weiskopf.me --services calendar --readonly
+gog auth doctor --check
+gog calendar events --today
+```
+
+`auth add` opens a browser; `--manual` prints a URL to open elsewhere instead.
+The token goes in GNOME Keyring, which both hosts run. gog can't read it while the
+keyring is locked or unreachable, e.g. over SSH with no desktop session.
 
 ## Remote access
 
