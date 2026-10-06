@@ -1,25 +1,25 @@
-# NixOS half of the todoist module: decrypts the Todoist API token for one user and
-# points that user's `td` at it.
-#
-# Pairs with ./hm.nix, which home.nix imports for every user. See ./README.md.
-{ config, lib, ... }:
+# Doist's `td` CLI and its agent skill for pi. Home-manager module, imported by
+# home.nix. Logging in is a manual step on each host; see ./README.md.
+{ pkgs, ... }:
 let
-  cfg = config.my.todoist;
-  secret = config.sops.secrets."todoist/api_token";
+  # td writes its own skill, matched to its version. It needs no network or login.
+  skill =
+    pkgs.runCommand "todoist-cli-skill-${pkgs.todoist-cli.version}"
+      {
+        nativeBuildInputs = [ pkgs.todoist-cli ];
+      }
+      ''
+        export HOME=$TMPDIR
+        cd $TMPDIR
+        td skill install universal --local
+        cp -r .agents/skills/todoist-cli $out
+      '';
 in
 {
-  options.my.todoist.user = lib.mkOption {
-    type = lib.types.str;
-    example = "will";
-    description = "User who may read the Todoist API token, and whose `td` logs in with it.";
-  };
+  home = {
+    packages = [ pkgs.todoist-cli ];
 
-  config = {
-    sops.secrets."todoist/api_token" = {
-      sopsFile = ./secrets.yaml;
-      owner = cfg.user;
-    };
-
-    home-manager.users.${cfg.user}.my.todoist.tokenFile = secret.path;
+    # pi finds skills here as well as in settings.json `skills`, which modules/pi owns.
+    file.".pi/agent/skills/todoist-cli".source = skill;
   };
 }

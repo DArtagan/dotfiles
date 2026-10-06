@@ -72,7 +72,7 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `gaming/` — Steam, Lutris, Wine
 - `syncthing/` — file sync with predefined devices/folders
 - `vim/`, `zed/`, `qutebrowser/` — app configs
-- `todoist/` — Doist's `td` CLI and its skill for pi, in every home via `home.nix`. On NixOS hosts that import the module, `td` logs in from a sops-managed API token rather than `td auth login`; `my.todoist.user` names whose. See `modules/todoist/README.md`.
+- `todoist/` — Doist's `td` CLI and its skill for pi, in every home via `home.nix`. Logging in is a manual `td auth login` per host. See `modules/todoist/README.md`.
 - `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, a question dialog via `rpiv-ask-user-question`, context/tool/cache observability via `pine-of-glass`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`). `modules/pi/google.nix` adds read-only Google Calendar access via `gog`, built with a compiled-in command policy by `pkgs/gog-safe`. `modules/pi/remote.nix` adds browser access over the tailnet (agegr/pi-web and Pi Remote Control, on trial), imported per host.
 
 ### Local Packages (`pkgs/`)
