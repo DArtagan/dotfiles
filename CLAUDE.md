@@ -92,6 +92,7 @@ Stylix provides unified color scheme (Solarized Light) and fonts across all apps
 - **Module imports**: add a module path to the host's module list in `flake.nix`, not in `configuration.nix`
 - **Home-manager**: configured inline in `flake.nix` per host, importing `./home.nix` plus host-specific extras
 - **`ai-server` caveat**: if `nixos-rebuild switch` fails due to GPU container options, temporarily comment out `./modules/ai-server` in `flake.nix`, reboot, then re-enable
+- **`lactd` failing to start** ("Could not write config", start-limit-hit) after an update means lact bumped its config schema: bump `services.lact.settings.version` in `hosts/thenixbeast/default.nix`, following the comment there.
 - **nixpkgs channel**: `nixos-unstable` for all hosts
 - **Configs that apps also write to** (Claude Code, pi and its extensions): merge the keys we manage with `lib/merge-json-into.nix` in a home-manager activation, rather than `home.file`, which symlinks a read-only file. See `modules/pi` and `claudeSettings` in `home.nix`.
 

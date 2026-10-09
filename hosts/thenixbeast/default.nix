@@ -92,10 +92,21 @@
       # GPU optimization/overclocking/undervolting
       enable = true;
       settings = {
-        # lact persists a schema migration on startup; bumping this in lockstep
-        # with the lact package avoids a v5->v6 migration write against the
-        # read-only Nix-store config (which crashes the daemon). See below.
-        version = 6;
+        # Must match the config schema of the lact package, or lactd fails on
+        # every start (boot and switch alike). If `settings.version` is behind,
+        # lact migrates the config on startup and tries to save it, but
+        # /etc/lact/config.yaml is a read-only Nix-store symlink, so it dies
+        # with "Could not write config ... Read-only file system (os error 30)"
+        # and hits start-limit-hit. The journal line before it, "migrated
+        # config version N to M", names the version to bump to. Bumped 5->6
+        # for lact 0.9.1 and 6->7 for lact 0.10.1. Before bumping, read what
+        # the migration does (`migrate_versions` in lact-daemon/src/config.rs):
+        # most are just a version bump, but some reset or convert settings
+        # (e.g. v1/v2 cleared Nvidia clock limits), so update the settings
+        # below to the new format too. Never remove `version`: it defaults to
+        # 0, which reruns every migration and clears max_core_clock. See also
+        # the stale-socket workaround below.
+        version = 7;
         daemon = {
           log_level = "info";
           admin_group = "wheel";
