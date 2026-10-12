@@ -30,6 +30,8 @@ in
           "PI_WEB_SKIP_VERSION_CHECK=1"
           # Sessions run pi's bash tool with this PATH; a user service gets almost none.
           "PATH=${config.home.profileDirectory}/bin:/run/wrappers/bin:/run/current-system/sw/bin"
+          # pi-web runs pi in-process, not through the wrapped `pi` that sets this.
+          "GIT_CONFIG_GLOBAL=${config.my.pi.agentGitConfig}"
         ];
       };
     };
