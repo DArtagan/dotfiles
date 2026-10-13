@@ -11,11 +11,11 @@
 # matching release; pi supplies typebox and the @earendil-works/* modules, and the
 # optional @juicesharp/rpiv-i18n (translated dialog chrome) is left out.
 let
-  version = "2.12.0";
+  version = "2.13.8";
 
   rpiv-config = fetchurl {
     url = "https://registry.npmjs.org/@juicesharp/rpiv-config/-/rpiv-config-${version}.tgz";
-    hash = "sha512-eGjoCDCKz2JtKIUIpZ2y8CAVjxZYXCKa2D64ByozhkAWVblXsgyFLrQMk5k5Bv5RXRrA3GY66XNG5ExtEuGASA==";
+    hash = "sha512-fNzUmtGHRYbPQ3PWnfwyk0ukBxUgIwFLUhzRQV8U47IMhSZAEfoutqOZ31UCPPEpCgWgF+WATJ3+jn7NwJUotg==";
   };
 in
 stdenvNoCC.mkDerivation {
@@ -24,7 +24,7 @@ stdenvNoCC.mkDerivation {
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@juicesharp/rpiv-ask-user-question/-/rpiv-ask-user-question-${version}.tgz";
-    hash = "sha512-DilWc7u25SwnK6ytuAWOTerP0AmOEfK4HXpgS1oEzkgv9d5g5T+PbLG+zcLn18M3B/J3poMG14iydG5O6iBsnw==";
+    hash = "sha512-Uu2jpn5Tf0lo47izmPU7+xbUIuxE9HdmmZ6XjVzBSm8zIvnJ5Hoj/XhfuG0qC0DuCOwIkE0oNRsNsLp1js7/2g==";
   };
 
   dontBuild = true;

@@ -26,8 +26,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   [rpiv-ask-user-question](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question),
   packaged in `pkgs/rpiv-ask-user-question` from its npm release. Adds an
   `ask_user_question` tool, which opens a dialog of up to four multiple-choice
-  questions (each with a free-text row); `Ctrl+]` collapses it to read the
-  transcript. Optional config: `~/.config/rpiv-ask-user-question/config.json`.
+  questions (each with a free-text row) below the transcript; `Ctrl+]` shrinks it
+  to one line. Optional config: `~/.config/rpiv-ask-user-question/config.json`.
 - **Observability:** [pine-of-glass](https://github.com/tmustier/pine-of-glass),
   packaged in `pkgs/pine-of-glass`. Four extensions: contextimate lists what fills
   the context window at startup and `/reload` (`Ctrl+O` cycles detail); traceline

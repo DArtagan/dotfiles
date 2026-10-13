@@ -10,13 +10,12 @@
 # Web search, OSS code search, library docs, and scraping for agents. Modeled on
 # nixpkgs' pkgs/by-name/ke/ketch, plus the skill and the wrapper below.
 #
-# TODO: Switch to pkgs.ketch once nixpkgs catches up to this version (it has 0.14.0;
-# NixOS/nixpkgs#564213 bumps it to 0.17.0). nixpkgs doesn't install the skill, so
-# take it from `pkgs.ketch.src + "/skills/ketch"` and keep the wrapper, e.g.
-# with symlinkJoin.
+# TODO: Switch to pkgs.ketch once nixpkgs catches up to this version (it has 0.18.1).
+# nixpkgs doesn't install the skill, so take it from `pkgs.ketch.src + "/skills/ketch"`
+# and keep the wrapper, e.g. with symlinkJoin.
 buildGoModule (finalAttrs: {
   pname = "ketch";
-  version = "0.18.1";
+  version = "0.19.0";
 
   __structuredAttrs = true;
   strictDeps = true;
@@ -25,10 +24,10 @@ buildGoModule (finalAttrs: {
     owner = "1broseidon";
     repo = "ketch";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-vXSYQJBZ0Eypy3S0qvJUEEk9SZnnIWmQ5DU3TGyuwfk=";
+    hash = "sha256-S/vkyA2GSf97ODut3ANYvXC8wHyTrBzMkRAUcxzIt9I=";
   };
 
-  vendorHash = "sha256-NqZlxCbXfH4OJQGEVQwA6uu5LLlKDmwGYDRM6V8U/+4=";
+  vendorHash = "sha256-Ph54qv99EadN1pvyh2lkerpEQJZi7wLS0BPzuKxNwmE=";
 
   nativeBuildInputs = [ makeWrapper ];
 

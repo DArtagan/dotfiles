@@ -11,13 +11,13 @@
 # supplies the @earendil-works/* modules it imports.
 stdenvNoCC.mkDerivation rec {
   pname = "pine-of-glass";
-  version = "0.15.2";
+  version = "0.15.3";
 
   src = fetchFromGitHub {
     owner = "tmustier";
     repo = "pine-of-glass";
     tag = "v${version}";
-    hash = "sha256-jOYCPHNQnv1YyeFzatOkbsDxI663fdS99stXLx5nohU=";
+    hash = "sha256-VH/aDPh0wUsjBFObSvBdLMr+TSEaLbiryRKmnEXWYaU=";
   };
 
   # package.json's `pi.extensions` lists the extensions; they share extensions/_lib.
