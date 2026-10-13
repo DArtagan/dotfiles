@@ -2,6 +2,8 @@
   buildNpmPackage,
   fetchurl,
   lib,
+  nodejs,
+  runtimeShell,
   stdenv,
 }:
 
@@ -10,7 +12,7 @@
 # the sandbox blocks. The release has no lockfile, so this uses the repo's lockfile
 # at the same tag, whose root dependencies match the release's.
 let
-  version = "0.10.0";
+  version = "0.12.1";
 in
 buildNpmPackage {
   pname = "agegr-pi-web";
@@ -18,28 +20,23 @@ buildNpmPackage {
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@agegr/pi-web/-/pi-web-${version}.tgz";
-    hash = "sha512-ePmDbLYBrPH5rLIk+0ia8yKMd0iMh/Zk9P5c3kvO1TzWGzwpIlB9fqSmLvBr6fteKjAfGYyzTnmdQNv1GzpcGQ==";
+    hash = "sha512-LKBAOeV4D4Vs0WuVz1JD303wMdIaClCM2m4TwmO9vwYIagFmSHOMuBhR+CdweRVntpXSbOFI2x0m8twzxRcvwg==";
   };
 
   prePatch = ''
     cp ${
       fetchurl {
         url = "https://raw.githubusercontent.com/agegr/pi-web/v${version}/package-lock.json";
-        hash = "sha256-46W3N3+W4v46Z8TJZBOWrRk0pDLkJKbNsxd5VWAQ+M0=";
+        hash = "sha256-sH3u69Ethgr1PGSCE/u9mQScAWsLH3qAstp4NXAJc+s=";
       }
     } package-lock.json
     chmod u+w package-lock.json
   '';
 
-  patches = [
-    # Seven entries lack `integrity`, which fetchNpmDeps requires; hashes from the npm registry.
-    ./lockfile-integrity.patch
-  ];
-
   # v1 can't find the tarballs the lockfile lists twice (pi 1.0.0's packages, nested
   # under pi-coding-agent as well as at the top level).
   npmDepsFetcherVersion = 2;
-  npmDepsHash = "sha256-b5jPpRshUBAxZN/BUlvD7cbJX4qSuSs6EsJc6MzDylI=";
+  npmDepsHash = "sha256-8CeCo/o4pslL1bqu1DFsH++1YYY66F1WZyBfoCDqVz4=";
 
   npmInstallFlags = [ "--omit=dev" ];
   dontNpmBuild = true;
@@ -56,18 +53,20 @@ buildNpmPackage {
       # npm pack leaves out the prebuilt app, though package.json `files` lists it.
       cp -r .next "$pkg/"
       rm -rf "$pkg/.next/cache"
-      # Native binaries for other platforms (npm installs every esbuild from pi's
-      # shrinkwrap), about 400 MB.
+      # Native binaries for other platforms, if any: pi up to 1.0 had npm install every
+      # esbuild from its shrinkwrap, about 400 MB.
       find "$pkg/node_modules" -type d \( -path "*/@esbuild/*" -o -path "*/@next/swc-*" -o -path "*/@img/sharp-*" \) -prune |
-        grep -Ev "/(linux-${arch}|swc-linux-${arch}-gnu|sharp-linux-${arch}|sharp-libvips-linux-${arch})$" |
-        xargs rm -rf
+        { grep -Ev "/(linux-${arch}|swc-linux-${arch}-gnu|sharp-linux-${arch}|sharp-libvips-linux-${arch})$" || true; } |
+        xargs -r rm -rf
+      # In place of the usual wrapper, so pi-web can rotate its preview-mode secrets;
+      # see pi-web.sh.
+      rm $out/bin/pi-web
+      substitute ${./pi-web.sh} $out/bin/pi-web \
+        --subst-var-by shell ${runtimeShell} \
+        --subst-var-by pkg "$pkg" \
+        --subst-var-by node ${lib.getExe nodejs}
+      chmod +x $out/bin/pi-web
     '';
-
-  makeWrapperArgs = [
-    "--set-default"
-    "NEXT_TELEMETRY_DISABLED"
-    "1"
-  ];
 
   meta = {
     description = "Web UI for the pi coding agent";

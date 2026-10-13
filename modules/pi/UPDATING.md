@@ -17,7 +17,7 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 | `pine-of-glass` | GitHub tag | `version`, `hash` | | |
 | `rpiv-ask-user-question` | npm tarball | `version`, `hash` | `rpiv-config` tarball | |
 | `pi-remote-control` | GitHub tag | `version`, `hash` | `cargoHash`, `npmDeps` hash, `ws` tarball | one patch |
-| `agegr-pi-web` | npm tarball, plus the repo's lockfile | `version`, `hash` | lockfile hash, `npmDepsHash` | one patch |
+| `agegr-pi-web` | npm tarball, plus the repo's lockfile | `version`, `hash` | lockfile hash, `npmDepsHash` | its own launcher, `pi-web.sh` |
 | `ketch` | GitHub tag | `version`, `hash` | `vendorHash` | a TODO to return to nixpkgs |
 
 pi moves with the regular update flow in `CLAUDE.md`. After it does, check the
@@ -121,8 +121,8 @@ Some upstream lockfiles have such entries, which come in two kinds:
   `fetchNpmDeps` also runs. That needs no upkeep across versions. Delete
   `peerDependencies` too, if the package declares pi as one: npm would otherwise
   try to fetch pi to satisfy them, and pi supplies its own packages at load time.
-- **Needed at runtime**, as in agegr pi-web, which runs its own pi: fill them in with
-  `lockfile-integrity.patch`.
+- **Needed at runtime**, as agegr pi-web's were up to 0.10.0 (it runs its own pi):
+  fill them in with a `lockfile-integrity.patch` in `patches`.
 
 Check which kind with:
 
@@ -177,7 +177,7 @@ errors. Then try what it does:
 | pine-of-glass | The contextimate panel at startup; after one prompt, the cachemire/traceline turn line; `/cache` and `/pace` answer (`/pace` needs `pi-meantime.json` with `"enabled": true`, which works project-level in `<cwd>/.pi/`). |
 | rpiv-ask-user-question | Ask the model to use `ask_user_question`; the dialog opens and the chosen answer reaches the model. |
 | pi-remote-control | After a switch: `systemctl --user restart pi-remote-control`, `/rc` in a TUI session, and the session shows at `http://<host>.forge.local:8787`. |
-| agegr-pi-web | Before switching, run the new build alongside the service (below). Two new sessions in a row must both answer on a claude-bridge model: the bridge's registration patch is for the second. |
+| agegr-pi-web | Before switching, run the new build alongside the service (below). Two new sessions in a row must both answer on a claude-bridge model: the bridge's registration patch is for the second. Its output must not warn that it "could not rotate pi-web's preview-mode secrets" (see `pi-web.sh`). |
 | ketch | `ketch search --json --limit 3 "<query>"` returns results. |
 
 Kill the tmux session afterwards. Say in the commit or PR what wasn't tested.

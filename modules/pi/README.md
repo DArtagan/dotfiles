@@ -213,6 +213,11 @@ Local changes, none sent upstream yet:
 - `pkgs/pi-remote-control/edit-diff-view.patch`: prc showed edits as raw JSON.
 - `pkgs/agegr-pi-web` packages the npm release (prebuilt), since building from
   source fetches a Google font.
+- `pkgs/agegr-pi-web/pi-web.sh` runs agegr from a per-launch directory in
+  `$XDG_RUNTIME_DIR`. Every copy of the release has the same Next.js preview
+  secret, and a request carrying it skips agegr's Host and Origin checks, which
+  are what stop DNS rebinding here. agegr replaces the secret at startup, which
+  it can't do in the store.
 
 Ending the trial: drop the loser's service and package from `remote.nix` (and,
 for prc, the activation that loads its extension), or delete `remote.nix` and its
