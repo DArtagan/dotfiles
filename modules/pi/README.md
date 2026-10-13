@@ -19,7 +19,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   and pi-quotas reads them, so nothing polls Anthropic and no login is read. The
   windows appear after the first claude-bridge response in each pi process, under
   "Claude Code" in `/quotas` and `/claude-bridge:quotas`.
-- **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
+- **Web access:** [ketch](https://ketch.run), from nixpkgs, with its skill and a
+  wrapper added in `pkgs/ketch`. See below.
 - **Google Calendar:** read-only, through [gog](https://gogcli.sh) (`google.nix`).
   See below.
 - **Asking instead of guessing:**
@@ -98,7 +99,7 @@ Why ketch:
   `KETCH_BRAVE_API_KEY`.
 - **Packaging.** One Go binary with env-var config; not tied to pi.
 
-The package wraps `ketch` to render JS-only pages with nixpkgs' Chromium
+`pkgs/ketch` wraps it to render JS-only pages with nixpkgs' Chromium
 (`KETCH_BROWSER`) and to silence its self-update notices. Plain pages never
 start the browser.
 

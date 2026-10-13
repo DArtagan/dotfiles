@@ -1,7 +1,7 @@
 # Updating pi and its packages
 
-pi itself comes from nixpkgs. Everything else pi loads is packaged in `pkgs/` and
-loaded from the store, so neither `pi update --extensions` nor `nh os switch .
+pi itself and ketch come from nixpkgs. Everything else pi loads is packaged in
+`pkgs/` and loaded from the store, so neither `pi update --extensions` nor `nh os switch .
 --update` moves it: each one is bumped by hand, as below. Don't `pi install` or
 `pi update` these either. `piSettings` replaces `packages` in `settings.json` on
 every switch, so anything pi installs itself drops out of the list, though its files
@@ -18,9 +18,9 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 | `rpiv-ask-user-question` | npm tarball | `version`, `hash` | `rpiv-config` tarball | |
 | `pi-remote-control` | GitHub tag | `version`, `hash` | `cargoHash`, `npmDeps` hash, `ws` tarball | one patch |
 | `agegr-pi-web` | npm tarball, plus the repo's lockfile | `version`, `hash` | lockfile hash, `npmDepsHash` | its own launcher, `pi-web.sh` |
-| `ketch` | GitHub tag | `version`, `hash` | `vendorHash` | a TODO to return to nixpkgs |
+| `ketch` | nixpkgs, wrapped in `pkgs/ketch` | `flake.lock` | | its skill, and a wrapper |
 
-pi moves with the regular update flow in `CLAUDE.md`. After it does, check the
+pi and ketch move with the regular update flow in `CLAUDE.md`. After pi does, check the
 extensions as in step 7 below: the bridge, pi-remote-control and agegr pi-web all
 lean on pi internals, and `terminal-cursor.ts` wraps a private pi-tui method (it
 warns at startup if that method is gone).
@@ -52,8 +52,8 @@ npm view @juicesharp/rpiv-ask-user-question version     # npm releases
   read claude-bridge usage, switch to that and drop the patch. Otherwise rebase it
   (step 4), then run `npm install`, `npm run typecheck` and `npx vitest run` in the
   clone. Its tests are in `src/lib/rate-limit-headers.test.ts`.
-- **ketch**: if nixpkgs has caught up (`nix eval --raw .#nixosConfigurations.thenixbeast.pkgs.ketch.version`),
-  follow the TODO in its `package.nix` rather than bumping.
+- **ketch** isn't bumped by hand. To get ahead of nixpkgs, build it from source
+  again (git history has the `buildGoModule` for 0.19.0), with a `TODO` to return.
 
 ### 2. Read what changed
 
