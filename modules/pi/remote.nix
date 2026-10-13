@@ -31,7 +31,7 @@ in
           # Sessions run pi's bash tool with this PATH; a user service gets almost none.
           "PATH=${config.home.profileDirectory}/bin:/run/wrappers/bin:/run/current-system/sw/bin"
           # pi-web runs pi in-process, not through the wrapped `pi` that sets this.
-          "GIT_CONFIG_GLOBAL=${config.my.pi.agentGitConfig}"
+          "GIT_CONFIG_GLOBAL=${config.home.homeDirectory}/${config.xdg.configFile."git/config-agent".target}"
         ];
       };
     };
