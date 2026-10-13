@@ -78,7 +78,6 @@ in
           defaultProvider = "claude-bridge";
           defaultModel = "claude-opus-5-5";
           defaultThinkingLevel = "high";
-          theme = "light";
           # Loaded in place from the store, so `pi update --extensions` leaves these
           # alone; bump them in pkgs/.
           packages = [
