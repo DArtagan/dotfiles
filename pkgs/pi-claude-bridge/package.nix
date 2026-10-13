@@ -10,19 +10,23 @@
 # TypeScript that pi compiles at load time, so there is no build step.
 buildNpmPackage {
   pname = "pi-claude-bridge";
-  version = "0.9.1";
+  version = "0.9.2";
 
-  # No v0.9.1 tag upstream; this is the "Release 0.9.1" commit, which matches npm.
+  # No v0.9.2 tag upstream; this is the "Release 0.9.2" commit, which matches npm.
   src = fetchFromGitHub {
     owner = "elidickinson";
     repo = "pi-claude-bridge";
-    rev = "9dafd0301faad79cf6a1974d92af424189476b5d";
-    hash = "sha256-Y3uNnHRrcdc3v9PJepG9W+GjBNmq1V9XW08aeV/UM5U=";
+    rev = "b2e7255ece0b8bfd3a6429fd5c147fd59984c785";
+    hash = "sha256-ri1KD0H5Nbt8lAMHbMLVf7dwaoHNbTJfhEuF4Y8lFF8=";
   };
 
-  npmDepsHash = "sha256-rVbYOlDV7uVFjczuAjRxtvRHZKAbHGFamiJXrxF7ZGM=";
+  npmDepsHash = "sha256-K+5a4YqVUPeaFERiXcGxTM2BqOvernnC5Iqpb7TJ0nM=";
 
   patches = [
+    # elidickinson/pi-claude-bridge#171 ("Report plan usage to pi's after_provider_response
+    # as Anthropic rate-limit headers"), src/ only, at 852c42b. pi-quotas reads them
+    # (see its rate-limit-headers.patch). Drop once merged and released.
+    ./rate-limit-headers.patch
     # Register the provider in every session of a host that runs several in one process
     # (agegr/pi-web), which otherwise start with no claude-bridge models. Local; not yet
     # sent upstream.
