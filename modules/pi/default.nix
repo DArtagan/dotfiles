@@ -78,6 +78,9 @@ in
           defaultProvider = "claude-bridge";
           defaultModel = "claude-opus-5-5";
           defaultThinkingLevel = "high";
+          # Pi indents rendered code blocks by two spaces, which ride along when copying
+          # them from the terminal.
+          markdown.codeBlockIndent = "";
           # Loaded in place from the store, so `pi update --extensions` leaves these
           # alone; bump them in pkgs/.
           packages = [
