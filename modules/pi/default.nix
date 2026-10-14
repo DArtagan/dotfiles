@@ -90,6 +90,7 @@ in
             "${rpiv-ask-user-question}"
           ];
           extensions = [
+            "${./copy-code.ts}"
             "${./exit.ts}"
             "${./terminal-cursor.ts}"
           ];

@@ -37,6 +37,11 @@ than symlinked; see `lib/merge-json-into.nix`.
   `~/.pi/agent/pi-meantime.json` sets `"enabled": true`, which ours does.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
+- **Copying code blocks:** a local extension (`copy-code.ts`). `Alt+X` or
+  `/copy-code` copies the latest fenced code block in the session, and
+  `/copy-code 2` the one before it. It reads the message's markdown, not the
+  screen, so the copy has no margin or indent, and long lines that pi wraps
+  stay whole. `Ctrl+X` and `/copy` still copy the whole last message.
 - **Terminal cursor:** a local extension (`terminal-cursor.ts`) shows the
   terminal's own cursor in place of the reverse-video one pi paints, so it
   reflects focus: hollow while the Alacritty window is unfocused, absent in
