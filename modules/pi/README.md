@@ -12,13 +12,11 @@ than symlinked; see `lib/merge-json-into.nix`.
   hand questions or tasks to Claude Code (read-only unless it asks for `full`).
 - **Plan quotas:** [pi-quotas](https://github.com/latentminds-ai/pi-quotas), packaged
   in `pkgs/pi-quotas`. Shows the Claude plan's 5h/7d windows in the footer, plus
-  `/quotas` and near-limit warnings. For claude-bridge models, both packages carry a
-  patch: the bridge passes on the usage Claude Code reports with each response, as
-  Anthropic's rate-limit headers
-  ([pi-claude-bridge#171](https://github.com/elidickinson/pi-claude-bridge/pull/171)),
-  and pi-quotas reads them, so nothing polls Anthropic and no login is read. The
-  windows appear after the first claude-bridge response in each pi process, under
-  "Claude Code" in `/quotas` and `/claude-bridge:quotas`.
+  `/quotas` and near-limit warnings. For claude-bridge models, the bridge passes on
+  the usage Claude Code reports with each response, as Anthropic's rate-limit
+  headers, and a local patch to pi-quotas reads them, so nothing polls Anthropic
+  and no login is read. The windows appear after the first claude-bridge response
+  in each pi process, under "Claude Code" in `/quotas` and `/claude-bridge:quotas`.
 - **Web access:** [ketch](https://ketch.run), from nixpkgs, with its skill and a
   wrapper added in `pkgs/ketch`. See below.
 - **Google Calendar:** read-only, through [gog](https://gogcli.sh) (`google.nix`).

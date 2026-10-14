@@ -20,9 +20,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   patches = [
     # Adds a `claude-bridge` quota provider, read from the anthropic-ratelimit-unified-*
-    # headers that pi-claude-bridge passes to after_provider_response (its
-    # rate-limit-headers.patch, elidickinson/pi-claude-bridge#171). Local; not yet sent
-    # upstream.
+    # headers that pi-claude-bridge (0.9.3 and later) passes to after_provider_response.
+    # Local; not yet sent upstream.
     ./rate-limit-headers.patch
   ];
 

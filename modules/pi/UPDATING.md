@@ -12,8 +12,8 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 | Package | Source | Pinned by | Other hashes | Carries |
 |---|---|---|---|---|
 | pi (`pi-coding-agent`) | nixpkgs | `flake.lock` | | |
-| `pi-claude-bridge` | GitHub commit (no tags upstream) | `rev`, `hash` | `npmDepsHash` | two patches (one is [#171](https://github.com/elidickinson/pi-claude-bridge/pull/171)); `postPatch` drops dev and peer dependencies |
-| `pi-quotas` | GitHub tag | `version`, `hash` | | one patch, which needs the bridge's #171 patch |
+| `pi-claude-bridge` | GitHub commit (no tags upstream) | `rev`, `hash` | `npmDepsHash` | one patch; `postPatch` drops dev and peer dependencies |
+| `pi-quotas` | GitHub tag | `version`, `hash` | | one patch, which reads headers the bridge sends |
 | `pine-of-glass` | GitHub tag | `version`, `hash` | | |
 | `rpiv-ask-user-question` | npm tarball | `version`, `hash` | `rpiv-config` tarball | |
 | `pi-remote-control` | GitHub tag | `version`, `hash` | `cargoHash`, `npmDeps` hash, `ws` tarball | one patch |
@@ -41,14 +41,9 @@ npm view @juicesharp/rpiv-ask-user-question version     # npm releases
   gh api 'repos/elidickinson/pi-claude-bridge/commits?per_page=100' \
     --jq '.[] | select(.commit.message | test("^Release ")) | "\(.sha) \(.commit.message | split("\n")[0])"'
   ```
-- **pi-claude-bridge** carries
-  [#171](https://github.com/elidickinson/pi-claude-bridge/pull/171) as
-  `rate-limit-headers.patch`. Check it first:
-  `gh pr view 171 -R elidickinson/pi-claude-bridge --json state,mergedAt`. Once it's
-  in a release, drop the patch. Until then, regenerate it from the PR if it changes
-  (`src/` only), as in step 4. pi-quotas' patch reads what it sends, so keep the
-  two in step.
-- **pi-quotas**' `rate-limit-headers.patch` is ours. If upstream adds its own way to
+- **pi-quotas**' `rate-limit-headers.patch` is ours. It reads the
+  `anthropic-ratelimit-unified-*` headers the bridge sends (`src/rate-limit.ts`
+  there), so check a bridge bump against it if that file changes. If upstream adds its own way to
   read claude-bridge usage, switch to that and drop the patch. Otherwise rebase it
   (step 4), then run `npm install`, `npm run typecheck` and `npx vitest run` in the
   clone. Its tests are in `src/lib/rate-limit-headers.test.ts`.
