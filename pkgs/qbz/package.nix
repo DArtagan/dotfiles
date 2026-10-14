@@ -39,6 +39,17 @@ rustPlatform.buildRustPackage (finalAttrs: {
   cargoRoot = "crates";
   buildAndTestSubdir = finalAttrs.cargoRoot;
 
+  # rustc needs ~30-34 GB (RAM + swap) for the generated Slint UI crate
+  # (qbz-ui), and since Hydra no longer builds qbz, that happens locally after
+  # most nixpkgs bumps. The peak is frontend-bound, so these codegen knobs only
+  # save ~3 GB (upstream's measurement, .github/workflows/build-slint.yml);
+  # the machine still needs enough swap. Values match upstream's release
+  # workflows (.github/workflows/release-linux.yml).
+  env = {
+    CARGO_PROFILE_RELEASE_CODEGEN_UNITS = "256";
+    CARGO_PROFILE_RELEASE_OPT_LEVEL = "2";
+  };
+
   nativeBuildInputs = [
     makeWrapper
     pkg-config

@@ -8,13 +8,33 @@ than symlinked; see `lib/merge-json-into.nix`.
 - **Model provider:** [`pi-claude-bridge`](https://github.com/elidickinson/pi-claude-bridge),
   which runs Claude Code (via the Agent SDK) on the Claude subscription. Packaged in
   `pkgs/pi-claude-bridge` to carry local patches, and loaded from the store.
+  Its opt-in AskClaude tool is on: when another provider's model is in use, it can
+  hand questions or tasks to Claude Code (read-only unless it asks for `full`).
 - **Plan quotas:** [pi-quotas](https://github.com/latentminds-ai/pi-quotas), packaged
   in `pkgs/pi-quotas`. Shows the Claude plan's 5h/7d windows in the footer, plus
-  `/quotas` and near-limit warnings. Pinned to
-  [#51](https://github.com/latentminds-ai/pi-quotas/pull/51), which reads Claude
-  Code's login so claude-bridge models get quotas; it never refreshes that login,
-  so an expired one shows until Claude Code refreshes it.
-- **Web access:** [ketch](https://ketch.run), packaged in `pkgs/ketch`. See below.
+  `/quotas` and near-limit warnings. For claude-bridge models, the bridge passes on
+  the usage Claude Code reports with each response, as Anthropic's rate-limit
+  headers, and a local patch to pi-quotas reads them, so nothing polls Anthropic
+  and no login is read. The windows appear after the first claude-bridge response
+  in each pi process, under "Claude Code" in `/quotas` and `/claude-bridge:quotas`.
+- **Web access:** [ketch](https://ketch.run), from nixpkgs, with its skill and a
+  wrapper added in `pkgs/ketch`. See below.
+- **Google Calendar:** read-only, through [gog](https://gogcli.sh) (`google.nix`).
+  See below.
+- **Asking instead of guessing:**
+  [rpiv-ask-user-question](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question),
+  packaged in `pkgs/rpiv-ask-user-question` from its npm release. Adds an
+  `ask_user_question` tool, which opens a dialog of up to four multiple-choice
+  questions (each with a free-text row) below the transcript; `Ctrl+]` shrinks it
+  to one line. Optional config: `~/.config/rpiv-ask-user-question/config.json`.
+- **Observability:** [pine-of-glass](https://github.com/tmustier/pine-of-glass),
+  packaged in `pkgs/pine-of-glass`. Four extensions: contextimate lists what fills
+  the context window at startup and `/reload` (`Ctrl+O` cycles detail); traceline
+  collapses each tool call to one line (`Ctrl+T` toggles, with thinking blocks);
+  cachemire warns when the prompt cache needs attention (`/cache` for the ledger);
+  meantime breaks down latency (a tempo line while it runs, slow-call notices,
+  `/pace` for the ledger). Meantime is off upstream unless
+  `~/.pi/agent/pi-meantime.json` sets `"enabled": true`, which ours does.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
 - **Terminal cursor:** a local extension (`terminal-cursor.ts`) shows the
@@ -36,8 +56,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   `docs/terminal-setup.md` advises against that because it hides the real key,
   and it left tmux's `extended-keys` off, which pi warns about at startup.
 
-The bridge and pi-quotas are loaded from the store, so `pi update --extensions`
-doesn't touch them: bump their versions in `pkgs/`.
+These packages are loaded from the store, so `pi update --extensions` doesn't
+touch them: bump their versions in `pkgs/`, following `UPDATING.md`.
 
 ## Testing an extension without switching
 
@@ -77,7 +97,7 @@ Why ketch:
   `KETCH_BRAVE_API_KEY`.
 - **Packaging.** One Go binary with env-var config; not tied to pi.
 
-The package wraps `ketch` to render JS-only pages with nixpkgs' Chromium
+`pkgs/ketch` wraps it to render JS-only pages with nixpkgs' Chromium
 (`KETCH_BROWSER`) and to silence its self-update notices. Plain pages never
 start the browser.
 
@@ -100,3 +120,104 @@ start the browser.
   WebFetch summarizes pages with Haiku before the main model sees them. Would
   need a bridge patch to allow those builtins in provider mode, and only works
   while claude-bridge is the provider.
+
+## Google Calendar
+
+`google.nix` gives pi read access to
+william@weiskopf.me's calendars through [gog](https://gogcli.sh), with gog's
+`gog` and `gog-calendar` skills linked into `~/.pi/agent/skills`. We chose gog
+over Google's `gws` for its safety controls.
+
+The `gog` on `PATH` is built by `pkgs/gog-safe` with a safety profile compiled in
+(`gog-calendar-readonly.yaml`). It runs calendar reads and nothing else, and
+always wraps event text as untrusted, since anyone can send an invite. Flags,
+env vars and config can't loosen it. Its token, under the OAuth client name
+`calendar-readonly`, only has the `calendar.readonly` scope.
+
+The scope is the real limit. pi's bash runs as us, so it could reach the token
+or run another gog. The profile guards against mistakes and casual prompt
+injection, not a determined attacker. Give a future profile (mail, writes) its
+own client name so it gets its own token.
+
+### Logging in
+
+Once, in the Google Cloud console:
+
+1. Create a project and enable the Google Calendar API.
+2. Set the OAuth consent screen's audience to **Internal**. For a Workspace
+   account this skips Google's verification and the 7-day token expiry of
+   External apps in testing.
+3. Create an OAuth client of type **Desktop app** and download its JSON.
+
+Then on each host, with the unrestricted gog (our `gog` blocks auth changes):
+
+```bash
+nix run nixpkgs#gogcli -- --client calendar-readonly auth credentials set ~/Downloads/client_secret_*.json
+nix run nixpkgs#gogcli -- --client calendar-readonly auth add william@weiskopf.me --services calendar --readonly
+gog auth doctor --check
+gog calendar events --today
+```
+
+`auth add` opens a browser; `--manual` prints a URL to open elsewhere instead.
+The token goes in GNOME Keyring, which both hosts run. gog can't read it while the
+keyring is locked or unreachable, e.g. over SSH with no desktop session.
+
+## Remote access
+
+Two browser UIs for pi sessions, on trial against each other. `remote.nix` sets
+them up as user services on the NixOS hosts (imported per host in `flake.nix`).
+Neither starts on its own:
+
+| UI | Start | Open |
+|---|---|---|
+| [agegr/pi-web](https://github.com/agegr/pi-web) | `systemctl --user start pi-web` | `http://<host>.forge.local:30141` |
+| [Pi Remote Control](https://github.com/mipsel64/pi-remote-control) (prc) | `systemctl --user start pi-remote-control` | `http://<host>.forge.local:8787` |
+
+They work differently, which decides how they fit alongside the TUI:
+
+- **agegr** runs sessions itself, reading and writing the same session files as
+  the TUI. It can start sessions and resume any TUI session, and shows edits as
+  diffs. It doesn't see what a running TUI does to an open session, nor the TUI
+  what it does: if both continue the same session, it forks. Hand off instead:
+  quit the TUI before continuing from the browser, and on returning `/resume`
+  the session in the TUI (`/tree` to pick the branch that went on in the
+  browser). Picking a model for a new session sets pi's default, as `/model`
+  does; a switch puts ours back. It unloads sessions idle for 10 minutes.
+- **prc** mirrors running TUI sessions, live, in both directions: prompts from
+  the browser land in the TUI. Attach a session with `/rc` in the TUI (again
+  after `/new`). It can't start sessions, and a session goes read-only in the
+  browser once its TUI exits. Its password is generated on first start:
+  `jq -r .adminPassword ~/.config/prc/config.json`. Logins last a week, but the
+  server keeps them in memory, so log in again after restarting it.
+
+Both listen on every address and rely on the firewall, which trusts only
+loopback, `tailscale0`, and the Steam Deck's hotspot (`ap0`). agegr has no
+password; both reject requests from other sites. agegr serves `<host>`,
+`<host>.forge.local`, and IP addresses; prc only `http://<host>.forge.local:8787`.
+It's plain HTTP: Headscale can't issue certificates for `tailscale serve`
+([juanfont/headscale#2527](https://github.com/juanfont/headscale/issues/2527)),
+so neither can send push notifications or install as an app.
+
+agegr's sessions get the service's environment, not a shell's: `PATH` is set to
+the user profile and system paths in `remote.nix`, but nothing else is. A new
+session starts in a folder for the day, `~/pi-cwd/YYYYMMDD`, unless one is picked.
+
+Local changes, none sent upstream yet:
+
+- `pkgs/pi-claude-bridge/multi-session-registration.patch`: without it, agegr's
+  sessions start with no claude-bridge models. The bridge registered its
+  provider only once per process and expected later sessions to share that
+  registry; agegr gives each session its own and picks its model before the
+  bridge's deferred registration ran.
+- `pkgs/pi-remote-control/edit-diff-view.patch`: prc showed edits as raw JSON.
+- `pkgs/agegr-pi-web` packages the npm release (prebuilt), since building from
+  source fetches a Google font.
+- `pkgs/agegr-pi-web/pi-web.sh` runs agegr from a per-launch directory in
+  `$XDG_RUNTIME_DIR`. Every copy of the release has the same Next.js preview
+  secret, and a request carrying it skips agegr's Host and Origin checks, which
+  are what stop DNS rebinding here. agegr replaces the secret at startup, which
+  it can't do in the store.
+
+Ending the trial: drop the loser's service and package from `remote.nix` (and,
+for prc, the activation that loads its extension), or delete `remote.nix` and its
+imports in `flake.nix`.

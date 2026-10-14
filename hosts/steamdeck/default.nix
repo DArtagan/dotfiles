@@ -95,17 +95,6 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
     xserver.enable = true;
-
-    # Dell USB-C DisplayLink adapter. "displaylink" pulls in the evdi kernel
-    # module + the dlm (DisplayLink Manager) service, which the compositor
-    # picks up as an extra DRM output. "modesetting" keeps the internal AMD
-    # display working. Requires the unfree driver blob to be added to the Nix
-    # store manually (Synaptics forbids redistribution) — the build will print
-    # the exact URL + `nix-store --add-fixed` command if it is missing.
-    xserver.videoDrivers = [
-      "displaylink"
-      "modesetting"
-    ];
   };
 
   environment.systemPackages = with pkgs; [

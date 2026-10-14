@@ -72,13 +72,14 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `gaming/` — Steam, Lutris, Wine
 - `syncthing/` — file sync with predefined devices/folders
 - `vim/`, `zed/`, `qutebrowser/` — app configs
-- `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`).
+- `todoist/` — Doist's `td` CLI and its skill for pi, in every home via `home.nix`. Logging in is a manual `td auth login` per host. See `modules/todoist/README.md`.
+- `pi/` — pi coding agent: Claude Code provider via `pi-claude-bridge`, plan quotas via `pi-quotas`, a question dialog via `rpiv-ask-user-question`, context/tool/cache observability via `pine-of-glass`, web search/fetch via the `ketch` CLI and skill. See `modules/pi/README.md` for why ketch, and alternatives (`pi-web-access`, `pi-lean-dimension`). `modules/pi/google.nix` adds read-only Google Calendar access via `gog`, built with a compiled-in command policy by `pkgs/gog-safe`. `modules/pi/remote.nix` adds browser access over the tailnet (agegr/pi-web and Pi Remote Control, on trial), imported per host.
 
 ### Local Packages (`pkgs/`)
-Packages missing from nixpkgs, or needing a newer version or local patches, each in `pkgs/<name>/package.nix` and pulled in with `pkgs.callPackage`. When one exists in nixpkgs, model it on the nixpkgs version and leave a `TODO` to switch back once nixpkgs catches up (see `pkgs/ketch`). When one is pinned to an unmerged upstream PR or carries a patch, name the PR/issue in a comment, so it's clear when to go back to a release (see `pkgs/pi-quotas`).
+Packages missing from nixpkgs, or needing a newer version or local patches, each in `pkgs/<name>/package.nix` and pulled in with `pkgs.callPackage`. When one exists in nixpkgs, model it on the nixpkgs version and leave a `TODO` to switch back once nixpkgs catches up. When one is pinned to an unmerged upstream PR or carries a patch, name the PR/issue in a comment, so it's clear when to go back to a release (see `pkgs/pi-quotas`). To bump or add a pi package (the bridge, extensions, pi-web), follow `modules/pi/UPDATING.md`.
 
 ### Secrets Management
-SOPS + age encryption. Each host has `hosts/<name>/secrets.yaml` encrypted with that host's SSH key. Key assignments are in `.sops.yaml`. Edit secrets with `sops hosts/<name>/secrets.yaml`.
+SOPS + age encryption. Each host has `hosts/<name>/secrets.yaml` encrypted with that host's SSH key. Modules that need a secret on every host keep it in `modules/<name>/secrets.yaml`, which one `.sops.yaml` rule encrypts for all hosts and users. Key assignments are in `.sops.yaml`. Edit secrets with `sops <path>/secrets.yaml`.
 
 ### Binary Caches
 Substituters: cache.nixos.org, then Attic on mini-nas (`public`, 6-month GC; `archive`, GC disabled). `archive` pins store paths that must never disappear, e.g. sources of packages whose upstream was withdrawn (`pkgs/qbz`). The procedure for pushing to it is in `README.md` under "Binary caches".
@@ -91,6 +92,7 @@ Stylix provides unified color scheme (Solarized Light) and fonts across all apps
 - **Module imports**: add a module path to the host's module list in `flake.nix`, not in `configuration.nix`
 - **Home-manager**: configured inline in `flake.nix` per host, importing `./home.nix` plus host-specific extras
 - **`ai-server` caveat**: if `nixos-rebuild switch` fails due to GPU container options, temporarily comment out `./modules/ai-server` in `flake.nix`, reboot, then re-enable
+- **`lactd` failing to start** ("Could not write config", start-limit-hit) after an update means lact bumped its config schema: bump `services.lact.settings.version` in `hosts/thenixbeast/default.nix`, following the comment there.
 - **nixpkgs channel**: `nixos-unstable` for all hosts
 - **Configs that apps also write to** (Claude Code, pi and its extensions): merge the keys we manage with `lib/merge-json-into.nix` in a home-manager activation, rather than `home.file`, which symlinks a read-only file. See `modules/pi` and `claudeSettings` in `home.nix`.
 

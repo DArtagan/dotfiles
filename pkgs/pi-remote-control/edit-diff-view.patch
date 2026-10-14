@@ -1,0 +1,45 @@
+diff --git a/server/web/src/main.jsx b/server/web/src/main.jsx
+index 7eb7a17..af07a02 100644
+--- a/server/web/src/main.jsx
++++ b/server/web/src/main.jsx
+@@ -78,6 +78,14 @@ function Terminal({ command, output, exitCode }) {
+     {Number.isFinite(exitCode) && exitCode !== 0 && <span className="terminal-exit">{`\nexit ${exitCode}`}</span>}</pre>;
+ }
+ 
++// Edit results carry a unified patch in details.patch; show it instead of the raw arguments.
++function Diff({ patch }) {
++  const kind = line => line.startsWith('@@') ? 'hunk' : line.startsWith('+++') || line.startsWith('---') ? 'file'
++    : line.startsWith('+') ? 'add' : line.startsWith('-') ? 'del' : 'ctx';
++  return <pre className="diff">{patch.replace(/\n$/, '').split('\n').map((line, i) =>
++    <span key={i} className={`diff-${kind(line)}`}>{line || ' '}{'\n'}</span>)}</pre>;
++}
++
+ function ToolCard({ call, live }) {
+   const status = toolStatus(call.result, live);
+   const summary = toolSummary(call.name, call.arguments);
+@@ -85,7 +93,9 @@ function ToolCard({ call, live }) {
+   return <details className={`tool ${status}`}>
+     <summary>{statusIcons[status]}<span className="tool-title"><b>{call.name}</b></span>
+       {summary && <span className="tool-summary">{summary}</span>}<span className="sr-only">, {statusLabels[status]}</span><Chevron /></summary>
+-    <div className="tool-body">{isBashTool(call.name)
++    <div className="tool-body">{typeof call.result?.details?.patch === 'string'
++      ? <Diff patch={call.result.details.patch} />
++      : isBashTool(call.name)
+       ? <Terminal command={String(call.arguments?.command ?? '')} output={output} />
+       : <>
+         {call.arguments !== undefined && <pre className="mono">{JSON.stringify(call.arguments, null, 2)}</pre>}
+diff --git a/server/web/src/style.css b/server/web/src/style.css
+index a81cd26..89b0c76 100644
+--- a/server/web/src/style.css
++++ b/server/web/src/style.css
+@@ -290,3 +290,10 @@ button.model-trigger:enabled:hover, .model-trigger[aria-expanded="true"] { backg
+   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+   .shimmer { color: var(--muted-foreground); background: none; }
+ }
++
++.diff { margin: 0; max-height: 32rem; overflow: auto; padding: .5rem 0; font: .8125rem/1.5 var(--mono); border: 1px solid var(--border); border-radius: var(--radius); }
++.diff > span { display: block; padding: 0 .75rem; white-space: pre; }
++.diff-add { background: color-mix(in srgb, #2ea043 18%, transparent); }
++.diff-del { background: color-mix(in srgb, #f85149 18%, transparent); }
++.diff-hunk { color: #8250df; }
++.diff-file { color: var(--muted-foreground, #888); font-weight: 600; }

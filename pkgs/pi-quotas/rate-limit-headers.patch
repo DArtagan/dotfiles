@@ -1,0 +1,420 @@
+diff --git a/src/extensions/command-quotas/provider-commands.ts b/src/extensions/command-quotas/provider-commands.ts
+index 105a348..0083b93 100644
+--- a/src/extensions/command-quotas/provider-commands.ts
++++ b/src/extensions/command-quotas/provider-commands.ts
+@@ -70,5 +70,11 @@ export function getProviderCommandInfo(
+         commandName: "ollama:quotas",
+         title: "Ollama Cloud Quotas",
+       };
++    case "claude-bridge":
++      return {
++        provider,
++        commandName: "claude-bridge:quotas",
++        title: "Claude Code Quotas",
++      };
+   }
+ }
+diff --git a/src/extensions/core/index.ts b/src/extensions/core/index.ts
+index 11d18c1..a3c257c 100644
+--- a/src/extensions/core/index.ts
++++ b/src/extensions/core/index.ts
+@@ -12,6 +12,10 @@ import {
+   configLoader,
+   seedQuotasConfigIfMissing,
+ } from "../../config.js";
++import {
++  onProviderResponse,
++  recordRateLimitHeaders,
++} from "../../lib/rate-limit-headers.js";
+ 
+ const NOTICE_TYPE = "quotas:migration-notice";
+ const NOTICE_TITLE = "pi-quotas";
+@@ -80,6 +84,11 @@ export default async function (pi: ExtensionAPI) {
+ 
+   registerQuotasSettings(pi, () => loadedFeatures);
+ 
++  // Always loaded, so /quotas has claude-bridge usage even with the footer off.
++  onProviderResponse(pi, (event, ctx) => {
++    recordRateLimitHeaders(ctx.model?.provider, event.headers);
++  });
++
+   pi.on("session_start", async () => {
+     loadedFeatures.clear();
+     pi.events.emit(QUOTAS_EXTENSIONS_REQUEST_EVENT, undefined);
+diff --git a/src/extensions/usage-status/index.ts b/src/extensions/usage-status/index.ts
+index c220b3b..73dc4d3 100644
+--- a/src/extensions/usage-status/index.ts
++++ b/src/extensions/usage-status/index.ts
+@@ -20,6 +20,10 @@ import {
+   fetchProviderQuotas,
+   isSupportedProvider,
+ } from "../../lib/quotas.js";
++import {
++  onProviderResponse,
++  recordRateLimitHeaders,
++} from "../../lib/rate-limit-headers.js";
+ import {
+   assessWindow,
+   formatTimeRemaining,
+@@ -284,6 +288,16 @@ export default async function (pi: ExtensionAPI) {
+     scheduleRefresh(ctx);
+   });
+ 
++  // claude-bridge usage arrives with its responses rather than from a fetch, so
++  // show it as soon as it does. Recording here too keeps this independent of
++  // the order in which pi runs the core extension's handler.
++  onProviderResponse(pi, (event, ctx) => {
++    if (!recordRateLimitHeaders(getContextProvider(ctx), event.headers)) return;
++    currentContext = ctx;
++    if (!enabled) return;
++    scheduleRefresh(ctx);
++  });
++
+   pi.on("model_select", (_event, ctx) => {
+     currentContext = ctx;
+     if (!enabled) {
+diff --git a/src/lib/quotas.ts b/src/lib/quotas.ts
+index bef160d..4f37f14 100644
+--- a/src/lib/quotas.ts
++++ b/src/lib/quotas.ts
+@@ -13,6 +13,7 @@ export const SUPPORTED_PROVIDERS: SupportedQuotaProvider[] = [
+   "opencode-go",
+   "kimi-coding",
+   "ollama-cloud",
++  "claude-bridge",
+ ];
+ 
+ export const PROVIDER_LABELS: Record<SupportedQuotaProvider, string> = {
+@@ -26,6 +27,7 @@ export const PROVIDER_LABELS: Record<SupportedQuotaProvider, string> = {
+   "opencode-go": "OpenCode Go",
+   "kimi-coding": "Kimi Code",
+   "ollama-cloud": "Ollama Cloud",
++  "claude-bridge": "Claude Code",
+ };
+ 
+ const PROVIDER_TTLS_MS: Record<SupportedQuotaProvider, number> = {
+@@ -39,6 +41,8 @@ const PROVIDER_TTLS_MS: Record<SupportedQuotaProvider, number> = {
+   "opencode-go": 60_000,
+   "kimi-coding": 60_000,
+   "ollama-cloud": 60_000,
++  // Read from memory, so there is nothing to cache.
++  "claude-bridge": 0,
+ };
+ 
+ type CacheEntry = {
+diff --git a/src/lib/rate-limit-headers.test.ts b/src/lib/rate-limit-headers.test.ts
+new file mode 100644
+index 0000000..becd9ef
+--- /dev/null
++++ b/src/lib/rate-limit-headers.test.ts
+@@ -0,0 +1,106 @@
++import { afterEach, describe, expect, it } from "vitest";
++import { fetchClaudeBridgeQuotas } from "../providers/fetch.js";
++import {
++  clearRateLimitHeaders,
++  latestRateLimitWindows,
++  parseRateLimitHeaders,
++  recordRateLimitHeaders,
++} from "./rate-limit-headers.js";
++
++// As pi-claude-bridge sends them for its recorded `text` fixture.
++const HEADERS = {
++  "anthropic-ratelimit-unified-status": "allowed",
++  "anthropic-ratelimit-unified-reset": "1789770600",
++  "anthropic-ratelimit-unified-representative-claim": "five_hour",
++  "anthropic-ratelimit-unified-overage-status": "allowed",
++  "anthropic-ratelimit-unified-overage-reset": "1790812800",
++  "anthropic-ratelimit-unified-5h-utilization": "0.14",
++  "anthropic-ratelimit-unified-5h-reset": "1789770600",
++  "anthropic-ratelimit-unified-7d-utilization": "0.01",
++  "anthropic-ratelimit-unified-7d-reset": "1790042400",
++};
++const BEFORE_RESETS = 1789770600_000 - 60_000;
++
++afterEach(() => clearRateLimitHeaders());
++
++describe("parseRateLimitHeaders", () => {
++  it("turns unified windows into percentages with reset dates", () => {
++    const windows = parseRateLimitHeaders(HEADERS);
++
++    expect(windows.map((w) => w.label)).toEqual(["5h", "7d"]);
++    expect(windows[0]).toMatchObject({
++      provider: "claude-bridge",
++      usedPercent: 14,
++      windowSeconds: 5 * 60 * 60,
++      limitValue: 100,
++      limited: false,
++    });
++    expect(windows[0].resetsAt.toISOString()).toBe("2026-09-18T22:30:00.000Z");
++    expect(windows[1].usedPercent).toBe(1);
++  });
++
++  it("marks the representative window of a rejection as limited", () => {
++    const windows = parseRateLimitHeaders({
++      ...HEADERS,
++      "anthropic-ratelimit-unified-status": "rejected",
++      "anthropic-ratelimit-unified-representative-claim": "seven_day",
++    });
++
++    expect(windows.map((w) => [w.label, w.limited])).toEqual([
++      ["5h", false],
++      ["7d", true],
++    ]);
++  });
++
++  it("reads the overage-included window and ignores unknown ones", () => {
++    const windows = parseRateLimitHeaders({
++      "anthropic-ratelimit-unified-7d_oi-utilization": "0.5",
++      "anthropic-ratelimit-unified-seven_day_opus-utilization": "0.3",
++    });
++
++    expect(windows.map((w) => [w.label, w.usedPercent])).toEqual([
++      ["7d incl. overage", 50],
++    ]);
++  });
++
++  it("finds nothing in an ordinary response", () => {
++    expect(parseRateLimitHeaders({ "content-type": "text/event-stream" })).toEqual([]);
++  });
++});
++
++describe("recordRateLimitHeaders", () => {
++  it("keeps only claude-bridge responses that carry usage", () => {
++    expect(recordRateLimitHeaders("anthropic", HEADERS)).toBe(false);
++    expect(recordRateLimitHeaders("claude-bridge", {})).toBe(false);
++    expect(latestRateLimitWindows(BEFORE_RESETS)).toBeUndefined();
++
++    expect(recordRateLimitHeaders("claude-bridge", HEADERS)).toBe(true);
++    expect(latestRateLimitWindows(BEFORE_RESETS)?.map((w) => w.label)).toEqual(["5h", "7d"]);
++  });
++
++  it("drops a window once its reset has passed", () => {
++    recordRateLimitHeaders("claude-bridge", HEADERS);
++
++    expect(latestRateLimitWindows(1789770600_000 + 1)?.map((w) => w.label)).toEqual(["7d"]);
++  });
++});
++
++describe("fetchClaudeBridgeQuotas", () => {
++  it("has nothing to report before the first response", async () => {
++    const result = await fetchClaudeBridgeQuotas({} as never);
++
++    expect(result).toMatchObject({ success: false, error: { kind: "not_applicable" } });
++  });
++
++  it("reports the recorded windows", async () => {
++    recordRateLimitHeaders("claude-bridge", {
++      ...HEADERS,
++      "anthropic-ratelimit-unified-5h-reset": String(Math.floor(Date.now() / 1000) + 3600),
++      "anthropic-ratelimit-unified-7d-reset": String(Math.floor(Date.now() / 1000) + 86400),
++    });
++
++    const result = await fetchClaudeBridgeQuotas({} as never);
++
++    expect(result.success && result.data.windows.map((w) => w.label)).toEqual(["5h", "7d"]);
++  });
++});
+diff --git a/src/lib/rate-limit-headers.ts b/src/lib/rate-limit-headers.ts
+new file mode 100644
+index 0000000..e478872
+--- /dev/null
++++ b/src/lib/rate-limit-headers.ts
+@@ -0,0 +1,141 @@
++import type {
++  ExtensionAPI,
++  ExtensionContext,
++} from "@mariozechner/pi-coding-agent";
++import type { QuotaWindow } from "../types/quotas.js";
++
++/**
++ * pi-claude-bridge (provider `claude-bridge`) reports the plan usage that
++ * Claude Code receives as `anthropic-ratelimit-unified-*` headers on pi's
++ * `after_provider_response` event, with the names the Anthropic API uses.
++ * Reading them needs no credentials and no request of our own.
++ */
++export const CLAUDE_BRIDGE_PROVIDER = "claude-bridge";
++
++const HEADER_PREFIX = "anthropic-ratelimit-unified";
++
++/** Header abbreviation → window label and length. Labels match parseAnthropicUsage. */
++const WINDOWS: ReadonlyArray<{
++  abbreviation: string;
++  claim: string;
++  label: string;
++  windowSeconds: number;
++}> = [
++  { abbreviation: "5h", claim: "five_hour", label: "5h", windowSeconds: 5 * 60 * 60 },
++  { abbreviation: "7d", claim: "seven_day", label: "7d", windowSeconds: 7 * 24 * 60 * 60 },
++  {
++    abbreviation: "7d_oi",
++    claim: "seven_day_overage_included",
++    label: "7d incl. overage",
++    windowSeconds: 7 * 24 * 60 * 60,
++  },
++];
++
++function headerNumber(
++  headers: Record<string, string>,
++  name: string,
++): number | undefined {
++  const raw = headers[`${HEADER_PREFIX}-${name}`];
++  if (raw === undefined || raw.trim() === "") return undefined;
++  const value = Number(raw);
++  return Number.isFinite(value) ? value : undefined;
++}
++
++/**
++ * Turn the unified rate-limit headers into quota windows. Utilization arrives
++ * as a fraction (0.14) and resets as Unix seconds. A window whose claim is the
++ * representative one of a rejected request is marked limited.
++ */
++export function parseRateLimitHeaders(
++  headers: Record<string, string>,
++): QuotaWindow[] {
++  const lower: Record<string, string> = {};
++  for (const [name, value] of Object.entries(headers)) {
++    lower[name.toLowerCase()] = value;
++  }
++  const rejected = lower[`${HEADER_PREFIX}-status`] === "rejected";
++  const claim = lower[`${HEADER_PREFIX}-representative-claim`];
++
++  const windows: QuotaWindow[] = [];
++  for (const { abbreviation, claim: windowClaim, label, windowSeconds } of WINDOWS) {
++    const utilization = headerNumber(lower, `${abbreviation}-utilization`);
++    if (utilization === undefined) continue;
++    const reset = headerNumber(lower, `${abbreviation}-reset`);
++    const usedPercent = Math.round(utilization * 10_000) / 100;
++    windows.push({
++      provider: CLAUDE_BRIDGE_PROVIDER,
++      label,
++      usedPercent,
++      resetsAt: new Date(reset === undefined ? 0 : reset * 1000),
++      windowSeconds,
++      usedValue: usedPercent,
++      limitValue: 100,
++      showPace: false,
++      nextLabel: "Resets",
++      limited: rejected && claim === windowClaim,
++    });
++  }
++  return windows;
++}
++
++type Snapshot = { windows: QuotaWindow[]; receivedAt: number };
++
++// pi loads each extension with its own module instances, so the latest
++// snapshot lives on globalThis for the footer, warnings and /quotas to share.
++const STORE_KEY = Symbol.for("pi-quotas:claude-bridge-rate-limit");
++
++function store(): { latest?: Snapshot } {
++  const global = globalThis as Record<symbol, { latest?: Snapshot } | undefined>;
++  return (global[STORE_KEY] ??= {});
++}
++
++/**
++ * Record a provider response if it came from claude-bridge and carries usage.
++ * Returns whether it did.
++ */
++export function recordRateLimitHeaders(
++  provider: string | undefined,
++  headers: Record<string, string> | undefined,
++  now = Date.now(),
++): boolean {
++  if (provider !== CLAUDE_BRIDGE_PROVIDER || !headers) return false;
++  const windows = parseRateLimitHeaders(headers);
++  if (windows.length === 0) return false;
++  store().latest = { windows, receivedAt: now };
++  return true;
++}
++
++/**
++ * The latest windows Claude Code reported, without any whose reset has passed:
++ * their usage is gone, and the new reset time is not known until the next
++ * report.
++ */
++export function latestRateLimitWindows(now = Date.now()): QuotaWindow[] | undefined {
++  const latest = store().latest;
++  if (!latest) return undefined;
++  return latest.windows.filter(
++    (window) => window.resetsAt.getTime() === 0 || window.resetsAt.getTime() > now,
++  );
++}
++
++type ProviderResponseEvent = { status: number; headers: Record<string, string> };
++
++/**
++ * Subscribe to after_provider_response, which the pi version these types come
++ * from does not declare yet. Older pis never emit it.
++ */
++export function onProviderResponse(
++  pi: ExtensionAPI,
++  handler: (event: ProviderResponseEvent, ctx: ExtensionContext) => void,
++): void {
++  (
++    pi.on as unknown as (
++      event: "after_provider_response",
++      handler: (event: ProviderResponseEvent, ctx: ExtensionContext) => void,
++    ) => void
++  )("after_provider_response", handler);
++}
++
++export function clearRateLimitHeaders(): void {
++  delete store().latest;
++}
+diff --git a/src/providers/fetch.ts b/src/providers/fetch.ts
+index 7e65ec7..783d2d3 100644
+--- a/src/providers/fetch.ts
++++ b/src/providers/fetch.ts
+@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
+ import { homedir } from "node:os";
+ import { join } from "node:path";
+ import type { AuthStorage } from "@mariozechner/pi-coding-agent";
++import { latestRateLimitWindows } from "../lib/rate-limit-headers.js";
+ import type { QuotasErrorKind, QuotasResult, SupportedQuotaProvider } from "../types/quotas.js";
+ import {
+   parseAnthropicUsage,
+@@ -563,6 +564,24 @@ export async function fetchXaiQuotas(
+   );
+ }
+ 
++/**
++ * Claude Code's plan usage for pi-claude-bridge models, from the rate-limit
++ * headers the bridge passes to after_provider_response. Nothing is fetched:
++ * until a claude-bridge response arrives, there is nothing to show.
++ */
++export async function fetchClaudeBridgeQuotas(
++  _authStorage: AuthStorage,
++  _signal?: AbortSignal,
++): Promise<QuotasResult> {
++  const windows = latestRateLimitWindows();
++  if (!windows)
++    return failure(
++      "No usage reported yet — it arrives with the next claude-bridge response",
++      "not_applicable",
++    );
++  return success("claude-bridge", windows);
++}
++
+ export const PROVIDER_FETCHERS = {
+   anthropic: fetchAnthropicQuotas,
+   "openai-codex": fetchCodexQuotas,
+@@ -574,4 +593,5 @@ export const PROVIDER_FETCHERS = {
+   "opencode-go": fetchOpenCodeGoQuotas,
+   "kimi-coding": fetchKimiCodingQuotas,
+   "ollama-cloud": fetchOllamaCloudQuotas,
++  "claude-bridge": fetchClaudeBridgeQuotas,
+ } as const;
+diff --git a/src/types/quotas.ts b/src/types/quotas.ts
+index bc19f6e..0322389 100644
+--- a/src/types/quotas.ts
++++ b/src/types/quotas.ts
+@@ -8,7 +8,8 @@ export type SupportedQuotaProvider =
+   | "zai"
+   | "opencode-go"
+   | "kimi-coding"
+-  | "ollama-cloud";
++  | "ollama-cloud"
++  | "claude-bridge";
+ 
+ export type QuotasErrorKind =
+   | "cancelled"

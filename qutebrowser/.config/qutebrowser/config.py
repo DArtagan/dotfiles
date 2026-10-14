@@ -23,4 +23,7 @@ c.url.searchengines = {
 # Open PDFs in pdf.js by default (instead of showing a download prompt)
 c.content.pdfjs = True
 
+# Enable Chromium's middle-click autoscroll (off by default on Linux)
+c.qt.args = ['enable-blink-features=MiddleClickAutoscroll']
+
 config.load_autoconfig(False)
