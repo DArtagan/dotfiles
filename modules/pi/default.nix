@@ -78,6 +78,9 @@ in
           defaultProvider = "claude-bridge";
           defaultModel = "claude-opus-5-5";
           defaultThinkingLevel = "high";
+          # Draw only the terminal's cursor, not pi's reverse-video one, so it hollows
+          # in an unfocused Alacritty window and hides in inactive tmux panes.
+          showHardwareCursor = true;
           # Loaded in place from the store, so `pi update --extensions` leaves these
           # alone; bump them in pkgs/.
           packages = [
@@ -89,7 +92,6 @@ in
           extensions = [
             "${./copy-code.ts}"
             "${./exit.ts}"
-            "${./terminal-cursor.ts}"
           ];
           # Web search and fetch, through the ketch CLI. See README.md.
           skills = [ "${ketch}/share/ketch/skills/ketch" ];

@@ -42,18 +42,11 @@ than symlinked; see `lib/merge-json-into.nix`.
   `/copy-code 2` the one before it. It reads the message's markdown, not the
   screen, so the copy has no margin or indent, and long lines that pi wraps
   stay whole. `Ctrl+X` and `/copy` still copy the whole last message.
-- **Terminal cursor:** a local extension (`terminal-cursor.ts`) shows the
-  terminal's own cursor in place of the reverse-video one pi paints, so it
-  reflects focus: hollow while the Alacritty window is unfocused, absent in
-  inactive tmux panes. Covers the editor and selector search boxes, but not the
-  `/settings` search, which doesn't mark its cursor. It wraps a private pi-tui
-  method; if a pi update removes it, the extension warns at startup, and if the
-  painted cursor changes shape, it quietly falls back to pi's painted cursor.
-  Upstream fixes ([#5268](https://github.com/earendil-works/pi/pull/5268),
-  [#9924](https://github.com/earendil-works/pi/pull/9924)) were auto-closed
-  unreviewed; if pi stops painting the cursor itself when `showHardwareCursor`
-  is on (issue [#3896](https://github.com/earendil-works/pi/issues/3896)),
-  set that and drop the extension.
+- **Terminal cursor:** `showHardwareCursor` makes pi draw only the terminal's
+  own cursor, not its reverse-video one, so the cursor reflects focus: hollow
+  while the Alacritty window is unfocused, absent in inactive tmux panes. Before
+  pi 1.2.0 the setting drew both, so a local extension stripped pi's. That
+  extension made the cursor flicker on 1.2.0 and was dropped.
 - **Modified Enter:** `Shift+Enter` inserts a newline and `Ctrl+Shift+Enter`
   (or `Alt+Enter`) queues a follow-up (`keybindings.json`). Alacritty sends both
   as CSI-u sequences, and tmux passes them on with `extended-keys` (both set in

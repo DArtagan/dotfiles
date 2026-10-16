@@ -22,8 +22,7 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 
 pi and ketch move with the regular update flow in `CLAUDE.md`. After pi does, check the
 extensions as in step 7 below: the bridge, pi-remote-control and agegr pi-web all
-lean on pi internals, and `terminal-cursor.ts` wraps a private pi-tui method (it
-warns at startup if that method is gone).
+lean on pi internals.
 
 ## Bumping a package
 
