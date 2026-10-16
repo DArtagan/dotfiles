@@ -174,7 +174,6 @@
                 };
                 hardware.has.amd.gpu = true;
                 steam.enable = true;
-                steamos.useSteamOSConfig = true;
               };
               home-manager = {
                 useGlobalPkgs = true;
