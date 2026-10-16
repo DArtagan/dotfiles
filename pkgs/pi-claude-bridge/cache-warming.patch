@@ -1,0 +1,892 @@
+diff --git a/README.md b/README.md
+index 6da4c2e..b7cb477 100644
+--- a/README.md
++++ b/README.md
+@@ -49,6 +49,11 @@ Config: `~/.pi/agent/claude-bridge.json` (global) or the project Pi config direc
+     "defaultIsolated": false,
+     "description": "Custom tool description override"
+   },
++  "cacheWarming": {
++    "enabled": true,
++    "idleWindowMinutes": 120,
++    "minPromptTokens": 20000
++  },
+   "provider": {
+     "plan": "max",
+     "longContextExtraUsage": false,
+@@ -76,6 +81,15 @@ Config: `~/.pi/agent/claude-bridge.json` (global) or the project Pi config direc
+ - `autoMemoryEnabled` — enable Claude Code's auto-memory system (default `false`)
+ - `pathToClaudeCodeExecutable` — path to the `claude` binary. Useful if your OS/filesystem has the SDK's bundled musl/glibc binaries in a place where they can't run. For example, with Nix you can set the binary to e.g. `"/home/you/.nix-profile/bin/claude"`.
+ 
++`cacheWarming` keeps an idle session's prompt cache alive, so returning to it after a break reads the conversation from the cache instead of re-writing all of it:
++- `enabled` — default `false`
++- `idleWindowMinutes` — how long after a session's last turn to keep it warm (default `120`)
++- `minPromptTokens` — skip sessions whose context is smaller than this (default `20000`)
++
++On subscription auth, Claude Code writes one-hour cache entries. A session that sits idle longer re-writes its whole context on the next turn, at twice the input price; a cache read costs a tenth to a twentieth of the input price, so the re-write is 20–40× a read. With warming on, when a session's run settles, the bridge resumes its Claude Code session 54 minutes after the last request, with that turn's options, forked and unpersisted, and stops the request at `message_start`. Prefill is done by then, so the cached prefix has been read and its hour restarted; no output is generated, and nothing is written to the session pi resumes. The first refresh also writes the short prompt tail; later ones read it back. Each refresh therefore costs one cache read of the context, and over a 12-hour window the 13 refreshes cost about a third of one re-write.
++
++Warming stops at the session's next query, at the end of the window, after compaction, tree navigation, `/new`, `/resume` or shutdown, and when a refresh comes back cold (a read of nothing, or a write over a tenth of the read). It applies only to sessions with a UI, not to headless subagent sessions, and only to one-hour entries: five-minute ones (API keys) would need a refresh every 4.5 minutes. Refreshes run in the pi process, so they stop when pi exits, and after a suspend that outlasts the entry. They count toward plan usage but not pi's session totals, which extensions can't add to. Claude Code hooks fire on them as on any turn (`UserPromptSubmit`, `SessionEnd`).
++
+ 
+ **Notices:** the startup notice points out when `provider.plan` is unset and records `startupNoticeShown` in the global config. There's also a deprecation notice on first use of AskClaude that records its display date as `askClaudeDeprecationShown`.
+ 
+diff --git a/src/cache-warming.ts b/src/cache-warming.ts
+new file mode 100644
+index 0000000..36a624d
+--- /dev/null
++++ b/src/cache-warming.ts
+@@ -0,0 +1,244 @@
++// Keeps an idle pi session's prompt cache alive between turns.
++//
++// Claude Code writes the conversation prefix to Anthropic's prompt cache, which
++// serves it at a fraction of the input price for as long as the entry lives: one
++// hour on subscription auth, five minutes on API keys. Every read refreshes the
++// entry. Coming back to a session after the entry expired re-writes the whole
++// conversation at the 1-hour write price — on Opus 5.5 about 40x a read.
++//
++// While a session sits idle, the bridge re-sends its last request shortly before
++// the entry expires: Claude Code resumes the session with the provider query's own
++// options, forked and unpersisted so the session file pi depends on is untouched,
++// and the request is cut off once prefill (where the cache is read and refreshed)
++// is done. That read costs 1/40 of the re-write it prevents, so warming pays off
++// whenever the session is resumed within the window at least once in 40 refreshes.
++//
++// This module is the schedule and the decisions; index.ts supplies the query.
++
++export interface CacheWarmingSettings {
++	enabled: boolean;
++	/** How long after the last turn a session is kept warm. */
++	idleWindowMinutes: number;
++	/** Contexts smaller than this are not worth a Claude Code process per refresh. */
++	minPromptTokens: number;
++}
++
++export const DEFAULT_CACHE_WARMING: CacheWarmingSettings = {
++	enabled: false,
++	idleWindowMinutes: 120,
++	minPromptTokens: 20_000,
++};
++
++export function resolveCacheWarmingSettings(conf: Partial<CacheWarmingSettings> | undefined): CacheWarmingSettings {
++	const pick = (value: unknown, fallback: number) =>
++		typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : fallback;
++	return {
++		enabled: conf?.enabled ?? DEFAULT_CACHE_WARMING.enabled,
++		idleWindowMinutes: pick(conf?.idleWindowMinutes, DEFAULT_CACHE_WARMING.idleWindowMinutes),
++		minPromptTokens: pick(conf?.minPromptTokens, DEFAULT_CACHE_WARMING.minPromptTokens),
++	};
++}
++
++/** Usage as reported on an Anthropic `message_start`, the moment prefill is done. */
++export interface PrefillUsage {
++	input_tokens?: number | null;
++	cache_read_input_tokens?: number | null;
++	cache_creation_input_tokens?: number | null;
++	cache_creation?: {
++		ephemeral_5m_input_tokens?: number | null;
++		ephemeral_1h_input_tokens?: number | null;
++	} | null;
++}
++
++export interface Prefill {
++	/** When message_start arrived. The entry's lifetime runs from here, not from the
++	 *  end of the response: Anthropic reads and refreshes the cache during prefill. */
++	at: number;
++	usage: PrefillUsage;
++}
++
++export const ONE_HOUR_MS = 60 * 60_000;
++
++/** The lifetime of the entries a request wrote: one hour or five minutes, or
++ *  undefined when it wrote none, which says nothing about the tier. */
++export function ttlFromUsage(usage: PrefillUsage): number | undefined {
++	if ((usage.cache_creation?.ephemeral_1h_input_tokens ?? 0) > 0) return ONE_HOUR_MS;
++	if ((usage.cache_creation?.ephemeral_5m_input_tokens ?? 0) > 0) return 5 * 60_000;
++	return undefined;
++}
++
++export function promptTokens(usage: PrefillUsage): number {
++	return (usage.input_tokens ?? 0) + (usage.cache_read_input_tokens ?? 0) + (usage.cache_creation_input_tokens ?? 0);
++}
++
++/** Refresh at 90% of the lifetime, keeping at least ten seconds in hand (pi's own
++ *  cache warmer uses the same margin): 54 minutes for a one-hour entry. */
++export function refreshDelayMs(ttlMs: number): number {
++	return Math.max(1, Math.floor(Math.min(ttlMs * 0.9, ttlMs - 10_000)));
++}
++
++/** A timer that fires this close to expiry, or later, came back from a suspend or a
++ *  blocked event loop. The entry may already be gone, and a refresh of a gone entry
++ *  is a full-price write, so give up rather than guess. */
++const LATE_MARGIN_MS = 60_000;
++
++/** A refresh that read nothing, or wrote more than a tenth of what it read, did not
++ *  find the prefix — it expired, or the request no longer matches. Either way more
++ *  refreshes would be full-price writes. */
++export function refreshHeld(usage: PrefillUsage): boolean {
++	const read = usage.cache_read_input_tokens ?? 0;
++	const written = usage.cache_creation_input_tokens ?? 0;
++	return read > 0 && written <= read * 0.1;
++}
++
++/** One session's warming, armed when its run settles and gone once it stops. */
++interface Warming<R> {
++	recipe: R;
++	ttlMs: number;
++	tokens: number;
++	/** Last read or write of the entry: the end of the turn, then each refresh. */
++	lastPrefillAt: number;
++	windowEndsAt: number;
++	refreshes: number;
++	timer?: unknown;
++	inFlight?: AbortController;
++}
++
++export interface CacheWarmerDeps<R> {
++	now(): number;
++	setTimer(fn: () => void, ms: number): unknown;
++	clearTimer(handle: unknown): void;
++	/** Whether the session still ends where `recipe` was taken: no turn since, no
++	 *  pending rebuild. Checked before each refresh. */
++	isCurrent(key: string, recipe: R): boolean;
++	/** Send the refresh and resolve with its prefill, or undefined if it never got
++	 *  that far. Must stop the request at prefill and honour `signal`. */
++	refresh(recipe: R, signal: AbortSignal): Promise<Prefill | undefined>;
++	log(message: string): void;
++}
++
++export interface CandidateTurn<R> {
++	recipe: R;
++	prefill: Prefill;
++	/** Lifetime of the entries the turn wrote, if any request in it wrote one. */
++	ttlMs: number | undefined;
++}
++
++export class CacheWarmer<R> {
++	private readonly candidates = new Map<string, CandidateTurn<R>>();
++	private readonly warmings = new Map<string, Warming<R>>();
++
++	constructor(private readonly settings: () => CacheWarmingSettings, private readonly deps: CacheWarmerDeps<R>) {}
++
++	/** A provider query for `key` finished cleanly; its prefix is what to keep warm
++	 *  if the run settles here. */
++	noteTurn(key: string, turn: CandidateTurn<R>): void {
++		this.candidates.set(key, turn);
++	}
++
++	/** The run in `key` settled with nothing more to do: start keeping its last
++	 *  turn's prefix warm. */
++	arm(key: string): void {
++		this.stop(key, null);
++		const candidate = this.candidates.get(key);
++		this.candidates.delete(key);
++		const settings = this.settings();
++		if (!candidate || !settings.enabled || settings.idleWindowMinutes <= 0) return;
++		const tokens = promptTokens(candidate.prefill.usage);
++		if (candidate.ttlMs !== ONE_HOUR_MS) {
++			// A five-minute entry would need a refresh every 4.5 minutes, each a
++			// twelfth of a re-write: an hour of that costs more than the miss.
++			this.deps.log(`cache warming: ${key.slice(0, 8)} not armed, ttl=${candidate.ttlMs ?? "unknown"}`);
++			return;
++		}
++		if (tokens < settings.minPromptTokens) {
++			this.deps.log(`cache warming: ${key.slice(0, 8)} not armed, ${tokens} tokens < ${settings.minPromptTokens}`);
++			return;
++		}
++		const warming: Warming<R> = {
++			recipe: candidate.recipe,
++			ttlMs: candidate.ttlMs,
++			tokens,
++			lastPrefillAt: candidate.prefill.at,
++			windowEndsAt: this.deps.now() + settings.idleWindowMinutes * 60_000,
++			refreshes: 0,
++		};
++		this.warmings.set(key, warming);
++		this.deps.log(`cache warming: ${key.slice(0, 8)} armed, ${tokens} tokens, window ${settings.idleWindowMinutes}m`);
++		this.schedule(key, warming);
++	}
++
++	/** Stop warming `key`, aborting a refresh in flight. `reason` null is silent. */
++	stop(key: string, reason: string | null): void {
++		const warming = this.warmings.get(key);
++		if (!warming) return;
++		this.warmings.delete(key);
++		if (warming.timer !== undefined) this.deps.clearTimer(warming.timer);
++		warming.inFlight?.abort();
++		if (reason) this.deps.log(`cache warming: ${key.slice(0, 8)} stopped after ${warming.refreshes} refreshes, ${reason}`);
++	}
++
++	/** A new run started in `key`: whatever was armed or noted is about to be superseded. */
++	forget(key: string, reason: string): void {
++		this.candidates.delete(key);
++		this.stop(key, reason);
++	}
++
++	stopAll(reason: string): void {
++		this.candidates.clear();
++		for (const key of [...this.warmings.keys()]) this.stop(key, reason);
++	}
++
++	isWarming(key: string): boolean {
++		return this.warmings.has(key);
++	}
++
++	private schedule(key: string, warming: Warming<R>): void {
++		// The entry outlives the window already: nothing left to keep warm.
++		if (warming.lastPrefillAt + warming.ttlMs >= warming.windowEndsAt) {
++			this.stop(key, "window covered");
++			return;
++		}
++		const at = warming.lastPrefillAt + refreshDelayMs(warming.ttlMs);
++		warming.timer = this.deps.setTimer(() => void this.fire(key, warming), Math.max(0, at - this.deps.now()));
++	}
++
++	private async fire(key: string, warming: Warming<R>): Promise<void> {
++		warming.timer = undefined;
++		if (this.warmings.get(key) !== warming) return;
++		if (this.deps.now() > warming.lastPrefillAt + warming.ttlMs - LATE_MARGIN_MS) {
++			this.stop(key, "refresh came too late, entry may have expired");
++			return;
++		}
++		if (!this.deps.isCurrent(key, warming.recipe)) {
++			this.stop(key, "session moved on");
++			return;
++		}
++		const controller = new AbortController();
++		warming.inFlight = controller;
++		let prefill: Prefill | undefined;
++		try {
++			prefill = await this.deps.refresh(warming.recipe, controller.signal);
++		} catch (error) {
++			if (this.warmings.get(key) === warming) this.stop(key, `refresh failed: ${error instanceof Error ? error.message : String(error)}`);
++			return;
++		} finally {
++			warming.inFlight = undefined;
++		}
++		// Stopped while the refresh ran: a new turn, or the session went away.
++		if (this.warmings.get(key) !== warming) return;
++		if (!prefill) {
++			this.stop(key, "refresh ended before prefill");
++			return;
++		}
++		const u = prefill.usage;
++		if (!refreshHeld(u)) {
++			this.stop(key, `cache cold, read=${u.cache_read_input_tokens ?? 0} wrote=${u.cache_creation_input_tokens ?? 0}`);
++			return;
++		}
++		warming.refreshes++;
++		warming.lastPrefillAt = prefill.at;
++		this.deps.log(`cache warming: ${key.slice(0, 8)} refresh ${warming.refreshes}, read=${u.cache_read_input_tokens ?? 0} wrote=${u.cache_creation_input_tokens ?? 0}`);
++		this.schedule(key, warming);
++	}
++}
+diff --git a/src/config.ts b/src/config.ts
+index befc58b..ff19f81 100644
+--- a/src/config.ts
++++ b/src/config.ts
+@@ -5,6 +5,7 @@
+ // returned) so the extension always starts.
+ 
+ import { CONFIG_DIR_NAME, getAgentDir } from "@earendil-works/pi-coding-agent";
++import type { CacheWarmingSettings } from "./cache-warming.js";
+ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
+ import { dirname, join } from "path";
+ 
+@@ -23,6 +24,8 @@ export interface Config {
+ 		allowFullMode?: boolean;
+ 		appendSkills?: boolean;
+ 	};
++	/** Keep idle sessions' prompt cache alive between turns. See cache-warming.ts. */
++	cacheWarming?: Partial<CacheWarmingSettings>;
+ 	/** Low-level Claude Agent SDK plumbing. Most users won't need these. */
+ 	provider?: {
+ 		strictMcpConfig?: boolean;
+@@ -110,6 +113,7 @@ export function loadConfig(cwd: string): Config {
+ 		startupNoticeShown: project.startupNoticeShown ?? global.startupNoticeShown,
+ 		askClaudeDeprecationShown: project.askClaudeDeprecationShown ?? global.askClaudeDeprecationShown,
+ 		askClaude: { ...global.askClaude, ...project.askClaude },
++		cacheWarming: { ...global.cacheWarming, ...project.cacheWarming },
+ 		provider: { ...global.provider, ...project.provider },
+ 	};
+ }
+diff --git a/src/index.ts b/src/index.ts
+index e65ec14..4f126ee 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -29,6 +29,7 @@ import { askClaudeCallTags, askClaudeToolDescription, buildAskClaudeParams, reso
+ import { nonSystemMessages, toBridgeContext } from "./transcript.js";
+ import { forgetSessionCwd, rememberSessionCwd, rememberSummarySession, sessionCwdFor, summarySessionFor } from "./session-cwd.js";
+ import { updateUsage, type SdkUsage } from "./usage.js";
++import { CacheWarmer, resolveCacheWarmingSettings, ttlFromUsage, type CacheWarmingSettings, type Prefill } from "./cache-warming.js";
+ import { rateLimitResponse } from "./rate-limit.js";
+ 
+ // --- Debug logging ---
+@@ -855,6 +856,98 @@ function debugSessionPaths(label: string, cwd: string, jsonlPath: string): void
+ // The SDK's query(), or a test double (see setQuery).
+ let queryImpl: typeof query = query;
+ 
++// --- Cache warming ---
++
++type QueryOptions = NonNullable<Parameters<typeof query>[0]["options"]>;
++
++/** What a refresh re-sends: the CC session as the last turn left it, with that
++ *  turn's own query options, so the request matches the cached prefix byte for
++ *  byte. Only the trailing prompt differs, which is past the cached part. */
++interface WarmRecipe {
++	sessionId: string;
++	/** The mirror's cursor when the turn ended; any later turn moves it. */
++	cursor: number;
++	/** The provider query's options, minus resume, MCP servers and debug capture. */
++	options: QueryOptions;
++	mcpTools: Tool[];
++}
++
++const CACHE_WARM_PROMPT = ".";
++let cacheWarmingSettings: CacheWarmingSettings = resolveCacheWarmingSettings(undefined);
++
++/** Resume the turn's CC session forked and unpersisted, so nothing is written to the
++ *  file pi's next turn resumes, and stop at the first message_start: prefill is done
++ *  by then, and with it the cache read that refreshes the entry. Output is never
++ *  generated, so a refresh costs the read plus a write of the prompt's tail. */
++async function refreshCache(recipe: WarmRecipe, signal: AbortSignal): Promise<Prefill | undefined> {
++	if (signal.aborted) return undefined;
++	// The same tool definitions as the turn, or the tools block (ahead of everything
++	// in the prefix) would differ. Claude Code never calls them before we stop.
++	const toolCtx = new QueryContext();
++	const mcpServers = buildMcpServers(recipe.mcpTools, toolCtx);
++	// Streamed like the provider's prompt, not passed as a string, so CC runs the
++	// request in the same input mode as the turns it refreshes.
++	const promptStream = makePromptStream();
++	void promptStream.push(userMessage([{ type: "text", text: CACHE_WARM_PROMPT }]))
++		.catch((error) => debug(`cache warming: prompt push rejected:`, error));
++	const sdkQuery = queryImpl({
++		prompt: promptStream.stream,
++		options: {
++			...recipe.options,
++			...(mcpServers ? { mcpServers } : {}),
++			resume: recipe.sessionId,
++			forkSession: true,
++			persistSession: false,
++			...makeCliDebugOptions("cache-warm"),
++		},
++	});
++	const stop = () => {
++		void sdkQuery.interrupt().catch(() => {});
++		try { sdkQuery.close(); } catch {}
++	};
++	signal.addEventListener("abort", stop, { once: true });
++	try {
++		for await (const message of sdkQuery) {
++			if (signal.aborted) return undefined;
++			const event = (message as SDKMessage & { event?: any }).event;
++			if (message.type === "stream_event" && event?.type === "message_start") {
++				return { at: Date.now(), usage: event.message?.usage ?? {} };
++			}
++			if (message.type === "result") {
++				const error = resultErrorText(message);
++				if (error !== undefined) throw new Error(error);
++				return undefined;
++			}
++		}
++		return undefined;
++	} finally {
++		signal.removeEventListener("abort", stop);
++		stop();
++		promptStream.fail(new Error("cache refresh ended"));
++		toolCtx.releasePendingToolCalls("Cache refresh ended");
++	}
++}
++
++const cacheWarmer = new CacheWarmer<WarmRecipe>(() => cacheWarmingSettings, {
++	now: () => Date.now(),
++	setTimer: (fn, ms) => {
++		const timer = setTimeout(fn, ms);
++		// Warming is no reason to keep a finished pi process alive.
++		timer.unref?.();
++		return timer;
++	},
++	clearTimer: (handle) => clearTimeout(handle as ReturnType<typeof setTimeout>),
++	isCurrent: (key, recipe) => {
++		const state = sharedSessions.get(key);
++		if (!state || state.needsRebuild) return false;
++		if (state.sessionId !== recipe.sessionId || state.cursor !== recipe.cursor) return false;
++		for (const c of activeQueryContexts) if (c.piSessionId === key && c.activeQuery !== null) return false;
++		return true;
++	},
++	refresh: refreshCache,
++	log: (message) => debug(message),
++});
++
+ // @internal
+ export const __test = {
+ 	setQuery(fn: typeof query | null) {
+@@ -871,6 +964,10 @@ export const __test = {
+ 	historyRewrittenBySession,
+ 	armStaleContexts,
+ 	discardRewrittenQuery,
++	cacheWarmer,
++	setCacheWarmingSettings(settings: CacheWarmingSettings) {
++		cacheWarmingSettings = settings;
++	},
+ 	contextForToolResults,
+ 	isQueryAbandoned: (q: object) => abandonedQueries.has(q),
+ 	get activeQueryContexts() {
+@@ -1495,6 +1592,15 @@ async function consumeQuery(
+ 		if (recordStreamPath) appendFileSync(recordStreamPath, `${JSON.stringify(message)}\n`);
+ 		if (wasAborted()) break;
+ 		await reportHeldRateLimit(queryCtx, model);
++		// Above the stream guard: a request that follows a tool result reaches here
++		// before pi has called back with the result's stream.
++		if (message.type === "stream_event" && (message as SDKMessage & { event?: any }).event?.type === "message_start") {
++			const usage = (message as SDKMessage & { event: any }).event.message?.usage;
++			if (usage) {
++				queryCtx.lastPrefill = { at: Date.now(), usage };
++				queryCtx.cacheTtlMs = ttlFromUsage(usage) ?? queryCtx.cacheTtlMs;
++			}
++		}
+ 		// Everything below the currentPiStream guard is content, which there is
+ 		// nowhere to put once a turn has ended on a tool call. These three are not
+ 		// content and must not share that gate:
+@@ -1942,6 +2048,10 @@ function streamClaudeAgentSdk(model: Model<any>, context: Context, options?: Sim
+ 	// from the set, not from here) and re-discard a healthy query.
+ 	queryCtx.historyStale = false;
+ 	queryCtx.missedSteer = false;
++	queryCtx.lastPrefill = undefined;
++	queryCtx.cacheTtlMs = undefined;
++	// This query moves the session past whatever a refresh would re-send.
++	if (options?.sessionId) cacheWarmer.forget(options.sessionId, "new query");
+ 
+ 	const cwd = sessionCwdFor(options?.sessionId);
+ 	// cliModel is the actual id sent to Claude Code (may carry [1m]); model.id is the
+@@ -2060,6 +2170,7 @@ function streamClaudeAgentSdk(model: Model<any>, context: Context, options?: Sim
+ 		...(claudeExecutable ? { pathToClaudeCodeExecutable: claudeExecutable } : {}),
+ 		...makeCliDebugOptions("provider"),
+ 	};
++	const { resume: _resume, mcpServers: _mcpServers, debug: _debug, debugFile: _debugFile, stderr: _stderr, ...warmOptions } = queryOptions;
+ 
+ 	debug("provider: fresh query",
+ 		`model=${cliModel} msgs=${context.messages.length} tools=${mcpTools.length}`,
+@@ -2144,6 +2255,15 @@ function streamClaudeAgentSdk(model: Model<any>, context: Context, options?: Sim
+ 					// A missed steer may precede the first mirror or arrive while this
+ 					// query is still able to complete. Preserve both rebuild signals.
+ 					setSessionStateFor(queryCtx.piSessionId, { ...state, sessionId, cursor, cwd, piSessionId: queryCtx.piSessionId ?? undefined, needsRebuild: queryCtx.missedSteer || state?.needsRebuild });
++					// What the session ends with if pi's run settles here. A failed turn
++					// leaves nothing worth keeping, and a rebuild-bound one nothing reusable.
++					if (queryCtx.piSessionId && queryCtx.lastPrefill && queryCtx.turnOutput?.stopReason !== "error" && !sessionStateFor(queryCtx.piSessionId)?.needsRebuild) {
++						cacheWarmer.noteTurn(queryCtx.piSessionId, {
++							recipe: { sessionId, cursor, options: warmOptions, mcpTools },
++							prefill: queryCtx.lastPrefill,
++							ttlMs: queryCtx.cacheTtlMs,
++						});
++					}
+ 				}
+ 			}
+ 
+@@ -2421,6 +2541,7 @@ export default function (pi: ExtensionAPI) {
+ 	let askClaudeDeprecationNoticeShown = Boolean(config.askClaudeDeprecationShown);
+ 	debug("loadConfig:", JSON.stringify(config));
+ 	providerSettings = config.provider ?? {};
++	cacheWarmingSettings = resolveCacheWarmingSettings(config.cacheWarming);
+ 	// We need these settings to know if we're eligible for 1M context on certain models
+ 	// Validate at the boundary: a non-array here would throw inside every
+ 	// claudeCodeModelId call and brick the extension at activation.
+@@ -2449,6 +2570,7 @@ export default function (pi: ExtensionAPI) {
+ 		// top-level transition takes every mirror with it.
+ 		sharedSessions.clear();
+ 		historyRewrittenBySession.clear();
++		cacheWarmer.stopAll(event);
+ 
+ 		// Clear the global streamSimple if this instance registered it.
+ 		// This allows /reload to work — the old instance clears the flag so
+@@ -2519,6 +2641,16 @@ export default function (pi: ExtensionAPI) {
+ 	pi.on("agent_start", (_event, ctx) => {
+ 		recordSystemPrompt("agent_start", ctx.getSystemPrompt(), lastSystemPromptOptions);
+ 	});
++	// Settled: pi will not continue on its own, so the session waits on its user.
++	// A bridge run stops the session's warming at its first query, and arming here
++	// replaces whatever another provider's run left behind.
++	// Only sessions with one: a headless child (pi-subagents) never comes back, and
++	// never emits session_shutdown to stop its warming either. An aborted run leaves
++	// the CC session due for a rebuild, which no refresh can save.
++	pi.on("agent_settled", (event, ctx) => {
++		if (ctx.hasUI && !event.aborted) cacheWarmer.arm(ctx.sessionManager.getSessionId());
++		else cacheWarmer.forget(ctx.sessionManager.getSessionId(), event.aborted ? "run aborted" : "no UI");
++	});
+ 
+ 	// Mid-run re-renders: turn_start fires before every turn (first turn included)
+ 	// after the turn's prompt is final: prepareNextTurnWithContext has
+@@ -2555,9 +2687,14 @@ export default function (pi: ExtensionAPI) {
+ 	// query is live and its conversation untouched. Registered by every instance
+ 	// of this module; instances sponsoring stale marks forward them to the
+ 	// serving instance via sponsorMarkRebuildForSession.
+-	pi.on("session_compact", (event, ctx) =>
+-		sponsorMarkRebuildForSession(ctx.sessionManager.getSessionId(), `session_compact:${event.reason}:willRetry=${event.willRetry}`));
+-	pi.on("session_tree", (_event, ctx) => sponsorMarkRebuildForSession(ctx.sessionManager.getSessionId(), "session_tree"));
++	pi.on("session_compact", (event, ctx) => {
++		cacheWarmer.forget(ctx.sessionManager.getSessionId(), "compacted");
++		sponsorMarkRebuildForSession(ctx.sessionManager.getSessionId(), `session_compact:${event.reason}:willRetry=${event.willRetry}`);
++	});
++	pi.on("session_tree", (_event, ctx) => {
++		cacheWarmer.forget(ctx.sessionManager.getSessionId(), "tree navigation");
++		sponsorMarkRebuildForSession(ctx.sessionManager.getSessionId(), "session_tree");
++	});
+ 
+ 	// --- Provider ---
+ 	//
+diff --git a/src/query-state.ts b/src/query-state.ts
+index 1ed0c8c..99f74ba 100644
+--- a/src/query-state.ts
++++ b/src/query-state.ts
+@@ -7,6 +7,7 @@
+ // Extracted from index.ts so tests can import without activating the extension.
+ 
+ import type { AssistantMessage, AssistantMessageEventStream, Model, SimpleStreamOptions } from "@earendil-works/pi-ai";
++import type { Prefill } from "./cache-warming.js";
+ import type { McpResult } from "./extract-tool-results.js";
+ import type { PromptStream } from "./prompt-stream.js";
+ import type { RateLimitInfo } from "./rate-limit.js";
+@@ -57,6 +58,12 @@ export class QueryContext {
+ 	/** A steer never reached CC. A first query has no session mirror yet, so
+ 	 *  completion must carry this into the mirror it creates. */
+ 	missedSteer = false;
++	/** The query's latest message_start: when its last request's prefill finished,
++	 *  and the cache usage it reported. What cache warming refreshes from. */
++	lastPrefill: Prefill | undefined;
++	/** Lifetime of the cache entries this query's requests wrote, from the last one
++	 *  that wrote any. A request that only read says nothing about the tier. */
++	cacheTtlMs: number | undefined;
+ 
+ 	// Per-turn (reset together)
+ 	turnOutput: AssistantMessage | null = null;
+diff --git a/tests/unit-cache-warming.mjs b/tests/unit-cache-warming.mjs
+new file mode 100644
+index 0000000..dd60c34
+--- /dev/null
++++ b/tests/unit-cache-warming.mjs
+@@ -0,0 +1,285 @@
++import { describe, it } from "node:test";
++import assert from "node:assert/strict";
++import {
++	CacheWarmer,
++	ONE_HOUR_MS,
++	refreshDelayMs,
++	refreshHeld,
++	resolveCacheWarmingSettings,
++	ttlFromUsage,
++} from "../src/cache-warming.ts";
++import activate, { __test } from "../src/index.js";
++
++const MIN = 60_000;
++const wrote1h = (tokens) => ({ input_tokens: 2, cache_read_input_tokens: tokens - 1002, cache_creation_input_tokens: 1000, cache_creation: { ephemeral_1h_input_tokens: 1000, ephemeral_5m_input_tokens: 0 } });
++const readBack = (tokens) => ({ input_tokens: 2, cache_read_input_tokens: tokens, cache_creation_input_tokens: 200, cache_creation: { ephemeral_1h_input_tokens: 200, ephemeral_5m_input_tokens: 0 } });
++
++/** A clock and timer queue the test advances by hand. */
++function fakeTime() {
++	let now = 0;
++	let timers = [];
++	return {
++		now: () => now,
++		setTimer: (fn, ms) => { const t = { at: now + ms, fn }; timers.push(t); return t; },
++		clearTimer: (t) => { timers = timers.filter((x) => x !== t); },
++		pending: () => timers.length,
++		nextAt: () => Math.min(...timers.map((t) => t.at)),
++		/** Run the earliest timer, moving the clock to it, and let its refresh settle. */
++		async fireNext(extraDelay = 0) {
++			timers.sort((a, b) => a.at - b.at);
++			const t = timers.shift();
++			now = t.at + extraDelay;
++			t.fn();
++			for (let i = 0; i < 5; i++) await Promise.resolve();
++		},
++		advance: (ms) => { now += ms; },
++	};
++}
++
++function makeWarmer({ settings = { enabled: true, idleWindowMinutes: 720, minPromptTokens: 20_000 }, current = () => true, refresh } = {}) {
++	const time = fakeTime();
++	const logs = [];
++	const refreshes = [];
++	const warmer = new CacheWarmer(() => settings, {
++		now: time.now,
++		setTimer: time.setTimer,
++		clearTimer: time.clearTimer,
++		isCurrent: (key, recipe) => current(key, recipe),
++		refresh: refresh ?? (async (recipe) => { refreshes.push({ recipe, at: time.now() }); return { at: time.now(), usage: readBack(100_000) }; }),
++		log: (m) => logs.push(m),
++	});
++	return { warmer, time, logs, refreshes };
++}
++
++const turn = (usage = wrote1h(100_000), at = 0) => ({ recipe: { id: "r" }, prefill: { at, usage }, ttlMs: ttlFromUsage(usage) });
++
++describe("cache warming decisions", () => {
++	it("reads the entry lifetime from the tier a request wrote", () => {
++		assert.equal(ttlFromUsage(wrote1h(50_000)), ONE_HOUR_MS);
++		assert.equal(ttlFromUsage({ cache_creation: { ephemeral_5m_input_tokens: 10 } }), 5 * MIN);
++		assert.equal(ttlFromUsage({ cache_read_input_tokens: 10 }), undefined);
++	});
++
++	it("refreshes a one-hour entry at 54 minutes", () => {
++		assert.equal(refreshDelayMs(ONE_HOUR_MS), 54 * MIN);
++	});
++
++	it("counts a refresh as held only when it read the prefix back", () => {
++		assert.equal(refreshHeld(readBack(100_000)), true);
++		assert.equal(refreshHeld({ cache_read_input_tokens: 0, cache_creation_input_tokens: 100_000 }), false);
++		assert.equal(refreshHeld({ cache_read_input_tokens: 6_000, cache_creation_input_tokens: 94_000 }), false);
++	});
++
++	it("is off unless enabled, and ignores nonsense numbers", () => {
++		assert.deepEqual(resolveCacheWarmingSettings(undefined), { enabled: false, idleWindowMinutes: 120, minPromptTokens: 20_000 });
++		assert.deepEqual(resolveCacheWarmingSettings({ enabled: true, idleWindowMinutes: -5, minPromptTokens: "x" }), { enabled: true, idleWindowMinutes: 120, minPromptTokens: 20_000 });
++	});
++});
++
++describe("CacheWarmer", () => {
++	it("keeps a settled session warm for the window, then stops", async () => {
++		const { warmer, time, refreshes, logs } = makeWarmer();
++		warmer.noteTurn("s1", turn());
++		warmer.arm("s1");
++		assert.equal(time.nextAt(), 54 * MIN);
++		while (time.pending()) await time.fireNext();
++		// Refreshed at 54, 108, …, 702 minutes; the last one's entry lives past 720.
++		assert.deepEqual(refreshes.map((r) => r.at / MIN), Array.from({ length: 13 }, (_, i) => 54 * (i + 1)));
++		assert.equal(warmer.isWarming("s1"), false);
++		assert.match(logs.at(-1), /stopped after 13 refreshes, window covered/);
++	});
++
++	it("does not arm without a candidate turn, when disabled, for a 5-minute entry, or for a small context", () => {
++		const cases = [
++			{ settings: { enabled: false, idleWindowMinutes: 720, minPromptTokens: 0 }, candidate: turn() },
++			{ settings: { enabled: true, idleWindowMinutes: 720, minPromptTokens: 0 }, candidate: { ...turn(), ttlMs: 5 * MIN } },
++			{ settings: { enabled: true, idleWindowMinutes: 720, minPromptTokens: 0 }, candidate: { ...turn(), ttlMs: undefined } },
++			{ settings: { enabled: true, idleWindowMinutes: 720, minPromptTokens: 200_000 }, candidate: turn() },
++			{ settings: { enabled: true, idleWindowMinutes: 720, minPromptTokens: 0 }, candidate: null },
++		];
++		for (const { settings, candidate } of cases) {
++			const { warmer, time } = makeWarmer({ settings });
++			if (candidate) warmer.noteTurn("s1", candidate);
++			warmer.arm("s1");
++			assert.equal(time.pending(), 0, JSON.stringify({ settings, candidate }));
++		}
++	});
++
++	it("uses a noted turn once: a second settle without a new turn arms nothing", () => {
++		const { warmer, time } = makeWarmer();
++		warmer.noteTurn("s1", turn());
++		warmer.arm("s1");
++		warmer.forget("s1", "run started");
++		warmer.arm("s1");
++		assert.equal(time.pending(), 0);
++	});
++
++	it("stops when the session moved on before the refresh", async () => {
++		let current = true;
++		const { warmer, time, refreshes, logs } = makeWarmer({ current: () => current });
++		warmer.noteTurn("s1", turn());
++		warmer.arm("s1");
++		current = false;
++		await time.fireNext();
++		assert.equal(refreshes.length, 0);
++		assert.match(logs.at(-1), /session moved on/);
++	});
++
++	it("gives up on a timer that fires too close to expiry, e.g. after a suspend", async () => {
++		const { warmer, time, refreshes, logs } = makeWarmer();
++		warmer.noteTurn("s1", turn());
++		warmer.arm("s1");
++		await time.fireNext(5.5 * MIN); // 59.5 minutes after the turn's prefill
++		assert.equal(refreshes.length, 0);
++		assert.match(logs.at(-1), /too late/);
++	});
++
++	it("stops after a refresh that found the cache cold", async () => {
++		const { warmer, time, logs } = makeWarmer({
++			refresh: async () => ({ at: time.now(), usage: { cache_read_input_tokens: 6_000, cache_creation_input_tokens: 94_000 } }),
++		});
++		warmer.noteTurn("s1", turn());
++		warmer.arm("s1");
++		await time.fireNext();
++		assert.equal(time.pending(), 0);
++		assert.match(logs.at(-1), /cache cold, read=6000 wrote=94000/);
++	});
++
++	it("stops after a failed refresh", async () => {
++		const { warmer, time, logs } = makeWarmer({ refresh: async () => { throw new Error("rate limited"); } });
++		warmer.noteTurn("s1", turn());
++		warmer.arm("s1");
++		await time.fireNext();
++		assert.equal(time.pending(), 0);
++		assert.match(logs.at(-1), /refresh failed: rate limited/);
++	});
++
++	it("aborts a refresh in flight when a new run starts, and does not reschedule", async () => {
++		let signal;
++		let resolve;
++		const { warmer, time } = makeWarmer({ refresh: (_recipe, s) => { signal = s; return new Promise((r) => { resolve = r; }); } });
++		warmer.noteTurn("s1", turn());
++		warmer.arm("s1");
++		await time.fireNext();
++		assert.equal(signal.aborted, false);
++		warmer.forget("s1", "run started");
++		assert.equal(signal.aborted, true);
++		resolve({ at: time.now(), usage: readBack(100_000) });
++		for (let i = 0; i < 5; i++) await Promise.resolve();
++		assert.equal(time.pending(), 0);
++	});
++
++	it("keeps sessions apart", async () => {
++		const { warmer, time } = makeWarmer();
++		warmer.noteTurn("s1", turn());
++		warmer.noteTurn("s2", turn());
++		warmer.arm("s1");
++		warmer.arm("s2");
++		warmer.forget("s1", "run started");
++		assert.equal(warmer.isWarming("s1"), false);
++		assert.equal(warmer.isWarming("s2"), true);
++		warmer.stopAll("session_shutdown");
++		assert.equal(time.pending(), 0);
++	});
++});
++
++describe("cache warming through the provider", () => {
++	// Activation reads the user's config, so the settings are set after it. Clearing the
++	// registration marker makes each test's instance the first, which registers.
++	function activateBridge() {
++		globalThis[Symbol.for("claude-bridge:activeStreamSimple")] = undefined;
++		const handlers = {};
++		let providerConfig;
++		activate({
++			on: (name, fn) => { (handlers[name] ??= []).push(fn); },
++			registerProvider: (_name, config) => { providerConfig = config; },
++			registerTool: () => {},
++		});
++		__test.setCacheWarmingSettings({ enabled: true, idleWindowMinutes: 720, minPromptTokens: 20_000 });
++		const ctx = (sessionId, hasUI = true) => ({ cwd: process.cwd(), hasUI, mode: "tui", sessionManager: { getSessionId: () => sessionId }, getSystemPrompt: () => undefined, ui: {} });
++		const emit = (name, event, c) => { for (const fn of handlers[name] ?? []) fn(event, c); };
++		return { providerConfig, ctx, emit };
++	}
++
++	/** A query double: records each call, and replays a turn that wrote 100k tokens to
++	 *  the one-hour cache, or for a refresh one that reads them back. */
++	function fakeQuery(calls) {
++		return ({ prompt, options }) => {
++			const call = { prompt, options, interrupted: false, closed: false };
++			calls.push(call);
++			const refresh = Boolean(options.forkSession);
++			const gen = (async function* () {
++				yield { type: "system", subtype: "init", session_id: refresh ? "cc-fork" : "cc-main" };
++				yield { type: "stream_event", event: { type: "message_start", message: { id: "m1", usage: refresh ? readBack(100_000) : wrote1h(100_000) } } };
++				if (refresh) throw new Error("refresh read past message_start");
++				yield { type: "stream_event", event: { type: "message_delta", delta: { stop_reason: "end_turn" }, usage: { output_tokens: 3 } } };
++				yield { type: "result", subtype: "success", is_error: false, result: "ok" };
++			})();
++			gen.interrupt = async () => { call.interrupted = true; };
++			gen.close = () => { call.closed = true; };
++			return gen;
++		};
++	}
++
++	it("refreshes a settled session's cache with the turn's own options, forked and unpersisted", async (t) => {
++		t.mock.timers.enable({ apis: ["setTimeout", "Date"] });
++		const calls = [];
++		__test.setQuery(fakeQuery(calls));
++		t.after(() => {
++			__test.setQuery(null);
++			__test.cacheWarmer.stopAll("test end");
++			__test.setCacheWarmingSettings(resolveCacheWarmingSettings(undefined));
++			__test.resetSharedSession();
++		});
++		const { providerConfig, ctx, emit } = activateBridge();
++		const tool = { name: "read", description: "Read a file", parameters: { type: "object", properties: { path: { type: "string" } } } };
++
++		await providerConfig.streamSimple(providerConfig.models[0], { messages: [{ role: "user", content: "hi", timestamp: 0 }], tools: [tool] }, { sessionId: "s-warm" }).result();
++		emit("agent_settled", { aborted: false }, ctx("s-warm"));
++		assert.equal(__test.cacheWarmer.isWarming("s-warm"), true);
++		assert.equal(calls.length, 1);
++
++		t.mock.timers.tick(54 * MIN);
++		for (let i = 0; i < 20 && calls.length < 2; i++) await new Promise((r) => setImmediate(r));
++		assert.equal(calls.length, 2);
++		const [turnCall, refreshCall] = calls;
++		assert.equal(refreshCall.options.resume, "cc-main");
++		assert.equal(refreshCall.options.forkSession, true);
++		assert.equal(refreshCall.options.persistSession, false);
++		for (const key of ["cwd", "tools", "systemPrompt", "settings", "extraArgs", "effort", "includePartialMessages", "permissionMode"]) {
++			assert.deepEqual(refreshCall.options[key], turnCall.options[key], key);
++		}
++		assert.deepEqual(Object.keys(refreshCall.options.mcpServers), Object.keys(turnCall.options.mcpServers));
++		// Cut off at prefill: nothing past message_start is read.
++		for (let i = 0; i < 20 && !refreshCall.closed; i++) await new Promise((r) => setImmediate(r));
++		assert.equal(refreshCall.closed, true);
++		// The refresh held, so the next one is due 54 minutes after it.
++		assert.equal(__test.cacheWarmer.isWarming("s-warm"), true);
++	});
++
++	it("does not warm a headless session, and stops at its next query", async (t) => {
++		const calls = [];
++		__test.setQuery(fakeQuery(calls));
++		t.after(() => {
++			__test.setQuery(null);
++			__test.cacheWarmer.stopAll("test end");
++			__test.setCacheWarmingSettings(resolveCacheWarmingSettings(undefined));
++			__test.resetSharedSession();
++		});
++		const { providerConfig, ctx, emit } = activateBridge();
++		const run = async (id) => {
++			await providerConfig.streamSimple(providerConfig.models[0], { messages: [{ role: "user", content: "hi", timestamp: 0 }], tools: [] }, { sessionId: id }).result();
++		};
++
++		await run("s-child");
++		emit("agent_settled", { aborted: false }, ctx("s-child", false));
++		assert.equal(__test.cacheWarmer.isWarming("s-child"), false);
++
++		await run("s-top");
++		emit("agent_settled", { aborted: false }, ctx("s-top"));
++		assert.equal(__test.cacheWarmer.isWarming("s-top"), true);
++		const next = providerConfig.streamSimple(providerConfig.models[0], { messages: [{ role: "user", content: "hi", timestamp: 0 }, { role: "assistant", content: [{ type: "text", text: "ok" }], timestamp: 1 }, { role: "user", content: "again", timestamp: 2 }], tools: [] }, { sessionId: "s-top" });
++		assert.equal(__test.cacheWarmer.isWarming("s-top"), false);
++		await next.result();
++	});
++});
+diff --git a/tests/unit-config.mjs b/tests/unit-config.mjs
+index f3f2c22..dce549a 100644
+--- a/tests/unit-config.mjs
++++ b/tests/unit-config.mjs
+@@ -50,6 +50,7 @@ describe("loadConfig", () => {
+ 				askClaudeDeprecationShown: undefined,
+ 				provider: { plan: "max" },
+ 				askClaude: { enabled: false },
++				cacheWarming: {},
+ 			});
+ 		} finally {
+ 			rmSync(cwd, { recursive: true, force: true });
+@@ -66,10 +67,12 @@ describe("loadConfig", () => {
+ 			writeFileSync(join(globalDir, "claude-bridge.json"), JSON.stringify({
+ 				provider: { plan: "pro", strictMcpConfig: true },
+ 				askClaude: { enabled: true, defaultMode: "read" },
++				cacheWarming: { enabled: true, idleWindowMinutes: 720 },
+ 			}));
+ 			writeFileSync(join(projectDir, "claude-bridge.json"), JSON.stringify({
+ 				provider: { plan: "max", autoMemoryEnabled: true },
+ 				askClaude: { enabled: false },
++				cacheWarming: { idleWindowMinutes: 60 },
+ 			}));
+ 
+ 			assert.deepEqual(loadConfig(cwd), {
+@@ -77,6 +80,7 @@ describe("loadConfig", () => {
+ 				askClaudeDeprecationShown: undefined,
+ 				provider: { plan: "max", strictMcpConfig: true, autoMemoryEnabled: true },
+ 				askClaude: { enabled: false, defaultMode: "read" },
++				cacheWarming: { enabled: true, idleWindowMinutes: 60 },
+ 			});
+ 		} finally {
+ 			rmSync(cwd, { recursive: true, force: true });
+@@ -154,6 +158,7 @@ describe("loadConfig", () => {
+ 				askClaudeDeprecationShown: undefined,
+ 				provider: { plan: "max" },
+ 				askClaude: {},
++				cacheWarming: {},
+ 			});
+ 		} finally {
+ 			if (oldEnv === undefined) delete process.env.PI_CODING_AGENT_DIR;
