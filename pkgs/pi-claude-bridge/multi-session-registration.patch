@@ -1,8 +1,8 @@
 diff --git a/src/index.ts b/src/index.ts
-index eaf56c2..16fdb93 100644
+index e65ec14..85b9c2d 100644
 --- a/src/index.ts
 +++ b/src/index.ts
-@@ -131,6 +131,8 @@ function diagDump(label: string, data: Record<string, unknown>) {
+@@ -123,6 +123,8 @@ function diagDump(label: string, data: Record<string, unknown>) {
  // Full registration policy (first vs later instances, shared vs own registry):
  // see the "--- Provider ---" block in activate() below.
  const ACTIVE_STREAM_SIMPLE_KEY = Symbol.for("claude-bridge:activeStreamSimple");
@@ -11,7 +11,7 @@ index eaf56c2..16fdb93 100644
  
  // Claude Code's own builtin tools, for the AskClaude path where CC really runs
  // them. The provider path never sees these — it starts CC with `tools: []`.
-@@ -2536,29 +2538,31 @@ export default function (pi: ExtensionAPI) {
+@@ -2561,29 +2563,31 @@ export default function (pi: ExtensionAPI) {
  
  	// --- Provider ---
  	//
@@ -59,7 +59,7 @@ index eaf56c2..16fdb93 100644
  
  	const g = globalThis as Record<symbol, any>;
  	const providerConfig = {
-@@ -2570,22 +2574,30 @@ export default function (pi: ExtensionAPI) {
+@@ -2595,22 +2599,30 @@ export default function (pi: ExtensionAPI) {
  		// Context models (toBridgeContext normalizes at the stream entry points).
  		streamSimple: streamClaudeAgentSdk as any,
  	};
@@ -81,8 +81,9 @@ index eaf56c2..16fdb93 100644
 -			debug(`provider: registry lacks ${PROVIDER_ID}, registering (module=${moduleInstanceId})`);
 -			pi.registerProvider(PROVIDER_ID, providerConfig);
 -		});
+-	}
 +		debug(`provider: later instance, registering at load (module=${moduleInstanceId})`);
- 	}
++	}
 +	pi.registerProvider(PROVIDER_ID, providerConfig);
 +	pi.on("session_start", (_event, ctx) => {
 +		const runtime = registryRuntime(ctx);
@@ -101,3 +102,193 @@ index eaf56c2..16fdb93 100644
  
  	// --- AskClaude tool ---
  
+diff --git a/tests/lib/mock-pi.mjs b/tests/lib/mock-pi.mjs
+index 0e3572f..2438a1e 100644
+--- a/tests/lib/mock-pi.mjs
++++ b/tests/lib/mock-pi.mjs
+@@ -1,6 +1,10 @@
+ // Shared stub pi for calling the extension's default export in unit tests.
+-// Returns the Map of event handlers the stub recorded. Pass activateFn to
+-// override the activate function (e.g. a freshly re-imported module instance).
++// Returns a Map from event name to a function that runs every handler the
++// extension registered for it, in order, as pi does, and returns the last
++// result that isn't undefined. Keeping only the last handler instead would hide
++// any earlier one, such as clearSession behind a later session_shutdown handler.
++// Pass activateFn to override the activate function (e.g. a freshly re-imported
++// module instance).
+ //
+ // registerTool is stubbed too: activate() calls pi.registerTool when the loaded
+ // config enables AskClaude (e.g. a developer's global ~/.pi/agent/claude-bridge.json),
+@@ -9,11 +13,22 @@
+ const { default: activate } = await import("../../src/index.js");
+ 
+ export function activateWithMockPi(activateFn) {
+-	const handlers = new Map();
++	const lists = new Map();
+ 	(activateFn ?? activate)({
+-		on: (event, handler) => handlers.set(event, handler),
++		on: (event, handler) => lists.set(event, [...(lists.get(event) ?? []), handler]),
+ 		registerProvider: () => {},
+ 		registerTool: () => {},
+ 	});
++	const handlers = new Map();
++	for (const [event, list] of lists) {
++		handlers.set(event, (...args) => {
++			let result;
++			for (const handler of list) {
++				const r = handler(...args);
++				if (r !== undefined) result = r;
++			}
++			return result;
++		});
++	}
+ 	return handlers;
+ }
+diff --git a/tests/unit-compaction-coexistence.mjs b/tests/unit-compaction-coexistence.mjs
+index d4d41b0..8ed2b1a 100644
+--- a/tests/unit-compaction-coexistence.mjs
++++ b/tests/unit-compaction-coexistence.mjs
+@@ -12,7 +12,7 @@ it("bridge leaves compaction and branch-summary ownership to Pi and other extens
+ 			assert.equal(handlers.get(name)({ signal: new AbortController().signal }, ctx), undefined);
+ 		}
+ 	}
+-	finally { handlers.get("session_shutdown")({}, { sessionManager: { getSessionId: () => "coexistence" } }); }
++	finally { handlers.get("session_shutdown")({}, { sessionManager: { getSessionId: () => "coexistence" }, modelRegistry: {} }); }
+ });
+ 
+ // Real Pi session, extension runner, native summarizer and bridge provider. Only
+diff --git a/tests/unit-provider-registration.mjs b/tests/unit-provider-registration.mjs
+index 63a592f..fde0771 100644
+--- a/tests/unit-provider-registration.mjs
++++ b/tests/unit-provider-registration.mjs
+@@ -1,15 +1,17 @@
+ #!/usr/bin/env node
+ 
+ /**
+- * Provider registration across module instances (issue #91's foreground failure).
++ * Provider registration across module instances (issue #91's foreground failure,
++ * and hosts running several sessions in one process, such as pi-web).
+  *
+- * The first bridge instance registers the claude-bridge provider at activation.
+- * A later instance — a subagent session that loaded this module fresh — must
+- * decide at session_start based on who owns its session's model registry:
+- * hosts that pass the parent's registry down already have the provider
+- * (re-registering would overwrite the parent's pinned stream fn), while hosts
+- * that give the child its own registry need it registered or every
+- * claude-bridge/* dispatch fails with "Model not found".
++ * Every bridge instance registers the claude-bridge provider at activation, so a
++ * host that picks a session's model before session_start finds it. A later
++ * instance — a subagent session, or another session of a multi-session host,
++ * that loaded this module fresh — then checks at session_start who owns its
++ * session's model runtime: when the host passed the parent's registry down, the
++ * child's load-time registration overwrote the parent's pinned stream fn, so the
++ * child puts the parent's back. A child with its own registry keeps its own, or
++ * every claude-bridge/* dispatch fails with "Model not found".
+  */
+ 
+ import { describe, it } from "node:test";
+@@ -20,8 +22,8 @@ const PROVIDER_ID = "claude-bridge";
+ const { default: activate } = await import("../src/index.js");
+ 
+ function activateWithMockPi(activateFn, options = {}) {
+-	// pi appends handlers (a later bridge instance registers two session_start
+-	// handlers: clearSession + deferred registration), so the mock does too.
++	// pi appends handlers (each instance registers two session_start handlers:
++	// clearSession and the runtime-ownership check), so the mock does too.
+ 	const handlers = new Map();
+ 	const registered = [];
+ 	(activateFn ?? activate)({
+@@ -41,8 +43,10 @@ function activateWithMockPi(activateFn, options = {}) {
+ 
+ const sessionCtx = { cwd: "/tmp", sessionManager: { getSessionId: () => "test-session" } };
+ 
+-function registryWith(provider) {
+-	return { getProvider: (id) => (id === provider ? { name: provider } : undefined) };
++/** A session's ModelRegistry, which pi builds around a ModelRuntime: ownership is
++ *  keyed by the runtime, as the registry can be rebuilt around the same one. */
++function runtimeRegistry() {
++	return { runtime: {}, getProvider: () => undefined };
+ }
+ 
+ describe("provider registration across module instances", () => {
+@@ -52,29 +56,51 @@ describe("provider registration across module instances", () => {
+ 		assert.equal(registered[0].name, PROVIDER_ID);
+ 	});
+ 
+-	it("later instance registers at session_start when its registry lacks the provider (#91)", async () => {
+-		// A fresh module instance: the activate-time registration is skipped, and
+-		// the decision moves to session_start with the session's own registry.
++	it("later instance registers at activation, and keeps a registry of its own (#91)", async () => {
+ 		const { default: activateFresh } = await import("../src/index.js?own-registry-child");
+ 		const { registered, emit } = activateWithMockPi(activateFresh);
+-		assert.equal(registered.length, 0, "no activation-time registration for a later instance");
+-
+-		emit("session_start", {}, { ...sessionCtx, modelRegistry: registryWith("other-provider") });
+-		assert.equal(registered.length, 1, "session_start registers into the empty registry");
++		assert.equal(registered.length, 1, "activation-time registration, before any session_start");
+ 		assert.equal(registered[0].name, PROVIDER_ID);
+ 		assert.ok(registered[0].config.streamSimple, "the registration carries this instance's stream fn");
++
++		emit("session_start", {}, { ...sessionCtx, modelRegistry: runtimeRegistry() });
++		assert.equal(registered.length, 1, "an unowned runtime keeps this instance's registration");
+ 	});
+ 
+-	it("later instance does not re-register when the registry already has the provider", async () => {
+-		const { default: activateFresh } = await import("../src/index.js?shared-registry-child");
+-		const { registered, emit } = activateWithMockPi(activateFresh);
++	it("later instance on its parent's registry puts the parent's stream fn back", async () => {
++		const shared = runtimeRegistry();
++		const { default: activateParent } = await import("../src/index.js?shared-registry-parent");
++		const parent = activateWithMockPi(activateParent);
++		parent.emit("session_start", {}, { ...sessionCtx, modelRegistry: shared });
++		const parentStream = parent.registered.at(-1).config.streamSimple;
++
++		const { default: activateChild } = await import("../src/index.js?shared-registry-child");
++		const child = activateWithMockPi(activateChild);
++		assert.notEqual(child.registered.at(-1).config.streamSimple, parentStream, "the child's load-time registration carries its own stream fn");
++
++		// Host passed the parent's registry down: the parent owns its runtime.
++		child.emit("session_start", {}, { ...sessionCtx, modelRegistry: shared });
++		assert.equal(child.registered.at(-1).name, PROVIDER_ID);
++		assert.equal(child.registered.at(-1).config.streamSimple, parentStream, "the parent's stream fn is registered again");
++
++		// Repeated session starts stay on the parent's stream fn.
++		child.emit("session_start", {}, { ...sessionCtx, modelRegistry: shared });
++		assert.equal(child.registered.at(-1).config.streamSimple, parentStream, "still the parent's after a later session_start");
++	});
+ 
+-		// Host passed the parent's registry down: the provider is already there.
+-		emit("session_start", {}, { ...sessionCtx, modelRegistry: registryWith(PROVIDER_ID) });
+-		assert.equal(registered.length, 0, "no overwrite of the parent's registration");
++	it("an instance gives up its runtime at session_shutdown, so the next one owns it", async () => {
++		const shared = runtimeRegistry();
++		const { default: activateFirst } = await import("../src/index.js?released-runtime-first");
++		const first = activateWithMockPi(activateFirst);
++		first.emit("session_start", {}, { ...sessionCtx, modelRegistry: shared });
++		first.emit("session_shutdown", {}, { ...sessionCtx, modelRegistry: shared });
+ 
+-		// Repeated session starts stay idempotent.
+-		emit("session_start", {}, { ...sessionCtx, modelRegistry: registryWith(PROVIDER_ID) });
+-		assert.equal(registered.length, 0, "still no registration on a later session_start");
++		// /reload: a fresh instance on the same runtime keeps its own registration.
++		const { default: activateNext } = await import("../src/index.js?released-runtime-next");
++		const next = activateWithMockPi(activateNext);
++		const nextStream = next.registered.at(-1).config.streamSimple;
++		next.emit("session_start", {}, { ...sessionCtx, modelRegistry: shared });
++		assert.equal(next.registered.length, 1, "no restore: the runtime has no other owner");
++		assert.equal(next.registered.at(-1).config.streamSimple, nextStream);
+ 	});
+ });
+diff --git a/tests/unit-session-cwd.mjs b/tests/unit-session-cwd.mjs
+index 5f297eb..14ce006 100644
+--- a/tests/unit-session-cwd.mjs
++++ b/tests/unit-session-cwd.mjs
+@@ -47,7 +47,7 @@ describe("streamSimple", () => {
+ 			registerProvider: (_name, config) => { providerConfig = config; },
+ 			registerTool: () => {},
+ 		});
+-		for (const fn of handlers.session_start) fn({}, { cwd: sessionCwd, sessionManager: { getSessionId: () => "s-web" } });
++		for (const fn of handlers.session_start) fn({}, { cwd: sessionCwd, sessionManager: { getSessionId: () => "s-web" }, modelRegistry: {} });
+ 		t.after(() => forgetSessionCwd("s-web"));
+ 
+ 		let queryCwd;

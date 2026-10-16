@@ -25,7 +25,9 @@ buildNpmPackage {
   patches = [
     # Register the provider in every session of a host that runs several in one process
     # (agegr/pi-web), which otherwise start with no claude-bridge models. Local; not yet
-    # sent upstream.
+    # sent upstream. Also updates the unit tests for the new registration policy. The
+    # build doesn't run them: apply the patches to a clone of `rev`, then
+    # `npm ci && npm run test:unit`.
     ./multi-session-registration.patch
   ];
 
