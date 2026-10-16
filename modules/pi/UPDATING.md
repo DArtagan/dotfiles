@@ -15,6 +15,7 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 | `pi-claude-bridge` | GitHub commit (no tags upstream) | `rev`, `hash` | `npmDepsHash` | one patch; `postPatch` drops dev and peer dependencies |
 | `pi-quotas` | GitHub tag | `version`, `hash` | | one patch, which reads headers the bridge sends |
 | `pine-of-glass` | GitHub tag | `version`, `hash` | | |
+| `pi-autoresearch` | GitHub tag | `version`, `hash` | | |
 | `rpiv-ask-user-question` | npm tarball | `version`, `hash` | `rpiv-config` tarball | |
 | `pi-remote-control` | GitHub tag | `version`, `hash` | `cargoHash`, `npmDeps` hash, `ws` tarball | one patch |
 | `agegr-pi-web` | npm tarball, plus the repo's lockfile | `version`, `hash` | lockfile hash, `npmDepsHash` | its own launcher, `pi-web.sh` |
@@ -58,8 +59,9 @@ Read the changelog or the commits since our version, looking for:
   `nix eval --raw .#nixosConfigurations.thenixbeast.pkgs.pi-coding-agent.version`.
 - **New runtime dependencies.** pi supplies `@earendil-works/pi-ai`,
   `pi-agent-core`, `pi-coding-agent`, `pi-tui` and `typebox`. Anything else an
-  extension imports has to be in its store path. For the plain-copy packages
-  (pine-of-glass, pi-quotas, rpiv-ask-user-question), list the bare imports in a
+  extension imports has to be in its store path (pi also aliases
+  `@sinclair/typebox`). For the plain-copy packages (pine-of-glass, pi-quotas,
+  pi-autoresearch, rpiv-ask-user-question), list the bare imports in a
   checkout of the new version:
   ```bash
   grep -rhoE "from ['\"][^.'\"][^'\"]*['\"]|import\(['\"][^.'\"][^'\"]*['\"]\)" --include=*.ts . | sort | uniq -c
@@ -169,6 +171,7 @@ errors. Then try what it does:
 | pi-claude-bridge | Load `<new store path>/lib/node_modules/pi-claude-bridge/src/index.ts` in place of the current bridge; a prompt gets an answer from `claude-bridge/claude-haiku-4-5`. |
 | pi-quotas | The 5h/7d windows appear in the footer; `/quotas` answers. |
 | pine-of-glass | The contextimate panel at startup; after one prompt, the cachemire/traceline turn line; `/cache` and `/pace` answer (`/pace` needs `pi-meantime.json` with `"enabled": true`, which works project-level in `<cwd>/.pi/`). |
+| pi-autoresearch | In a scratch git repo with a script that prints `METRIC runtime_ms=N`, `/autoresearch <goal>` logs a baseline and kept experiments in the widget; `/autoresearch off` stops it. Its tools only appear in autoresearch mode. |
 | rpiv-ask-user-question | Ask the model to use `ask_user_question`; the dialog opens and the chosen answer reaches the model. |
 | pi-remote-control | After a switch: `systemctl --user restart pi-remote-control`, `/rc` in a TUI session, and the session shows at `http://<host>.forge.local:8787`. |
 | agegr-pi-web | Before switching, run the new build alongside the service (below). Two new sessions in a row must both answer on a claude-bridge model: the bridge's registration patch is for the second. Its output must not warn that it "could not rotate pi-web's preview-mode secrets" (see `pi-web.sh`). |

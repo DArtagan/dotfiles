@@ -8,6 +8,7 @@ let
   # pi and its extensions write runtime state into the same JSON files we configure.
   mergeJsonInto = import ../../lib/merge-json-into.nix { inherit pkgs; };
   pi-claude-bridge = pkgs.callPackage ../../pkgs/pi-claude-bridge/package.nix { };
+  pi-autoresearch = pkgs.callPackage ../../pkgs/pi-autoresearch/package.nix { };
   pi-quotas = pkgs.callPackage ../../pkgs/pi-quotas/package.nix { };
   pine-of-glass = pkgs.callPackage ../../pkgs/pine-of-glass/package.nix { };
   rpiv-ask-user-question = pkgs.callPackage ../../pkgs/rpiv-ask-user-question/package.nix { };
@@ -88,6 +89,7 @@ in
             "${pi-quotas}"
             "${pine-of-glass}"
             "${rpiv-ask-user-question}"
+            "${pi-autoresearch}"
           ];
           extensions = [
             "${./copy-code.ts}"

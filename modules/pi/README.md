@@ -35,6 +35,15 @@ than symlinked; see `lib/merge-json-into.nix`.
   meantime breaks down latency (a tempo line while it runs, slow-call notices,
   `/pace` for the ledger). Meantime is off upstream unless
   `~/.pi/agent/pi-meantime.json` sets `"enabled": true`, which ours does.
+- **Experiment loops:** [pi-autoresearch](https://github.com/davebcn87/pi-autoresearch),
+  packaged in `pkgs/pi-autoresearch`. `/autoresearch <goal>` sets up a benchmark
+  in `.auto/` and a branch in the project's repo, then loops: try an idea, measure
+  it, commit what improves the metric, revert what doesn't. It runs until
+  `/autoresearch off`; `/autoresearch finalize` turns the kept experiments into
+  reviewable branches, and `/autoresearch help` lists the rest. Its tools are only
+  active in autoresearch mode, so outside it they cost nothing per request. Hook
+  examples the agent copies from its skill come out of the store read-only, and
+  need a `chmod u+w` before editing.
 - **`/exit`:** a synonym for `/quit`, from a tiny local extension (`exit.ts`).
   It waits for a running agent turn to finish before exiting; `/quit` doesn't.
 - **Copying code blocks:** a local extension (`copy-code.ts`). `Alt+X` or
