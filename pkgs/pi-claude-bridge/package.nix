@@ -25,8 +25,14 @@ buildNpmPackage {
   patches = [
     # Register the provider in every session of a host that runs several in one process
     # (agegr/pi-web), which otherwise start with no claude-bridge models. Local; not yet
-    # sent upstream.
+    # sent upstream. Also updates the unit tests for the new registration policy. The
+    # build doesn't run them: apply the patches to a clone of `rev`, then
+    # `npm ci && npm run test:unit`.
     ./multi-session-registration.patch
+    # Keep idle sessions' prompt cache warm between turns (`cacheWarming` in
+    # claude-bridge.json; see modules/pi/README.md). Local; not yet sent upstream.
+    # Includes its unit tests, which the build doesn't run.
+    ./cache-warming.patch
   ];
 
   # pi supplies its own packages (the bridge's peer dependencies) to extensions at load

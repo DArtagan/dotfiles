@@ -10,6 +10,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   `pkgs/pi-claude-bridge` to carry local patches, and loaded from the store.
   Its opt-in AskClaude tool is on: when another provider's model is in use, it can
   hand questions or tasks to Claude Code (read-only unless it asks for `full`).
+- **Prompt cache warming:** a local bridge patch keeps an idle session's prompt
+  cache alive for 12 hours after its last turn. See below.
 - **Plan quotas:** [pi-quotas](https://github.com/latentminds-ai/pi-quotas), packaged
   in `pkgs/pi-quotas`. Shows the Claude plan's 5h/7d windows in the footer, plus
   `/quotas` and near-limit warnings. For claude-bridge models, the bridge passes on
@@ -128,6 +130,39 @@ start the browser.
   need a bridge patch to allow those builtins in provider mode, and only works
   while claude-bridge is the provider.
 
+## Prompt cache warming
+
+Claude Code caches the conversation for an hour on the subscription. Coming back
+later re-writes the whole context, at 2× the input price against 0.05× for a
+cache read on Opus 5.5 (40× the cost, API-equivalent). The bridge's `cacheWarming`
+(`pkgs/pi-claude-bridge/cache-warming.patch`, set up in `default.nix`) refreshes
+the cache instead. After a run settles in a session with a UI, it resumes the
+session's Claude Code conversation every 54 minutes for 12 hours, forked and
+unpersisted, and cuts the request off once prefill has read the cache. Each refresh
+costs one cache read of the context, so the 13 in the window cost about a third of
+one re-write. It stops at the next turn, compaction, `/tree`, `/new`, `/resume`, pi
+exiting, a suspend that outlasts the hour, or a refresh that comes back cold.
+
+pi's own `cacheWarming` setting doesn't cover this. It skips claude-bridge models,
+which declare no cache lifetime or price, and has to: its refresh re-sends the
+request through the provider, which for the bridge would be a real turn appended to
+the Claude Code session.
+
+Things to know:
+
+- Refreshes count toward the plan's 5h/7d windows, but not toward pi's session
+  totals or cachemire's ledger: extensions can't add usage to a session.
+- Claude Code hooks fire on each refresh as on any bridge turn. worktrunk's set and
+  clear its 🤖 branch marker.
+- `CLAUDE_BRIDGE_DEBUG=1` logs each decision to `~/.pi/agent/claude-bridge.log`
+  (`grep 'cache warming'`).
+- Headless sessions (pi-subagents children, `pi -p`) and five-minute cache entries
+  (API keys) aren't warmed.
+
+The patch includes its unit tests (`tests/unit-cache-warming.mjs`), which the build
+doesn't run. To run them, apply the patches to a clone of the pinned commit, as in
+`UPDATING.md` step 4, then run `npm ci && npm run test:unit`.
+
 ## Google Calendar
 
 `google.nix` gives pi read access to
@@ -216,6 +251,7 @@ Local changes, none sent upstream yet:
   provider only once per process and expected later sessions to share that
   registry; agegr gives each session its own and picks its model before the
   bridge's deferred registration ran.
+- `pkgs/pi-claude-bridge/cache-warming.patch`: see "Prompt cache warming" above.
 - `pkgs/pi-remote-control/edit-diff-view.patch`: prc showed edits as raw JSON.
 - `pkgs/agegr-pi-web` packages the npm release (prebuilt), since building from
   source fetches a Google font.

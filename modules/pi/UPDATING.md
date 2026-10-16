@@ -12,7 +12,7 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 | Package | Source | Pinned by | Other hashes | Carries |
 |---|---|---|---|---|
 | pi (`pi-coding-agent`) | nixpkgs | `flake.lock` | | |
-| `pi-claude-bridge` | GitHub commit (no tags upstream) | `rev`, `hash` | `npmDepsHash` | one patch; `postPatch` drops dev and peer dependencies |
+| `pi-claude-bridge` | GitHub commit (no tags upstream) | `rev`, `hash` | `npmDepsHash` | two patches; `postPatch` drops dev and peer dependencies |
 | `pi-quotas` | GitHub tag | `version`, `hash` | | one patch, which reads headers the bridge sends |
 | `pine-of-glass` | GitHub tag | `version`, `hash` | | |
 | `pi-autoresearch` | GitHub tag | `version`, `hash` | | |
