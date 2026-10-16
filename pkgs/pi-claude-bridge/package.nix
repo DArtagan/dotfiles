@@ -27,6 +27,10 @@ buildNpmPackage {
     # (agegr/pi-web), which otherwise start with no claude-bridge models. Local; not yet
     # sent upstream.
     ./multi-session-registration.patch
+    # Keep idle sessions' prompt cache warm between turns (`cacheWarming` in
+    # claude-bridge.json; see modules/pi/README.md). Local; not yet sent upstream.
+    # Includes its unit tests, which the build doesn't run.
+    ./cache-warming.patch
   ];
 
   # pi supplies its own packages (the bridge's peer dependencies) to extensions at load

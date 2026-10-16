@@ -108,6 +108,13 @@ in
           # The AskClaude tool, which lets other providers' models delegate to Claude
           # Code. claude-bridge's own models don't get it.
           askClaude.enabled = true;
+          # Refresh an idle session's one-hour prompt cache for 12 hours after its last
+          # turn (local patch, pkgs/pi-claude-bridge/cache-warming.patch). See README.md.
+          cacheWarming = {
+            enabled = true;
+            idleWindowMinutes = 720;
+            minPromptTokens = 20000;
+          };
         }
       );
     };
