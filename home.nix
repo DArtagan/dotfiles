@@ -502,6 +502,10 @@
         set -g extended-keys on
         set -g extended-keys-format csi-u
 
+        # Mouse-drag copies also go to PRIMARY (middle-click). OSC 52 only reaches the
+        # clipboard, since Alacritty treats tmux's empty selection param as "c"
+        set -s copy-command 'wl-copy --primary'
+
         # Active pane border in Solarized blue, inactive dimmed
         set -g pane-active-border-style 'fg=#268bd2,bold'
         set -g pane-border-style 'fg=#93a1a1'
