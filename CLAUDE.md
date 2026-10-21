@@ -94,6 +94,7 @@ Stylix provides unified color scheme (Solarized Light) and fonts across all apps
 - **`ai-server` caveat**: if `nixos-rebuild switch` fails due to GPU container options, temporarily comment out `./modules/ai-server` in `flake.nix`, reboot, then re-enable
 - **`lactd` failing to start** ("Could not write config", start-limit-hit) after an update means lact bumped its config schema: bump `services.lact.settings.version` in `hosts/thenixbeast/default.nix`, following the comment there.
 - **nixpkgs channel**: `nixos-unstable` for all hosts
+- **`todos/` holds work not yet done.** A spec there carries the verified context and an opening prompt for one piece of work, and is deleted once the work lands. See `todos/README.md`.
 - **Configs that apps also write to** (Claude Code, pi and its extensions): merge the keys we manage with `lib/merge-json-into.nix` in a home-manager activation, rather than `home.file`, which symlinks a read-only file. See `modules/pi` and `claudeSettings` in `home.nix`.
 
 ## Git Gotchas
