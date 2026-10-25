@@ -94,6 +94,8 @@ in
           extensions = [
             "${./copy-code.ts}"
             "${./exit.ts}"
+            # Stops a bash call racing the write or edit it was batched with.
+            "${./sequential-file-tools.ts}"
           ];
           # Web search and fetch, through the ketch CLI. See README.md.
           skills = [ "${ketch}/share/ketch/skills/ketch" ];
