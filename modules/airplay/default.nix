@@ -34,11 +34,14 @@ in
       # Opened per interface below instead, so the service is not advertised
       # where it cannot be reached.
       openFirewall = false;
-      publish = {
-        enable = true;
-        # UxPlay registers its AirPlay service through avahi-compat, which
-        # counts as a user service.
-        userServices = true;
+      settings = {
+        publish = {
+          disable-publishing = false;
+          # UxPlay registers its AirPlay service through avahi-compat, which
+          # counts as a user service.
+          disable-user-service-publishing = false;
+          publish-addresses = true;
+        };
       };
     };
 
