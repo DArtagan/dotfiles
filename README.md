@@ -167,6 +167,7 @@ There are non-nix-related top level directories in the repo.  These are my old d
 ## Deprecated dotfiles:
 * chunkwm: project is no longer developed.  Move to `yabai` instead.
 * fish: configuration moved to `home.nix`, now ceasing to maintain the `fish` directory.
+* sway: configuration moved to `modules/sway/default.nix`. I've ceased to maintain the `sway` dotfiles independently, because I can't imagine setting up a new desktop environment and not using nix to do it.
 * termite: terminal deprecated.  Author recommends using `alacritty` instead.
 * terminator: abandoned by the original devs and then picked up again by new enthusiasts.  For me though, `alacritty` + `tmux` is cleaner.
 * urxvt: hopefully I never need return to the `X` window system.  `alacritty` + `tmux` otherwise preferred.
