@@ -64,6 +64,7 @@ Each host directory contains its own `default.nix` (hardware, filesystems, host-
 Reusable opt-in modules imported per-host in `flake.nix`:
 - `sway/` — Wayland desktop (greetd, ironbar, kickoff menu)
 - `stylix/` — unified theming (NixOS + home-manager variant)
+- `starship/` — the fish prompt, laid out and partly coloured after tide's Lean style, in every home via `home.nix`. Bash is deliberately left unmanaged, with its stock prompt.
 - `tailscale/` — auto-connect to headscale at `headscale.immortalkeep.com` (MagicDNS `forge.local`; requires `--accept-dns=true`). See `modules/tailscale/README.md` for bootstrap, runtime toggles, and gotchas.
 - `ai-server/` — local AI stack (Ollama, Open-WebUI, Speaches via Podman)
 - `attic-push/` — pushes everything the host builds to the Attic cache on mini-nas, through `queued-build-hook` (see "Binary caches" in `README.md`)

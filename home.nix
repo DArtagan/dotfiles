@@ -8,6 +8,7 @@
   imports = [
     modules/pi
     modules/qutebrowser
+    modules/starship
     modules/todoist
     modules/vim
     modules/zed
@@ -33,11 +34,6 @@
   fonts.fontconfig.enable = true;
 
   home = {
-    # If erroring on first build, this activation line is preventing tide from getting installed.  Comment out this stanza, nixos-rebuild, then uncomment.
-    activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Lean --prompt_colors='True color' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=No"
-    '';
-
     packages = with pkgs; [
       broot
       calibre
@@ -384,8 +380,6 @@
         '';
       };
       interactiveShellInit = ''
-        _tide_find_and_remove kubectl tide_right_prompt_items
-
         # worktrunk ships no vendor_functions.d, so the `wt` wrapper (cd + --execute
         # directives) can only come from the binary. Do NOT run `wt config shell install`
         # — it writes untracked files into ~/.config/fish/{functions,completions}/.
@@ -407,10 +401,6 @@
           inherit (pkgs.fishPlugins.fzf-fish) src;
         }
         {
-          name = "tide";
-          inherit (pkgs.fishPlugins.tide) src;
-        }
-        {
           name = "fish-ai";
           src = pkgs.fetchFromGitHub {
             owner = "Realiserad";
@@ -422,7 +412,6 @@
         }
       ];
       shellAliases = {
-        awsume = "source (which awsume.fish)";
         wsc = "wt switch --create --execute=claude";
       };
       shellInit = ''
