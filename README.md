@@ -158,9 +158,16 @@ Once tailscale is installed and running on your system, join the network by:
 4. Disconnect: `nm device disconnect {wifi_interface_name}`
 
 
+
+## Other dotfiles
+
+There are non-nix-related top level directories in the repo.  These are my old dotfiles, that I used to instantiate on a machine using `stow` which would smoothly create symlinks between the `~/.config` folder and these folders - making it easy for me to keep this repo up to date and deploy new stuff.  Now though, I've mostly moved over to using Nix and I'll remove old dotfile directories if it seems I'm never going to use them again.
+
+
 ## Deprecated dotfiles:
 * chunkwm: project is no longer developed.  Move to `yabai` instead.
 * fish: configuration moved to `home.nix`, now ceasing to maintain the `fish` directory.
 * termite: terminal deprecated.  Author recommends using `alacritty` instead.
-* uzbl: author last updated it in 2016.  Move to `qutebrowser` instead.
+* terminator: abandoned by the original devs and then picked up again by new enthusiasts.  For me though, `alacritty` + `tmux` is cleaner.
+* urxvt: hopefully I never need return to the `X` window system.  `alacritty` + `tmux` otherwise preferred.
 * zsh: ceasing to maintain the configuration files.  `fish` has all the shell niceness, batteries included.
