@@ -11,6 +11,13 @@ sitting in this directory means the work has not been done.
 
 ## Open
 
+**[pi-durable.md](pi-durable.md) — pi on Pi Durable: one daemon per host, thin clients**
+A Pi Durable harness in a per-host user service owns every pi session; tmux panes
+(later web and phone) attach as clients. The PoC aims at vanilla pi's flows, with
+pi-claude-bridge kept by giving it, through a shim, what it expects from pi.
+First step is a headless test of the bridge on Durable, crash and compaction
+included. Not started.
+
 **[ssh-agent.md](ssh-agent.md) — one SSH agent, unlocked per terminal session**
 Every `eval (ssh-agent -c)` starts another agent and none of them get stopped
 (22 were running on thenixbeast on 2026-10-21). The plan is 1Password's agent,
