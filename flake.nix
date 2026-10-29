@@ -138,6 +138,9 @@
                     home = {
                       stateVersion = "25.05";
                     };
+                    # Read offset of the MATSHITA BD-MLT UJ265 drive, from AccurateRip's
+                    # drive list (`cyanrip -f` segfaults in libcdio-paranoia on this drive)
+                    programs.fish.shellAbbrs.cyanrip = "cyanrip -s 103";
                   };
                 };
               };

@@ -40,6 +40,7 @@
       claude-code
       claude-monitor
       curl
+      cyanrip
       deluge # bittorrent
       devenv
       dnsutils # `dig` + `nslookup`
@@ -455,7 +456,13 @@
       };
     };
     man.generateCaches = false; # Because it's slow.  Can't search without it though
-    mpv.enable = true;
+    mpv = {
+      enable = true;
+      # Audio CD support, for `mpv cdda://`
+      package = pkgs.mpv.override {
+        mpv-unwrapped = pkgs.mpv-unwrapped.override { cddaSupport = true; };
+      };
+    };
     mergiraf = {
       # Syntax-aware git merge driver
       enable = true;
