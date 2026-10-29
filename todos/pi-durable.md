@@ -13,11 +13,12 @@ local for now"*). Its `todos/poc.md` carries the project spec that started here:
 why, Will's decisions, the build order, and what's been verified. This file keeps only
 what lands in dotfiles: build step 5.
 
-Status, 2026-10-29: step 1, the headless bridge test, **passed** (33/33 checks).
-pi-claude-bridge runs on a Durable Harness through a shim, survives `kill -9`
+Status, 2026-10-29: step 1, the headless bridge test, **passed** (40/40 checks).
+pi-claude-bridge runs on a Durable Harness through a shim, survives `kill -9` and Esc
 mid-tool, compacts, and forks, with no prompt-capture failures and no "out of extra
-usage". Steps 2–4 (daemon, TUI client, vanilla parity) are next, in pier. Nothing here
-has started.
+usage". Steps 2–4 (daemon, TUI client, vanilla parity) are next, in pier; the wire
+format and transport wait on Will (pier's `todos/wire-format.md`). Nothing here has
+started.
 
 ## Facts for packaging
 
