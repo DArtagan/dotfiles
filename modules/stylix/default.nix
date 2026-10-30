@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
-    image = ./wallpaper.png;
+    image = ./wallpaper.jpg;
     fonts = {
       monospace.name = "Hack Nerd Font";
       sizes = {
