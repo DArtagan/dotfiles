@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -89,6 +94,34 @@
       };
     };
   };
+
+  # Hibernate rather than lose the session to a flat battery. Left in suspend,
+  # the Deck drains ~4.6%/h and dies overnight; awake, Jovian leaves the
+  # critical-battery action to vpower and Steam, which power off at ~0.5%.
+  #
+  # The image goes to this swapfile (zram is RAM, so can't hold it), sized to
+  # RAM. Its lower auto priority keeps zram in use first for ordinary swapping.
+  # No resume=/resume_offset: systemd-hibernate records the swapfile's location
+  # in the HibernateLocation EFI variable, which the initrd resumes from.
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
+  # Every suspend (GNOME, Steam, lid, power button) goes through
+  # systemd-suspend.service, so make it suspend-then-hibernate. With a battery
+  # and HibernateDelaySec unset, systemd wakes on the RTC (hourly, per
+  # SuspendEstimationSec) to measure the drain, and hibernates before 5%, or at
+  # once if it's already that low.
+  systemd.services.systemd-suspend.serviceConfig.ExecStart = [
+    ""
+    "${config.systemd.package}/lib/systemd/systemd-sleep suspend-then-hibernate"
+  ];
+
+  # Awake, hibernate at upower's PercentageAction (2%), ahead of vpower/Steam.
+  services.upower.criticalPowerAction = lib.mkForce "Hibernate";
 
   # Enable the GNOME Desktop Environment.
   services = {
