@@ -112,14 +112,20 @@
   ];
 
   # Every suspend (GNOME, Steam, lid, power button) goes through
-  # systemd-suspend.service, so make it suspend-then-hibernate. With a battery
-  # and HibernateDelaySec unset, systemd wakes on the RTC (hourly, per
-  # SuspendEstimationSec) to measure the drain, and hibernates before 5%, or at
-  # once if it's already that low.
+  # systemd-suspend.service, so make it suspend-then-hibernate. It hibernates
+  # after 2h, or at once if the battery is already below 5%.
   systemd.services.systemd-suspend.serviceConfig.ExecStart = [
     ""
     "${config.systemd.package}/lib/systemd/systemd-sleep suspend-then-hibernate"
   ];
+  # The battery has no ACPI _BTP alarm (BAT1/alarm reads 0), so systemd would
+  # also wake on the RTC every SuspendEstimationSec (default 1h) to measure the
+  # drain. At ~1%/h that only matters below ~7%, so match it to the delay: one
+  # wake, then hibernate.
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "2h";
+    SuspendEstimationSec = "2h";
+  };
 
   # Awake, hibernate at upower's PercentageAction (2%), ahead of vpower/Steam.
   services.upower.criticalPowerAction = lib.mkForce "Hibernate";
