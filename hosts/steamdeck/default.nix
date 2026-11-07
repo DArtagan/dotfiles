@@ -127,11 +127,20 @@
     SuspendEstimationSec = "2h";
   };
 
-  # Awake, hibernate at upower's PercentageAction (2%), ahead of vpower/Steam.
-  services.upower.criticalPowerAction = lib.mkForce "Hibernate";
-
-  # Enable the GNOME Desktop Environment.
   services = {
+    # Awake, hibernate at upower's PercentageAction (2%), ahead of vpower/Steam.
+    upower.criticalPowerAction = lib.mkForce "Hibernate";
+
+    # Only the power button wakes the Deck, plus the RTC, which suspend-then-
+    # hibernate needs to wake it for hibernation. Everything else that can (the
+    # USB controllers, PCIe ports and Wi-Fi, the lid sensor and battery) is
+    # turned off: something was waking it within seconds of most suspends.
+    # Not covered: wake paths with no power/wakeup knob, such as EC events.
+    udev.extraRules = ''
+      ACTION!="remove", SUBSYSTEM!="power_supply", ATTR{power/wakeup}=="enabled", KERNEL!="LNXPWRBN:00|PNP0C0C:00|PNP0B00:00|alarmtimer.*", ATTR{power/wakeup}="disabled"
+    '';
+
+    # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
     xserver.enable = true;
