@@ -96,8 +96,9 @@
   };
 
   # Hibernate rather than lose the session to a flat battery. Left in suspend,
-  # the Deck drains ~4.6%/h and dies overnight; awake, Jovian leaves the
-  # critical-battery action to vpower and Steam, which power off at ~0.5%.
+  # the Deck drains ~0.7-1%/h, so a suspend begun low dies overnight; awake,
+  # Jovian leaves the critical-battery action to vpower and Steam, which power
+  # off at ~0.5%.
   #
   # The image goes to this swapfile (zram is RAM, so can't hold it), sized to
   # RAM. Its lower auto priority keeps zram in use first for ordinary swapping.
