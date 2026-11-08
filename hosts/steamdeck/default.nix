@@ -111,20 +111,53 @@
     }
   ];
 
-  # Every suspend (GNOME, Steam, lid, power button) goes through
-  # systemd-suspend.service, so make it suspend-then-hibernate. It hibernates
-  # after 2h, or at once if the battery is already below 5%.
-  systemd.services.systemd-suspend.serviceConfig.ExecStart = [
-    ""
-    "${config.systemd.package}/lib/systemd/systemd-sleep suspend-then-hibernate"
-  ];
-  # The battery has no ACPI _BTP alarm (BAT1/alarm reads 0), so systemd would
-  # also wake on the RTC every SuspendEstimationSec (default 1h) to measure the
-  # drain. At ~1%/h that only matters below ~7%, so match it to the delay: one
-  # wake, then hibernate.
-  systemd.sleep.settings.Sleep = {
-    HibernateDelaySec = "2h";
-    SuspendEstimationSec = "2h";
+  systemd = {
+    # Every suspend (GNOME, Steam, lid, power button) goes through
+    # systemd-suspend.service, so make it suspend-then-hibernate. It hibernates
+    # after 2h, or at once if the battery is already below 5%.
+    services.systemd-suspend.serviceConfig.ExecStart = [
+      ""
+      "${config.systemd.package}/lib/systemd/systemd-sleep suspend-then-hibernate"
+    ];
+    # The battery has no ACPI _BTP alarm (BAT1/alarm reads 0), so systemd would
+    # also wake on the RTC every SuspendEstimationSec (default 1h) to measure the
+    # drain. At ~1%/h that only matters below ~7%, so match it to the delay: one
+    # wake, then hibernate.
+    sleep.settings.Sleep = {
+      HibernateDelaySec = "2h";
+      SuspendEstimationSec = "2h";
+    };
+
+    # With Bluetooth on, the Deck wakes within seconds of every suspend; with it
+    # soft-blocked it stays asleep. Its wake line is a GPIO the firmware arms
+    # (pin 54), which no power/wakeup knob reaches. Bazzite traced the same
+    # symptom on the OLED to Bluetooth firmware: the chip loads the stock
+    # qca/hpbtfw21.tlv here, and Valve's firmware has no replacement for it
+    # (https://github.com/ublue-os/bazzite/issues/3124). So block Bluetooth for
+    # as long as sleep.target is up, and unblock it after only if this blocked it.
+    services.bluetooth-sleep-block = {
+      description = "Block Bluetooth while asleep";
+      wantedBy = [ "sleep.target" ];
+      before = [ "sleep.target" ];
+      unitConfig.StopWhenUnneeded = true;
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      path = [ pkgs.util-linux ];
+      script = ''
+        if rfkill -n -o SOFT list bluetooth | grep -q '^unblocked'; then
+          rfkill block bluetooth
+          touch /run/bluetooth-sleep-blocked
+        fi
+      '';
+      preStop = ''
+        if [ -e /run/bluetooth-sleep-blocked ]; then
+          rfkill unblock bluetooth
+          rm /run/bluetooth-sleep-blocked
+        fi
+      '';
+    };
   };
 
   services = {
@@ -134,8 +167,8 @@
     # Only the power button wakes the Deck, plus the RTC, which suspend-then-
     # hibernate needs to wake it for hibernation. Everything else that can (the
     # USB controllers, PCIe ports and Wi-Fi, the lid sensor and battery) is
-    # turned off: something was waking it within seconds of most suspends.
-    # Not covered: wake paths with no power/wakeup knob, such as EC events.
+    # turned off. Not covered: wake paths with no power/wakeup knob, such as EC
+    # events and the Bluetooth chip's GPIO (see bluetooth-sleep-block above).
     udev.extraRules = ''
       ACTION!="remove", SUBSYSTEM!="power_supply", ATTR{power/wakeup}=="enabled", KERNEL!="LNXPWRBN:00|PNP0C0C:00|PNP0B00:00|alarmtimer.*", ATTR{power/wakeup}="disabled"
     '';
