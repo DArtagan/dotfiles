@@ -177,10 +177,11 @@
     };
   };
 
+  # systemd runs sleep hooks with next to no PATH, so name binaries in full.
   environment.etc."systemd/system-sleep/bluetooth-rebind".source =
     pkgs.writeShellScript "bluetooth-rebind" ''
       if [ "$1" = post ] && [ "''${SYSTEMD_SLEEP_ACTION:-$2}" = hibernate ]; then
-        touch /run/bluetooth-rebind
+        ${pkgs.coreutils}/bin/touch /run/bluetooth-rebind
       fi
     '';
 
