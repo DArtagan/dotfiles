@@ -135,6 +135,15 @@
     # qca/hpbtfw21.tlv here, and Valve's firmware has no replacement for it
     # (https://github.com/ublue-os/bazzite/issues/3124). So block Bluetooth for
     # as long as sleep.target is up, and unblock it after only if this blocked it.
+    #
+    # Coming back from hibernation, the chip has lost power and its firmware,
+    # but hci_uart_qca doesn't set it up again: every HCI_Reset times out (-110)
+    # and Bluetooth can't be turned on. Rebinding the driver reruns its setup,
+    # but only on a chip hibernation has reset. Rebinding one that's running, or
+    # mid power-on, wedges it until it loses power (0xfc00 tx timeouts). So the
+    # sleep hook below flags a resume from hibernation, and the rebind happens
+    # while Bluetooth is still blocked. It makes a new rfkill device, which
+    # systemd-rfkill gives the saved state, so let that land before unblocking.
     services.bluetooth-sleep-block = {
       description = "Block Bluetooth while asleep";
       wantedBy = [ "sleep.target" ];
@@ -152,6 +161,14 @@
         fi
       '';
       preStop = ''
+        if [ -e /run/bluetooth-rebind ]; then
+          rm /run/bluetooth-rebind
+          # Never let a failed rebind skip the unblock below.
+          echo serial0-0 > /sys/bus/serial/drivers/hci_uart_qca/unbind || true
+          echo serial0-0 > /sys/bus/serial/drivers/hci_uart_qca/bind || true
+          udevadm settle
+          sleep 1
+        fi
         if [ -e /run/bluetooth-sleep-blocked ]; then
           rfkill unblock bluetooth
           rm /run/bluetooth-sleep-blocked
@@ -159,6 +176,13 @@
       '';
     };
   };
+
+  environment.etc."systemd/system-sleep/bluetooth-rebind".source =
+    pkgs.writeShellScript "bluetooth-rebind" ''
+      if [ "$1" = post ] && [ "''${SYSTEMD_SLEEP_ACTION:-$2}" = hibernate ]; then
+        touch /run/bluetooth-rebind
+      fi
+    '';
 
   services = {
     # Awake, hibernate at upower's PercentageAction (2%), ahead of vpower/Steam.
