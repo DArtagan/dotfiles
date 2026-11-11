@@ -201,9 +201,11 @@ Both listen on every address and rely on the firewall, which trusts only
 loopback, `tailscale0`, and the Steam Deck's hotspot (`ap0`). agegr has no
 password; both reject requests from other sites. agegr serves `<host>`,
 `<host>.forge.local`, and IP addresses; prc only `http://<host>.forge.local:8787`.
-It's plain HTTP: Headscale can't issue certificates for `tailscale serve`
-([juanfont/headscale#2527](https://github.com/juanfont/headscale/issues/2527)),
-so neither can send push notifications or install as an app.
+It's plain HTTP: Headscale can't issue certificates for `tailscale serve`, so
+neither can send push notifications or install as an app. Support is on Headscale's
+main branch but in no release
+([juanfont/headscale#2527](https://github.com/juanfont/headscale/issues/2527)), and
+it solves ACME DNS-01 through a public DNS zone, which `forge.local` isn't.
 
 agegr's sessions get the service's environment, not a shell's: `PATH` is set to
 the user profile and system paths in `remote.nix`, but nothing else is. A new
