@@ -16,6 +16,7 @@
   pkg-config,
   pulseaudio, # pactl for PipeWire device enumeration and sink routing
   rustPlatform,
+  sqlite,
   vulkan-loader,
   wayland,
 }:
@@ -61,6 +62,9 @@ rustPlatform.buildRustPackage (finalAttrs: {
     fontconfig
     freetype
     libjack2
+    # cargoSetupHook sets LIBSQLITE3_SYS_USE_PKG_CONFIG, so rusqlite links this
+    # rather than its bundled copy.
+    sqlite
   ];
 
   runtimeDependencies = [

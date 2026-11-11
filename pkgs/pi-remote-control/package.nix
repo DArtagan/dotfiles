@@ -1,4 +1,5 @@
 {
+  aws-lc,
   cacert,
   fetchFromGitHub,
   fetchNpmDeps,
@@ -72,7 +73,11 @@ rustPlatform.buildRustPackage {
     npmHooks.npmConfigHook
     pkg-config
   ];
-  buildInputs = [ openssl ];
+  # cargoSetupHook sets AWS_LC_SYS_USE_SYSTEM, so aws-lc-sys links nixpkgs' AWS-LC.
+  buildInputs = [
+    aws-lc
+    openssl
+  ];
   # The openssl crate's `vendored` feature would otherwise build OpenSSL from source.
   env.OPENSSL_NO_VENDOR = "1";
 

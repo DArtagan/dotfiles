@@ -98,7 +98,11 @@
       home-manager.users.${username} = {
         home = {
           packages = with pkgs; [
-            ironbar
+            # TODO: drop the override once nixos-unstable has NixOS/nixpkgs#585944, which adds libgit2 itself.
+            # cargoSetupHook now sets LIBGIT2_NO_VENDOR, so the build needs a system libgit2.
+            (ironbar.overrideAttrs (prev: {
+              buildInputs = prev.buildInputs ++ [ libgit2 ];
+            }))
             pwvucontrol
           ];
         };
