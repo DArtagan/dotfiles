@@ -16,21 +16,21 @@
 # Pi Remote Control: the `prc` server, whose web UI mirrors running pi TUI sessions,
 # and (passthru.extension) the pi extension that attaches a session with `/rc`.
 let
-  version = "0.1.8";
+  version = "0.1.10";
 
   src = fetchFromGitHub {
     owner = "mipsel64";
     repo = "pi-remote-control";
     tag = "v${version}";
-    hash = "sha256-77+FZ6JmnHpXlXeeuMS2st1neTW2nDqOCTvF3LoyKQA=";
+    hash = "sha256-Y/jUtMSDzQATfgCFdY9ps1x+nrbEwB37PpIVnQAZYVA=";
   };
 
   # pi loads the extension from the store (settings.json `packages`). Its only runtime
   # dependency is ws, at the version upstream's lockfile pins; the rest of that
   # lockfile is dev tooling (pi itself, Playwright).
   ws = fetchurl {
-    url = "https://registry.npmjs.org/ws/-/ws-8.21.3.tgz";
-    hash = "sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==";
+    url = "https://registry.npmjs.org/ws/-/ws-8.22.0.tgz";
+    hash = "sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==";
   };
 
   extension = stdenvNoCC.mkDerivation {
@@ -58,14 +58,14 @@ rustPlatform.buildRustPackage {
 
   cargoRoot = "server";
   buildAndTestSubdir = "server";
-  cargoHash = "sha256-O3gY1UWtA1DZkb3diFumdU4ym7sctJtCa/JlZQSPyCQ=";
+  cargoHash = "sha256-r0yza3an2USBJ5uPU49lq18oJgJsaU/lQm7EmxGZyd8=";
 
   # The web UI is built first and embedded into the binary (include_dir!).
   npmRoot = "server/web";
   npmDeps = fetchNpmDeps {
     name = "pi-remote-control-${version}-npm-deps";
     src = "${src}/server/web";
-    hash = "sha256-yKUCnVDeLTESq7aCU55OIe26UzgAmBeXSD6aRHrfRaA=";
+    hash = "sha256-s40zlQkI/5Ojj2G7mPIxo2Gp6c3HZzYvpo8IXfcKNYE=";
   };
 
   nativeBuildInputs = [

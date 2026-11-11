@@ -12,7 +12,7 @@
 # the sandbox blocks. The release has no lockfile, so this uses the repo's lockfile
 # at the same tag, whose root dependencies match the release's.
 let
-  version = "0.12.1";
+  version = "0.15.0";
 in
 buildNpmPackage {
   pname = "agegr-pi-web";
@@ -20,14 +20,14 @@ buildNpmPackage {
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@agegr/pi-web/-/pi-web-${version}.tgz";
-    hash = "sha512-LKBAOeV4D4Vs0WuVz1JD303wMdIaClCM2m4TwmO9vwYIagFmSHOMuBhR+CdweRVntpXSbOFI2x0m8twzxRcvwg==";
+    hash = "sha512-AGKerRu6YCjv+vKolxBW4AKY7lxAooUERzn8sgS3fYHeKNS0pnhjFsvFgk3QK3jePxAV50/bgu6SOtlvPXgFJQ==";
   };
 
   prePatch = ''
     cp ${
       fetchurl {
         url = "https://raw.githubusercontent.com/agegr/pi-web/v${version}/package-lock.json";
-        hash = "sha256-sH3u69Ethgr1PGSCE/u9mQScAWsLH3qAstp4NXAJc+s=";
+        hash = "sha256-z9dPWdRqTVDIIQILULkuug5H5UKPqXgVihBEvjAvyiw=";
       }
     } package-lock.json
     chmod u+w package-lock.json
@@ -36,7 +36,7 @@ buildNpmPackage {
   # v1 can't find the tarballs the lockfile lists twice (pi 1.0.0's packages, nested
   # under pi-coding-agent as well as at the top level).
   npmDepsFetcherVersion = 2;
-  npmDepsHash = "sha256-8CeCo/o4pslL1bqu1DFsH++1YYY66F1WZyBfoCDqVz4=";
+  npmDepsHash = "sha256-moP10ZDbFzIpef0FHXtbySO7r7uso04qqeueL9JELUo=";
 
   npmInstallFlags = [ "--omit=dev" ];
   dontNpmBuild = true;
