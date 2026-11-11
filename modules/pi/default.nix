@@ -107,9 +107,10 @@ in
       piClaudeBridgeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] (
         mergeJsonInto "pi-claude-bridge-managed" ".pi/agent/claude-bridge.json" {
           provider.pathToClaudeCodeExecutable = lib.getExe pkgs.claude-code;
-          # The AskClaude tool, which lets other providers' models delegate to Claude
-          # Code. claude-bridge's own models don't get it.
-          askClaude.enabled = true;
+          # The bridge dropped its AskClaude tool in 0.11.0 (it's now the separate
+          # pi-claude-bridge-askclaude, which we don't install), and warns at startup
+          # while this is still true. The merge can't delete the key, so turn it off.
+          askClaude.enabled = false;
         }
       );
     };

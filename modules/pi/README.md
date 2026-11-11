@@ -8,8 +8,8 @@ than symlinked; see `lib/merge-json-into.nix`.
 - **Model provider:** [`pi-claude-bridge`](https://github.com/elidickinson/pi-claude-bridge),
   which runs Claude Code (via the Agent SDK) on the Claude subscription. Packaged in
   `pkgs/pi-claude-bridge` to carry local patches, and loaded from the store.
-  Its opt-in AskClaude tool is on: when another provider's model is in use, it can
-  hand questions or tasks to Claude Code (read-only unless it asks for `full`).
+  Its AskClaude tool, which let other providers' models hand work to Claude Code,
+  moved to a separate package in 0.11.0 and isn't installed.
 - **Plan quotas:** [pi-quotas](https://github.com/latentminds-ai/pi-quotas), packaged
   in `pkgs/pi-quotas`. Shows the Claude plan's 5h/7d windows in the footer, plus
   `/quotas` and near-limit warnings. For claude-bridge models, the bridge passes on

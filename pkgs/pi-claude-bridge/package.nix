@@ -10,17 +10,18 @@
 # TypeScript that pi compiles at load time, so there is no build step.
 buildNpmPackage {
   pname = "pi-claude-bridge";
-  version = "0.9.3";
+  # 0.12.0 needs pi >=1.5.1; nixos-unstable has 1.5.0.
+  version = "0.11.0";
 
-  # No v0.9.3 tag upstream; this is the "Release 0.9.3" commit, which matches npm.
+  # No v0.11.0 tag upstream; this is the "Release 0.11.0" commit, which matches npm.
   src = fetchFromGitHub {
     owner = "elidickinson";
     repo = "pi-claude-bridge";
-    rev = "874fa7c2678456336f23b64e784e2057e608d83e";
-    hash = "sha256-2P81N6xWuvJdB3w7egU8QNguXWkOyyRUDePveXY7p0c=";
+    rev = "debda8d669d978f0deba5249e32d7f6a2a489d86";
+    hash = "sha256-94VxD3FND+fHwTlYmZvUKyp5X3BqMKoJifCawGCIZFk=";
   };
 
-  npmDepsHash = "sha256-5M7jltFSHmRPN6NrTWENBzeLDMgmF/m0ByiWLmAiP8I=";
+  npmDepsHash = "sha256-tw5j+WFUVcV9Dd80BheQOVmn0aB2MjZtggLAX6grvsk=";
 
   patches = [
     # Register the provider in every session of a host that runs several in one process
