@@ -14,10 +14,11 @@ sitting in this directory means the work has not been done.
 **[pi-durable.md](pi-durable.md) — pi on Pi Durable: packaging and the module**
 A Pi Durable harness in a per-host user service owns every pi session; tmux panes
 (later web and phone) attach as clients. Built in its own repo, pier
-(`~/repositories/pier`, local only), whose `todos/poc.md` is the project spec. Its
-first step passed on 2026-10-29: pi-claude-bridge runs on Durable through a shim,
-including crash, compaction and fork. This spec is the Nix side: `pkgs/pier` and a
-user-service module. Not started; waits on pier's daemon and client.
+(`~/repositories/pier`, on GitHub as `DArtagan/pier`), whose `todos/poc.md` is the
+project spec. Its first step passed on 2026-10-29, and again on pi 1.5.2 on 2026-11-12:
+pi-claude-bridge runs on Durable through a shim, including crash, compaction and fork.
+This spec is the Nix side: `pkgs/pier` and a user-service module. Not started; waits
+on pier's daemon and client.
 
 **[ssh-agent.md](ssh-agent.md) — one SSH agent, unlocked per terminal session**
 Every `eval (ssh-agent -c)` starts another agent and none of them get stopped
