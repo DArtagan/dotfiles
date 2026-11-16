@@ -57,6 +57,7 @@
       nix-output-monitor
       nix-tree # explore the package dependency tree, what derivation is using what
       nixos-rebuild
+      nixpkgs-track # Give it a PR number, it will tell you how far through the release system it has made it
       nodejs # For vim CoC
       pciutils # lspci
       pstree
