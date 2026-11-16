@@ -3,8 +3,8 @@
 ## Opening prompt
 
 > Read `todos/pi-durable.md`, then `~/repositories/pier/todos/poc.md`, "The thin
-> slice". pier has a daemon and a client; package it as `pkgs/pier` (it needs a build
-> step first; see below) and add a home-manager module under `modules/pi/`, next to
+> slice". pier has a daemon and a client; package it as `pkgs/pier` (from a release
+> with its build step; see below) and add a home-manager module under `modules/pi/`, next to
 > the classic setup. Work on a `.worktrees/` branch, and update both specs as facts
 > change.
 
@@ -32,15 +32,38 @@ here keeps pi-claude-bridge; nothing in this repo has changed for pier yet.
   lockfile. What they share is `~/.pi/agent` (settings, credentials).
 - **pier talks to Claude through pi-claude-code** (`@earendil-works/pi-claude-code`),
   pinned in its lockfile to a commit as a GitHub tarball (`codeload.github.com`): no
-  git or SSH at build time, and `fetchNpmDeps` should take it like any tarball
-  (unchecked). It runs `claude` from the PATH, or `PI_CLAUDE_CODE_COMMAND`, on Claude
+  git or SSH at build time, and `fetchNpmDeps` takes it like any tarball (checked
+  2026-11-16, below). It runs `claude` from the PATH, or `PI_CLAUDE_CODE_COMMAND`, on Claude
   Code's own login; the unit should set `PI_CLAUDE_CODE_COMMAND` to
   `lib.getExe pkgs.claude-code`, as `piClaudeBridgeSettings` does for the bridge.
-- **pier needs a build step before it can be packaged.** It runs its TypeScript with
-  Node's type stripping, which Node refuses under `node_modules`, where
-  `buildNpmPackage` installs a package. Bundle it with esbuild (or compile with `tsc`)
-  in pier first. pi-claude-code also ships TypeScript and is loaded with jiti, which
-  works anywhere.
+- **pier's build step** (2026-11-16, pier's `build-step` branch, not yet merged or
+  released): Node won't strip types under `node_modules`, where `buildNpmPackage`
+  installs a package, so `npm run build` compiles `src/` to `dist/` with `tsc`, and the
+  bin runs `dist/host/cli.js`. `buildNpmPackage` runs `npm run build` by default.
+  pi-claude-code also ships TypeScript and is loaded with jiti, which works anywhere.
+- **A scratch build passed** (2026-11-16, nixpkgs 26.11pre, from that branch's working
+  tree): it built with no extra settings, devDependencies were pruned, the output was
+  55 MiB with a 331 MiB closure, and its `bin/pier` started the daemon and answered
+  `pier list`. The hash came from `prefetch-npm-deps package-lock.json`. The
+  expression, a starting point for `pkgs/pier` (which would fetch a release tag):
+
+  ```nix
+  { src, npmDepsHash }:
+  let
+    pkgs = import <nixpkgs> { };
+    inherit (pkgs) lib;
+  in
+  pkgs.buildNpmPackage {
+    pname = "pier";
+    version = "0.1.0";
+    src = lib.cleanSourceWith {
+      inherit src;
+      filter = path: _: !(builtins.elem (baseNameOf path) [ "node_modules" "dist" ".devenv" ".direnv" ".git" ]);
+    };
+    inherit npmDepsHash;
+    nodejs = pkgs.nodejs_24;
+  }
+  ```
 - **Its paths:** the socket is `$XDG_RUNTIME_DIR/pier/pier.sock` and the storage
   `$XDG_STATE_HOME/pier/pier.sqlite` (`~/.local/state/pier`), both private. The
   daemon runs in its state directory, because Claude Code tells the model about its
