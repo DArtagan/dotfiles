@@ -492,8 +492,10 @@
         pain-control
       ];
       extraConfig = ''
-        # Color
-        set -as terminal-features ",alacritty*:RGB"
+        # Color, and OSC 8 hyperlinks: tmux strips them unless the outer terminal is known
+        # to take them, and Alacritty does. pi (and pier) then emit links as hyperlinks,
+        # which Alacritty's default URL hint opens on Shift+click
+        set -as terminal-features ",alacritty*:RGB:hyperlinks"
 
         # Pass modified keys (e.g. Shift+Enter) to apps that ask for them, like pi
         set -g extended-keys on
@@ -502,6 +504,11 @@
         # Mouse-drag copies also go to PRIMARY (middle-click). OSC 52 only reaches the
         # clipboard, since Alacritty treats tmux's empty selection param as "c"
         set -s copy-command 'wl-copy --primary'
+
+        # Let apps set the clipboard with OSC 52, which tmux keeps as a buffer and passes on
+        # to Alacritty. The default, external, ignores them, so copying in pi or pier over
+        # SSH never reached the clipboard of the machine SSHed from
+        set -s set-clipboard on
 
         # Active pane border in Solarized blue, inactive dimmed
         set -g pane-active-border-style 'fg=#268bd2,bold'
