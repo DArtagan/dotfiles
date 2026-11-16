@@ -11,15 +11,6 @@ sitting in this directory means the work has not been done.
 
 ## Open
 
-**[pi-durable.md](pi-durable.md) — pi on Pi Durable: packaging and the module**
-A Pi Durable harness in a per-host user service owns every pi session; tmux panes
-(later web and phone) attach as clients. Built in its own repo, pier
-(`~/repositories/pier`, on GitHub as `DArtagan/pier`), whose `todos/poc.md` is the
-project spec. On 2026-11-13 pier switched to Earendil's pi-claude-code and gained a
-thin slice: `pier daemon` on a Unix socket, and a terminal client. This spec is the Nix
-side: `pkgs/pier` (after pier gets a build step) and a user-service module. Not
-started.
-
 **[ssh-agent.md](ssh-agent.md) — one SSH agent, unlocked per terminal session**
 Every `eval (ssh-agent -c)` starts another agent and none of them get stopped
 (22 were running on thenixbeast on 2026-10-21). The plan is 1Password's agent,
