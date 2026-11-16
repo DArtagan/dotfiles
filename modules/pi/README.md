@@ -230,3 +230,61 @@ Local changes, none sent upstream yet:
 Ending the trial: drop the loser's service and package from `remote.nix` (and,
 for prc, the activation that loads its extension), or delete `remote.nix` and its
 imports in `flake.nix`.
+
+## pier
+
+[pier](https://github.com/DArtagan/pier) (`~/repositories/pier`) runs pi on Pi Durable:
+one daemon per host owns every conversation, and `pier` in any pane attaches to it as a
+client. Claude comes through Earendil's pi-claude-code, on Claude Code's own login.
+`pier.nix` packages it from a release tag (`pkgs/pier`) and runs `pier daemon` as a
+user service on the NixOS hosts (imported per host in `flake.nix`), started at login.
+Classic `pi`, above, is untouched; the two share only `~/.pi/agent`.
+
+```bash
+pier                  # in a project: continue its newest conversation, or start one
+pier new              # start a new one
+pier resume <n>       # attach to conversation #<n>
+pier list [--all]     # conversations here (or everywhere)
+systemctl --user restart pier   # pick up a new version, when idle
+journalctl --user -u pier       # the daemon's log
+```
+
+In the client, `/help` lists the keys and commands. Leaving a pane (Ctrl+C on an
+empty editor, `/detach`) doesn't stop its run. The storage is
+`~/.local/state/pier/pier.sqlite`, the socket `$XDG_RUNTIME_DIR/pier/pier.sock`.
+
+How the service is set up, and why:
+
+- **A switch doesn't restart it.** A restart interrupts every pane's run. So the unit
+  has `X-SwitchMethod=keep-old`, which sd-switch reads as "keep the running unit
+  active" (`src/lib.rs` in sd-switch 0.6.4, read 2026-11-16; not yet watched in a
+  switch). Restart it by hand when nothing is running.
+- **Tools get the pane's environment.** Each conversation's tools run with the whole
+  environment of the pane that last attached (devenv's PATH, `SSH_AUTH_SOCK`, …), laid
+  over the unit's. The unit's `PATH` is for the daemon and Claude Code;
+  `GIT_CONFIG_GLOBAL` points at the agents' git config, as the `pi` wrapper's does,
+  and reaches tools since panes don't set it. A tool keeps the pane's `SSH_AUTH_SOCK`
+  after the pane detaches, while that agent lives; see `todos/ssh-agent.md`.
+- **`KillMode=control-group`**, systemd's default, spelled out. Durable runs each tool,
+  and pi-claude-code each Claude Code, in a process group of its own, so only the
+  cgroup kill reaps them: killing the daemon's process group once left a command
+  running, which wrote its file after the model was told it was interrupted (pier's
+  gate, 2026-11-12).
+- **What a stop does to a running tool** (2026-11-16, the unit run with `systemd-run`):
+  systemd sends SIGTERM to the whole cgroup at once, so a running bash call dies with
+  exit code 143 while the daemon is still up, and is stored as a failed command, not
+  as interrupted. Nothing it started survives. On restart, Durable picks the turn up
+  without being asked, and the model sees the 143.
+- **`Restart=on-failure`**: Durable resumes every conversation's work when it's back.
+- **No `.socket` unit**: the daemon can't take an inherited socket.
+- **Usage credits**: `PI_CLAUDE_CODE_ALLOW_USAGE_CREDITS` isn't set, so a turn that
+  Claude Code would bill to Extra Usage fails instead.
+
+Checked on thenixbeast on 2026-11-16, with the unit's command and environment under
+`systemd-run`, before the first switch: a Claude turn ran bash in the pane's
+directory and saw both the pane's variables and the unit's `GIT_CONFIG_GLOBAL`; the
+daemon idled at about 210 MiB (355 MiB peak). The package's closure is 331 MiB, pier's
+own pi packages included.
+
+Bumping pier: `modules/pi/UPDATING.md`. Its pi packages come from its own lockfile, so
+bumping pi there is pier's business (its gate, its changelog), not this repo's.

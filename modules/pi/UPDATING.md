@@ -20,6 +20,7 @@ stay behind in `~/.pi/agent/npm` or `~/.pi/agent/git`.
 | `pi-remote-control` | GitHub tag | `version`, `hash` | `cargoHash`, `npmDeps` hash, `ws` tarball | one patch |
 | `agegr-pi-web` | npm tarball, plus the repo's lockfile | `version`, `hash` | lockfile hash, `npmDepsHash` | its own launcher, `pi-web.sh` |
 | `ketch` | nixpkgs, wrapped in `pkgs/ketch` | `flake.lock` | | its skill, and a wrapper |
+| `pier` | GitHub tag (`DArtagan/pier`, release-please) | `version`, `hash` | `npmDepsHash` | |
 
 pi and ketch move with the regular update flow in `CLAUDE.md`. After pi does, check the
 extensions as in step 7 below: the bridge, pi-remote-control and agegr pi-web all
@@ -47,6 +48,11 @@ npm view @juicesharp/rpiv-ask-user-question version     # npm releases
   read claude-bridge usage, switch to that and drop the patch. Otherwise rebase it
   (step 4), then run `npm install`, `npm run typecheck` and `npx vitest run` in the
   clone. Its tests are in `src/lib/rate-limit-headers.test.ts`.
+- **pier** isn't a pi extension, so step 2's pi checks don't apply. Its releases are
+  tags made by release-please (`gh release list -R DArtagan/pier -L 3`); read its
+  `CHANGELOG.md`. It pins its own pi packages, so a pi bump there has passed pier's
+  gate, not this repo's. `npmDepsHash` can come straight from the tag's lockfile:
+  `prefetch-npm-deps package-lock.json` (from `nixpkgs#prefetch-npm-deps`).
 - **ketch** isn't bumped by hand. To get ahead of nixpkgs, build it from source
   again (git history has the `buildGoModule` for 0.19.0), with a `TODO` to return.
 
@@ -176,6 +182,7 @@ errors. Then try what it does:
 | pi-remote-control | After a switch: `systemctl --user restart pi-remote-control`, `/rc` in a TUI session, and the session shows at `http://<host>.forge.local:8787`. |
 | agegr-pi-web | Before switching, run the new build alongside the service (below). Two new sessions in a row must both answer on a claude-bridge model: the bridge's registration patch is for the second. Its output must not warn that it "could not rotate pi-web's preview-mode secrets" (see `pi-web.sh`). |
 | ketch | `ketch search --json --limit 3 "<query>"` returns results. |
+| pier | Before switching, run the new build's `bin/pier daemon` with `PIER_SOCKET` and `PIER_STATE_DIR` in `/tmp` (under `systemd-run --user`, with the unit's `Environment=`, to check the unit too), then `PIER_SOCKET=… <new>/bin/pier` in a scratch folder: a prompt that runs bash gets an answer. After a switch: `systemctl --user restart pier` when idle, then `pier list --all`. |
 
 Kill the tmux session afterwards. Say in the commit or PR what wasn't tested.
 
