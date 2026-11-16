@@ -70,6 +70,7 @@ Reusable opt-in modules imported per-host in `flake.nix`:
 - `attic-push/` — pushes everything the host builds to the Attic cache on mini-nas, through `queued-build-hook` (see "Binary caches" in `README.md`)
 - `distributed_builders/` — `my.distributedBuilders.builders` sends builds to faster hosts; `acceptBuilds` takes them. Keep the graph acyclic: Nix fills free remote slots before building locally, and builds that loop back to their sender deadlock (NixOS/nix#2029)
 - `containers/` — Podman with nvidia-container-toolkit
+- `droidcam/` — an iPhone as webcam and mic: OBS with the DroidCam plugin, a virtual camera, and an "OBS Mic" virtual source for the phone's audio. The OBS setup and testing are in `modules/droidcam/README.md`.
 - `gaming/` — Steam, Lutris, Wine
 - `syncthing/` — file sync with predefined devices/folders
 - `vim/`, `zed/`, `qutebrowser/` — app configs

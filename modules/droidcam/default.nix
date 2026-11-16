@@ -15,7 +15,7 @@
   # into, wired to a source ("OBS Mic") that browsers and apps can pick. In OBS,
   # set Settings > Audio > Advanced > Monitoring Device to "OBS Mic Feed", and
   # the DroidCam source's Advanced Audio Properties > Audio Monitoring to
-  # "Monitor Only (mute output)".
+  # "Monitor Only (mute output)". The full OBS setup is in ./README.md.
   services.pipewire.extraConfig.pipewire."90-obs-mic" = {
     "context.modules" = [
       {
