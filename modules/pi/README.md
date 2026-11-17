@@ -21,6 +21,16 @@ than symlinked; see `lib/merge-json-into.nix`.
   wrapper added in `pkgs/ketch`. See below.
 - **Google Calendar:** read-only, through [gog](https://gogcli.sh) (`google.nix`).
   See below.
+- **Tools' skills** (`tools.nix`): ketch, gog and Todoist's `td` each ship their agent
+  skills in `share/skills/<pname>/<skill>`, the layout nixpkgs settled on
+  ([#547426](https://github.com/NixOS/nixpkgs/issues/547426)) and its
+  `installAgentSkills` hook writes. pi's settings list those directories in `skills`;
+  pier lists the same ones itself (below, "pier"). Nothing is linked into
+  `~/.pi/agent/skills`.
+- **Tool calls in order:** a local extension (`sequential-file-tools.ts`). pi runs a
+  message's tool calls in parallel, so a `bash` call could run before the write or
+  edit it was batched with had landed; the extension makes such a batch run one call
+  at a time. pier doesn't need it: its daemon runs every batch in order.
 - **Asking instead of guessing:**
   [rpiv-ask-user-question](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-ask-user-question),
   packaged in `pkgs/rpiv-ask-user-question` from its npm release. Adds an
@@ -89,8 +99,9 @@ unavailable too.
 
 ketch is a stateless Go CLI (`search`, `scrape`, `crawl`, plus `code` for public
 source via grep.app and `docs` for library docs via Context7). pi reaches it
-through its bash tool, guided by ketch's upstream skill (`skills/ketch`, listed
-in `settings.json` `skills`).
+through its bash tool, guided by ketch's upstream skill (`skills/ketch` in its
+source, installed in `share/skills/ketch/ketch` and listed in `settings.json`
+`skills`).
 
 Why ketch:
 
@@ -132,7 +143,8 @@ start the browser.
 
 `google.nix` gives pi read access to
 william@weiskopf.me's calendars through [gog](https://gogcli.sh), with gog's
-`gog` and `gog-calendar` skills linked into `~/.pi/agent/skills`. We chose gog
+`gog` and `gog-calendar` skills, installed side by side in `share/skills/gog`
+(gog-calendar refers to `../gog`). We chose gog
 over Google's `gws` for its safety controls.
 
 The `gog` on `PATH` is built by `pkgs/gog-safe` with a safety profile compiled in
@@ -238,7 +250,14 @@ one daemon per host owns every conversation, and `pier` in any pane attaches to 
 client. Claude comes through Earendil's pi-claude-code, on Claude Code's own login.
 `pier.nix` packages it from a release tag (`pkgs/pier`) and runs `pier daemon` as a
 user service on the NixOS hosts (imported per host in `flake.nix`), started at login.
-Classic `pi`, above, is untouched; the two share only `~/.pi/agent`.
+Classic `pi`, above, is untouched; the two share only `~/.pi/agent`, and not for
+skills.
+
+**Skills.** `programs.pier.skills` lists the skill directories pier offers, passed to
+the daemon as `PIER_SKILLS`; each project's `.agents/skills` and `.pi/skills` come on
+top. It's set explicitly to the tools' skills (`tools.nix`), the same list pi's
+settings carry but not read from them, so dropping pi leaves pier's configuration
+whole. A changed list reaches the daemon at its next restart.
 
 ```bash
 pier                  # in a project: continue its newest conversation, or start one

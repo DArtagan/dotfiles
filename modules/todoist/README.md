@@ -1,8 +1,9 @@
 # todoist
 
 Doist's [Todoist CLI](https://github.com/Doist/todoist-cli), `td`, with its agent
-skill linked into `~/.pi/agent/skills`. Imported by `home.nix`, so every home
-gets it.
+skill in `share/skills/todoist-cli/todoist-cli` (`pkgs/todoist-cli`, which has `td`
+write it at build time). pi's settings and pier offer it (`modules/pi`). Imported by
+`home.nix`, so every home gets it.
 
 ## Logging in
 
