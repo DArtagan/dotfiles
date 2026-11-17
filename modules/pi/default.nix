@@ -12,7 +12,7 @@ let
   pi-quotas = pkgs.callPackage ../../pkgs/pi-quotas/package.nix { };
   pine-of-glass = pkgs.callPackage ../../pkgs/pine-of-glass/package.nix { };
   rpiv-ask-user-question = pkgs.callPackage ../../pkgs/rpiv-ask-user-question/package.nix { };
-  ketch = pkgs.callPackage ../../pkgs/ketch/package.nix { };
+  tools = import ./tools.nix { inherit pkgs; };
 
   # Agents get plain `git diff`: difftastic's side-by-side output is several times the
   # size of a unified diff, and it bypasses textconv (e.g. masked SOPS diffs). git can't
@@ -70,7 +70,9 @@ in
 
     packages = [
       pi
-      ketch
+      tools.ketch
+      # Todoist's `td`; see README.md, "Todoist".
+      tools.todoist-cli
     ];
 
     activation = {
@@ -97,8 +99,14 @@ in
             # Stops a bash call racing the write or edit it was batched with.
             "${./sequential-file-tools.ts}"
           ];
-          # Web search and fetch, through the ketch CLI. See README.md.
-          skills = [ "${ketch}/share/ketch/skills/ketch" ];
+          # The tools' skills (tools.nix): web search and fetch through ketch (see
+          # README.md), Google Calendar through gog (google.nix), Todoist through td.
+          # pier.nix offers pier the same list, separately.
+          skills = [
+            "${tools.ketch}/share/skills/ketch"
+            "${tools.gog}/share/skills/gog"
+            "${tools.todoist-cli}/share/skills/todoist-cli"
+          ];
         }
       );
 

@@ -1,5 +1,6 @@
 {
   gogcli,
+  installAgentSkills,
   lib,
   makeWrapper,
   # A safety profile (https://gogcli.sh/safety-profiles.html): which commands may run,
@@ -8,6 +9,10 @@
   # Variables to set in a `gog` wrapper, e.g. GOG_CLIENT to give the profile its own
   # token.
   env ? { },
+  # gog's agent skills (in its source's .agents/skills) to install in
+  # share/skills/gog/<skill>, where nixpkgs' installAgentSkills puts a package's skills.
+  # Only those the profile allows are worth offering.
+  skills ? [ ],
 }:
 
 # gogcli with a safety profile compiled in, which flags, env vars and config can't
@@ -15,7 +20,13 @@
 gogcli.overrideAttrs (old: {
   pname = "gog-safe";
 
-  nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ makeWrapper ];
+  nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+    installAgentSkills
+    makeWrapper
+  ];
+
+  # The hook would install every skill in the source (30 of them); `skills` picks.
+  dontInstallAgentSkills = true;
 
   tags = (old.tags or [ ]) ++ [ "safety_profile" ];
 
@@ -29,8 +40,13 @@ gogcli.overrideAttrs (old: {
     );
   };
 
+  # Under one base, `gog`, so they sit side by side: gog-calendar refers to gog's shared
+  # skill as ../gog.
   postInstall =
     (old.postInstall or "")
+    + lib.concatMapStrings (skill: ''
+      installSkill .agents/skills/${skill} gog
+    '') skills
     + lib.optionalString (env != { }) ''
       wrapProgram $out/bin/gog ${
         lib.concatStringsSep " " (lib.mapAttrsToList (k: v: "--set ${k} ${lib.escapeShellArg v}") env)

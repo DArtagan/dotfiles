@@ -12,16 +12,16 @@
 # types under node_modules, where this installs it.
 buildNpmPackage (finalAttrs: {
   pname = "pier";
-  version = "0.3.0";
+  version = "0.6.0";
 
   src = fetchFromGitHub {
     owner = "DArtagan";
     repo = "pier";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-gm+KRNWtCbgaORhpF/KbV67OQkrQh7c9m89bfnhyCGU=";
+    hash = "sha256-kFT7bek2AGtf4Y/96H8lrJGni+Wy0FpeU/idOnWbBlU=";
   };
 
-  npmDepsHash = "sha256-Maue5NEXOtWv1FXDT18siPfQpVUfQcQ4TRIwFpCuCk4=";
+  npmDepsHash = "sha256-5QHfjtAbZa4uYl3aQRjItLlQ35VYv+gHoh4VwVLn3E0=";
 
   # It runs on Node 24 (`engines`), and its runtime is whichever node builds it.
   nodejs = nodejs_24;

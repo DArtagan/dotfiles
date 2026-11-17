@@ -8,6 +8,17 @@
 # pane attaches to it. Imported per host; see README.md, "pier".
 let
   pier = pkgs.callPackage ../../pkgs/pier/package.nix { };
+  tools = import ./tools.nix { inherit pkgs; };
+
+  # The skill directories pier offers, besides each project's own `.agents/skills` and
+  # `.pi/skills`: the tools' (tools.nix), each a package's share/skills/<pname>. Web
+  # search and fetch through ketch, Google Calendar through gog, Todoist through td.
+  # Listed here, not taken from pi's settings, so pier's configuration stands on its own.
+  skills = [
+    "${tools.ketch}/share/skills/ketch"
+    "${tools.gog}/share/skills/gog"
+    "${tools.todoist-cli}/share/skills/todoist-cli"
+  ];
 in
 {
   home.packages = [ pier ];
@@ -30,6 +41,9 @@ in
         "PATH=${config.home.profileDirectory}/bin:/run/wrappers/bin:/run/current-system/sw/bin"
         # Panes don't set this (only the wrapped `pi` does), so tools inherit it from here.
         "GIT_CONFIG_GLOBAL=${config.home.homeDirectory}/${config.xdg.configFile."git/config-agent".target}"
+        # The skills it offers, `:`-separated. pier reads nothing of pi's for skills. A
+        # changed list reaches the daemon at its next restart.
+        "PIER_SKILLS=${lib.concatStringsSep ":" skills}"
       ];
       # Durable runs each tool, and pi-claude-code each Claude Code, in a process group of
       # its own, so only the cgroup kill reaps them when the daemon stops or dies.
