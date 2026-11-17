@@ -9,7 +9,6 @@
     modules/pi
     modules/qutebrowser
     modules/starship
-    modules/todoist
     modules/vim
     modules/zed
   ];

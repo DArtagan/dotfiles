@@ -71,6 +71,8 @@ in
     packages = [
       pi
       tools.ketch
+      # Todoist's `td`; see README.md, "Todoist".
+      tools.todoist-cli
     ];
 
     activation = {
@@ -98,8 +100,8 @@ in
             "${./sequential-file-tools.ts}"
           ];
           # The tools' skills (tools.nix): web search and fetch through ketch (see
-          # README.md), Google Calendar through gog (google.nix), Todoist through td
-          # (modules/todoist). pier.nix offers pier the same list, separately.
+          # README.md), Google Calendar through gog (google.nix), Todoist through td.
+          # pier.nix offers pier the same list, separately.
           skills = [
             "${tools.ketch}/share/skills/ketch"
             "${tools.gog}/share/skills/gog"

@@ -21,6 +21,8 @@ than symlinked; see `lib/merge-json-into.nix`.
   wrapper added in `pkgs/ketch`. See below.
 - **Google Calendar:** read-only, through [gog](https://gogcli.sh) (`google.nix`).
   See below.
+- **Todoist:** Doist's `td` CLI, with its skill added in `pkgs/todoist-cli`. See
+  below.
 - **Tools' skills** (`tools.nix`): ketch, gog and Todoist's `td` each ship their agent
   skills in `share/skills/<pname>/<skill>`, the layout nixpkgs settled on
   ([#547426](https://github.com/NixOS/nixpkgs/issues/547426)) and its
@@ -180,6 +182,46 @@ gog calendar events --today
 `auth add` opens a browser; `--manual` prints a URL to open elsewhere instead.
 The token goes in GNOME Keyring, which both hosts run. gog can't read it while the
 keyring is locked or unreachable, e.g. over SSH with no desktop session.
+
+## Todoist
+
+Doist's [Todoist CLI](https://github.com/Doist/todoist-cli), `td`, installed in every
+home (`default.nix`), with its agent skill in `share/skills/todoist-cli/todoist-cli`.
+nixpkgs' package doesn't install the skill, so `pkgs/todoist-cli` adds it: `td skill
+install` writes it at build time, matched to `td`'s version, with no network or login.
+
+### Logging in
+
+Once on each host:
+
+```bash
+td auth login              # or --read-only, for a token td won't write with
+td auth status
+td today
+```
+
+`auth login` opens a browser for Todoist's OAuth consent; `--no-browser-open`
+prints the URL instead. The token goes in GNOME Keyring under service
+`todoist-cli`, and `td` shows up under Todoist's connected apps, where it can be
+revoked per device.
+
+`td` needs the keyring unlocked. In a desktop session GNOME prompts to unlock it
+when asked; over SSH with no session, `td` can't log in. If that ever matters, a
+personal API token from sops in `TODOIST_API_TOKEN` takes precedence over the
+keyring login.
+
+### Where td looks for a token
+
+In order: `TODOIST_API_TOKEN`, then the keyring, then a plaintext `api_token` in
+`~/.config/todoist-cli/config.json` (written only by
+`--credential-store=plaintext`).
+
+Scripts that call the API directly can get the stored token with
+`TOKEN=$(td auth token view)`. Capture it; never print it, since agent
+transcripts keep command output. It refuses while `TODOIST_API_TOKEN` is set.
+
+The keyring is unlocked for the whole session and has no per-app access control,
+so any process running as the user, agents included, can read the token.
 
 ## Remote access
 
