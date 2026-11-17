@@ -253,11 +253,12 @@ user service on the NixOS hosts (imported per host in `flake.nix`), started at l
 Classic `pi`, above, is untouched; the two share only `~/.pi/agent`, and not for
 skills.
 
-**Skills.** `programs.pier.skills` lists the skill directories pier offers, passed to
-the daemon as `PIER_SKILLS`; each project's `.agents/skills` and `.pi/skills` come on
-top. It's set explicitly to the tools' skills (`tools.nix`), the same list pi's
-settings carry but not read from them, so dropping pi leaves pier's configuration
-whole. A changed list reaches the daemon at its next restart.
+**Skills.** `pier.nix` lists the skill directories pier offers and passes them to the
+daemon as `PIER_SKILLS`; each project's `.agents/skills` and `.pi/skills` come on top.
+The list is the tools' skills (`tools.nix`), the same ones pi's settings carry but not
+read from them, so dropping pi leaves pier's configuration whole. It's a plain list,
+not a module option: an option belongs in a Nix module of pier's own, if it gets one. A
+changed list reaches the daemon at its next restart.
 
 ```bash
 pier                  # in a project: continue its newest conversation, or start one
