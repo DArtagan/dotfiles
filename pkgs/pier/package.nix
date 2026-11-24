@@ -2,7 +2,7 @@
   buildNpmPackage,
   fetchFromGitHub,
   lib,
-  nodejs_24,
+  nodejs_26,
 }:
 
 # pier: pi on Pi Durable, one daemon per host with thin clients (~/repositories/pier,
@@ -12,19 +12,19 @@
 # types under node_modules, where this installs it.
 buildNpmPackage (finalAttrs: {
   pname = "pier";
-  version = "0.6.0";
+  version = "0.7.0";
 
   src = fetchFromGitHub {
     owner = "DArtagan";
     repo = "pier";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-kFT7bek2AGtf4Y/96H8lrJGni+Wy0FpeU/idOnWbBlU=";
+    hash = "sha256-w3KVufCY7JwRXc4JHRgxRq/EuDaBsmmzt+Vq9u9sc8A=";
   };
 
-  npmDepsHash = "sha256-5QHfjtAbZa4uYl3aQRjItLlQ35VYv+gHoh4VwVLn3E0=";
+  npmDepsHash = "sha256-urjBm4m6stBuR10+mZnMZTwKAx7SIKBnRLCcqCfmTqs=";
 
-  # It runs on Node 24 (`engines`), and its runtime is whichever node builds it.
-  nodejs = nodejs_24;
+  # It runs on Node 26 (`engines`, since 0.7.0), and its runtime is whichever node builds it.
+  nodejs = nodejs_26;
 
   meta = {
     description = "pi on Pi Durable: one daemon per host, thin clients";

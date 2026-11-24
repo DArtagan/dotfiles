@@ -345,8 +345,10 @@ How the service is set up, and why:
 Checked on thenixbeast on 2026-11-16, with the unit's command and environment under
 `systemd-run`, before the first switch: a Claude turn ran bash in the pane's
 directory and saw both the pane's variables and the unit's `GIT_CONFIG_GLOBAL`; the
-daemon idled at about 210 MiB (355 MiB peak). The package's closure is 331 MiB, pier's
-own pi packages included.
+daemon idled at about 210 MiB (355 MiB peak). The package's closure is 364 MiB at
+0.7.0, pier's own pi packages and Node 26 included. 0.7.0 checked on 2026-11-24 the
+same way: under `systemd-run` with the unit's environment, a Claude turn ran bash in
+the pane's directory with the pane's variables and the agents' git config.
 
 Bumping pier: `modules/pi/UPDATING.md`. Its pi packages come from its own lockfile, so
 bumping pi there is pier's business (its gate, its changelog), not this repo's.
